@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "dev:turbo": "next dev --turbo",
-    "build": "contentlayer build && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
