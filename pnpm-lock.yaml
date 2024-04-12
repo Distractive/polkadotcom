@@ -41,6 +41,7 @@ importers:
       '@shared/tailwind-config': workspace:*
       '@shared/ts-config': workspace:*
       '@shared/ui': workspace:*
+      '@storybook/addon-a11y': ^8.0.8
       '@storybook/addon-essentials': ^8.0.5
       '@storybook/addon-interactions': ^8.0.5
       '@storybook/addon-links': ^8.0.5
@@ -73,6 +74,7 @@ importers:
       '@shared/eslint-config': link:../../packages/eslint-config
       '@shared/tailwind-config': link:../../packages/tailwind-config
       '@shared/ts-config': link:../../packages/ts-config
+      '@storybook/addon-a11y': 8.0.8
       '@storybook/addon-essentials': 8.0.8_ckivqqo7ufwu2ua5a43uu5bovu
       '@storybook/addon-interactions': 8.0.8
       '@storybook/addon-links': 8.0.8_react@18.2.0
@@ -2428,6 +2430,13 @@ packages:
     resolution: {integrity: sha512-TV7t8GKYaJWsn00tFDqBw8+Uqmr8A0fRU1tvTQhyZzGv0sJCGRQL3JGMI3ucuKo3XIZdUP+Lx7/gh2t3lewy7g==}
     engines: {node: '>=14.16'}
     dev: false
+
+  /@storybook/addon-a11y/8.0.8:
+    resolution: {integrity: sha512-QiNzKej1C3QjPBHm8nwk0lqv9N9cLInlyJ62Cp+/+ethcH2elNnBf1H3ad/DC6XIQRyMtvvhCOnzygAMnjCq1w==}
+    dependencies:
+      '@storybook/addon-highlight': 8.0.8
+      axe-core: 4.7.0
+    dev: true
 
   /@storybook/addon-actions/8.0.8:
     resolution: {integrity: sha512-F3qpN0n53d058EroW1A2IlzrsFNR5p2srLY4FmXB80nxAKV8oqoDI4jp15zYlf8ThcJoQl36plT8gx3r1BpANA==}
