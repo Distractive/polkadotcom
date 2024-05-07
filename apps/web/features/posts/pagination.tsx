@@ -1,3 +1,5 @@
+import { cn } from "@shared/ui/lib/utils"
+
 import {
   Pagination,
   PaginationContent,
@@ -18,12 +20,20 @@ interface Props {
 
 export function PostPagination({ total, page, limit, type, tagSlug }: Props) {
   const pages = Math.ceil(total / limit)
-
   return (
     <Pagination>
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious href="#" />
+          <PaginationPrevious
+            href={
+              page > 1
+                ? tagSlug === undefined
+                  ? `/${type}/page/${page - 1}`
+                  : `/${type}/tag/${tagSlug}/page/${page - 1}`
+                : undefined
+            }
+            className={cn(page === 1 && "pointer-events-none")}
+          />
         </PaginationItem>
         {Array.from({ length: pages }, (_, i) => {
           const currentPage = i + 1
@@ -46,7 +56,16 @@ export function PostPagination({ total, page, limit, type, tagSlug }: Props) {
           <PaginationEllipsis />
         </PaginationItem>
         <PaginationItem>
-          <PaginationNext href={`/${type}/page/${page}`} />
+          <PaginationNext
+            href={
+              page < pages
+                ? tagSlug === undefined
+                  ? `/${type}/page/${Number(page) + 1}`
+                  : `/${type}/tag/${tagSlug}/page/${Number(page) + 1}`
+                : undefined
+            }
+            className={cn(page === pages && "pointer-events-none")}
+          />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

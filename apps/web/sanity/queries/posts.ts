@@ -35,20 +35,23 @@ export async function getPosts(
     const startIndex = (pageIndex - 1) * pageSize
     const endIndex = startIndex + pageSize - 1
 
+    console.log(postType)
+
     return q("").grab({
       posts: query
-        .filter("post_type == $postType")
         .grab(selection)
         .order("published_date desc")
         .slice(startIndex, endIndex),
-
       totalCount: [`count(${query.query})`, q.number()],
     })
   }
 
   const tagFilter = tagSlug ? "$tagSlug in tags[]-> slug.current" : ""
 
-  const postQuery = q("*").filterByType("post").filter(tagFilter)
+  const postQuery = q("*")
+    .filterByType("post")
+    .filter(tagFilter)
+    .filter("post_type == $postType")
 
   return runQuery(paginate(postQuery, postSelection, page, POSTS_PER_PAGE), {
     postType: postType,
