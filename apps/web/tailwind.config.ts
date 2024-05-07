@@ -1,6 +1,8 @@
+import sharedConfig from "@shared/tailwind-config"
 import type { Config } from "tailwindcss"
 
 const config = {
+  ...sharedConfig,
   content: [
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -10,4 +12,3 @@ const config = {
 } satisfies Config
 
 export default config
-
