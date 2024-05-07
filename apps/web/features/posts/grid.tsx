@@ -29,7 +29,7 @@ export function Grid({ posts }: Props) {
               </div>
             </CardHeader>
             <CardContent>
-              <CardTitle>{post.title}</CardTitle>
+              <CardTitle className="font-display">{post.title}</CardTitle>
               <a
                 href={`/blog/tag/${post.tags[0]?.slug}`}
                 className="mt-4 text-red-800"
