@@ -3,7 +3,7 @@ import { cn } from "@shared/ui/lib/utils"
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
+  // PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -22,8 +22,8 @@ export function PostPagination({ total, page, limit, type, tagSlug }: Props) {
   const pages = Math.ceil(total / limit)
   return (
     <Pagination>
-      <PaginationContent>
-        <PaginationItem>
+      <PaginationContent className="w-full">
+        <PaginationItem className="flex justify-start">
           <PaginationPrevious
             href={
               page > 1
@@ -38,7 +38,12 @@ export function PostPagination({ total, page, limit, type, tagSlug }: Props) {
         {Array.from({ length: pages }, (_, i) => {
           const currentPage = i + 1
           return (
-            <PaginationItem key={i}>
+            <PaginationItem
+              key={i}
+              className={cn(
+                currentPage == page ? "flex flex-1 justify-center" : "hidden"
+              )}
+            >
               <PaginationLink
                 href={
                   tagSlug === undefined
@@ -52,10 +57,10 @@ export function PostPagination({ total, page, limit, type, tagSlug }: Props) {
             </PaginationItem>
           )
         })}
-        <PaginationItem>
+        {/* <PaginationItem>
           <PaginationEllipsis />
-        </PaginationItem>
-        <PaginationItem>
+        </PaginationItem> */}
+        <PaginationItem className="flex justify-end">
           <PaginationNext
             href={
               page < pages
