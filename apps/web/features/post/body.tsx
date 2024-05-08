@@ -12,10 +12,10 @@ export function Body({ body }: Props) {
       components={{
         block: {
           h2: ({ children }) => (
-            <h1 className="font-display my-2 text-3xl">{children}</h1>
+            <h1 className="my-2 font-display text-3xl">{children}</h1>
           ),
           h3: ({ children }) => (
-            <h3 className="font-display my-2 text-2xl">{children}</h3>
+            <h3 className="my-2 font-display text-2xl">{children}</h3>
           ),
         },
         list: {
@@ -42,6 +42,24 @@ export function Body({ body }: Props) {
                 />
                 <figcaption>{value.caption}</figcaption>
               </figure>
+            )
+          },
+          code: ({ value }) => {
+            return (
+              <pre className="overflow-x-auto p-4">
+                <code>{value.code}</code>
+              </pre>
+            )
+          },
+          youtube: ({ value }) => {
+            return (
+              <iframe
+                title={value.title}
+                width="560"
+                height="315"
+                src={value.url}
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              />
             )
           },
         },

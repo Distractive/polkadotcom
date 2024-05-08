@@ -81,6 +81,29 @@ const defaultSchema = Schema.compile({
         },
       ],
     },
+
+    {
+      name: "code",
+      type: "object",
+      title: "Code",
+      fields: [
+        {
+          name: "language",
+          title: "Language",
+          type: "string",
+        },
+        {
+          name: "filename",
+          title: "Filename",
+          type: "string",
+        },
+        {
+          title: "Code",
+          name: "code",
+          type: "text",
+        },
+      ],
+    },
     {
       name: "post",
       title: "Post",
@@ -186,6 +209,9 @@ const defaultSchema = Schema.compile({
             {
               type: "youtube",
             },
+            {
+              type: "code",
+            },
           ],
           group: "content",
         },
@@ -261,35 +287,16 @@ const ndjsonArray = posts.map((post) => {
                 })
               }
             }
+
+            if (el.tagName?.toLowerCase() === "pre") {
+              return block({
+                _type: "code",
+                language: "text",
+                code: el.textContent,
+              })
+            }
+
             return undefined
-            // if (el.tagName.toLowerCase() === "pre") {
-            //   return block({
-            //     _type: "codeBlock",
-            //     language: "text",
-            //     codeContent: el.textContent,
-            //   })
-            // }
-            // // This is an example of over-riding the 'iframe' tag in our html, detecting
-            // // that the src is a github gist, then returning the custom '_type' for 'githubGist'
-            // if (
-            //   el.tagName.toLowerCase() === "iframe" &&
-            //   el.src.match(/gist.github.com/)
-            // ) {
-            //   const GIST_ID_RX = /gist.github.com\/.*\/(\w+)\.js/
-            //   const matches = el.src.match(GIST_ID_RX)
-            //   const gistId = matches && matches[1]
-            //   if (!gistId) {
-            //     console.log("Error - unable to find gistId for src", el.src)
-            //     return undefined
-            //   }
-            //   const urlParts = qs.parseUrl(el.src)
-            //   return block({
-            //     _type: "gistEmbed",
-            //     gistId,
-            //     filename: urlParts.query.file || undefined,
-            //   })
-            // }
-            // return undefined
           },
         },
       ],

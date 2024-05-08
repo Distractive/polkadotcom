@@ -2,6 +2,7 @@
 
 import { deskStructure } from "@/sanity/deskStructure"
 import { schema } from "@/sanity/schema"
+import { codeInput } from "@sanity/code-input"
 import { visionTool } from "@sanity/vision"
 import { groqdPlaygroundTool } from "groqd-playground"
 import { defineConfig } from "sanity"
@@ -22,5 +23,6 @@ export default defineConfig({
     }),
     visionTool({ defaultApiVersion: env.NEXT_PUBLIC_SANITY_API_VERSION }),
     groqdPlaygroundTool(),
+    codeInput(),
   ],
 })

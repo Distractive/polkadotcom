@@ -107,6 +107,11 @@ export default defineType({
         defineArrayMember({
           type: "youtube",
         }),
+        defineArrayMember({
+          name: "code",
+          title: "Code Block",
+          type: "code",
+        }),
       ],
       group: "content",
     }),

@@ -19,6 +19,7 @@
   "dependencies": {
     "@codemirror/theme-one-dark": "^6.1.2",
     "@portabletext/react": "^3.0.18",
+    "@sanity/code-input": "^4.1.4",
     "@sanity/vision": "^3.37.2",
     "@shared/ui": "workspace:*",
     "@t3-oss/env-nextjs": "^0.9.2",

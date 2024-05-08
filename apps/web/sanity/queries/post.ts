@@ -31,6 +31,15 @@ export const postSelection = {
         caption: q.string(),
         image: q("asset").grabOne("_ref", q.string()),
       },
+      '_type == "code"': {
+        _type: q.literal("code"),
+        code: q.string(),
+      },
+      '_type == "youtube"': {
+        _type: q.literal("youtube"),
+        url: q.string(),
+        title: q.string(),
+      },
       default: {
         _key: q.string(),
         _type: ['"unsupported"', q.literal("unsupported")],
