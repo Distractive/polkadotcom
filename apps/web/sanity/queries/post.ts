@@ -1,5 +1,5 @@
 import { runQuery } from "@/sanity/lib/groqd-query"
-import { q, sanityImage } from "groqd"
+import { nullToUndefined, q, sanityImage } from "groqd"
 import type { Selection } from "groqd"
 
 export const postSelection = {
@@ -48,6 +48,17 @@ export const postSelection = {
     }),
 } satisfies Selection
 
+export const metaSelection = {
+  title: q.string(),
+  slug: q.slug("slug"),
+  image: sanityImage("featured_image", {
+    withAsset: ["base"],
+  }),
+  meta_title: nullToUndefined(q.string().optional()),
+  meta_description: nullToUndefined(q.string().optional()),
+  custom_excerpt: nullToUndefined(q.string().optional()),
+} satisfies Selection
+
 export async function getPost(slug: string) {
   const postQuery = q("*")
     .filterByType("post")
@@ -58,4 +69,13 @@ export async function getPost(slug: string) {
   return runQuery(postQuery, {
     slug: slug,
   })
+}
+
+export async function getPostMeta(slug: string) {
+  const metaQuery = q("*")
+    .filterByType("post")
+    .filter("slug.current == $slug")
+    .grab(metaSelection)
+    .slice(0)
+  return runQuery(metaQuery, { slug: slug })
 }

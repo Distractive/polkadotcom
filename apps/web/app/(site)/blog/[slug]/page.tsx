@@ -1,9 +1,27 @@
+import type { Metadata } from "next"
+import { getPostMeta } from "@/sanity/queries/post"
+
+import { BASE_URL } from "@/constants/global"
 import Layout from "@/features/post/layout"
 
-export default async function Slug({
-  params: { slug },
-}: {
+interface Props {
   params: { slug: string }
-}) {
+}
+
+export async function generateMetadata({
+  params: { slug },
+}: Props): Promise<Metadata> {
+  const meta = await getPostMeta(slug)
+  return {
+    title: meta.meta_title || meta.title,
+    description: meta.meta_description || meta.custom_excerpt,
+    alternates: { canonical: `${BASE_URL}/blog/${slug}` },
+    openGraph: {
+      images: [meta.image.asset.url],
+    },
+  }
+}
+
+export default async function Slug({ params: { slug } }: Props) {
   return <Layout slug={slug} />
 }
