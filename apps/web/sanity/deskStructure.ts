@@ -23,8 +23,14 @@ const postStructure = (S: StructureBuilder) =>
             .child(S.documentTypeList("post").title("Posts")),
         ])
     )
+const pageStructure = (S: StructureBuilder) =>
+  S.listItem()
+    .title("Pages")
+    .icon(DocumentsIcon)
+    .schemaType("page")
+    .child(S.documentTypeList("page"))
 
 export const deskStructure = (S: StructureBuilder) =>
   S.list()
     .title("Content")
-    .items([postStructure(S)])
+    .items([postStructure(S), pageStructure(S)])

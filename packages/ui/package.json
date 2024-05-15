@@ -21,8 +21,10 @@
     "typescript": "5.4.3"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.1.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "embla-carousel-react": "^8.0.4",
     "tailwind-merge": "^2.2.2"
   }
 }
