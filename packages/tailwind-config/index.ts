@@ -9,10 +9,59 @@ const config = {
     "../../packages/ui/components/**/*.{ts,tsx}",
   ],
   theme: {
+    screens: {
+      sm: "22.5rem",
+      md: "45.5rem",
+      lg: "64rem",
+      xl: "90rem",
+      "2xl": "120rem",
+    },
+    fontFamily: {
+      display: ["var(--font-unbounded)", "system-ui", "sans-serif"],
+      default: ["var(--font-inter)", "system-ui", "sans-serif"],
+    },
+    fontSize: {
+      xs: "0.75rem",
+      sm: "0.875rem",
+      base: "1rem",
+      lg: "1.125rem",
+      xl: "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+      "4xl": "2.125rem",
+      "5xl": "2.5rem",
+      "6xl": "2.75rem",
+      "7xl": "3.25rem",
+    },
+    lineHeight: {
+      snug: "1.2",
+      normal: "1.3",
+      relaxed: "1.4",
+    },
+    fontWeight: {
+      light: "300",
+      medium: "400",
+      bold: "600",
+    },
+    letterSpacing: {
+      wide: "0.02em",
+    },
+    colors: {
+      black: "#000000",
+      "grey-light": "#B4B4B7",
+      "grey-medium": "#4C4C4C",
+      white: "#ffffff",
+      pink: "#E6007A",
+      purple: "#552BBF",
+      current: "currentColor",
+    },
     extend: {
-      fontFamily: {
-        display: ["var(--font-unbounded)", "system-ui", "sans-serif"],
-        default: ["var(--font-inter)", "system-ui", "sans-serif"],
+      spacing: {
+        page: "var(--spacing-page)",
+        section: "var(--spacing-section)",
+        card: "var(--spacing-card)",
+        copy: "var(--spacing-copy)",
+        gutter: "var(--spacing-gutter)",
       },
       keyframes: {
         "accordion-down": {

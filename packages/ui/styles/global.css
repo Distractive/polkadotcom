@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .grid-system {
+    @apply lg:grid-cols-12 gap-x-gutter px-gutter mx-auto grid max-w-[160rem] grid-cols-6;
+  }
+}
+
+:root {
+  --spacing-page: 7.5rem;
+  --spacing-section: 3rem;
+  --spacing-gutter: 1.5rem;
+  --spacing-card: 2rem;
+  --spacing-copy: 1rem;
+}
+
+/* 
+As we can't use CSS custom properites for breakpoints, any changes to
+'screens' values in tailwind.config.ts should also be updated below.   
+*/
+
+@media (min-width: 45.5rem) {
+  :root {
+    --spacing-gutter: 2rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --spacing-page: 9rem;
+    --spacing-section: 6rem;
+    --spacing-gutter: 3rem;
+  }
+}
