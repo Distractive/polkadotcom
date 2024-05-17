@@ -1,10 +1,15 @@
+import { Heading } from "@shared/ui"
+
 export default function Home() {
   return (
-    <main className="gap-page py-page grid-system">
-      <section className="gap-section col-span-6 grid">
-        <article className="gap-card grid">
-          <div className="gap-copy grid">
-            <h2 className="lg:text-2xl text-lg">Heading</h2>
+    <main className="grid-system gap-page py-page">
+      <Heading variant="h1" className="col-span-full ">
+        Polkadot
+      </Heading>
+      <section className="col-span-6 grid gap-section">
+        <article className="grid gap-card">
+          <div className="grid gap-copy">
+            <Heading variant="h3">This is a heading</Heading>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. In alias,
               repellendus nam facere, harum at adipisci soluta hic qui quasi
@@ -12,13 +17,13 @@ export default function Home() {
               voluptatem laboriosam!
             </p>
           </div>
-          <div className="lg:h-60 h-40 bg-grey-light"></div>
+          <div className="h-40 bg-grey-light lg:h-60"></div>
         </article>
       </section>
-      <section className="gap-section col-span-6 grid">
-        <article className="gap-card grid">
-          <div className="gap-copy grid">
-            <h2 className="lg:text-2xl text-lg">Heading</h2>
+      <section className="col-span-6 grid gap-section">
+        <article className="grid gap-card">
+          <div className="grid gap-copy">
+            <Heading variant="h3">This is a heading</Heading>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. In alias,
               repellendus nam facere, harum at adipisci soluta hic qui quasi
@@ -26,7 +31,7 @@ export default function Home() {
               voluptatem laboriosam!
             </p>
           </div>
-          <div className="lg:h-60 h-40 bg-grey-light"></div>
+          <div className="h-40 bg-grey-light lg:h-60"></div>
         </article>
       </section>
     </main>
