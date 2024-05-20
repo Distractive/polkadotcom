@@ -1,20 +1,23 @@
 import { type SchemaTypeDefinition } from "sanity"
 
-import { author, page, post, tag } from "./schemas/documents"
+import { author, landing, page, post, tag } from "./schemas/documents"
 import {
   accordion,
   accordionContent,
   accordionItem,
   card,
   cards,
-  customUrl,
+  // customUrl,
   faq,
   faqs,
   meta,
+  pageBuilder,
   youtube,
 } from "./schemas/objects"
 
-const documentTypes = [page, tag, author, post]
+// import { gettingStartedLanding, platformLanding } from "./schemas/singletons"
+
+const documentTypes = [tag, author, post, landing, page]
 const objectTypes = [
   youtube,
   meta,
@@ -25,8 +28,11 @@ const objectTypes = [
   accordionContent,
   card,
   cards,
-  customUrl,
+  // customUrl,
+  pageBuilder,
 ]
+
+// const singletons = []
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [...documentTypes, ...objectTypes],

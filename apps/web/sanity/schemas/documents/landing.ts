@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity"
 
 export default defineType({
-  name: "page",
-  title: "Page",
+  name: "landing",
+  title: "Landing Page",
   type: "document",
   fields: [
     defineField({ name: "title", type: "string" }),
@@ -18,25 +18,11 @@ export default defineType({
     defineField({
       name: "pageBuilder",
       type: "pageBuilder",
-      title: "Page builder",
-    }),
-    defineField({
-      name: "parent",
-      type: "reference",
-      to: [{ type: "landing" }],
-      options: {
-        filter: "!defined(parent)",
-      },
     }),
   ],
   preview: {
     select: {
       title: "title",
-      subtitle: "parent.title",
     },
-    prepare: ({ title, subtitle }) => ({
-      title,
-      subtitle: subtitle ? `– ${subtitle}` : ``,
-    }),
   },
 })

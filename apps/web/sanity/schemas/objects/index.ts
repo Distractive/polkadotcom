@@ -9,3 +9,4 @@ export { default as accordionContent } from "./blocks/accordion/accordion-conten
 export { default as cards } from "./blocks/card/cards"
 export { default as card } from "./blocks/card/card"
 export { default as customUrl } from "./custom-url"
+export { default as pageBuilder } from "./page-builder"

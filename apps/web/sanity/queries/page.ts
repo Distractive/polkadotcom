@@ -5,7 +5,7 @@ import { pageBuilderSelection } from "../selections/page-builder"
 
 export async function getPage(slug: string) {
   const pageQuery = q("*")
-    .filterByType("page")
+    .filter("_type == 'landing' || _type == 'page'")
     .filter("slug.current == $slug")
     .grab({
       title: q.string(),

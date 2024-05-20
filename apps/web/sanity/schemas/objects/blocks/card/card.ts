@@ -33,10 +33,10 @@ export default defineType({
         list: ["square", "landscape", "portrait"],
       },
     }),
-    defineField({
-      name: "link",
-      title: "Link",
-      type: "customUrl",
-    }),
+    // defineField({
+    //   name: "link",
+    //   title: "Link",
+    //   type: "customUrl",
+    // }),
   ],
 })

@@ -1,7 +1,7 @@
 import { DocumentsIcon, TagsIcon, UsersIcon } from "@sanity/icons"
 import type { StructureBuilder } from "sanity/structure"
 
-const postStructure = (S: StructureBuilder) =>
+export const postStructure = (S: StructureBuilder) =>
   S.listItem()
     .title("Post Managment")
     .icon(DocumentsIcon)
@@ -23,14 +23,3 @@ const postStructure = (S: StructureBuilder) =>
             .child(S.documentTypeList("post").title("Posts")),
         ])
     )
-const pageStructure = (S: StructureBuilder) =>
-  S.listItem()
-    .title("Pages")
-    .icon(DocumentsIcon)
-    .schemaType("page")
-    .child(S.documentTypeList("page"))
-
-export const deskStructure = (S: StructureBuilder) =>
-  S.list()
-    .title("Content")
-    .items([postStructure(S), pageStructure(S)])

@@ -6,7 +6,7 @@ import { accordionSelection } from "./blocks/accordion"
 import { cardsSelection } from "./blocks/cards"
 
 export const pageBuilderSelection = {
-  pageBuilder: q("pageBuilder")
+  pageBuilder: q("pageBuilder.pageBuilder")
     .filter()
     .select({
       '_type == "faqs"': {

@@ -1,6 +1,6 @@
 "use client"
 
-import { deskStructure } from "@/sanity/deskStructure"
+import { deskStructure } from "@/sanity/desk"
 import { schema } from "@/sanity/schema"
 import { codeInput } from "@sanity/code-input"
 import { visionTool } from "@sanity/vision"
@@ -16,7 +16,24 @@ export default defineConfig({
   title: "polkadot",
   projectId: env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   dataset: env.NEXT_PUBLIC_SANITY_DATASET,
-  schema,
+  // schema,
+  schema: {
+    ...schema,
+    templates: (prev) => {
+      const landingChild = {
+        id: "landing-child",
+        title: "Landing: Pages",
+        schemaType: "page",
+        parameters: [{ name: `parentId`, title: `Parent ID`, type: `string` }],
+        // This value will be passed-in from desk structure
+        value: ({ parentId }: { parentId: string }) => ({
+          parent: { _type: "reference", _ref: parentId },
+        }),
+      }
+
+      return [...prev, landingChild]
+    },
+  },
   plugins: [
     structureTool({
       structure: deskStructure,
