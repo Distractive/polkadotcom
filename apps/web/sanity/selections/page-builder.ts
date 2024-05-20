@@ -4,6 +4,7 @@ import type { Selection } from "groqd"
 import { faqsSelection } from "../selections/blocks/faqs"
 import { accordionSelection } from "./blocks/accordion"
 import { cardsSelection } from "./blocks/cards"
+import { contentSelection } from "./blocks/content"
 
 export const pageBuilderSelection = {
   pageBuilder: q("pageBuilder.pageBuilder")
@@ -20,6 +21,10 @@ export const pageBuilderSelection = {
       '_type == "cards"': {
         _type: q.literal("cards"),
         ...cardsSelection,
+      },
+      '_type == "blockContent"': {
+        _type: q.literal("blockContent"),
+        ...contentSelection,
       },
       default: {
         _key: q.string(),

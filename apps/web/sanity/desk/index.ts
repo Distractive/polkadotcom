@@ -4,6 +4,7 @@ import type {
   StructureResolverContext,
 } from "sanity/structure"
 
+import { hygieneStructure } from "./hygiene"
 import { parentChild } from "./landing"
 import { postStructure } from "./post"
 
@@ -18,4 +19,5 @@ export const deskStructure = (
       S.divider(),
       parentChild("landing", S, context.documentStore),
       S.divider(),
+      hygieneStructure(S),
     ])

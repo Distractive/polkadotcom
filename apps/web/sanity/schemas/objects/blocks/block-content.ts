@@ -16,7 +16,7 @@ export default defineType({
             { title: "Normal", value: "normal" },
             { title: "H2", value: "h2" },
             { title: "H3", value: "h3" },
-            { title: "Quote", value: "blockquote" },
+            { title: "H4", value: "h4" },
           ],
           marks: {
             decorators: [

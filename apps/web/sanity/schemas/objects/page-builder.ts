@@ -21,6 +21,10 @@ export default defineType({
           name: "cards",
           type: "cards",
         }),
+        defineArrayMember({
+          name: "blockContent",
+          type: "blockContent",
+        }),
       ],
     }),
   ],
