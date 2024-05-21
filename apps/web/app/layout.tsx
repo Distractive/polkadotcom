@@ -5,7 +5,11 @@ import { TailwindIndicator } from "@/components/tailwind-indicator"
 
 import "@shared/ui/styles/global.css"
 
+import { getFooterMenu } from "@/sanity/queries/footer"
 import { cn } from "@shared/ui/lib/utils"
+
+import Menu from "@/features/footer/menu"
+import SocialLinks from "@/features/footer/social-links"
 
 export const metadata: Metadata = {
   title: "Polkadot: Web3 Interoperability | Decentralized Blockchain",
@@ -13,11 +17,13 @@ export const metadata: Metadata = {
     "Polkadot empowers blockchain networks to work together under the protection of shared security.",
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const footerMenu = await getFooterMenu()
+
   return (
     <html lang="en">
       <body
@@ -28,6 +34,10 @@ export default function RootLayout({
         )}
       >
         {children}
+        <footer className="bg-[#0B064A]">
+          <Menu menu={footerMenu.menu} />
+          <SocialLinks items={footerMenu.socialLinks} />
+        </footer>
         <TailwindIndicator />
       </body>
     </html>

@@ -8,13 +8,17 @@ import {
   blockContent,
   card,
   cards,
-  // customUrl,
+  customUrl,
   faq,
   faqs,
+  menu,
+  menuItem,
   meta,
   pageBuilder,
+  socialLink,
   youtube,
 } from "./schemas/objects"
+import { footer } from "./schemas/singletons"
 
 const documentTypes = [tag, author, post, landing, page, hygiene]
 const objectTypes = [
@@ -27,11 +31,16 @@ const objectTypes = [
   accordionContent,
   card,
   cards,
-  // customUrl,
+  customUrl,
   pageBuilder,
   blockContent,
+  menu,
+  menuItem,
+  socialLink,
 ]
 
+const singletons = [footer]
+
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [...documentTypes, ...objectTypes],
+  types: [...documentTypes, ...objectTypes, ...singletons],
 }
