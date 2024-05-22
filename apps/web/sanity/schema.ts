@@ -3,7 +3,6 @@ import { type SchemaTypeDefinition } from "sanity"
 import { author, hygiene, landing, page, post, tag } from "./schemas/documents"
 import {
   accordion,
-  accordionContent,
   accordionItem,
   blockContent,
   card,
@@ -11,6 +10,7 @@ import {
   customUrl,
   faq,
   faqs,
+  lineBreak,
   menu,
   menuItem,
   meta,
@@ -28,12 +28,14 @@ const objectTypes = [
   faqs,
   accordion,
   accordionItem,
-  accordionContent,
   card,
   cards,
   customUrl,
   pageBuilder,
   blockContent,
+
+  lineBreak,
+
   menu,
   menuItem,
   socialLink,

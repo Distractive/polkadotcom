@@ -1,4 +1,4 @@
-import { defineArrayMember, defineField, defineType } from "sanity"
+import { defineField, defineType } from "sanity"
 
 export default defineType({
   name: "accordion-item",
@@ -16,11 +16,21 @@ export default defineType({
       title: "Content",
       type: "array",
       of: [
-        defineArrayMember({
-          type: "accordion-content",
-        }),
+        {
+          type: "block",
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "H4", value: "h4" },
+          ],
+          marks: {
+            decorators: [{ title: "Strong", value: "strong" }],
+          },
+        },
+        {
+          type: "break",
+          initialValue: { style: "lineBreak" },
+        },
       ],
-      validation: (Rule) => Rule.required().min(1).max(3),
     }),
   ],
 })

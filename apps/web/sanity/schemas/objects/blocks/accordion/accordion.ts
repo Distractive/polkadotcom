@@ -12,6 +12,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      title: "Has Numbers",
+      name: "hasNumbers",
+      type: "boolean",
+      description: "Show numbers in front of the accordion heading",
+    }),
+    defineField({
       name: "items",
       type: "array",
       of: [

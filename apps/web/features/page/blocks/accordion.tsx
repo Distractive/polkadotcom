@@ -1,4 +1,5 @@
 import type { accordionSelection } from "@/sanity/selections/blocks/accordion"
+import { PortableText } from "@portabletext/react"
 import type { TypeFromSelection } from "groqd"
 
 import {
@@ -6,6 +7,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  Heading,
 } from "@shared/ui"
 
 interface Props {
@@ -17,7 +19,7 @@ interface Props {
 export function AccordionBlock({ accordion }: Props) {
   return (
     <div className="flex flex-col items-center justify-center">
-      <h1 className="mb-4 font-display text-3xl text-red-500">
+      <h1 className="text-red-500 mb-4 font-display text-3xl">
         ACCORDION BLOCK
       </h1>
       <h3 className="font-display text-2xl">{accordion.title}</h3>
@@ -30,19 +32,53 @@ export function AccordionBlock({ accordion }: Props) {
         {accordion.items.map((item, index) => (
           <AccordionItem key={item._key} value={item._key}>
             <AccordionTrigger>
-              <span>{index + 1}</span>
+              {accordion.hasNumbers && (
+                <span
+                  className="font-display text-4xl text-pink"
+                  style={{ fontFeatureSettings: "'ss03' on" }}
+                >
+                  {index + 1}
+                </span>
+              )}
               {item.heading}
             </AccordionTrigger>
             <AccordionContent>
-              {item.content.map((block, index) => (
-                <div
-                  key={index}
-                  className="not-last:border-b-2 mb-4 pb-4 last:pb-0"
-                >
-                  <h4 className="text-sm font-bold">{block.heading}</h4>
-                  <p>{block.copy}</p>
-                </div>
-              ))}
+              <PortableText
+                value={item.content}
+                components={{
+                  block: {
+                    h4: ({ children }) => (
+                      <Heading variant="h4">{children}</Heading>
+                    ),
+                  },
+                  list: {
+                    bullet: ({ children }) => (
+                      <ul className="my-4 list-outside list-disc pl-8">
+                        {children}
+                      </ul>
+                    ),
+                    number: ({ children }) => (
+                      <ol className="my-4 list-outside list-decimal pl-8">
+                        {children}
+                      </ol>
+                    ),
+                  },
+                  listItem: {
+                    bullet: ({ children }) => <li>{children}</li>,
+                    number: ({ children }) => <li>{children}</li>,
+                  },
+
+                  types: {
+                    break: ({ value }) => {
+                      const { style } = value
+                      if (style === "lineBreak") {
+                        return <hr />
+                      }
+                      return null
+                    },
+                  },
+                }}
+              />
             </AccordionContent>
           </AccordionItem>
         ))}
