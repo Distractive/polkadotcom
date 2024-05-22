@@ -1,11 +1,15 @@
-import { q } from "groqd"
+import { nullToUndefined, q } from "groqd"
 import type { Selection } from "groqd"
 
 import { cardSelection } from "./card"
 
 export const cardsSelection = {
-  heading: q.string(),
-  isCarousel: q.boolean(),
+  _key: q.string(),
+  heading: nullToUndefined(q.string().optional()),
+  body: nullToUndefined(q.string().optional()),
+  isCarousel: nullToUndefined(q.boolean().optional()),
+  hasTags: nullToUndefined(q.boolean().optional()),
+  showSideBySide: nullToUndefined(q.boolean().optional()),
   items: q("items")
     .filter()
     .grab({ ...cardSelection }),

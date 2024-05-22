@@ -7,6 +7,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  Heading,
 } from "@shared/ui"
 
 import { CardBlock } from "./card"
@@ -16,10 +17,9 @@ interface Props {
 }
 export function CardsBlock({ cards }: Props) {
   return (
-    <div className="flex w-full flex-col items-center">
-      <h1 className="mb-4 font-display text-3xl text-red-500">
-        {cards.isCarousel ? "CAROUSEL CARD BLOCK" : "LIST CARD BLOCK"}
-      </h1>
+    <div key={cards._key} className="flex w-full flex-col items-center">
+      {cards.heading && <Heading variant="h1">{cards.heading}</Heading>}
+      {cards.body && <p>{cards.body}</p>}
       {cards.isCarousel ? (
         <Carousel className="w-full max-w-sm">
           <CarouselContent>
