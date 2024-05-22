@@ -38,15 +38,10 @@
   font-display: swap;
 }
 
-:root {
-  --font-default: "Manrope";
-  --font-display: "Unbounded";
-}
-
 .font-display {
-  font-family: var(--font-default);
+  font-family: "Unbounded" !important;
 }
 
 .font-default {
-  font-family: var(--font-display);
+  font-family: "Manrope" !important;
 }

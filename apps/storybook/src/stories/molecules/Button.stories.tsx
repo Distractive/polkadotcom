@@ -105,7 +105,6 @@ export const All: Story = {
                   variant={variant}
                   size={size}
                   key={`${variant}-${size}`}
-                  className="font-display"
                 >
                   {`Button (${size})`}
                 </Button>
