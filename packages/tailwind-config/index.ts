@@ -18,7 +18,7 @@ const config = {
     },
     fontFamily: {
       display: ["var(--font-unbounded)", "system-ui", "sans-serif"],
-      default: ["var(--font-inter)", "system-ui", "sans-serif"],
+      default: ["var(--font-manrope)", "system-ui", "sans-serif"],
     },
     fontSize: {
       xs: "0.75rem",

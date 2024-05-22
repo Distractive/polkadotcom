@@ -1,22 +1,22 @@
 @font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter-Light.woff2") format("woff2");
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter-SemiBold.woff2") format("woff2");
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter-Regular.woff2") format("woff2");
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -39,7 +39,7 @@
 }
 
 :root {
-  --font-default: "Inter";
+  --font-default: "Manrope";
   --font-display: "Unbounded";
 }
 

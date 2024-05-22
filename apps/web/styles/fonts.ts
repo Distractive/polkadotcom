@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google"
+import { Manrope } from "next/font/google"
 import localFont from "next/font/local"
 
 export const unbounded = localFont({
@@ -9,7 +9,7 @@ export const unbounded = localFont({
   style: "normal",
 })
 
-export const inter = Inter({
-  variable: "--font-inter",
+export const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 })

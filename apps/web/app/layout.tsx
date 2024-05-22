@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { inter, unbounded } from "@/styles/fonts"
+import { manrope, unbounded } from "@/styles/fonts"
 
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 
@@ -29,7 +29,7 @@ export default async function RootLayout({
       <body
         className={cn(
           unbounded.variable,
-          inter.variable,
+          manrope.variable,
           "font-default antialiased"
         )}
       >
