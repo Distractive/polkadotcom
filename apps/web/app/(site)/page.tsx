@@ -1,4 +1,4 @@
-import { Heading } from "@shared/ui"
+import { Button, Heading } from "@shared/ui"
 
 export default function Home() {
   return (
@@ -16,8 +16,11 @@ export default function Home() {
               fugit dicta nihil cupiditate! Quia, beatae officiis. Perspiciatis,
               voluptatem laboriosam!
             </p>
+            <Button variant="primary" size="lg" className="mr-auto">
+              Learn more
+            </Button>
           </div>
-          <div className="h-40 bg-grey-light lg:h-60"></div>
+          <div className="bg-grey-200 h-40 lg:h-60"></div>
         </article>
       </section>
       <section className="col-span-6 grid gap-section">
@@ -30,8 +33,11 @@ export default function Home() {
               fugit dicta nihil cupiditate! Quia, beatae officiis. Perspiciatis,
               voluptatem laboriosam!
             </p>
+            <Button variant="secondary" size="md" className="mr-auto">
+              Learn more
+            </Button>
           </div>
-          <div className="h-40 bg-grey-light lg:h-60"></div>
+          <div className="bg-grey-200 h-40 lg:h-60"></div>
         </article>
       </section>
     </main>

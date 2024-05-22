@@ -44,9 +44,9 @@
 }
 
 .font-display {
-  font-family: var(--font-display);
+  font-family: var(--font-default);
 }
 
 .font-default {
-  font-family: var(--font-default);
+  font-family: var(--font-display);
 }

@@ -3,40 +3,29 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "../../lib/utils"
 
-const ButtonStyle = {
-  base: "inline-flex items-center justify-center rounded-md text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
+const ButtonStyles = {
+  base: cn(
+    "inline-flex items-center justify-center gap-2 uppercase font-display relative overflow-hidden content-none ",
+    "before:absolute before:inset-0 before:-z-20",
+    "after:absolute after:inset-0 after:-z-10 after:-translate-x-full after:transition-transform after:ease-in-out after:duration-500",
+    "md:hover:after:translate-x-0"
+  ),
   variants: {
-    default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+    primary: "text-white before:bg-purple after:bg-pink",
     secondary:
-      "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-    brand:
-      "bg-yellow-400 hover:bg-yellow-500 focus:ring-yellow-600 dark:text-slate-900",
-    destructive:
-      "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-    outline:
-      "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
-
-    ghost: "hover:bg-accent hover:text-accent-foreground",
-    link: "text-primary underline-offset-4 hover:underline",
+      "text-black before:bg-grey-200 before:opacity-60 before:backdrop-blur-lg after:bg-grey-300 border-[1px] border-grey-300",
+    disabled: "bg-grey-200 text-grey-300 pointer-events-none",
   },
   sizes: {
-    default: "h-10 px-4 py-2",
-    lg: "h-11 px-8 rounded-md",
-    md: "h-10 py-2 px-4",
-    sm: "h-9 px-6 rounded-md",
-    xs: "h-9 px-3 rounded-md",
-    icon: "size-10 rounded-full",
+    lg: "rounded-xl px-14 py-5",
+    md: "rounded-lg px-10 py-4",
+    sm: "rounded-md px-4 py-2",
   },
 }
-const buttonVariants = cva(ButtonStyle.base, {
-  variants: {
-    variant: ButtonStyle.variants,
-    size: ButtonStyle.sizes,
-  },
-  defaultVariants: {
-    variant: "default",
-    size: "md",
-  },
+
+const buttonVariants = cva(ButtonStyles.base, {
+  variants: { variant: ButtonStyles.variants, size: ButtonStyles.sizes },
+  defaultVariants: { variant: "primary", size: "md" },
 })
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
@@ -56,4 +45,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = "Button"
 
-export { Button, ButtonStyle, buttonVariants }
+export { Button, ButtonStyles, buttonVariants }

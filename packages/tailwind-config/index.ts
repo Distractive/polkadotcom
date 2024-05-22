@@ -48,8 +48,11 @@ const config = {
     },
     colors: {
       black: "#000000",
-      "grey-light": "#B4B4B7",
-      "grey-medium": "#4C4C4C",
+      "grey-100": "#FAF9F9",
+      "grey-200": "#F3F3F4",
+      "grey-300": "#E7E7EC",
+      "grey-400": "#D5D4D8",
+      "grey-500": "#4C4C4C",
       white: "#ffffff",
       pink: "#E6007A",
       purple: "#552BBF",

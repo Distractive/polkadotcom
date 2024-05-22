@@ -4,7 +4,7 @@
 
 @layer utilities {
   .grid-system {
-    @apply lg:grid-cols-12 gap-x-gutter px-gutter mx-auto grid max-w-[160rem] grid-cols-6;
+    @apply mx-auto grid max-w-[160rem] grid-cols-6 gap-x-gutter px-gutter lg:grid-cols-12;
   }
 }
 
