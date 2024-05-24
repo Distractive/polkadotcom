@@ -6,6 +6,12 @@ export default defineType({
   type: "object",
   fields: [
     defineField({
+      name: "title",
+      title: "Title",
+      type: "string",
+      description: "The title of the social link, used for screen readers.",
+    }),
+    defineField({
       name: "image",
       title: "Image",
       type: "image",
@@ -23,7 +29,7 @@ export default defineType({
   preview: {
     select: {
       image: "image.asset",
-      title: "url",
+      title: "title",
     },
     prepare({ image, title }) {
       return {

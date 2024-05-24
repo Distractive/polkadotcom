@@ -1,4 +1,4 @@
-import type { socialLinkSelection } from "@/sanity/selections/social-links"
+import type { socialLinkSelection } from "@/sanity/selections/footer/social-links"
 import type { TypeFromSelection } from "groqd"
 
 interface Props {
@@ -6,12 +6,17 @@ interface Props {
 }
 export default function SocialLinks({ items }: Props) {
   return (
-    <div>
+    <div className="flex flex-row items-center gap-3 md:justify-end">
       {items.map((item, index) => (
-        <div key={index}>
-          <span>{item.url}</span>
-          <img src={item.image.asset.url} />
-        </div>
+        <a
+          href={item.url}
+          target="_blank"
+          key={index}
+          className="flex size-12 items-center justify-center rounded-full transition duration-500 ease-out hover:bg-purple-400"
+        >
+          <img src={item.image.asset.url} aria-hidden="true" />
+          <span className="sr-only">{item.title}</span>
+        </a>
       ))}
     </div>
   )

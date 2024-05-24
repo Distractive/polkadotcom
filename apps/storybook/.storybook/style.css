@@ -1,47 +1,20 @@
 @font-face {
   font-family: "Manrope";
-  src: url("/fonts/Manrope-Light.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Manrope";
-  src: url("/fonts/Manrope-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Manrope";
-  src: url("/fonts/Manrope-Regular.woff2") format("woff2");
-  font-weight: normal;
+  src: url("/fonts/manrope.woff2") format("woff2");
+  font-weight: 200 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Unbounded";
-  src: url("/fonts/Unbounded-Light.woff2") format("woff2");
-  font-weight: 300;
+  src: url("/fonts/Unbounded-Variable.woff2") format("woff2");
+  font-weight: 200 800;
   font-style: normal;
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Unbounded";
-  src: url("/fonts/Unbounded-Bold.woff2") format("woff2");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-.font-display {
-  font-family: "Unbounded" !important;
-}
-
-.font-default {
-  font-family: "Manrope" !important;
+:root {
+  --font-unbounded: "Unbounded";
+  --font-manrope: "Manrope";
 }

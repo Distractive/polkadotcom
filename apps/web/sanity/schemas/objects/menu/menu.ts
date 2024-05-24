@@ -11,6 +11,11 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "link",
+      title: "Link",
+      type: "customUrl",
+    }),
+    defineField({
       name: "items",
       title: "Items",
       type: "array",

@@ -56,6 +56,8 @@ const config = {
       white: "#ffffff",
       pink: "#E6007A",
       purple: "#552BBF",
+      "purple-400": "#3B00CF",
+      "purple-500": "#0B064A",
       current: "currentColor",
     },
     extend: {

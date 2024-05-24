@@ -6,6 +6,8 @@ const config = {
   content: [
     "./src/stories/**/*.{ts,tsx}",
     "../../packages/ui/components/**/*.{ts,tsx}",
+    "../web/features/**/*.{ts,tsx}",
+    "../web/styles/**/*.{ts,tsx}",
   ],
 } satisfies Config
 

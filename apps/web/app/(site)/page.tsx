@@ -2,7 +2,7 @@ import { Button, Heading } from "@shared/ui"
 
 export default function Home() {
   return (
-    <main className="grid-system gap-page py-page">
+    <>
       <Heading variant="h1" className="col-span-full ">
         Polkadot
       </Heading>
@@ -40,6 +40,6 @@ export default function Home() {
           <div className="bg-grey-200 h-40 lg:h-60"></div>
         </article>
       </section>
-    </main>
+    </>
   )
 }

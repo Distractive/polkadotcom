@@ -1,7 +1,7 @@
-import type { footerMenuSelection } from "@/sanity/selections/footer-menu"
+import type { footerMenuSelection } from "@/sanity/selections/footer/footer-menu"
 import type { TypeFromSelection } from "groqd"
 
-import { Heading } from "@shared/ui"
+import { Heading, Icon } from "@shared/ui"
 
 interface Props {
   menu: ReadonlyArray<TypeFromSelection<typeof footerMenuSelection>>
@@ -10,18 +10,49 @@ interface Props {
 export default function Menu({ menu }: Props) {
   return (
     <>
-      <ul>
+      <div className="grid grid-cols-1 gap-6 px-gutter pb-gutter pt-10 sm:grid-cols-2 md:grid-cols-4 md:pt-28 lg:grid-cols-5">
         {menu.map((item, index) => (
-          <li key={index}>
-            <Heading variant="h4">{item.heading}</Heading>
-            <ul>
+          <div
+            key={index}
+            className="col-span-1 font-default font-bold text-white "
+          >
+            <Heading variant="h2" size="sm" className="font-default font-bold">
+              {item.link ? (
+                <a
+                  href={item.link.external || item.link.internal?.slug || ""}
+                  target={item.link.external ? "_blank" : "_self"}
+                  className="decoration-purple-400 underline underline-offset-8 transition duration-500 ease-out hover:decoration-white"
+                  aria-label={item.link.label}
+                >
+                  {item.link.label}
+                </a>
+              ) : (
+                item.heading
+              )}
+            </Heading>
+            <ul className="flex flex-col gap-2 py-6">
               {item.items.map((item, index) => (
-                <li key={index}>{item.link.label}</li>
+                <li key={index}>
+                  <a
+                    className="decoration-purple-500 flex gap-2 text-center underline underline-offset-4 transition duration-500 ease-out hover:decoration-white"
+                    href={item.link.external || item.link.internal?.slug || ""}
+                    target={item.link.external ? "_blank" : "_self"}
+                    aria-label={item.link.label}
+                  >
+                    {item.link.label}
+                    {item.link.external && (
+                      <Icon
+                        variant="arrowRightUp"
+                        className="not-sr-only size-4 fill-white hover:fill-white"
+                      />
+                    )}
+                  </a>
+                </li>
               ))}
             </ul>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </>
   )
 }
