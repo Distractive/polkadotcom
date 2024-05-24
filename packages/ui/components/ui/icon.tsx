@@ -4,7 +4,7 @@ import Icons from "../../icons/icons.svg"
 import { cn } from "../../lib/utils"
 
 const IconStyles = {
-  base: cn("inline-flex md:hover:fill-pink w-6 h-6"),
+  base: cn("inline-flex md:hover:fill-pink size-6"),
   variants: {
     chevronLeft: "icon-chevron-left",
     chevronRight: "icon-chevron-right",
@@ -28,13 +28,13 @@ const iconVariants = cva(IconStyles.base, {
 export type IconProps = React.HTMLAttributes<SVGElement> &
   VariantProps<typeof iconVariants>
 
-const Icon: React.FC<IconProps> = ({ className, variant, ...props }) => {
+const Icon: React.FC<IconProps> = ({ className, variant }) => {
   if (!variant) return
 
   return (
     <svg className={cn(iconVariants({ className }))}>
       <use
-        xlinkHref={`${Icons}#${IconStyles.variants[variant]}`}
+        xlinkHref={`${typeof Icons == "object" ? Icons.src : Icons}#${IconStyles.variants[variant]}`}
         className={cn(iconVariants({ className }))}
       />
     </svg>
