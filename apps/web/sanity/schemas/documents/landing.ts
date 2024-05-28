@@ -1,11 +1,23 @@
+import { CogIcon, DocumentIcon, SearchIcon } from "@sanity/icons"
 import { defineField, defineType } from "sanity"
 
 export default defineType({
   name: "landing",
   title: "Landing Page",
   type: "document",
+  groups: [
+    { title: "Config", name: "config", icon: CogIcon },
+    { title: "Content", name: "content", icon: DocumentIcon },
+    { title: "Meta", name: "meta", icon: SearchIcon },
+  ],
   fields: [
-    defineField({ name: "title", type: "string" }),
+    defineField({
+      name: "meta",
+      type: "meta",
+      group: "meta",
+    }),
+    defineField({ name: "title", type: "string", group: "config" }),
+    defineField({ name: "body", type: "text", rows: 5, group: "config" }),
     defineField({
       name: "slug",
       title: "Slug",
@@ -13,11 +25,13 @@ export default defineType({
       options: {
         source: "title",
       },
+      group: "config",
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: "pageBuilder",
       type: "pageBuilder",
+      group: "content",
     }),
   ],
   preview: {

@@ -14,6 +14,15 @@ export const metadata: Metadata = {
   title: "Polkadot: Web3 Interoperability | Decentralized Blockchain",
   description:
     "Polkadot empowers blockchain networks to work together under the protection of shared security.",
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 }
 
 export default async function RootLayout({

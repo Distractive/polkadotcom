@@ -1,7 +1,30 @@
 import { runQuery } from "@/sanity/lib/groqd-query"
-import { q } from "groqd"
+import { q, sanityImage } from "groqd"
 
 import { pageBuilderSelection } from "../selections/page-builder"
+
+export async function getPageMeta(slug: string) {
+  const pageQuery = q("*")
+    .filter("_type == 'landing' || _type == 'page' || _type == 'hygiene'")
+    .filter("slug.current == $slug")
+    .grab({
+      title: q.string(),
+      body: q.string().nullable(),
+      slug: q.slug("slug"),
+      meta: q("meta").grab({
+        meta_title: q.string().nullable(),
+        meta_description: q.string().nullable(),
+        meta_image: sanityImage("meta_image", {
+          withAsset: ["base"],
+        }).nullable(),
+      }),
+    })
+    .slice(0)
+
+  return runQuery(pageQuery, {
+    slug: slug,
+  })
+}
 
 export async function getPage(slug: string) {
   const pageQuery = q("*")
@@ -9,6 +32,7 @@ export async function getPage(slug: string) {
     .filter("slug.current == $slug")
     .grab({
       title: q.string(),
+      body: q.string().nullable(),
       slug: q.slug("slug"),
       ...pageBuilderSelection,
     })

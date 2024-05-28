@@ -14,7 +14,7 @@ export const cardSelection = {
   eyebrow: nullToUndefined(q.string().optional()),
   heading: q.string(),
   body: nullToUndefined(q.string().optional()),
-  tags: q.array(q.string()),
+  tags: q.array(q.string()).nullable(),
   link: q("link")
     .grab$({
       ...customUrlSelection,
