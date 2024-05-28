@@ -1,4 +1,7 @@
+import Link from "next/link"
 import type { faqsSelection } from "@/sanity/selections/blocks/faqs"
+import { PortableText } from "@portabletext/react"
+import { cn } from "@shared/ui/lib/utils"
 import type { TypeFromSelection } from "groqd"
 
 import {
@@ -6,6 +9,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  Button,
+  Heading,
 } from "@shared/ui"
 
 interface Props {
@@ -16,14 +21,61 @@ interface Props {
 
 export function FAQBlock({ faqs }: Props) {
   return (
-    <div className="flex flex-col items-center justify-center">
-      <h1 className="mb-4 font-display text-3xl text-red-500">FAQ BLOCK</h1>
-      <h3 className="font-display text-2xl">{faqs.title}</h3>
-      <Accordion type="single" collapsible className="w-1/2">
+    <div className="grid-system !mx-0 !px-0 ">
+      <Heading
+        variant="h2"
+        className="col-span-12 lg:col-span-8 lg:col-start-3"
+      >
+        {faqs.title}
+      </Heading>
+      <Accordion
+        type="single"
+        collapsible
+        className="col-span-12 lg:col-span-8 lg:col-start-3"
+      >
         {faqs.items.map((faq) => (
           <AccordionItem key={faq._key} value={faq._key}>
-            <AccordionTrigger>{faq.question}</AccordionTrigger>
-            <AccordionContent>{faq.answer}</AccordionContent>
+            <AccordionTrigger
+              className={cn(
+                "font-default text-sm font-bold",
+                "border-b border-grey-300",
+                "hover:border-pink hover:text-pink",
+                "data-[state=open]:border-pink data-[state=open]:text-pink"
+              )}
+            >
+              {faq.question}
+            </AccordionTrigger>
+            <AccordionContent className="py-card text-grey-500">
+              <PortableText
+                value={faq.answer}
+                components={{
+                  block: {
+                    normal: ({ children }) => (
+                      <p className="text-grey-500">{children}</p>
+                    ),
+                  },
+                  types: {
+                    customUrl: ({ value }) => {
+                      return (
+                        <Button
+                          variant={value.internal ? "primary" : "secondary"}
+                          size="sm"
+                          asChild
+                          className="mt-gutter"
+                        >
+                          <Link
+                            href={value.external || value.internal?.slug || ""}
+                            target={value.external ? "_blank" : "_self"}
+                          >
+                            {value.label}
+                          </Link>
+                        </Button>
+                      )
+                    },
+                  },
+                }}
+              />
+            </AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>

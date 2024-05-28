@@ -12,7 +12,22 @@ export default defineType({
     }),
     defineField({
       name: "answer",
-      type: "text",
+      title: "Answer",
+      type: "array",
+      of: [
+        {
+          type: "block",
+          styles: [{ title: "Normal", value: "normal" }],
+          lists: [],
+          marks: {
+            decorators: [],
+            annotations: [],
+          },
+        },
+        {
+          type: "customUrl",
+        },
+      ],
       validation: (Rule) => Rule.required(),
     }),
   ],
