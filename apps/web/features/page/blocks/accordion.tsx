@@ -1,4 +1,3 @@
-import Link from "next/link"
 import type { accordionSelection } from "@/sanity/selections/blocks/accordion"
 import { PortableText } from "@portabletext/react"
 import { cn } from "@shared/ui/lib/utils"
@@ -12,6 +11,7 @@ import {
   Button,
   Heading,
 } from "@shared/ui"
+import { CustomUrl } from "@/components/custom-url"
 
 interface Props {
   accordion: TypeFromSelection<typeof accordionSelection> & {
@@ -136,12 +136,7 @@ export function AccordionBlock({ accordion }: Props) {
                           asChild
                           className="mt-gutter"
                         >
-                          <Link
-                            href={value.external || value.internal?.slug || ""}
-                            target={value.external ? "_blank" : "_self"}
-                          >
-                            {value.label}
-                          </Link>
+                          <CustomUrl value={value}>{value.label}</CustomUrl>
                         </Button>
                       )
                     },
