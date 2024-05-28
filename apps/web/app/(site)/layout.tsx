@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { manrope, unbounded } from "@/styles/fonts"
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 
@@ -8,6 +9,7 @@ import "@shared/ui/styles/global.css"
 import { getFooter } from "@/sanity/queries/footer"
 import { cn } from "@shared/ui/lib/utils"
 
+import { env } from "@/env.mjs"
 import FooterLayout from "@/features/footer/layout"
 
 export const metadata: Metadata = {
@@ -45,6 +47,7 @@ export default async function RootLayout({
         <FooterLayout footer={footer} />
         <TailwindIndicator />
       </body>
+      <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_ID} />
     </html>
   )
 }
