@@ -10,8 +10,8 @@ export default async function Page({ params: { slug } }: Props) {
   const data = await getPage(slug)
 
   return (
-    <div className="my-4 flex flex-col">
+    <section className="col-span-12 grid gap-section">
       <PageBuilder pageBuilder={data.pageBuilder} />
-    </div>
+    </section>
   )
 }

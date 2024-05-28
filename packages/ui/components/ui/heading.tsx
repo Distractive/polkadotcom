@@ -12,11 +12,24 @@ const HeadingStyles = {
     h4: "text-xl md:text-2xl leading-normal",
   },
   sizes: {
-    sm: "text-sm md:text-base font-default uppercase",
+    sm: "text-sm md:text-base font-default",
+  },
+  decoration: {
+    uppercase: "uppercase",
+  },
+  weight: {
+    light: "font-light",
+    normal: "font-normal",
+    bold: "font-bold",
   },
 }
 const headingVariants = cva(HeadingStyles.base, {
-  variants: { variant: HeadingStyles.variants, size: HeadingStyles.sizes },
+  variants: {
+    variant: HeadingStyles.variants,
+    size: HeadingStyles.sizes,
+    decoration: HeadingStyles.decoration,
+    weight: HeadingStyles.weight,
+  },
   defaultVariants: { variant: "h1" },
 })
 
@@ -31,12 +44,14 @@ export type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> &
   VariantProps<typeof headingVariants>
 
 const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ className, variant, size, ...props }, ref) => {
+  ({ className, variant, size, decoration, weight, ...props }, ref) => {
     const Element = getHeadingElement(variant) as JSX.Element["type"]
 
     return (
       <Element
-        className={cn(headingVariants({ variant, size, className }))}
+        className={cn(
+          headingVariants({ variant, size, decoration, weight, className })
+        )}
         ref={ref}
         {...props}
       />

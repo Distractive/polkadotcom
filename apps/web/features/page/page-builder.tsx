@@ -12,22 +12,18 @@ interface Props {
 }
 
 export function PageBuilder({ pageBuilder }: Props) {
-  return (
-    <div className="grid gap-8">
-      {pageBuilder.map((item) => {
-        switch (item._type) {
-          case "faqs":
-            return <FAQBlock faqs={item} />
-          case "accordion":
-            return <AccordionBlock accordion={item} />
-          case "cards":
-            return <CardsBlock cards={item} />
-          case "blockContent":
-            return <ContentBlock content={item.content} />
-          default:
-            return <p>Unknown type: {item._type}</p>
-        }
-      })}
-    </div>
-  )
+  return pageBuilder.map((item) => {
+    switch (item._type) {
+      case "faqs":
+        return <FAQBlock faqs={item} />
+      case "accordion":
+        return <AccordionBlock accordion={item} />
+      case "cards":
+        return <CardsBlock cards={item} />
+      case "blockContent":
+        return <ContentBlock content={item.content} />
+      default:
+        return <p>Unknown type: {item._type}</p>
+    }
+  })
 }

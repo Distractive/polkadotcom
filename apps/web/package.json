@@ -19,6 +19,7 @@
   "dependencies": {
     "@codemirror/theme-one-dark": "^6.1.2",
     "@portabletext/react": "^3.0.18",
+    "@radix-ui/react-slot": "^1.0.2",
     "@sanity/code-input": "^4.1.4",
     "@sanity/vision": "^3.37.2",
     "@shared/ui": "workspace:*",

@@ -1,8 +1,16 @@
-import { q } from "groqd"
+import { q, sanityImage } from "groqd"
 import type { Selection } from "groqd"
 
+import { customUrlSelection } from "../custom-url"
+
 export const accordionSelection = {
+  _key: q.string(),
   title: q.string(),
+  body: q.string().nullable(),
+  image: sanityImage("image", {
+    withAsset: ["base"],
+  }).nullable(),
+  hasTitleOnSide: q.boolean(),
   hasNumbers: q.boolean(),
   items: q("items")
     .filter()
@@ -16,6 +24,10 @@ export const accordionSelection = {
           '_type == "break"': {
             _type: q.literal("break"),
             style: q.string(),
+          },
+          '_type == "customUrl"': {
+            _type: q.literal("customUrl"),
+            ...customUrlSelection,
           },
           default: {
             _key: q.string(),

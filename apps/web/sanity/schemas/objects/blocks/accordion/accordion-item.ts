@@ -30,6 +30,9 @@ export default defineType({
           type: "break",
           initialValue: { style: "lineBreak" },
         },
+        {
+          type: "customUrl",
+        },
       ],
     }),
   ],

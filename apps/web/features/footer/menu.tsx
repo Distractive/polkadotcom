@@ -16,12 +16,17 @@ export default function Menu({ menu }: Props) {
             key={index}
             className="col-span-1 font-default font-bold text-white "
           >
-            <Heading variant="h2" size="sm" className="font-default font-bold">
+            <Heading
+              variant="h2"
+              size="sm"
+              decoration="uppercase"
+              className="font-default font-bold"
+            >
               {item.link ? (
                 <a
                   href={item.link.external || item.link.internal?.slug || ""}
                   target={item.link.external ? "_blank" : "_self"}
-                  className="decoration-purple-400 underline underline-offset-8 transition duration-500 ease-out hover:decoration-white"
+                  className="underline decoration-purple-400 underline-offset-8 transition duration-500 ease-out hover:decoration-white"
                   aria-label={item.link.label}
                 >
                   {item.link.label}
@@ -34,7 +39,7 @@ export default function Menu({ menu }: Props) {
               {item.items.map((item, index) => (
                 <li key={index}>
                   <a
-                    className="decoration-purple-500 flex gap-2 text-center underline underline-offset-4 transition duration-500 ease-out hover:decoration-white"
+                    className="flex gap-2 text-center underline decoration-purple-500 underline-offset-4 transition duration-500 ease-out hover:decoration-white"
                     href={item.link.external || item.link.internal?.slug || ""}
                     target={item.link.external ? "_blank" : "_self"}
                     aria-label={item.link.label}

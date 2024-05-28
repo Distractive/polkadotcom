@@ -12,6 +12,26 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      title: "Body",
+      name: "body",
+      type: "text",
+      rows: 3,
+    }),
+    defineField({
+      title: "Image",
+      name: "image",
+      type: "image",
+    }),
+    defineField({
+      title: "Has title on side?",
+      name: "hasTitleOnSide",
+      type: "boolean",
+      initialValue: false,
+      description:
+        "Show the title on the side of the accordion, on desktop only",
+    }),
+
+    defineField({
       title: "Has Numbers",
       name: "hasNumbers",
       type: "boolean",

@@ -1,4 +1,4 @@
-import { q } from "groqd"
+import { nullToUndefined, q } from "groqd"
 import type { Selection } from "groqd"
 
 export const customUrlSelection = {
@@ -7,5 +7,5 @@ export const customUrlSelection = {
     .deref()
     .grab$({ slug: q.slug("slug") })
     .nullable(),
-  external: q.string().optional(),
+  external: nullToUndefined(q.string().optional().nullable()),
 } satisfies Selection

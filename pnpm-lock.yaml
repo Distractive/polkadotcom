@@ -147,6 +147,9 @@ importers:
       '@portabletext/react':
         specifier: ^3.0.18
         version: 3.0.18(react@18.3.0)
+      '@radix-ui/react-slot':
+        specifier: ^1.0.2
+        version: 1.0.2(@types/react@18.3.0)(react@18.3.0)
       '@sanity/code-input':
         specifier: ^4.1.4
         version: 4.1.4(@babel/runtime@7.24.4)(@codemirror/lint@6.5.0)(@codemirror/theme-one-dark@6.1.2)(@lezer/common@1.2.1)(codemirror@6.0.1(@lezer/common@1.2.1))(react-dom@18.3.0(react@18.3.0))(react-is@18.3.0)(react@18.3.0)(sanity@3.39.0(@types/node@20.12.7)(@types/react@18.3.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0)))(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))
