@@ -4,7 +4,7 @@ import Icons from "../../icons/icons.svg"
 import { cn } from "../../lib/utils"
 
 const IconStyles = {
-  base: cn("inline-flex md:hover:fill-pink size-6"),
+  base: cn("inline-flex size-6"),
   variants: {
     chevronLeft: "icon-chevron-left",
     chevronRight: "icon-chevron-right",
