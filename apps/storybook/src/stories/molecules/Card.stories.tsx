@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { cn } from "@shared/ui"
-
 import CardBlock from "../../../../web/features/page/blocks/card"
 
 const meta = {

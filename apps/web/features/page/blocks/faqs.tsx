@@ -11,7 +11,8 @@ import {
   Button,
   Heading,
 } from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+
+// import { CustomUrl } from "@/components/custom-url"
 
 interface Props {
   faqs: TypeFromSelection<typeof faqsSelection> & {

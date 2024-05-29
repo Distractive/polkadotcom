@@ -2,6 +2,7 @@ interface Props {
   className?: string
   dotsClassName?: string
 }
+
 export function Logo({ className, dotsClassName }: Props) {
   return (
     <svg

@@ -1,3 +1,6 @@
+"use client"
+
+import { useEffect, useState } from "react"
 import type { cardsSelection } from "@/sanity/selections/blocks/cards"
 import type { TypeFromSelection } from "groqd"
 
@@ -9,6 +12,8 @@ import {
   CarouselPrevious,
   cn,
   Heading,
+  Progress,
+  type CarouselApi,
 } from "@shared/ui"
 
 import CardBlock from "./card"
@@ -16,7 +21,19 @@ import CardBlock from "./card"
 interface Props {
   cards: TypeFromSelection<typeof cardsSelection>
 }
+
 export function CardsBlock({ cards }: Props) {
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!api) return
+
+    setCount(api.scrollSnapList().length)
+    api.on("select", () => setCurrent(api.selectedScrollSnap()))
+  }, [api])
+
   return (
     <div key={cards._key} className="grid-system !mx-0 !px-0">
       <div
@@ -32,16 +49,25 @@ export function CardsBlock({ cards }: Props) {
       </div>
 
       {cards.isCarousel ? (
-        <Carousel className="w-full max-w-sm">
+        <Carousel
+          setApi={setApi}
+          opts={{ align: "start", loop: true }}
+          className="col-span-12 flex w-full flex-col gap-gutter"
+        >
           <CarouselContent>
             {cards.items.map((card) => (
-              <CarouselItem key={card._key}>
-                <CardBlock key={card._key} card={card} />
+              <CarouselItem key={card._key} className="basis-5/6 lg:basis-1/3">
+                <CardBlock key={card._key} card={card} className="h-full" />
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <div className="flex items-center justify-between">
+            <Progress count={count} current={current} />
+            <div className="flex gap-2">
+              <CarouselPrevious />
+              <CarouselNext />
+            </div>
+          </div>
         </Carousel>
       ) : (
         <>

@@ -1,5 +1,5 @@
 {
   "extends": "@shared/ts-config/react-library.json",
-  "include": ["."],
+  "include": [".", "components/ui/progress.tsx"],
   "exclude": ["node_modules"]
 }

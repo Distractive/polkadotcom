@@ -6,7 +6,8 @@ import useEmblaCarousel, {
 } from "embla-carousel-react"
 
 import { cn } from "../../lib/utils"
-import { type Button } from "./button"
+import { Button } from "./button"
+import { Icon } from "./icon"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -125,8 +126,7 @@ const Carousel = React.forwardRef<
           carouselRef,
           api: api,
           opts,
-          orientation:
-            orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
+          orientation: "horizontal",
           scrollPrev,
           scrollNext,
           canScrollPrev,
@@ -136,7 +136,7 @@ const Carousel = React.forwardRef<
         <div
           ref={ref}
           onKeyDownCapture={handleKeyDown}
-          className={cn("relative", className)}
+          className={cn("", className)}
           role="region"
           aria-roledescription="carousel"
           {...props}
@@ -153,19 +153,11 @@ const CarouselContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  const { carouselRef, orientation } = useCarousel()
+  const { carouselRef } = useCarousel()
 
   return (
     <div ref={carouselRef} className="overflow-hidden">
-      <div
-        ref={ref}
-        className={cn(
-          "flex",
-          orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
-          className
-        )}
-        {...props}
-      />
+      <div ref={ref} className={cn("-ml-gutter flex", className)} {...props} />
     </div>
   )
 })
@@ -175,47 +167,38 @@ const CarouselItem = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  const { orientation } = useCarousel()
-
   return (
     <div
       ref={ref}
       role="group"
       aria-roledescription="slide"
-      className={cn(
-        "min-w-0 shrink-0 grow-0 basis-full",
-        orientation === "horizontal" ? "pl-4" : "pt-4",
-        className
-      )}
+      className={cn("min-w-0 shrink-0 grow-0 basis-full pl-gutter", className)}
       {...props}
     />
   )
 })
 CarouselItem.displayName = "CarouselItem"
 
+const buttonStyles =
+  "rounded-full p-3 after:translate-x-0 after:scale-0 after:origin-center md:hover:after:scale-100 after:rounded-full"
+
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
 >(({ className, ...props }, ref) => {
-  const { orientation, scrollPrev, canScrollPrev } = useCarousel()
+  const { scrollPrev } = useCarousel()
 
   return (
-    <button
+    <Button
       ref={ref}
-      className={cn(
-        "absolute  size-8 rounded-full",
-        orientation === "horizontal"
-          ? "-left-12 top-1/2 -translate-y-1/2"
-          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
-        className
-      )}
-      disabled={!canScrollPrev}
+      variant="secondary"
+      className={cn(buttonStyles, className)}
       onClick={scrollPrev}
       {...props}
     >
-      &lt;
+      <Icon variant="chevronLeft" />
       <span className="sr-only">Previous slide</span>
-    </button>
+    </Button>
   )
 })
 CarouselPrevious.displayName = "CarouselPrevious"
@@ -224,25 +207,19 @@ const CarouselNext = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
 >(({ className, ...props }, ref) => {
-  const { orientation, scrollNext, canScrollNext } = useCarousel()
+  const { scrollNext } = useCarousel()
 
   return (
-    <button
+    <Button
       ref={ref}
-      className={cn(
-        "absolute size-8 rounded-full",
-        orientation === "horizontal"
-          ? "-right-12 top-1/2 -translate-y-1/2"
-          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
-        className
-      )}
-      disabled={!canScrollNext}
+      variant="secondary"
+      className={cn(buttonStyles, className)}
       onClick={scrollNext}
       {...props}
     >
-      &gt;
+      <Icon variant="chevronRight" />
       <span className="sr-only">Next slide</span>
-    </button>
+    </Button>
   )
 })
 CarouselNext.displayName = "CarouselNext"

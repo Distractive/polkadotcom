@@ -17,6 +17,7 @@ interface Props {
   showSideBySide?: boolean
   className?: string
 }
+
 export default function CardBlock({ card, showSideBySide, className }: Props) {
   const {
     _key,
@@ -68,7 +69,6 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
           )}
         </CardHeader>
       )}
-
       <div className={cn("relative", showSideBySide && "lg:basis-[48%]")}>
         <CardContent
           className={cn(headerImage && icon && !showSideBySide && "pt-0")}

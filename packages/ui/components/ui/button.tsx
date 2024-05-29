@@ -16,7 +16,8 @@ const ButtonStyles = {
     primary: "text-white before:bg-purple after:bg-pink",
     secondary:
       "text-black before:bg-grey-200 before:opacity-60 before:backdrop-blur-lg after:bg-grey-300 border-[1px] border-grey-300",
-    disabled: "bg-grey-200 text-grey-300 pointer-events-none",
+    disabled:
+      "bg-grey-200 text-grey-300 pointer-events-none border-[1px] border-grey-200",
   },
   sizes: {
     lg: "rounded-xl px-14 py-5",

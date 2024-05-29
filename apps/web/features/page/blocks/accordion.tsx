@@ -11,7 +11,8 @@ import {
   cn,
   Heading,
 } from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+
+// import { CustomUrl } from "@/components/custom-url"
 
 interface Props {
   accordion: TypeFromSelection<typeof accordionSelection> & {
@@ -32,6 +33,7 @@ export function AccordionBlock({ accordion }: Props) {
       ) : (
         <div className="grid-system col-span-12 !mx-0 items-center justify-center !px-0 pb-gutter">
           <img
+            alt={accordion.title}
             className="col-span-12 aspect-video w-full rounded-2xl lg:col-span-6"
             src={accordion.image?.asset.url}
           />

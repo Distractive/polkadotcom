@@ -12,7 +12,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "sanity.cli.ts"
+    "sanity.cli.ts",
+    "../../packages/ui/components/ui/progress.tsx"
   ],
   "exclude": ["node_modules"]
 }
