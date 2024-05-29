@@ -7,6 +7,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  cn,
   Heading,
 } from "@shared/ui"
 
@@ -17,9 +18,19 @@ interface Props {
 }
 export function CardsBlock({ cards }: Props) {
   return (
-    <div key={cards._key} className="flex w-full flex-col items-center">
-      {cards.heading && <Heading variant="h1">{cards.heading}</Heading>}
-      {cards.body && <p>{cards.body}</p>}
+    <div key={cards._key} className="grid-system !mx-0 !px-0">
+      <div
+        className={cn(
+          "col-span-12 pb-gutter",
+          cards.showSideBySide && "lg:col-span-4"
+        )}
+      >
+        <div className="flex flex-col gap-copy lg:w-5/6">
+          <Heading variant="h2">{cards.heading}</Heading>
+          {cards.body && <p>{cards.body}</p>}
+        </div>
+      </div>
+
       {cards.isCarousel ? (
         <Carousel className="w-full max-w-sm">
           <CarouselContent>
@@ -34,12 +45,21 @@ export function CardsBlock({ cards }: Props) {
         </Carousel>
       ) : (
         <>
-          <div className="grid auto-rows-fr grid-cols-1 gap-6 overflow-hidden md:grid-cols-2 lg:grid-cols-3">
+          <div
+            className={cn(
+              "grid-system col-span-12 !mx-0 gap-card !px-0",
+              cards.showSideBySide && "lg:col-span-8 lg:col-start-5"
+            )}
+          >
             {cards.items.map((card) => (
               <CardBlock
                 key={card._key}
                 card={card}
                 showSideBySide={cards.showSideBySide}
+                className={cn(
+                  "col-span-12 md:col-span-3 lg:col-span-4",
+                  cards.showSideBySide && "lg:col-span-12"
+                )}
               />
             ))}
           </div>

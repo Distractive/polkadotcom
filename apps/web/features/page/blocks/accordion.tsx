@@ -1,6 +1,5 @@
 import type { accordionSelection } from "@/sanity/selections/blocks/accordion"
 import { PortableText } from "@portabletext/react"
-import { cn } from "@shared/ui/lib/utils"
 import type { TypeFromSelection } from "groqd"
 
 import {
@@ -9,6 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   Button,
+  cn,
   Heading,
 } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"

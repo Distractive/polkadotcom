@@ -55,7 +55,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
         <CardHeader
           className={cn(
             "relative z-10 aspect-video",
-            showSideBySide && "lg:basis-[52%] "
+            showSideBySide && "lg:h-[26rem] lg:basis-[52%]"
           )}
         >
           {!useAsBackgroundImage && (
@@ -82,7 +82,8 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                 headerImage &&
                   icon &&
                   !showSideBySide &&
-                  "-mt-[2.25rem] h-[4.5rem] w-auto"
+                  "relative z-10 -mt-[2.25rem] h-[4.5rem] w-auto",
+                "rounded-2xl"
               )}
             />
           )}

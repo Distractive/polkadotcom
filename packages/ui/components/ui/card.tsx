@@ -21,11 +21,7 @@ const CardHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("h-[21.36rem] md:h-[26rem]", className)}
-    {...props}
-  />
+  <div ref={ref} className={cn("", className)} {...props} />
 ))
 CardHeader.displayName = "CardHeader"
 
