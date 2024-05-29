@@ -63,7 +63,7 @@ export function FAQBlock({ faqs }: Props) {
                           asChild
                           className="mt-gutter"
                         >
-                          <CustomUrl value={value}>{value.label}</CustomUrl>
+                          {value.label}
                         </Button>
                       )
                     },

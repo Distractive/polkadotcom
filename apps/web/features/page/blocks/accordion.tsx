@@ -136,7 +136,7 @@ export function AccordionBlock({ accordion }: Props) {
                           asChild
                           className="mt-gutter"
                         >
-                          <CustomUrl value={value}>{value.label}</CustomUrl>
+                          {value.label}
                         </Button>
                       )
                     },

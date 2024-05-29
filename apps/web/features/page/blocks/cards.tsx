@@ -10,7 +10,7 @@ import {
   Heading,
 } from "@shared/ui"
 
-import { CardBlock } from "./card"
+import CardBlock from "./card"
 
 interface Props {
   cards: TypeFromSelection<typeof cardsSelection>
@@ -36,7 +36,11 @@ export function CardsBlock({ cards }: Props) {
         <>
           <div className="grid auto-rows-fr grid-cols-1 gap-6 overflow-hidden md:grid-cols-2 lg:grid-cols-3">
             {cards.items.map((card) => (
-              <CardBlock key={card._key} card={card} />
+              <CardBlock
+                key={card._key}
+                card={card}
+                showSideBySide={cards.showSideBySide}
+              />
             ))}
           </div>
         </>

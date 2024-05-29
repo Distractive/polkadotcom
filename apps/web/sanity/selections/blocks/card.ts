@@ -8,6 +8,7 @@ export const cardSelection = {
   headerImage: sanityImage("headerImage", {
     withAsset: ["base", "dimensions"],
   }).nullable(),
+  useAsBackgroundImage: q.boolean().nullable(),
   icon: sanityImage("icon", {
     withAsset: ["base", "dimensions"],
   }).nullable(),

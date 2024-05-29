@@ -1,55 +1,124 @@
-import Image from "next/image"
-import { urlForImage } from "@/sanity/lib/image"
 import type { cardSelection } from "@/sanity/selections/blocks/card"
 import type { TypeFromSelection } from "groqd"
 
 import {
+  Button,
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
+  cn,
   Heading,
 } from "@shared/ui"
 
 interface Props {
   card: TypeFromSelection<typeof cardSelection>
+  showSideBySide?: boolean
+  className?: string
 }
-export function CardBlock({ card }: Props) {
+export default function CardBlock({ card, showSideBySide, className }: Props) {
+  const {
+    _key,
+    headerImage,
+    icon,
+    tags,
+    eyebrow,
+    heading,
+    body,
+    link,
+    useAsBackgroundImage,
+  } = card
+
   return (
     <Card
-      key={card._key}
-      className="shadow-small h-full w-full overflow-hidden rounded-md text-black shadow-black/20 outline-0 transition duration-200 ease-in-out"
-    >
-      {card.headerImage && (
-        <CardHeader>
-          <Image
-            src={urlForImage(card.headerImage.asset)}
-            alt=""
-            loading="lazy"
-            width={card.headerImage.asset.metadata.dimensions?.width}
-            height={card.headerImage.asset.metadata.dimensions?.height}
-          />
-        </CardHeader>
+      key={_key}
+      className={cn(
+        "group relative overflow-hidden bg-white backdrop-blur-lg",
+        "rounded-2xl border-[1px] border-grey-400",
+        "md:hover:shadow-card md:hover:backdrop-blur-0",
+        "transition-shadow duration-500 ease-in-out",
+        headerImage && showSideBySide && "lg:flex",
+        link && "md:cursor-pointer",
+        className
       )}
-      <CardContent>
-        {card.icon && (
-          <div className="size-[4.5rem] overflow-hidden rounded-[1rem] bg-pink">
-            <Image
-              src={urlForImage(card.icon.asset)}
+    >
+      {headerImage && useAsBackgroundImage && (
+        <img
+          src={headerImage.asset.url}
+          alt=""
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+      )}
+      {headerImage && (
+        <CardHeader
+          className={cn(
+            "relative z-10 aspect-video",
+            showSideBySide && "lg:basis-[52%] "
+          )}
+        >
+          {!useAsBackgroundImage && (
+            <img
+              src={headerImage.asset.url}
               alt=""
               loading="lazy"
-              width={card.icon.asset.metadata.dimensions?.width}
-              height={card.icon.asset.metadata.dimensions?.height}
+              className="absolute inset-0 h-full w-full object-cover object-center"
             />
+          )}
+        </CardHeader>
+      )}
+
+      <div className={cn("relative", showSideBySide && "lg:basis-[48%]")}>
+        <CardContent
+          className={cn(headerImage && icon && !showSideBySide && "pt-0")}
+        >
+          {icon && (
+            <img
+              src={icon.asset.url}
+              alt=""
+              loading="lazy"
+              className={cn(
+                headerImage &&
+                  icon &&
+                  !showSideBySide &&
+                  "-mt-[2.25rem] h-[4.5rem] w-auto"
+              )}
+            />
+          )}
+          {tags && (
+            <ul className="flex gap-3">
+              {tags.map((tag) => (
+                <li
+                  key={tag}
+                  className="flex items-center justify-center rounded bg-grey-200 px-3 py-1 text-sm leading-relaxed"
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          )}
+          <div className="grid gap-copy">
+            {eyebrow && <span className="text-base uppercase">{eyebrow}</span>}
+            {heading && (
+              <Heading
+                variant="h3"
+                className="text-balance transition-colors duration-500 ease-in-out md:group-hover:text-pink"
+              >
+                {heading}
+              </Heading>
+            )}
+            {body && <CardDescription>{body}</CardDescription>}
           </div>
+        </CardContent>
+        {link && (
+          <CardFooter>
+            <Button size="md" className="md:group-hover:after:translate-x-0">
+              {link.label}
+            </Button>
+          </CardFooter>
         )}
-        {card.tags && card.tags.map((tag) => <span key={tag}>{tag}</span>)}
-        {card.eyebrow && <span>{card.eyebrow}</span>}
-        <Heading variant="h3">{card.heading}</Heading>
-        {card.body && <CardDescription>{card.body}</CardDescription>}
-      </CardContent>
-      {card.link && <CardFooter>{/* CTA */}</CardFooter>}
+      </div>
     </Card>
   )
 }

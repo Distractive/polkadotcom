@@ -10,6 +10,7 @@ export const cardsSelection = {
   isCarousel: nullToUndefined(q.boolean().optional()),
   hasTags: nullToUndefined(q.boolean().optional()),
   showSideBySide: nullToUndefined(q.boolean().optional()),
+  useAsBackgroundImage: nullToUndefined(q.boolean().optional()),
   items: q("items")
     .filter()
     .grab({ ...cardSelection }),

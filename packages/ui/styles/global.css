@@ -17,8 +17,8 @@
 }
 
 /* 
-As we can't use CSS custom properites for breakpoints, any changes to
-'screens' values in tailwind.config.ts should also be updated below.   
+  As we can't use CSS custom properites for breakpoints, any changes to
+  'screens' values in tailwind.config.ts should also be updated below.   
 */
 
 @media (min-width: 45.5rem) {

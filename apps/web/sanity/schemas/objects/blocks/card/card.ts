@@ -17,6 +17,15 @@ export default defineType({
       group: "heading",
     }),
     defineField({
+      name: "useAsBackgroundImage",
+      title: "Use as background image?",
+      description:
+        "If true, the header image (if there is one) will be displayed as a background image, behind the card content",
+      type: "boolean",
+      initialValue: false,
+      hidden: ({ parent, value }) => !value && !!parent?.headerImage,
+    }),
+    defineField({
       name: "icon",
       title: "Icon",
       type: "image",

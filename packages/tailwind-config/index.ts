@@ -68,6 +68,9 @@ const config = {
         copy: "var(--spacing-copy)",
         gutter: "var(--spacing-gutter)",
       },
+      boxShadow: {
+        card: "0px 24px 32px 0px rgba(0, 0, 0, 0.05)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
