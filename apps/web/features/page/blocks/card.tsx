@@ -35,12 +35,9 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
     <Card
       key={_key}
       className={cn(
-        "group relative overflow-hidden bg-white backdrop-blur-lg",
-        "rounded-2xl border-[1px] border-grey-400",
-        "md:hover:shadow-card md:hover:backdrop-blur-0",
-        "transition-shadow duration-500 ease-in-out",
         headerImage && showSideBySide && "lg:flex",
-        link && "md:cursor-pointer",
+        link &&
+          "md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
         className
       )}
     >
@@ -71,7 +68,10 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
       )}
       <div className={cn("relative", showSideBySide && "lg:basis-[48%]")}>
         <CardContent
-          className={cn(headerImage && icon && !showSideBySide && "pt-0")}
+          className={cn(
+            "grid gap-card p-card",
+            headerImage && icon && !showSideBySide && "pt-0"
+          )}
         >
           {icon && (
             <img
@@ -104,7 +104,10 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
             {heading && (
               <Heading
                 variant="h3"
-                className="text-balance transition-colors duration-500 ease-in-out md:group-hover:text-pink"
+                className={cn(
+                  "text-balance transition-colors duration-500 ease-in-out",
+                  link && "md:group-hover:text-pink"
+                )}
               >
                 {heading}
               </Heading>
@@ -113,7 +116,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
           </div>
         </CardContent>
         {link && (
-          <CardFooter>
+          <CardFooter className="px-card pb-card">
             <Button size="md" className="md:group-hover:after:translate-x-0">
               {link.label}
             </Button>

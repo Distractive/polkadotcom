@@ -3,6 +3,7 @@ import type { TypeFromSelection } from "groqd"
 
 import { AccordionBlock } from "@/features/page/blocks/accordion"
 import { CardsBlock } from "@/features/page/blocks/cards"
+import { CardsSmallBlock } from "@/features/page/blocks/cards-small"
 import { FAQBlock } from "@/features/page/blocks/faqs"
 
 import { ContentBlock } from "./blocks/content"
@@ -20,6 +21,8 @@ export function PageBuilder({ pageBuilder }: Props) {
         return <AccordionBlock accordion={item} />
       case "cards":
         return <CardsBlock cards={item} />
+      case "cardsSmall":
+        return <CardsSmallBlock cards={item} />
       case "blockContent":
         return <ContentBlock content={item.content} />
       default:

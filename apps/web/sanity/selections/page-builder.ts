@@ -4,6 +4,7 @@ import type { Selection } from "groqd"
 import { faqsSelection } from "../selections/blocks/faqs"
 import { accordionSelection } from "./blocks/accordion"
 import { cardsSelection } from "./blocks/cards"
+import { cardsSmallSelection } from "./blocks/cards-small"
 import { contentSelection } from "./blocks/content"
 
 export const pageBuilderSelection = {
@@ -21,6 +22,10 @@ export const pageBuilderSelection = {
       '_type == "cards"': {
         _type: q.literal("cards"),
         ...cardsSelection,
+      },
+      '_type == "cardsSmall"': {
+        _type: q.literal("cardsSmall"),
+        ...cardsSmallSelection,
       },
       '_type == "blockContent"': {
         _type: q.literal("blockContent"),

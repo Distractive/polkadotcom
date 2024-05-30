@@ -7,6 +7,8 @@ import {
   blockContent,
   card,
   cards,
+  cardSmall,
+  cardsSmall,
   customUrl,
   faq,
   faqs,
@@ -30,12 +32,12 @@ const objectTypes = [
   accordionItem,
   card,
   cards,
+  cardSmall,
+  cardsSmall,
   customUrl,
   pageBuilder,
   blockContent,
-
   lineBreak,
-
   menu,
   menuItem,
   socialLink,

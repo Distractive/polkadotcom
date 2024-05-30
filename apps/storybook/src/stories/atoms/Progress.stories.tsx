@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    items: [1, 2, 3, 4, 5],
-    active: 1,
+    count: 5,
+    current: 0,
   },
 }
