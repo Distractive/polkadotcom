@@ -18,6 +18,8 @@ export default defineType({
       type: "boolean",
       initialValue: false,
       group: "config",
+      hidden: ({ parent, value }) =>
+        (!value && !!parent?.hasTags) || !!parent?.showSideBySide,
     }),
     defineField({
       name: "hasTags",
@@ -26,6 +28,8 @@ export default defineType({
       type: "boolean",
       initialValue: false,
       group: "config",
+      hidden: ({ parent, value }) =>
+        (!value && !!parent?.isCarousel) || !!parent?.showSideBySide,
     }),
     defineField({
       name: "showSideBySide",
@@ -35,7 +39,8 @@ export default defineType({
       type: "boolean",
       initialValue: false,
       group: "config",
-      hidden: ({ parent, value }) => !value && !!parent?.isCarousel,
+      hidden: ({ parent, value }) =>
+        (!value && !!parent?.isCarousel) || !!parent?.hasTags,
     }),
     defineField({
       title: "Heading",
@@ -49,6 +54,15 @@ export default defineType({
       type: "text",
       rows: 3,
       group: "heading",
+    }),
+    defineField({
+      title: "Tags",
+      name: "tags",
+      type: "array",
+      of: [{ type: "string" }],
+      description:
+        "Add tags to filter the cards. Only works if 'Has Tags?' is enabled",
+      hidden: ({ parent, value }) => !value && !parent?.hasTags,
     }),
     defineField({
       name: "items",

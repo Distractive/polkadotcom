@@ -23,7 +23,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
     _key,
     headerImage,
     icon,
-    tags,
+    selectedTags,
     eyebrow,
     heading,
     body,
@@ -40,6 +40,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
           "md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
         className
       )}
+      data-tags={selectedTags?.join(",")}
     >
       {headerImage && useAsBackgroundImage && (
         <img
@@ -87,9 +88,9 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
               )}
             />
           )}
-          {tags && (
+          {selectedTags && (
             <ul className="flex gap-3">
-              {tags.map((tag) => (
+              {selectedTags.map((tag) => (
                 <li
                   key={tag}
                   className="flex items-center justify-center rounded bg-grey-200 px-3 py-1 text-sm leading-relaxed"

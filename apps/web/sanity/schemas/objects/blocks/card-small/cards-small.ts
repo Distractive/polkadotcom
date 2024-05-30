@@ -29,7 +29,7 @@ export default defineType({
       type: "array",
       of: [
         defineArrayMember({
-          type: "card",
+          type: "cardSmall",
         }),
       ],
       group: "contents",

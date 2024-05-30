@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { CardsBlock } from "../../../../web/features/page/blocks/cards"
+import { CardsBlock } from "../../../../web/features/page/blocks/cards/cards"
 
 const meta = {
   title: "Organisms/Carousel",

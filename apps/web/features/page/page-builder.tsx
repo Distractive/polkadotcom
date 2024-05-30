@@ -2,8 +2,9 @@ import type { pageBuilderSelection } from "@/sanity/selections/page-builder"
 import type { TypeFromSelection } from "groqd"
 
 import { AccordionBlock } from "@/features/page/blocks/accordion"
-import { CardsBlock } from "@/features/page/blocks/cards"
-import { CardsSmallBlock } from "@/features/page/blocks/cards-small"
+import { CardsSmallBlock } from "@/features/page/blocks/cards-small/cards-small"
+import { CardsStatBlock } from "@/features/page/blocks/cards-stats/cards-stat"
+import { CardsBlock } from "@/features/page/blocks/cards/cards"
 import { FAQBlock } from "@/features/page/blocks/faqs"
 
 import { ContentBlock } from "./blocks/content"
@@ -23,6 +24,8 @@ export function PageBuilder({ pageBuilder }: Props) {
         return <CardsBlock cards={item} />
       case "cardsSmall":
         return <CardsSmallBlock cards={item} />
+      case "cardsStat":
+        return <CardsStatBlock cards={item} />
       case "blockContent":
         return <ContentBlock content={item.content} />
       default:

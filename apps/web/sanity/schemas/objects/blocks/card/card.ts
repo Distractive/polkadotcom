@@ -1,3 +1,4 @@
+import { TagsList } from "@/sanity/inputs/tag-list"
 import { DocumentIcon, SearchIcon } from "@sanity/icons"
 import { defineField, defineType } from "sanity"
 
@@ -32,6 +33,16 @@ export default defineType({
       group: "content",
     }),
     defineField({
+      name: "selectedTags",
+      title: "Selected Tags",
+      description: "You can select multiple tags a card can be included in",
+      type: "array",
+      of: [{ type: "string" }],
+      components: {
+        input: TagsList,
+      },
+    }),
+    defineField({
       name: "eyebrow",
       title: "Eyebrow",
       type: "string",
@@ -52,16 +63,7 @@ export default defineType({
       rows: 5,
       group: "content",
     }),
-    defineField({
-      name: "tags",
-      title: "Tags",
-      type: "array",
-      of: [{ type: "string" }],
-      options: {
-        layout: "tags",
-      },
-      group: "content",
-    }),
+
     defineField({
       name: "link",
       title: "Link",

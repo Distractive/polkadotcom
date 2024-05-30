@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import CardSmallBlock from "../../../../web/features/page/blocks/card-small"
+import CardSmallBlock from "../../../../web/features/page/blocks/cards-small/card-small"
 
 const meta = {
   title: "Molecules/CardSmall",
