@@ -15,7 +15,12 @@ export const postSelection = {
     .filter()
     .deref()
     .grab$({ name: q.string(), slug: q.slug("slug") }),
-  custom_excerpt: q.string(),
+  custom_excerpt: q.string().nullable(),
+  body: q("body")
+    .filter()
+    .select({
+      '_type == "block"': ["{...}", q.contentBlock()],
+    }),
 } satisfies Selection
 
 export async function getPosts(

@@ -16,8 +16,8 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
 
   return (
     <>
-      <h1 className="font-display text-3xl">Blog</h1>
-      <section className="pt-18 pb-18 mx-auto max-w-7xl px-6 md:pb-24 md:pt-24 lg:px-8">
+      <h1 className="col-span-12 font-display text-3xl">Blog</h1>
+      <section className="grid-system col-span-12">
         <span>
           Page {page} of {Math.ceil(data.totalCount / POSTS_PER_PAGE)}
         </span>
