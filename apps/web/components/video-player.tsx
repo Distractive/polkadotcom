@@ -14,7 +14,12 @@ const Wrapper = ({ children }: WrapperProps) => <>{children}</>
 
 export function VideoPlayer({ url, placeholder }: Props) {
   return (
-    <div className="aspect-video overflow-hidden rounded-2xl">
+    <div
+      className={cn(
+        "aspect-video overflow-hidden rounded-2xl",
+        "[&>div>iframe]:overflow-hidden [&>div>iframe]:rounded-2xl"
+      )}
+    >
       <ReactPlayer
         url={url}
         width="100%"
@@ -23,6 +28,7 @@ export function VideoPlayer({ url, placeholder }: Props) {
         playing
         light={placeholder}
         loop
+        muted
         playIcon={
           <div
             className={cn(
@@ -39,7 +45,7 @@ export function VideoPlayer({ url, placeholder }: Props) {
           youtube: {
             playerVars: {
               showinfo: 0,
-              controls: 0,
+              controls: 1,
               disablekb: 1,
               rel: 0,
               autoplay: 1,
