@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import FooterLayout from "../../../../web/features/footer/layout"
+import FooterLayout from "@/features/footer/layout"
 
 const meta = {
   title: "Features/Footer",
@@ -21,17 +21,21 @@ export const Primary: Story = {
           link: {
             label: "Get Started",
             external: "https://google.co.uk",
+            internal: null,
           },
           items: [
             {
               link: {
                 label: "DOT 101",
                 external: "https://google.co.uk",
+                internal: null,
               },
             },
             {
               link: {
                 label: "Polkadot Wallets",
+                external: "https://google.co.uk",
+                internal: null,
               },
             },
           ],
@@ -40,17 +44,22 @@ export const Primary: Story = {
           heading: "Platform",
           link: {
             label: "Platform",
-            internal: "/google.co.uk",
+            internal: { slug: "/" },
+            external: null,
           },
           items: [
             {
               link: {
                 label: "Polkadot SDK",
+                external: "https://google.co.uk",
+                internal: null,
               },
             },
             {
               link: {
                 label: "Polkadot Chain",
+                external: "https://google.co.uk",
+                internal: null,
               },
             },
           ],
@@ -59,17 +68,22 @@ export const Primary: Story = {
           heading: "Developers",
           link: {
             label: "Developers",
-            internal: "https://google.co.uk",
+            internal: { slug: "/" },
+            external: null,
           },
           items: [
             {
               link: {
                 label: "Polkadot SDK",
+                external: "https://google.co.uk",
+                internal: null,
               },
             },
             {
               link: {
                 label: "Polkadot Chain",
+                external: "https://google.co.uk",
+                internal: null,
               },
             },
           ],
@@ -78,17 +92,22 @@ export const Primary: Story = {
           heading: "Community",
           link: {
             label: "Community",
-            internal: "https://google.co.uk",
+            internal: { slug: "/" },
+            external: null,
           },
           items: [
             {
               link: {
                 label: "Polkadot SDK",
+                external: "https://google.co.uk",
+                internal: null,
               },
             },
             {
               link: {
                 label: "Polkadot Chain",
+                external: "https://google.co.uk",
+                internal: null,
               },
             },
           ],
@@ -97,17 +116,22 @@ export const Primary: Story = {
           heading: "Legal",
           link: {
             label: "Legal",
-            internal: "https://google.co.uk",
+            internal: { slug: "/" },
+            external: null,
           },
           items: [
             {
               link: {
                 label: "Polkadot SDK",
+                external: "https://google.co.uk",
+                internal: null,
               },
             },
             {
               link: {
                 label: "Polkadot Chain",
+                external: "https://google.co.uk",
+                internal: null,
               },
             },
           ],
@@ -118,6 +142,7 @@ export const Primary: Story = {
           url: "https://google.co.uk",
           title: "Twitter",
           image: {
+            //@ts-ignore
             asset: {
               url: "https://via.placeholder.com/26",
             },
@@ -127,6 +152,7 @@ export const Primary: Story = {
           url: "https://google.co.uk",
           title: "Twitter",
           image: {
+            //@ts-ignore
             asset: {
               url: "https://via.placeholder.com/26",
             },
@@ -136,6 +162,7 @@ export const Primary: Story = {
           url: "https://google.co.uk",
           title: "Twitter",
           image: {
+            //@ts-ignore
             asset: {
               url: "https://via.placeholder.com/26",
             },
@@ -145,6 +172,7 @@ export const Primary: Story = {
           url: "https://google.co.uk",
           title: "Twitter",
           image: {
+            //@ts-ignore
             asset: {
               url: "https://via.placeholder.com/26",
             },

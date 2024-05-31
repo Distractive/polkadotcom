@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import CardLogoBlock from "../../../../web/features/page/blocks/card-logo"
+import CardLogoBlock from "@/features/page/blocks/cards-logo/card-logo"
 
 const meta = {
   title: "Molecules/CardLogo",
@@ -15,8 +15,9 @@ export const Primary: Story = {
   args: {
     card: {
       name: "Forbes",
+      //@ts-ignore
       image: { asset: { url: "/logo-example.png" } },
-      link: { external: "https://google.co.uk" },
+      link: { label: "link", external: "https://google.co.uk", internal: null },
     },
   },
 }

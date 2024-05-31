@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import CardBlock from "../../../../web/features/page/blocks/cards/card"
+import CardBlock from "@/features/page/blocks/cards/card"
 
 const meta = {
   title: "Molecules/Card",
@@ -14,12 +14,17 @@ type Story = StoryObj<typeof meta>
 export const HeaderImageStacked: Story = {
   args: {
     card: {
+      //@ts-ignore
       headerImage: { asset: { url: "/image-placeholder.png" } },
       tags: ["Tag 1", "Tag 2", "Tag 3"],
       eyebrow: "Eyebrow",
       heading: "Header Image Stacked",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: { label: "Learn more", external: "https://google.co.uk" },
+      link: {
+        label: "Learn more",
+        external: "https://google.co.uk",
+        internal: null,
+      },
     },
   },
 }
@@ -27,12 +32,17 @@ export const HeaderImageStacked: Story = {
 export const IconStacked: Story = {
   args: {
     card: {
+      //@ts-ignore
       icon: { asset: { url: "/icon-placeholder.png" } },
       tags: ["Tag 1", "Tag 2", "Tag 3"],
       eyebrow: "Eyebrow",
       heading: "Icon Stacked",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: { label: "Learn more", external: "https://google.co.uk" },
+      link: {
+        label: "Learn more",
+        external: "https://google.co.uk",
+        internal: null,
+      },
     },
   },
 }
@@ -40,13 +50,19 @@ export const IconStacked: Story = {
 export const HeaderImageIconStacked: Story = {
   args: {
     card: {
+      //@ts-ignore
       headerImage: { asset: { url: "/image-placeholder.png" } },
+      //@ts-ignore
       icon: { asset: { url: "/icon-placeholder.png" } },
       tags: ["Tag 1", "Tag 2", "Tag 3"],
       eyebrow: "Eyebrow",
       heading: "Header Image Icon Stacked",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: { label: "Learn more", external: "https://google.co.uk" },
+      link: {
+        label: "Learn more",
+        external: "https://google.co.uk",
+        internal: null,
+      },
     },
   },
 }
@@ -54,12 +70,17 @@ export const HeaderImageIconStacked: Story = {
 export const HeaderImageSideBySide: Story = {
   args: {
     card: {
+      //@ts-ignore
       headerImage: { asset: { url: "/image-placeholder.png" } },
       tags: ["Tag 1", "Tag 2", "Tag 3"],
       eyebrow: "Eyebrow",
       heading: "Header Image Side By Side",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: { label: "Learn more", external: "https://google.co.uk" },
+      link: {
+        label: "Learn more",
+        external: "https://google.co.uk",
+        internal: null,
+      },
     },
     showSideBySide: true,
   },
@@ -68,13 +89,19 @@ export const HeaderImageSideBySide: Story = {
 export const HeaderImageIconSideBySide: Story = {
   args: {
     card: {
+      //@ts-ignore
       headerImage: { asset: { url: "/image-placeholder.png" } },
+      //@ts-ignore
       icon: { asset: { url: "/icon-placeholder.png" } },
       tags: ["Tag 1", "Tag 2", "Tag 3"],
       eyebrow: "Eyebrow",
       heading: "Header Image Icon Side by Side",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: { label: "Learn more", external: "https://google.co.uk" },
+      link: {
+        label: "Learn more",
+        external: "https://google.co.uk",
+        internal: null,
+      },
     },
     showSideBySide: true,
   },
@@ -83,12 +110,17 @@ export const HeaderImageIconSideBySide: Story = {
 export const BackgroundImageStacked: Story = {
   args: {
     card: {
+      //@ts-ignore
       headerImage: { asset: { url: "/image-placeholder.png" } },
       tags: ["Tag 1", "Tag 2", "Tag 3"],
       eyebrow: "Eyebrow",
       heading: "Background Image Stacked",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: { label: "Learn more", external: "https://google.co.uk" },
+      link: {
+        label: "Learn more",
+        external: "https://google.co.uk",
+        internal: null,
+      },
       useAsBackgroundImage: true,
     },
   },
@@ -97,13 +129,19 @@ export const BackgroundImageStacked: Story = {
 export const BackgroundImageIconSideBySide: Story = {
   args: {
     card: {
+      //@ts-ignore
       headerImage: { asset: { url: "/image-placeholder.png" } },
+      //@ts-ignore
       icon: { asset: { url: "/icon-placeholder.png" } },
       tags: ["Tag 1", "Tag 2", "Tag 3"],
       eyebrow: "Eyebrow",
       heading: "Background Image Icon Side by Side",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: { label: "Learn more", external: "https://google.co.uk" },
+      link: {
+        label: "Learn more",
+        external: "https://google.co.uk",
+        internal: null,
+      },
       useAsBackgroundImage: true,
     },
     showSideBySide: true,

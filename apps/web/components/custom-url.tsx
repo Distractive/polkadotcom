@@ -3,12 +3,12 @@ import { type customUrlSelection } from "@/sanity/selections/custom-url"
 import { type TypeFromSelection } from "groqd"
 
 interface Props {
-  value: TypeFromSelection<typeof customUrlSelection>
+  value?: TypeFromSelection<typeof customUrlSelection> | null
   children: React.ReactNode
   className?: string
 }
 export function CustomUrl({ value, children, className }: Props) {
-  return (
+  return value ? (
     <Link
       href={value.external || value.internal?.slug || ""}
       target={value.external ? "_blank" : "_self"}
@@ -17,5 +17,7 @@ export function CustomUrl({ value, children, className }: Props) {
     >
       {children}
     </Link>
+  ) : (
+    children
   )
 }

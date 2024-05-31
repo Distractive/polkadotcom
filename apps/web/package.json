@@ -14,7 +14,9 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "preview": "next build && next start",
-    "export": "next build && next export"
+    "export": "next build && next export",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@codemirror/theme-one-dark": "^6.1.2",
@@ -39,9 +41,18 @@
     "styled-components": "^6.1.8"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^1.5.0",
     "@shared/eslint-config": "workspace:*",
     "@shared/tailwind-config": "workspace:*",
     "@shared/ts-config": "workspace:*",
+    "@storybook/addon-a11y": "^8.0.8",
+    "@storybook/addon-essentials": "^8.0.5",
+    "@storybook/addon-interactions": "^8.0.5",
+    "@storybook/addon-links": "^8.0.5",
+    "@storybook/blocks": "^8.0.5",
+    "@storybook/nextjs": "^8.1.5",
+    "@storybook/react": "^8.0.5",
+    "@storybook/test": "^8.1.5",
     "@types/node": "^20.12.2",
     "@types/react": "^18.2.73",
     "@types/react-dom": "^18.2.23",
@@ -49,9 +60,11 @@
     "esbuild": "^0.20.2",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.1.4",
+    "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-tailwindcss": "^3.15.1",
     "postcss": "^8.4.38",
     "postcss-loader": "^8.1.1",
+    "storybook": "^8.0.5",
     "tailwindcss": "^3.4.3",
     "typescript": "5.4.3"
   }

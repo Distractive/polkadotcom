@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import CardSmallBlock from "../../../../web/features/page/blocks/cards-small/card-small"
+import CardSmallBlock from "@/features/page/blocks/cards-small/card-small"
 
 const meta = {
   title: "Molecules/CardSmall",
@@ -14,9 +14,10 @@ type Story = StoryObj<typeof meta>
 export const Internal: Story = {
   args: {
     card: {
+      _key: "internal",
       heading: "Internal Link Card",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: { internal: "/home" },
+      link: { label: "", external: null, internal: { slug: "home" } },
     },
   },
 }
@@ -24,9 +25,10 @@ export const Internal: Story = {
 export const External: Story = {
   args: {
     card: {
+      _key: "internal",
       heading: "External Link Card",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: { external: "https://google.co.uk" },
+      link: { label: "", external: "https://google.co.uk", internal: null },
     },
   },
 }
@@ -34,8 +36,10 @@ export const External: Story = {
 export const Static: Story = {
   args: {
     card: {
+      _key: "internal",
       heading: "Static Card",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      link: null,
     },
   },
 }

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { CardsBlock } from "../../../../web/features/page/blocks/cards/cards"
+import { CardsBlock } from "@/features/page/blocks/cards/cards"
 
 const meta = {
   title: "Organisms/Carousel",
@@ -21,48 +21,73 @@ export const Carousel: Story = {
       items: [
         {
           _key: "one",
+          // @ts-ignore
           headerImage: { asset: { url: "/image-placeholder.png" } },
           tags: ["Tag 1", "Tag 2", "Tag 3"],
           eyebrow: "Eyebrow",
           heading: "Headline",
           body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          link: { label: "Learn more", external: "https://google.co.uk" },
+          link: {
+            label: "Learn more",
+            external: "https://google.co.uk",
+            internal: null,
+          },
         },
         {
           _key: "two",
+          // @ts-ignore
           headerImage: { asset: { url: "/image-placeholder.png" } },
           tags: ["Tag 1", "Tag 2", "Tag 3"],
           eyebrow: "Eyebrow",
           heading: "Headline",
           body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          link: { label: "Learn more", external: "https://google.co.uk" },
+          link: {
+            label: "Learn more",
+            external: "https://google.co.uk",
+            internal: null,
+          },
         },
         {
           _key: "three",
+          // @ts-ignore
           headerImage: { asset: { url: "/image-placeholder.png" } },
           tags: ["Tag 1", "Tag 2", "Tag 3"],
           eyebrow: "Eyebrow",
           heading: "Headline",
           body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          link: { label: "Learn more", external: "https://google.co.uk" },
+          link: {
+            label: "Learn more",
+            external: "https://google.co.uk",
+            internal: null,
+          },
         },
         {
           _key: "four",
+          // @ts-ignore
           headerImage: { asset: { url: "/image-placeholder.png" } },
           tags: ["Tag 1", "Tag 2", "Tag 3"],
           eyebrow: "Eyebrow",
           heading: "Headline",
           body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          link: { label: "Learn more", external: "https://google.co.uk" },
+          link: {
+            label: "Learn more",
+            external: "https://google.co.uk",
+            internal: null,
+          },
         },
         {
           _key: "five",
+          // @ts-ignore
           headerImage: { asset: { url: "/image-placeholder.png" } },
           tags: ["Tag 1", "Tag 2", "Tag 3"],
           eyebrow: "Eyebrow",
           heading: "Headline",
           body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          link: { label: "Learn more", external: "https://google.co.uk" },
+          link: {
+            label: "Learn more",
+            external: "https://google.co.uk",
+            internal: null,
+          },
         },
       ],
     },
