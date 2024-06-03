@@ -3,9 +3,7 @@ import { Button, Heading } from "@shared/ui"
 export default function Home() {
   return (
     <>
-      <Heading variant="h1" className="col-span-full ">
-        Polkadot
-      </Heading>
+      <Heading className="col-span-full">Polkadot</Heading>
       <section className="col-span-6 grid gap-section">
         <article className="grid gap-card">
           <div className="grid gap-copy">
@@ -20,7 +18,7 @@ export default function Home() {
               Learn more
             </Button>
           </div>
-          <div className="bg-grey-200 h-40 lg:h-60"></div>
+          <div className="h-40 bg-grey-200 lg:h-60"></div>
         </article>
       </section>
       <section className="col-span-6 grid gap-section">
@@ -37,7 +35,7 @@ export default function Home() {
               Learn more
             </Button>
           </div>
-          <div className="bg-grey-200 h-40 lg:h-60"></div>
+          <div className="h-40 bg-grey-200 lg:h-60"></div>
         </article>
       </section>
     </>

@@ -44,7 +44,7 @@ export type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> &
   VariantProps<typeof headingVariants>
 
 const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ className, variant, size, decoration, weight, ...props }, ref) => {
+  ({ className, variant = "h1", size, decoration, weight, ...props }, ref) => {
     const Element = getHeadingElement(variant) as JSX.Element["type"]
 
     return (
