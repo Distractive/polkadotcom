@@ -62,6 +62,24 @@ To build all apps and packages, run the following command:
 pnpm run build
 ```
 
+### Environment variables
+Environment variables are coming from Vercel
+```
+pnpm i -g vercel
+```
+
+Then navigate to /apps/web and run
+```
+vercel link
+```
+
+Choose Stink Studios and the project is called polkadot-web
+Then run
+
+```
+vercel env pull .env.local
+```
+
 ### Develop
 
 To develop all apps and packages, run the following command:
