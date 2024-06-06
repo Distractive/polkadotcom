@@ -4,7 +4,7 @@ import { useCallback, useState } from "react"
 import { type cardSelection } from "@/sanity/selections/blocks/card"
 import type { TypeFromSelection } from "groqd"
 
-import { Button, cn } from "@shared/ui"
+import { Button, cn, Icon } from "@shared/ui"
 
 import CardBlock from "./card"
 
@@ -98,16 +98,25 @@ export function CardTags({ tags, cards }: Props) {
           />
         ))}
       </div>
-
-      <div className="col-span-12 flex justify-center">
-        <Button
-          variant={
-            visibleCount >= filteredItems.length ? "disabled" : "primary"
-          }
-          onClick={showMoreItems}
-        >
-          Show More
-        </Button>
+      <div className="relative col-span-12 inline-flex items-center justify-center pt-gutter">
+        <hr className=" w-full border-grey-300" />
+        <div className="absolute bg-white px-6">
+          <Button
+            variant={
+              visibleCount >= filteredItems.length ? "disabled" : "secondary"
+            }
+            size={"sm"}
+            onClick={showMoreItems}
+          >
+            Show More
+            <Icon
+              variant="chevronDown"
+              className={cn(
+                visibleCount >= filteredItems.length && "fill-grey-300"
+              )}
+            />
+          </Button>
+        </div>
       </div>
     </>
   )
