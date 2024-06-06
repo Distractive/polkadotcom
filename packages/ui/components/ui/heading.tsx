@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "../../lib/utils"
 
 const HeadingStyles = {
-  base: "font-light font-display",
+  base: "font-display",
   variants: {
     h1: "text-6xl md:text-7xl leading-snug",
     h2: "text-4xl md:text-5xl leading-snug",
