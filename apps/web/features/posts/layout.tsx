@@ -23,13 +23,15 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
         </span>
         <Grid posts={data.posts} />
       </section>
-      <PostPagination
-        total={data.totalCount}
-        limit={POSTS_PER_PAGE}
-        page={page}
-        type={type}
-        tagSlug={tagSlug != "" ? tagSlug : undefined}
-      />
+      <div className="-mx-gutter w-screen">
+        <PostPagination
+          total={data.totalCount}
+          limit={POSTS_PER_PAGE}
+          page={page}
+          type={type}
+          tagSlug={tagSlug != "" ? tagSlug : undefined}
+        />
+      </div>
     </>
   )
 }

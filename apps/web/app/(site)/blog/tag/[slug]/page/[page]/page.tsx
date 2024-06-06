@@ -5,7 +5,7 @@ export const dynamic = "force-static"
 export default async function Page({
   params: { page, slug },
 }: {
-  params: { page: number; slug: string }
+  params: { page: string; slug: string }
 }) {
-  return <Layout page={page} tagSlug={slug} type="blog" />
+  return <Layout page={Number(page)} tagSlug={slug} type="blog" />
 }

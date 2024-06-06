@@ -1,9 +1,10 @@
+import generatePagination from "@/utils/pagination/generatePagination"
 import { cn } from "@shared/ui/lib/utils"
 
 import {
   Pagination,
   PaginationContent,
-  // PaginationEllipsis,
+  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -19,11 +20,16 @@ interface Props {
 }
 
 export function PostPagination({ total, page, limit, type, tagSlug }: Props) {
-  const pages = Math.ceil(total / limit)
+  let pages = Math.ceil(total / limit)
+  let paginationArray: Array<number | string>
+
+  paginationArray = generatePagination(page, pages)
+
   return (
-    <Pagination>
+    // <Pagination className="w-full border-t border-t-grey-200 pt-1">
+    <Pagination className="relative w-full pt-1 after:absolute after:-top-[3px] after:z-0 after:h-[2px] after:w-full after:bg-grey-200">
       <PaginationContent className="w-full">
-        <PaginationItem className="flex justify-start">
+        <PaginationItem className="justify-start">
           <PaginationPrevious
             href={
               page > 1
@@ -35,32 +41,36 @@ export function PostPagination({ total, page, limit, type, tagSlug }: Props) {
             className={cn(page === 1 && "pointer-events-none")}
           />
         </PaginationItem>
-        {Array.from({ length: pages }, (_, i) => {
-          const currentPage = i + 1
+
+        {paginationArray.map((pa, i) => {
+          const currentPage = pa
           return (
             <PaginationItem
               key={i}
-              className={cn(
-                currentPage == page ? "flex flex-1 justify-center" : "hidden"
-              )}
+              className={cn("relative m-0 justify-center px-2 py-0")}
             >
-              <PaginationLink
-                href={
-                  tagSlug === undefined
-                    ? `/${type}/page/${currentPage}`
-                    : `/${type}/tag/${tagSlug}/page/${currentPage}`
-                }
-                isActive={currentPage == page}
-              >
-                {currentPage}
-              </PaginationLink>
+              {pa !== -1 && (
+                <PaginationLink
+                  href={
+                    tagSlug === undefined
+                      ? `/${type}/page/${currentPage}`
+                      : `/${type}/tag/${tagSlug}/page/${currentPage}`
+                  }
+                  isActive={currentPage == page}
+                  className={cn(
+                    "font-normal",
+                    "after:absolute after:-top-2 after:left-0 after:z-10 after:h-[2px] after:w-full after:transition-all after:duration-500"
+                  )}
+                >
+                  {currentPage}
+                </PaginationLink>
+              )}
+              {pa === -1 && <PaginationEllipsis />}
             </PaginationItem>
           )
         })}
-        {/* <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem> */}
-        <PaginationItem className="flex justify-end">
+
+        <PaginationItem className="justify-end">
           <PaginationNext
             href={
               page < pages
