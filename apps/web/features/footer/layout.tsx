@@ -11,12 +11,12 @@ interface Props {
 
 export default function FooterLayout({ footer }: Props) {
   return (
-    <footer className="rounded-t-2xl bg-purple-500">
+    <footer className="bg-grey-200 md:m-gutter md:rounded-2xl md:border md:border-grey-300">
       <div className="mx-auto w-full">
         <Menu menu={footer.menu} />
       </div>
-      <hr className="border-purple-400 sm:mx-auto" />
-      <div className="flex flex-col items-start gap-4 px-gutter py-6 md:flex-row md:items-center md:justify-between">
+      <hr className="border-grey-300 sm:mx-auto" />
+      <div className="flex flex-col items-start gap-4 px-gutter py-4 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-row items-center gap-8">
           <a href="/" className="group">
             <Logo
@@ -24,7 +24,7 @@ export default function FooterLayout({ footer }: Props) {
               dotsClassName="transition duration-500 ease-out group-hover:fill-pink"
             />
           </a>
-          <p className="text-sm text-white">© {new Date().getFullYear()}</p>
+          <p className="text-sm text-black">© {new Date().getFullYear()}</p>
         </div>
         <SocialLinks items={footer.socialLinks} />
       </div>

@@ -12,9 +12,13 @@ export default function SocialLinks({ items }: Props) {
           href={item.url}
           target="_blank"
           key={index}
-          className="flex size-12 items-center justify-center rounded-full transition duration-500 ease-out hover:bg-purple-400"
+          className="flex size-12 items-center justify-center rounded-full transition duration-500 ease-out hover:bg-grey-400"
         >
-          <img src={item.image.asset.url} aria-hidden="true" />
+          <img
+            src={item.image.asset.url}
+            aria-hidden="true"
+            className="fill-black"
+          />
           <span className="sr-only">{item.title}</span>
         </a>
       ))}

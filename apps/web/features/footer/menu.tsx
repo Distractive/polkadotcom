@@ -10,23 +10,20 @@ interface Props {
 export default function Menu({ menu }: Props) {
   return (
     <>
-      <div className="grid grid-cols-1 gap-6 px-gutter pb-gutter pt-10 sm:grid-cols-2 md:grid-cols-4 md:pt-28 lg:grid-cols-5">
+      <div className="grid grid-cols-1 gap-6 px-gutter py-gutter sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
         {menu.map((item, index) => (
-          <div
-            key={index}
-            className="col-span-1 font-default font-bold text-white "
-          >
+          <div key={index} className="col-span-1 font-default text-black">
             <Heading
               variant="h2"
               size="sm"
               decoration="uppercase"
-              className="font-default font-bold"
+              className="font-default"
             >
               {item.link ? (
                 <a
                   href={item.link.external || item.link.internal?.slug || ""}
                   target={item.link.external ? "_blank" : "_self"}
-                  className="underline decoration-purple-400 underline-offset-8 transition duration-500 ease-out hover:decoration-white"
+                  className="underline decoration-grey-400 underline-offset-8 transition duration-500 ease-out hover:decoration-white"
                   aria-label={item.link.label}
                 >
                   {item.link.label}
@@ -39,7 +36,7 @@ export default function Menu({ menu }: Props) {
               {item.items.map((item, index) => (
                 <li key={index}>
                   <a
-                    className="flex gap-2 text-center underline decoration-purple-500 underline-offset-4 transition duration-500 ease-out hover:decoration-white"
+                    className="flex gap-2 text-center font-default underline decoration-grey-200 underline-offset-8 transition duration-500 ease-out hover:decoration-grey-400"
                     href={item.link.external || item.link.internal?.slug || ""}
                     target={item.link.external ? "_blank" : "_self"}
                     aria-label={item.link.label}
@@ -48,7 +45,7 @@ export default function Menu({ menu }: Props) {
                     {item.link.external && (
                       <Icon
                         variant="arrowRightUp"
-                        className="not-sr-only size-4 fill-white hover:fill-white"
+                        className="not-sr-only size-4 fill-black hover:fill-black"
                       />
                     )}
                   </a>
