@@ -16,6 +16,7 @@ export default function SocialLinks({ items }: Props) {
         >
           <img
             src={item.image.asset.url}
+            alt=""
             aria-hidden="true"
             className="fill-black"
           />

@@ -66,7 +66,7 @@ export function AccordionBlock({ accordion }: Props) {
           >
             <AccordionTrigger
               className={cn(
-                "border border-grey-300 p-gutter font-display hover:text-pink data-[state=open]:text-pink",
+                "border border-grey-300 p-gutter py-4 font-display hover:text-pink data-[state=open]:text-pink",
                 index === accordion.items.length - 1 &&
                   "rounded-b-2xl data-[state=open]:rounded-b-none",
                 index === 0 && "rounded-t-2xl",
@@ -88,7 +88,7 @@ export function AccordionBlock({ accordion }: Props) {
             <AccordionContent
               className={cn(
                 index === accordion.items.length - 1 &&
-                  "rounded-b-2xl border-b",
+                  "rounded-b-2xl border-b text-sm",
                 "border-x border-grey-300 bg-grey-100 px-gutter py-gutter"
               )}
             >

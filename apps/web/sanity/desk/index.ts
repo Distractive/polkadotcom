@@ -1,4 +1,3 @@
-// import { DocumentsIcon } from "@sanity/icons"
 import type {
   StructureBuilder,
   StructureResolverContext,
@@ -7,6 +6,7 @@ import type {
 import { footerStructure } from "./footer"
 import { hygieneStructure } from "./hygiene"
 import { parentChild } from "./landing"
+import { navigationStructure } from "./navigation"
 import { postStructure } from "./post"
 
 export const deskStructure = (
@@ -21,6 +21,8 @@ export const deskStructure = (
       parentChild("landing", S, context.documentStore),
       S.divider(),
       hygieneStructure(S),
+      S.divider(),
+      navigationStructure(S),
       S.divider(),
       footerStructure(S),
     ])

@@ -3,8 +3,14 @@ import { Button, Heading } from "@shared/ui"
 export default function Home() {
   return (
     <>
-      <Heading className="col-span-full">Polkadot</Heading>
-      <section className="col-span-6 grid gap-section">
+      <div className="col-span-full h-[400px]">
+        <img
+          src="/image-placeholder.png"
+          alt=""
+          className="object-fit size-full object-cover"
+        />
+      </div>
+      <section className="col-span-6 grid gap-section p-gutter">
         <article className="grid gap-card">
           <div className="grid gap-copy">
             <Heading variant="h3">This is a heading</Heading>
@@ -21,7 +27,7 @@ export default function Home() {
           <div className="h-40 bg-grey-200 lg:h-60"></div>
         </article>
       </section>
-      <section className="col-span-6 grid gap-section">
+      <section className="col-span-6 grid gap-section p-gutter">
         <article className="grid gap-card">
           <div className="grid gap-copy">
             <Heading variant="h3">This is a heading</Heading>

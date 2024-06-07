@@ -24,7 +24,7 @@ import {
   socialLink,
   youtube,
 } from "./schemas/objects"
-import { footer } from "./schemas/singletons"
+import { footer, navigation } from "./schemas/singletons"
 
 const documentTypes = [tag, author, post, landing, page, hygiene]
 const objectTypes = [
@@ -51,7 +51,7 @@ const objectTypes = [
   socialLink,
 ]
 
-const singletons = [footer]
+const singletons = [footer, navigation]
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [...documentTypes, ...objectTypes, ...singletons],

@@ -4,16 +4,29 @@
 
 @layer utilities {
   .grid-system {
-    @apply mx-auto grid max-w-[160rem] grid-cols-6 gap-x-gutter px-gutter lg:grid-cols-12;
+    @apply mx-auto grid max-w-[160rem] grid-cols-6 gap-x-gutter lg:grid-cols-12;
+  }
+  .grid-pile {
+    @apply grid;
+  }
+
+  .grid-pile > * {
+    grid-area: 1 / 1;
   }
 }
 
 :root {
   --spacing-page: 7.5rem;
   --spacing-section: 3rem;
-  --spacing-gutter: 1.5rem;
+  --spacing-gutter: 1rem;
   --spacing-card: 2rem;
   --spacing-copy: 1rem;
+
+  --screen-sm: 22.5rem;
+  --screen-md: 45.5rem;
+  --screen-lg: 64rem;
+  --screen-xl: 90rem;
+  --screen-2xl: 120rem;
 }
 
 /* 
@@ -23,7 +36,7 @@
 
 @media (min-width: 45.5rem) {
   :root {
-    --spacing-gutter: 2rem;
+    --spacing-gutter: 1.5rem;
   }
 }
 
@@ -31,6 +44,5 @@
   :root {
     --spacing-page: 9rem;
     --spacing-section: 6rem;
-    --spacing-gutter: 3rem;
   }
 }

@@ -70,6 +70,7 @@ const config = {
       },
       boxShadow: {
         card: "0px 24px 32px 0px rgba(0, 0, 0, 0.05)",
+        "internal-border": "1px 1px 0px 0px #E7E7EC",
       },
       keyframes: {
         "accordion-down": {
@@ -80,6 +81,10 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+      },
+      transition: {
+        visibility: "visibility, opacity",
+        backdropBlur: "backdrop-filter",
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
