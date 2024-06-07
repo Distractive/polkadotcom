@@ -5,35 +5,54 @@ export default defineType({
   title: "Cards Logo",
   type: "object",
   description: "Create a list of cards containing logos",
-  groups: [{ title: "Content", name: "contents" }],
+  groups: [
+    { title: "Heading", name: "heading" },
+    { title: "Content", name: "content" },
+  ],
   fields: [
     defineField({
-      name: "name",
-      title: "Name",
+      title: "Heading",
+      name: "heading",
       type: "string",
-      group: "content",
+      group: "heading",
+    }),
+    defineField({
+      title: "Body",
+      name: "body",
+      type: "text",
+      rows: 3,
+      group: "heading",
     }),
     defineField({
       name: "image",
       title: "Image",
       type: "image",
-      group: "content",
+      group: "heading",
     }),
     defineField({
       name: "link",
       title: "Link",
       type: "customUrl",
-      group: "content",
+      group: "heading",
     }),
     defineField({
       name: "items",
       type: "array",
       of: [
         defineArrayMember({
-          type: "card",
+          type: "cardLogo",
         }),
       ],
-      group: "contents",
+      group: "content",
     }),
   ],
+  preview: {
+    select: {
+      title: "heading",
+    },
+    prepare: ({ title }) => ({
+      title,
+      subtitle: "-Logo Cards block",
+    }),
+  },
 })

@@ -30,6 +30,10 @@ export default defineType({
           type: "cardsStat",
         }),
         defineArrayMember({
+          name: "cardsLogo",
+          type: "cardsLogo",
+        }),
+        defineArrayMember({
           name: "blockContent",
           type: "blockContent",
         }),

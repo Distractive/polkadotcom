@@ -75,4 +75,19 @@ export default defineType({
       group: "contents",
     }),
   ],
+  preview: {
+    select: {
+      title: "heading",
+      hasTags: "hasTags",
+      isCarousel: "isCarousel",
+    },
+    prepare: ({ title, hasTags, isCarousel }) => ({
+      title,
+      subtitle: hasTags
+        ? "- Card block with tags"
+        : isCarousel
+          ? "- Cardblock as carousel"
+          : "- Card block",
+    }),
+  },
 })

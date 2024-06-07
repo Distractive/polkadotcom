@@ -22,4 +22,13 @@ export default defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: "title",
+    },
+    prepare: ({ title }) => ({
+      title,
+      subtitle: "- FAQs block",
+    }),
+  },
 })

@@ -48,4 +48,13 @@ export default defineType({
       validation: (Rule) => Rule.required().min(2).max(4),
     }),
   ],
+  preview: {
+    select: {
+      title: "title",
+    },
+    prepare: ({ title }) => ({
+      title,
+      subtitle: "- Accordion block",
+    }),
+  },
 })

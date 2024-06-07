@@ -35,4 +35,13 @@ export default defineType({
       group: "contents",
     }),
   ],
+  preview: {
+    select: {
+      title: "heading",
+    },
+    prepare: ({ title }) => ({
+      title,
+      subtitle: "- Stats Cards block",
+    }),
+  },
 })
