@@ -45,6 +45,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
     >
       <CustomUrl
         value={link}
+        isWrapper
         className={cn(showSideBySide && "lg:flex lg:w-full")}
       >
         {headerImage && useAsBackgroundImage && (
@@ -130,7 +131,17 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
           </CardContent>
           {link && (
             <CardFooter className="px-card pb-card">
-              <Button size="md" className="md:group-hover:after:translate-x-0">
+              <Button
+                size="md"
+                className="md:group-hover:after:translate-x-0"
+                variant={
+                  link.variant
+                    ? link.variant === "primary"
+                      ? "primary"
+                      : "secondary"
+                    : "primary"
+                }
+              >
                 <CustomUrl value={link}>{link.label}</CustomUrl>
               </Button>
             </CardFooter>

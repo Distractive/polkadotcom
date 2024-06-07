@@ -11,6 +11,16 @@ export default defineType({
       type: "string",
     },
     {
+      name: "variant",
+      title: "Variant",
+      description: "Choose the variant of the link",
+      type: "string",
+      initialValue: "primary",
+      options: {
+        list: ["primary", "secondary"],
+      },
+    },
+    {
       name: "external",
       type: "url",
       title: "URL",

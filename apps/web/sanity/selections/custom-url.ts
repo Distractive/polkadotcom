@@ -3,6 +3,7 @@ import type { Selection } from "groqd"
 
 export const customUrlSelection = {
   label: q.string(),
+  variant: q.string().optional().nullable(),
   internal: q("internal")
     .deref()
     .grab$({ slug: q.slug("slug") })
