@@ -43,7 +43,10 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
       )}
       data-tags={selectedTags?.join(",")}
     >
-      <CustomUrl value={link}>
+      <CustomUrl
+        value={link}
+        className={cn(showSideBySide && "lg:flex lg:w-full")}
+      >
         {headerImage && useAsBackgroundImage && (
           <img
             src={headerImage.asset.url}
@@ -56,7 +59,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
           <CardHeader
             className={cn(
               "relative z-10 aspect-video",
-              showSideBySide && "lg:h-[26rem] lg:basis-[52%]"
+              showSideBySide && "lg:h-[26rem] lg:basis-[60%]"
             )}
           >
             {!useAsBackgroundImage && (
@@ -69,7 +72,12 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
             )}
           </CardHeader>
         )}
-        <div className={cn("relative", showSideBySide && "lg:basis-[48%]")}>
+        <div
+          className={cn(
+            "relative",
+            showSideBySide && "flex flex-col justify-end lg:basis-[40%]"
+          )}
+        >
           <CardContent
             className={cn(
               "grid gap-card p-card",
