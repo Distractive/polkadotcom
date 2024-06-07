@@ -1,5 +1,3 @@
-import "server-only"
-
 import type { QueryParams } from "@sanity/client"
 import { createClient } from "next-sanity"
 

@@ -1,3 +1,4 @@
+import { slugifier } from "@/sanity/lib/slugifier"
 import { CogIcon, DocumentIcon, SearchIcon } from "@sanity/icons"
 import { defineField, defineType } from "sanity"
 
@@ -23,7 +24,10 @@ export default defineType({
       title: "Slug",
       type: "slug",
       options: {
-        source: "title",
+        //@ts-ignore
+        source: (doc) => ({ doc }),
+        //@ts-ignore
+        slugify: slugifier,
       },
       group: "config",
       validation: (rule) => rule.required(),
