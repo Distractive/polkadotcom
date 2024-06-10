@@ -15,9 +15,10 @@ const IconStyles = {
     arrowRight: "icon-arrow-right",
     arrowUp: "icon-arrow-up",
     arrowRightUp: "icon-arrow-right-up",
-    iconVideoPlay: "icon-video-play",
-    iconMenu: "icon-menu",
+    videoPlay: "icon-video-play",
+    menu: "icon-menu",
     close: "icon-close",
+    magnify: "icon-magnify",
   },
 }
 

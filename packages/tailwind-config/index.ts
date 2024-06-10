@@ -37,6 +37,8 @@ const config = {
       snug: "1.2",
       normal: "1.3",
       relaxed: "1.4",
+      slack: "1.5",
+      roomy: "1.6",
     },
     fontWeight: {
       light: "300",

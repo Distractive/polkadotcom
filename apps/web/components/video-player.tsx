@@ -37,7 +37,7 @@ export function VideoPlayer({ url, placeholder }: Props) {
               "group"
             )}
           >
-            <Icon variant="iconVideoPlay" className="group-hover:fill-pink" />
+            <Icon variant="videoPlay" className="group-hover:fill-pink" />
           </div>
         }
         wrapper={Wrapper}
