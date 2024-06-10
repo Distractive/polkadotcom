@@ -16,7 +16,7 @@ export function MenuDesktop({ menu, hovered, setHovered }: Props) {
   }
 
   return (
-    <div className="lg:grid-pile overflow-hidden">
+    <div className="lg:grid-pile hidden overflow-hidden">
       {menu.map((section, index) => (
         <div
           key={index}
