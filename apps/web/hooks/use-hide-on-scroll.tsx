@@ -3,11 +3,6 @@ import { gsap } from "gsap"
 
 import { useBreakpoint } from "./use-breakpoint"
 
-interface Props {
-  ref: React.RefObject<HTMLElement>
-  breakpoint?: string
-}
-
 export const TIMELINE = {
   defaults: {
     ease: "power1.inOut",
@@ -15,8 +10,9 @@ export const TIMELINE = {
   },
 }
 
-export const useHideOnScroll = ({ ref, breakpoint = "--screen-lg" }: Props) => {
-  const isMobile = useBreakpoint(breakpoint)
+export const useHideOnScroll = () => {
+  const isMobile = useBreakpoint("--screen-lg")
+  const ref = useRef<HTMLDivElement>(null)
   const timeline = useRef<GSAPTimeline>()
   const lastScrollY = useRef<number>(0)
 
@@ -54,5 +50,5 @@ export const useHideOnScroll = ({ ref, breakpoint = "--screen-lg" }: Props) => {
     }
   }, [handleScroll, isMobile])
 
-  return null
+  return { ref }
 }

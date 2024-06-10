@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { type navigationMenuSelection } from "@/sanity/selections/navigation/navigation-menu"
 import { type TypeFromSelection } from "groqd"
 
-import { useBreakpoint } from "@/hooks/use-breakpoint"
+import { useToggleAnimation } from "@/hooks/use-toggle-animation"
 import {
   Accordion,
   AccordionContent,
@@ -22,27 +22,14 @@ interface Props {
 
 export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
   const [active, setActive] = useState<string>("")
-  const isMobile = useBreakpoint("--screen-lg")
-
-  const handleSelectItem = () => {
-    setIsOpen(false)
-  }
-
-  useEffect(() => {
-    if (!isMobile) setIsOpen(false)
-  }, [isMobile, setIsOpen])
-
-  const lastSection = menu.length - 1
+  const { ref } = useToggleAnimation({ isVisible: isOpen })
 
   return (
     <div
+      ref={ref}
       className={cn(
-        "flex flex-col gap-2 overflow-hidden lg:hidden",
-        "rounded-2xl border border-grey-300 bg-white opacity-0",
-        "transition-visibility duration-500 ease-in-out",
-        isOpen
-          ? "pointer-events-auto visible opacity-100"
-          : "pointer-events-none invisible opacity-0"
+        "flex flex-col gap-2 overflow-hidden",
+        "rounded-2xl border border-grey-300 bg-white opacity-0"
       )}
     >
       <Accordion type="single" collapsible defaultValue={undefined}>
@@ -54,7 +41,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
               </span>
               <CustomUrl
                 value={section.link}
-                onClick={handleSelectItem}
+                onClick={() => setIsOpen(false)}
                 className={cn(
                   "flex-1 pb-gutter pr-gutter pt-gutter",
                   "border-r border-grey-300 text-left font-bold"
@@ -67,27 +54,25 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                 className="[&>svg]:mx-gutter"
               />
             </div>
-
             <AccordionContent className="bg-grey-100">
-              {section.items.map((item, linkIndex) => (
-                <CustomUrl
-                  key={linkIndex}
-                  value={item.link}
-                  onClick={handleSelectItem}
-                  className={cn(
-                    "block w-full p-gutter text-left shadow-internal-border",
-                    // Give the last link a border bottom
-                    linkIndex === section.items.length - 1 &&
-                      "border-b border-grey-300",
-                    // Remove borders from the last link in the last section
-                    sectionIndex === lastSection &&
-                      linkIndex === section.items.length - 1 &&
-                      "border-none"
-                  )}
-                >
-                  {item.link.label}
-                </CustomUrl>
-              ))}
+              {section.items.map((item, linkIndex) => {
+                const lastLink = linkIndex === section.items.length - 1
+                const lastSection = sectionIndex === menu.length - 1
+                return (
+                  <CustomUrl
+                    key={linkIndex}
+                    value={item.link}
+                    onClick={() => setIsOpen(false)}
+                    className={cn(
+                      "block w-full p-gutter text-left shadow-internal-border",
+                      lastLink && "border-b border-grey-300",
+                      lastSection && lastLink && "border-none"
+                    )}
+                  >
+                    {item.link.label}
+                  </CustomUrl>
+                )
+              })}
             </AccordionContent>
           </AccordionItem>
         ))}

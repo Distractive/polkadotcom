@@ -10,20 +10,20 @@ import { Burger } from "./burger"
 
 interface Props {
   menu: ReadonlyArray<TypeFromSelection<typeof navigationMenuSelection>>
-  isMobileOpen: boolean
-  setIsMobileOpen: React.Dispatch<React.SetStateAction<boolean>>
-  setHovered: React.Dispatch<React.SetStateAction<string | null>>
+  isOpen: boolean
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setHovered: React.Dispatch<React.SetStateAction<string>>
 }
 
-export function Header({
-  menu,
-  isMobileOpen,
-  setIsMobileOpen,
-  setHovered,
-}: Props) {
-  const handleSelectItem = () => {
-    setIsMobileOpen(false)
-    setHovered(null)
+export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
+  const handleItemSelect = () => {
+    setHovered("")
+    setIsOpen(false)
+  }
+
+  const handleItemHover = (heading: string) => {
+    setHovered(heading)
+    setIsOpen(true)
   }
 
   return (
@@ -34,7 +34,7 @@ export function Header({
           "rounded-[3rem] border border-grey-300 bg-white"
         )}
       >
-        <Link href="/" onClick={handleSelectItem} className="lg:pr-gutter">
+        <Link href="/" onClick={handleItemSelect} className="lg:pr-gutter">
           <Logo className="h-auto w-[9.125rem] md:hover:text-pink" />
         </Link>
         <ul
@@ -46,12 +46,12 @@ export function Header({
           {menu.map((item, index) => (
             <li
               key={index}
-              onMouseEnter={() => setHovered(item.heading)}
+              onMouseEnter={() => handleItemHover(item.heading)}
               className="cursor-pointer transition-colors duration-500 ease-in-out lg:hover:text-pink"
             >
               <CustomUrl
                 value={item.link}
-                onClick={handleSelectItem}
+                onClick={handleItemSelect}
                 className="transition-colors duration-500 ease-in-out hover:text-pink"
               >
                 {item.heading}
@@ -60,7 +60,7 @@ export function Header({
           ))}
         </ul>
       </div>
-      <Burger isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
+      <Burger isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   )
 }

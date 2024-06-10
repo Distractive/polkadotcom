@@ -4,11 +4,11 @@ import { gsap } from "gsap"
 import { cn } from "@shared/ui"
 
 interface Props {
-  isMobileOpen: boolean
-  setIsMobileOpen: React.Dispatch<React.SetStateAction<boolean>>
+  isOpen: boolean
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const TIMELINE = {
+const TIMELINE = {
   defaults: {
     ease: "power1.inOut",
     duration: 0.16,
@@ -17,12 +17,10 @@ export const TIMELINE = {
 
 const OFFSET = 5
 const ROTATE = 45
-
 const LINE_STYLES = "h-[2px] w-5 bg-black"
 
-export function Burger({ isMobileOpen, setIsMobileOpen }: Props) {
+export function Burger({ isOpen, setIsOpen }: Props) {
   const timeline = useRef<GSAPTimeline>()
-
   const top = useRef<HTMLSpanElement>(null)
   const middle = useRef<HTMLSpanElement>(null)
   const bottom = useRef<HTMLSpanElement>(null)
@@ -37,7 +35,7 @@ export function Burger({ isMobileOpen, setIsMobileOpen }: Props) {
   useEffect(() => {
     if (!timeline.current) return
 
-    if (isMobileOpen) {
+    if (isOpen) {
       timeline.current
         .clear()
         .to([top.current, bottom.current], { y: 0 })
@@ -52,11 +50,11 @@ export function Burger({ isMobileOpen, setIsMobileOpen }: Props) {
         .to(top.current, { y: -OFFSET })
         .to(bottom.current, { y: OFFSET }, "<")
     }
-  }, [isMobileOpen])
+  }, [isOpen])
 
   return (
     <button
-      onClick={() => setIsMobileOpen(!isMobileOpen)}
+      onClick={() => setIsOpen(!isOpen)}
       className={cn(
         "grid-pile h-full w-14 items-center justify-center lg:hidden",
         "rounded-full border border-grey-300 bg-white"

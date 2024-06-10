@@ -2,8 +2,8 @@ import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 
 interface Props {
-  ref: React.RefObject<HTMLElement>
   isVisible: boolean
+  display?: "grid" | "flex" | "block"
   initial?: gsap.TweenVars
   enter?: gsap.TweenVars
 }
@@ -16,11 +16,12 @@ export const TIMELINE = {
 }
 
 export const useToggleAnimation = ({
-  ref,
+  display = "grid",
   isVisible,
   initial = { opacity: 0 },
   enter = { opacity: 1 },
 }: Props) => {
+  const ref = useRef<HTMLDivElement>(null)
   const timeline = useRef<GSAPTimeline>()
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export const useToggleAnimation = ({
     if (isVisible) {
       timeline.current
         .clear()
-        .set(ref.current, { display: "block" })
+        .set(ref.current, { display })
         .to(ref.current, { ...enter })
     } else {
       timeline.current
@@ -44,7 +45,7 @@ export const useToggleAnimation = ({
         .to(ref.current, { ...initial })
         .set(ref.current, { display: "none" })
     }
-  }, [enter, initial, isVisible, ref])
+  }, [display, enter, initial, isVisible, ref])
 
-  return null
+  return { ref }
 }

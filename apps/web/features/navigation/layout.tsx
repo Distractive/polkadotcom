@@ -1,9 +1,10 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useState } from "react"
 import type { navigationSelection } from "@/sanity/selections/navigation/navigation"
 import type { TypeFromSelection } from "groqd"
 
+import { useBreakpoint } from "@/hooks/use-breakpoint"
 import { useHideOnScroll } from "@/hooks/use-hide-on-scroll"
 import { cn } from "@shared/ui"
 
@@ -16,28 +17,18 @@ interface Props {
   navigation: TypeFromSelection<typeof navigationSelection>
 }
 
-export const TIMELINE = {
-  defaults: {
-    ease: "power1.out",
-    duration: 0.5,
-  },
-}
-
 export default function NavigationLayout({ navigation }: Props) {
-  const [isMobileOpen, setIsMobileOpen] = useState(false)
-  const [hovered, setHovered] = useState<string | null>(null)
-
-  const nav = useRef<HTMLDivElement>(null)
-  useHideOnScroll({ ref: nav })
-
-  console.log(navigation)
+  const [isOpen, setIsOpen] = useState(false)
+  const [hovered, setHovered] = useState<string>("")
+  const isMobile = useBreakpoint("--screen-lg")
+  const { ref } = useHideOnScroll()
 
   return (
     <>
-      <Overlay isVisible={isMobileOpen || hovered} />
+      <Overlay isVisible={isOpen} />
       <nav
-        ref={nav}
-        onMouseLeave={() => setHovered(null)}
+        ref={ref}
+        onMouseLeave={() => setIsOpen(false)}
         className={cn(
           "fixed left-0 right-0 top-0 z-50 m-gutter lg:right-auto",
           "flex flex-col gap-gutter text-black lg:gap-2"
@@ -45,20 +36,25 @@ export default function NavigationLayout({ navigation }: Props) {
       >
         <Header
           menu={navigation.menu}
-          isMobileOpen={isMobileOpen}
-          setIsMobileOpen={setIsMobileOpen}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
           setHovered={setHovered}
         />
-        <MenuMobile
-          menu={navigation.menu}
-          isOpen={isMobileOpen}
-          setIsOpen={setIsMobileOpen}
-        />
-        <MenuDesktop
-          menu={navigation.menu}
-          hovered={hovered}
-          setHovered={setHovered}
-        />
+        {isMobile ? (
+          <MenuMobile
+            menu={navigation.menu}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+          />
+        ) : (
+          <MenuDesktop
+            menu={navigation.menu}
+            hovered={hovered}
+            setHovered={setHovered}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+          />
+        )}
       </nav>
     </>
   )
