@@ -13,7 +13,7 @@ interface Props {
 
 export function CardsBlock({ cards }: Props) {
   return (
-    <div key={cards._key} className="grid-system !mx-0 !px-0">
+    <div key={cards._key} className="grid-system px-gutter">
       <div
         className={cn(
           "col-span-12 pb-gutter",

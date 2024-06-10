@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
   cn,
 } from "@shared/ui"
+import { CustomUrl } from "@/components/custom-url"
 
 import { ActiveMarker } from "./active-marker"
 
@@ -23,7 +24,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
   const [active, setActive] = useState<string>("")
   const isMobile = useBreakpoint("--screen-lg")
 
-  const handleLinkClick = () => {
+  const handleSelectItem = () => {
     setIsOpen(false)
   }
 
@@ -47,28 +48,32 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
       <Accordion type="single" collapsible defaultValue={undefined}>
         {menu.map((section, sectionIndex) => (
           <AccordionItem key={sectionIndex} value={section.heading}>
-            <AccordionTrigger
-              onClick={() => setActive(section.heading)}
-              className="relative flex items-center justify-center shadow-internal-border"
-            >
+            <div className="relative flex items-center justify-center shadow-internal-border">
               <span className="flex w-gutter items-center justify-center">
                 <ActiveMarker isActive={active === section.heading} />
               </span>
-              <span
-                key={section.heading}
+              <CustomUrl
+                value={section.link}
+                onClick={handleSelectItem}
                 className={cn(
                   "flex-1 pb-gutter pr-gutter pt-gutter",
                   "border-r border-grey-300 text-left font-bold"
                 )}
               >
                 {section.heading}
-              </span>
-            </AccordionTrigger>
+              </CustomUrl>
+              <AccordionTrigger
+                onClick={() => setActive(section.heading)}
+                className="[&>svg]:mx-gutter"
+              />
+            </div>
+
             <AccordionContent className="bg-grey-100">
               {section.items.map((item, linkIndex) => (
-                <button
+                <CustomUrl
                   key={linkIndex}
-                  onClick={() => handleLinkClick()}
+                  value={item.link}
+                  onClick={handleSelectItem}
                   className={cn(
                     "block w-full p-gutter text-left shadow-internal-border",
                     // Give the last link a border bottom
@@ -81,7 +86,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                   )}
                 >
                   {item.link.label}
-                </button>
+                </CustomUrl>
               ))}
             </AccordionContent>
           </AccordionItem>

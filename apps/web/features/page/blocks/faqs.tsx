@@ -22,7 +22,7 @@ interface Props {
 
 export function FAQBlock({ faqs }: Props) {
   return (
-    <div className="grid-system !mx-0 !px-0 ">
+    <div className="grid-system gap-gutter px-gutter">
       <Heading
         variant="h2"
         className="col-span-12 lg:col-span-8 lg:col-start-3"
@@ -38,6 +38,7 @@ export function FAQBlock({ faqs }: Props) {
           <AccordionItem key={faq._key} value={faq._key}>
             <AccordionTrigger
               className={cn(
+                "flex flex-1 items-center justify-between py-4",
                 "font-default text-sm font-bold",
                 "border-b border-grey-300",
                 "hover:border-pink hover:text-pink",

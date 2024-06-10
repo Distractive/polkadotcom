@@ -30,7 +30,7 @@ const AccordionTrigger = React.forwardRef<
       {children}
       <Icon
         variant="chevronDown"
-        className="mx-gutter size-6 shrink-0 self-center transition-transform duration-500 ease-in-out"
+        className="size-6 shrink-0 self-center transition-transform duration-500 ease-in-out"
       />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>

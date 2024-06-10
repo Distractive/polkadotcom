@@ -30,6 +30,8 @@ export default function NavigationLayout({ navigation }: Props) {
   const nav = useRef<HTMLDivElement>(null)
   useHideOnScroll({ ref: nav })
 
+  console.log(navigation)
+
   return (
     <>
       <Overlay isVisible={isMobileOpen || hovered} />
@@ -37,7 +39,7 @@ export default function NavigationLayout({ navigation }: Props) {
         ref={nav}
         onMouseLeave={() => setHovered(null)}
         className={cn(
-          "fixed left-0 right-0 top-0 z-50 m-gutter lg:right-auto ",
+          "fixed left-0 right-0 top-0 z-50 m-gutter lg:right-auto",
           "flex flex-col gap-gutter text-black lg:gap-2"
         )}
       >

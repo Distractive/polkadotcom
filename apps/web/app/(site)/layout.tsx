@@ -37,8 +37,6 @@ export default async function RootLayout({
   const footer = await getFooter()
   const navigation = await getNavigation()
 
-  console.log(navigation)
-
   return (
     <html lang="en">
       <body

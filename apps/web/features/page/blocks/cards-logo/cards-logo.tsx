@@ -11,14 +11,14 @@ interface Props {
 
 export function CardsLogoBlock({ cards }: Props) {
   return (
-    <div key={cards._key} className="grid-system !mx-0 !px-0">
+    <div key={cards._key} className="grid-system px-gutter">
       <div className={cn("col-span-12 pb-gutter")}>
         <div className="flex flex-col gap-copy lg:w-5/6">
           <Heading variant="h2">{cards.heading}</Heading>
           {cards.body && <p>{cards.body}</p>}
         </div>
       </div>
-      <div className={cn("grid-system col-span-12 !mx-0 !px-0")}>
+      <div className={cn("grid-system col-span-12")}>
         {cards.items.map((card) => (
           <CardLogoBlock
             key={card._key}

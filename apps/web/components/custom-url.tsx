@@ -9,12 +9,14 @@ interface Props {
   children: React.ReactNode
   className?: string
   isWrapper?: boolean
+  onClick?: () => void
 }
 export function CustomUrl({
   value,
   children,
   className,
   isWrapper = false,
+  onClick,
 }: Props) {
   return value ? (
     <Link
@@ -22,19 +24,19 @@ export function CustomUrl({
       target={value.external ? "_blank" : "_self"}
       className={className}
       prefetch={!value.external}
+      onClick={onClick}
     >
       {isWrapper ? (
         children
       ) : (
-        <span className="flex flex-row items-center">
+        <span className="flex items-center gap-2">
           {children}
           {value.external && (
             <Icon
               variant="arrowRightUp"
               className={cn(
-                value.variant &&
-                  value.variant === "primary" &&
-                  "ml-2 fill-white"
+                "w-4",
+                value.variant && value.variant === "primary" && "fill-white"
               )}
             />
           )}

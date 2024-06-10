@@ -4,6 +4,7 @@ import { author, hygiene, landing, page, post, tag } from "./schemas/documents"
 import {
   accordion,
   accordionItem,
+  aside,
   blockContent,
   card,
   cardLogo,
@@ -49,6 +50,7 @@ const objectTypes = [
   menu,
   menuItem,
   socialLink,
+  aside,
 ]
 
 const singletons = [footer, navigation]

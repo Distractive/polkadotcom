@@ -11,7 +11,7 @@ interface Props {
 
 export function CardsStatBlock({ cards }: Props) {
   return (
-    <div key={cards._key} className="grid-system !mx-0 !px-0">
+    <div key={cards._key} className="grid-system px-gutter">
       <div className={cn("col-span-12 pb-gutter")}>
         <div className="flex flex-col gap-copy lg:w-5/6">
           <Heading variant="h2">{cards.heading}</Heading>

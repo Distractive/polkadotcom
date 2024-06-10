@@ -36,7 +36,7 @@ export function CardCarousel({ cards }: Props) {
     <Carousel
       setApi={setApi}
       opts={{ align: "start", loop: true }}
-      className="col-span-12 flex w-full flex-col gap-gutter"
+      className="col-span-12 flex flex-col gap-gutter"
     >
       <CarouselContent>
         {cards.map((card) => (

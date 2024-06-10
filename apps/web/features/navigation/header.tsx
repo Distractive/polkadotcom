@@ -3,6 +3,7 @@ import { type navigationMenuSelection } from "@/sanity/selections/navigation/nav
 import { type TypeFromSelection } from "groqd"
 
 import { cn } from "@shared/ui"
+import { CustomUrl } from "@/components/custom-url"
 import { Logo } from "@/components/logo"
 
 import { Burger } from "./burger"
@@ -20,7 +21,7 @@ export function Header({
   setIsMobileOpen,
   setHovered,
 }: Props) {
-  const handleLogoClick = () => {
+  const handleSelectItem = () => {
     setIsMobileOpen(false)
     setHovered(null)
   }
@@ -33,8 +34,8 @@ export function Header({
           "rounded-[3rem] border border-grey-300 bg-white"
         )}
       >
-        <Link href="/" onClick={handleLogoClick} className="lg:pr-gutter">
-          <Logo className="w-[9.125rem]" />
+        <Link href="/" onClick={handleSelectItem} className="lg:pr-gutter">
+          <Logo className="h-auto w-[9.125rem] md:hover:text-pink" />
         </Link>
         <ul
           className={cn(
@@ -48,7 +49,13 @@ export function Header({
               onMouseEnter={() => setHovered(item.heading)}
               className="cursor-pointer transition-colors duration-500 ease-in-out lg:hover:text-pink"
             >
-              {item.heading}
+              <CustomUrl
+                value={item.link}
+                onClick={handleSelectItem}
+                className="transition-colors duration-500 ease-in-out hover:text-pink"
+              >
+                {item.heading}
+              </CustomUrl>
             </li>
           ))}
         </ul>

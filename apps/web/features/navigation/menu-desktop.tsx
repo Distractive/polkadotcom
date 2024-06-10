@@ -2,6 +2,7 @@ import { type navigationMenuSelection } from "@/sanity/selections/navigation/nav
 import { type TypeFromSelection } from "groqd"
 
 import { cn } from "@shared/ui"
+import { CustomUrl } from "@/components/custom-url"
 
 interface Props {
   menu: ReadonlyArray<TypeFromSelection<typeof navigationMenuSelection>>
@@ -32,37 +33,40 @@ export function MenuDesktop({ menu, hovered, setHovered }: Props) {
             {section.items.map((item, index) => (
               <li
                 key={index}
-                className={cn("min-w-[21rem] shadow-internal-border")}
+                className={cn("min-w-[21rem] p-gutter shadow-internal-border")}
               >
-                <button
-                  onClick={() => handleLinkClick()}
-                  className="p-gutter transition-colors duration-500 ease-in-out hover:text-pink"
+                <CustomUrl
+                  value={item.link}
+                  onClick={handleLinkClick}
+                  className="leading-none transition-colors duration-500 ease-in-out hover:text-pink"
                 >
                   {item.link.label}
-                </button>
+                </CustomUrl>
               </li>
             ))}
             {section.items.length % 2 !== 0 && (
               <li className="min-w-[21rem] shadow-internal-border"></li>
             )}
           </ul>
-          {/* {section.aside && (
-            <aside
-              className={cn(
-                "group grid h-full max-w-[21rem] gap-copy p-gutter",
-                "cursor-pointer border-l border-grey-300"
-              )}
-            >
-              <img
-                src="/image-placeholder.png"
-                alt=""
-                className="h-[10.38rem] w-full"
-              />
-              <p className="text-lg font-bold transition-colors duration-500 ease-in-out group-hover:text-pink">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              </p>
-            </aside>
-          )} */}
+          {section.aside && (
+            <CustomUrl value={section.aside.link} onClick={handleLinkClick}>
+              <aside
+                className={cn(
+                  "group grid h-full max-w-[21rem] gap-copy p-gutter",
+                  "cursor-pointer border-l border-grey-300"
+                )}
+              >
+                <img
+                  src={section.aside.image.asset.url}
+                  alt=""
+                  className="w-full"
+                />
+                <p className="text-lg font-bold transition-colors duration-500 ease-in-out group-hover:text-pink">
+                  {section.aside.heading}
+                </p>
+              </aside>
+            </CustomUrl>
+          )}
         </div>
       ))}
     </div>

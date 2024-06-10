@@ -12,8 +12,6 @@ import {
   Heading,
 } from "@shared/ui"
 
-// import { CustomUrl } from "@/components/custom-url"
-
 interface Props {
   accordion: TypeFromSelection<typeof accordionSelection> & {
     _type: "accordion"
@@ -22,7 +20,7 @@ interface Props {
 
 export function AccordionBlock({ accordion }: Props) {
   return (
-    <div className="grid-system !mx-0 !px-0">
+    <div className="grid-system px-gutter">
       {accordion.hasTitleOnSide ? (
         <div className="col-span-12 pb-gutter lg:col-span-4">
           <div className="flex flex-col gap-copy lg:w-5/6">
@@ -31,7 +29,7 @@ export function AccordionBlock({ accordion }: Props) {
           </div>
         </div>
       ) : (
-        <div className="grid-system col-span-12 !mx-0 items-center justify-center !px-0 pb-gutter">
+        <div className="grid-system col-span-12 items-center justify-center pb-gutter">
           <img
             alt={accordion.title}
             className="col-span-12 aspect-video w-full rounded-2xl lg:col-span-6"
@@ -66,7 +64,8 @@ export function AccordionBlock({ accordion }: Props) {
           >
             <AccordionTrigger
               className={cn(
-                "border border-grey-300 p-gutter py-4 font-display hover:text-pink data-[state=open]:text-pink",
+                "flex flex-1 items-center justify-between p-gutter py-4",
+                "border border-grey-300 font-display font-medium hover:text-pink data-[state=open]:text-pink",
                 index === accordion.items.length - 1 &&
                   "rounded-b-2xl data-[state=open]:rounded-b-none",
                 index === 0 && "rounded-t-2xl",
