@@ -9,10 +9,13 @@ interface Props {
 
 export function Grid({ posts }: Props) {
   return (
-    <div className="grid-system col-span-12 !mx-0 !px-0">
+    <div className="grid-system col-span-12">
       {posts.map((post) => {
         return (
-          <div className="col-span-12 mb-12 md:col-span-3 lg:col-span-4">
+          <div
+            key={post._id}
+            className="col-span-12 mb-12 md:col-span-3 lg:col-span-4"
+          >
             <BlogCard post={post} />
           </div>
         )

@@ -22,51 +22,56 @@ export default function BlogCard({ post, className }: Props) {
         className
       )}
     >
-      <Link href={`/blog/${post.slug}`}>
-        {image && (
-          <CardHeader className={cn("relative z-10 aspect-video")}>
-            <img
-              src={image.asset.url}
-              alt=""
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover object-center"
-            />
-          </CardHeader>
-        )}
-        <CardContent className={cn("grid w-full p-6 sm:p-12")}>
-          {tags && (
-            <ul className="mb-6 flex flex-wrap gap-3">
-              {tags.map((tag) => (
-                <li
-                  key={tag.slug}
-                  className="mb-1 flex rounded bg-grey-200 px-3 py-1 text-left text-sm leading-relaxed"
-                >
+      {image && (
+        <CardHeader className={cn("relative z-10 aspect-video")}>
+          <img
+            src={image.asset.url}
+            alt=""
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+        </CardHeader>
+      )}
+      <CardContent className="grid w-full p-gutter">
+        {tags && (
+          <ul className="mb-6 flex flex-wrap gap-3">
+            {tags.map((tag) => (
+              <li
+                key={tag.slug}
+                className="mb-1 flex rounded bg-grey-200 px-3 py-1 text-left text-sm leading-relaxed"
+              >
+                <a className="relative z-20" href={`/blog/tag/${tag.slug}`}>
                   {tag.name}
-                </li>
-              ))}
-            </ul>
-          )}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
 
-          {title && (
-            <h4
-              className={cn(
-                "mb-1 line-clamp-2  text-lg font-bold transition-colors duration-500 ease-in-out",
-                "md:group-hover:text-pink"
-              )}
+        {title && (
+          <h4
+            className={cn(
+              "mb-1 text-lg font-bold transition-colors duration-500 ease-in-out",
+              "md:group-hover:text-pink"
+            )}
+          >
+            <Link
+              href={`/blog/${post.slug}`}
+              className="after:absolute after:inset-0 after:z-10 after:cursor-pointer"
             >
               {title}
-            </h4>
-          )}
-          {body && (
-            <CardDescription className="line-clamp-3">
-              {body[0]?.children
-                .filter((child) => child._type === "span")
-                .map((span) => span.text)
-                .join("")}
-            </CardDescription>
-          )}
-        </CardContent>
-      </Link>
+            </Link>
+          </h4>
+        )}
+        {body && (
+          <CardDescription className="line-clamp-3">
+            {body[0]?.children
+              .filter((child) => child._type === "span")
+              .map((span) => span.text)
+              .join("")}
+          </CardDescription>
+        )}
+      </CardContent>
     </Card>
   )
 }
