@@ -5,7 +5,6 @@ import { customUrlSelection } from "../custom-url"
 import { videoSelection } from "./video"
 
 export const headerSelection = {
-  _key: q.string(),
   image: sanityImage("image", {
     withAsset: ["base", "dimensions"],
   }).nullable(),

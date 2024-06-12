@@ -47,11 +47,11 @@ export function HeaderBlock({ header, hasBreadcrumb, className }: Props) {
             <span className="text-pink">Tier 2 Page</span>
           </div>
         )}
-        {header.title && (
-          <Heading variant="h1" className="text-balance">
-            {header.title}
-          </Heading>
-        )}
+
+        <Heading variant="h1" className="text-balance">
+          {header.title}
+        </Heading>
+
         {header.body && <p className="text-balance text-lg">{header.body}</p>}
         {header.link && (
           <Button variant="primary" size="lg" className="md:mr-auto">

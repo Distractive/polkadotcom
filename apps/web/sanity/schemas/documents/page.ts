@@ -17,8 +17,12 @@ export default defineType({
       type: "meta",
       group: "meta",
     }),
-    defineField({ name: "title", type: "string", group: "config" }),
-    defineField({ name: "body", type: "text", rows: 5, group: "config" }),
+    defineField({
+      name: "header",
+      title: "Header",
+      type: "header",
+      group: "config",
+    }),
     defineField({
       name: "slug",
       title: "Slug",

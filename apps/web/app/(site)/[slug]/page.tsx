@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getPage, getPageMeta } from "@/sanity/queries/page"
 
+import { HeaderBlock } from "@/features/page/blocks/header"
 import { PageBuilder } from "@/features/page/page-builder"
 
 interface Props {
@@ -27,8 +28,11 @@ export default async function Page({ params: { slug } }: Props) {
   const data = await getPage(slug)
   if (!data) return notFound()
   return (
-    <section className="col-span-12 grid gap-section">
-      <PageBuilder pageBuilder={data.pageBuilder} />
-    </section>
+    <>
+      <HeaderBlock header={data.header} />
+      <section className="col-span-12 grid gap-section">
+        <PageBuilder pageBuilder={data.pageBuilder} />
+      </section>
+    </>
   )
 }

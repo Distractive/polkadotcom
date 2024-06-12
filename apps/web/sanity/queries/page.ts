@@ -1,6 +1,7 @@
 import { runQuery } from "@/sanity/lib/groqd-query"
 import { q, sanityImage } from "groqd"
 
+import { headerSelection } from "../selections/blocks/header"
 import { pageBuilderSelection } from "../selections/page-builder"
 
 export async function getPageMeta(slug: string) {
@@ -33,8 +34,7 @@ export async function getPage(slug: string) {
     .filter("_type == 'landing' || _type == 'page' || _type == 'hygiene'")
     .filter("slug.current == $slug")
     .grab({
-      title: q.string(),
-      body: q.string().nullable(),
+      header: q("header").grab({ ...headerSelection }),
       slug: q.slug("slug"),
       ...pageBuilderSelection,
     })
