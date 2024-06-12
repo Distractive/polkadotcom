@@ -1,32 +1,36 @@
+import { type videoSelection } from "@/sanity/selections/blocks/video"
+import { type TypeFromSelection } from "groqd"
 import ReactPlayer from "react-player"
 
 import { cn, Icon } from "@shared/ui"
 
-interface Props {
-  url: string
-  placeholder: string
-}
-
 interface WrapperProps {
   children: React.ReactNode
 }
+
 const Wrapper = ({ children }: WrapperProps) => <>{children}</>
 
-export function VideoPlayer({ url, placeholder }: Props) {
+interface Props {
+  video: TypeFromSelection<typeof videoSelection>
+  className?: string
+}
+
+export function VideoBlock({ video, className }: Props) {
   return (
     <div
       className={cn(
         "aspect-video overflow-hidden rounded-2xl",
-        "[&>div>iframe]:overflow-hidden [&>div>iframe]:rounded-2xl"
+        "[&>div>iframe]:overflow-hidden [&>div>iframe]:rounded-2xl",
+        className
       )}
     >
       <ReactPlayer
-        url={url}
+        url={video.url}
         width="100%"
         height="100%"
         controls={false}
         playing
-        light={placeholder}
+        light={video.placeholderImage.asset.url}
         loop
         muted
         playIcon={
@@ -34,7 +38,7 @@ export function VideoPlayer({ url, placeholder }: Props) {
             className={cn(
               "flex size-16 items-center justify-center rounded-2xl",
               "border border-grey-300 bg-white/80 backdrop-blur-md",
-              "group"
+              "group transition-colors duration-500 ease-in-out"
             )}
           >
             <Icon variant="videoPlay" className="group-hover:fill-pink" />

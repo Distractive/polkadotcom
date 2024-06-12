@@ -17,12 +17,14 @@ import {
   customUrl,
   faq,
   faqs,
+  header,
   lineBreak,
   menu,
   menuItem,
   meta,
   pageBuilder,
   socialLink,
+  video,
   youtube,
 } from "./schemas/objects"
 import { footer, navigation } from "./schemas/singletons"
@@ -44,6 +46,7 @@ const objectTypes = [
   cardsStat,
   cardStat,
   customUrl,
+  header,
   pageBuilder,
   blockContent,
   lineBreak,
@@ -51,6 +54,7 @@ const objectTypes = [
   menuItem,
   socialLink,
   aside,
+  video,
 ]
 
 const singletons = [footer, navigation]

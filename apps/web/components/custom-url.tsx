@@ -35,7 +35,7 @@ export function CustomUrl({
             <Icon
               variant="arrowRightUp"
               className={cn(
-                "w-4",
+                "w-4 fill-current lg:w-5",
                 value.variant && value.variant === "primary" && "fill-white"
               )}
             />

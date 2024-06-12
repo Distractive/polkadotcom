@@ -5,7 +5,7 @@ import { useBreakpoint } from "./use-breakpoint"
 
 export const TIMELINE = {
   defaults: {
-    ease: "power1.inOut",
+    ease: "power1.out",
     duration: 0.5,
   },
 }

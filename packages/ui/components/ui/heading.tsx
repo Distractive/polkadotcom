@@ -6,7 +6,7 @@ import { cn } from "../../lib/utils"
 const HeadingStyles = {
   base: "font-display",
   variants: {
-    h1: "text-6xl md:text-7xl leading-snug",
+    h1: "text-5xl md:text-7xl leading-snug",
     h2: "text-4xl md:text-5xl leading-snug",
     h3: "text-2xl md:text-3xl leading-snug",
     h4: "text-xl md:text-2xl leading-normal",
