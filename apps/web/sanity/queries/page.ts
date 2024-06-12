@@ -9,8 +9,10 @@ export async function getPageMeta(slug: string) {
     .filter("_type == 'landing' || _type == 'page' || _type == 'hygiene'")
     .filter("slug.current == $slug")
     .grab({
-      title: q.string(),
-      body: q.string().nullable(),
+      header: q("header").grab({
+        title: q.string(),
+        body: q.string().nullable(),
+      }),
       slug: q.slug("slug"),
       meta: q("meta")
         .grab({

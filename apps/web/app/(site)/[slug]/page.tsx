@@ -14,10 +14,10 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const meta = await getPageMeta(slug)
   return {
-    title: meta.meta?.meta_title || meta.title || "Polkadot",
+    title: meta.meta?.meta_title || meta.header.title || "Polkadot",
     description:
       meta.meta?.meta_description ||
-      meta.body ||
+      meta.header.body ||
       "Polkadot empowers blockchain networks to work together under the protection of shared security.",
     openGraph: {
       images: [meta.meta?.meta_image?.asset.url || ""],

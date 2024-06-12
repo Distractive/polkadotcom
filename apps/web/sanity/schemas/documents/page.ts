@@ -53,7 +53,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: "title",
+      title: "header.title",
       subtitle: "parent.title",
     },
     prepare: ({ title, subtitle }) => ({
