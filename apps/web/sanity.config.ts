@@ -1,11 +1,13 @@
 "use client"
 
 import { deskStructure } from "@/sanity/desk"
+import * as resolve from "@/sanity/plugins/resolve"
 import { schema } from "@/sanity/schema"
 import { codeInput } from "@sanity/code-input"
 import { visionTool } from "@sanity/vision"
 import { groqdPlaygroundTool } from "groqd-playground"
 import { defineConfig } from "sanity"
+import { presentationTool } from "sanity/presentation"
 import { structureTool } from "sanity/structure"
 
 import { env } from "@/env.mjs"
@@ -41,5 +43,13 @@ export default defineConfig({
     visionTool({ defaultApiVersion: env.NEXT_PUBLIC_SANITY_API_VERSION }),
     groqdPlaygroundTool(),
     codeInput(),
+    presentationTool({
+      resolve,
+      previewUrl: {
+        draftMode: {
+          enable: "/api/draft",
+        },
+      },
+    }),
   ],
 })

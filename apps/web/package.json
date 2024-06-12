@@ -24,6 +24,7 @@
     "@portabletext/react": "^3.0.18",
     "@radix-ui/react-slot": "^1.0.2",
     "@sanity/code-input": "^4.1.4",
+    "@sanity/preview-url-secret": "^1.6.17",
     "@sanity/ui": "^2.1.12",
     "@sanity/vision": "^3.37.2",
     "@shared/ui": "workspace:*",
@@ -39,7 +40,7 @@
     "react-icons": "^5.2.1",
     "react-player": "^2.16.0",
     "readline": "^1.3.0",
-    "sanity": "^3.37.2",
+    "sanity": "^3.45.0",
     "styled-components": "^6.1.8"
   },
   "devDependencies": {

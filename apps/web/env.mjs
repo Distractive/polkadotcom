@@ -7,6 +7,8 @@ export const env = createEnv({
     NEXT_PUBLIC_SANITY_DATASET: z.string().min(1),
     NEXT_PUBLIC_SANITY_API_VERSION: z.string().min(1),
     NEXT_PUBLIC_GA_ID: z.string().min(1),
+    SANITY_API_READ_TOKEN: z.string().min(1),
+    VERCEL_ENV: z.string().min(1),
   },
   client: {
     NEXT_PUBLIC_SANITY_PROJECT_ID: z.string().min(1),
@@ -20,5 +22,7 @@ export const env = createEnv({
     NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET,
     NEXT_PUBLIC_SANITY_API_VERSION: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
     NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID,
+    SANITY_API_READ_TOKEN: process.env.SANITY_API_READ_TOKEN,
+    VERCEL_ENV: process.env.VERCEL_ENV,
   },
 })

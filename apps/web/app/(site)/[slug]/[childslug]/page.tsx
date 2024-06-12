@@ -1,30 +1,33 @@
 import type { Metadata } from "next"
+import { notFound } from "next/navigation"
 import { getPage, getPageMeta } from "@/sanity/queries/page"
 
 import { PageBuilder } from "@/features/page/page-builder"
 
 interface Props {
-  params: { childslug: string }
+  params: { slug: string; childslug: string }
 }
 
 export async function generateMetadata({
-  params: { childslug },
+  params: { slug, childslug },
 }: Props): Promise<Metadata> {
-  const meta = await getPageMeta(childslug)
+  const meta = await getPageMeta(`${slug}/${childslug}`)
   return {
-    title: meta.meta.meta_title,
+    title: meta.meta?.meta_title || meta.title || "Polkadot",
     description:
-      meta.meta.meta_description ||
+      meta.meta?.meta_description ||
       meta.body ||
       "Polkadot empowers blockchain networks to work together under the protection of shared security.",
     openGraph: {
-      images: [meta.meta.meta_image?.asset.url || ""],
+      images: [meta.meta?.meta_image?.asset.url || ""],
     },
   }
 }
 
-export default async function Page({ params: { childslug } }: Props) {
-  const data = await getPage(childslug)
+export default async function Page({ params: { slug, childslug } }: Props) {
+  const data = await getPage(`${slug}/${childslug}`)
+
+  if (!data) return notFound()
 
   return (
     <div className="my-4 flex flex-col">

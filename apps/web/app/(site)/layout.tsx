@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
+import { draftMode } from "next/headers"
 import { manrope, unbounded } from "@/styles/fonts"
 import { GoogleAnalytics } from "@next/third-parties/google"
+import { VisualEditing } from "next-sanity"
 
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 
@@ -46,10 +48,18 @@ export default async function RootLayout({
           "font-default antialiased"
         )}
       >
+        {draftMode().isEnabled && (
+          <div>
+            <a className="bg-blue-300 block p-4" href="/api/disable-draft">
+              Disable preview mode
+            </a>
+          </div>
+        )}
         <NavigationLayout navigation={navigation} />
         <main className="grid-system gap-page">{children}</main>
         <FooterLayout footer={footer} />
         <TailwindIndicator />
+        {draftMode().isEnabled && <VisualEditing />}
       </body>
       <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_ID} />
     </html>

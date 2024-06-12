@@ -11,13 +11,15 @@ export async function getPageMeta(slug: string) {
       title: q.string(),
       body: q.string().nullable(),
       slug: q.slug("slug"),
-      meta: q("meta").grab({
-        meta_title: q.string().nullable(),
-        meta_description: q.string().nullable(),
-        meta_image: sanityImage("meta_image", {
-          withAsset: ["base"],
-        }).nullable(),
-      }),
+      meta: q("meta")
+        .grab({
+          meta_title: q.string().nullable(),
+          meta_description: q.string().nullable(),
+          meta_image: sanityImage("meta_image", {
+            withAsset: ["base"],
+          }).nullable(),
+        })
+        .nullable(),
     })
     .slice(0)
 
@@ -37,7 +39,7 @@ export async function getPage(slug: string) {
       ...pageBuilderSelection,
     })
     .slice(0)
-
+    .nullable()
   return runQuery(pageQuery, {
     slug: slug,
   })
