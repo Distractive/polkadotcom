@@ -16,6 +16,7 @@ export const postSelection = {
     .deref()
     .grab$({ name: q.string(), slug: q.slug("slug") }),
   custom_excerpt: q.string().nullable(),
+  published_date: q.date(),
   body: q("body")
     .filter()
     .select({
@@ -26,7 +27,8 @@ export const postSelection = {
 export async function getPosts(
   page: number,
   postType: string,
-  tagSlug: string
+  tagSlug: string,
+  filteredSlug?: string // slug param to not include in query results
 ) {
   const unknownArrayQuery = q("").filter("").filter("")
   type UnknownArrayQuery = typeof unknownArrayQuery
@@ -40,8 +42,6 @@ export async function getPosts(
     const startIndex = (pageIndex - 1) * pageSize
     const endIndex = startIndex + pageSize - 1
 
-    console.log(postType)
-
     return q("").grab({
       posts: query
         .grab(selection)
@@ -51,15 +51,28 @@ export async function getPosts(
     })
   }
 
-  const tagFilter = tagSlug ? "$tagSlug in tags[]-> slug.current" : ""
+  const slugFilter = filteredSlug ? `slug.current != $filteredSlug` : ""
+  const tagFilter = tagSlug ? `"$tagSlug" in tags[]-> slug.current` : ""
+  const combinedFilter = [tagFilter, slugFilter].filter(Boolean).join(" && ")
 
   const postQuery = q("*")
     .filterByType("post")
-    .filter(tagFilter)
+    .filter(combinedFilter)
     .filter("post_type == $postType")
 
-  return runQuery(paginate(postQuery, postSelection, page, POSTS_PER_PAGE), {
-    postType: postType,
-    tagSlug: tagSlug,
-  })
+  const params: Record<string, string | number> = {
+    postType,
+    tagSlug,
+  }
+
+  if (filteredSlug) {
+    params.filteredSlug = filteredSlug // Add filteredSlug only if it's defined
+  }
+
+  return runQuery(
+    paginate(postQuery, postSelection, page, POSTS_PER_PAGE),
+    params
+  )
 }
+
+// filteredSlug ? POSTS_PER_PAGE - 1 : POSTS_PER_PAGE

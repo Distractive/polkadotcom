@@ -1,10 +1,10 @@
 import type { cardsSelection } from "@/sanity/selections/blocks/cards"
 import type { TypeFromSelection } from "groqd"
 
-import { cn, Heading } from "@shared/ui"
+import { CarouselItem, cn, Heading } from "@shared/ui"
 
+import { Carousel } from "../../../../components/carousel"
 import CardBlock from "./card"
-import { CardCarousel } from "./card-carousel"
 import { CardTags } from "./card-tags"
 
 interface Props {
@@ -27,7 +27,13 @@ export function CardsBlock({ cards }: Props) {
       </div>
 
       {cards.isCarousel ? (
-        <CardCarousel cards={cards.items} />
+        <Carousel>
+          {cards.items.map((card) => (
+            <CarouselItem key={card._key} className="basis-5/6 lg:basis-1/3">
+              <CardBlock key={card._key} card={card} className="h-full" />
+            </CarouselItem>
+          ))}
+        </Carousel>
       ) : (
         <>
           <div

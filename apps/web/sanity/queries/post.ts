@@ -12,6 +12,7 @@ export const postSelection = {
     .filter()
     .deref()
     .grab$({ name: q.string(), slug: q.slug("slug") }),
+  custom_excerpt: q.string().nullable(),
   author: q("author")
     .deref()
     .grab({
