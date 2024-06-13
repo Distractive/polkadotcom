@@ -9,6 +9,7 @@ import { CardsBlock } from "@/features/page/blocks/cards/cards"
 import { FAQBlock } from "@/features/page/blocks/faqs"
 
 import { ContentBlock } from "./blocks/content"
+import { QuoteBlock } from "./blocks/quote"
 
 interface Props {
   pageBuilder: TypeFromSelection<typeof pageBuilderSelection>["pageBuilder"]
@@ -31,6 +32,8 @@ export function PageBuilder({ pageBuilder }: Props) {
         return <CardsLogoBlock cards={item} />
       case "blockContent":
         return <ContentBlock content={item.content} />
+      case "quote":
+        return <QuoteBlock quote={item} />
       default:
         return <p>Unknown type: {item._type}</p>
     }

@@ -23,6 +23,7 @@ import {
   menuItem,
   meta,
   pageBuilder,
+  quote,
   socialLink,
   video,
   youtube,
@@ -55,6 +56,7 @@ const objectTypes = [
   socialLink,
   aside,
   video,
+  quote,
 ]
 
 const singletons = [footer, navigation]

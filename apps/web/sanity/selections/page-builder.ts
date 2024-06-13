@@ -8,6 +8,7 @@ import { cardsLogoSelection } from "./blocks/cards-logo"
 import { cardsSmallSelection } from "./blocks/cards-small"
 import { cardsStatSelection } from "./blocks/cards-stat"
 import { contentSelection } from "./blocks/content"
+import { quoteSelection } from "./blocks/quote"
 
 export const pageBuilderSelection = {
   pageBuilder: q("pageBuilder.pageBuilder")
@@ -40,6 +41,10 @@ export const pageBuilderSelection = {
       '_type == "blockContent"': {
         _type: q.literal("blockContent"),
         ...contentSelection,
+      },
+      '_type == "quote"': {
+        _type: q.literal("quote"),
+        ...quoteSelection,
       },
       default: {
         _key: q.string(),

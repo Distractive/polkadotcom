@@ -38,6 +38,10 @@ export default defineType({
           name: "blockContent",
           type: "blockContent",
         }),
+        defineArrayMember({
+          name: "quote",
+          type: "quote",
+        }),
       ],
     }),
   ],
