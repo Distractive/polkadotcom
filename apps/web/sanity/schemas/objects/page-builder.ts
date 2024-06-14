@@ -27,6 +27,10 @@ export default defineType({
           type: "cardsSmall",
         }),
         defineArrayMember({
+          name: "cardsTimeline",
+          type: "cardsTimeline",
+        }),
+        defineArrayMember({
           name: "cardsStat",
           type: "cardsStat",
         }),

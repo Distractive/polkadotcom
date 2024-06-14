@@ -43,7 +43,6 @@ export function AccordionBlock({ accordion }: Props) {
           </div>
         </div>
       )}
-
       <Accordion
         type="single"
         collapsible
@@ -120,7 +119,6 @@ export function AccordionBlock({ accordion }: Props) {
                     bullet: ({ children }) => <li>{children}</li>,
                     number: ({ children }) => <li>{children}</li>,
                   },
-
                   types: {
                     break: ({ value }) => {
                       const { style } = value

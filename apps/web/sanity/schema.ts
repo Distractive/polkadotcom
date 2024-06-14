@@ -14,6 +14,8 @@ import {
   cardsSmall,
   cardsStat,
   cardStat,
+  cardsTimeline,
+  cardTimeline,
   customUrl,
   faq,
   faqs,
@@ -56,6 +58,8 @@ const objectTypes = [
   socialLink,
   aside,
   video,
+  cardTimeline,
+  cardsTimeline,
   quote,
 ]
 

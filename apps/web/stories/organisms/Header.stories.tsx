@@ -5,9 +5,6 @@ import { HeaderBlock } from "@/features/page/blocks/header"
 const meta = {
   title: "Organisms/Header",
   component: HeaderBlock,
-  parameters: {
-    layout: "fullscreen",
-  },
 } satisfies Meta<typeof HeaderBlock>
 
 export default meta

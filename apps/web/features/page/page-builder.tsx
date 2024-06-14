@@ -5,6 +5,7 @@ import { AccordionBlock } from "@/features/page/blocks/accordion"
 import { CardsLogoBlock } from "@/features/page/blocks/cards-logo/cards-logo"
 import { CardsSmallBlock } from "@/features/page/blocks/cards-small/cards-small"
 import { CardsStatBlock } from "@/features/page/blocks/cards-stats/cards-stat"
+import { CardsTimelineBlock } from "@/features/page/blocks/cards-timeline/cards-timeline"
 import { CardsBlock } from "@/features/page/blocks/cards/cards"
 import { FAQBlock } from "@/features/page/blocks/faqs"
 
@@ -26,6 +27,8 @@ export function PageBuilder({ pageBuilder }: Props) {
         return <CardsBlock cards={item} />
       case "cardsSmall":
         return <CardsSmallBlock cards={item} />
+      case "cardsTimeline":
+        return <CardsTimelineBlock cards={item} />
       case "cardsStat":
         return <CardsStatBlock cards={item} />
       case "cardsLogo":
