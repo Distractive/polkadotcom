@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getPage, getPageMeta } from "@/sanity/queries/page"
 
+import type { BreadcrumbProps } from "@/features/page/blocks/breadcrumb"
 import { HeaderBlock } from "@/features/page/blocks/header"
 import { PageBuilder } from "@/features/page/page-builder"
 
@@ -28,11 +29,18 @@ export async function generateMetadata({
 export default async function Page({ params: { slug, childslug } }: Props) {
   const data = await getPage(`${slug}/${childslug}`)
 
+  const breadcrumb: BreadcrumbProps = {
+    items: [
+      { slug: `/${slug}` ?? "", title: data?.parent?.title ?? "" },
+      { slug: `/${slug}/${childslug}` ?? "", title: data?.header.title ?? "" },
+    ],
+  }
+
   if (!data) return notFound()
 
   return (
     <>
-      <HeaderBlock header={data.header} />
+      <HeaderBlock header={data.header} breadcrumb={breadcrumb} />
       <section className="col-span-12 grid gap-section">
         <PageBuilder pageBuilder={data.pageBuilder} />
       </section>

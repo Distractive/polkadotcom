@@ -38,11 +38,14 @@ export async function getPage(slug: string) {
     .grab({
       header: q("header").grab({ ...headerSelection }),
       slug: q.slug("slug"),
+      parent: q("parent")
+        .deref()
+        .grab({ ...headerSelection })
+        .nullable(),
       ...pageBuilderSelection,
     })
     .slice(0)
     .nullable()
-  return runQuery(pageQuery, {
-    slug: slug,
-  })
+
+  return await runQuery(pageQuery, { slug })
 }

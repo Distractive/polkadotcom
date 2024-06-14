@@ -6,15 +6,16 @@ import type { TypeFromSelection } from "groqd"
 import { Button, cn, Heading } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
 
+import { BreadcrumbBlock, BreadcrumbProps } from "./breadcrumb"
 import { VideoBlock } from "./video"
 
 interface Props {
   header: TypeFromSelection<typeof headerSelection>
-  hasBreadcrumb?: boolean
+  breadcrumb?: BreadcrumbProps
   className?: string
 }
 
-export function HeaderBlock({ header, hasBreadcrumb, className }: Props) {
+export function HeaderBlock({ header, breadcrumb, className }: Props) {
   return (
     <header
       className={cn(
@@ -40,13 +41,7 @@ export function HeaderBlock({ header, hasBreadcrumb, className }: Props) {
           header.image && "lg:basis-[50%]"
         )}
       >
-        {hasBreadcrumb && (
-          <div className="flex gap-2 text-sm">
-            <span>Tier 1 Page</span>
-            <span className="text-grey-400">/</span>
-            <span className="text-pink">Tier 2 Page</span>
-          </div>
-        )}
+        {breadcrumb && <BreadcrumbBlock items={breadcrumb.items} />}
 
         <Heading variant="h1" className="text-balance">
           {header.title}

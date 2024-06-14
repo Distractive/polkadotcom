@@ -18,7 +18,12 @@ export const TitleBody: Story = {
       title: "Title Body",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
-    hasBreadcrumb: true,
+    breadcrumb: {
+      items: [
+        { slug: "/parent", title: "Parent page" },
+        { slug: "/parent/child", title: "Child page" },
+      ],
+    },
   },
 }
 
@@ -34,7 +39,12 @@ export const TitleBodyLink: Story = {
         internal: { slug: "/" },
       },
     },
-    hasBreadcrumb: true,
+    breadcrumb: {
+      items: [
+        { slug: "/parent", title: "Parent page" },
+        { slug: "/parent/child", title: "Child page" },
+      ],
+    },
   },
 }
 
@@ -51,7 +61,12 @@ export const TitleBodyLinkImage: Story = {
         internal: null,
       },
     },
-    hasBreadcrumb: true,
+    breadcrumb: {
+      items: [
+        { slug: "/parent", title: "Parent page" },
+        { slug: "/parent/child", title: "Child page" },
+      ],
+    },
   },
 }
 
@@ -76,7 +91,12 @@ export const TitleBodyLinkVideo: Story = {
         },
       },
     },
-    hasBreadcrumb: true,
+    breadcrumb: {
+      items: [
+        { slug: "/parent", title: "Parent page" },
+        { slug: "/parent/child", title: "Child page" },
+      ],
+    },
   },
 }
 
@@ -92,7 +112,6 @@ export const TierOnePage: Story = {
         external: "https://google.co.uk",
         internal: null,
       },
-      hasBreadcrumb: false,
     },
   },
 }
@@ -110,7 +129,12 @@ export const TierTwoPage: Story = {
         internal: null,
       },
     },
-    hasBreadcrumb: true,
+    breadcrumb: {
+      items: [
+        { slug: "/parent", title: "Parent page" },
+        { slug: "/parent/child", title: "Child page" },
+      ],
+    },
   },
 }
 
@@ -131,7 +155,7 @@ export const All = {
           <HeaderBlock
             key={index}
             header={header.args.header}
-            hasBreadcrumb={header.args.hasBreadcrumb}
+            breadcrumb={header.args.breadcrumb}
             // Borders for visual separation only
             className="border-b border-t border-grey-300"
           />
