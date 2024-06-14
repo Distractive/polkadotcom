@@ -19,7 +19,7 @@ export const Primary: Story = {
     quote: {
       //@ts-ignore
       image: { asset: { url: "/image-placeholder.png" } },
-      heading:
+      title:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },

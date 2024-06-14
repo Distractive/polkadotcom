@@ -12,34 +12,28 @@ interface Props {
 
 export function QuoteBlock({ quote, className }: Props) {
   return (
-    <div
-      className={cn(
-        "m-gutter md:flex md:items-start lg:justify-center",
-        className
-      )}
-    >
+    <div className={cn("grid-system gap-card px-gutter", className)}>
       {quote.image && (
         <img
           src={quote.image.asset.url}
           alt=""
-          className="mb-gutter size-[6.125rem] rounded-xl md:mr-gutter md:mt-1 md:size-[11.5rem]"
+          className="col-span-2 w-full rounded-xl md:col-span-1 lg:col-span-2 lg:col-start-2"
         />
       )}
-      <div className={cn("lg:max-w-5xl")}>
+      <div
+        className={cn(
+          "col-span-full flex flex-col gap-copy lg:col-span-8 lg:col-start-4"
+        )}
+      >
         <h3
           className={cn(
-            "font-display text-5xl leading-[110%] md:text-4xl lg:text-[3.75rem]"
+            "font-display text-5xl leading-[110%] md:text-4xl xl:text-[3.75rem]"
           )}
         >
           {quote.title}
         </h3>
         {quote.body && (
-          <p
-            className={cn(
-              "pt-gutter text-lg leading-[150%] text-grey-500",
-              className
-            )}
-          >
+          <p className={cn("text-lg leading-[150%] text-grey-500", className)}>
             {quote.body}
           </p>
         )}
