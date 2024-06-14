@@ -52,7 +52,7 @@ export async function getPosts(
   }
 
   const slugFilter = filteredSlug ? `slug.current != $filteredSlug` : ""
-  const tagFilter = tagSlug ? `"$tagSlug" in tags[]-> slug.current` : ""
+  const tagFilter = tagSlug ? "$tagSlug in tags[]-> slug.current" : ""
   const combinedFilter = [tagFilter, slugFilter].filter(Boolean).join(" && ")
 
   const postQuery = q("*")
