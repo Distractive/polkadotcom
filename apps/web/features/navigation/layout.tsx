@@ -31,7 +31,8 @@ export default function NavigationLayout({ navigation }: Props) {
         onMouseLeave={() => setIsOpen(false)}
         className={cn(
           "fixed left-0 right-0 top-0 z-50 m-gutter lg:right-auto",
-          "flex flex-col gap-gutter text-black lg:gap-2"
+          "flex flex-col gap-gutter text-black lg:gap-2",
+          isOpen && "bottom-0"
         )}
       >
         <Header

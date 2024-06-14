@@ -27,10 +27,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
   return (
     <div
       ref={ref}
-      className={cn(
-        "flex flex-col gap-2 overflow-hidden",
-        "rounded-2xl border border-grey-300 bg-white opacity-0"
-      )}
+      className="overflow-scroll rounded-2xl border border-grey-300 bg-white opacity-0"
     >
       <Accordion type="single" collapsible defaultValue={undefined}>
         {menu.map((section, sectionIndex) => (
