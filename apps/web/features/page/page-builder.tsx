@@ -8,6 +8,7 @@ import { CardsStatBlock } from "@/features/page/blocks/cards-stats/cards-stat"
 import { CardsTimelineBlock } from "@/features/page/blocks/cards-timeline/cards-timeline"
 import { CardsBlock } from "@/features/page/blocks/cards/cards"
 import { FAQBlock } from "@/features/page/blocks/faqs"
+import { SideBySideBlock } from "@/features/page/blocks/side-by-side"
 
 import { ContentBlock } from "./blocks/content"
 import { QuoteBlock } from "./blocks/quote"
@@ -35,6 +36,8 @@ export function PageBuilder({ pageBuilder }: Props) {
         return <CardsLogoBlock cards={item} />
       case "blockContent":
         return <ContentBlock content={item.content} />
+      case "sideBySide":
+        return <SideBySideBlock content={item} />
       case "quote":
         return <QuoteBlock quote={item} />
       default:

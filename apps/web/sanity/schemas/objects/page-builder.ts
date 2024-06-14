@@ -43,6 +43,10 @@ export default defineType({
           type: "blockContent",
         }),
         defineArrayMember({
+          name: "sideBySide",
+          type: "sideBySide",
+        }),
+        defineArrayMember({
           name: "quote",
           type: "quote",
         }),

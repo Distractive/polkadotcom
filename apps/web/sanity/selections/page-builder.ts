@@ -9,6 +9,7 @@ import { cardsSmallSelection } from "./blocks/cards-small"
 import { cardsStatSelection } from "./blocks/cards-stat"
 import { cardsTimelineSelection } from "./blocks/cards-timeline"
 import { contentSelection } from "./blocks/content"
+import { sideBySideSelection } from "./blocks/side-by-side"
 import { quoteSelection } from "./blocks/quote"
 
 export const pageBuilderSelection = {
@@ -46,6 +47,10 @@ export const pageBuilderSelection = {
       '_type == "blockContent"': {
         _type: q.literal("blockContent"),
         ...contentSelection,
+      },
+      '_type == "sideBySide"': {
+        _type: q.literal("sideBySide"),
+        ...sideBySideSelection,
       },
       '_type == "quote"': {
         _type: q.literal("quote"),

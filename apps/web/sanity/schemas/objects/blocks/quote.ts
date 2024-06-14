@@ -23,4 +23,13 @@ export default defineType({
       rows: 5,
     }),
   ],
+  preview: {
+    select: {
+      title: "title",
+    },
+    prepare: ({ title }) => ({
+      title,
+      subtitle: "- Quote block",
+    }),
+  },
 })
