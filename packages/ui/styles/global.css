@@ -43,6 +43,7 @@
 @media (min-width: 64rem) {
   :root {
     --spacing-page: 9rem;
+    --spacing-gutter: 3rem;
     --spacing-section: 6rem;
   }
 }
