@@ -6,7 +6,7 @@ import { customUrlSelection } from "../custom-url"
 export const accordionSelection = {
   _key: q.string(),
   title: q.string(),
-  body: q.string().nullable(),
+  body: q.string().optional().nullable(),
   image: sanityImage("image", {
     withAsset: ["base"],
   }).nullable(),
