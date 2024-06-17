@@ -12,6 +12,11 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "subheading",
+      title: "Subheading",
+      type: "string",
+    }),
+    defineField({
       title: "Image",
       name: "image",
       type: "image",
@@ -32,7 +37,11 @@ export default defineType({
       of: [
         {
           type: "block",
-          styles: [{ title: "Normal", value: "normal" }],
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "H3", value: "h3" },
+            { title: "Smallprint", value: "smallprint"}
+          ],
           marks: {
             decorators: [{ title: "Strong", value: "strong" }],
           },

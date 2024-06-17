@@ -22,25 +22,52 @@ export function SideBySideBlock({ content, className }: Props) {
         )}
       >
         <div className={cn("lg:w-1/2")}>
-          <Heading variant="h2" className={cn("py-gutter lg:text-5xl")}>
+          <Heading
+            variant="h2"
+            className={cn(
+              content.subheading ? "pt-gutter" : "py-gutter",
+              "lg:text-5xl"
+            )}
+          >
             {content.heading}
           </Heading>
+          {content.subheading && (
+            <p className={cn("pb-gutter pt-copy text-lg text-black")}>
+              {content.subheading}
+            </p>
+          )}
           <PortableText
             value={content.content}
             components={{
               block: {
+                h3: ({ children }) => (
+                  <Heading variant="h3">{children}</Heading>
+                ),
                 normal: ({ children }) => (
                   <p className="text-lg text-black">{children}</p>
                 ),
+                smallprint: ({ children }) => (
+                  <p className="text-sm text-black">{children}</p>
+                ),
+              },
+              list: {
+                bullet: ({ children }) => (
+                  <ul className="my-4 list-outside list-disc pl-8 text-black marker:text-black">
+                    {children}
+                  </ul>
+                ),
+              },
+              listItem: {
+                bullet: ({ children }) => <li>{children}</li>,
               },
               types: {
                 customUrl: ({ value }) => {
                   return (
                     <Button
-                      variant={value.internal ? "primary" : "secondary"}
+                      variant="secondary"
                       size="sm"
                       asChild
-                      className="my-gutter"
+                      className="my-card"
                     >
                       <span>{value.label}</span>
                     </Button>
