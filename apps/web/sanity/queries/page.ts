@@ -40,7 +40,10 @@ export async function getPage(slug: string) {
       slug: q.slug("slug"),
       parent: q("parent")
         .deref()
-        .grab({ ...headerSelection })
+        .grab({
+          header: q("header").grab({ title: q.string() }),
+          slug: q.slug("slug"),
+        })
         .nullable(),
       ...pageBuilderSelection,
     })

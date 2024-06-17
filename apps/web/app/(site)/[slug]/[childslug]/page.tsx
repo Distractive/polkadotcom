@@ -31,7 +31,7 @@ export default async function Page({ params: { slug, childslug } }: Props) {
 
   const breadcrumb: BreadcrumbProps = {
     items: [
-      { slug: `/${slug}` ?? "", title: data?.parent?.title ?? "" },
+      { slug: `/${slug}` ?? "", title: data?.parent?.header.title ?? "" },
       { slug: `/${slug}/${childslug}` ?? "", title: data?.header.title ?? "" },
     ],
   }
