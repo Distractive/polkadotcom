@@ -21,6 +21,8 @@
   --spacing-gutter: 1rem;
   --spacing-card: 2rem;
   --spacing-copy: 1rem;
+  --spacing-nav: 3.5rem;
+  --spacing-header-top: calc(var(--spacing-nav) + var(--spacing-gutter));
 
   --screen-sm: 22.5rem;
   --screen-md: 45.5rem;

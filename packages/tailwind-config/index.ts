@@ -69,6 +69,8 @@ const config = {
         card: "var(--spacing-card)",
         copy: "var(--spacing-copy)",
         gutter: "var(--spacing-gutter)",
+        nav: "var(--spacing-nav)",
+        "header-top": "var(--spacing-header-top)",
       },
       boxShadow: {
         card: "0px 24px 32px 0px rgba(0, 0, 0, 0.05)",

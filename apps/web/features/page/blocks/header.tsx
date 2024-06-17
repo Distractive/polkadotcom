@@ -23,8 +23,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         header.image || header.video
           ? "lg:flex-row lg:items-center lg:justify-center"
           : "w-full lg:col-span-8 lg:col-start-3",
-        !header.image && "pt-40",
-
+        !header.image && "pt-header-top",
         className
       )}
     >

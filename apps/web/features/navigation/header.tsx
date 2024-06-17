@@ -27,7 +27,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
   }
 
   return (
-    <div className="flex h-14 flex-shrink-0 items-start justify-between">
+    <div className="h-nav flex flex-shrink-0 items-start justify-between">
       <div
         className={cn(
           "flex h-full items-center justify-center px-gutter lg:pr-0",
