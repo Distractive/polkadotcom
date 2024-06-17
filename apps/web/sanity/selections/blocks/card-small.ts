@@ -1,4 +1,4 @@
-import { nullToUndefined, q } from "groqd"
+import { nullToUndefined, q, sanityImage } from "groqd"
 import type { Selection } from "groqd"
 
 import { customUrlSelection } from "../custom-url"
@@ -12,4 +12,8 @@ export const cardSmallSelection = {
       ...customUrlSelection,
     })
     .nullable(),
+  icon: sanityImage("icon", {
+    withAsset: ["base", "dimensions"],
+  }).nullable(),
+  eyebrow: nullToUndefined(q.string().optional()),
 } satisfies Selection

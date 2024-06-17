@@ -30,5 +30,17 @@ export default defineType({
       type: "customUrl",
       group: "content",
     }),
+    defineField({
+      name: "icon",
+      title: "Icon",
+      type: "image",
+      group: "content",
+    }),
+    defineField({
+      name: "eyebrow",
+      title: "Eyebrow",
+      type: "string",
+      group: "content",
+    }),
   ],
 })

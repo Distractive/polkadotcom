@@ -14,6 +14,8 @@ type Story = StoryObj<typeof meta>
 export const Internal: Story = {
   args: {
     card: {
+      //@ts-ignore
+      icon: { asset: { url: "/icon-placeholder.png" } },
       _key: "internal",
       heading: "Internal Link Card",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -25,10 +27,16 @@ export const Internal: Story = {
 export const External: Story = {
   args: {
     card: {
-      _key: "internal",
+      //@ts-ignore
+      icon: null,
+      _key: "external",
       heading: "External Link Card",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: { label: "", external: "https://google.co.uk", internal: null },
+      link: {
+        label: "Learn more",
+        external: "https://google.co.uk",
+        internal: null,
+      },
     },
   },
 }
@@ -36,6 +44,8 @@ export const External: Story = {
 export const Static: Story = {
   args: {
     card: {
+      //@ts-ignore
+      icon: null,
       _key: "internal",
       heading: "Static Card",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -44,7 +54,58 @@ export const Static: Story = {
   },
 }
 
-const cards = [Internal, External, Static]
+export const ExternalWithIcon: Story = {
+  args: {
+    card: {
+      //@ts-ignore
+      icon: { asset: { url: "/icon-placeholder.png" } },
+      _key: "external",
+      heading: "External Link Card",
+      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      link: {
+        label: "External",
+        external: "https://google.co.uk",
+        internal: null,
+      },
+    },
+  },
+}
+
+export const InternalWithIcon: Story = {
+  args: {
+    card: {
+      //@ts-ignore
+      icon: { asset: { url: "/icon-placeholder.png" } },
+      _key: "internal",
+      heading: "Internal Link Card",
+      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      link: { label: "", external: null, internal: { slug: "home" } },
+    },
+  },
+}
+
+export const InternalWithEyebrow: Story = {
+  args: {
+    card: {
+      //@ts-ignore
+      icon: { asset: { url: "/icon-placeholder.png" } },
+      _key: "internal",
+      heading: "Internal Link Card",
+      eyebrow: "Date",
+      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      link: { label: "", external: null, internal: { slug: "home" } },
+    },
+  },
+}
+
+const cards = [
+  Internal,
+  External,
+  Static,
+  ExternalWithIcon,
+  InternalWithIcon,
+  InternalWithEyebrow,
+]
 
 export const All = {
   render: () => {
