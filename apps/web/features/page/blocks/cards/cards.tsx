@@ -1,6 +1,10 @@
+"use client"
+
+import { useEffect, useState } from "react"
 import type { cardsSelection } from "@/sanity/selections/blocks/cards"
 import type { TypeFromSelection } from "groqd"
 
+import { useBreakpoint } from "@/hooks/use-breakpoint"
 import { CarouselItem, cn, Heading } from "@shared/ui"
 
 import { Carousel } from "../../../../components/carousel"
@@ -12,12 +16,24 @@ interface Props {
 }
 
 export function CardsBlock({ cards }: Props) {
+  const [isSticky, setIsSticky] = useState(false)
+  const isMobile = useBreakpoint("--screen-lg")
+
+  useEffect(() => {
+    if (cards.showSideBySide && !isMobile) {
+      setIsSticky(true)
+    } else {
+      setIsSticky(false)
+    }
+  }, [cards, isMobile])
+
   return (
-    <div key={cards._key} className="grid-system px-gutter">
+    <div key={cards._key} className="grid-system relative px-gutter">
       <div
         className={cn(
           "col-span-12 pb-gutter",
-          cards.showSideBySide && "lg:col-span-4"
+          cards.showSideBySide && "lg:col-span-4",
+          isSticky && "sticky top-gutter mb-auto"
         )}
       >
         <div className="flex flex-col gap-copy lg:w-5/6">
@@ -25,7 +41,6 @@ export function CardsBlock({ cards }: Props) {
           {cards.body && <p>{cards.body}</p>}
         </div>
       </div>
-
       {cards.isCarousel ? (
         <Carousel>
           {cards.items.map((card) => (
@@ -46,15 +61,19 @@ export function CardsBlock({ cards }: Props) {
               <CardTags tags={cards.tags} cards={cards.items} />
             ) : (
               cards.items.map((card) => (
-                <CardBlock
+                <div
                   key={card._key}
-                  card={card}
-                  showSideBySide={cards.showSideBySide}
                   className={cn(
                     "col-span-12 md:col-span-3 lg:col-span-4",
-                    cards.showSideBySide && "lg:col-span-12"
+                    cards.showSideBySide && "lg:col-span-12",
+                    isSticky && "sticky top-gutter"
                   )}
-                />
+                >
+                  <CardBlock
+                    card={card}
+                    showSideBySide={cards.showSideBySide}
+                  />
+                </div>
               ))
             )}
           </div>
