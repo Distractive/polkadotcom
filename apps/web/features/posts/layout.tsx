@@ -50,9 +50,9 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
             <h1 className="font-display text-3xl capitalize">{tagSlug}</h1>
           </div>
         )}
-        <div className="grid-system col-span-12 mb-gutter">
+        <div className="grid-system col-span-12 mb-card">
           {tagSlug === "" && (
-            <search className="col-span-12 lg:col-span-8">
+            <search className="col-span-12 mb-8 lg:col-span-8 lg:mb-0">
               <SearchBar searches={searchData} />
             </search>
           )}
