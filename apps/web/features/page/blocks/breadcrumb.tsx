@@ -11,7 +11,7 @@ import {
 
 export type BreadcrumbItem = {
   slug: string
-  title: string
+  title?: string
 }
 
 export type BreadcrumbProps = {

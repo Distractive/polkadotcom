@@ -4,6 +4,8 @@ import type { Selection } from "groqd"
 
 import { POSTS_PER_PAGE } from "@/constants/global"
 
+import { blogSelection } from "../selections/blog/blog"
+
 export const postSelection = {
   title: q.string(),
   _id: q.string(),
@@ -75,4 +77,13 @@ export async function getPosts(
   )
 }
 
-// filteredSlug ? POSTS_PER_PAGE - 1 : POSTS_PER_PAGE
+export async function getBlogHeading() {
+  const query = q("*")
+    .filterByType("blog")
+    .grab$({
+      ...blogSelection,
+    })
+    .slice(0)
+
+  return runQuery(query, {})
+}

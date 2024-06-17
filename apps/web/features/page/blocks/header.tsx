@@ -28,10 +28,11 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
       )}
     >
       {header.image && (
+        //TODO: removed fixed height on image
         <img
           src={header.image.asset.url}
           alt=""
-          className={"h-auto w-full lg:order-2 lg:basis-[50%]"}
+          className={"h-auto w-full max-w-[812px] lg:order-2 lg:basis-[50%]"}
         />
       )}
       <div

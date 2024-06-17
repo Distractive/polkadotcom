@@ -3,6 +3,7 @@ import type {
   StructureResolverContext,
 } from "sanity/structure"
 
+import { blogStructure } from "./blog"
 import { footerStructure } from "./footer"
 import { hygieneStructure } from "./hygiene"
 import { parentChild } from "./landing"
@@ -22,6 +23,8 @@ export const deskStructure = (
       parentChild("landing", S, context.documentStore),
       S.divider(),
       hygieneStructure(S),
+      S.divider(),
+      blogStructure(S),
       S.divider(),
       navigationStructure(S),
       S.divider(),
