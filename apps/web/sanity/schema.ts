@@ -25,13 +25,13 @@ import {
   menuItem,
   meta,
   pageBuilder,
-  sideBySide,
   quote,
+  sideBySide,
   socialLink,
   video,
   youtube,
 } from "./schemas/objects"
-import { footer, navigation } from "./schemas/singletons"
+import { footer, navigation, notfound } from "./schemas/singletons"
 
 const documentTypes = [tag, author, post, landing, page, hygiene]
 const objectTypes = [
@@ -65,7 +65,7 @@ const objectTypes = [
   quote,
 ]
 
-const singletons = [footer, navigation]
+const singletons = [footer, navigation, notfound]
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [...documentTypes, ...objectTypes, ...singletons],

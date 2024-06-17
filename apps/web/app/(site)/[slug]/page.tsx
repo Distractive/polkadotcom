@@ -13,6 +13,12 @@ export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {
   const meta = await getPageMeta(slug)
+  if (!meta)
+    return {
+      title: "Polkadot 404",
+      description: "Page not found",
+    }
+
   return {
     title: meta.meta?.meta_title || meta.header.title || "Polkadot",
     description:

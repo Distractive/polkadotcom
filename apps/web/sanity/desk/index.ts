@@ -7,6 +7,7 @@ import { footerStructure } from "./footer"
 import { hygieneStructure } from "./hygiene"
 import { parentChild } from "./landing"
 import { navigationStructure } from "./navigation"
+import { notFoundStructure } from "./notfound"
 import { postStructure } from "./post"
 
 export const deskStructure = (
@@ -25,4 +26,6 @@ export const deskStructure = (
       navigationStructure(S),
       S.divider(),
       footerStructure(S),
+      S.divider(),
+      notFoundStructure(S),
     ])

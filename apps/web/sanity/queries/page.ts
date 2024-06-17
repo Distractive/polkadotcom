@@ -25,6 +25,7 @@ export async function getPageMeta(slug: string) {
         .nullable(),
     })
     .slice(0)
+    .nullable()
 
   return runQuery(pageQuery, {
     slug: slug,
