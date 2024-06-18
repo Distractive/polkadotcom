@@ -63,7 +63,6 @@ export default defineType({
       rows: 5,
       group: "content",
     }),
-
     defineField({
       name: "link",
       title: "Link",

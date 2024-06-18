@@ -25,5 +25,11 @@ export default defineType({
       group: "content",
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: "link",
+      title: "Link",
+      type: "customUrl",
+      group: "content",
+    }),
   ],
 })
