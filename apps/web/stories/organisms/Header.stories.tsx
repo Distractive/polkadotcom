@@ -5,6 +5,9 @@ import { HeaderBlock } from "@/features/page/blocks/header"
 const meta = {
   title: "Organisms/Header",
   component: HeaderBlock,
+  parameters: {
+    layout: "fullscreen",
+  },
 } satisfies Meta<typeof HeaderBlock>
 
 export default meta
@@ -74,7 +77,7 @@ export const TitleBodyLinkVideo: Story = {
   args: {
     header: {
       //@ts-ignore
-      title: "Title Body Link Image",
+      title: "Title Body Link Video",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       link: {
         label: "Learn more",

@@ -56,7 +56,7 @@ export default async function RootLayout({
           </div>
         )}
         <NavigationLayout navigation={navigation} />
-        <main className="grid-system gap-page">{children}</main>
+        <main className="grid-system gap-y-page">{children}</main>
         <FooterLayout footer={footer} />
         <TailwindIndicator />
         {draftMode().isEnabled && <VisualEditing />}
