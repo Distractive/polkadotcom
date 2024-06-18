@@ -32,7 +32,7 @@ export default function BlogCard({ post, className }: Props) {
           />
         </CardHeader>
       )}
-      <CardContent className="grid w-full p-gutter">
+      <CardContent className="grid w-full p-card">
         {tags && (
           <ul className="mb-6 flex flex-wrap gap-3">
             {tags.map((tag) => (

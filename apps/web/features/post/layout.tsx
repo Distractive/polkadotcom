@@ -22,7 +22,7 @@ export default async function Layout({ slug }: LayoutProps) {
 
   return (
     <>
-      <article className="col-span-full mx-6 lg:mx-auto lg:max-w-4xl ">
+      <article className="pt-header-top col-span-full mx-6 mt-gutter lg:mx-auto lg:max-w-4xl">
         <Heading variant={"h1"} className="mb-6">
           {title}
         </Heading>
@@ -68,6 +68,7 @@ export default async function Layout({ slug }: LayoutProps) {
             height={image.asset.metadata.dimensions?.height}
             alt=""
             loading="lazy"
+            className="rounded-2xl"
           />
         </PostImage>
 
