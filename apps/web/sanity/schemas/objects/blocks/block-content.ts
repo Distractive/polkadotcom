@@ -26,7 +26,22 @@ export default defineType({
             ],
           },
         },
+        {
+          type: "break",
+          initialValue: { style: "lineBreak" },
+        },
+        {
+          type: "customUrl",
+        },
       ],
+    }),
+    defineField({
+      name: "fullWidth",
+      title: "Full width?",
+      description:
+        "If false the content will be approximately 2/3 of the screen width on desktop. On mobile it will revert to full width.",
+      type: "boolean",
+      initialValue: false,
     }),
   ],
   preview: {

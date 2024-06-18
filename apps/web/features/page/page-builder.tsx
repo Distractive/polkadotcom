@@ -35,7 +35,7 @@ export function PageBuilder({ pageBuilder }: Props) {
       case "cardsLogo":
         return <CardsLogoBlock cards={item} />
       case "blockContent":
-        return <ContentBlock content={item.content} />
+        return <ContentBlock content={item} />
       case "sideBySide":
         return <SideBySideBlock content={item} />
       case "quote":
