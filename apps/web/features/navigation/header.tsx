@@ -27,19 +27,19 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
   }
 
   return (
-    <div className="h-nav flex flex-shrink-0 items-start justify-between">
+    <div className="h-nav-height flex flex-shrink-0 items-start justify-between">
       <div
         className={cn(
-          "flex h-full items-center justify-center px-gutter lg:pr-0",
+          "px-nav flex h-full items-center justify-center lg:pr-0",
           "rounded-[3rem] border border-grey-300 bg-white"
         )}
       >
-        <Link href="/" onClick={handleItemSelect} className="lg:pr-gutter">
+        <Link href="/" onClick={handleItemSelect} className="lg:pr-nav">
           <Logo className="h-auto w-[9.125rem] md:hover:text-pink" />
         </Link>
         <ul
           className={cn(
-            "hidden h-full items-center justify-center gap-gutter px-gutter lg:flex",
+            "gap-nav px-nav hidden h-full items-center justify-center lg:flex",
             "border-l border-grey-300 font-bold"
           )}
         >

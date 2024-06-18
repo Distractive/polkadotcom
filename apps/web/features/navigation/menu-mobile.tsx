@@ -33,14 +33,14 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
         {menu.map((section, sectionIndex) => (
           <AccordionItem key={sectionIndex} value={section.heading}>
             <div className="relative flex items-center justify-center shadow-internal-border">
-              <span className="flex w-gutter items-center justify-center">
+              <span className="w-nav flex items-center justify-center">
                 <ActiveMarker isActive={active === section.heading} />
               </span>
               <CustomUrl
                 value={section.link}
                 onClick={() => setIsOpen(false)}
                 className={cn(
-                  "flex-1 pb-gutter pr-gutter pt-gutter",
+                  "pb-nav pr-nav pt-nav flex-1",
                   "border-r border-grey-300 text-left font-bold"
                 )}
               >
@@ -48,7 +48,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
               </CustomUrl>
               <AccordionTrigger
                 onClick={() => setActive(section.heading)}
-                className="[&>svg]:mx-gutter"
+                className="[&>svg]:mx-nav"
               />
             </div>
             <AccordionContent className="bg-grey-100">
@@ -61,7 +61,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                     value={item.link}
                     onClick={() => setIsOpen(false)}
                     className={cn(
-                      "block w-full p-gutter text-left shadow-internal-border",
+                      "p-nav block w-full text-left shadow-internal-border",
                       lastLink && "border-b border-grey-300",
                       lastSection && lastLink && "border-none"
                     )}

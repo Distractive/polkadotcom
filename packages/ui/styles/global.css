@@ -16,14 +16,18 @@
 }
 
 :root {
-  --spacing-page: 7.5rem;
-  --spacing-section: 3rem;
-  --spacing-gutter: 1rem;
+  --spacing-page: 6rem;
+  --spacing-section: 2rem;
+  --spacing-gutter: 1.5rem;
   --spacing-card: 2rem;
   --spacing-copy: 1rem;
-  --spacing-nav: 3.5rem;
-  --spacing-header-top: calc(var(--spacing-nav) + var(--spacing-gutter));
+  --spacing-nav: 1.5rem;
 
+  /* The nav component is fixed. Spacing to prevent initial header overlap */
+  --spacing-nav-height: 3.5rem;
+  --spacing-header-top: calc(var(--spacing-nav-height) + var(--spacing-gutter));
+
+  /* Keep the screen vars below in sync with tailwind.config.ts */
   --screen-sm: 22.5rem;
   --screen-md: 45.5rem;
   --screen-lg: 64rem;
@@ -31,21 +35,20 @@
   --screen-2xl: 120rem;
 }
 
-/* 
-  As we can't use CSS custom properites for breakpoints, any changes to
-  'screens' values in tailwind.config.ts should also be updated below.   
-*/
+/* Keep the media queries synced with the screen vars above and those in tailwind.config.ts */
 
+/* Medium (Tablet) */
 @media (min-width: 45.5rem) {
   :root {
-    --spacing-gutter: 1.5rem;
+    --spacing-gutter: 2rem;
   }
 }
 
+/* Large (Desktop) */
 @media (min-width: 64rem) {
   :root {
-    --spacing-page: 9rem;
+    --spacing-page: 7.5rem;
+    --spacing-section: 4rem;
     --spacing-gutter: 3rem;
-    --spacing-section: 6rem;
   }
 }

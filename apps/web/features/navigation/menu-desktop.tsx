@@ -43,9 +43,7 @@ export function MenuDesktop({
                 {section.items.map((item, index) => (
                   <li
                     key={index}
-                    className={cn(
-                      "min-w-[21rem] p-gutter shadow-internal-border"
-                    )}
+                    className={cn("p-nav min-w-[21rem] shadow-internal-border")}
                   >
                     <CustomUrl
                       value={item.link}
@@ -64,7 +62,7 @@ export function MenuDesktop({
                 <CustomUrl value={section.aside.link} onClick={handleLinkClick}>
                   <aside
                     className={cn(
-                      "group grid h-full max-w-[21rem] gap-copy p-gutter",
+                      "p-nav group grid h-full max-w-[21rem] gap-copy",
                       "cursor-pointer border-l border-grey-300"
                     )}
                   >

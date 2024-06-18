@@ -70,6 +70,7 @@ const config = {
         copy: "var(--spacing-copy)",
         gutter: "var(--spacing-gutter)",
         nav: "var(--spacing-nav)",
+        "nav-height": "var(--spacing-nav-height)",
         "header-top": "var(--spacing-header-top)",
       },
       boxShadow: {
