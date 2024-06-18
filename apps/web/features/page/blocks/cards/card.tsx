@@ -99,7 +99,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                 )}
               />
             )}
-            {selectedTags && (
+            {selectedTags && selectedTags.length > 0 && (
               <ul className="flex gap-3">
                 {selectedTags.map((tag) => (
                   <li
