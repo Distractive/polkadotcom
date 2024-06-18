@@ -1,3 +1,5 @@
+import { HighlightDecorator } from "@/sanity/components/highlight-decorator"
+import { HighlightIcon } from "@/sanity/components/highlight-icon"
 import { defineField, defineType } from "sanity"
 
 export default defineType({
@@ -13,8 +15,25 @@ export default defineType({
     defineField({
       name: "title",
       title: "Title",
-      type: "string",
-      validation: (Rule) => Rule.required(),
+      type: "array",
+      of: [
+        {
+          type: "block",
+          styles: [{ title: "H3", value: "h3" }],
+          marks: {
+            decorators: [
+              {
+                title: "Highlight",
+                value: "highlight",
+                icon: HighlightIcon,
+                component: HighlightDecorator,
+              },
+            ],
+            annotations: [],
+          },
+          lists: [],
+        },
+      ],
     }),
     defineField({
       name: "body",
@@ -25,11 +44,21 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: "title",
+      blocks: "title",
     },
-    prepare: ({ title }) => ({
-      title,
-      subtitle: "- Quote block",
-    }),
+    prepare(value) {
+      const block = (value.blocks || []).find(
+        (block: any) => block._type === "block"
+      )
+      return {
+        title: block
+          ? block.children
+              .filter((child: any) => child._type === "span")
+              .map((span: any) => span.text)
+              .join("")
+          : "No title",
+        subtitle: "- Quote block",
+      }
+    },
   },
 })

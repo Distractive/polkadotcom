@@ -1,9 +1,8 @@
-"use client"
-
 import { type quoteSelection } from "@/sanity/selections/blocks/quote"
 import { type TypeFromSelection } from "groqd"
+import { PortableText } from "next-sanity"
 
-import { cn } from "@shared/ui"
+import { cn, Heading } from "@shared/ui"
 
 interface Props {
   className?: string
@@ -25,13 +24,19 @@ export function QuoteBlock({ quote, className }: Props) {
           "col-span-full flex flex-col gap-copy lg:col-span-8 lg:col-start-4"
         )}
       >
-        <h3
-          className={cn(
-            "font-display text-5xl leading-[110%] md:text-4xl xl:text-[3.75rem]"
-          )}
-        >
-          {quote.title}
-        </h3>
+        <PortableText
+          value={quote.title}
+          components={{
+            block: {
+              h3: ({ children }) => <Heading variant="h3">{children}</Heading>,
+            },
+            marks: {
+              highlight: ({ children }) => (
+                <span className="text-pink">{children}</span>
+              ),
+            },
+          }}
+        />
         {quote.body && (
           <p className={cn("text-lg leading-[150%] text-grey-500", className)}>
             {quote.body}

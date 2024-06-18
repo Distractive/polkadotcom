@@ -6,6 +6,6 @@ export const quoteSelection = {
   image: sanityImage("image", {
     withAsset: ["base", "dimensions"],
   }).nullable(),
-  title: q.string(),
+  title: q.contentBlocks(),
   body: nullToUndefined(q.string().optional()),
 } satisfies Selection
