@@ -12,15 +12,11 @@ export default defineType({
   ],
   fields: [
     defineField({
-      name: "meta",
-      type: "meta",
-      group: "meta",
-    }),
-    defineField({
-      name: "header",
-      title: "Header",
-      type: "header",
-      group: "config",
+      name: "title",
+      title: "Title",
+      type: "string",
+      validation: (rule) => rule.required(),
+      description: "The title of the page used for navigation",
     }),
     defineField({
       name: "slug",
@@ -33,6 +29,18 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "meta",
+      type: "meta",
+      group: "meta",
+    }),
+    defineField({
+      name: "header",
+      title: "Header",
+      type: "header",
+      group: "config",
+    }),
+
+    defineField({
       name: "pageBuilder",
       type: "pageBuilder",
       group: "content",
@@ -40,7 +48,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: "header.title",
+      title: "title",
     },
   },
 })

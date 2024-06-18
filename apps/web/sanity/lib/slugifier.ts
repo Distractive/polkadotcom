@@ -1,9 +1,9 @@
 import { client } from "./client"
 
 export async function slugifier(input: {
-  doc: { title: string; header: { title: string }; parent: { _ref: string } }
+  doc: { title: string; parent: { _ref: string } }
 }) {
-  let pageSlug = input.doc.header.title
+  let pageSlug = input.doc.title
     .toLowerCase()
     .replace(/\s+/g, "-") // slugify the title
     .slice(0, 200)

@@ -37,12 +37,13 @@ export async function getPage(slug: string) {
     .filter("_type == 'landing' || _type == 'page' || _type == 'hygiene'")
     .filter("slug.current == $slug")
     .grab({
+      title: q.string(),
       header: q("header").grab({ ...headerSelection }),
       slug: q.slug("slug"),
       parent: q("parent")
         .deref()
         .grab({
-          header: q("header").grab({ title: q.string() }),
+          title: q.string(),
           slug: q.slug("slug"),
         })
         .nullable(),
