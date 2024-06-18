@@ -9,7 +9,7 @@ export function parentChild(
   documentStore: DocumentStore
 ) {
   const filter = `_type == "${schemaType}" && !defined(parent) && !(_id in path("drafts.**"))`
-  const query = `*[${filter}]{ _id, header{title} }`
+  const query = `*[${filter}]{ _id, title }`
   const options = { apiVersion: `2023-01-01` }
 
   return (
@@ -49,7 +49,7 @@ export function parentChild(
                 ...parents.map((parent: SanityDocument) =>
                   S.listItem({
                     id: parent._id,
-                    title: parent.header.title || "Untitled",
+                    title: parent.title || "Untitled",
                     schemaType,
                     child: () =>
                       S.documentTypeList("page")

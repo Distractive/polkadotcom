@@ -17,44 +17,34 @@ interface Props {
 
 export function HeaderBlock({ header, breadcrumb, className }: Props) {
   return (
-    <header
-      className={cn(
-        "col-span-full flex flex-col",
-        header.image || header.video
-          ? "lg:flex-row lg:items-center lg:justify-center"
-          : "w-full lg:col-span-8 lg:col-start-3",
-        !header.image && "pt-header-top",
-        className
-      )}
-    >
+    <header className={cn("grid-system col-span-full", className)}>
       {header.image && (
-        //TODO: removed fixed height on image
         <img
           src={header.image.asset.url}
           alt=""
-          className={"h-auto w-full max-w-[812px] lg:order-2 lg:basis-[50%]"}
+          className="col-span-full w-full lg:order-2 lg:col-span-6 lg:col-start-7"
         />
       )}
       <div
         className={cn(
-          "flex flex-col gap-copy px-gutter py-card",
-          header.image && "lg:basis-[50%]"
+          "col-span-full flex flex-col items-start justify-center gap-copy ",
+          header.image
+            ? "px-gutter pt-card lg:order-1 lg:col-span-6 lg:col-start-1 lg:pt-header-top"
+            : "mt-gutter px-gutter pt-header-top lg:col-span-8 lg:col-start-3"
         )}
       >
         {breadcrumb && <BreadcrumbBlock items={breadcrumb.items} />}
 
-        <Heading variant="h1" className="text-balance">
-          {header.title}
-        </Heading>
+        <Heading variant="h1">{header.title}</Heading>
 
-        {header.body && <p className="text-balance text-lg">{header.body}</p>}
+        {header.body && <p className="text-lg">{header.body}</p>}
         {header.link && (
-          <Button variant="primary" size="lg" className="md:mr-auto">
+          <Button variant="primary" size="lg" className="mt-copy">
             <CustomUrl value={header.link}>{header.link.label}</CustomUrl>
           </Button>
         )}
         {header.video && (
-          <VideoBlock video={header.video} className="mt-copy" />
+          <VideoBlock video={header.video} className="mt-gutter w-full" />
         )}
       </div>
     </header>

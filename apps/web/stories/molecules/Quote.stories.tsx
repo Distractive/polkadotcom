@@ -19,8 +19,33 @@ export const Primary: Story = {
     quote: {
       //@ts-ignore
       image: { asset: { url: "/image-placeholder.png" } },
-      title:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      title: [
+        {
+          _key: "parent",
+          _type: "block",
+          children: [
+            {
+              _key: "b1a5bf3836810",
+              _type: "span",
+              marks: [],
+              text: "The new staking dashboard is seamless to operate so that it",
+            },
+            {
+              _key: "2ee530b968de",
+              _type: "span",
+              marks: ["highlight"],
+              text: "empowers any token holder",
+            },
+            {
+              _key: "4da5bffaba11",
+              _type: "span",
+              marks: [],
+              text: "to contribute to the security and maintenance of the network - irrespective of technical knowledge.",
+            },
+          ],
+          style: "h3",
+        },
+      ],
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
   },
