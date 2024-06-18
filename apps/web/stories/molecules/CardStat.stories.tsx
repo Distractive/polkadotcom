@@ -17,6 +17,7 @@ export const Primary: Story = {
       _key: "internal",
       heading: "1.3 million",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      link: null,
     },
   },
 }
