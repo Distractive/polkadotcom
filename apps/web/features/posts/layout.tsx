@@ -43,10 +43,12 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
 
   return (
     <>
-      <HeaderBlock header={header} breadcrumb={breadcrumb} />
+      {tagSlug === "" && (
+        <HeaderBlock header={header} breadcrumb={breadcrumb} />
+      )}
       <div className="col-span-12 px-gutter">
         {tagSlug !== "" && (
-          <div className="col-span-12 flex justify-center pb-gutter pt-page">
+          <div className="pt-header-top col-span-12 mt-gutter flex justify-center pb-gutter">
             <h1 className="font-display text-3xl capitalize">{tagSlug}</h1>
           </div>
         )}
