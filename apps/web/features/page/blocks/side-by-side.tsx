@@ -44,7 +44,7 @@ export function SideBySideBlock({ content, className }: Props) {
                   <Heading variant="h3">{children}</Heading>
                 ),
                 normal: ({ children }) => (
-                  <p className="text-lg text-black">{children}</p>
+                  <p className="py-copy text-lg text-black">{children}</p>
                 ),
                 smallprint: ({ children }) => (
                   <p className="text-sm text-black">{children}</p>
