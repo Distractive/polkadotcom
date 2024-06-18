@@ -23,7 +23,12 @@ export default function CardTimelineBlock({
   className,
 }: Props) {
   return (
-    <Card className={cn("flex flex-col rounded-none border-0 pt-4", className)}>
+    <Card
+      className={cn(
+        "flex flex-col rounded-none border-0 pt-4 md:pt-6",
+        className
+      )}
+    >
       <CardHeader
         className={cn(
           "grid border-t border-grey-400 font-display text-2xl",
