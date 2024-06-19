@@ -31,7 +31,13 @@ import {
   video,
   youtube,
 } from "./schemas/objects"
-import { blog, footer, navigation, notfound } from "./schemas/singletons"
+import {
+  blog,
+  footer,
+  navigation,
+  notfound,
+  pressReleases,
+} from "./schemas/singletons"
 
 const documentTypes = [tag, author, post, landing, page, hygiene]
 const objectTypes = [
@@ -65,7 +71,7 @@ const objectTypes = [
   quote,
 ]
 
-const singletons = [footer, navigation, notfound, blog]
+const singletons = [footer, navigation, notfound, blog, pressReleases]
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [...documentTypes, ...objectTypes, ...singletons],

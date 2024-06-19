@@ -1,3 +1,4 @@
+export { default as pressReleases } from "./press-releases"
 export { default as blog } from "./blog"
 export { default as notfound } from "./notfound"
 export { default as footer } from "./footer"

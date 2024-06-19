@@ -1,9 +1,13 @@
-import { getBlogHeading, getPosts } from "@/sanity/queries/posts"
+import { getPostHeading, getPosts } from "@/sanity/queries/posts"
 import { getSearchData } from "@/sanity/queries/search"
 import type { headerSelection } from "@/sanity/selections/blocks/header"
 import type { TypeFromSelection } from "groqd"
 
-import { POSTS_PER_PAGE } from "@/constants/global"
+import {
+  BLOG_POSTTYPE,
+  POSTS_PER_PAGE,
+  PRESS_RELEASE_POSTTYPE,
+} from "@/constants/global"
 import { cn } from "@shared/ui"
 
 import type { BreadcrumbProps } from "../page/blocks/breadcrumb"
@@ -14,36 +18,46 @@ import { SearchBar } from "./search-bar"
 
 interface LayoutProps {
   page: number
-  type: "blog" | "press-release"
+  type: typeof BLOG_POSTTYPE | typeof PRESS_RELEASE_POSTTYPE
   tagSlug: string
+  withHeader?: boolean
 }
 
-export default async function Layout({ page, tagSlug, type }: LayoutProps) {
-  const data = await getPosts(page, "Blog", tagSlug)
-  const blogData = await getBlogHeading()
-  const searchData = await getSearchData()
+export default async function Layout({
+  page,
+  tagSlug,
+  type,
+  withHeader = true,
+}: LayoutProps) {
+  const data = await getPosts(page, type, tagSlug)
+  const postType = type == BLOG_POSTTYPE ? "blog" : "press-releases"
+  const postsData = await getPostHeading(postType)
+  const searchData = await getSearchData(type)
 
   const breadcrumb: BreadcrumbProps = {
     items: [
       {
-        slug: `${blogData?.parent?.slug}` ?? "",
-        title: blogData?.parent?.header?.title,
+        slug: `/${postsData?.parent?.slug}` ?? "",
+        title: postsData?.parent?.header?.title,
       },
-      { slug: `${blogData?.slug}` ?? "", title: blogData?.heading },
+      {
+        slug: `/${postsData?.parent?.slug}/${postsData?.slug}` ?? "",
+        title: postsData?.heading,
+      },
     ],
   }
 
   const header: TypeFromSelection<typeof headerSelection> = {
-    image: blogData.headerImage,
-    title: blogData.heading,
-    body: blogData.body,
+    image: postsData.headerImage,
+    title: postsData.heading,
+    body: postsData.body,
     video: null,
     link: null,
   }
 
   return (
     <>
-      {tagSlug === "" && (
+      {withHeader && tagSlug === "" && (
         <HeaderBlock header={header} breadcrumb={breadcrumb} />
       )}
       <div className="col-span-12 px-gutter">
@@ -55,9 +69,10 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
         <div className="grid-system col-span-12 mb-card">
           {tagSlug === "" && (
             <search className="col-span-12 mb-8 lg:col-span-8 lg:mb-0">
-              <SearchBar searches={searchData} />
+              <SearchBar searches={searchData} postType={type} />
             </search>
           )}
+
           <div
             className={cn(
               "col-span-12 flex items-center lg:col-span-4 lg:justify-end",
@@ -76,6 +91,7 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
         <section className="col-span-12">
           <Grid posts={data.posts} />
         </section>
+
         <PostPagination
           total={data.totalCount}
           limit={POSTS_PER_PAGE}

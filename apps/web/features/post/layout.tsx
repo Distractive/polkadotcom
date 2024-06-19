@@ -1,28 +1,58 @@
 import type { ReactNode } from "react"
 import { getPost } from "@/sanity/queries/post"
-import { getPosts, postSelection } from "@/sanity/queries/posts"
+import { getPostHeading, getPosts, postSelection } from "@/sanity/queries/posts"
 import { TypeFromSelection } from "groqd"
 
+import { BLOG_POSTTYPE, PRESS_RELEASE_POSTTYPE } from "@/constants/global"
 import { CarouselItem, cn, Heading } from "@shared/ui"
 
 import { Carousel } from "../../components/carousel"
+import { BreadcrumbBlock } from "../page/blocks/breadcrumb"
+import type { BreadcrumbProps } from "../page/blocks/breadcrumb"
 import { Body } from "./body"
 import BlogCard from "./card"
 
 interface LayoutProps {
   slug: string
+  type: typeof BLOG_POSTTYPE | typeof PRESS_RELEASE_POSTTYPE
 }
 
-export default async function Layout({ slug }: LayoutProps) {
+export default async function Layout({ slug, type }: LayoutProps) {
   const post = await getPost(slug)
-  const allPosts = await getPosts(1, "Blog", "", slug)
+  const allPosts = await getPosts(1, type, "", slug)
+  const headingType = type == BLOG_POSTTYPE ? "blog" : "press-releases"
+  const postsData = await getPostHeading(headingType)
 
-  const { title, custom_excerpt, author, published_date, image, body, tags } =
-    post
+  const breadcrumb: BreadcrumbProps = {
+    items: [
+      {
+        slug: `/${postsData?.parent?.slug}` ?? "",
+        title: postsData?.parent?.header?.title,
+      },
+      {
+        slug: `/${postsData?.parent?.slug}/${postsData?.slug}` ?? "",
+        title: postsData?.heading,
+      },
+    ],
+  }
+
+  const {
+    title,
+    custom_excerpt,
+    author,
+    published_date,
+    image,
+    body,
+    tags,
+    post_type,
+  } = post
 
   return (
     <>
       <article className="pt-header-top col-span-full mx-6 mt-gutter lg:mx-auto lg:max-w-4xl">
+        <div className="mb-6">
+          <BreadcrumbBlock items={breadcrumb.items} />
+        </div>
         <Heading variant={"h1"} className="mb-6">
           {title}
         </Heading>
@@ -35,7 +65,14 @@ export default async function Layout({ slug }: LayoutProps) {
                   key={tag.slug}
                   className="mb-1 flex rounded bg-grey-200 px-3 py-1 text-left text-sm leading-relaxed"
                 >
-                  <a className="relative z-20" href={`/blog/tag/${tag.slug}`}>
+                  <a
+                    className="relative z-20"
+                    href={
+                      post_type == BLOG_POSTTYPE
+                        ? `/blog/tag/${tag.slug}`
+                        : `/newsroom/press-releases/tag/${tag.slug}`
+                    }
+                  >
                     {tag.name}
                   </a>
                 </li>
@@ -61,20 +98,21 @@ export default async function Layout({ slug }: LayoutProps) {
             </span>
           </PostPublish>
         </PostMetaData>
-        <PostImage>
-          <img
-            src={image.asset.url}
-            width={image.asset.metadata.dimensions?.width}
-            height={image.asset.metadata.dimensions?.height}
-            alt=""
-            loading="lazy"
-            className="rounded-2xl"
-          />
-        </PostImage>
-
+        {image && (
+          <PostImage>
+            <img
+              src={image.asset.url}
+              width={image.asset.metadata.dimensions?.width}
+              height={image.asset.metadata.dimensions?.height}
+              alt=""
+              loading="lazy"
+              className="rounded-2xl"
+            />
+          </PostImage>
+        )}
         <Body body={body} />
       </article>
-      <PostFromBlog posts={allPosts.posts} />
+      <MorePost posts={allPosts.posts} post_type={post_type} />
     </>
   )
 }
@@ -103,16 +141,20 @@ const PostImage = ({ children }: { children: ReactNode }) => {
   )
 }
 
-const PostFromBlog = ({
+const MorePost = ({
   posts,
+  post_type,
 }: {
   posts: Array<TypeFromSelection<typeof postSelection>>
+  post_type: string
 }) => {
+  const headingLabel =
+    post_type == BLOG_POSTTYPE ? "From the blog" : "More from newsroom"
   return (
     <div className="col-span-full mb-12 px-gutter">
       <div className={cn("col-span-12 mb-12")}>
         <div className="flex flex-col gap-copy lg:w-5/6">
-          <Heading variant="h2">From the blog</Heading>
+          <Heading variant="h2">{headingLabel}</Heading>
         </div>
       </div>
       <Carousel>

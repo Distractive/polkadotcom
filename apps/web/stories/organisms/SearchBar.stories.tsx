@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
+import { BLOG_POSTTYPE } from "@/constants/global"
 import { SearchBar } from "@/features/posts/search-bar"
 
 const meta = {
@@ -13,6 +14,7 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
+    postType: BLOG_POSTTYPE,
     searches: [
       {
         title: "Revamping Polkadot Governance with Polkadot OpenGov",

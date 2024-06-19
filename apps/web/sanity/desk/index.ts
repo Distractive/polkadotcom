@@ -10,6 +10,7 @@ import { parentChild } from "./landing"
 import { navigationStructure } from "./navigation"
 import { notFoundStructure } from "./notfound"
 import { postStructure } from "./post"
+import { pressReleasesStructure } from "./press-releases"
 
 export const deskStructure = (
   S: StructureBuilder,
@@ -25,6 +26,8 @@ export const deskStructure = (
       hygieneStructure(S),
       S.divider(),
       blogStructure(S),
+      S.divider(),
+      pressReleasesStructure(S),
       S.divider(),
       navigationStructure(S),
       S.divider(),

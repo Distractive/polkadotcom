@@ -1,6 +1,8 @@
 import { CogIcon, DocumentIcon, SearchIcon } from "@sanity/icons"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
+import { BLOG_POSTTYPE, PRESS_RELEASE_POSTTYPE } from "@/constants/global"
+
 export default defineType({
   name: "post",
   title: "Post",
@@ -22,7 +24,7 @@ export default defineType({
       title: "Post Type",
       type: "string",
       options: {
-        list: ["Blog", "Press Release"],
+        list: [BLOG_POSTTYPE, PRESS_RELEASE_POSTTYPE],
       },
     }),
     defineField({
