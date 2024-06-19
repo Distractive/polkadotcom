@@ -20,9 +20,9 @@ const ButtonStyles = {
       "bg-grey-200 text-grey-300 pointer-events-none border-[1px] border-grey-200",
   },
   sizes: {
-    lg: "rounded-xl px-14 py-5",
-    md: "rounded-lg px-10 py-4",
-    sm: "rounded-md px-4 py-2",
+    lg: "rounded-xl px-14 py-5 text-sm",
+    md: "rounded-lg px-10 py-4 text-xs",
+    sm: "rounded-md px-4 py-2 text-xs",
   },
 }
 

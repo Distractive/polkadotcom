@@ -1,3 +1,4 @@
+import { sideBySide } from "@/sanity/schemas/objects"
 import type { cardSelection } from "@/sanity/selections/blocks/card"
 import type { TypeFromSelection } from "groqd"
 
@@ -49,7 +50,9 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
       <CustomUrl
         value={link}
         isWrapper
-        className={cn(showSideBySide && "lg:flex lg:w-full")}
+        className={cn(
+          showSideBySide && !showSideBySideWithIcon && "lg:flex lg:w-full"
+        )}
       >
         {headerImage && useAsBackgroundImage && (
           <img
@@ -141,10 +144,18 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
             </div>
           </CardContent>
           {link && (
-            <CardFooter className="px-card pb-card">
+            <CardFooter
+              className={cn(
+                "px-card pb-card",
+                showSideBySideWithIcon ? "gap-gutter md:flex" : "gap-card"
+              )}
+            >
               <Button
                 size="md"
-                className="md:group-hover:after:translate-x-0"
+                className={cn(
+                  "md:group-hover:after:translate-x-0",
+                  (!showSideBySide || !showSideBySideWithIcon) && "w-full"
+                )}
                 variant={
                   link.variant
                     ? link.variant === "primary"
