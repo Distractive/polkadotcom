@@ -60,7 +60,7 @@ export const ExternalWithIcon: Story = {
       //@ts-ignore
       icon: { asset: { url: "/icon-placeholder.png" } },
       _key: "external",
-      heading: "External Link Card",
+      heading: "External Link Card with Icon",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       link: {
         label: "External",
@@ -77,7 +77,7 @@ export const InternalWithIcon: Story = {
       //@ts-ignore
       icon: { asset: { url: "/icon-placeholder.png" } },
       _key: "internal",
-      heading: "Internal Link Card",
+      heading: "Internal Link Card with Icon",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       link: { label: "", external: null, internal: { slug: "home" } },
     },
@@ -90,7 +90,7 @@ export const InternalWithEyebrow: Story = {
       //@ts-ignore
       icon: { asset: { url: "/icon-placeholder.png" } },
       _key: "internal",
-      heading: "Internal Link Card",
+      heading: "Internal Link Card with Eyebrow",
       eyebrow: "Date",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       link: { label: "", external: null, internal: { slug: "home" } },

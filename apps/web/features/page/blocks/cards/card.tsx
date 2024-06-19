@@ -32,6 +32,9 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
     useAsBackgroundImage,
   } = card
 
+  const showSideBySideWithIcon =
+    !useAsBackgroundImage && icon && !headerImage && showSideBySide
+
   return (
     <Card
       key={_key}
@@ -81,8 +84,9 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
         >
           <CardContent
             className={cn(
-              "grid gap-card p-card",
-              headerImage && icon && !showSideBySide && "pt-0"
+              "grid p-card",
+              headerImage && icon && !showSideBySide && "pt-0",
+              showSideBySideWithIcon ? "gap-gutter md:flex" : "gap-card"
             )}
           >
             {icon && (
@@ -91,10 +95,11 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                 alt=""
                 loading="lazy"
                 className={cn(
+                  "h-[4.5rem] w-auto",
                   headerImage &&
                     icon &&
                     !showSideBySide &&
-                    "relative z-10 -mt-[2.25rem] h-[4.5rem] w-auto",
+                    "relative z-10 -mt-[2.25rem]",
                   "rounded-2xl"
                 )}
               />
@@ -126,7 +131,13 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                   {heading}
                 </Heading>
               )}
-              {body && <CardDescription>{body}</CardDescription>}
+              {body && (
+                <CardDescription
+                  className={cn(showSideBySideWithIcon && "text-grey-500")}
+                >
+                  {body}
+                </CardDescription>
+              )}
             </div>
           </CardContent>
           {link && (
