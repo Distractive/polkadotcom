@@ -32,6 +32,9 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
     useAsBackgroundImage,
   } = card
 
+  const showSideBySideWithIcon =
+    !useAsBackgroundImage && icon && !headerImage && showSideBySide
+
   return (
     <Card
       key={_key}
@@ -46,7 +49,9 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
       <CustomUrl
         value={link}
         isWrapper
-        className={cn(showSideBySide && "lg:flex lg:w-full")}
+        className={cn(
+          showSideBySide && !showSideBySideWithIcon && "lg:flex lg:w-full"
+        )}
       >
         {headerImage && useAsBackgroundImage && (
           <img
@@ -81,8 +86,9 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
         >
           <CardContent
             className={cn(
-              "grid gap-card p-card",
-              headerImage && icon && !showSideBySide && "pt-0"
+              "grid p-card",
+              headerImage && icon && !showSideBySide && "pt-0",
+              showSideBySideWithIcon ? "gap-gutter lg:flex" : "gap-card"
             )}
           >
             {icon && (
@@ -94,8 +100,8 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                   headerImage &&
                     icon &&
                     !showSideBySide &&
-                    "relative z-10 -mt-[2.25rem] h-[4.5rem] w-auto",
-                  "rounded-2xl"
+                    "relative z-10 -mt-[2.25rem]",
+                  "h-[4.5rem] w-auto rounded-2xl"
                 )}
               />
             )}
@@ -111,41 +117,51 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                 ))}
               </ul>
             )}
-            <div className="grid gap-copy">
-              {eyebrow && (
-                <span className="text-base uppercase">{eyebrow}</span>
-              )}
-              {heading && (
-                <Heading
-                  variant="h4"
-                  className={cn(
-                    "text-balance transition-colors duration-500 ease-in-out",
-                    link && "md:group-hover:text-pink"
-                  )}
+            <div className={cn(showSideBySideWithIcon && "grid gap-copy")}>
+              <div className="grid gap-copy">
+                {eyebrow && (
+                  <span className="text-base uppercase">{eyebrow}</span>
+                )}
+                {heading && (
+                  <Heading
+                    variant="h4"
+                    className={cn(
+                      "text-balance transition-colors duration-500 ease-in-out",
+                      link && "md:group-hover:text-pink"
+                    )}
+                  >
+                    {heading}
+                  </Heading>
+                )}
+                {body && (
+                  <CardDescription
+                    className={cn(showSideBySideWithIcon && "text-grey-500")}
+                  >
+                    {body}
+                  </CardDescription>
+                )}
+              </div>
+              {link && (
+                <CardFooter
+                  className={cn(!showSideBySideWithIcon && "pt-card")}
                 >
-                  {heading}
-                </Heading>
+                  <Button
+                    size="md"
+                    className="md:group-hover:after:translate-x-0"
+                    variant={
+                      link.variant
+                        ? link.variant === "primary"
+                          ? "primary"
+                          : "secondary"
+                        : "primary"
+                    }
+                  >
+                    <CustomUrl value={link}>{link.label}</CustomUrl>
+                  </Button>
+                </CardFooter>
               )}
-              {body && <CardDescription>{body}</CardDescription>}
             </div>
           </CardContent>
-          {link && (
-            <CardFooter className="px-card pb-card">
-              <Button
-                size="md"
-                className="md:group-hover:after:translate-x-0"
-                variant={
-                  link.variant
-                    ? link.variant === "primary"
-                      ? "primary"
-                      : "secondary"
-                    : "primary"
-                }
-              >
-                <CustomUrl value={link}>{link.label}</CustomUrl>
-              </Button>
-            </CardFooter>
-          )}
         </div>
       </CustomUrl>
     </Card>

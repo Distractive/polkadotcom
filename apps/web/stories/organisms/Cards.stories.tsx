@@ -108,3 +108,58 @@ export const Primary: Story = {
     },
   },
 }
+
+export const SideBySideLayoutWithIconsAndNoBackgroundImage: Story = {
+  args: {
+    cards: {
+      //@ts-ignore
+      _key: "parent",
+      heading:
+        "Heading for side by side layout with icons and no background image",
+      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      showSideBySide: true,
+      items: [
+        {
+          _key: "1",
+          //@ts-ignore
+          icon: { asset: { url: "/icon-placeholder.png" } },
+          useAsBackgroundImage: false,
+          headerImage: null,
+          link: null,
+          heading: "Heading",
+          body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        },
+        {
+          _key: "2",
+          //@ts-ignore
+          icon: { asset: { url: "/icon-placeholder.png" } },
+          useAsBackgroundImage: false,
+          headerImage: null,
+          link: null,
+          heading: "Heading",
+          body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        },
+        {
+          _key: "3",
+          //@ts-ignore
+          icon: { asset: { url: "/icon-placeholder.png" } },
+          useAsBackgroundImage: false,
+          headerImage: null,
+          link: null,
+          heading: "Heading",
+          body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        },
+        {
+          _key: "4",
+          //@ts-ignore
+          icon: { asset: { url: "/icon-placeholder.png" } },
+          useAsBackgroundImage: false,
+          headerImage: null,
+          link: null,
+          heading: "Heading",
+          body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        },
+      ],
+    },
+  },
+}

@@ -6,13 +6,15 @@ import Link from "next/link"
 import type { searchSelection } from "@/sanity/queries/search"
 import type { TypeFromSelection } from "groqd"
 
+import { BLOG_POSTTYPE, PRESS_RELEASE_POSTTYPE } from "@/constants/global"
 import { cn, Icon } from "@shared/ui"
 
 interface Props {
   searches: ReadonlyArray<TypeFromSelection<typeof searchSelection>>
+  postType: typeof BLOG_POSTTYPE | typeof PRESS_RELEASE_POSTTYPE
 }
 
-export function SearchBar({ searches }: Props) {
+export function SearchBar({ searches, postType }: Props) {
   const MAX_RESULTS = 30
   const [searchable, setSearchable] = useState<string>("")
   const [findings, setFindings] = useState<Array<number>>([])
@@ -33,7 +35,6 @@ export function SearchBar({ searches }: Props) {
 
   useEffect(() => {
     // ignoring empty searches
-    let terms = searchable.trim()
     if (searchable.trim().split(" ").join("").length <= 0) {
       setFindings([])
       return
@@ -84,7 +85,11 @@ export function SearchBar({ searches }: Props) {
             return (
               <SearchBarListItem
                 key={searches[finding]?._id}
-                href={`/blog/${searches[finding]?.slug}`}
+                href={
+                  postType == BLOG_POSTTYPE
+                    ? `/blog/${searches[finding]?.slug}`
+                    : `/newsroom/press-releases/${searches[finding]?.slug}`
+                }
               >
                 {searches[finding]?.title}
               </SearchBarListItem>

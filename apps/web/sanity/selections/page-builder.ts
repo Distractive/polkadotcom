@@ -11,6 +11,7 @@ import { cardsTimelineSelection } from "./blocks/cards-timeline"
 import { contentSelection } from "./blocks/content"
 import { sideBySideSelection } from "./blocks/side-by-side"
 import { quoteSelection } from "./blocks/quote"
+import { buttonBlockSelection } from "./blocks/button-block"
 
 export const pageBuilderSelection = {
   pageBuilder: q("pageBuilder.pageBuilder")
@@ -23,6 +24,10 @@ export const pageBuilderSelection = {
       '_type == "accordion"': {
         _type: q.literal("accordion"),
         ...accordionSelection,
+      },
+      '_type == "buttonBlock"': {
+        _type: q.literal("buttonBlock"),
+        ...buttonBlockSelection,
       },
       '_type == "cards"': {
         _type: q.literal("cards"),

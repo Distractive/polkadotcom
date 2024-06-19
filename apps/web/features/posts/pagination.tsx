@@ -1,6 +1,7 @@
 import generatePagination from "@/utils/pagination/generatePagination"
 import { cn } from "@shared/ui/lib/utils"
 
+import { BLOG_POSTTYPE } from "@/constants/global"
 import {
   Pagination,
   PaginationContent,
@@ -22,6 +23,7 @@ interface Props {
 export function PostPagination({ total, page, limit, type, tagSlug }: Props) {
   let pages = Math.ceil(total / limit)
   let paginationArray: Array<number | string>
+  let postPath = type == BLOG_POSTTYPE ? "/blog" : "/newsroom/press-releases"
 
   paginationArray = generatePagination(page, pages)
 
@@ -34,8 +36,8 @@ export function PostPagination({ total, page, limit, type, tagSlug }: Props) {
             href={
               page > 1
                 ? tagSlug === undefined
-                  ? `/${type}/page/${page - 1}`
-                  : `/${type}/tag/${tagSlug}/page/${page - 1}`
+                  ? `${postPath}/page/${page - 1}`
+                  : `${postPath}/tag/${tagSlug}/page/${page - 1}`
                 : undefined
             }
             className={cn(page === 1 && "pointer-events-none")}
@@ -53,8 +55,8 @@ export function PostPagination({ total, page, limit, type, tagSlug }: Props) {
                 <PaginationLink
                   href={
                     tagSlug === undefined
-                      ? `/${type}/page/${currentPage}`
-                      : `/${type}/tag/${tagSlug}/page/${currentPage}`
+                      ? `${postPath}/page/${currentPage}`
+                      : `${postPath}/tag/${tagSlug}/page/${currentPage}`
                   }
                   isActive={currentPage == page}
                   className={cn(
@@ -75,8 +77,8 @@ export function PostPagination({ total, page, limit, type, tagSlug }: Props) {
             href={
               page < pages
                 ? tagSlug === undefined
-                  ? `/${type}/page/${Number(page) + 1}`
-                  : `/${type}/tag/${tagSlug}/page/${Number(page) + 1}`
+                  ? `${postPath}/page/${Number(page) + 1}`
+                  : `${postPath}/tag/${tagSlug}/page/${Number(page) + 1}`
                 : undefined
             }
             className={cn(page === pages && "pointer-events-none")}

@@ -2,6 +2,7 @@ import Link from "next/link"
 import type { postSelection } from "@/sanity/queries/posts"
 import type { TypeFromSelection } from "groqd"
 
+import { BLOG_POSTTYPE } from "@/constants/global"
 import { Card, CardContent, CardDescription, CardHeader, cn } from "@shared/ui"
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 }
 
 export default function BlogCard({ post, className }: Props) {
-  const { slug, image, body, tags, title } = post
+  const { slug, image, body, tags, title, post_type } = post
 
   return (
     <Card
@@ -40,7 +41,14 @@ export default function BlogCard({ post, className }: Props) {
                 key={tag.slug}
                 className="mb-1 flex rounded bg-grey-200 px-3 py-1 text-left text-sm leading-relaxed"
               >
-                <a className="relative z-20" href={`/blog/tag/${tag.slug}`}>
+                <a
+                  className="relative z-20"
+                  href={
+                    post_type == BLOG_POSTTYPE
+                      ? `/blog/tag/${tag.slug}`
+                      : `/newsroom/press-releases/tag/${tag.slug}`
+                  }
+                >
                   {tag.name}
                 </a>
               </li>
@@ -56,7 +64,11 @@ export default function BlogCard({ post, className }: Props) {
             )}
           >
             <Link
-              href={`/blog/${post.slug}`}
+              href={
+                post_type == BLOG_POSTTYPE
+                  ? `/blog/${post.slug}`
+                  : `/newsroom/press-releases/${post.slug}`
+              }
               className="after:absolute after:inset-0 after:z-10 after:cursor-pointer"
             >
               {title}

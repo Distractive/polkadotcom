@@ -1,3 +1,4 @@
+import { BLOG_POSTTYPE } from "@/constants/global"
 import Layout from "@/features/posts/layout"
 
 export default async function Tag({
@@ -5,5 +6,7 @@ export default async function Tag({
 }: {
   params: { slug: string }
 }) {
-  return <Layout page={1} type="blog" tagSlug={slug} />
+  return (
+    <Layout page={1} type={BLOG_POSTTYPE} tagSlug={slug} withHeader={false} />
+  )
 }

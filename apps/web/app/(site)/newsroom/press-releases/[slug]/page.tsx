@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { getPostMeta } from "@/sanity/queries/post"
 
-import { BASE_URL, BLOG_POSTTYPE } from "@/constants/global"
+import { BASE_URL, PRESS_RELEASE_POSTTYPE } from "@/constants/global"
 import Layout from "@/features/post/layout"
 
 interface Props {
@@ -12,20 +12,14 @@ export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {
   const meta = await getPostMeta(slug)
-  const ogObject = {
+
+  return {
     title: meta.meta_title || meta.title,
     description: meta.meta_description || meta.custom_excerpt,
-    alternates: { canonical: `${BASE_URL}/blog/${slug}` },
-    openGraph: {},
+    alternates: { canonical: `${BASE_URL}/newsroom/press-releases/${slug}` },
   }
-
-  if (meta.image) {
-    ogObject.openGraph = { images: [meta.image?.asset.url] }
-  }
-
-  return ogObject
 }
 
 export default async function Slug({ params: { slug } }: Props) {
-  return <Layout slug={slug} type={BLOG_POSTTYPE} />
+  return <Layout type={PRESS_RELEASE_POSTTYPE} slug={slug} />
 }

@@ -10,9 +10,10 @@ export const postSelection = {
   title: q.string(),
   _id: q.string(),
   slug: q.slug("slug"),
+  post_type: q.string(),
   image: sanityImage("featured_image", {
     withAsset: ["base", "dimensions"],
-  }),
+  }).nullable(),
   tags: q("tags")
     .filter()
     .deref()
@@ -77,9 +78,11 @@ export async function getPosts(
   )
 }
 
-export async function getBlogHeading() {
+export type PostType = "blog" | "press-releases"
+
+export async function getPostHeading(postType: PostType) {
   const query = q("*")
-    .filterByType("blog")
+    .filterByType(postType)
     .grab$({
       ...blogSelection,
     })

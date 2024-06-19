@@ -19,6 +19,10 @@ export default defineType({
           type: "accordion",
         }),
         defineArrayMember({
+          name: "buttonBlock",
+          type: "buttonBlock",
+        }),
+        defineArrayMember({
           name: "cards",
           type: "cards",
         }),

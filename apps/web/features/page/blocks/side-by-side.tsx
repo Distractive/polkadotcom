@@ -67,7 +67,7 @@ export function SideBySideBlock({ content, className }: Props) {
                       variant="secondary"
                       size="sm"
                       asChild
-                      className="my-card"
+                      className="my-card md:cursor-pointer"
                     >
                       <span>{value.label}</span>
                     </Button>

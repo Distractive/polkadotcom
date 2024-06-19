@@ -5,9 +5,10 @@ import type { Selection } from "groqd"
 export const postSelection = {
   title: q.string(),
   slug: q.slug("slug"),
+  post_type: q.string(),
   image: sanityImage("featured_image", {
     withAsset: ["base", "dimensions"],
-  }),
+  }).nullable(),
   tags: q("tags")
     .filter()
     .deref()
@@ -54,7 +55,7 @@ export const metaSelection = {
   slug: q.slug("slug"),
   image: sanityImage("featured_image", {
     withAsset: ["base"],
-  }),
+  }).nullable(),
   meta_title: nullToUndefined(q.string().optional()),
   meta_description: nullToUndefined(q.string().optional()),
   custom_excerpt: nullToUndefined(q.string().optional()),

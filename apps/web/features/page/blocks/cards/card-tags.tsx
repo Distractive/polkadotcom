@@ -5,6 +5,7 @@ import { type cardSelection } from "@/sanity/selections/blocks/card"
 import type { TypeFromSelection } from "groqd"
 
 import { Button, cn, Icon } from "@shared/ui"
+import { DecorativeLine } from "@/components/decorative-line"
 
 import CardBlock from "./card"
 
@@ -98,26 +99,23 @@ export function CardTags({ tags, cards }: Props) {
           />
         ))}
       </div>
-      <div className="relative col-span-12 inline-flex items-center justify-center pt-gutter">
-        <hr className=" w-full border-grey-300" />
-        <div className="absolute bg-white px-6">
-          <Button
-            variant={
-              visibleCount >= filteredItems.length ? "disabled" : "secondary"
-            }
-            size={"sm"}
-            onClick={showMoreItems}
-          >
-            Show More
-            <Icon
-              variant="chevronDown"
-              className={cn(
-                visibleCount >= filteredItems.length && "fill-grey-300"
-              )}
-            />
-          </Button>
-        </div>
-      </div>
+      <DecorativeLine>
+        <Button
+          variant={
+            visibleCount >= filteredItems.length ? "disabled" : "secondary"
+          }
+          size={"sm"}
+          onClick={showMoreItems}
+        >
+          Show More
+          <Icon
+            variant="chevronDown"
+            className={cn(
+              visibleCount >= filteredItems.length && "fill-grey-300"
+            )}
+          />
+        </Button>
+      </DecorativeLine>
     </>
   )
 }
