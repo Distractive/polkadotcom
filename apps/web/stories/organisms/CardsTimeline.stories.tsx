@@ -21,86 +21,146 @@ export const Timeline: Story = {
         {
           _key: "1",
           year: "2010",
-          heading:
-            "Polkadot and Mythical Games: Powering the Next Generation of Gaming",
-          body: "Sapien fusce risus montes placerat molestie lectus. Adipiscing nam id proin tristique. Sapien fusce risus montes placerat molestie lectus. Adipiscing nam id proin tristique. Sapien fusce risus montes placerat molestie lectus. Adipiscing nam id proin tristique",
-          link: {
-            label: "Learn more",
-            //@ts-ignore
-            url: "https://example.com",
-          },
+          content: [
+            {
+              _key: "parent",
+              _type: "block",
+              children: [
+                {
+                  _key: "one",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+                {
+                  _key: "two",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+              ],
+            },
+          ],
         },
         {
           _key: "2",
           year: "2011",
-          heading:
-            "Polkadot and Mythical Games: Powering the Next Generation of Gaming",
-          body: "Sapien fusce risus montes placerat molestie lectus. Adipiscing nam id proin tristique",
-          link: {
-            label: "Learn more",
-            //@ts-ignore
-            url: "https://example.com",
-          },
+          content: [
+            {
+              _key: "parent",
+              _type: "block",
+              children: [
+                {
+                  _key: "one",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+                {
+                  _key: "two",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+              ],
+            },
+          ],
         },
         {
           _key: "3",
           year: "2012",
-          heading:
-            "Polkadot and Mythical Games: Powering the Next Generation of Gaming. Polkadot and Mythical Games: Powering the Next Generation of Gaming",
-          body: "Sapien fusce risus montes placerat molestie lectus. Adipiscing nam id proin tristique. Sapien fusce risus montes placerat molestie lectus. Adipiscing nam id proin tristique.",
-          link: {
-            label: "Learn more",
-            //@ts-ignore
-            url: "https://example.com",
-          },
+          content: [
+            {
+              _key: "parent",
+              _type: "block",
+              children: [
+                {
+                  _key: "one",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+                {
+                  _key: "two",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+              ],
+            },
+          ],
         },
         {
           _key: "4",
           year: "2013",
-          heading:
-            "Polkadot and Mythical Games: Powering the Next Generation of Gaming",
-          body: "Sapien fusce risus montes placerat molestie lectus. Adipiscing nam id proin tristique",
-          link: {
-            label: "Learn more",
-            //@ts-ignore
-            url: "https://example.com",
-          },
+          content: [
+            {
+              _key: "parent",
+              _type: "block",
+              children: [
+                {
+                  _key: "one",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+                {
+                  _key: "two",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+              ],
+            },
+          ],
         },
         {
           _key: "5",
           year: "2014",
-          heading:
-            "Polkadot and Mythical Games: Powering the Next Generation of Gaming",
-          body: "Sapien fusce risus montes placerat molestie lectus. Adipiscing nam id proin tristique",
-          link: {
-            label: "Learn more",
-            //@ts-ignore
-            url: "https://example.com",
-          },
+          content: [
+            {
+              _key: "parent",
+              _type: "block",
+              children: [
+                {
+                  _key: "one",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+                {
+                  _key: "two",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+              ],
+            },
+          ],
         },
         {
           _key: "6",
           year: "2015",
-          heading:
-            "Polkadot and Mythical Games: Powering the Next Generation of Gaming",
-          body: "Sapien fusce risus montes placerat molestie lectus. Adipiscing nam id proin tristique",
-          link: {
-            label: "Learn more",
-            //@ts-ignore
-            url: "https://example.com",
-          },
-        },
-        {
-          _key: "7",
-          year: "2016",
-          heading:
-            "Polkadot and Mythical Games: Powering the Next Generation of Gaming",
-          body: "Sapien fusce risus montes placerat molestie lectus. Adipiscing nam id proin tristique",
-          link: {
-            label: "Learn more",
-            //@ts-ignore
-            url: "https://example.com",
-          },
+          content: [
+            {
+              _key: "parent",
+              _type: "block",
+              children: [
+                {
+                  _key: "one",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+                {
+                  _key: "two",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+              ],
+            },
+          ],
         },
       ],
     },

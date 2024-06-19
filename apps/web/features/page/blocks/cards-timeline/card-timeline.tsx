@@ -1,15 +1,8 @@
 import type { cardTimelineSelection } from "@/sanity/selections/blocks/card-timeline"
 import type { TypeFromSelection } from "groqd"
+import { PortableText } from "next-sanity"
 
-import {
-  Button,
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  cn,
-} from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+import { Button, Card, CardContent, CardHeader, cn } from "@shared/ui"
 
 interface Props {
   card: TypeFromSelection<typeof cardTimelineSelection>
@@ -38,19 +31,37 @@ export default function CardTimelineBlock({
         <span className="inline-block size-gutter -translate-y-1/2 rounded-full bg-pink"></span>
         <span className="pb-2">{card.year}</span>
       </CardHeader>
-      <div className="group mr-gutter flex flex-grow flex-col gap-card rounded-2xl bg-grey-100 p-card">
-        <CardContent className="grid gap-2">
-          <p className="font-bold">{card.heading}</p>
-          {card.body && <p>{card.body}</p>}
-        </CardContent>
-        {card.link && (
-          <CardFooter className="mt-auto">
-            <Button variant="secondary" size="sm">
-              <CustomUrl value={card.link}>{card.link.label}</CustomUrl>
-            </Button>
-          </CardFooter>
-        )}
-      </div>
+      <CardContent className="group mr-gutter flex h-full flex-col gap-copy rounded-2xl bg-grey-100 p-card">
+        <PortableText
+          value={card.content}
+          components={{
+            list: {
+              bullet: ({ children }) => (
+                <ul className="list-inside list-disc">{children}</ul>
+              ),
+              number: ({ children }) => (
+                <ol className="list-inside list-decimal">{children}</ol>
+              ),
+            },
+            listItem: {
+              bullet: ({ children }) => <li>{children}</li>,
+              number: ({ children }) => <li>{children}</li>,
+            },
+            types: {
+              customUrl: ({ value }) => {
+                return (
+                  <Button
+                    variant={value.internal ? "primary" : "secondary"}
+                    size="sm"
+                  >
+                    {value.label}
+                  </Button>
+                )
+              },
+            },
+          }}
+        />
+      </CardContent>
     </Card>
   )
 }

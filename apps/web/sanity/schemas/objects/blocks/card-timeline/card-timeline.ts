@@ -12,21 +12,19 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "heading",
-      title: "Heading",
-      type: "string",
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: "body",
-      title: "Body",
-      type: "text",
-      rows: 5,
-    }),
-    defineField({
-      name: "link",
-      title: "Link",
-      type: "customUrl",
+      name: "content",
+      title: "Content",
+      type: "array",
+      of: [
+        {
+          type: "block",
+          styles: [{ title: "Normal", value: "normal" }],
+          marks: {
+            decorators: [{ title: "Strong", value: "strong" }],
+          },
+        },
+        { type: "customUrl" },
+      ],
     }),
   ],
 })

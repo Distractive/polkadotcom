@@ -13,16 +13,30 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
+    //@ts-ignore
     card: {
       year: "2021",
-      heading:
-        "Polkadot and Mythical Games: Powering the Next Generation of Gaming",
-      body: "Sapien fusce risus montes placerat molestie lectus. Adipiscing nam id proin tristique",
-      link: {
-        label: "Learn more",
-        //@ts-ignore
-        url: "https://example.com",
-      },
+      content: [
+        {
+          _key: "parent",
+          _type: "block",
+
+          children: [
+            {
+              _key: "one",
+              _type: "span",
+              marks: [],
+              text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            },
+            {
+              _key: "two",
+              _type: "span",
+              marks: [],
+              text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            },
+          ],
+        },
+      ],
     },
   },
 }
