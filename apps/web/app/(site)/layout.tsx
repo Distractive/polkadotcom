@@ -45,7 +45,7 @@ export default async function RootLayout({
         className={cn(
           unbounded.variable,
           manrope.variable,
-          "font-default antialiased"
+          "flex min-h-screen flex-col font-default antialiased"
         )}
       >
         {draftMode().isEnabled && (
@@ -56,7 +56,7 @@ export default async function RootLayout({
           </div>
         )}
         <NavigationLayout navigation={navigation} />
-        <main className="grid-system gap-y-page">{children}</main>
+        <main className="grid-system flex-grow gap-y-page">{children}</main>
         <FooterLayout footer={footer} />
         <TailwindIndicator />
         {draftMode().isEnabled && <VisualEditing />}
