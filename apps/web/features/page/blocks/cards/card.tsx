@@ -1,4 +1,3 @@
-import { sideBySide } from "@/sanity/schemas/objects"
 import type { cardSelection } from "@/sanity/selections/blocks/card"
 import type { TypeFromSelection } from "groqd"
 
@@ -89,7 +88,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
             className={cn(
               "grid p-card",
               headerImage && icon && !showSideBySide && "pt-0",
-              showSideBySideWithIcon ? "gap-gutter md:flex" : "gap-card"
+              showSideBySideWithIcon ? "gap-gutter lg:flex" : "gap-card"
             )}
           >
             {icon && (
@@ -98,12 +97,11 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                 alt=""
                 loading="lazy"
                 className={cn(
-                  "h-[4.5rem] w-auto",
                   headerImage &&
                     icon &&
                     !showSideBySide &&
                     "relative z-10 -mt-[2.25rem]",
-                  "rounded-2xl"
+                  "h-[4.5rem] w-auto rounded-2xl"
                 )}
               />
             )}
@@ -119,55 +117,51 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                 ))}
               </ul>
             )}
-            <div className="grid gap-copy">
-              {eyebrow && (
-                <span className="text-base uppercase">{eyebrow}</span>
-              )}
-              {heading && (
-                <Heading
-                  variant="h4"
-                  className={cn(
-                    "text-balance transition-colors duration-500 ease-in-out",
-                    link && "md:group-hover:text-pink"
-                  )}
+            <div className={cn(showSideBySideWithIcon && "grid gap-copy")}>
+              <div className="grid gap-copy">
+                {eyebrow && (
+                  <span className="text-base uppercase">{eyebrow}</span>
+                )}
+                {heading && (
+                  <Heading
+                    variant="h4"
+                    className={cn(
+                      "text-balance transition-colors duration-500 ease-in-out",
+                      link && "md:group-hover:text-pink"
+                    )}
+                  >
+                    {heading}
+                  </Heading>
+                )}
+                {body && (
+                  <CardDescription
+                    className={cn(showSideBySideWithIcon && "text-grey-500")}
+                  >
+                    {body}
+                  </CardDescription>
+                )}
+              </div>
+              {link && (
+                <CardFooter
+                  className={cn(!showSideBySideWithIcon && "pt-card")}
                 >
-                  {heading}
-                </Heading>
-              )}
-              {body && (
-                <CardDescription
-                  className={cn(showSideBySideWithIcon && "text-grey-500")}
-                >
-                  {body}
-                </CardDescription>
+                  <Button
+                    size="md"
+                    className="md:group-hover:after:translate-x-0"
+                    variant={
+                      link.variant
+                        ? link.variant === "primary"
+                          ? "primary"
+                          : "secondary"
+                        : "primary"
+                    }
+                  >
+                    <CustomUrl value={link}>{link.label}</CustomUrl>
+                  </Button>
+                </CardFooter>
               )}
             </div>
           </CardContent>
-          {link && (
-            <CardFooter
-              className={cn(
-                "px-card pb-card",
-                showSideBySideWithIcon ? "gap-gutter md:flex" : "gap-card"
-              )}
-            >
-              <Button
-                size="md"
-                className={cn(
-                  "md:group-hover:after:translate-x-0",
-                  (!showSideBySide || !showSideBySideWithIcon) && "w-full"
-                )}
-                variant={
-                  link.variant
-                    ? link.variant === "primary"
-                      ? "primary"
-                      : "secondary"
-                    : "primary"
-                }
-              >
-                <CustomUrl value={link}>{link.label}</CustomUrl>
-              </Button>
-            </CardFooter>
-          )}
         </div>
       </CustomUrl>
     </Card>
