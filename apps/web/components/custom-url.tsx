@@ -20,7 +20,7 @@ export function CustomUrl({
 }: Props) {
   return value ? (
     <Link
-      href={value.external || value.internal?.slug || ""}
+      href={value.external || `/${value.internal?.slug}` || ""}
       target={value.external ? "_blank" : "_self"}
       className={className}
       prefetch={!value.external}

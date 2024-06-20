@@ -5,12 +5,16 @@ import { useToggleAnimation } from "@/hooks/use-toggle-animation"
 import { cn } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
 
+import { ActiveMarker } from "./active-marker"
+import { handleActiveLink } from "./helpers"
+
 interface Props {
   menu: ReadonlyArray<TypeFromSelection<typeof navigationMenuSelection>>
   hovered: string
   setHovered: React.Dispatch<React.SetStateAction<string>>
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  currentPath: string
 }
 
 export function MenuDesktop({
@@ -19,6 +23,7 @@ export function MenuDesktop({
   isOpen,
   setIsOpen,
   setHovered,
+  currentPath,
 }: Props) {
   const { ref } = useToggleAnimation({ isVisible: isOpen })
 
@@ -40,20 +45,30 @@ export function MenuDesktop({
               )}
             >
               <ul className="grid grid-cols-2">
-                {section.items.map((item, index) => (
-                  <li
-                    key={index}
-                    className={cn("p-nav min-w-[21rem] shadow-internal-border")}
-                  >
-                    <CustomUrl
-                      value={item.link}
-                      onClick={handleLinkClick}
-                      className="leading-none transition-colors duration-500 ease-in-out hover:text-pink"
+                {section.items.map((item, index) => {
+                  const isActive = handleActiveLink(item, currentPath)
+                  return (
+                    <li
+                      key={index}
+                      className={cn(
+                        "flex min-w-[21rem] p-nav pl-0 shadow-internal-border"
+                      )}
                     >
-                      {item.link.label}
-                    </CustomUrl>
-                  </li>
-                ))}
+                      <span className="flex w-nav items-center justify-center">
+                        <ActiveMarker
+                          className={isActive ? "opacity-100" : "opacity-0"}
+                        />
+                      </span>
+                      <CustomUrl
+                        value={item.link}
+                        onClick={handleLinkClick}
+                        className="leading-none transition-colors duration-500 ease-in-out hover:text-pink"
+                      >
+                        {item.link.label}
+                      </CustomUrl>
+                    </li>
+                  )
+                })}
                 {section.items.length % 2 !== 0 && (
                   <li className="min-w-[21rem] shadow-internal-border"></li>
                 )}
@@ -62,7 +77,7 @@ export function MenuDesktop({
                 <CustomUrl value={section.aside.link} onClick={handleLinkClick}>
                   <aside
                     className={cn(
-                      "p-nav group grid h-full max-w-[21rem] gap-copy",
+                      "group grid h-full max-w-[21rem] gap-copy p-nav",
                       "cursor-pointer border-l border-grey-300"
                     )}
                   >
