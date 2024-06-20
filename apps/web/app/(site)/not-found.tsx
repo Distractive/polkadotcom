@@ -16,7 +16,7 @@ export default async function NotFound() {
     image: data.headerImage,
     title: data.heading,
     body: data.body,
-    link: data.link,
+    links: data.links,
     video: null,
   }
 

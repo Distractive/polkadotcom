@@ -52,7 +52,7 @@ export default async function Layout({
     title: postsData.heading,
     body: postsData.body,
     video: null,
-    link: null,
+    links: null,
   }
 
   return (

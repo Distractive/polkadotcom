@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity"
+import { defineArrayMember, defineField, defineType } from "sanity"
 
 export default defineType({
   name: "header",
@@ -23,9 +23,13 @@ export default defineType({
       rows: 5,
     }),
     defineField({
-      name: "link",
-      title: "Link",
-      type: "customUrl",
+      name: "links",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "customUrl",
+        }),
+      ],
     }),
     defineField({
       name: "video",

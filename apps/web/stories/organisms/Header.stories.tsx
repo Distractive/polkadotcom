@@ -36,11 +36,14 @@ export const TitleBodyLink: Story = {
     header: {
       title: "Title Body Link",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: {
-        label: "Learn more",
-        external: null,
-        internal: { slug: "/" },
-      },
+      links: [
+        {
+          _type: "customUrl",
+          label: "Learn more",
+          external: "",
+          internal: { slug: "/" },
+        },
+      ],
     },
     breadcrumb: {
       items: [
@@ -58,11 +61,47 @@ export const TitleBodyLinkImage: Story = {
       image: { asset: { url: "/image-placeholder.png" } },
       title: "Title Body Link Image",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: {
-        label: "Learn more",
-        external: "https://google.co.uk",
-        internal: null,
-      },
+      links: [
+        {
+          _type: "customUrl",
+          label: "Learn more",
+          external: "https://google.co.uk",
+          internal: null,
+        },
+      ],
+    },
+    breadcrumb: {
+      items: [
+        { slug: "/parent", title: "Parent page" },
+        { slug: "/parent/child", title: "Child page" },
+      ],
+    },
+  },
+}
+
+export const TitleBodyLinkImageWithOptionalCta: Story = {
+  args: {
+    header: {
+      //@ts-ignore
+      image: { asset: { url: "/image-placeholder.png" } },
+      title: "Title Body Link Image with Optional Cta",
+      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      links: [
+        {
+          _type: "customUrl",
+          label: "Learn more",
+          variant: "primary",
+          external: null,
+          internal: { slug: "/" },
+        },
+        {
+          _type: "customUrl",
+          label: "Learn more",
+          variant: "secondary",
+          external: null,
+          internal: { slug: "/" },
+        },
+      ],
     },
     breadcrumb: {
       items: [
@@ -79,11 +118,14 @@ export const TitleBodyLinkVideo: Story = {
       //@ts-ignore
       title: "Title Body Link Video",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: {
-        label: "Learn more",
-        external: "https://google.co.uk",
-        internal: null,
-      },
+      links: [
+        {
+          _type: "customUrl",
+          label: "Learn more",
+          external: "https://google.co.uk",
+          internal: null,
+        },
+      ],
       video: {
         url: "https://www.youtube-nocookie.com/embed/mq3SFJPti4o",
         placeholderImage: {
@@ -110,11 +152,14 @@ export const TierOnePage: Story = {
       image: { asset: { url: "/image-placeholder.png" } },
       title: "A tier one page has no breadcrumb",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: {
-        label: "Learn more",
-        external: "https://google.co.uk",
-        internal: null,
-      },
+      links: [
+        {
+          _type: "customUrl",
+          label: "Learn more",
+          external: "https://google.co.uk",
+          internal: null,
+        },
+      ],
     },
   },
 }
@@ -126,11 +171,14 @@ export const TierTwoPage: Story = {
       image: { asset: { url: "/image-placeholder.png" } },
       title: "A tier two page has a breadcrumb",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: {
-        label: "Learn more",
-        external: "https://google.co.uk",
-        internal: null,
-      },
+      links: [
+        {
+          _type: "customUrl",
+          label: "Learn more",
+          external: "https://google.co.uk",
+          internal: null,
+        },
+      ],
     },
     breadcrumb: {
       items: [
@@ -145,6 +193,7 @@ const headers = [
   TitleBody,
   TitleBodyLink,
   TitleBodyLinkImage,
+  TitleBodyLinkImageWithOptionalCta,
   TitleBodyLinkVideo,
   TierOnePage,
   TierTwoPage,
