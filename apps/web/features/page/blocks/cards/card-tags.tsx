@@ -26,7 +26,9 @@ export function CardTags({ tags, cards }: Props) {
         setFilteredItems(cards)
         return
       }
-      const filtered = cards.filter((card) => card.selectedTags?.includes(tag))
+      const filtered = cards.filter((card) => {
+        return card.selectedTags?.includes(tag)
+      })
       setFilteredItems(filtered)
     },
     [cards]

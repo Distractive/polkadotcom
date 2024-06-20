@@ -14,7 +14,8 @@ export async function sanityFetch<QueryResponse>({
   query,
   params = DEFAULT_PARAMS,
   perspective = draftMode().isEnabled ? "previewDrafts" : "published",
-  stega = perspective === "previewDrafts" || env.VERCEL_ENV === "preview",
+  // stega = perspective === "previewDrafts" || env.VERCEL_ENV === "preview",
+  stega = perspective === "previewDrafts",
 }: {
   query: string
   params?: QueryParams
