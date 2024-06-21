@@ -9,10 +9,11 @@ import { CardsStatBlock } from "@/features/page/blocks/cards-stats/cards-stat"
 import { CardsTimelineBlock } from "@/features/page/blocks/cards-timeline/cards-timeline"
 import { CardsBlock } from "@/features/page/blocks/cards/cards"
 import { FAQBlock } from "@/features/page/blocks/faqs"
+import { MediaBlock } from "@/features/page/blocks/media-block"
+import { QuoteBlock } from "@/features/page/blocks/quote"
 import { SideBySideBlock } from "@/features/page/blocks/side-by-side"
 
 import { ContentBlock } from "./blocks/content"
-import { QuoteBlock } from "./blocks/quote"
 
 interface Props {
   pageBuilder: TypeFromSelection<typeof pageBuilderSelection>["pageBuilder"]
@@ -43,6 +44,8 @@ export function PageBuilder({ pageBuilder }: Props) {
         return <SideBySideBlock content={item} />
       case "quote":
         return <QuoteBlock quote={item} />
+      case "mediaBlock":
+        return <MediaBlock mediaBlock={item} />
       default:
         return <p>Unknown type: {item._type}</p>
     }

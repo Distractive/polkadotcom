@@ -13,7 +13,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: "title",
+      title: "link.label",
     },
     prepare: ({ title }) => ({
       title,
