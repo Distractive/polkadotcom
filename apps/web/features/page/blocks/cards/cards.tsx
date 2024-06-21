@@ -28,7 +28,7 @@ export function CardsBlock({ cards }: Props) {
   }, [cards, isMobile])
 
   return (
-    <div key={cards._key} className="grid-system relative px-gutter">
+    <div key={cards._key} className="grid-system max-width relative px-gutter">
       <div
         className={cn(
           "col-span-12 pb-gutter",

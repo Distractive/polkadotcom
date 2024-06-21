@@ -60,7 +60,7 @@ export default async function Layout({
       {withHeader && tagSlug === "" && (
         <HeaderBlock header={header} breadcrumb={breadcrumb} />
       )}
-      <div className="col-span-12 px-gutter">
+      <div className="max-width col-span-12 px-gutter">
         {tagSlug !== "" && (
           <div className="col-span-12 mt-gutter flex justify-center pb-gutter pt-header-top">
             <h1 className="font-display text-3xl capitalize">{tagSlug}</h1>

@@ -6,7 +6,7 @@ import Link from "next/link"
 import type { searchSelection } from "@/sanity/queries/search"
 import type { TypeFromSelection } from "groqd"
 
-import { BLOG_POSTTYPE, PRESS_RELEASE_POSTTYPE } from "@/constants/global"
+import { BLOG_POSTTYPE, type PRESS_RELEASE_POSTTYPE } from "@/constants/global"
 import { cn, Icon } from "@shared/ui"
 
 interface Props {

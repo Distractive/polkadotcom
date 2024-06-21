@@ -11,7 +11,10 @@ interface Props {
 
 export function CardsLogoBlock({ cards }: Props) {
   return (
-    <div key={cards._key} className="grid-system gap-y-gutter px-gutter">
+    <div
+      key={cards._key}
+      className="grid-system max-width gap-y-gutter px-gutter"
+    >
       <div className="col-span-full flex flex-col gap-copy">
         <Heading variant="h2">{cards.heading}</Heading>
         {cards.body && <p>{cards.body}</p>}

@@ -14,7 +14,7 @@ interface Props {
 
 export function CardsTimelineBlock({ cards }: Props) {
   return (
-    <div className="grid-system py-gutter pl-gutter">
+    <div className="grid-system max-width py-gutter pl-gutter">
       <Heading variant="h2" className="col-span-12 pb-gutter pr-gutter">
         {cards.heading}
       </Heading>

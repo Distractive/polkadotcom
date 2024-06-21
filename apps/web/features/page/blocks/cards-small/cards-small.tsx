@@ -13,7 +13,7 @@ export function CardsSmallBlock({ cards }: Props) {
   return (
     <div
       key={cards._key}
-      className="grid-system relative gap-y-gutter px-gutter"
+      className="grid-system max-width relative gap-y-gutter px-gutter"
     >
       <div className="col-span-full flex flex-col gap-copy lg:w-5/6">
         <Heading variant="h2">{cards.heading}</Heading>

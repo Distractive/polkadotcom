@@ -13,7 +13,7 @@ interface Props {
 
 export function ButtonBlock({ buttonBlock }: Props) {
   return (
-    <div className={cn("grid-system p-gutter")}>
+    <div className="grid-system max-width p-gutter">
       <DecorativeLine forButtonBlock>
         <Button
           size="md"

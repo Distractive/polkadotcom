@@ -20,7 +20,7 @@ interface Props {
 
 export function AccordionBlock({ accordion }: Props) {
   return (
-    <div className="grid-system px-gutter">
+    <div className="grid-system max-width px-gutter">
       {accordion.hasTitleOnSide ? (
         <div className="col-span-12 pb-gutter lg:col-span-4">
           <div className="flex flex-col gap-copy lg:w-5/6">

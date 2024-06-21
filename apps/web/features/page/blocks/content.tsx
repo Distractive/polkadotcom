@@ -9,7 +9,7 @@ interface Props {
 }
 export function ContentBlock({ content }: Props) {
   return (
-    <div className="grid-system px-gutter">
+    <div className="grid-system max-width px-gutter">
       <div
         className={cn(
           "col-span-full col-start-1 flex flex-col gap-copy",

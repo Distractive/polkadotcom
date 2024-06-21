@@ -4,14 +4,19 @@
 
 @layer utilities {
   .grid-system {
-    @apply mx-auto grid w-full max-w-[160rem] grid-cols-6 lg:grid-cols-12;
+    @apply grid w-full grid-cols-6 lg:grid-cols-12;
   }
+
   .grid-pile {
     @apply grid;
   }
 
   .grid-pile > * {
     grid-area: 1 / 1;
+  }
+
+  .max-width {
+    @apply mx-auto w-full max-w-[100rem];
   }
 }
 
