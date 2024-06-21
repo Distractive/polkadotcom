@@ -66,7 +66,6 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
             className={cn(
               "relative z-10 aspect-video",
               showSideBySide && "lg:basis-[60%]"
-              // showSideBySide && "lg:h-[26rem] lg:basis-[60%]"
             )}
           >
             {!useAsBackgroundImage && (

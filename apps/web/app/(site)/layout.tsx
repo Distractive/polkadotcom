@@ -115,8 +115,21 @@ export default async function RootLayout({
             </a>
           </div>
         )}
+        <a
+          href="#main"
+          className={cn(
+            "absolute -left-[9999px] -top-[9999px] z-[999] w-screen border-b border-b-grey-400 bg-grey-100 p-4 opacity-100 outline-none",
+            "focus:left-0 focus:top-0 focus:opacity-100"
+          )}
+        >
+          <span className="inline-block rounded-lg bg-purple-500 px-10 py-4 font-display text-xs uppercase tracking-wide text-white">
+            Skip to main content
+          </span>
+        </a>
         <NavigationLayout navigation={navigation} />
-        <main className="grid-system flex-grow gap-y-page">{children}</main>
+        <main id="main" className="grid-system flex-grow gap-y-page">
+          {children}
+        </main>
         <FooterLayout footer={footer} />
         <TailwindIndicator />
         {draftMode().isEnabled && <VisualEditing />}
