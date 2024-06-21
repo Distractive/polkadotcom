@@ -3,7 +3,7 @@
 import { type buttonBlockSelection } from "@/sanity/selections/blocks/button-block"
 import { type TypeFromSelection } from "groqd"
 
-import { Button, cn } from "@shared/ui"
+import { Button } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
 import { DecorativeLine } from "@/components/decorative-line"
 
@@ -16,6 +16,7 @@ export function ButtonBlock({ buttonBlock }: Props) {
     <div className="grid-system max-width p-gutter">
       <DecorativeLine forButtonBlock>
         <Button
+          asChild
           size="md"
           className="w-full md:group-hover:after:translate-x-0"
           variant={

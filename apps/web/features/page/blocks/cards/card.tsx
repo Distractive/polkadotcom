@@ -146,6 +146,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                   className={cn(!showSideBySideWithIcon && "pt-card")}
                 >
                   <Button
+                    asChild
                     size="md"
                     className="md:group-hover:after:translate-x-0"
                     variant={

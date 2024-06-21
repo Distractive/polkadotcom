@@ -69,6 +69,7 @@ export default function CardSmallBlock({ card, className }: Props) {
             )}
             {link && link.variant && (
               <Button
+                asChild
                 variant={
                   link.variant
                     ? link.variant === "primary"
