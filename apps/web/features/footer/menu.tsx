@@ -16,7 +16,7 @@ export default function Menu({ menu }: Props) {
           <div key={index} className="col-span-1 font-default text-black">
             <Heading
               variant="h2"
-              size="sm"
+              size="h5"
               decoration="uppercase"
               className="font-default"
             >

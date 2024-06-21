@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { mediaBlockSelection } from "@/sanity/selections/blocks/media-block"
+import { type mediaBlockSelection } from "@/sanity/selections/blocks/media-block"
 import type { TypeFromSelection } from "groqd"
 
 import {
@@ -55,7 +55,7 @@ export function MediaBlock({ mediaBlock, className }: Props) {
                 </span>
               )}
               {heading && (
-                <Heading variant="h3" className={cn()}>
+                <Heading variant="h2" size="h3">
                   {heading}
                 </Heading>
               )}

@@ -17,7 +17,7 @@ export function CardsStatBlock({ cards }: Props) {
     >
       <div className={cn("col-span-12")}>
         <div className="flex flex-col gap-copy lg:w-5/6">
-          <Heading variant="h2" className="text-3xl leading-snug md:text-5xl">
+          <Heading variant="h3" size="h2">
             {cards.heading}
           </Heading>
         </div>

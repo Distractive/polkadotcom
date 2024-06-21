@@ -23,7 +23,8 @@ export function SideBySideBlock({ content, className }: Props) {
       >
         <div className={cn("lg:w-1/2")}>
           <Heading
-            variant="h2"
+            variant="h3"
+            size="h2"
             className={cn(
               content.subheading ? "pt-gutter" : "py-gutter",
               "lg:text-5xl"

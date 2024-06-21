@@ -16,7 +16,9 @@ export function CardsLogoBlock({ cards }: Props) {
       className="grid-system max-width gap-y-gutter px-gutter"
     >
       <div className="col-span-full flex flex-col gap-copy">
-        <Heading variant="h2">{cards.heading}</Heading>
+        <Heading variant="h3" size="h2">
+          {cards.heading}
+        </Heading>
         {cards.body && <p>{cards.body}</p>}
       </div>
       <div className={cn("grid-system col-span-full gap-gutter")}>
