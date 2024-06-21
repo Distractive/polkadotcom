@@ -32,7 +32,7 @@ export function QuoteBlock({ quote, className }: Props) {
             },
             marks: {
               highlight: ({ children }) => (
-                <span className="text-pink">{children}</span>
+                <strong className="font-medium text-pink">{children}</strong>
               ),
             },
           }}
