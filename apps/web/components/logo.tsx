@@ -1,15 +1,18 @@
 import { cn } from "@shared/ui"
 
 interface Props {
+  ariaLabel?: string
   className?: string
 }
 
-export function Logo({ className }: Props) {
+export function Logo({ ariaLabel, className }: Props) {
   return (
     <svg
       viewBox="0 0 220 49"
       width="220"
       height="49"
+      role="img"
+      aria-label={ariaLabel}
       className={cn(
         "text-black transition-colors duration-500 ease-out",
         className

@@ -44,7 +44,10 @@ export function Header({
         )}
       >
         <Link href="/" onClick={handleItemSelect} className="lg:pr-nav">
-          <Logo className="h-auto w-[9.125rem] md:hover:text-pink" />
+          <Logo
+            ariaLabel="Polkadot homepage"
+            className="h-auto w-[9.125rem] md:hover:text-pink"
+          />
         </Link>
         <ul
           className={cn(
