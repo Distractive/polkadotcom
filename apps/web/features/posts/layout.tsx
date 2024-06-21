@@ -6,7 +6,7 @@ import type { TypeFromSelection } from "groqd"
 import {
   BLOG_POSTTYPE,
   POSTS_PER_PAGE,
-  PRESS_RELEASE_POSTTYPE,
+  type PRESS_RELEASE_POSTTYPE,
 } from "@/constants/global"
 import { cn } from "@shared/ui"
 
@@ -62,7 +62,7 @@ export default async function Layout({
       )}
       <div className="col-span-12 px-gutter">
         {tagSlug !== "" && (
-          <div className="pt-header-top col-span-12 mt-gutter flex justify-center pb-gutter">
+          <div className="col-span-12 mt-gutter flex justify-center pb-gutter pt-header-top">
             <h1 className="font-display text-3xl capitalize">{tagSlug}</h1>
           </div>
         )}

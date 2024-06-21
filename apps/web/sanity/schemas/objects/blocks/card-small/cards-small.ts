@@ -34,6 +34,13 @@ export default defineType({
       ],
       group: "contents",
     }),
+    defineField({
+      name: "backgroundImage",
+      title: "Background Image",
+      type: "image",
+      description:
+        "An image that sits behind the cards, anchored to the top and right hand side of the list. Appears on desktop only.",
+    }),
   ],
   preview: {
     select: {

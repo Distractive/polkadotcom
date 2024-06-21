@@ -11,7 +11,10 @@ interface Props {
 
 export function CardsSmallBlock({ cards }: Props) {
   return (
-    <div key={cards._key} className="grid-system gap-y-gutter px-gutter">
+    <div
+      key={cards._key}
+      className="grid-system relative gap-y-gutter px-gutter"
+    >
       <div className="col-span-full flex flex-col gap-copy lg:w-5/6">
         <Heading variant="h2">{cards.heading}</Heading>
         {cards.body && <p>{cards.body}</p>}
@@ -33,6 +36,17 @@ export function CardsSmallBlock({ cards }: Props) {
           )
         })}
       </div>
+      {cards.backgroundImage && (
+        <img
+          src={cards.backgroundImage.asset.url}
+          alt=""
+          role="presentation"
+          loading="eager"
+          className={cn(
+            "absolute right-0 top-0 -z-10 hidden h-auto w-2/3 max-w-[90rem] border-2 lg:block"
+          )}
+        />
+      )}
     </div>
   )
 }

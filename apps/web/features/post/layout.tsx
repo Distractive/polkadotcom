@@ -1,9 +1,13 @@
 import type { ReactNode } from "react"
 import { getPost } from "@/sanity/queries/post"
-import { getPostHeading, getPosts, postSelection } from "@/sanity/queries/posts"
-import { TypeFromSelection } from "groqd"
+import {
+  getPostHeading,
+  getPosts,
+  type postSelection,
+} from "@/sanity/queries/posts"
+import { type TypeFromSelection } from "groqd"
 
-import { BLOG_POSTTYPE, PRESS_RELEASE_POSTTYPE } from "@/constants/global"
+import { BLOG_POSTTYPE, type PRESS_RELEASE_POSTTYPE } from "@/constants/global"
 import { CarouselItem, cn, Heading } from "@shared/ui"
 
 import { Carousel } from "../../components/carousel"
@@ -49,7 +53,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
 
   return (
     <>
-      <article className="pt-header-top col-span-full mx-6 mt-gutter lg:mx-auto lg:max-w-4xl">
+      <article className="col-span-full mx-6 mt-gutter pt-header-top lg:mx-auto lg:max-w-4xl">
         <div className="mb-6">
           <BreadcrumbBlock items={breadcrumb.items} />
         </div>
