@@ -33,9 +33,15 @@ export function ContentBlock({ content }: Props) {
                   {children}
                 </ul>
               ),
+              number: ({ children }) => (
+                <ol className="my-4 list-outside list-decimal pl-8 text-black marker:text-black">
+                  {children}
+                </ol>
+              ),
             },
             listItem: {
               bullet: ({ children }) => <li>{children}</li>,
+              number: ({ children }) => <li>{children}</li>,
             },
             types: {
               customUrl: ({ value }) => {
