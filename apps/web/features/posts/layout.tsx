@@ -33,6 +33,10 @@ export default async function Layout({
   const postType = type == BLOG_POSTTYPE ? "blog" : "press-releases"
   const postsData = await getPostHeading(postType)
   const searchData = await getSearchData(type)
+  const slugPath =
+    type === "Blog"
+      ? `/${postsData?.slug}`
+      : `/${postsData?.parent?.slug}/${postsData?.slug}`
 
   const breadcrumb: BreadcrumbProps = {
     items: [
@@ -41,7 +45,7 @@ export default async function Layout({
         title: postsData?.parent?.header?.title,
       },
       {
-        slug: `/${postsData?.parent?.slug}/${postsData?.slug}` ?? "",
+        slug: slugPath,
         title: postsData?.heading,
       },
     ],
