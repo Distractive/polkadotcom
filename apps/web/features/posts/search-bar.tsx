@@ -198,7 +198,7 @@ const SearchBarListItem = ({
   return (
     <Link
       href={href}
-      className="line-clamp-1 h-10 overflow-hidden rounded-lg p-2 leading-roomy text-purple-500 hover:bg-grey-300"
+      className="line-clamp-1 h-10 overflow-hidden rounded-lg p-2 leading-roomy text-purple-500 hover:bg-grey-300 "
     >
       {children}
     </Link>
@@ -206,5 +206,5 @@ const SearchBarListItem = ({
 }
 
 const SearchBarContent = ({ children }: { children: ReactNode }) => {
-  return <div className="relative z-10">{children}</div>
+  return <div className="relative z-20">{children}</div>
 }
