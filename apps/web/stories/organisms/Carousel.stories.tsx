@@ -24,8 +24,8 @@ export const Carousel: Story = {
           // @ts-ignore
           headerImage: { asset: { url: "/image-placeholder.png" } },
           tags: ["Tag 1", "Tag 2", "Tag 3"],
-          eyebrow: "Eyebrow",
-          heading: "Headline",
+          eyebrow: "Eyebrow 01",
+          heading: "Headline 01",
           body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           link: {
             label: "Learn more",
@@ -38,8 +38,8 @@ export const Carousel: Story = {
           // @ts-ignore
           headerImage: { asset: { url: "/image-placeholder.png" } },
           tags: ["Tag 1", "Tag 2", "Tag 3"],
-          eyebrow: "Eyebrow",
-          heading: "Headline",
+          eyebrow: "Eyebrow 02",
+          heading: "Headline 02",
           body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           link: {
             label: "Learn more",
@@ -52,8 +52,8 @@ export const Carousel: Story = {
           // @ts-ignore
           headerImage: { asset: { url: "/image-placeholder.png" } },
           tags: ["Tag 1", "Tag 2", "Tag 3"],
-          eyebrow: "Eyebrow",
-          heading: "Headline",
+          eyebrow: "Eyebrow 03",
+          heading: "Headline 03",
           body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           link: {
             label: "Learn more",
@@ -66,8 +66,8 @@ export const Carousel: Story = {
           // @ts-ignore
           headerImage: { asset: { url: "/image-placeholder.png" } },
           tags: ["Tag 1", "Tag 2", "Tag 3"],
-          eyebrow: "Eyebrow",
-          heading: "Headline",
+          eyebrow: "Eyebrow 04",
+          heading: "Headline 04",
           body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           link: {
             label: "Learn more",
@@ -80,8 +80,8 @@ export const Carousel: Story = {
           // @ts-ignore
           headerImage: { asset: { url: "/image-placeholder.png" } },
           tags: ["Tag 1", "Tag 2", "Tag 3"],
-          eyebrow: "Eyebrow",
-          heading: "Headline",
+          eyebrow: "Eyebrow 05",
+          heading: "Headline 05",
           body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           link: {
             label: "Learn more",

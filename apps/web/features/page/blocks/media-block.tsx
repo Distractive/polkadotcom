@@ -82,6 +82,7 @@ export function MediaBlock({ mediaBlock, className }: Props) {
                         }
                       >
                         <CustomUrl
+                          className="outline-none"
                           value={{
                             internal: link?.internal,
                             external: link?.external,

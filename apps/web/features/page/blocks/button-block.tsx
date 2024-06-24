@@ -27,7 +27,7 @@ export function ButtonBlock({ buttonBlock }: Props) {
               : "primary"
           }
         >
-          <CustomUrl value={buttonBlock.link}>
+          <CustomUrl className="outline-none" value={buttonBlock.link}>
             {buttonBlock.link?.label}
           </CustomUrl>
         </Button>

@@ -180,7 +180,7 @@ const CarouselItem = React.forwardRef<
 CarouselItem.displayName = "CarouselItem"
 
 const buttonStyles =
-  "rounded-full p-3 after:translate-x-0 after:scale-0 after:origin-center md:hover:after:scale-100 after:rounded-full"
+  "rounded-full p-3 after:translate-x-0 after:scale-0 after:origin-center md:hover:after:scale-100 md:focus-within:after:scale-100 after:rounded-full"
 
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,

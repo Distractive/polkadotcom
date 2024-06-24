@@ -124,7 +124,7 @@ const SearchBarInput = ({
   return (
     <div
       className={cn(
-        "col-span-12 flex items-center gap-1 self-stretch bg-grey-100 p-4 ring-1 ring-inset ring-grey-300",
+        "peer col-span-12 flex items-center gap-1 self-stretch bg-grey-100 p-4 ring-1 ring-inset ring-grey-300 focus-within:ring-grey-500 hover:ring-grey-500",
         "transition-all duration-300",
         hasDrawerResultsOpen ? "rounded-tl-2xl rounded-tr-2xl" : "rounded-2xl"
       )}
@@ -180,7 +180,7 @@ const SearchBarResults = ({
         "transition-all duration-300",
         "absolute",
         " w-full flex-col items-start justify-center overflow-auto rounded-bl-2xl rounded-br-2xl",
-        "border border-t-0 border-grey-300 bg-grey-100 px-4 py-2"
+        "border border-t-0 border-grey-300 bg-grey-100 px-4 py-2 peer-focus-within:border-grey-500 peer-hover:border-grey-500"
       )}
     >
       {children}

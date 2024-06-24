@@ -29,8 +29,8 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         className={cn(
           "col-span-full flex flex-col items-start justify-center gap-copy ",
           header.image
-            ? "lg:pt-header-top px-gutter pt-card lg:order-1 lg:col-span-6 lg:col-start-1"
-            : "pt-header-top mt-gutter px-gutter lg:col-span-8 lg:col-start-3"
+            ? "px-gutter pt-card lg:order-1 lg:col-span-6 lg:col-start-1 lg:pt-header-top"
+            : "mt-gutter px-gutter pt-header-top lg:col-span-8 lg:col-start-3"
         )}
       >
         {breadcrumb && <BreadcrumbBlock items={breadcrumb.items} />}
@@ -53,6 +53,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
               size="lg"
             >
               <CustomUrl
+                className="outline-none"
                 value={{ internal: link?.internal, external: link?.external }}
               >
                 {link.label}

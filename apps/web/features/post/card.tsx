@@ -17,9 +17,9 @@ export default function BlogCard({ post, className }: Props) {
     <Card
       key={slug}
       className={cn(
-        "group relative h-full overflow-hidden rounded-2xl border border-grey-400 bg-white backdrop-blur-lg transition-shadow duration-500 ease-in-out md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
+        "group relative h-full overflow-hidden rounded-2xl border border-grey-400 bg-white backdrop-blur-lg transition-shadow duration-500 ease-in-out md:cursor-pointer md:focus-within:shadow-card md:focus-within:backdrop-blur-0 md:hover:shadow-card md:hover:backdrop-blur-0",
         slug &&
-          "md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
+          "md:cursor-pointer md:focus-within:shadow-card md:focus-within:backdrop-blur-0 md:hover:shadow-card md:hover:backdrop-blur-0",
         className
       )}
     >
@@ -43,6 +43,7 @@ export default function BlogCard({ post, className }: Props) {
               >
                 <a
                   className="relative z-20"
+                  tabIndex={-1}
                   href={
                     post_type == BLOG_POSTTYPE
                       ? `/blog/tag/${tag.slug}`
@@ -60,16 +61,17 @@ export default function BlogCard({ post, className }: Props) {
           <h4
             className={cn(
               "mb-1 text-lg font-bold transition-colors duration-500 ease-in-out",
-              "md:group-hover:text-pink"
+              "md:group-focus-within:text-pink md:group-hover:text-pink"
             )}
           >
             <Link
+              tabIndex={0}
               href={
                 post_type == BLOG_POSTTYPE
                   ? `/blog/${post.slug}`
                   : `/newsroom/press-releases/${post.slug}`
               }
-              className="after:absolute after:inset-0 after:z-10 after:cursor-pointer"
+              className="outline-none after:absolute after:inset-0 after:z-10 after:cursor-pointer"
             >
               {title}
             </Link>
