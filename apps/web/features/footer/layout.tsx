@@ -11,8 +11,8 @@ interface Props {
 
 export default function FooterLayout({ footer }: Props) {
   return (
-    <footer className="max-width">
-      <div className="bg-grey-200 md:m-gutter md:rounded-2xl md:border md:border-grey-300">
+    <footer className="max-width mt-page">
+      <div className="bg-grey-200 md:mx-gutter md:mb-gutter md:rounded-2xl md:border md:border-grey-300">
         <div className="mx-auto w-full">
           <Menu menu={footer.menu} />
         </div>

@@ -9,7 +9,7 @@ interface Props {
 
 export function Grid({ posts }: Props) {
   return (
-    <div className="grid-system col-span-12 mb-gutter gap-card">
+    <div className="grid-system col-span-12 mb-gutter gap-y-card md:gap-card">
       {posts.map((post) => {
         return (
           <div
