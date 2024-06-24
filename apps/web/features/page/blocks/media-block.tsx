@@ -71,6 +71,7 @@ export function MediaBlock({ mediaBlock, className }: Props) {
                   <React.Fragment key={index}>
                     {link.label && (
                       <Button
+                        asChild
                         size="md"
                         variant={
                           link.variant
