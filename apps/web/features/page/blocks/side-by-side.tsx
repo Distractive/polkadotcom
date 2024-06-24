@@ -13,7 +13,7 @@ interface Props {
 
 export function SideBySideBlock({ content, className }: Props) {
   return (
-    <div className="grid-system py-spacing px-gutter">
+    <div className="grid-system py-spacing max-width px-gutter">
       <div
         className={cn(
           "col-span-12 flex flex-col-reverse lg:items-center lg:justify-center xl:col-span-8 xl:col-start-3",
@@ -23,7 +23,8 @@ export function SideBySideBlock({ content, className }: Props) {
       >
         <div className={cn("lg:w-1/2")}>
           <Heading
-            variant="h2"
+            variant="h3"
+            size="h2"
             className={cn(
               content.subheading ? "pt-gutter" : "py-gutter",
               "lg:text-5xl"

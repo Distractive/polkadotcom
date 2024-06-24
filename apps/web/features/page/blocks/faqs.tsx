@@ -12,8 +12,6 @@ import {
   Heading,
 } from "@shared/ui"
 
-// import { CustomUrl } from "@/components/custom-url"
-
 interface Props {
   faqs: TypeFromSelection<typeof faqsSelection> & {
     _type: "faqs"
@@ -22,9 +20,10 @@ interface Props {
 
 export function FAQBlock({ faqs }: Props) {
   return (
-    <div className="grid-system gap-gutter px-gutter">
+    <div className="grid-system max-width gap-gutter px-gutter">
       <Heading
-        variant="h2"
+        variant="h3"
+        size="h2"
         className="col-span-12 lg:col-span-8 lg:col-start-3"
       >
         {faqs.title}

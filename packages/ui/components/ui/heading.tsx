@@ -3,17 +3,18 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "../../lib/utils"
 
+const SIZES = {
+  h1: "text-5xl md:text-7xl leading-snug",
+  h2: "text-4xl md:text-5xl leading-snug",
+  h3: "text-2xl md:text-3xl leading-snug",
+  h4: "text-xl md:text-2xl leading-normal",
+  h5: "text-sm md:text-base font-default",
+}
+
 const HeadingStyles = {
   base: "font-display",
-  variants: {
-    h1: "text-5xl md:text-7xl leading-snug",
-    h2: "text-4xl md:text-5xl leading-snug",
-    h3: "text-2xl md:text-3xl leading-snug",
-    h4: "text-xl md:text-2xl leading-normal",
-  },
-  sizes: {
-    sm: "text-sm md:text-base font-default",
-  },
+  variants: { ...SIZES },
+  sizes: { ...SIZES },
   decoration: {
     uppercase: "uppercase",
   },

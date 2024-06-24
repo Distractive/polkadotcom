@@ -41,7 +41,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
       className={cn(
         headerImage && showSideBySide && "lg:flex",
         link &&
-          "md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
+          "md:cursor-pointer md:focus-within:shadow-card md:focus-within:backdrop-blur-0 md:hover:shadow-card md:hover:backdrop-blur-0",
         className
       )}
       data-tags={selectedTags?.join(",")}
@@ -65,7 +65,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
           <CardHeader
             className={cn(
               "relative z-10 aspect-video",
-              showSideBySide && "lg:h-[26rem] lg:basis-[60%]"
+              showSideBySide && "lg:basis-[60%]"
             )}
           >
             {!useAsBackgroundImage && (
@@ -127,7 +127,8 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                     variant="h4"
                     className={cn(
                       "text-balance transition-colors duration-500 ease-in-out",
-                      link && "md:group-hover:text-pink"
+                      link &&
+                        "md:group-focus-within:text-pink md:group-hover:text-pink"
                     )}
                   >
                     {heading}
@@ -146,8 +147,9 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                   className={cn(!showSideBySideWithIcon && "pt-card")}
                 >
                   <Button
+                    asChild
                     size="md"
-                    className="md:group-hover:after:translate-x-0"
+                    className="md:group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0"
                     variant={
                       link.variant
                         ? link.variant === "primary"
@@ -156,7 +158,13 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                         : "primary"
                     }
                   >
-                    <CustomUrl value={link}>{link.label}</CustomUrl>
+                    <CustomUrl
+                      className="outline-none"
+                      tabIndex={-1}
+                      value={link}
+                    >
+                      {link.label}
+                    </CustomUrl>
                   </Button>
                 </CardFooter>
               )}

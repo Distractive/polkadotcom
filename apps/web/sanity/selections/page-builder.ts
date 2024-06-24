@@ -9,9 +9,10 @@ import { cardsSmallSelection } from "./blocks/cards-small"
 import { cardsStatSelection } from "./blocks/cards-stat"
 import { cardsTimelineSelection } from "./blocks/cards-timeline"
 import { contentSelection } from "./blocks/content"
-import { sideBySideSelection } from "./blocks/side-by-side"
 import { quoteSelection } from "./blocks/quote"
 import { buttonBlockSelection } from "./blocks/button-block"
+import { mediaBlockSelection } from "./blocks/media-block"
+import { sideBySideSelection } from "./blocks/side-by-side"
 
 export const pageBuilderSelection = {
   pageBuilder: q("pageBuilder.pageBuilder")
@@ -60,6 +61,10 @@ export const pageBuilderSelection = {
       '_type == "quote"': {
         _type: q.literal("quote"),
         ...quoteSelection,
+      },
+      '_type == "mediaBlock"': {
+        _type: q.literal("mediaBlock"),
+        ...mediaBlockSelection,
       },
       default: {
         _key: q.string(),

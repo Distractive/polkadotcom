@@ -1,9 +1,13 @@
 import type { ReactNode } from "react"
 import { getPost } from "@/sanity/queries/post"
-import { getPostHeading, getPosts, postSelection } from "@/sanity/queries/posts"
-import { TypeFromSelection } from "groqd"
+import {
+  getPostHeading,
+  getPosts,
+  type postSelection,
+} from "@/sanity/queries/posts"
+import { type TypeFromSelection } from "groqd"
 
-import { BLOG_POSTTYPE, PRESS_RELEASE_POSTTYPE } from "@/constants/global"
+import { BLOG_POSTTYPE, type PRESS_RELEASE_POSTTYPE } from "@/constants/global"
 import { CarouselItem, cn, Heading } from "@shared/ui"
 
 import { Carousel } from "../../components/carousel"
@@ -49,7 +53,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
 
   return (
     <>
-      <article className="pt-header-top col-span-full mx-6 mt-gutter lg:mx-auto lg:max-w-4xl">
+      <article className="max-width col-span-full mt-gutter px-6 pt-header-top">
         <div className="mb-6">
           <BreadcrumbBlock items={breadcrumb.items} />
         </div>
@@ -151,7 +155,7 @@ const MorePost = ({
   const headingLabel =
     post_type == BLOG_POSTTYPE ? "From the blog" : "More from newsroom"
   return (
-    <div className="col-span-full mb-12 px-gutter">
+    <div className="max-width col-span-full mb-12 px-gutter">
       <div className={cn("col-span-12 mb-12")}>
         <div className="flex flex-col gap-copy lg:w-5/6">
           <Heading variant="h2">{headingLabel}</Heading>

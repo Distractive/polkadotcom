@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity"
+import { defineArrayMember, defineField, defineType } from "sanity"
 
 export default defineType({
   name: "notfound",
@@ -25,9 +25,13 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "link",
-      title: "Link",
-      type: "customUrl",
+      name: "links",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "customUrl",
+        }),
+      ],
     }),
   ],
 })

@@ -26,7 +26,7 @@ export default function CardSmallBlock({ card, className }: Props) {
       key={_key}
       className={cn(
         link &&
-          "md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
+          "md:cursor-pointer md:focus-within:shadow-card md:focus-within:backdrop-blur-0 md:hover:shadow-card md:hover:backdrop-blur-0",
         className
       )}
     >
@@ -56,7 +56,8 @@ export default function CardSmallBlock({ card, className }: Props) {
                 variant="h4"
                 className={cn(
                   "text-balance transition-colors duration-500 ease-in-out",
-                  link && "md:group-hover:text-pink"
+                  link &&
+                    "md:group-focus-within:text-pink md:group-hover:text-pink"
                 )}
               >
                 {heading}
@@ -69,6 +70,7 @@ export default function CardSmallBlock({ card, className }: Props) {
             )}
             {link && link.variant && (
               <Button
+                asChild
                 variant={
                   link.variant
                     ? link.variant === "primary"
@@ -79,7 +81,9 @@ export default function CardSmallBlock({ card, className }: Props) {
                 size="md"
                 className="md:mr-auto"
               >
-                <CustomUrl value={link}>{link.label}</CustomUrl>
+                <CustomUrl className="outline-none" value={link}>
+                  {link.label}
+                </CustomUrl>
               </Button>
             )}
           </CardContent>

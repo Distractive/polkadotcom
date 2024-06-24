@@ -11,7 +11,7 @@ interface Props {
 
 export function QuoteBlock({ quote, className }: Props) {
   return (
-    <div className={cn("grid-system gap-card px-gutter", className)}>
+    <div className={cn("max-width grid-system gap-card px-gutter", className)}>
       {quote.image && (
         <img
           src={quote.image.asset.url}
@@ -21,7 +21,7 @@ export function QuoteBlock({ quote, className }: Props) {
       )}
       <div
         className={cn(
-          "col-span-full flex flex-col gap-copy lg:col-span-8 lg:col-start-4"
+          "col-span-full flex flex-col gap-copy lg:col-span-8 lg:col-start-3"
         )}
       >
         <PortableText
@@ -32,7 +32,7 @@ export function QuoteBlock({ quote, className }: Props) {
             },
             marks: {
               highlight: ({ children }) => (
-                <span className="text-pink">{children}</span>
+                <strong className="font-medium text-pink">{children}</strong>
               ),
             },
           }}

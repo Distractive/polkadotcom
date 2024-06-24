@@ -9,18 +9,21 @@ interface Props {
   children: React.ReactNode
   className?: string
   isWrapper?: boolean
+  tabIndex?: number
   onClick?: () => void
 }
 export function CustomUrl({
   value,
   children,
   className,
+  tabIndex,
   isWrapper = false,
   onClick,
 }: Props) {
   return value ? (
     <Link
-      href={value.external || value.internal?.slug || ""}
+      tabIndex={tabIndex}
+      href={value.external || `/${value.internal?.slug}` || ""}
       target={value.external ? "_blank" : "_self"}
       className={className}
       prefetch={!value.external}

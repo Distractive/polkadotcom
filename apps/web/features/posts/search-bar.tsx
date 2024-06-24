@@ -6,7 +6,7 @@ import Link from "next/link"
 import type { searchSelection } from "@/sanity/queries/search"
 import type { TypeFromSelection } from "groqd"
 
-import { BLOG_POSTTYPE, PRESS_RELEASE_POSTTYPE } from "@/constants/global"
+import { BLOG_POSTTYPE, type PRESS_RELEASE_POSTTYPE } from "@/constants/global"
 import { cn, Icon } from "@shared/ui"
 
 interface Props {
@@ -124,7 +124,7 @@ const SearchBarInput = ({
   return (
     <div
       className={cn(
-        "col-span-12 flex items-center gap-1 self-stretch bg-grey-100 p-4 ring-1 ring-inset ring-grey-300",
+        "peer col-span-12 flex items-center gap-1 self-stretch bg-grey-100 p-4 ring-1 ring-inset ring-grey-300 focus-within:ring-grey-500 hover:ring-grey-500",
         "transition-all duration-300",
         hasDrawerResultsOpen ? "rounded-tl-2xl rounded-tr-2xl" : "rounded-2xl"
       )}
@@ -180,7 +180,7 @@ const SearchBarResults = ({
         "transition-all duration-300",
         "absolute",
         " w-full flex-col items-start justify-center overflow-auto rounded-bl-2xl rounded-br-2xl",
-        "border border-t-0 border-grey-300 bg-grey-100 px-4 py-2"
+        "border border-t-0 border-grey-300 bg-grey-100 px-4 py-2 peer-focus-within:border-grey-500 peer-hover:border-grey-500"
       )}
     >
       {children}
@@ -198,7 +198,7 @@ const SearchBarListItem = ({
   return (
     <Link
       href={href}
-      className="line-clamp-1 h-10 overflow-hidden rounded-lg p-2 leading-roomy text-purple-500 hover:bg-grey-300"
+      className="line-clamp-1 h-10 overflow-hidden rounded-lg p-2 leading-roomy text-purple-500 hover:bg-grey-300 "
     >
       {children}
     </Link>
@@ -206,5 +206,5 @@ const SearchBarListItem = ({
 }
 
 const SearchBarContent = ({ children }: { children: ReactNode }) => {
-  return <div className="relative z-10">{children}</div>
+  return <div className="relative z-20">{children}</div>
 }

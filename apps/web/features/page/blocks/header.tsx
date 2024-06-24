@@ -38,11 +38,29 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         <Heading variant="h1">{header.title}</Heading>
 
         {header.body && <p className="text-lg">{header.body}</p>}
-        {header.link && (
-          <Button variant="primary" size="lg" className="mt-copy">
-            <CustomUrl value={header.link}>{header.link.label}</CustomUrl>
-          </Button>
-        )}
+        <div className="mt-copy flex w-full flex-col gap-4 md:flex-row">
+          {header.links?.map((link, index) => (
+            <Button
+              asChild
+              key={index}
+              variant={
+                link?.variant
+                  ? link.variant === "primary"
+                    ? "primary"
+                    : "secondary"
+                  : "primary"
+              }
+              size="lg"
+            >
+              <CustomUrl
+                className="outline-none"
+                value={{ internal: link?.internal, external: link?.external }}
+              >
+                {link.label}
+              </CustomUrl>
+            </Button>
+          ))}
+        </div>
         {header.video && (
           <VideoBlock video={header.video} className="mt-gutter w-full" />
         )}

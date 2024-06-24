@@ -20,11 +20,13 @@ interface Props {
 
 export function AccordionBlock({ accordion }: Props) {
   return (
-    <div className="grid-system px-gutter">
+    <div className="grid-system max-width px-gutter">
       {accordion.hasTitleOnSide ? (
         <div className="col-span-12 pb-gutter lg:col-span-4">
           <div className="flex flex-col gap-copy lg:w-5/6">
-            <Heading variant="h2">{accordion.title}</Heading>
+            <Heading variant="h3" size="h2">
+              {accordion.title}
+            </Heading>
             {accordion.body && <p>{accordion.body}</p>}
           </div>
         </div>
@@ -95,7 +97,7 @@ export function AccordionBlock({ accordion }: Props) {
                 components={{
                   block: {
                     h4: ({ children }) => (
-                      <Heading variant="h4" size="sm" weight="bold">
+                      <Heading variant="h4" size="h5" weight="bold">
                         {children}
                       </Heading>
                     ),

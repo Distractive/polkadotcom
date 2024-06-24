@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
+import { usePathname } from "next/navigation"
 import type { navigationSelection } from "@/sanity/selections/navigation/navigation"
 import type { TypeFromSelection } from "groqd"
 
@@ -22,6 +23,25 @@ export default function NavigationLayout({ navigation }: Props) {
   const [hovered, setHovered] = useState<string>("")
   const isMobile = useBreakpoint("--screen-lg")
   const { ref } = useHideOnScroll()
+  const pathname = usePathname()
+  const currentPath = useMemo(() => pathname.replace(/^\/+/, ""), [pathname])
+
+  const handleKeydown = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isOpen) {
+        setIsOpen(false)
+        setHovered("")
+      }
+    },
+    [isOpen]
+  )
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeydown)
+    return () => {
+      window.removeEventListener("keydown", handleKeydown)
+    }
+  }, [handleKeydown])
 
   return (
     <>
@@ -31,8 +51,8 @@ export default function NavigationLayout({ navigation }: Props) {
         onMouseLeave={() => setIsOpen(false)}
         className={cn(
           "fixed left-0 right-0 top-0 z-50 m-gutter lg:right-auto",
-          "gap-nav flex flex-col text-black lg:gap-2",
-          isOpen && "bottom-0"
+          "flex flex-col gap-nav text-black lg:gap-2",
+          isOpen && isMobile && "bottom-0"
         )}
       >
         <Header
@@ -40,12 +60,14 @@ export default function NavigationLayout({ navigation }: Props) {
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           setHovered={setHovered}
+          currentPath={currentPath}
         />
         {isMobile ? (
           <MenuMobile
             menu={navigation.menu}
             isOpen={isOpen}
             setIsOpen={setIsOpen}
+            currentPath={currentPath}
           />
         ) : (
           <MenuDesktop
@@ -54,6 +76,7 @@ export default function NavigationLayout({ navigation }: Props) {
             setHovered={setHovered}
             isOpen={isOpen}
             setIsOpen={setIsOpen}
+            currentPath={currentPath}
           />
         )}
       </nav>

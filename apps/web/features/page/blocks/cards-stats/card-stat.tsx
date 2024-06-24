@@ -22,7 +22,7 @@ export default function CardStatBlock({ card, className }: Props) {
         )}
       >
         <CardHeader className="grid gap-4">
-          <Heading variant="h2" className="text-3xl leading-snug md:text-5xl">
+          <Heading variant="h4" size="h2">
             {heading}
           </Heading>
           <CardDescription>{body}</CardDescription>

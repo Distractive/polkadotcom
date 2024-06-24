@@ -19,7 +19,7 @@ export function VideoBlock({ video, className }: Props) {
   return (
     <div
       className={cn(
-        "aspect-video overflow-hidden rounded-2xl",
+        "max-width aspect-video overflow-hidden rounded-2xl",
         "[&>div>iframe]:overflow-hidden [&>div>iframe]:rounded-2xl",
         className
       )}

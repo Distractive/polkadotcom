@@ -10,11 +10,14 @@ export const headerSelection = {
   }).nullable(),
   title: q.string(),
   body: nullToUndefined(q.string().optional()),
-  link: q("link")
-    .grab$({
-      ...customUrlSelection,
-    })
-    .nullable(),
+  links: q("links")
+    .filter()
+    .select({
+      '_type == "customUrl"': {
+        _type: q.literal("customUrl"),
+        ...customUrlSelection,
+      },
+    }).nullable(),
   video: q("video")
     .grab$({
       ...videoSelection,

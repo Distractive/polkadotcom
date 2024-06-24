@@ -62,7 +62,7 @@ const BreadcrumbSeparator = ({
   <li
     role="presentation"
     aria-hidden="true"
-    className={cn("h-6 w-1 items-baseline text-base text-grey-400", className)}
+    className={cn("text-grey h-6 w-1 items-baseline text-base", className)}
     {...props}
   >
     /

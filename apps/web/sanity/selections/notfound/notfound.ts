@@ -9,9 +9,12 @@ export const notfoundSelection = {
     withAsset: ["base", "dimensions"],
   }).nullable(),
   body: nullToUndefined(q.string().optional()),
-  link: q("link")
-    .grab$({
+  links: q("links")
+  .filter()
+  .select({
+    '_type == "customUrl"': {
+      _type: q.literal("customUrl"),
       ...customUrlSelection,
-    })
-    .nullable(),
+    },
+  }).nullable(),
 } satisfies Selection

@@ -9,7 +9,7 @@ interface Props {
 }
 export function ContentBlock({ content }: Props) {
   return (
-    <div className="grid-system px-gutter">
+    <div className="grid-system max-width px-gutter">
       <div
         className={cn(
           "col-span-full col-start-1 flex flex-col gap-copy",
@@ -20,8 +20,11 @@ export function ContentBlock({ content }: Props) {
           value={content.content}
           components={{
             block: {
-              h2: ({ children }) => <Heading variant="h2">{children}</Heading>,
-              h3: ({ children }) => <Heading variant="h3">{children}</Heading>,
+              h3: ({ children }) => (
+                <Heading variant="h3" size="h2">
+                  {children}
+                </Heading>
+              ),
               h4: ({ children }) => <Heading variant="h4">{children}</Heading>,
             },
             list: {
@@ -30,9 +33,15 @@ export function ContentBlock({ content }: Props) {
                   {children}
                 </ul>
               ),
+              number: ({ children }) => (
+                <ol className="my-4 list-outside list-decimal pl-8 text-black marker:text-black">
+                  {children}
+                </ol>
+              ),
             },
             listItem: {
               bullet: ({ children }) => <li>{children}</li>,
+              number: ({ children }) => <li>{children}</li>,
             },
             types: {
               customUrl: ({ value }) => {

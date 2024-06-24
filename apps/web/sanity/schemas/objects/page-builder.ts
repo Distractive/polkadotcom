@@ -54,6 +54,10 @@ export default defineType({
           name: "quote",
           type: "quote",
         }),
+        defineArrayMember({
+          name: "mediaBlock",
+          type: "mediaBlock",
+        }),
       ],
     }),
   ],

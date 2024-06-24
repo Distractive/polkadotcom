@@ -41,6 +41,66 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicon/apple-touch-icon.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="70x70"
+          href="/favicon/mstile-70x70.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="144x144"
+          href="/favicon/mstile-144x144.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="150x150"
+          href="/favicon/mstile-150x150.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="310x150"
+          href="/favicon/mstile-310x150.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="310x310"
+          href="/favicon/mstile-310x310.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="192x192"
+          href="/favicon/android-chrome-192x192"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="512x512"
+          href="/favicon/android-chrome-512x512"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#E6007A" />
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+        <meta name="theme-color" content="#E6007A" />
+      </head>
       <body
         className={cn(
           unbounded.variable,
@@ -55,8 +115,21 @@ export default async function RootLayout({
             </a>
           </div>
         )}
+        <a
+          href="#main"
+          className={cn(
+            "absolute -left-[9999px] -top-[9999px] z-[999] w-screen border-b border-b-grey-400 bg-grey-100 p-4 opacity-100 outline-none",
+            "focus:left-0 focus:top-0 focus:opacity-100"
+          )}
+        >
+          <span className="inline-block rounded-lg bg-purple-500 px-10 py-4 font-display text-xs uppercase tracking-wide text-white">
+            Skip to main content
+          </span>
+        </a>
         <NavigationLayout navigation={navigation} />
-        <main className="grid-system flex-grow gap-y-page">{children}</main>
+        <main id="main" className="grid-system flex-grow gap-y-page">
+          {children}
+        </main>
         <FooterLayout footer={footer} />
         <TailwindIndicator />
         {draftMode().isEnabled && <VisualEditing />}
