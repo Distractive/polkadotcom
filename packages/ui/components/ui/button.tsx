@@ -13,14 +13,14 @@ const ButtonStyles = {
     "z-10"
   ),
   variants: {
-    primary: "text-white before:bg-purple after:bg-pink",
+    primary: "text-white before:bg-purple-500 after:bg-pink",
     secondary:
       "text-black before:bg-grey-200 before:opacity-60 before:backdrop-blur-lg after:bg-grey-300 border-[1px] border-grey-300",
     disabled:
       "bg-grey-200 text-grey-300 pointer-events-none border-[1px] border-grey-200",
   },
   sizes: {
-    lg: "rounded-xl px-14 py-5 text-sm",
+    lg: "rounded-xl px-14 py-[1.095rem] text-sm",
     md: "rounded-lg px-10 py-4 text-xs",
     sm: "rounded-md px-4 py-2 text-xs",
   },

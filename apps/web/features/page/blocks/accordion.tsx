@@ -22,8 +22,8 @@ export function AccordionBlock({ accordion }: Props) {
   return (
     <div className="grid-system max-width px-gutter">
       {accordion.hasTitleOnSide ? (
-        <div className="col-span-12 pb-gutter lg:col-span-4">
-          <div className="flex flex-col gap-copy lg:w-5/6">
+        <div className="col-span-full pb-gutter lg:col-span-4">
+          <div className="flex flex-col gap-copy">
             <Heading variant="h3" size="h2">
               {accordion.title}
             </Heading>
@@ -31,13 +31,13 @@ export function AccordionBlock({ accordion }: Props) {
           </div>
         </div>
       ) : (
-        <div className="grid-system col-span-12 items-center justify-center pb-gutter">
+        <div className="grid-system col-span-full items-center justify-center pb-gutter">
           <img
             alt={accordion.title}
-            className="col-span-12 aspect-video w-full rounded-2xl lg:col-span-6"
+            className="col-span-full aspect-video w-full rounded-2xl lg:col-span-6"
             src={accordion.image?.asset.url}
           />
-          <div className="col-span-12 flex flex-col items-center justify-center pt-gutter lg:col-span-6 lg:pt-0">
+          <div className="col-span-full flex flex-col items-center justify-center pt-gutter lg:col-span-6 lg:pt-0">
             <div className="flex flex-col gap-copy lg:w-5/6">
               <Heading variant="h2">{accordion.title}</Heading>
               {accordion.body && <p>{accordion.body}</p>}
@@ -50,8 +50,9 @@ export function AccordionBlock({ accordion }: Props) {
         collapsible
         defaultValue={accordion.items[0]?._key} // default to first item open
         className={cn(
-          "col-span-12 lg:col-span-8 lg:col-start-3",
-          accordion.hasTitleOnSide && "lg:col-start-0 col-span-12 lg:col-span-8"
+          "col-span-full lg:col-span-8 lg:col-start-3",
+          accordion.hasTitleOnSide &&
+            "lg:col-start-0 col-span-full lg:col-span-7 lg:col-start-6"
         )}
       >
         {accordion.items.map((item, index) => (

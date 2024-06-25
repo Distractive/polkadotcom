@@ -92,7 +92,7 @@ export default async function Layout({
           </div>
         </div>
 
-        <section className="col-span-12">
+        <section className="col-span-full">
           <Grid posts={data.posts} />
         </section>
 

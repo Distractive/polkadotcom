@@ -13,9 +13,9 @@ export function CardsLogoBlock({ cards }: Props) {
   return (
     <div
       key={cards._key}
-      className="grid-system max-width gap-y-gutter px-gutter"
+      className="grid-system max-width gap-y-section px-gutter"
     >
-      <div className="col-span-full flex flex-col gap-copy">
+      <div className="col-span-full flex flex-col gap-copy lg:col-span-8">
         <Heading variant="h3" size="h2">
           {cards.heading}
         </Heading>

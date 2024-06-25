@@ -15,7 +15,7 @@ export default function FooterLayout({ footer }: Props) {
   return (
     <div
       className={cn(
-        "relative flex flex-col pt-page md:h-[70rem] md:min-h-[52rem] md:justify-end md:overflow-y-hidden lg:h-full"
+        "relative mt-page flex flex-col pt-page md:h-[70rem] md:min-h-[52rem] md:justify-end md:overflow-y-hidden lg:h-full"
       )}
     >
       <img

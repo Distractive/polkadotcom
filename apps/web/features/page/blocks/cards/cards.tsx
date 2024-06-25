@@ -31,12 +31,12 @@ export function CardsBlock({ cards }: Props) {
     <div key={cards._key} className="grid-system max-width relative px-gutter">
       <div
         className={cn(
-          "col-span-12 pb-gutter",
+          "col-span-full pb-section lg:col-span-8",
           cards.showSideBySide && "lg:col-span-4",
-          isSticky && "sticky top-gutter mb-auto"
+          isSticky && "sticky top-section mb-auto"
         )}
       >
-        <div className="flex flex-col gap-copy lg:w-5/6">
+        <div className="flex flex-col gap-copy">
           <Heading variant="h3" size="h2">
             {cards.heading}
           </Heading>
@@ -55,8 +55,8 @@ export function CardsBlock({ cards }: Props) {
         <>
           <div
             className={cn(
-              "grid-system col-span-12 !mx-0 gap-gutter !px-0",
-              cards.showSideBySide && "lg:col-span-8 lg:col-start-5"
+              "grid-system col-span-12 !mx-0 gap-section !px-0",
+              cards.showSideBySide && "lg:col-span-7 lg:col-start-6"
             )}
           >
             {cards.hasTags ? (
@@ -68,7 +68,7 @@ export function CardsBlock({ cards }: Props) {
                   className={cn(
                     "col-span-12 md:col-span-3 lg:col-span-4",
                     cards.showSideBySide && "lg:col-span-12",
-                    isSticky && "sticky top-gutter"
+                    isSticky && "sticky top-section"
                   )}
                 >
                   <CardBlock

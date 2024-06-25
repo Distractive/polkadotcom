@@ -15,7 +15,8 @@ export default function CardLogoBlock({ card, className }: Props) {
     <Card
       key={_key}
       className={cn(
-        "inline-flex items-center justify-center border-0 bg-grey-100 px-4 py-6",
+        "inline-flex items-center justify-center border-0 bg-grey-100",
+        "h-16 px-[0.77rem] lg:h-[7.5rem] lg:px-[1.45rem]",
         link &&
           "md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
         className

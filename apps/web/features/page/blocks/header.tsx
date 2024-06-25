@@ -17,19 +17,19 @@ interface Props {
 
 export function HeaderBlock({ header, breadcrumb, className }: Props) {
   return (
-    <header className={cn("grid-system col-span-full", className)}>
+    <header className={cn("grid-system col-span-full mb-page", className)}>
       {header.image && (
         <img
           src={header.image.asset.url}
           alt=""
-          className="col-span-full w-full lg:order-2 lg:col-span-6 lg:col-start-7"
+          className="col-span-full w-full lg:order-2 lg:col-span-7 lg:col-start-6"
         />
       )}
       <div
         className={cn(
-          "col-span-full flex flex-col items-start justify-center gap-copy ",
+          "col-span-full flex flex-col items-start justify-center gap-copy",
           header.image
-            ? "px-gutter pt-card lg:order-1 lg:col-span-6 lg:col-start-1 lg:pt-header-top"
+            ? "px-gutter pt-card lg:order-1 lg:col-span-5 lg:col-start-1 lg:pt-header-top"
             : "mt-gutter px-gutter pt-header-top lg:col-span-8 lg:col-start-3"
         )}
       >

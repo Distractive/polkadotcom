@@ -64,7 +64,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
         {headerImage && (
           <CardHeader
             className={cn(
-              "relative z-10 aspect-video",
+              "relative z-10 aspect-[4/3]",
               showSideBySide && "lg:basis-[60%]"
             )}
           >

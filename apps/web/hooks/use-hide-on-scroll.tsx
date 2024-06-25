@@ -5,7 +5,7 @@ import { useBreakpoint } from "./use-breakpoint"
 
 export const TIMELINE = {
   defaults: {
-    ease: "power1.out",
+    ease: "power3.out",
     duration: 0.5,
   },
 }
@@ -24,11 +24,11 @@ export const useHideOnScroll = () => {
     if (scrollY > lastScrollY.current) {
       timeline.current
         .clear()
-        .to(ref.current, { autoAlpha: 0, pointerEvents: "none" })
+        .to(ref.current, { y: "-150%", pointerEvents: "none" })
     } else if (scrollY < lastScrollY.current) {
       timeline.current
         .clear()
-        .to(ref.current, { autoAlpha: 1, pointerEvents: "auto" })
+        .to(ref.current, { y: "0", pointerEvents: "auto" })
     }
 
     lastScrollY.current = scrollY <= 0 ? 0 : scrollY

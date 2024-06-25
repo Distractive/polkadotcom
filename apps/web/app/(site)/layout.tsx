@@ -127,7 +127,7 @@ export default async function RootLayout({
           </span>
         </a>
         <NavigationLayout navigation={navigation} />
-        <main id="main" className="grid-system flex-grow gap-y-page">
+        <main id="main" className="grid-system flex-grow">
           {children}
         </main>
         <FooterLayout footer={footer} />
