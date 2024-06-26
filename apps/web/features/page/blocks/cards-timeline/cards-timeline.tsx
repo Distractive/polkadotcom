@@ -3,6 +3,7 @@
 import { type cardsTimelineSelection } from "@/sanity/selections/blocks/cards-timeline"
 import type { TypeFromSelection } from "groqd"
 
+import { useBreakpoint } from "@/hooks/use-breakpoint"
 import { CarouselItem, Heading } from "@shared/ui"
 import { Carousel } from "@/components/carousel"
 
@@ -13,6 +14,9 @@ interface Props {
 }
 
 export function CardsTimelineBlock({ cards }: Props) {
+  const isCarousel = cards.items.length > 3
+  const isMobile = useBreakpoint("--screen-lg")
+
   return (
     <div className="grid-system max-width py-gutter pl-gutter">
       <Heading
@@ -22,7 +26,13 @@ export function CardsTimelineBlock({ cards }: Props) {
       >
         {cards.heading}
       </Heading>
-      <Carousel loop={false} contentClassName="ml-0" navClassName="pr-gutter">
+
+      <Carousel
+        disableCarouselControls={!isMobile && !isCarousel}
+        loop={false}
+        contentClassName="ml-0"
+        navClassName="pr-gutter"
+      >
         {cards.items.map((item, index) => (
           <CarouselItem
             key={item._key}
