@@ -27,7 +27,9 @@ export function DecorativeLine({
       <div
         className={cn(
           "absolute bg-white",
-          forButtonBlock ? "w-full px-gutter md:w-auto" : "px-6"
+          forButtonBlock
+            ? "flex w-full justify-center px-gutter md:w-auto"
+            : "px-6"
         )}
       >
         {children}
