@@ -13,7 +13,7 @@ export default function CardStatBlock({ card, className }: Props) {
   const { _key, heading, body, link } = card
 
   return (
-    <div className={cn(link && "relative", className)}>
+    <>
       <Card
         key={_key}
         className={cn(
@@ -21,21 +21,21 @@ export default function CardStatBlock({ card, className }: Props) {
           className
         )}
       >
-        <CardHeader className="grid gap-4">
+        <CardHeader className="grid gap-copy">
           <Heading variant="h4" size="h2">
             {heading}
           </Heading>
           <CardDescription>{body}</CardDescription>
         </CardHeader>
+        {link && (
+          <span className="col-span-12 flex items-center pt-card text-xs md:pt-gutter">
+            Source:
+            <CustomUrl value={link} className="pl-1 font-bold">
+              {link.label}
+            </CustomUrl>
+          </span>
+        )}
       </Card>
-      {link && (
-        <span className="absolute bottom-[-3rem] col-span-12 hidden text-xs lg:flex lg:items-center lg:pl-gutter">
-          Source:
-          <CustomUrl value={link} className="font-bold">
-            {link.label}
-          </CustomUrl>
-        </span>
-      )}
-    </div>
+    </>
   )
 }
