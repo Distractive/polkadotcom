@@ -97,7 +97,7 @@ export function SearchBar({ searches, postType }: Props) {
           })}
 
         {searchable.length > 0 && findings.length == 0 && (
-          <div className="flex h-28 w-full flex-col flex-wrap items-center justify-center text-purple-500 ">
+          <div className="text-blue flex h-28 w-full flex-col flex-wrap items-center justify-center ">
             <p className="text-center font-bold">No matches found</p>
             <p className="text-center">
               Please check spelling or try using more general terms
@@ -198,7 +198,7 @@ const SearchBarListItem = ({
   return (
     <Link
       href={href}
-      className="line-clamp-1 h-10 overflow-hidden rounded-lg p-2 leading-roomy text-purple-500 hover:bg-grey-300 "
+      className="text-blue line-clamp-1 h-10 overflow-hidden rounded-lg p-2 leading-roomy hover:bg-grey-300 "
     >
       {children}
     </Link>

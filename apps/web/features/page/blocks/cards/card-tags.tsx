@@ -45,9 +45,9 @@ export function CardTags({ tags, cards }: Props) {
           key="all"
           className={cn(
             "flex cursor-pointer items-center justify-center rounded bg-grey-200 text-sm leading-relaxed transition-colors  ",
-            "hover:bg-purple-500 hover:text-white",
+            "hover:bg-blue hover:text-white",
             "relative",
-            currentTag === "All" && "bg-purple-500 text-white"
+            currentTag === "All" && "bg-blue text-white"
           )}
           aria-label={`Filter by All`}
         >
@@ -68,9 +68,9 @@ export function CardTags({ tags, cards }: Props) {
             key={tag}
             className={cn(
               "flex cursor-pointer items-center justify-center rounded bg-grey-200 text-sm leading-relaxed transition-colors",
-              "hover:bg-purple-500 hover:text-white",
+              "hover:bg-blue hover:text-white",
               "relative",
-              currentTag === tag && "bg-purple-500 text-white"
+              currentTag === tag && "bg-blue text-white"
             )}
             aria-label={`Filter by ${tag}`}
           >
