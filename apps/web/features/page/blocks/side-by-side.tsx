@@ -7,36 +7,27 @@ import { PortableText } from "next-sanity"
 import { Button, cn, Heading } from "@shared/ui"
 
 interface Props {
-  className?: string
   content: TypeFromSelection<typeof sideBySideSelection>
 }
 
-export function SideBySideBlock({ content, className }: Props) {
+export function SideBySideBlock({ content }: Props) {
   return (
-    <div className="grid-system py-spacing max-width px-gutter">
+    <div className="grid-system max-width gap-y-gutter px-gutter lg:gap-y-0">
       <div
         className={cn(
-          "col-span-12 flex flex-col-reverse lg:items-center lg:justify-center xl:col-span-8 xl:col-start-3",
-          content.isImageOnLeft ? "lg:flex-row-reverse" : "lg:flex-row",
-          className
+          "col-span-full grid gap-gutter lg:col-span-5",
+          content.isImageOnLeft ? "lg:order-1 lg:pl-card" : "lg:pr-card"
         )}
       >
-        <div className={cn("lg:w-1/2")}>
-          <Heading
-            variant="h3"
-            size="h2"
-            className={cn(
-              content.subheading ? "pt-gutter" : "py-gutter",
-              "lg:text-5xl"
-            )}
-          >
+        <div className="flex flex-col gap-copy">
+          <Heading variant="h3" size="h2">
             {content.heading}
           </Heading>
           {content.subheading && (
-            <p className={cn("pb-gutter pt-copy text-lg text-black")}>
-              {content.subheading}
-            </p>
+            <p className="text-lg text-black">{content.subheading}</p>
           )}
+        </div>
+        <div className="flex flex-col gap-copy">
           <PortableText
             value={content.content}
             components={{
@@ -45,7 +36,7 @@ export function SideBySideBlock({ content, className }: Props) {
                   <Heading variant="h3">{children}</Heading>
                 ),
                 normal: ({ children }) => (
-                  <p className="py-copy text-lg text-black">{children}</p>
+                  <p className="text-lg text-black">{children}</p>
                 ),
                 smallprint: ({ children }) => (
                   <p className="text-sm text-black">{children}</p>
@@ -53,7 +44,7 @@ export function SideBySideBlock({ content, className }: Props) {
               },
               list: {
                 bullet: ({ children }) => (
-                  <ul className="my-4 list-outside list-disc pl-8 text-black marker:text-black">
+                  <ul className="flex list-inside list-disc flex-col gap-copy text-black marker:text-black">
                     {children}
                   </ul>
                 ),
@@ -68,7 +59,7 @@ export function SideBySideBlock({ content, className }: Props) {
                       variant="secondary"
                       size="sm"
                       asChild
-                      className="my-card md:cursor-pointer"
+                      className="my-copy mr-auto md:cursor-pointer"
                     >
                       <span>{value.label}</span>
                     </Button>
@@ -78,17 +69,14 @@ export function SideBySideBlock({ content, className }: Props) {
             }}
           />
         </div>
-        {content.image && (
-          <img
-            src={content.image.asset.url}
-            alt=""
-            className={cn(
-              "h-auto lg:w-1/2 lg:max-w-[50rem]",
-              content.isImageOnLeft ? "lg:mr-gutter" : "lg:ml-gutter"
-            )}
-          />
-        )}
       </div>
+      {content.image && (
+        <img
+          src={content.image.asset.url}
+          alt=""
+          className="col-span-full my-auto h-auto lg:col-span-7"
+        />
+      )}
     </div>
   )
 }
