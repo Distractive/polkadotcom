@@ -34,7 +34,7 @@ export function CustomUrl({
       ) : (
         <span
           className={cn(
-            "inline-block overflow-hidden text-ellipsis whitespace-nowrap"
+            "inline-flex items-center overflow-hidden text-ellipsis whitespace-nowrap"
           )}
         >
           {children}
