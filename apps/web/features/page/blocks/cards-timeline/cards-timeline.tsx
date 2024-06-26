@@ -18,7 +18,7 @@ export function CardsTimelineBlock({ cards }: Props) {
       <Heading
         variant="h3"
         size="h2"
-        className="col-span-12 pb-gutter pr-gutter"
+        className="col-span-12 text-balance pb-gutter pr-gutter"
       >
         {cards.heading}
       </Heading>

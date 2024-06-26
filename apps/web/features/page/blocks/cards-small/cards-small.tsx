@@ -16,10 +16,10 @@ export function CardsSmallBlock({ cards }: Props) {
       className="grid-system max-width relative gap-y-section px-gutter"
     >
       <div className="col-span-full flex flex-col gap-copy lg:col-span-8">
-        <Heading variant="h3" size="h2">
+        <Heading variant="h3" size="h2" className="text-balance">
           {cards.heading}
         </Heading>
-        {cards.body && <p>{cards.body}</p>}
+        {cards.body && <p className="md:text-balance">{cards.body}</p>}
       </div>
       <div className={cn("grid-system col-span-12 w-full gap-gutter")}>
         {cards.items.map((card, index) => {

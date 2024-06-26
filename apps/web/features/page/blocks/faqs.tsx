@@ -24,7 +24,7 @@ export function FAQBlock({ faqs }: Props) {
       <Heading
         variant="h3"
         size="h2"
-        className="col-span-12 lg:col-span-8 lg:col-start-3"
+        className="col-span-12 text-balance lg:col-span-8 lg:col-start-3"
       >
         {faqs.title}
       </Heading>

@@ -16,7 +16,7 @@ export function CardsStatBlock({ cards }: Props) {
       className="grid-system max-width gap-y-section px-gutter"
     >
       <div className="col-span-full lg:col-span-8">
-        <Heading variant="h3" size="h2">
+        <Heading variant="h3" size="h2" className="text-balance">
           {cards.heading}
         </Heading>
       </div>

@@ -37,10 +37,18 @@ export function CardsBlock({ cards }: Props) {
         )}
       >
         <div className="flex flex-col gap-copy">
-          <Heading variant="h3" size="h2">
+          <Heading
+            variant="h3"
+            size="h2"
+            className={cn(!cards.showSideBySide && "text-balance")}
+          >
             {cards.heading}
           </Heading>
-          {cards.body && <p>{cards.body}</p>}
+          {cards.body && (
+            <p className={cn(!cards.showSideBySide && "lg:text-balance")}>
+              {cards.body}
+            </p>
+          )}
         </div>
       </div>
       {cards.isCarousel ? (
