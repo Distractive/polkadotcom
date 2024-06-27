@@ -1,3 +1,5 @@
+import Image from "next/image"
+import { urlForImage } from "@/sanity/lib/image"
 import type { cardSelection } from "@/sanity/selections/blocks/card"
 import type { TypeFromSelection } from "groqd"
 
@@ -54,11 +56,13 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
         )}
       >
         {headerImage && useAsBackgroundImage && (
-          <img
-            src={headerImage.asset.url}
+          <Image
+            src={urlForImage(headerImage.asset)}
             alt=""
             loading="lazy"
             className="absolute inset-0 h-full w-full object-cover object-center"
+            width={headerImage.asset.metadata.dimensions?.width}
+            height={headerImage.asset.metadata.dimensions?.height}
           />
         )}
         {headerImage && (
@@ -69,11 +73,13 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
             )}
           >
             {!useAsBackgroundImage && (
-              <img
-                src={headerImage.asset.url}
+              <Image
+                src={urlForImage(headerImage.asset)}
                 alt=""
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover object-center"
+                width={headerImage.asset.metadata.dimensions?.width}
+                height={headerImage.asset.metadata.dimensions?.height}
               />
             )}
           </CardHeader>
@@ -92,8 +98,8 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
             )}
           >
             {icon && (
-              <img
-                src={icon.asset.url}
+              <Image
+                src={urlForImage(icon.asset)}
                 alt=""
                 loading="lazy"
                 className={cn(
