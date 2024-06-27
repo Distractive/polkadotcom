@@ -21,7 +21,7 @@ export function QuoteBlock({ quote, className }: Props) {
       )}
       <div
         className={cn(
-          "col-span-full flex flex-col gap-copy lg:col-span-8 lg:col-start-3"
+          "col-span-full flex flex-col gap-copy lg:col-span-8 lg:col-start-4"
         )}
       >
         <PortableText
