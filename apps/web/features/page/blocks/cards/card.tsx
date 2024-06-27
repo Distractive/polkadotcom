@@ -124,7 +124,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                 )}
                 {heading && (
                   <Heading
-                    variant="h4"
+                    variant="h3"
                     className={cn(
                       "ttransition-colors duration-500 ease-in-out",
                       link &&
@@ -142,7 +142,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                   </CardDescription>
                 )}
               </div>
-              {link && (
+              {link && link.variant && (
                 <CardFooter
                   className={cn(!showSideBySideWithIcon && "pt-card")}
                 >
