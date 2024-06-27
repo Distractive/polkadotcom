@@ -9,6 +9,8 @@ interface Props {
   params: { slug: string }
 }
 
+export const dynamicParams = true
+
 export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {

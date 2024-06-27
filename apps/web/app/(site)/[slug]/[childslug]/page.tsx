@@ -10,6 +10,8 @@ interface Props {
   params: { slug: string; childslug: string }
 }
 
+export const dynamicParams = true
+
 export async function generateMetadata({
   params: { slug, childslug },
 }: Props): Promise<Metadata> {

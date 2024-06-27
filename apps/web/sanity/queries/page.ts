@@ -67,5 +67,5 @@ export async function getSlugs(type: "landing" | "page" | "hygiene") {
         })
         .nullable(),
     })
-  return runQuery(slugQuery)
+  return runQuery(slugQuery, {}, false)
 }
