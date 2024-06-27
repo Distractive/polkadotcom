@@ -38,7 +38,12 @@ export function QuoteBlock({ quote, className }: Props) {
           }}
         />
         {quote.body && (
-          <p className={cn("text-lg leading-[150%] text-grey-500", className)}>
+          <p
+            className={cn(
+              "text-lg leading-[150%] text-grey-500 md:text-balance",
+              className
+            )}
+          >
             {quote.body}
           </p>
         )}

@@ -21,3 +21,18 @@ export const Primary: Story = {
     },
   },
 }
+
+export const PrimaryWithSource: Story = {
+  args: {
+    card: {
+      _key: "internal",
+      heading: "1.3 million",
+      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      link: {
+        label: "holders/total accounts",
+        internal: null,
+        external: "https://google.co.uk",
+      },
+    },
+  },
+}

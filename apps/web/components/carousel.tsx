@@ -17,6 +17,7 @@ interface Props {
   loop?: boolean
   contentClassName?: string
   navClassName?: string
+  disableCarouselControls?: boolean
 }
 
 export function Carousel({
@@ -24,10 +25,20 @@ export function Carousel({
   contentClassName,
   navClassName,
   children,
+  disableCarouselControls,
 }: Props) {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
   const [count, setCount] = useState(0)
+  const [isDraggable, setIsDraggable] = useState(false)
+
+  useEffect(() => {
+    if (disableCarouselControls) {
+      setIsDraggable(disableCarouselControls)
+    } else {
+      setIsDraggable(false)
+    }
+  }, [disableCarouselControls])
 
   useEffect(() => {
     if (!api) return
@@ -39,17 +50,25 @@ export function Carousel({
   return (
     <CarouselContainer
       setApi={setApi}
-      opts={{ align: "start", loop }}
+      opts={{
+        align: "start",
+        loop,
+        active: !isDraggable,
+        watchDrag: !isDraggable,
+      }}
       className="col-span-12 flex flex-col gap-gutter"
     >
       <CarouselContent className={contentClassName}>{children}</CarouselContent>
-      <div className={cn("flex items-center justify-between", navClassName)}>
-        <Progress count={count} current={current} />
-        <div className="flex gap-2">
-          <CarouselPrevious />
-          <CarouselNext />
+
+      {!disableCarouselControls && (
+        <div className={cn("flex items-center justify-between", navClassName)}>
+          <Progress count={count} current={current} />
+          <div className="flex gap-2">
+            <CarouselPrevious />
+            <CarouselNext />
+          </div>
         </div>
-      </div>
+      )}
     </CarouselContainer>
   )
 }

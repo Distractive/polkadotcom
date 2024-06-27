@@ -48,7 +48,7 @@ export default async function Page({ params: { slug, childslug } }: Props) {
   return (
     <>
       <HeaderBlock header={data.header} breadcrumb={breadcrumb} />
-      <section className="col-span-12 grid gap-section">
+      <section className="col-span-full grid gap-page">
         <PageBuilder pageBuilder={data.pageBuilder} />
       </section>
     </>

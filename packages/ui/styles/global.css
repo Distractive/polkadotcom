@@ -25,7 +25,7 @@
   --spacing-section: 2rem;
   --spacing-gutter: 1.5rem;
   --spacing-card: 2rem;
-  --spacing-copy: 1rem;
+  --spacing-copy: 0.5rem;
   --spacing-nav: 1.5rem;
 
   /* The nav component is fixed. Spacing to prevent initial header overlap */

@@ -11,7 +11,7 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Timeline: Story = {
+export const CarouselTimeline: Story = {
   args: {
     cards: {
       //@ts-ignore
@@ -141,6 +141,90 @@ export const Timeline: Story = {
         {
           _key: "6",
           year: "2015",
+          content: [
+            {
+              _key: "parent",
+              _type: "block",
+              children: [
+                {
+                  _key: "one",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+                {
+                  _key: "two",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+}
+
+export const CardTimeline: Story = {
+  args: {
+    cards: {
+      //@ts-ignore
+      _key: "parent",
+      heading: "Our story",
+      items: [
+        {
+          _key: "1",
+          year: "2010",
+          content: [
+            {
+              _key: "parent",
+              _type: "block",
+              children: [
+                {
+                  _key: "one",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+                {
+                  _key: "two",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          _key: "2",
+          year: "2011",
+          content: [
+            {
+              _key: "parent",
+              _type: "block",
+              children: [
+                {
+                  _key: "one",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+                {
+                  _key: "two",
+                  _type: "span",
+                  marks: [],
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          _key: "3",
+          year: "2012",
           content: [
             {
               _key: "parent",

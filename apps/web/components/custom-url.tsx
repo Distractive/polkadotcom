@@ -32,13 +32,17 @@ export function CustomUrl({
       {isWrapper ? (
         children
       ) : (
-        <span className="flex items-center gap-2">
+        <span
+          className={cn(
+            "inline-flex items-center overflow-hidden text-ellipsis whitespace-nowrap"
+          )}
+        >
           {children}
           {value.external && (
             <Icon
               variant="arrowRightUp"
               className={cn(
-                "w-4 fill-current lg:w-5",
+                "ml-2 w-4 fill-current lg:w-5",
                 value.variant && value.variant === "primary" && "fill-white"
               )}
             />

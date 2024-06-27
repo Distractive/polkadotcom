@@ -55,7 +55,7 @@ export default function CardSmallBlock({ card, className }: Props) {
               <Heading
                 variant="h4"
                 className={cn(
-                  "text-balance transition-colors duration-500 ease-in-out",
+                  "transition-colors duration-500 ease-in-out",
                   link &&
                     "md:group-focus-within:text-pink md:group-hover:text-pink"
                 )}

@@ -13,14 +13,12 @@ export function CardsStatBlock({ cards }: Props) {
   return (
     <div
       key={cards._key}
-      className="grid-system max-width gap-section px-gutter"
+      className="grid-system max-width gap-y-section px-gutter"
     >
-      <div className={cn("col-span-12")}>
-        <div className="flex flex-col gap-copy lg:w-5/6">
-          <Heading variant="h3" size="h2">
-            {cards.heading}
-          </Heading>
-        </div>
+      <div className="col-span-full lg:col-span-8">
+        <Heading variant="h3" size="h2" className="text-balance">
+          {cards.heading}
+        </Heading>
       </div>
       <div
         className={cn(

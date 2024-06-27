@@ -79,6 +79,39 @@ export const TitleBodyLinkImage: Story = {
   },
 }
 
+export const TitleBodyLinkImageWithOptionalCtaLongText: Story = {
+  args: {
+    header: {
+      //@ts-ignore
+      image: { asset: { url: "/image-placeholder.png" } },
+      title: "Title Body Link Image with Optional Cta and Long Button Text",
+      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      links: [
+        {
+          _type: "customUrl",
+          label: "Start building your own blockchain",
+          variant: "primary",
+          external: null,
+          internal: { slug: "/" },
+        },
+        {
+          _type: "customUrl",
+          label: "Learn more",
+          variant: "secondary",
+          external: null,
+          internal: { slug: "/" },
+        },
+      ],
+    },
+    breadcrumb: {
+      items: [
+        { slug: "/parent", title: "Parent page" },
+        { slug: "/parent/child", title: "Child page" },
+      ],
+    },
+  },
+}
+
 export const TitleBodyLinkImageWithOptionalCta: Story = {
   args: {
     header: {
@@ -194,6 +227,7 @@ const headers = [
   TitleBodyLink,
   TitleBodyLinkImage,
   TitleBodyLinkImageWithOptionalCta,
+  TitleBodyLinkImageWithOptionalCtaLongText,
   TitleBodyLinkVideo,
   TierOnePage,
   TierTwoPage,

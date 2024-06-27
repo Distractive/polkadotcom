@@ -64,7 +64,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
         {headerImage && (
           <CardHeader
             className={cn(
-              "relative z-10 aspect-video",
+              "relative z-10 aspect-[4/3]",
               showSideBySide && "lg:basis-[60%]"
             )}
           >
@@ -126,7 +126,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                   <Heading
                     variant="h4"
                     className={cn(
-                      "text-balance transition-colors duration-500 ease-in-out",
+                      "ttransition-colors duration-500 ease-in-out",
                       link &&
                         "md:group-focus-within:text-pink md:group-hover:text-pink"
                     )}

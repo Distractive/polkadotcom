@@ -110,7 +110,7 @@ export default async function RootLayout({
       >
         {draftMode().isEnabled && (
           <div>
-            <a className="bg-blue-300 block p-4" href="/api/disable-draft">
+            <a className="bg-blue block p-4" href="/api/disable-draft">
               Disable preview mode
             </a>
           </div>
@@ -122,12 +122,12 @@ export default async function RootLayout({
             "focus:left-0 focus:top-0 focus:opacity-100"
           )}
         >
-          <span className="inline-block rounded-lg bg-purple-500 px-10 py-4 font-display text-xs uppercase tracking-wide text-white">
+          <span className="bg-blue inline-block rounded-lg px-10 py-4 font-display text-xs uppercase tracking-wide text-white">
             Skip to main content
           </span>
         </a>
         <NavigationLayout navigation={navigation} />
-        <main id="main" className="grid-system flex-grow gap-y-page">
+        <main id="main" className="grid-system flex-grow">
           {children}
         </main>
         <FooterLayout footer={footer} />
