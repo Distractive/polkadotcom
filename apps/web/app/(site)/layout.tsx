@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { draftMode } from "next/headers"
+import Script from "next/script"
 import { manrope, unbounded } from "@/styles/fonts"
 import { GoogleAnalytics } from "@next/third-parties/google"
 import { VisualEditing } from "next-sanity"
@@ -42,6 +43,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        <Script
+          src="https://cmp.osano.com/169unzUF2IaM42S5j/0f63db37-496b-4a14-a233-82bbdf3a4afd/osano.js"
+          strategy="beforeInteractive"
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
