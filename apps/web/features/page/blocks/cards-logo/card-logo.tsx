@@ -2,6 +2,7 @@ import type { cardLogoSelection } from "@/sanity/selections/blocks/card-logo"
 import type { TypeFromSelection } from "groqd"
 
 import { Card, cn } from "@shared/ui"
+import { CustomUrl } from "@/components/custom-url"
 
 interface Props {
   card: TypeFromSelection<typeof cardLogoSelection>
@@ -22,7 +23,14 @@ export default function CardLogoBlock({ card, className }: Props) {
         className
       )}
     >
-      <img src={image.asset.url} alt={name} loading="lazy" className="w-full" />
+      <CustomUrl value={card.link}>
+        <img
+          src={image.asset.url}
+          alt={name}
+          loading="lazy"
+          className="w-full"
+        />
+      </CustomUrl>
     </Card>
   )
 }
