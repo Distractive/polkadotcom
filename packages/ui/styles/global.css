@@ -18,6 +18,10 @@
   .max-width {
     @apply mx-auto w-full max-w-[100rem];
   }
+
+  .link-styling {
+    @apply underline font-[700] hover:text-pink transition-colors duration-500 ease-in-out;
+  }
 }
 
 :root {

@@ -43,6 +43,18 @@ export function ContentBlock({ content }: Props) {
               bullet: ({ children }) => <li>{children}</li>,
               number: ({ children }) => <li>{children}</li>,
             },
+            marks: {
+              link: ({ children, value }) => {
+                const rel = !value.href.startsWith("/")
+                  ? "noreferrer noopener"
+                  : undefined
+                return (
+                  <a href={value.href} rel={rel} className="link-styling">
+                    {children}
+                  </a>
+                )
+              },
+            },
             types: {
               customUrl: ({ value }) => {
                 return (
