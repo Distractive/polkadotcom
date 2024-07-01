@@ -5,6 +5,7 @@ import { type TypeFromSelection } from "groqd"
 import { PortableText } from "next-sanity"
 
 import { Button, cn, Heading } from "@shared/ui"
+import { CustomUrl } from "@/components/custom-url"
 
 interface Props {
   content: TypeFromSelection<typeof sideBySideSelection>
@@ -56,12 +57,20 @@ export function SideBySideBlock({ content }: Props) {
                 customUrl: ({ value }) => {
                   return (
                     <Button
-                      variant="secondary"
                       size="sm"
                       asChild
                       className="my-copy mr-auto md:cursor-pointer"
+                      variant={value.internal ? "primary" : "secondary"}
                     >
-                      <span>{value.label}</span>
+                      <CustomUrl
+                        className="outline-none"
+                        value={{
+                          internal: value?.internal,
+                          external: value?.external,
+                        }}
+                      >
+                        {value.label}
+                      </CustomUrl>
                     </Button>
                   )
                 },

@@ -3,6 +3,7 @@ import { PortableText } from "@portabletext/react"
 import type { TypeFromSelection } from "groqd"
 
 import { Button, cn, Heading } from "@shared/ui"
+import { CustomUrl } from "@/components/custom-url"
 
 interface Props {
   content: TypeFromSelection<typeof contentSelection>
@@ -63,7 +64,15 @@ export function ContentBlock({ content }: Props) {
                     size="sm"
                     className="mr-auto mt-copy"
                   >
-                    {value.label}
+                    <CustomUrl
+                      className="outline-none"
+                      value={{
+                        internal: value?.internal,
+                        external: value?.external,
+                      }}
+                    >
+                      {value.label}
+                    </CustomUrl>
                   </Button>
                 )
               },
