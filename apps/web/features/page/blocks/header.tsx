@@ -29,8 +29,8 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         className={cn(
           "col-span-full flex flex-col items-start justify-center gap-copy",
           header.image
-            ? "px-gutter pt-card lg:order-1 lg:col-span-5 lg:col-start-1 lg:pt-header-top"
-            : "mt-gutter px-gutter pt-header-top lg:col-span-8 lg:col-start-3"
+            ? "lg:pt-header-top px-gutter pt-card lg:order-1 lg:col-span-5 lg:col-start-1"
+            : "pt-header-top mt-gutter px-gutter lg:col-span-8 lg:col-start-3"
         )}
       >
         {breadcrumb && <BreadcrumbBlock items={breadcrumb.items} />}
@@ -42,7 +42,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         {header.body && (
           <p className="text-lg md:text-balance">{header.body}</p>
         )}
-        <div className="mt-card flex w-full flex-col gap-4 md:flex-row">
+        <div className="mt-card flex w-full flex-wrap gap-4">
           {header.links?.map((link, index) => (
             <Button
               asChild
