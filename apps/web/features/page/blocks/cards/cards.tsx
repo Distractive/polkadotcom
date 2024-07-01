@@ -63,7 +63,7 @@ export function CardsBlock({ cards }: Props) {
         <>
           <div
             className={cn(
-              "grid-system col-span-12 !mx-0 gap-section !px-0",
+              "grid-system col-span-full gap-section",
               !cards.hasTags && "md:auto-rows-1fr",
               cards.showSideBySide && "lg:col-span-7 lg:col-start-6"
             )}
@@ -75,8 +75,8 @@ export function CardsBlock({ cards }: Props) {
                 <div
                   key={card._key}
                   className={cn(
-                    "col-span-12 md:col-span-3 lg:col-span-4",
-                    cards.showSideBySide && "lg:col-span-12",
+                    "col-span-full md:col-span-3 lg:col-span-4",
+                    cards.showSideBySide && "lg:col-span-full",
                     isSticky && "sticky top-section"
                   )}
                 >

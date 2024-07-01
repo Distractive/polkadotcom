@@ -102,6 +102,8 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                 src={urlForImage(icon.asset)}
                 alt=""
                 loading="lazy"
+                width={icon.asset.metadata.dimensions?.width}
+                height={icon.asset.metadata.dimensions?.height}
                 className={cn(
                   headerImage &&
                     icon &&

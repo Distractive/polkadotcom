@@ -20,7 +20,7 @@
   }
 
   .link-styling {
-    @apply underline font-[700] hover:text-pink transition-colors duration-500 ease-in-out;
+    @apply font-[700] underline transition-colors duration-500 ease-in-out hover:text-pink;
   }
 }
 

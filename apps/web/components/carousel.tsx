@@ -56,7 +56,7 @@ export function Carousel({
         active: !isDraggable,
         watchDrag: !isDraggable,
       }}
-      className="col-span-12 flex flex-col gap-gutter"
+      className="col-span-full flex flex-col gap-gutter"
     >
       <CarouselContent className={contentClassName}>{children}</CarouselContent>
 

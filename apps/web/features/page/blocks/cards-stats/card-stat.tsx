@@ -28,7 +28,7 @@ export default function CardStatBlock({ card, className }: Props) {
           <CardDescription>{body}</CardDescription>
         </CardHeader>
         {link && (
-          <span className="col-span-12 flex items-center pt-card text-xs md:pt-gutter">
+          <span className="col-span-full flex items-center pt-card text-xs md:pt-gutter">
             Source:
             <CustomUrl value={link} className="pl-1 font-bold">
               {link.label}

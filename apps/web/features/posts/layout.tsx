@@ -64,23 +64,23 @@ export default async function Layout({
       {withHeader && tagSlug === "" && (
         <HeaderBlock header={header} breadcrumb={breadcrumb} />
       )}
-      <div className="max-width col-span-12 px-gutter">
+      <div className="max-width col-span-full px-gutter">
         {tagSlug !== "" && (
-          <div className="col-span-12 mt-gutter flex justify-center pb-gutter pt-header-top">
+          <div className="col-span-full mt-gutter flex justify-center pb-gutter pt-header-top">
             <h1 className="font-display text-3xl capitalize">{tagSlug}</h1>
           </div>
         )}
-        <div className="grid-system col-span-12 mb-card">
+        <div className="grid-system col-span-full mb-card">
           {tagSlug === "" && (
-            <search className="col-span-12 mb-8 lg:col-span-8 lg:mb-0">
+            <search className="col-span-full mb-8 lg:col-span-8 lg:mb-0">
               <SearchBar searches={searchData} postType={type} />
             </search>
           )}
 
           <div
             className={cn(
-              "col-span-12 flex items-center lg:col-span-4 lg:justify-end",
-              tagSlug !== "" && "lg:col-span-12"
+              "col-span-full flex items-center lg:col-span-4 lg:justify-end",
+              tagSlug !== "" && "lg:col-span-full"
             )}
           >
             <span className="text-sm lg:px-gutter">

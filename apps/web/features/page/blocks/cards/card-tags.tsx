@@ -40,7 +40,7 @@ export function CardTags({ tags, cards }: Props) {
 
   return (
     <>
-      <ul className="col-span-12 flex gap-3">
+      <ul className="col-span-full flex gap-3">
         <li
           key="all"
           className={cn(
@@ -90,14 +90,14 @@ export function CardTags({ tags, cards }: Props) {
       </ul>
       <div
         className={cn(
-          "grid-system md:auto-rows-1fr col-span-12 !mx-0 gap-gutter !px-0 lg:col-span-12"
+          "grid-system col-span-full !mx-0 gap-gutter !px-0 md:auto-rows-1fr lg:col-span-full"
         )}
       >
         {filteredItems.slice(0, visibleCount).map((card) => (
           <CardBlock
             key={card._key}
             card={card}
-            className={cn("col-span-12 md:col-span-3 lg:col-span-4")}
+            className={cn("col-span-full md:col-span-3 lg:col-span-4")}
           />
         ))}
       </div>

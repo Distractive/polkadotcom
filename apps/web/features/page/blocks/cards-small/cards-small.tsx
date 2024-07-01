@@ -23,7 +23,7 @@ export function CardsSmallBlock({ cards }: Props) {
       </div>
       <div
         className={cn(
-          "grid-system md:auto-rows-1fr col-span-12 w-full gap-gutter"
+          "grid-system col-span-full w-full gap-gutter md:auto-rows-1fr"
         )}
       >
         {cards.items.map((card, index) => {
@@ -35,7 +35,7 @@ export function CardsSmallBlock({ cards }: Props) {
               key={card._key}
               card={card}
               className={cn(
-                "col-span-12 md:col-span-3 lg:col-span-4",
+                "col-span-full md:col-span-3 lg:col-span-4",
                 shouldSpan && "lg:col-span-6"
               )}
             />

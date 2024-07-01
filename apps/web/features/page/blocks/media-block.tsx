@@ -31,7 +31,7 @@ export function MediaBlock({ mediaBlock, className }: Props) {
       <Card
         key={_key}
         className={cn(
-          "col-span-12 rounded-none border-none lg:col-span-8 lg:col-start-3",
+          "col-span-full rounded-none border-none lg:col-span-8 lg:col-start-3",
           className
         )}
       >
