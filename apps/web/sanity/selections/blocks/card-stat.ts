@@ -6,9 +6,18 @@ export const cardStatSelection = {
   _key: q.string(),
   heading: q.string(),
   body: q.string(),
-  link: q("link")
-  .grab$({
-    ...customUrlSelection,
-  })
-  .nullable(),
+  content: q("content")
+    .filter()
+    .select({
+      '_type == "block"': ["{...}", q.contentBlock()],
+      '_type == "customUrl"': {
+        _type: q.literal("customUrl"),
+        ...customUrlSelection,
+      },
+      default: {
+        _key: q.string(),
+        _type: ['"unsupported"', q.literal("unsupported")],
+        unsupportedType: ["_type", q.string()],
+      },
+    }).nullable(),
 } satisfies Selection
