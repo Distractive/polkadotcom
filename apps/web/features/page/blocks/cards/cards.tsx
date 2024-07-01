@@ -64,6 +64,7 @@ export function CardsBlock({ cards }: Props) {
           <div
             className={cn(
               "grid-system col-span-12 !mx-0 gap-section !px-0",
+              !cards.hasTags && "md:auto-rows-1fr",
               cards.showSideBySide && "lg:col-span-7 lg:col-start-6"
             )}
           >

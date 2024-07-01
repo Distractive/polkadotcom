@@ -90,7 +90,7 @@ export function CardTags({ tags, cards }: Props) {
       </ul>
       <div
         className={cn(
-          "grid-system col-span-12 !mx-0 gap-gutter !px-0 lg:col-span-12"
+          "grid-system md:auto-rows-1fr col-span-12 !mx-0 gap-gutter !px-0 lg:col-span-12"
         )}
       >
         {filteredItems.slice(0, visibleCount).map((card) => (

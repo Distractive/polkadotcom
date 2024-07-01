@@ -61,6 +61,9 @@ const config = {
       current: "currentColor",
     },
     extend: {
+      gridAutoRows: {
+        '1fr': '1fr',
+      },
       spacing: {
         page: "var(--spacing-page)",
         section: "var(--spacing-section)",

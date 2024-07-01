@@ -21,7 +21,11 @@ export function CardsSmallBlock({ cards }: Props) {
         </Heading>
         {cards.body && <p className="md:text-balance">{cards.body}</p>}
       </div>
-      <div className={cn("grid-system col-span-12 w-full gap-gutter")}>
+      <div
+        className={cn(
+          "grid-system md:auto-rows-1fr col-span-12 w-full gap-gutter"
+        )}
+      >
         {cards.items.map((card, index) => {
           // span the last two cards if there are 2 cards in a row
           const shouldSpan =

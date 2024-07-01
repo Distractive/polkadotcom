@@ -22,7 +22,7 @@ export function CardsStatBlock({ cards }: Props) {
       </div>
       <div
         className={cn(
-          "grid-system col-span-12 !mx-0 gap-gutter !px-0",
+          "grid-system md:auto-rows-1fr col-span-12 !mx-0 gap-gutter !px-0",
           !cards.body && "pb-section"
         )}
       >
