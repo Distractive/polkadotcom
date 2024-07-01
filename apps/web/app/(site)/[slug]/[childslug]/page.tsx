@@ -22,10 +22,11 @@ export async function generateMetadata({
     }
 
   return {
-    title: meta.meta?.meta_title || meta.header.title || "Polkadot",
+    title:
+      meta.meta?.meta_title || (meta.header && meta.header.title) || "Polkadot",
     description:
       meta.meta?.meta_description ||
-      meta.header.body ||
+      (meta.header && meta.header.body) ||
       "Polkadot empowers blockchain networks to work together under the protection of shared security.",
     openGraph: {
       images: [meta.meta?.meta_image?.asset.url || ""],
@@ -47,7 +48,9 @@ export default async function Page({ params: { slug, childslug } }: Props) {
 
   return (
     <>
-      <HeaderBlock header={data.header} breadcrumb={breadcrumb} />
+      {data.header && (
+        <HeaderBlock header={data.header} breadcrumb={breadcrumb} />
+      )}
       <section className="col-span-full grid gap-page">
         <PageBuilder pageBuilder={data.pageBuilder} />
       </section>

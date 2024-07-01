@@ -9,10 +9,12 @@ export async function getPageMeta(slug: string) {
     .filter("_type == 'landing' || _type == 'page' || _type == 'hygiene'")
     .filter("slug.current == $slug")
     .grab({
-      header: q("header").grab({
-        title: q.string(),
-        body: q.string().nullable(),
-      }),
+      header: q("header")
+        .grab({
+          title: q.string(),
+          body: q.string().nullable(),
+        })
+        .nullable(),
       slug: q.slug("slug"),
       meta: q("meta")
         .grab({
@@ -25,11 +27,11 @@ export async function getPageMeta(slug: string) {
         .nullable(),
     })
     .slice(0)
-    .nullable()
+    .nullable();
 
   return runQuery(pageQuery, {
     slug: slug,
-  })
+  });
 }
 
 export async function getPage(slug: string) {
@@ -38,7 +40,7 @@ export async function getPage(slug: string) {
     .filter("slug.current == $slug")
     .grab({
       title: q.string(),
-      header: q("header").grab({ ...headerSelection }),
+      header: q("header").grab({ ...headerSelection }).nullable(), 
       slug: q.slug("slug"),
       parent: q("parent")
         .deref()
