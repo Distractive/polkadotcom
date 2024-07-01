@@ -33,7 +33,13 @@ export default defineType({
     {
       name: "internal",
       type: "reference",
-      to: [{ type: "page" }, { type: "landing" }, { type: "hygiene" }],
+      to: [
+        { type: "page" },
+        { type: "landing" },
+        { type: "hygiene" },
+        { type: "blog" },
+        { type: "press-releases" },
+      ],
       hidden: ({ parent, value }) => !value && !!parent?.external,
     },
   ],
