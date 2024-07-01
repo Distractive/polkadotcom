@@ -66,7 +66,7 @@ export function MediaBlock({ mediaBlock, className }: Props) {
               )}
             </div>
             {links && (
-              <CardFooter className={cn("flex gap-4")}>
+              <CardFooter className={cn("flex flex-wrap gap-4")}>
                 {links?.map((link, index) => (
                   <React.Fragment key={index}>
                     {link.label && (
