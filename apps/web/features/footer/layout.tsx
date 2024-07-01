@@ -72,7 +72,10 @@ export default function FooterLayout({ footer }: Props) {
           <div className="flex flex-col items-start gap-4 px-gutter py-4 md:flex-row md:items-center md:justify-between">
             <div className="flex flex-row items-center gap-8">
               <a href="/" className="group">
-                <Logo className="h-auto w-32 md:w-48 md:hover:text-pink" />
+                <Logo
+                  ariaLabel="Polkadot homepage"
+                  className="h-auto w-32 md:w-48 md:hover:text-pink"
+                />
               </a>
               <p className="text-sm text-black">
                 © {new Date().getFullYear()}
