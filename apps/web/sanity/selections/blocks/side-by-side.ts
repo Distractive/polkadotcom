@@ -8,7 +8,7 @@ export const sideBySideSelection = {
   heading: q.string(),
   subheading: nullToUndefined(q.string().optional()),
   image: sanityImage("image", {
-    withAsset: ["base"],
+    withAsset: ["base", "dimensions"],
   }),
   isImageOnLeft: q.boolean(),
   content: q("content")

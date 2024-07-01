@@ -56,3 +56,18 @@ export async function getPage(slug: string) {
 
   return await runQuery(pageQuery, { slug })
 }
+
+export async function getSlugs(type: "landing" | "page" | "hygiene") {
+  const slugQuery = q("*")
+    .filter(`_type == '${type}'`)
+    .grab({
+      slug: q.slug("slug"),
+      parent: q("parent")
+        .deref()
+        .grab({
+          slug: q.slug("slug"),
+        })
+        .nullable(),
+    })
+  return runQuery(slugQuery, {}, false)
+}

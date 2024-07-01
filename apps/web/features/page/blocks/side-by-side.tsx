@@ -1,5 +1,5 @@
-"use client"
-
+import Image from "next/image"
+import { urlForImage } from "@/sanity/lib/image"
 import { type sideBySideSelection } from "@/sanity/selections/blocks/side-by-side"
 import { type TypeFromSelection } from "groqd"
 import { PortableText } from "next-sanity"
@@ -71,10 +71,12 @@ export function SideBySideBlock({ content }: Props) {
         </div>
       </div>
       {content.image && (
-        <img
-          src={content.image.asset.url}
+        <Image
+          src={urlForImage(content.image.asset)}
           alt=""
           className="col-span-full my-auto h-auto lg:col-span-7"
+          width={content.image.asset.metadata.dimensions?.width}
+          height={content.image.asset.metadata.dimensions?.height}
         />
       )}
     </div>

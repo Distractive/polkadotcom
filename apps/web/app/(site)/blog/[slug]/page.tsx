@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { getPostMeta } from "@/sanity/queries/post"
+import { getSlugs } from "@/sanity/queries/posts"
 
 import { BASE_URL, BLOG_POSTTYPE } from "@/constants/global"
 import Layout from "@/features/post/layout"
@@ -24,6 +25,14 @@ export async function generateMetadata({
   }
 
   return ogObject
+}
+
+export async function generateStaticParams() {
+  const slugs = await getSlugs(BLOG_POSTTYPE)
+
+  return slugs.map((item) => ({
+    slug: item.slug,
+  }))
 }
 
 export default async function Slug({ params: { slug } }: Props) {

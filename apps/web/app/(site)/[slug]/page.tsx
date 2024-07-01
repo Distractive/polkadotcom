@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { getPage, getPageMeta } from "@/sanity/queries/page"
+import { getPage, getPageMeta, getSlugs } from "@/sanity/queries/page"
 
 import { HeaderBlock } from "@/features/page/blocks/header"
 import { PageBuilder } from "@/features/page/page-builder"
@@ -8,6 +8,8 @@ import { PageBuilder } from "@/features/page/page-builder"
 interface Props {
   params: { slug: string }
 }
+
+export const dynamicParams = true
 
 export async function generateMetadata({
   params: { slug },
@@ -31,6 +33,15 @@ export async function generateMetadata({
     },
   }
 }
+
+export async function generateStaticParams() {
+  const slugs = await getSlugs("landing")
+
+  return slugs.map((item) => ({
+    slug: item.slug,
+  }))
+}
+
 export default async function Page({ params: { slug } }: Props) {
   const data = await getPage(slug)
   if (!data) return notFound()

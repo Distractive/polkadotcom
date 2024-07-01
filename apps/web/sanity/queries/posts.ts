@@ -90,3 +90,14 @@ export async function getPostHeading(postType: PostType) {
 
   return runQuery(query, {})
 }
+
+export async function getSlugs(postType: string) {
+  const query = q("*")
+    .filterByType("post")
+    .filter(`post_type == '${postType}'`)
+    .grab({
+      slug: q.slug("slug"),
+    })
+
+  return runQuery(query, {})
+}

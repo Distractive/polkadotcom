@@ -3,8 +3,6 @@
 import { draftMode } from "next/headers"
 import type { ClientPerspective, QueryParams } from "@sanity/client"
 
-import { env } from "@/env.mjs"
-
 import { client } from "./client"
 import { token } from "./token"
 
@@ -13,8 +11,7 @@ const DEFAULT_PARAMS = {} as QueryParams
 export async function sanityFetch<QueryResponse>({
   query,
   params = DEFAULT_PARAMS,
-  perspective = draftMode().isEnabled ? "previewDrafts" : "published",
-  // stega = perspective === "previewDrafts" || env.VERCEL_ENV === "preview",
+  perspective,
   stega = perspective === "previewDrafts",
 }: {
   query: string

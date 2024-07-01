@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { getPage, getPageMeta } from "@/sanity/queries/page"
+import { getPage, getPageMeta, getSlugs } from "@/sanity/queries/page"
 
 import type { BreadcrumbProps } from "@/features/page/blocks/breadcrumb"
 import { HeaderBlock } from "@/features/page/blocks/header"
@@ -9,6 +9,8 @@ import { PageBuilder } from "@/features/page/page-builder"
 interface Props {
   params: { slug: string; childslug: string }
 }
+
+export const dynamicParams = true
 
 export async function generateMetadata({
   params: { slug, childslug },
@@ -32,6 +34,14 @@ export async function generateMetadata({
       images: [meta.meta?.meta_image?.asset.url || ""],
     },
   }
+}
+
+export async function generateStaticParams() {
+  const childSlugs = await getSlugs("page")
+  return childSlugs.map((item) => ({
+    slug: item.parent?.slug ?? "",
+    childslug: item.slug.split("/")[1],
+  }))
 }
 
 export default async function Page({ params: { slug, childslug } }: Props) {
