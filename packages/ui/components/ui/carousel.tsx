@@ -156,7 +156,7 @@ const CarouselContent = React.forwardRef<
   const { carouselRef } = useCarousel()
 
   return (
-    <div ref={carouselRef} className="overflow-hidden">
+    <div ref={carouselRef}>
       <div ref={ref} className={cn("-ml-gutter flex", className)} {...props} />
     </div>
   )

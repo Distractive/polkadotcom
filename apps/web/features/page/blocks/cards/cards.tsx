@@ -28,7 +28,13 @@ export function CardsBlock({ cards }: Props) {
   }, [cards, isMobile])
 
   return (
-    <div key={cards._key} className="grid-system max-width relative px-gutter">
+    <div
+      key={cards._key}
+      className={cn(
+        "grid-system max-width relative",
+        !cards.isCarousel && "px-gutter"
+      )}
+    >
       <div
         className={cn(
           "col-span-full pb-section lg:col-span-8",
@@ -36,7 +42,12 @@ export function CardsBlock({ cards }: Props) {
           isSticky && "sticky top-section mb-auto"
         )}
       >
-        <div className="flex flex-col gap-copy">
+        <div
+          className={cn(
+            "flex flex-col gap-copy",
+            cards.isCarousel && "px-gutter"
+          )}
+        >
           <Heading
             variant="h3"
             size="h2"
@@ -52,9 +63,12 @@ export function CardsBlock({ cards }: Props) {
         </div>
       </div>
       {cards.isCarousel ? (
-        <Carousel>
+        <Carousel className="px-gutter">
           {cards.items.map((card) => (
-            <CarouselItem key={card._key} className="basis-5/6 lg:basis-1/3">
+            <CarouselItem
+              key={card._key}
+              className="basis-5/6 lg:basis-[40%] xl:basis-1/3"
+            >
               <CardBlock key={card._key} card={card} className="h-full" />
             </CarouselItem>
           ))}
