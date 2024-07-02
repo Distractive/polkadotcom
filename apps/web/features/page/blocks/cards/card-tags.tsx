@@ -2,6 +2,7 @@
 
 import { useCallback, useState } from "react"
 import { type cardSelection } from "@/sanity/selections/blocks/card"
+import { stegaClean } from "@sanity/client/stega"
 import type { TypeFromSelection } from "groqd"
 
 import { Button, cn, Icon } from "@shared/ui"
@@ -27,7 +28,9 @@ export function CardTags({ tags, cards }: Props) {
         return
       }
       const filtered = cards.filter((card) => {
-        return card.selectedTags?.includes(tag)
+        const cleanTag = stegaClean(tag)
+        const cleanTags = card.selectedTags?.map((tag) => stegaClean(tag))
+        return cleanTags?.includes(cleanTag)
       })
       setFilteredItems(filtered)
     },
@@ -90,7 +93,7 @@ export function CardTags({ tags, cards }: Props) {
       </ul>
       <div
         className={cn(
-          "grid-system col-span-full !mx-0 gap-gutter !px-0 md:auto-rows-1fr lg:col-span-full"
+          "grid-system md:auto-rows-1fr col-span-full !mx-0 gap-gutter !px-0 lg:col-span-full"
         )}
       >
         {filteredItems.slice(0, visibleCount).map((card) => (
