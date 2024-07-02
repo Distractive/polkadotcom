@@ -24,12 +24,14 @@ export default function Menu({ menu }: Props) {
                 <CustomUrl
                   value={item.link}
                   clipText={false}
-                  className="flex underline decoration-grey-400 underline-offset-8 transition duration-500 ease-out hover:decoration-white"
+                  className="flex underline decoration-grey-400 underline-offset-8 transition duration-500 ease-out hover:decoration-black"
                 >
                   {item.link.label}
                 </CustomUrl>
               ) : (
-                item.heading
+                <span className="underline decoration-grey-400 underline-offset-8">
+                  {item.heading}
+                </span>
               )}
             </Heading>
             <ul className="flex flex-col gap-2 py-6">
@@ -38,7 +40,7 @@ export default function Menu({ menu }: Props) {
                   <CustomUrl
                     value={item.link}
                     clipText={false}
-                    className="flex gap-2 text-center font-default underline decoration-grey-200 underline-offset-8 transition duration-500 ease-out hover:decoration-grey-400"
+                    className="flex gap-2 text-left font-default underline decoration-grey-200 underline-offset-8 transition duration-500 ease-out hover:decoration-black"
                   >
                     {item.link.label}
                   </CustomUrl>

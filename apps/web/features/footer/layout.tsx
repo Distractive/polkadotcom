@@ -15,7 +15,7 @@ export default function FooterLayout({ footer }: Props) {
   return (
     <div
       className={cn(
-        "relative mt-page flex flex-col md:h-[70rem] md:justify-end md:overflow-y-hidden lg:h-full lg:min-h-[55rem]"
+        "relative mt-page flex flex-col font-bold md:h-[70rem] md:justify-end md:overflow-y-hidden lg:h-full lg:min-h-[55rem]"
       )}
     >
       <picture>
@@ -74,11 +74,11 @@ export default function FooterLayout({ footer }: Props) {
               <a href="/" className="group">
                 <Logo
                   ariaLabel="Polkadot homepage"
-                  className="h-auto w-32 md:w-48 md:hover:text-pink"
+                  className="h-auto w-32 md:w-48"
                 />
               </a>
-              <p className="text-sm text-black">
-                © {new Date().getFullYear()}
+              <p className="flex gap-copy text-sm text-black">
+                <span>©</span> {new Date().getFullYear()}
               </p>
             </div>
             <SocialLinks items={footer.socialLinks} />
