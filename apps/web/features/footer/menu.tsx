@@ -1,7 +1,7 @@
 import type { footerMenuSelection } from "@/sanity/selections/footer/footer-menu"
 import type { TypeFromSelection } from "groqd"
 
-import { Heading, Icon } from "@shared/ui"
+import { Heading } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
 
 interface Props {
