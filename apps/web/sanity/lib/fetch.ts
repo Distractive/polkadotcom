@@ -1,6 +1,5 @@
 "use server"
 
-import { draftMode } from "next/headers"
 import type { ClientPerspective, QueryParams } from "@sanity/client"
 
 import { client } from "./client"
