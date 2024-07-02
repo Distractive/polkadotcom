@@ -1,3 +1,4 @@
+import { KeyboardEvent } from "react"
 import Link from "next/link"
 import { type navigationMenuSelection } from "@/sanity/selections/navigation/navigation-menu"
 import { type TypeFromSelection } from "groqd"
@@ -35,11 +36,20 @@ export function Header({
     setIsOpen(true)
   }
 
+  const handleKeyDown = (
+    event: KeyboardEvent<HTMLLIElement>,
+    item: TypeFromSelection<typeof navigationMenuSelection>
+  ) => {
+    if (event.key === "Enter") {
+      handleItemHover(item.heading)
+    }
+  }
+
   return (
-    <div className="flex h-nav-height flex-shrink-0 items-start justify-between">
+    <div className="h-nav-height flex flex-shrink-0 items-start justify-between">
       <div
         className={cn(
-          "flex h-full items-center justify-center px-nav lg:pr-0",
+          "px-nav flex h-full items-center justify-center lg:pr-0",
           "rounded-[3rem] border border-grey-300 bg-white"
         )}
       >
@@ -48,7 +58,7 @@ export function Header({
         </Link>
         <ul
           className={cn(
-            "hidden h-full items-center justify-center gap-nav px-nav lg:flex",
+            "gap-nav px-nav hidden h-full items-center justify-center lg:flex",
             "border-l border-grey-300 font-bold"
           )}
         >
@@ -57,7 +67,9 @@ export function Header({
             return (
               <li
                 key={index}
+                tabIndex={0}
                 onMouseEnter={() => handleItemHover(item.heading)}
+                onKeyDown={(event) => handleKeyDown(event, item)}
                 className="relative flex h-full cursor-pointer items-center justify-center transition-colors duration-500 ease-in-out lg:hover:text-pink"
               >
                 <ActiveMarker

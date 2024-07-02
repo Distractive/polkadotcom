@@ -61,16 +61,16 @@ export default function CardStatBlock({ card, className }: Props) {
                       <>
                         <a href={value.href} rel={rel} className="font-bold">
                           {children}
+                          <Icon
+                            variant="arrowRightUp"
+                            className={cn(
+                              "ml-1 w-4 fill-current lg:w-5",
+                              value.variant &&
+                                value.variant === "primary" &&
+                                "fill-white"
+                            )}
+                          />
                         </a>
-                        <Icon
-                          variant="arrowRightUp"
-                          className={cn(
-                            "ml-1 w-4 fill-current lg:w-5",
-                            value.variant &&
-                              value.variant === "primary" &&
-                              "fill-white"
-                          )}
-                        />
                       </>
                     )
                   },
