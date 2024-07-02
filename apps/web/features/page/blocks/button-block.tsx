@@ -13,7 +13,7 @@ interface Props {
 
 export function ButtonBlock({ buttonBlock }: Props) {
   return (
-    <div className="grid-system max-width p-gutter">
+    <div className="grid-system max-width -mt-page p-gutter">
       <DecorativeLine forButtonBlock>
         <Button
           asChild
