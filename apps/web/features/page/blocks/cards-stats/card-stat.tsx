@@ -30,7 +30,7 @@ export default function CardStatBlock({ card, className }: Props) {
         )}
       >
         <CardHeader className="grid gap-copy">
-          <Heading variant="h4" size="h2">
+          <Heading variant="h3" size="h2">
             {heading}
           </Heading>
           <CardDescription>{body}</CardDescription>

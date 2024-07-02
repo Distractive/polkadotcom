@@ -24,7 +24,7 @@ export function AccordionBlock({ accordion }: Props) {
       {accordion.hasTitleOnSide ? (
         <div className="col-span-full pb-gutter lg:col-span-4">
           <div className="flex flex-col gap-copy">
-            <Heading variant="h3" size="h2" className="text-balance">
+            <Heading variant="h2" className="text-balance">
               {accordion.title}
             </Heading>
             {accordion.body && (

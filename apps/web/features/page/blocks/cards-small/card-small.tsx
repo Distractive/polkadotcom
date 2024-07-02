@@ -53,7 +53,8 @@ export default function CardSmallBlock({ card, className }: Props) {
             )}
             {heading && (
               <Heading
-                variant="h4"
+                variant="h3"
+                size="h4"
                 className={cn(
                   "transition-colors duration-500 ease-in-out",
                   link &&

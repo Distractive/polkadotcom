@@ -28,7 +28,11 @@ export function QuoteBlock({ quote, className }: Props) {
           value={quote.title}
           components={{
             block: {
-              h3: ({ children }) => <Heading variant="h3">{children}</Heading>,
+              h3: ({ children }) => (
+                <Heading variant="h2" size="h3">
+                  {children}
+                </Heading>
+              ),
             },
             marks: {
               highlight: ({ children }) => (

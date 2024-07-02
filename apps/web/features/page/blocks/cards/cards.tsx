@@ -49,8 +49,7 @@ export function CardsBlock({ cards }: Props) {
           )}
         >
           <Heading
-            variant="h3"
-            size="h2"
+            variant="h2"
             className={cn(!cards.showSideBySide && "text-balance")}
           >
             {cards.heading}

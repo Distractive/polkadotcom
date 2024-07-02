@@ -29,9 +29,9 @@ export default function CardTimelineBlock({
         )}
       >
         <span className="inline-block size-6 -translate-y-1/2 rounded-full bg-pink"></span>
-        <span className="mr-gutter text-lg leading-[1.8rem] md:text-2xl">
+        <h3 className="mr-gutter text-lg leading-[1.8rem] md:text-2xl">
           {card.year}
-        </span>
+        </h3>
       </CardHeader>
       <CardContent className="group mr-gutter flex h-full flex-col justify-between gap-copy rounded-2xl bg-grey-100 p-card">
         <PortableText
