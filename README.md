@@ -100,4 +100,4 @@ We currently SSG for the following routes
 
 - [slug] & [childslug] - this is for the content pages
 - /blog/[slug] & /newsroom/press-release/[slug] - this is for the blog and newsroom pages
-- /blog & /newsroom/press-release - this is for the blog and newsroom index pages - going beyond this seems overkill to render statically as the index page will always be the most hit. All other pages will be served on demand. We redirect to each page/1 as this is ssg
+- /blog & /newsroom/press-release - this is for the blog and newsroom index pages - going beyond this seems overkill to render statically as the index page will always be the most hit. All other pages will be served on demand. We redirect to each page/1 as this is ssg.
