@@ -61,3 +61,7 @@
     --spacing-gutter: 3rem;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
