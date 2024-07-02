@@ -26,25 +26,21 @@ export const Primary: Story = {
           _key: "1",
           heading: "Card Stat heading",
           body: "Stat",
-          link: {
-            label: "Learn more",
-            external: "https://google.co.uk",
-            internal: null,
-          },
+          content: null,
         },
         {
           _key: "2",
           //@ts-ignore
           heading: "Card Stat heading",
           body: "Stat",
-          link: null,
+          content: null,
         },
         {
           _key: "3",
           //@ts-ignore
           heading: "Card Stat heading",
           body: "Stat",
-          link: null,
+          content: null,
         },
       ],
     },

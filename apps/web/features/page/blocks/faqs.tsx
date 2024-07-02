@@ -22,16 +22,15 @@ export function FAQBlock({ faqs }: Props) {
   return (
     <div className="grid-system max-width gap-gutter px-gutter">
       <Heading
-        variant="h3"
-        size="h2"
-        className="col-span-12 text-balance lg:col-span-8 lg:col-start-3"
+        variant="h2"
+        className="col-span-full text-balance lg:col-span-8 lg:col-start-3"
       >
         {faqs.title}
       </Heading>
       <Accordion
         type="single"
         collapsible
-        className="col-span-12 lg:col-span-8 lg:col-start-3"
+        className="col-span-full lg:col-span-8 lg:col-start-3"
       >
         {faqs.items.map((faq) => (
           <AccordionItem key={faq._key} value={faq._key}>

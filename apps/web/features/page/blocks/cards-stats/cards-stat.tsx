@@ -16,13 +16,13 @@ export function CardsStatBlock({ cards }: Props) {
       className="grid-system max-width gap-y-section px-gutter"
     >
       <div className="col-span-full lg:col-span-8">
-        <Heading variant="h3" size="h2" className="text-balance">
+        <Heading variant="h2" className="text-balance">
           {cards.heading}
         </Heading>
       </div>
       <div
         className={cn(
-          "grid-system col-span-12 !mx-0 gap-gutter !px-0",
+          "grid-system col-span-full !mx-0 gap-gutter !px-0 md:auto-rows-1fr",
           !cards.body && "pb-section"
         )}
       >
@@ -35,7 +35,7 @@ export function CardsStatBlock({ cards }: Props) {
         ))}
       </div>
       {cards.body && (
-        <div className="max-w-4/6 col-span-12 lg:pt-0">
+        <div className="max-w-4/6 col-span-full lg:pt-0">
           <p className="text-lg">{cards.body}</p>
         </div>
       )}

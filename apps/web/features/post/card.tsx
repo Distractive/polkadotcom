@@ -58,7 +58,7 @@ export default function BlogCard({ post, className }: Props) {
         )}
 
         {title && (
-          <h4
+          <h2
             className={cn(
               "mb-1 text-lg font-bold transition-colors duration-500 ease-in-out",
               "md:group-focus-within:text-pink md:group-hover:text-pink"
@@ -75,7 +75,7 @@ export default function BlogCard({ post, className }: Props) {
             >
               {title}
             </Link>
-          </h4>
+          </h2>
         )}
         {body && (
           <CardDescription className="line-clamp-3">

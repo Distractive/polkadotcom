@@ -97,7 +97,7 @@ export function SearchBar({ searches, postType }: Props) {
           })}
 
         {searchable.length > 0 && findings.length == 0 && (
-          <div className="text-blue flex h-28 w-full flex-col flex-wrap items-center justify-center ">
+          <div className="flex h-28 w-full flex-col flex-wrap items-center justify-center text-blue ">
             <p className="text-center font-bold">No matches found</p>
             <p className="text-center">
               Please check spelling or try using more general terms
@@ -124,7 +124,7 @@ const SearchBarInput = ({
   return (
     <div
       className={cn(
-        "peer col-span-12 flex items-center gap-1 self-stretch bg-grey-100 p-4 ring-1 ring-inset ring-grey-300 focus-within:ring-grey-500 hover:ring-grey-500",
+        "peer col-span-full flex items-center gap-1 self-stretch bg-grey-100 p-4 ring-1 ring-inset ring-grey-300 focus-within:ring-grey-500 hover:ring-grey-500",
         "transition-all duration-300",
         hasDrawerResultsOpen ? "rounded-tl-2xl rounded-tr-2xl" : "rounded-2xl"
       )}
@@ -198,7 +198,7 @@ const SearchBarListItem = ({
   return (
     <Link
       href={href}
-      className="text-blue line-clamp-1 h-10 overflow-hidden rounded-lg p-2 leading-roomy hover:bg-grey-300 "
+      className="line-clamp-1 h-10 overflow-hidden rounded-lg p-2 leading-roomy text-blue hover:bg-grey-300 "
     >
       {children}
     </Link>

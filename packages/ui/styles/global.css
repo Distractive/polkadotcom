@@ -18,6 +18,10 @@
   .max-width {
     @apply mx-auto w-full max-w-[100rem];
   }
+
+  .link-styling {
+    @apply font-[700] underline transition-colors duration-500 ease-in-out hover:text-pink;
+  }
 }
 
 :root {
@@ -56,4 +60,8 @@
     --spacing-section: 4rem;
     --spacing-gutter: 3rem;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }

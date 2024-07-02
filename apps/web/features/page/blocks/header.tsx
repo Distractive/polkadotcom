@@ -1,5 +1,7 @@
 "use client"
 
+import Image from "next/image"
+import { urlForImage } from "@/sanity/lib/image"
 import { type headerSelection } from "@/sanity/selections/blocks/header"
 import type { TypeFromSelection } from "groqd"
 
@@ -19,10 +21,13 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
   return (
     <header className={cn("grid-system col-span-full mb-page", className)}>
       {header.image && (
-        <img
-          src={header.image.asset.url}
+        <Image
+          src={urlForImage(header.image.asset)}
           alt=""
           className="col-span-full w-full lg:order-2 lg:col-span-7 lg:col-start-6"
+          width={header.image.asset.metadata.dimensions?.width}
+          height={header.image.asset.metadata.dimensions?.height}
+          priority
         />
       )}
       <div
@@ -42,7 +47,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         {header.body && (
           <p className="text-lg md:text-balance">{header.body}</p>
         )}
-        <div className="mt-card flex w-full flex-col gap-4 md:flex-row">
+        <div className="mt-card flex w-full flex-wrap gap-4">
           {header.links?.map((link, index) => (
             <Button
               asChild

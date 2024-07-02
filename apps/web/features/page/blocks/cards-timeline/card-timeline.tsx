@@ -24,14 +24,16 @@ export default function CardTimelineBlock({
     >
       <CardHeader
         className={cn(
-          "grid border-t border-grey-400 font-display text-2xl",
+          "grid gap-2 border-t border-grey-400 pb-4 font-display",
           !hasLine && "border-0"
         )}
       >
-        <span className="inline-block size-gutter -translate-y-1/2 rounded-full bg-pink"></span>
-        <span className="pb-2">{card.year}</span>
+        <span className="inline-block size-6 -translate-y-1/2 rounded-full bg-pink"></span>
+        <h3 className="mr-gutter text-lg leading-[1.8rem] md:text-2xl">
+          {card.year}
+        </h3>
       </CardHeader>
-      <CardContent className="group mr-gutter flex h-full flex-col gap-copy rounded-2xl bg-grey-100 p-card">
+      <CardContent className="group mr-gutter flex h-full flex-col justify-between gap-copy rounded-2xl bg-grey-100 p-card">
         <PortableText
           value={card.content}
           components={{
@@ -46,6 +48,18 @@ export default function CardTimelineBlock({
             listItem: {
               bullet: ({ children }) => <li>{children}</li>,
               number: ({ children }) => <li>{children}</li>,
+            },
+            marks: {
+              link: ({ children, value }) => {
+                const rel = !value.href.startsWith("/")
+                  ? "noreferrer noopener"
+                  : undefined
+                return (
+                  <a href={value.href} rel={rel} className="link-styling">
+                    {children}
+                  </a>
+                )
+              },
             },
             types: {
               customUrl: ({ value }) => {

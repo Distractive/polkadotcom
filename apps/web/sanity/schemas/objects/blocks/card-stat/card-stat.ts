@@ -26,10 +26,19 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "link",
-      title: "Link",
-      type: "customUrl",
-      group: "content",
+      name: "content",
+      title: "Content",
+      type: "array",
+      of: [
+        {
+          type: "block",
+          styles: [{ title: "Normal", value: "normal" }],
+          marks: {
+            decorators: [{ title: "Strong", value: "strong" }],
+          },
+        },
+        { type: "customUrl" },
+      ],
     }),
   ],
 })

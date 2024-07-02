@@ -51,10 +51,10 @@ export function MenuDesktop({
                     <li
                       key={index}
                       className={cn(
-                        "flex min-w-[21rem] p-nav pl-0 shadow-internal-border"
+                        "p-nav flex min-w-[21rem] pl-0 shadow-internal-border"
                       )}
                     >
-                      <span className="flex w-nav items-center justify-center">
+                      <span className="w-nav flex items-center justify-center">
                         <ActiveMarker
                           className={isActive ? "opacity-100" : "opacity-0"}
                         />
@@ -63,6 +63,7 @@ export function MenuDesktop({
                         value={item.link}
                         onClick={handleLinkClick}
                         className="leading-none transition-colors duration-500 ease-in-out hover:text-pink"
+                        tabIndex={0}
                       >
                         {item.link.label}
                       </CustomUrl>
@@ -77,7 +78,7 @@ export function MenuDesktop({
                 <CustomUrl value={section.aside.link} onClick={handleLinkClick}>
                   <aside
                     className={cn(
-                      "group grid h-full max-w-[21rem] gap-copy p-nav",
+                      "p-nav group grid h-full max-w-[21rem] gap-copy",
                       "cursor-pointer border-l border-grey-300"
                     )}
                   >

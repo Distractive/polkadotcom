@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { getPostMeta } from "@/sanity/queries/post"
+import { getSlugs } from "@/sanity/queries/posts"
 
 import { BASE_URL, PRESS_RELEASE_POSTTYPE } from "@/constants/global"
 import Layout from "@/features/post/layout"
@@ -18,6 +19,14 @@ export async function generateMetadata({
     description: meta.meta_description || meta.custom_excerpt,
     alternates: { canonical: `${BASE_URL}/newsroom/press-releases/${slug}` },
   }
+}
+
+export async function generateStaticParams() {
+  const slugs = await getSlugs(PRESS_RELEASE_POSTTYPE)
+
+  return slugs.map((item) => ({
+    slug: item.slug,
+  }))
 }
 
 export default async function Slug({ params: { slug } }: Props) {

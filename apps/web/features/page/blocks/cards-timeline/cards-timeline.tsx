@@ -20,9 +20,8 @@ export function CardsTimelineBlock({ cards }: Props) {
   return (
     <div className="grid-system max-width py-gutter pl-gutter">
       <Heading
-        variant="h3"
-        size="h2"
-        className="col-span-12 text-balance pb-gutter pr-gutter"
+        variant="h2"
+        className="col-span-full text-balance pb-gutter pr-gutter"
       >
         {cards.heading}
       </Heading>

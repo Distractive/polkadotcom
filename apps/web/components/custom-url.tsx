@@ -10,6 +10,7 @@ interface Props {
   className?: string
   isWrapper?: boolean
   tabIndex?: number
+  clipText?: boolean
   onClick?: () => void
 }
 export function CustomUrl({
@@ -18,6 +19,7 @@ export function CustomUrl({
   className,
   tabIndex,
   isWrapper = false,
+  clipText = true,
   onClick,
 }: Props) {
   return value ? (
@@ -34,7 +36,8 @@ export function CustomUrl({
       ) : (
         <span
           className={cn(
-            "inline-flex items-center overflow-hidden text-ellipsis whitespace-nowrap"
+            "inline-flex items-center",
+            clipText && "overflow-hidden text-ellipsis whitespace-nowrap"
           )}
         >
           {children}

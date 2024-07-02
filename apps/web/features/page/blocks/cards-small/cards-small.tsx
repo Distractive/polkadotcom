@@ -16,12 +16,16 @@ export function CardsSmallBlock({ cards }: Props) {
       className="grid-system max-width relative gap-y-section px-gutter"
     >
       <div className="col-span-full flex flex-col gap-copy lg:col-span-8">
-        <Heading variant="h3" size="h2" className="text-balance">
+        <Heading variant="h2" className="text-balance">
           {cards.heading}
         </Heading>
         {cards.body && <p className="md:text-balance">{cards.body}</p>}
       </div>
-      <div className={cn("grid-system col-span-12 w-full gap-gutter")}>
+      <div
+        className={cn(
+          "grid-system col-span-full w-full gap-gutter md:auto-rows-1fr"
+        )}
+      >
         {cards.items.map((card, index) => {
           // span the last two cards if there are 2 cards in a row
           const shouldSpan =
@@ -31,7 +35,7 @@ export function CardsSmallBlock({ cards }: Props) {
               key={card._key}
               card={card}
               className={cn(
-                "col-span-12 md:col-span-3 lg:col-span-4",
+                "col-span-full md:col-span-3 lg:col-span-4",
                 shouldSpan && "lg:col-span-6"
               )}
             />

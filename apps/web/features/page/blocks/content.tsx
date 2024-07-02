@@ -3,13 +3,14 @@ import { PortableText } from "@portabletext/react"
 import type { TypeFromSelection } from "groqd"
 
 import { Button, cn, Heading } from "@shared/ui"
+import { CustomUrl } from "@/components/custom-url"
 
 interface Props {
   content: TypeFromSelection<typeof contentSelection>
 }
 export function ContentBlock({ content }: Props) {
   return (
-    <div className="grid-system max-width px-gutter">
+    <div className="grid-system max-width pt-header-top px-gutter">
       <div
         className={cn(
           "col-span-full col-start-1 flex flex-col gap-copy",
@@ -43,6 +44,18 @@ export function ContentBlock({ content }: Props) {
               bullet: ({ children }) => <li>{children}</li>,
               number: ({ children }) => <li>{children}</li>,
             },
+            marks: {
+              link: ({ children, value }) => {
+                const rel = !value.href.startsWith("/")
+                  ? "noreferrer noopener"
+                  : undefined
+                return (
+                  <a href={value.href} rel={rel} className="link-styling">
+                    {children}
+                  </a>
+                )
+              },
+            },
             types: {
               customUrl: ({ value }) => {
                 return (
@@ -51,7 +64,15 @@ export function ContentBlock({ content }: Props) {
                     size="sm"
                     className="mr-auto mt-copy"
                   >
-                    {value.label}
+                    <CustomUrl
+                      className="outline-none"
+                      value={{
+                        internal: value?.internal,
+                        external: value?.external,
+                      }}
+                    >
+                      {value.label}
+                    </CustomUrl>
                   </Button>
                 )
               },

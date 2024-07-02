@@ -1,10 +1,11 @@
-"use client"
-
+import Image from "next/image"
+import { urlForImage } from "@/sanity/lib/image"
 import { type sideBySideSelection } from "@/sanity/selections/blocks/side-by-side"
 import { type TypeFromSelection } from "groqd"
 import { PortableText } from "next-sanity"
 
 import { Button, cn, Heading } from "@shared/ui"
+import { CustomUrl } from "@/components/custom-url"
 
 interface Props {
   content: TypeFromSelection<typeof sideBySideSelection>
@@ -15,12 +16,12 @@ export function SideBySideBlock({ content }: Props) {
     <div className="grid-system max-width gap-y-gutter px-gutter lg:gap-y-0">
       <div
         className={cn(
-          "col-span-full grid gap-gutter lg:col-span-5",
+          "col-span-full grid h-fit gap-gutter lg:col-span-5",
           content.isImageOnLeft ? "lg:order-1 lg:pl-card" : "lg:pr-card"
         )}
       >
         <div className="flex flex-col gap-copy">
-          <Heading variant="h3" size="h2" className="text-balance">
+          <Heading variant="h2" className="text-balance">
             {content.heading}
           </Heading>
           {content.subheading && (
@@ -56,12 +57,20 @@ export function SideBySideBlock({ content }: Props) {
                 customUrl: ({ value }) => {
                   return (
                     <Button
-                      variant="secondary"
                       size="sm"
                       asChild
                       className="my-copy mr-auto md:cursor-pointer"
+                      variant={value.internal ? "primary" : "secondary"}
                     >
-                      <span>{value.label}</span>
+                      <CustomUrl
+                        className="outline-none"
+                        value={{
+                          internal: value?.internal,
+                          external: value?.external,
+                        }}
+                      >
+                        {value.label}
+                      </CustomUrl>
                     </Button>
                   )
                 },
@@ -71,10 +80,12 @@ export function SideBySideBlock({ content }: Props) {
         </div>
       </div>
       {content.image && (
-        <img
-          src={content.image.asset.url}
+        <Image
+          src={urlForImage(content.image.asset)}
           alt=""
           className="col-span-full my-auto h-auto lg:col-span-7"
+          width={content.image.asset.metadata.dimensions?.width}
+          height={content.image.asset.metadata.dimensions?.height}
         />
       )}
     </div>

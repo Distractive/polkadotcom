@@ -156,7 +156,7 @@ const MorePost = ({
     post_type == BLOG_POSTTYPE ? "From the blog" : "More from newsroom"
   return (
     <div className="max-width col-span-full mb-12 px-gutter">
-      <div className={cn("col-span-12 mb-12")}>
+      <div className={cn("col-span-full mb-12")}>
         <div className="flex flex-col gap-copy lg:w-5/6">
           <Heading variant="h2">{headingLabel}</Heading>
         </div>

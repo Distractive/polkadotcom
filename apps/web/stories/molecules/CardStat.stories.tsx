@@ -17,7 +17,7 @@ export const Primary: Story = {
       _key: "internal",
       heading: "1.3 million",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: null,
+      content: null,
     },
   },
 }
@@ -28,11 +28,34 @@ export const PrimaryWithSource: Story = {
       _key: "internal",
       heading: "1.3 million",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: {
-        label: "holders/total accounts",
-        internal: null,
-        external: "https://google.co.uk",
-      },
+      content: [
+        {
+          _key: "parent",
+          _type: "block",
+          children: [
+            {
+              _key: "one",
+              _type: "span",
+              marks: [],
+              text: "Source: ",
+            },
+            {
+              _key: "two",
+              _type: "span",
+              marks: ["link"],
+              text: "holders/total accounts",
+            },
+          ],
+          markDefs: [
+            {
+              _key: "link",
+              _type: "link",
+              href: "https://www.example.com",
+              variant: "primary",
+            },
+          ],
+        },
+      ],
     },
   },
 }

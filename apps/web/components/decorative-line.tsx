@@ -14,7 +14,7 @@ export function DecorativeLine({
   return (
     <div
       className={cn(
-        "relative col-span-12 inline-flex items-center justify-center pt-gutter",
+        "relative col-span-full inline-flex items-center justify-center pt-gutter",
         className
       )}
     >

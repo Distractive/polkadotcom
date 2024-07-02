@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { draftMode } from "next/headers"
+import Script from "next/script"
 import { manrope, unbounded } from "@/styles/fonts"
 import { GoogleAnalytics } from "@next/third-parties/google"
 import { VisualEditing } from "next-sanity"
@@ -42,6 +43,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        <Script
+          src="https://cmp.osano.com/169unzUF2IaM42S5j/0f63db37-496b-4a14-a233-82bbdf3a4afd/osano.js"
+          strategy="beforeInteractive"
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -108,28 +113,22 @@ export default async function RootLayout({
           "flex min-h-screen flex-col font-default antialiased"
         )}
       >
-        {draftMode().isEnabled && (
-          <div>
-            <a className="bg-blue block p-4" href="/api/disable-draft">
-              Disable preview mode
-            </a>
-          </div>
-        )}
         <a
-          href="#main"
+          href="#main-content"
           className={cn(
-            "absolute -left-[9999px] -top-[9999px] z-[999] w-screen border-b border-b-grey-400 bg-grey-100 p-4 opacity-100 outline-none",
+            "group absolute -left-[9999px] -top-[9999px] z-[999] w-screen border-b border-b-grey-400 bg-grey-100 p-4 opacity-100 outline-none",
             "focus:left-0 focus:top-0 focus:opacity-100"
           )}
         >
-          <span className="bg-blue inline-block rounded-lg px-10 py-4 font-display text-xs uppercase tracking-wide text-white">
+          <span
+            tabIndex={0}
+            className="inline-block rounded-lg bg-blue px-10 py-4 font-display text-xs uppercase tracking-wide text-white group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#1351d8]"
+          >
             Skip to main content
           </span>
         </a>
         <NavigationLayout navigation={navigation} />
-        <main id="main" className="grid-system flex-grow">
-          {children}
-        </main>
+        <main className="grid-system flex-grow">{children}</main>
         <FooterLayout footer={footer} />
         <TailwindIndicator />
         {draftMode().isEnabled && <VisualEditing />}
