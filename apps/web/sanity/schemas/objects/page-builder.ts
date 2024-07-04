@@ -39,6 +39,10 @@ export default defineType({
           type: "cardsStat",
         }),
         defineArrayMember({
+          name: "cardsSticky",
+          type: "cardsSticky",
+        }),
+        defineArrayMember({
           name: "cardsLogo",
           type: "cardsLogo",
         }),

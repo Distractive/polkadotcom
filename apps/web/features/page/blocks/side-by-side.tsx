@@ -21,9 +21,7 @@ export function SideBySideBlock({ content }: Props) {
         )}
       >
         <div className="flex flex-col gap-copy">
-          <Heading variant="h2" className="text-balance">
-            {content.heading}
-          </Heading>
+          <Heading variant="h2">{content.heading}</Heading>
           {content.subheading && (
             <p className="text-lg text-black">{content.subheading}</p>
           )}

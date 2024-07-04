@@ -3,15 +3,16 @@ import type { Selection } from "groqd"
 
 import { faqsSelection } from "../selections/blocks/faqs"
 import { accordionSelection } from "./blocks/accordion"
+import { buttonBlockSelection } from "./blocks/button-block"
 import { cardsSelection } from "./blocks/cards"
 import { cardsLogoSelection } from "./blocks/cards-logo"
 import { cardsSmallSelection } from "./blocks/cards-small"
 import { cardsStatSelection } from "./blocks/cards-stat"
+import { cardsStickySelection } from "./blocks/cards-sticky"
 import { cardsTimelineSelection } from "./blocks/cards-timeline"
 import { contentSelection } from "./blocks/content"
-import { quoteSelection } from "./blocks/quote"
-import { buttonBlockSelection } from "./blocks/button-block"
 import { mediaBlockSelection } from "./blocks/media-block"
+import { quoteSelection } from "./blocks/quote"
 import { sideBySideSelection } from "./blocks/side-by-side"
 
 export const pageBuilderSelection = {
@@ -37,6 +38,10 @@ export const pageBuilderSelection = {
       '_type == "cardsSmall"': {
         _type: q.literal("cardsSmall"),
         ...cardsSmallSelection,
+      },
+      '_type == "cardsSticky"': {
+        _type: q.literal("cardsSticky"),
+        ...cardsStickySelection,
       },
       '_type == "cardsTimeline"': {
         _type: q.literal("cardsTimeline"),

@@ -24,14 +24,8 @@ export function AccordionBlock({ accordion }: Props) {
       {accordion.hasTitleOnSide ? (
         <div className="col-span-full pb-gutter lg:col-span-4">
           <div className="flex flex-col gap-copy">
-            <Heading variant="h2" className="text-balance">
-              {accordion.title}
-            </Heading>
-            {accordion.body && (
-              <p className={cn(!accordion.hasTitleOnSide && "md:text-balance")}>
-                {accordion.body}
-              </p>
-            )}
+            <Heading variant="h2">{accordion.title}</Heading>
+            {accordion.body && <p>{accordion.body}</p>}
           </div>
         </div>
       ) : (
@@ -43,12 +37,8 @@ export function AccordionBlock({ accordion }: Props) {
           />
           <div className="col-span-full flex flex-col items-center justify-center pt-gutter lg:col-span-6 lg:pt-0">
             <div className="flex flex-col gap-copy lg:w-5/6">
-              <Heading variant="h2" className="text-balance">
-                {accordion.title}
-              </Heading>
-              {accordion.body && (
-                <p className="md:text-balance">{accordion.body}</p>
-              )}
+              <Heading variant="h2">{accordion.title}</Heading>
+              {accordion.body && <p>{accordion.body}</p>}
             </div>
           </div>
         </div>

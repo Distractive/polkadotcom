@@ -11,7 +11,7 @@ interface Props {
 
 export function QuoteBlock({ quote, className }: Props) {
   return (
-    <div className={cn("max-width grid-system gap-card px-gutter", className)}>
+    <div className={cn("grid-system max-width gap-card px-gutter", className)}>
       {quote.image && (
         <img
           src={quote.image.asset.url}
@@ -43,12 +43,7 @@ export function QuoteBlock({ quote, className }: Props) {
           }}
         />
         {quote.body && (
-          <p
-            className={cn(
-              "text-lg leading-[150%] text-grey-500 md:text-balance",
-              className
-            )}
-          >
+          <p className={cn("text-lg leading-[150%] text-grey-500", className)}>
             {quote.body}
           </p>
         )}

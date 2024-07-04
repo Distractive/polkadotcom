@@ -17,11 +17,10 @@ import { CustomUrl } from "@/components/custom-url"
 
 interface Props {
   card: TypeFromSelection<typeof cardSelection>
-  showSideBySide?: boolean
   className?: string
 }
 
-export default function CardBlock({ card, showSideBySide, className }: Props) {
+export default function CardBlock({ card, className }: Props) {
   const {
     _key,
     headerImage,
@@ -34,27 +33,17 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
     useAsBackgroundImage,
   } = card
 
-  const showSideBySideWithIcon =
-    !useAsBackgroundImage && icon && !headerImage && showSideBySide
-
   return (
     <Card
       key={_key}
       className={cn(
-        headerImage && showSideBySide && "lg:flex",
         link &&
           "md:cursor-pointer md:focus-within:shadow-card md:focus-within:backdrop-blur-0 md:hover:shadow-card md:hover:backdrop-blur-0",
         className
       )}
       data-tags={selectedTags?.join(",")}
     >
-      <CustomUrl
-        value={link}
-        isWrapper
-        className={cn(
-          showSideBySide && !showSideBySideWithIcon && "lg:flex lg:w-full"
-        )}
-      >
+      <CustomUrl value={link} isWrapper>
         {headerImage && useAsBackgroundImage && (
           <Image
             src={urlForImage(headerImage.asset)}
@@ -66,12 +55,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
           />
         )}
         {headerImage && (
-          <CardHeader
-            className={cn(
-              "relative z-10 aspect-[4/3]",
-              showSideBySide && "lg:basis-[60%]"
-            )}
-          >
+          <CardHeader className="relative z-10 aspect-[4/3]">
             {!useAsBackgroundImage && (
               <Image
                 src={urlForImage(headerImage.asset)}
@@ -84,17 +68,11 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
             )}
           </CardHeader>
         )}
-        <div
-          className={cn(
-            "relative",
-            showSideBySide && "flex flex-col justify-end lg:basis-[40%]"
-          )}
-        >
+        <div className="relative">
           <CardContent
             className={cn(
-              "grid p-card",
-              headerImage && icon && !showSideBySide && "pt-0",
-              showSideBySideWithIcon ? "gap-gutter lg:flex" : "gap-card"
+              "grid gap-card p-card",
+              headerImage && icon && "pt-0"
             )}
           >
             {icon && (
@@ -105,10 +83,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                 width={icon.asset.metadata.dimensions?.width}
                 height={icon.asset.metadata.dimensions?.height}
                 className={cn(
-                  headerImage &&
-                    icon &&
-                    !showSideBySide &&
-                    "relative z-10 -mt-[2.25rem]",
+                  headerImage && icon && "relative z-10 -mt-[2.25rem]",
                   "h-[4.5rem] w-auto rounded-2xl"
                 )}
               />
@@ -125,7 +100,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                 ))}
               </ul>
             )}
-            <div className={cn(showSideBySideWithIcon && "grid gap-copy")}>
+            <div className="grid gap-card">
               <div className="grid gap-copy">
                 {eyebrow && (
                   <span className="text-base uppercase">{eyebrow}</span>
@@ -134,7 +109,7 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                   <Heading
                     variant="h3"
                     className={cn(
-                      "ttransition-colors duration-500 ease-in-out",
+                      "transition-colors duration-500 ease-in-out",
                       link &&
                         "md:group-focus-within:text-pink md:group-hover:text-pink"
                     )}
@@ -142,18 +117,10 @@ export default function CardBlock({ card, showSideBySide, className }: Props) {
                     {heading}
                   </Heading>
                 )}
-                {body && (
-                  <CardDescription
-                    className={cn(showSideBySideWithIcon && "text-grey-500")}
-                  >
-                    {body}
-                  </CardDescription>
-                )}
+                {body && <CardDescription>{body}</CardDescription>}
               </div>
               {link && link.variant && (
-                <CardFooter
-                  className={cn(!showSideBySideWithIcon && "pt-card")}
-                >
+                <CardFooter>
                   <Button
                     asChild
                     size="md"

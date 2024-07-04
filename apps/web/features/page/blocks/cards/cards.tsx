@@ -1,10 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import type { cardsSelection } from "@/sanity/selections/blocks/cards"
 import type { TypeFromSelection } from "groqd"
 
-import { useBreakpoint } from "@/hooks/use-breakpoint"
 import { CarouselItem, cn, Heading } from "@shared/ui"
 
 import { Carousel } from "../../../../components/carousel"
@@ -16,17 +14,6 @@ interface Props {
 }
 
 export function CardsBlock({ cards }: Props) {
-  const [isSticky, setIsSticky] = useState(false)
-  const isMobile = useBreakpoint("--screen-lg")
-
-  useEffect(() => {
-    if (cards.showSideBySide && !isMobile) {
-      setIsSticky(true)
-    } else {
-      setIsSticky(false)
-    }
-  }, [cards, isMobile])
-
   return (
     <div
       key={cards._key}
@@ -35,30 +22,15 @@ export function CardsBlock({ cards }: Props) {
         !cards.isCarousel && "px-gutter"
       )}
     >
-      <div
-        className={cn(
-          "col-span-full pb-section lg:col-span-8",
-          cards.showSideBySide && "lg:col-span-4",
-          isSticky && "sticky top-section mb-auto"
-        )}
-      >
+      <div className="col-span-full pb-section lg:col-span-8">
         <div
           className={cn(
             "flex flex-col gap-copy",
             cards.isCarousel && "px-gutter"
           )}
         >
-          <Heading
-            variant="h2"
-            className={cn(!cards.showSideBySide && "text-balance")}
-          >
-            {cards.heading}
-          </Heading>
-          {cards.body && (
-            <p className={cn(!cards.showSideBySide && "lg:text-balance")}>
-              {cards.body}
-            </p>
-          )}
+          <Heading variant="h2">{cards.heading}</Heading>
+          {cards.body && <p>{cards.body}</p>}
         </div>
       </div>
       {cards.isCarousel ? (
@@ -77,8 +49,7 @@ export function CardsBlock({ cards }: Props) {
           <div
             className={cn(
               "grid-system col-span-full gap-section",
-              !cards.hasTags && "md:auto-rows-1fr",
-              cards.showSideBySide && "lg:col-span-7 lg:col-start-6"
+              !cards.hasTags && "md:auto-rows-1fr"
             )}
           >
             {cards.hasTags ? (
@@ -87,16 +58,9 @@ export function CardsBlock({ cards }: Props) {
               cards.items.map((card) => (
                 <div
                   key={card._key}
-                  className={cn(
-                    "col-span-full md:col-span-3 lg:col-span-4",
-                    cards.showSideBySide && "lg:col-span-full",
-                    isSticky && "sticky top-section"
-                  )}
+                  className="col-span-full md:col-span-3 lg:col-span-4"
                 >
-                  <CardBlock
-                    card={card}
-                    showSideBySide={cards.showSideBySide}
-                  />
+                  <CardBlock card={card} />
                 </div>
               ))
             )}

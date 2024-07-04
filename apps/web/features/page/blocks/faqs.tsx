@@ -23,7 +23,7 @@ export function FAQBlock({ faqs }: Props) {
     <div className="grid-system max-width gap-gutter px-gutter">
       <Heading
         variant="h2"
-        className="col-span-full text-balance lg:col-span-8 lg:col-start-3"
+        className="col-span-full lg:col-span-8 lg:col-start-3"
       >
         {faqs.title}
       </Heading>

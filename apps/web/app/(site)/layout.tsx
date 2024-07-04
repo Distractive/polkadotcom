@@ -128,7 +128,7 @@ export default async function RootLayout({
           </span>
         </a>
         <NavigationLayout navigation={navigation} />
-        <main className="grid-system flex-grow">{children}</main>
+        <main className="flex-grow">{children}</main>
         <FooterLayout footer={footer} />
         <TailwindIndicator />
         {draftMode().isEnabled && <VisualEditing />}

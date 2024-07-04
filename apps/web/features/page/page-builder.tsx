@@ -6,14 +6,14 @@ import { ButtonBlock } from "@/features/page/blocks/button-block"
 import { CardsLogoBlock } from "@/features/page/blocks/cards-logo/cards-logo"
 import { CardsSmallBlock } from "@/features/page/blocks/cards-small/cards-small"
 import { CardsStatBlock } from "@/features/page/blocks/cards-stats/cards-stat"
+import { CardsStickyBlock } from "@/features/page/blocks/cards-sticky/cards"
 import { CardsTimelineBlock } from "@/features/page/blocks/cards-timeline/cards-timeline"
 import { CardsBlock } from "@/features/page/blocks/cards/cards"
+import { ContentBlock } from "@/features/page/blocks/content"
 import { FAQBlock } from "@/features/page/blocks/faqs"
 import { MediaBlock } from "@/features/page/blocks/media-block"
 import { QuoteBlock } from "@/features/page/blocks/quote"
 import { SideBySideBlock } from "@/features/page/blocks/side-by-side"
-
-import { ContentBlock } from "./blocks/content"
 
 interface Props {
   pageBuilder: TypeFromSelection<typeof pageBuilderSelection>["pageBuilder"]
@@ -32,6 +32,8 @@ export function PageBuilder({ pageBuilder }: Props) {
         return <ButtonBlock buttonBlock={item} />
       case "cardsSmall":
         return <CardsSmallBlock cards={item} />
+      case "cardsSticky":
+        return <CardsStickyBlock cards={item} />
       case "cardsTimeline":
         return <CardsTimelineBlock cards={item} />
       case "cardsStat":

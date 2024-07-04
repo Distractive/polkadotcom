@@ -16,10 +16,8 @@ export function CardsSmallBlock({ cards }: Props) {
       className="grid-system max-width relative gap-y-section px-gutter"
     >
       <div className="col-span-full flex flex-col gap-copy lg:col-span-8">
-        <Heading variant="h2" className="text-balance">
-          {cards.heading}
-        </Heading>
-        {cards.body && <p className="md:text-balance">{cards.body}</p>}
+        <Heading variant="h2">{cards.heading}</Heading>
+        {cards.body && <p>{cards.body}</p>}
       </div>
       <div
         className={cn(

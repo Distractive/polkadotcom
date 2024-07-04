@@ -32,17 +32,6 @@ export default defineType({
         (!value && !!parent?.isCarousel) || !!parent?.showSideBySide,
     }),
     defineField({
-      name: "showSideBySide",
-      title: "Show Side By Side?",
-      description:
-        "If true, the cards will be displayed side by side on desktop",
-      type: "boolean",
-      initialValue: false,
-      group: "config",
-      hidden: ({ parent, value }) =>
-        (!value && !!parent?.isCarousel) || !!parent?.hasTags,
-    }),
-    defineField({
       title: "Heading",
       name: "heading",
       type: "string",

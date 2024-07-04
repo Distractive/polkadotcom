@@ -48,7 +48,7 @@ export default async function Page({ params: { slug } }: Props) {
   return (
     <>
       {data.header && <HeaderBlock header={data.header} />}
-      <section id="main-content" className="col-span-full grid gap-page">
+      <section id="main-content" className="flex flex-col gap-page">
         <PageBuilder pageBuilder={data.pageBuilder} />
       </section>
     </>

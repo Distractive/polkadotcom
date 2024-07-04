@@ -40,13 +40,9 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
       >
         {breadcrumb && <BreadcrumbBlock items={breadcrumb.items} />}
 
-        <Heading variant="h1" className="text-balance">
-          {header.title}
-        </Heading>
+        <Heading variant="h1">{header.title}</Heading>
 
-        {header.body && (
-          <p className="text-lg md:text-balance">{header.body}</p>
-        )}
+        {header.body && <p className="text-lg">{header.body}</p>}
         <div className="mt-card flex w-full flex-wrap gap-4">
           {header.links?.map((link, index) => (
             <Button

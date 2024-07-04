@@ -43,7 +43,7 @@ export function CardTags({ tags, cards }: Props) {
 
   return (
     <>
-      <ul className="col-span-full flex gap-3">
+      <ul className="col-span-full flex flex-wrap gap-3">
         <li
           key="all"
           className={cn(
@@ -70,7 +70,7 @@ export function CardTags({ tags, cards }: Props) {
           <li
             key={tag}
             className={cn(
-              "flex cursor-pointer items-center justify-center rounded bg-grey-200 text-sm leading-relaxed transition-colors",
+              "flex cursor-pointer flex-wrap items-center justify-center rounded bg-grey-200 text-sm leading-relaxed transition-colors",
               "hover:bg-blue hover:text-white",
               "relative",
               currentTag === tag && "bg-blue text-white"
@@ -93,7 +93,7 @@ export function CardTags({ tags, cards }: Props) {
       </ul>
       <div
         className={cn(
-          "grid-system md:auto-rows-1fr col-span-full !mx-0 gap-gutter !px-0 lg:col-span-full"
+          "grid-system col-span-full !mx-0 gap-gutter !px-0 md:auto-rows-1fr lg:col-span-full"
         )}
       >
         {filteredItems.slice(0, visibleCount).map((card) => (

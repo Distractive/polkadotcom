@@ -22,6 +22,13 @@
   .link-styling {
     @apply font-[700] underline transition-colors duration-500 ease-in-out hover:text-pink;
   }
+
+  .heading-break {
+    text-wrap: balance;
+    hyphens: auto;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
 }
 
 :root {

@@ -1,16 +1,13 @@
 import { nullToUndefined, q } from "groqd"
 import type { Selection } from "groqd"
 
-import { cardSelection } from "./card"
+import { cardStickySelection } from "./card-sticky"
 
-export const cardsSelection = {
+export const cardsStickySelection = {
   _key: q.string(),
   heading: nullToUndefined(q.string().optional()),
   body: nullToUndefined(q.string().optional()),
-  isCarousel: nullToUndefined(q.boolean().optional()),
-  hasTags: nullToUndefined(q.boolean().optional()),
-  tags: q.array(q.string()).nullable(),
   items: q("items")
     .filter()
-    .grab({ ...cardSelection }),
+    .grab({ ...cardStickySelection }),
 } satisfies Selection
