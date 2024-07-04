@@ -3,6 +3,7 @@ import type { TypeFromSelection } from "groqd"
 import { PortableText } from "next-sanity"
 
 import { Button, Card, CardContent, CardHeader, cn } from "@shared/ui"
+import { CustomUrl } from "@/components/custom-url"
 
 interface Props {
   card: TypeFromSelection<typeof cardTimelineSelection>
@@ -65,10 +66,24 @@ export default function CardTimelineBlock({
               customUrl: ({ value }) => {
                 return (
                   <Button
-                    variant={value.internal ? "primary" : "secondary"}
+                    variant={
+                      value?.variant
+                        ? value.variant === "primary"
+                          ? "primary"
+                          : "secondary"
+                        : "primary"
+                    }
                     size="sm"
                   >
-                    {value.label}
+                    <CustomUrl
+                      className="outline-none"
+                      value={{
+                        internal: value?.internal,
+                        external: value?.external,
+                      }}
+                    >
+                      {value.label}
+                    </CustomUrl>
                   </Button>
                 )
               },

@@ -60,7 +60,13 @@ export function SideBySideBlock({ content }: Props) {
                       size="sm"
                       asChild
                       className="my-copy mr-auto md:cursor-pointer"
-                      variant={value.internal ? "primary" : "secondary"}
+                      variant={
+                        value?.variant
+                          ? value.variant === "primary"
+                            ? "primary"
+                            : "secondary"
+                          : "primary"
+                      }
                     >
                       <CustomUrl
                         className="outline-none"
