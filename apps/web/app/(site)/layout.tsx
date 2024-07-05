@@ -130,7 +130,7 @@ export default async function RootLayout({
         <NavigationLayout navigation={navigation} />
         <main className="flex-grow">{children}</main>
         <FooterLayout footer={footer} />
-        <TailwindIndicator />
+        {env.VERCEL_ENV === "development" && <TailwindIndicator />}
         {draftMode().isEnabled && <VisualEditing />}
       </body>
       <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_ID} />
