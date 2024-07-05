@@ -62,7 +62,7 @@ const config = {
     },
     extend: {
       gridAutoRows: {
-        '1fr': '1fr',
+        "1fr": "1fr",
       },
       spacing: {
         page: "var(--spacing-page)",
@@ -91,14 +91,15 @@ const config = {
       transition: {
         visibility: "visibility, opacity",
         backdropBlur: "backdrop-filter",
+        height: "height",
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       objectPosition: {
-        '-20rem': '-20rem',
-      }
+        "-20rem": "-20rem",
+      },
     },
   },
   plugins: [

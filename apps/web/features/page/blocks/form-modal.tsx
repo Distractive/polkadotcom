@@ -13,6 +13,7 @@ import {
   DialogTitle,
   DialogTrigger,
   Heading,
+  HeadingStyles,
 } from "@shared/ui"
 
 import { Form } from "./form"
@@ -50,8 +51,15 @@ export function FormModalBlock({}: Props) {
               </span>
             </DialogTrigger>
           </div>
-          <DialogContent className="rounded-2xl border border-grey-300 bg-white p-gutter">
-            <Form />
+          <DialogContent className="overflow-hidden rounded-2xl border border-grey-300 bg-white">
+            <div className="flex h-[600px] w-[1000px] flex-col gap-card overflow-auto p-gutter">
+              <DialogTitle
+                className={cn(HeadingStyles.base, HeadingStyles.sizes.h2)}
+              >
+                Stay informed
+              </DialogTitle>
+              <Form />
+            </div>
           </DialogContent>
         </div>
       </Dialog>

@@ -15,9 +15,12 @@ export function Form({}: Props) {
   })
 
   return (
-    <div id="hubspot-form-wrapper" className="min-w-56">
-      {!loaded && <div>Loading</div>}
-      {error && <div>Error loading form</div>}
+    <div>
+      <div>
+        {!loaded && <p>Loading</p>}
+        {error && <p>Error loading form</p>}
+      </div>
+      <div id="hubspot-form-wrapper" className="w-full"></div>
     </div>
   )
 }
