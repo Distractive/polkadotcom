@@ -32,9 +32,7 @@ export function DialogBlock({}: Props) {
               iusto inventore perspiciatis voluptate ab reprehenderit.
             </p>
           </div>
-          <DialogTrigger className="mr-auto">
-            <Button>Subscribe</Button>
-          </DialogTrigger>
+          <DialogTrigger className="mr-auto">Subscribe</DialogTrigger>
         </div>
         <DialogContent className="rounded-2xl border border-grey-300 bg-white p-gutter">
           <DialogHeader className="flex flex-col gap-copy">
