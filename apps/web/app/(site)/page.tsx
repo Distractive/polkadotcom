@@ -1,4 +1,5 @@
 import { Button, Heading } from "@shared/ui"
+import { DialogBlock } from "@/features/page/blocks/dialog"
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         />
       </div>
       <section className="col-span-6 grid gap-section p-gutter">
+        <DialogBlock />
         <article className="grid gap-card">
           <div className="grid gap-copy">
             <Heading variant="h3">This is a heading</Heading>

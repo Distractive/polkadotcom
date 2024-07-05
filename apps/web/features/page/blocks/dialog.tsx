@@ -1,4 +1,6 @@
-import { type TypeFromSelection } from "groqd"
+"use client"
+
+import { useEffect, useRef } from "react"
 
 import {
   Button,
@@ -16,6 +18,21 @@ interface Props {
 }
 
 export function DialogBlock({}: Props) {
+  const form = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!(form && window.hbspt)) return
+
+    console.log(window.hbspt, form.current)
+
+    window.hbspt.forms.create({
+      region: "na1",
+      portalId: "7592558",
+      formId: "a5ecd657-6aae-4da0-bf08-f3b994919f0b",
+      target: form.current,
+    })
+  }, [])
+
   return (
     <div className="grid-system px-gutter">
       <Dialog>
@@ -41,12 +58,7 @@ export function DialogBlock({}: Props) {
               <Heading variant="h3">Stay informed</Heading>
             </DialogTitle>
             <DialogDescription>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Doloremque facilis fugit a! Quos, nisi dolores adipisci sequi
-                mollitia hic error provident tempora omnis. Quas accusamus
-                aspernatur sunt dicta, iusto excepturi!
-              </p>
+              <div ref={form}></div>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
