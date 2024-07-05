@@ -7,6 +7,7 @@ import { codeInput } from "@sanity/code-input"
 import { visionTool } from "@sanity/vision"
 import { groqdPlaygroundTool } from "groqd-playground"
 import { defineConfig } from "sanity"
+import { vercelDeployTool } from "sanity-plugin-vercel-deploy"
 import { presentationTool } from "sanity/presentation"
 import { structureTool } from "sanity/structure"
 
@@ -51,5 +52,6 @@ export default defineConfig({
         },
       },
     }),
+    vercelDeployTool(),
   ],
 })
