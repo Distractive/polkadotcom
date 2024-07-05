@@ -14,7 +14,10 @@ export function Form({}: Props) {
     target: "#hubspot-form-wrapper",
   })
 
-  console.log({ loaded, error, formCreated })
-
-  return <div id="hubspot-form-wrapper"></div>
+  return (
+    <div id="hubspot-form-wrapper" className="min-w-56">
+      {!loaded && <div>Loading</div>}
+      {error && <div>Error loading form</div>}
+    </div>
+  )
 }
