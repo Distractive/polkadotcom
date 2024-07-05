@@ -42,7 +42,7 @@ export default function CardSmallBlock({ card, className }: Props) {
               src={icon.asset.url}
               alt=""
               loading="lazy"
-              className={cn("size-12 object-cover object-center")}
+              className={cn("size-16 rounded-2xl object-cover object-center")}
             />
           )}
           <CardContent className="grid gap-copy">
