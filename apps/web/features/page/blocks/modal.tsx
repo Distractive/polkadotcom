@@ -29,7 +29,7 @@ export function ModalBlock({ modal }: Props) {
           <div className="col-span-full flex flex-col gap-card rounded-2xl border border-grey-300 bg-white p-gutter lg:col-span-8 lg:col-start-3">
             <div className="flex flex-col gap-copy ">
               <Heading variant="h2">{modal.heading}</Heading>
-              <p>{modal.description}</p>
+              <p>{modal.body}</p>
             </div>
             <DialogTrigger className="mr-auto">
               <span
@@ -39,7 +39,7 @@ export function ModalBlock({ modal }: Props) {
                   ButtonStyles.sizes.lg
                 )}
               >
-                {modal.button}
+                {modal.cta}
               </span>
             </DialogTrigger>
           </div>
@@ -48,7 +48,8 @@ export function ModalBlock({ modal }: Props) {
               <DialogTitle
                 className={cn(HeadingStyles.base, HeadingStyles.sizes.h2)}
               >
-                {modal.formHeading}
+                {modal.modalHeading}
+                {modal.formType}
               </DialogTitle>
               <Form />
             </div>

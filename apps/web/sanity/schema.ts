@@ -28,6 +28,7 @@ import {
   menu,
   menuItem,
   meta,
+  modal,
   pageBuilder,
   quote,
   sideBySide,
@@ -77,6 +78,7 @@ const objectTypes = [
   cardTimeline,
   cardsTimeline,
   quote,
+  modal,
 ]
 
 const singletons = [footer, navigation, notfound, blog, pressReleases]
