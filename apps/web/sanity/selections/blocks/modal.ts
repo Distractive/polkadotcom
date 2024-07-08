@@ -1,16 +1,16 @@
 import { q } from "groqd"
 import type { Selection } from "groqd"
 
-type FormType = "newsletter" | "contact"
+// type FormType = "newsletter" | "contact"
 
-const formType = q
-  .string()
-  .refine(
-    (value): value is FormType => value === "newsletter" || value === "contact",
-    {
-      message: 'formType must be either "newsletter" or "contact"',
-    }
-  )
+// const formType = q
+//   .string()
+//   .refine(
+//     (value): value is FormType => value === "newsletter" || value === "contact",
+//     {
+//       message: 'formType must be either "newsletter" or "contact"',
+//     }
+//   )
 
 export const modalSelection = {
   _key: q.string(),
@@ -18,5 +18,5 @@ export const modalSelection = {
   body: q.string(),
   cta: q.string(),
   modalHeading: q.string(),
-  formType: formType,
+  formType: q.string(),
 } satisfies Selection
