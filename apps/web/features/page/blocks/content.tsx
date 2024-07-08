@@ -63,6 +63,7 @@ export function ContentBlock({ content }: Props) {
                     variant={value.internal ? "primary" : "secondary"}
                     size="sm"
                     className="mr-auto mt-copy"
+                    asChild
                   >
                     <CustomUrl
                       className="outline-none"
