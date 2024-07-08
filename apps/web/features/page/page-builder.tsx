@@ -12,6 +12,7 @@ import { CardsBlock } from "@/features/page/blocks/cards/cards"
 import { ContentBlock } from "@/features/page/blocks/content"
 import { FAQBlock } from "@/features/page/blocks/faqs"
 import { MediaBlock } from "@/features/page/blocks/media-block"
+import { ModalBlock } from "@/features/page/blocks/modal"
 import { QuoteBlock } from "@/features/page/blocks/quote"
 import { SideBySideBlock } from "@/features/page/blocks/side-by-side"
 
@@ -48,6 +49,8 @@ export function PageBuilder({ pageBuilder }: Props) {
         return <QuoteBlock quote={item} />
       case "mediaBlock":
         return <MediaBlock mediaBlock={item} />
+      case "modal":
+        return <ModalBlock modal={item} />
       default:
         return <p>Unknown type: {item._type}</p>
     }

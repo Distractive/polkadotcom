@@ -49,8 +49,8 @@ export function ModalBlock({ modal }: Props) {
                 className={cn(HeadingStyles.base, HeadingStyles.sizes.h2)}
               >
                 {modal.modalHeading}
-                {modal.formType}
               </DialogTitle>
+              <span> {modal.formType}</span>
               <Form />
             </div>
           </DialogContent>
