@@ -46,10 +46,6 @@ export default async function RootLayout({
           src="https://cmp.osano.com/169unzUF2IaM42S5j/0f63db37-496b-4a14-a233-82bbdf3a4afd/osano.js"
           strategy="beforeInteractive"
         />
-        {/* <Script
-          src="https://js.hsforms.net/forms/v2.js"
-          strategy="beforeInteractive"
-        /> */}
         <link
           rel="apple-touch-icon"
           sizes="180x180"
