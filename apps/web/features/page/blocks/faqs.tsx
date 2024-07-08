@@ -37,7 +37,7 @@ export function FAQBlock({ faqs }: Props) {
             <AccordionTrigger
               className={cn(
                 "flex flex-1 items-center justify-between py-4",
-                "font-default text-sm font-bold",
+                "text-left font-default text-base font-bold",
                 "border-b border-grey-300",
                 "hover:border-pink hover:text-pink",
                 "data-[state=open]:border-pink data-[state=open]:text-pink"
@@ -51,8 +51,26 @@ export function FAQBlock({ faqs }: Props) {
                 components={{
                   block: {
                     normal: ({ children }) => (
-                      <p className="text-grey-500">{children}</p>
+                      <p className="text-grey-500 not-last:mb-copy md:w-3/4">
+                        {children}
+                      </p>
                     ),
+                  },
+                  list: {
+                    bullet: ({ children }) => (
+                      <ul className="my-4 list-outside list-disc pl-8 text-grey-500 marker:text-grey-500">
+                        {children}
+                      </ul>
+                    ),
+                    number: ({ children }) => (
+                      <ol className="my-4 list-outside list-decimal pl-8 text-grey-500 marker:text-grey-500">
+                        {children}
+                      </ol>
+                    ),
+                  },
+                  listItem: {
+                    bullet: ({ children }) => <li>{children}</li>,
+                    number: ({ children }) => <li>{children}</li>,
                   },
                   types: {
                     customUrl: ({ value }) => {
