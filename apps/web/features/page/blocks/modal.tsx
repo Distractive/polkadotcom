@@ -26,32 +26,34 @@ export function ModalBlock({ modal }: Props) {
     <HubspotProvider>
       <Dialog>
         <div className="grid-system max-width">
-          <div className="col-span-full flex flex-col gap-card rounded-2xl border border-grey-300 bg-white p-gutter lg:col-span-8 lg:col-start-3">
-            <div className="flex flex-col gap-copy ">
-              <Heading variant="h2">{modal.heading}</Heading>
-              <p>{modal.body}</p>
+          <div className="col-span-full px-gutter lg:col-span-8 lg:col-start-3">
+            <div className="flex flex-col gap-card rounded-2xl border border-grey-300 bg-white p-gutter">
+              <div className="flex flex-col gap-copy ">
+                <Heading variant="h2">{modal.heading}</Heading>
+                <p>{modal.body}</p>
+              </div>
+              <DialogTrigger className="mr-auto">
+                <span
+                  className={cn(
+                    ButtonStyles.base,
+                    ButtonStyles.variants.primary,
+                    ButtonStyles.sizes.lg
+                  )}
+                >
+                  {modal.cta}
+                </span>
+              </DialogTrigger>
             </div>
-            <DialogTrigger className="mr-auto">
-              <span
-                className={cn(
-                  ButtonStyles.base,
-                  ButtonStyles.variants.primary,
-                  ButtonStyles.sizes.lg
-                )}
-              >
-                {modal.cta}
-              </span>
-            </DialogTrigger>
           </div>
-          <DialogContent className="w-[90%] overflow-hidden rounded-2xl border border-grey-300 bg-white lg:w-[70%]">
+          <DialogContent className="mx-auto w-[90%] overflow-hidden rounded-2xl border border-grey-300 bg-white lg:w-[70%]">
             <div className="flex h-[60vh] flex-col gap-card overflow-auto p-gutter">
               <DialogTitle
                 className={cn(HeadingStyles.base, HeadingStyles.sizes.h2)}
               >
                 {modal.modalHeading}
               </DialogTitle>
-              <span> {modal.formType}</span>
-              <Form />
+              <span>{modal.formType}</span>
+              <Form type={modal.formType} />
             </div>
           </DialogContent>
         </div>

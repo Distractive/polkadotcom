@@ -7,5 +7,5 @@ export const modalSelection = {
   body: q.string(),
   cta: q.string(),
   modalHeading: q.string(),
-  formType: q.string(),
+  formType: q.union([q.literal("newsletter"), q.literal("contact")]),
 } satisfies Selection
