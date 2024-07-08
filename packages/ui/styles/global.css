@@ -23,6 +23,31 @@
     @apply font-[700] underline transition-colors duration-500 ease-in-out hover:text-pink;
   }
 
+  .background-blur {
+    @apply bg-opacity-80 backdrop-blur-md;
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
   .heading-break {
     text-wrap: balance;
     hyphens: auto;

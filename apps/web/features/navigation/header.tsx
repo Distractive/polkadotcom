@@ -1,4 +1,4 @@
-import { KeyboardEvent } from "react"
+import { type KeyboardEvent } from "react"
 import Link from "next/link"
 import { type navigationMenuSelection } from "@/sanity/selections/navigation/navigation-menu"
 import { type TypeFromSelection } from "groqd"
@@ -46,11 +46,11 @@ export function Header({
   }
 
   return (
-    <div className="h-nav-height flex flex-shrink-0 items-start justify-between">
+    <div className="flex h-nav-height flex-shrink-0 items-start justify-between">
       <div
         className={cn(
-          "px-nav flex h-full items-center justify-center lg:pr-0",
-          "rounded-[3rem] border border-grey-300 bg-white"
+          "flex h-full items-center justify-center px-nav lg:pr-0",
+          "background-blur rounded-[3rem] border border-grey-300 bg-white/80"
         )}
       >
         <Link href="/" onClick={handleItemSelect} className="lg:pr-nav">
@@ -58,7 +58,7 @@ export function Header({
         </Link>
         <ul
           className={cn(
-            "gap-nav px-nav hidden h-full items-center justify-center lg:flex",
+            "hidden h-full items-center justify-center gap-nav px-nav lg:flex",
             "border-l border-grey-300 font-bold"
           )}
         >

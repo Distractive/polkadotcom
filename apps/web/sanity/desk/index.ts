@@ -5,6 +5,7 @@ import type {
 
 import { blogStructure } from "./blog"
 import { footerStructure } from "./footer"
+import { homeStructure } from "./home"
 import { hygieneStructure } from "./hygiene"
 import { parentChild } from "./landing"
 import { navigationStructure } from "./navigation"
@@ -24,6 +25,8 @@ export const deskStructure = (
       parentChild("landing", S, context.documentStore),
       S.divider(),
       hygieneStructure(S),
+      S.divider(),
+      homeStructure(S),
       S.divider(),
       blogStructure(S),
       S.divider(),
