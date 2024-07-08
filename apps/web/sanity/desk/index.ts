@@ -12,6 +12,7 @@ import { navigationStructure } from "./navigation"
 import { notFoundStructure } from "./notfound"
 import { postStructure } from "./post"
 import { pressReleasesStructure } from "./press-releases"
+import { redirectStructure } from "./redirect"
 
 export const deskStructure = (
   S: StructureBuilder,
@@ -37,4 +38,6 @@ export const deskStructure = (
       footerStructure(S),
       S.divider(),
       notFoundStructure(S),
+      S.divider(),
+      redirectStructure(S),
     ])

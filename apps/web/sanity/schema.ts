@@ -1,6 +1,7 @@
 import { type SchemaTypeDefinition } from "sanity"
 
 import { author, hygiene, landing, page, post, tag } from "./schemas/documents"
+import { redirectType } from "./schemas/documents/redirects"
 import {
   accordion,
   accordionItem,
@@ -55,7 +56,7 @@ import {
   pressReleases,
 } from "./schemas/singletons"
 
-const documentTypes = [tag, author, post, landing, page, hygiene]
+const documentTypes = [tag, author, post, landing, page, hygiene, redirectType]
 const objectTypes = [
   youtube,
   meta,
