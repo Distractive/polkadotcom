@@ -5,6 +5,9 @@ import type { TypeFromSelection } from "groqd"
 import type { BreadcrumbProps } from "@/features/page/blocks/breadcrumb"
 import { HeaderBlock } from "@/features/page/blocks/header"
 
+export const dynamic = "force-static"
+export const dynamicParams = true
+
 export default async function NotFound() {
   const data = await getPageNotFound()
 

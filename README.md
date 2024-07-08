@@ -1,10 +1,10 @@
-# polkadot
+# Polkadot Website
 
 ## Workflow
 
 We use [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow):
 
-1. We work on feature branches named `feature/<short-title-of-feature>` (or bugfix branches named `bugfix/<bug-name>`).
+1. We work on feature branches named `feat/<short-title-of-feature>` (or bugfix branches named `fix/<bug-name>`).
 2. When the feature is done, we merge it into `develop` with a PR.
 3. When `develop` is stable, we merge it into `staging`.
 4. We merge into `main` only when we are ready to release a new version.
@@ -17,9 +17,8 @@ This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes th
 
 ### Apps and Packages
 
-- `web`: [Next.js 14](https://nextjs.org) app
-- `storybook`: [Storybook](https://storybook.js.org/blog/in-app-tour-for-new-users/) app
-- `ui`: React component library for all UI components
+- `web`: [Next.js 14](https://nextjs.org) app inc storybook
+- `ui`: React component library for generic UI components
 - `eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `ts-config`: `tsconfig.json`s used throughout the monorepo
 - `tailwind-config`: `tsconfig.json`s used throughout the monorepo
@@ -38,7 +37,7 @@ This shouldn't be just a lift and shift, but use them as a base to build upon bu
 
 ### storybook
 
-Storybook has been added as it's own app package so we can host it on Vercel and use it as a testing tool for the components we build.
+Storybook was added as it's own app package so we can host it on Vercel and use it as a testing tool for the components we build. This caused issues with Next components so was moved back into the web app. On vercel there is a project that runs seperatly to view storybook components.
 
 ### web
 
@@ -101,3 +100,29 @@ We currently SSG for the following routes
 - [slug] & [childslug] - this is for the content pages
 - /blog/[slug] & /newsroom/press-release/[slug] - this is for the blog and newsroom pages
 - /blog & /newsroom/press-release - this is for the blog and newsroom index pages - going beyond this seems overkill to render statically as the index page will always be the most hit. All other pages will be served on demand. We redirect to each page/1 as this is ssg.
+
+## Deploy to vercel
+
+Instead of using a webhook to trigger a build on publish, delete etc we are using a package to deploy within Sanity.  This allows the editing and publishing of multiple documents without triggering a build each time.
+
+The is an option in the Sanity dashboard called ```deploy``` which will trigger a build on Vercel and deploy the site. Multiple targets can be added.
+
+### Title
+A name for your deployment to help you organize your deployments.
+Typically, this should be the environment you are deploying to, like Production or Staging
+
+### Vercel Project Name
+This is the slugified project name listed in your Vercel account.
+You can find this in your Vercel Project under Settings → General → "Project Name"
+
+### Vercel Team Name (optional)
+If your project is part of a Vercel Team you must provide this value.
+You can find this in your Vercel Team, under Settings → General → "Team Name"
+
+### Deploy Hook URL
+This is the Vercel Deploy hook you want to trigger builds with.
+You can find this in your Vercel Project under Settings → Git → "Deploy Hooks"
+
+### Vercel Token
+This is a token from your Vercel Account (not project).
+You can find this from your Vercel Account dropdown under Settings → "Tokens"

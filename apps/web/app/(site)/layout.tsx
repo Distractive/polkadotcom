@@ -5,8 +5,6 @@ import { manrope, unbounded } from "@/styles/fonts"
 import { GoogleAnalytics } from "@next/third-parties/google"
 import { VisualEditing } from "next-sanity"
 
-import { TailwindIndicator } from "@/components/tailwind-indicator"
-
 import "@shared/ui/styles/global.css"
 
 import { getFooter } from "@/sanity/queries/footer"
@@ -14,6 +12,7 @@ import { getNavigation } from "@/sanity/queries/navigation"
 import { cn } from "@shared/ui/lib/utils"
 
 import { env } from "@/env.mjs"
+import { TailwindIndicator } from "@/components/tailwind-indicator"
 import FooterLayout from "@/features/footer/layout"
 import NavigationLayout from "@/features/navigation/layout"
 
@@ -108,7 +107,7 @@ export default async function RootLayout({
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#E6007A" />
         <meta name="msapplication-TileColor" content="#FFFFFF" />
-        <meta name="theme-color" content="#E6007A" />
+        <meta name="theme-color" content="#fff" />
       </head>
       <body
         className={cn(
@@ -134,7 +133,7 @@ export default async function RootLayout({
         <NavigationLayout navigation={navigation} />
         <main className="flex-grow">{children}</main>
         <FooterLayout footer={footer} />
-        <TailwindIndicator />
+        {env.VERCEL_ENV === "development" && <TailwindIndicator />}
         {draftMode().isEnabled && <VisualEditing />}
       </body>
       <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_ID} />

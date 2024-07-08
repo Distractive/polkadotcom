@@ -1,3 +1,15 @@
+import { createClient } from "@sanity/client"
+
+import { env } from "./env.mjs"
+
+// Initialize Sanity client
+const client = createClient({
+  apiVersion: env.NEXT_PUBLIC_SANITY_API_VERSION,
+  dataset: env.NEXT_PUBLIC_SANITY_DATASET,
+  projectId: env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  useCdn: false,
+})
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -13,18 +25,14 @@ const nextConfig = {
     taint: true,
   },
   async redirects() {
-    return [
-      {
-        source: "/blog",
-        destination: "/blog/page/1",
-        permanent: true,
-      },
-      {
-        source: "/newsroom/press-releases",
-        destination: "/newsroom/press-releases/page/1",
-        permanent: true,
-      },
-    ]
+    const redirects = await client.fetch(
+      `*[_type == "redirects"]{
+            "source":source,
+            "destination":destination,
+            permanent
+          }`
+    )
+    return redirects
   },
 }
 

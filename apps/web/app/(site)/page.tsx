@@ -1,3 +1,15 @@
-export default function Home() {
-  return <div>Home</div>
+import { getHome } from "@/sanity/queries/home"
+
+import { Root } from "@/features/home/root"
+
+export default async function Home() {
+  const home = await getHome()
+
+  return (
+    <>
+      <section className="col-span-12">
+        <Root home={home.home} />
+      </section>
+    </>
+  )
 }

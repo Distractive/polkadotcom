@@ -5,12 +5,14 @@ import type {
 
 import { blogStructure } from "./blog"
 import { footerStructure } from "./footer"
+import { homeStructure } from "./home"
 import { hygieneStructure } from "./hygiene"
 import { parentChild } from "./landing"
 import { navigationStructure } from "./navigation"
 import { notFoundStructure } from "./notfound"
 import { postStructure } from "./post"
 import { pressReleasesStructure } from "./press-releases"
+import { redirectStructure } from "./redirect"
 
 export const deskStructure = (
   S: StructureBuilder,
@@ -25,6 +27,8 @@ export const deskStructure = (
       S.divider(),
       hygieneStructure(S),
       S.divider(),
+      homeStructure(S),
+      S.divider(),
       blogStructure(S),
       S.divider(),
       pressReleasesStructure(S),
@@ -34,4 +38,6 @@ export const deskStructure = (
       footerStructure(S),
       S.divider(),
       notFoundStructure(S),
+      S.divider(),
+      redirectStructure(S),
     ])

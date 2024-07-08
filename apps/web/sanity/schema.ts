@@ -1,6 +1,7 @@
 import { type SchemaTypeDefinition } from "sanity"
 
 import { author, hygiene, landing, page, post, tag } from "./schemas/documents"
+import { redirectType } from "./schemas/documents/redirects"
 import {
   accordion,
   accordionItem,
@@ -19,10 +20,19 @@ import {
   cardSticky,
   cardsTimeline,
   cardTimeline,
+  connectedCard,
   customUrl,
+  ecosystemCard,
   faq,
   faqs,
   header,
+  homeBuild,
+  homeConnected,
+  homeEcosystem,
+  homeHero,
+  homeNetwork,
+  homeStats,
+  homeVideo,
   lineBreak,
   mediaBlock,
   menu,
@@ -32,19 +42,22 @@ import {
   pageBuilder,
   quote,
   sideBySide,
+  smallHomeCard,
   socialLink,
+  statsCard,
   video,
   youtube,
 } from "./schemas/objects"
 import {
   blog,
   footer,
+  home,
   navigation,
   notfound,
   pressReleases,
 } from "./schemas/singletons"
 
-const documentTypes = [tag, author, post, landing, page, hygiene]
+const documentTypes = [tag, author, post, landing, page, hygiene, redirectType]
 const objectTypes = [
   youtube,
   meta,
@@ -79,9 +92,20 @@ const objectTypes = [
   cardsTimeline,
   quote,
   modal,
+  homeHero,
+  homeVideo,
+  homeConnected,
+  connectedCard,
+  homeEcosystem,
+  ecosystemCard,
+  homeStats,
+  statsCard,
+  homeNetwork,
+  smallHomeCard,
+  homeBuild,
 ]
 
-const singletons = [footer, navigation, notfound, blog, pressReleases]
+const singletons = [footer, navigation, notfound, home, blog, pressReleases]
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [...documentTypes, ...objectTypes, ...singletons],
