@@ -91,7 +91,6 @@ const config = {
       transition: {
         visibility: "visibility, opacity",
         backdropBlur: "backdrop-filter",
-        height: "height",
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
