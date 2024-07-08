@@ -73,10 +73,28 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hubspot */
+
+.hubspot {
+  font-size: 0.875rem;
+}
+
+@media (min-width: 45.5rem) {
+  .hubspot {
+    font-size: 1rem !important;
+  }
+}
+
 .hubspot form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.875rem;
+}
+
+@media (min-width: 45.5rem) {
+  .hubspot form {
+    gap: 1rem;
+  }
 }
 
 .hubspot .hs-form-field {
@@ -87,11 +105,6 @@ html {
 
 .hubspot .hs-error-msg {
   color: red;
-  font-size: 0.875rem;
-}
-
-.hubspot .hs-richtext {
-  font-size: 0.875rem;
 }
 
 .hubspot input[type="text"],
@@ -108,7 +121,15 @@ html {
 .hubspot input[type="text"],
 .hubspot input[type="email"],
 .hubspot select {
-  height: 3.5rem;
+  height: 3rem;
+}
+
+@media (min-width: 45.5rem) {
+  .hubspot input[type="text"],
+  .hubspot input[type="email"],
+  .hubspot select {
+    height: 3.5rem;
+  }
 }
 
 .hubspot textarea {
@@ -138,19 +159,16 @@ html {
   text-transform: uppercase;
   color: white;
   font-family: var(--font-unbounded), system-ui, sans-serif;
-  font-size: 0.875rem;
   font-style: normal;
   font-weight: 400;
 }
 
 .hubspot p {
   text-align: left !important;
-  font-size: 1rem;
 }
 
 .hubspot h1 {
   text-align: left !important;
   font-weight: bold;
   margin: 0;
-  font-size: 1rem;
 }
