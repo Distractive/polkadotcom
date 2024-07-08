@@ -4,8 +4,6 @@ export default defineType({
   name: "modal",
   title: "Modal",
   type: "object",
-  description:
-    "A modal block consists of a call to action, and a modal containing a form.",
   groups: [
     { title: "Call to action", name: "cta" },
     { title: "Modal", name: "modal" },
@@ -53,4 +51,13 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
   ],
+  preview: {
+    select: {
+      title: "heading",
+    },
+    prepare: ({ title }) => ({
+      title,
+      subtitle: "- Modal block",
+    }),
+  },
 })
