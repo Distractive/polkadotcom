@@ -1,43 +1,35 @@
 "use client"
 
+import { type modalSelection } from "@/sanity/selections/blocks/modal"
+import { type TypeFromSelection } from "groqd"
 import { HubspotProvider } from "next-hubspot"
 
 import {
-  Button,
   ButtonStyles,
   cn,
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
   Heading,
   HeadingStyles,
 } from "@shared/ui"
 
-import { Form } from "./form"
+import { Form } from "../../../components/form"
 
 interface Props {
-  // dialog: TypeFromSelection<typeof dialogSelection>
+  modal: TypeFromSelection<typeof modalSelection>
 }
 
-export function FormModalBlock({}: Props) {
+export function ModalBlock({ modal }: Props) {
   return (
     <HubspotProvider>
       <Dialog>
         <div className="grid-system max-width">
           <div className="col-span-full flex flex-col gap-card rounded-2xl border border-grey-300 bg-white p-gutter lg:col-span-8 lg:col-start-3">
             <div className="flex flex-col gap-copy ">
-              <Heading variant="h2">
-                The lates Polkadot news straight from the source.
-              </Heading>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi,
-                consequuntur eveniet labore aliquam expedita sapiente porro,
-                cupiditate quia veritatis eaque ipsa maiores itaque doloremque
-                iusto inventore perspiciatis voluptate ab reprehenderit.
-              </p>
+              <Heading variant="h2">{modal.heading}</Heading>
+              <p>{modal.description}</p>
             </div>
             <DialogTrigger className="mr-auto">
               <span
@@ -47,16 +39,16 @@ export function FormModalBlock({}: Props) {
                   ButtonStyles.sizes.lg
                 )}
               >
-                Subscribe
+                {modal.button}
               </span>
             </DialogTrigger>
           </div>
-          <DialogContent className="overflow-hidden rounded-2xl border border-grey-300 bg-white">
-            <div className="flex h-[600px] w-[1000px] flex-col gap-card overflow-auto p-gutter">
+          <DialogContent className="w-[90%] overflow-hidden rounded-2xl border border-grey-300 bg-white lg:w-[70%]">
+            <div className="flex h-[60vh] flex-col gap-card overflow-auto p-gutter">
               <DialogTitle
                 className={cn(HeadingStyles.base, HeadingStyles.sizes.h2)}
               >
-                Stay informed
+                {modal.formHeading}
               </DialogTitle>
               <Form />
             </div>

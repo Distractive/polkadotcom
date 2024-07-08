@@ -2,12 +2,8 @@
 
 import { useHubspotForm } from "next-hubspot"
 
-interface Props {
-  // dialog: TypeFromSelection<typeof dialogSelection>
-}
-
-export function Form({}: Props) {
-  const { loaded, error, formCreated } = useHubspotForm({
+export function Form() {
+  const { loaded, error } = useHubspotForm({
     region: "na1",
     portalId: "7592558",
     formId: "a5ecd657-6aae-4da0-bf08-f3b994919f0b",
@@ -15,12 +11,12 @@ export function Form({}: Props) {
   })
 
   return (
-    <div>
-      <div>
+    <div className="w-full">
+      <div className="flex flex-col gap-copy">
         {!loaded && <p>Loading</p>}
         {error && <p>Error loading form</p>}
       </div>
-      <div id="hubspot-form-wrapper" className="w-full"></div>
+      <div id="hubspot-form-wrapper" className="hubspot w-full"></div>
     </div>
   )
 }

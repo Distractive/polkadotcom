@@ -3,7 +3,6 @@ import { draftMode } from "next/headers"
 import Script from "next/script"
 import { manrope, unbounded } from "@/styles/fonts"
 import { GoogleAnalytics } from "@next/third-parties/google"
-import { HubspotProvider } from "next-hubspot"
 import { VisualEditing } from "next-sanity"
 
 import { TailwindIndicator } from "@/components/tailwind-indicator"
