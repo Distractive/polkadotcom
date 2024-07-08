@@ -52,7 +52,6 @@ export function ModalBlock({ modal }: Props) {
               >
                 {modal.modalHeading}
               </DialogTitle>
-              <span>{modal.formType}</span>
               <Form type={modal.formType} />
             </div>
           </DialogContent>

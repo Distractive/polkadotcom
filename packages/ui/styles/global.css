@@ -96,13 +96,23 @@ html {
 
 .hubspot input[type="text"],
 .hubspot input[type="email"],
-.hubspot select {
+.hubspot select,
+.hubspot textarea {
   width: 100%;
-  height: 3.5rem;
   border-radius: 0.75rem;
   border: 1px solid #e7e7ec;
   background: rgba(243, 243, 244, 0.6);
   padding: 0 1rem;
+}
+
+.hubspot input[type="text"],
+.hubspot input[type="email"],
+.hubspot select {
+  height: 3.5rem;
+}
+
+.hubspot textarea {
+  padding: 1rem;
 }
 
 .hubspot input[type="checkbox"] {
@@ -131,4 +141,16 @@ html {
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 400;
+}
+
+.hubspot p {
+  text-align: left !important;
+  font-size: 1rem;
+}
+
+.hubspot h1 {
+  text-align: left !important;
+  font-weight: bold;
+  margin: 0;
+  font-size: 1rem;
 }
