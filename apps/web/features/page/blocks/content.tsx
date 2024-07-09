@@ -62,7 +62,7 @@ export function ContentBlock({ content }: Props) {
                 return (
                   <Button
                     variant={value.internal ? "primary" : "secondary"}
-                    size="sm"
+                    size="md"
                     className="mr-auto mt-copy"
                     asChild
                   >
