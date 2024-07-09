@@ -46,6 +46,16 @@ html.lenis body {
   overflow: hidden;
 }
 
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+  .heading-break {
+    text-wrap: balance;
+    hyphens: auto;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
 :root {
   --spacing-page: 6rem;
   --spacing-section: 2rem;
