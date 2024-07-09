@@ -123,8 +123,9 @@ export function Stats({ stats }: Props) {
               <StaggerHeader
                 title={stats.title}
                 className={cn(
-                  "px-gutter py-gutter text-5xl leading-[1.1] lg:pl-gutter lg:pr-gutter",
-                  "col-span-12 md:text-7xl lg:col-span-3 lg:col-start-1"
+                  "px-gutter py-gutter text-5xl leading-[1.1] lg:pl-gutter lg:pr-gutter ",
+                  "col-span-12 md:text-7xl lg:col-span-3 lg:col-start-1",
+                  "!hyphens-none !break-normal"
                 )}
               />
               <div

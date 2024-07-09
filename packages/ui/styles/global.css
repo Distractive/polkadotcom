@@ -27,6 +27,13 @@
     @apply bg-opacity-80 backdrop-blur-md;
     -webkit-backdrop-filter: blur(12px);
   }
+
+  .heading-break {
+    text-wrap: balance;
+    hyphens: auto;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
 }
 
 html.lenis,
@@ -44,16 +51,6 @@ html.lenis body {
 
 .lenis.lenis-stopped {
   overflow: hidden;
-}
-
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
-  .heading-break {
-    text-wrap: balance;
-    hyphens: auto;
-    word-break: break-word;
-    overflow-wrap: break-word;
-  }
 }
 
 :root {
