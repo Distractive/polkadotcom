@@ -10,7 +10,6 @@ interface Props {
   className?: string
   isWrapper?: boolean
   tabIndex?: number
-  clipText?: boolean
   onClick?: () => void
 }
 export function CustomUrl({
@@ -19,7 +18,6 @@ export function CustomUrl({
   className,
   tabIndex,
   isWrapper = false,
-  clipText = true,
   onClick,
 }: Props) {
   return value ? (
@@ -27,25 +25,20 @@ export function CustomUrl({
       tabIndex={tabIndex}
       href={value.external || `/${value.internal?.slug}` || ""}
       target={value.external ? "_blank" : "_self"}
-      className={className}
+      className={cn(className, "w-full")}
       prefetch={!value.external}
       onClick={onClick}
     >
       {isWrapper ? (
         children
       ) : (
-        <span
-          className={cn(
-            "inline-flex items-center",
-            clipText && "overflow-hidden text-ellipsis whitespace-nowrap"
-          )}
-        >
-          {children}
+        <span className={cn("inline-flex items-center gap-2 text-center")}>
+          <span className="flex-1"> {children}</span>
           {value.external && (
             <Icon
               variant="arrowRightUp"
               className={cn(
-                "ml-2 w-4 fill-current lg:w-5",
+                "size-4 shrink-0 fill-current lg:size-5",
                 value.variant && value.variant === "primary" && "fill-white"
               )}
             />
