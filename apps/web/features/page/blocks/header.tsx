@@ -56,7 +56,6 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
                   : "primary"
               }
               size="lg"
-              className={cn("w-full")}
             >
               <CustomUrl
                 className="outline-none"

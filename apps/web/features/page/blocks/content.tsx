@@ -10,7 +10,7 @@ interface Props {
 }
 export function ContentBlock({ content }: Props) {
   return (
-    <div className="grid-system max-width px-gutter pt-header-top">
+    <div className="grid-system max-width px-gutter">
       <div
         className={cn(
           "col-span-full col-start-1 flex flex-col gap-copy",
@@ -62,7 +62,7 @@ export function ContentBlock({ content }: Props) {
                 return (
                   <Button
                     variant={value.internal ? "primary" : "secondary"}
-                    size="sm"
+                    size="md"
                     className="mr-auto mt-copy"
                     asChild
                   >

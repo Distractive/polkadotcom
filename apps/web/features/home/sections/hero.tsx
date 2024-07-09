@@ -129,7 +129,7 @@ export function Hero({ hero }: Props) {
                   <p className="background-blur border-transparent -ml-2 rounded-xl p-2 pl-4 text-lg md:w-5/6">
                     {hero.copy}
                   </p>
-                  <div className="flex flex-col gap-copy pt-card md:flex-row">
+                  <div className="flex flex-col gap-4 pt-card md:flex-row">
                     {hero.links?.map((link, index) => (
                       <Button
                         asChild
@@ -142,7 +142,7 @@ export function Hero({ hero }: Props) {
                             : "primary"
                         }
                         size="lg"
-                        className={cn("w-full")}
+                        className="flex-1"
                       >
                         <CustomUrl
                           className="outline-none"

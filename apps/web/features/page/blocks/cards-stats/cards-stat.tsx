@@ -19,10 +19,7 @@ export function CardsStatBlock({ cards }: Props) {
         <Heading variant="h2">{cards.heading}</Heading>
       </div>
       <div
-        className={cn(
-          "grid-system col-span-full !mx-0 gap-gutter !px-0 md:auto-rows-1fr",
-          !cards.body && "pb-section"
-        )}
+        className={cn("grid-system col-span-full gap-gutter md:auto-rows-1fr")}
       >
         {cards.items.map((card) => (
           <CardStatBlock
