@@ -62,7 +62,7 @@ html.lenis body {
   --spacing-gutter: 1.5rem;
   --spacing-card: 2rem;
   --spacing-copy: 0.5rem;
-  --spacing-nav: 1.5rem;
+  --spacing-nav: 1.25rem;
 
   /* The nav component is fixed. Spacing to prevent initial header overlap */
   --spacing-nav-height: 3.5rem;
@@ -91,6 +91,7 @@ html.lenis body {
     --spacing-page: 7.5rem;
     --spacing-section: 4rem;
     --spacing-gutter: 3rem;
+    --spacing-nav: 1.5rem;
   }
 }
 
