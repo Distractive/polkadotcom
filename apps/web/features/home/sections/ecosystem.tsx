@@ -140,7 +140,7 @@ export function Ecosystem({ ecosystem }: Props) {
                       )}
                       data-index={index}
                     >
-                      <CustomUrl value={item.link} clipText={false} isWrapper>
+                      <CustomUrl value={item.link} isWrapper>
                         <Image
                           src={urlForImage(item.image.asset)}
                           alt=""

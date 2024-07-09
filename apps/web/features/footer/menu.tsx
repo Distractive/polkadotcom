@@ -23,7 +23,6 @@ export default function Menu({ menu }: Props) {
               {item.link ? (
                 <CustomUrl
                   value={item.link}
-                  clipText={false}
                   className="flex underline decoration-grey-400 underline-offset-8 transition duration-500 ease-out hover:decoration-black"
                 >
                   {item.link.label}
@@ -39,7 +38,6 @@ export default function Menu({ menu }: Props) {
                 <li key={index}>
                   <CustomUrl
                     value={item.link}
-                    clipText={false}
                     className="flex gap-2 text-left font-default underline decoration-grey-200 underline-offset-8 transition duration-500 ease-out hover:decoration-black"
                   >
                     {item.link.label}
