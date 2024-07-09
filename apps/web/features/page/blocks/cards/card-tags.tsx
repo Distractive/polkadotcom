@@ -92,9 +92,7 @@ export function CardTags({ tags, cards }: Props) {
         ))}
       </ul>
       <div
-        className={cn(
-          "grid-system col-span-full !mx-0 gap-gutter !px-0 md:auto-rows-1fr lg:col-span-full"
-        )}
+        className={cn("grid-system col-span-full gap-gutter md:auto-rows-1fr")}
       >
         {filteredItems.slice(0, visibleCount).map((card) => (
           <CardBlock
