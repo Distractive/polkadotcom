@@ -610,11 +610,141 @@ export const IconCardsSeenInDesign: Story = {
   },
 }
 
+export const ImageCardsWithLessProps: Story = {
+  args: {
+    cards: {
+      //@ts-ignore
+      _key: "ImageCardsWithAllProps",
+      heading: "Sticky image cards with all possible props",
+      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      items: [
+        {
+          _key: "1",
+          //@ts-ignore
+          image: {
+            asset: {
+              _id: "image-c675257cff3d6cc12173b1692a76fc40dc11ce2a-648x400-jpg",
+              _type: "sanity.imageAsset",
+              _rev: "0mhgbWkjiNeDxVX8gZFkK4",
+              extension: "jpg",
+              mimeType: "image/jpeg",
+              originalFilename: "Image-card.jpg",
+              path: "images/qf32zgfm/production/c675257cff3d6cc12173b1692a76fc40dc11ce2a-648x400.jpg",
+              sha1hash: "c675257cff3d6cc12173b1692a76fc40dc11ce2a",
+              size: 65963,
+              url: "https://cdn.sanity.io/images/qf32zgfm/production/c675257cff3d6cc12173b1692a76fc40dc11ce2a-648x400.jpg",
+              _updatedAt: "2024-05-26T12:21:28Z",
+              metadata: {
+                dimensions: {
+                  _type: "sanity.imageDimensions",
+                  aspectRatio: 1.62,
+                  height: 400,
+                  width: 648,
+                },
+              },
+            },
+          },
+          heading: "Heading for sticky card with image",
+          body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        },
+        {
+          _key: "2",
+          //@ts-ignore
+          image: {
+            asset: {
+              _id: "image-c675257cff3d6cc12173b1692a76fc40dc11ce2a-648x400-jpg",
+              _type: "sanity.imageAsset",
+              _rev: "0mhgbWkjiNeDxVX8gZFkK4",
+              extension: "jpg",
+              mimeType: "image/jpeg",
+              originalFilename: "Image-card.jpg",
+              path: "images/qf32zgfm/production/c675257cff3d6cc12173b1692a76fc40dc11ce2a-648x400.jpg",
+              sha1hash: "c675257cff3d6cc12173b1692a76fc40dc11ce2a",
+              size: 65963,
+              url: "https://cdn.sanity.io/images/qf32zgfm/production/c675257cff3d6cc12173b1692a76fc40dc11ce2a-648x400.jpg",
+              _updatedAt: "2024-05-26T12:21:28Z",
+              metadata: {
+                dimensions: {
+                  _type: "sanity.imageDimensions",
+                  aspectRatio: 1.62,
+                  height: 400,
+                  width: 648,
+                },
+              },
+            },
+          },
+          heading: "Heading for sticky card with image",
+          body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        },
+        {
+          _key: "3",
+          //@ts-ignore
+          image: {
+            asset: {
+              _id: "image-c675257cff3d6cc12173b1692a76fc40dc11ce2a-648x400-jpg",
+              _type: "sanity.imageAsset",
+              _rev: "0mhgbWkjiNeDxVX8gZFkK4",
+              extension: "jpg",
+              mimeType: "image/jpeg",
+              originalFilename: "Image-card.jpg",
+              path: "images/qf32zgfm/production/c675257cff3d6cc12173b1692a76fc40dc11ce2a-648x400.jpg",
+              sha1hash: "c675257cff3d6cc12173b1692a76fc40dc11ce2a",
+              size: 65963,
+              url: "https://cdn.sanity.io/images/qf32zgfm/production/c675257cff3d6cc12173b1692a76fc40dc11ce2a-648x400.jpg",
+              _updatedAt: "2024-05-26T12:21:28Z",
+              metadata: {
+                dimensions: {
+                  _type: "sanity.imageDimensions",
+                  aspectRatio: 1.62,
+                  height: 400,
+                  width: 648,
+                },
+              },
+            },
+          },
+          heading: "Heading for sticky card with image",
+          body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        },
+        {
+          _key: "4",
+          //@ts-ignore
+          image: {
+            asset: {
+              _id: "image-c675257cff3d6cc12173b1692a76fc40dc11ce2a-648x400-jpg",
+              _type: "sanity.imageAsset",
+              _rev: "0mhgbWkjiNeDxVX8gZFkK4",
+              extension: "jpg",
+              mimeType: "image/jpeg",
+              originalFilename: "Image-card.jpg",
+              path: "images/qf32zgfm/production/c675257cff3d6cc12173b1692a76fc40dc11ce2a-648x400.jpg",
+              sha1hash: "c675257cff3d6cc12173b1692a76fc40dc11ce2a",
+              size: 65963,
+              url: "https://cdn.sanity.io/images/qf32zgfm/production/c675257cff3d6cc12173b1692a76fc40dc11ce2a-648x400.jpg",
+              _updatedAt: "2024-05-26T12:21:28Z",
+              metadata: {
+                dimensions: {
+                  _type: "sanity.imageDimensions",
+                  aspectRatio: 1.62,
+                  height: 400,
+                  width: 648,
+                },
+              },
+            },
+          },
+          heading: "Heading for sticky card with image",
+          body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        },
+      ],
+    },
+  },
+}
+
 const cardsBlocks = [
   ImageCardsWithAllProps,
   ImageCardsSeenInDesign,
   IconCardsWithAllProps,
   IconCardsSeenInDesign,
+  ImageCardsWithLessProps,
 ]
 
 export const All = {
