@@ -16,7 +16,7 @@ export function SideBySideBlock({ content }: Props) {
     <div className="grid-system max-width gap-y-gutter px-gutter lg:gap-y-0">
       <div
         className={cn(
-          "col-span-full grid h-fit gap-gutter lg:col-span-5",
+          "col-span-full grid h-fit gap-card lg:col-span-5",
           content.isImageOnLeft ? "lg:order-1 lg:pl-card" : "lg:pr-card"
         )}
       >

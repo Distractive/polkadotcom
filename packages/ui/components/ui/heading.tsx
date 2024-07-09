@@ -6,7 +6,7 @@ import { cn } from "../../lib/utils"
 const SIZES = {
   h1: "text-5xl md:text-7xl leading-snug heading-break",
   h2: "text-4xl md:text-5xl leading-snug heading-break",
-  h3: "text-2xl md:text-3xl leading-snug",
+  h3: "text-2xl md:text-3xl leading-snug heading-break",
   h4: "text-xl md:text-2xl leading-normal",
   h5: "text-sm md:text-base font-default",
 }
