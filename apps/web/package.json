@@ -40,6 +40,7 @@
     "gsap": "file:gsap-bonus.tgz",
     "lenis": "^1.1.2",
     "next": "^14.2.3",
+    "next-hubspot": "^1.3.0",
     "next-sanity": "^9.0.2",
     "next-sitemap": "^4.2.3",
     "react": "^18.2.0",

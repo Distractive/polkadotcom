@@ -97,3 +97,103 @@ html.lenis body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Hubspot */
+
+.hubspot {
+  font-size: 0.875rem;
+}
+
+@media (min-width: 45.5rem) {
+  .hubspot {
+    font-size: 1rem !important;
+  }
+}
+
+.hubspot form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+@media (min-width: 45.5rem) {
+  .hubspot form {
+    gap: 1rem;
+  }
+}
+
+.hubspot .hs-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-copy);
+}
+
+.hubspot .hs-error-msg {
+  color: red;
+}
+
+.hubspot input[type="text"],
+.hubspot input[type="email"],
+.hubspot select,
+.hubspot textarea {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid #e7e7ec;
+  background: rgba(243, 243, 244, 0.6);
+  padding: 0 1rem;
+}
+
+.hubspot input[type="text"],
+.hubspot input[type="email"],
+.hubspot select {
+  height: 3rem;
+}
+
+@media (min-width: 45.5rem) {
+  .hubspot input[type="text"],
+  .hubspot input[type="email"],
+  .hubspot select {
+    height: 3.5rem;
+  }
+}
+
+.hubspot textarea {
+  padding: 1rem;
+}
+
+.hubspot input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.hubspot .hs-form-booleancheckbox-display {
+  display: flex;
+  align-items: center;
+}
+
+.hubspot a {
+  text-decoration: underline;
+}
+
+.hubspot input[type="submit"] {
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  background: #111f77;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: white;
+  font-family: var(--font-unbounded), system-ui, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.hubspot p {
+  text-align: left !important;
+}
+
+.hubspot h1 {
+  text-align: left !important;
+  font-weight: bold;
+  margin: 0;
+}

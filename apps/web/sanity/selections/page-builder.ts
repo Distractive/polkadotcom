@@ -12,6 +12,7 @@ import { cardsStickySelection } from "./blocks/cards-sticky"
 import { cardsTimelineSelection } from "./blocks/cards-timeline"
 import { contentSelection } from "./blocks/content"
 import { mediaBlockSelection } from "./blocks/media-block"
+import { modalSelection } from "./blocks/modal"
 import { quoteSelection } from "./blocks/quote"
 import { sideBySideSelection } from "./blocks/side-by-side"
 
@@ -70,6 +71,10 @@ export const pageBuilderSelection = {
       '_type == "mediaBlock"': {
         _type: q.literal("mediaBlock"),
         ...mediaBlockSelection,
+      },
+      '_type == "modal"': {
+        _type: q.literal("modal"),
+        ...modalSelection,
       },
       default: {
         _key: q.string(),

@@ -62,7 +62,7 @@ const config = {
     },
     extend: {
       gridAutoRows: {
-        '1fr': '1fr',
+        "1fr": "1fr",
       },
       spacing: {
         page: "var(--spacing-page)",
@@ -97,8 +97,8 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       objectPosition: {
-        '-20rem': '-20rem',
-      }
+        "-20rem": "-20rem",
+      },
     },
   },
   plugins: [

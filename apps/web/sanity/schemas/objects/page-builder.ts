@@ -62,6 +62,10 @@ export default defineType({
           name: "mediaBlock",
           type: "mediaBlock",
         }),
+        defineArrayMember({
+          name: "modal",
+          type: "modal",
+        }),
       ],
     }),
   ],
