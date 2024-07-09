@@ -142,7 +142,7 @@ export function Hero({ hero }: Props) {
                             : "primary"
                         }
                         size="lg"
-                        className="w-full"
+                        className="flex-1"
                       >
                         <CustomUrl
                           className="outline-none"
