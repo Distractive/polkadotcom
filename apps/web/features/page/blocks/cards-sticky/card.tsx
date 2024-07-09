@@ -28,7 +28,7 @@ export default function CardStickyBlock({ card, className }: Props) {
       <CustomUrl value={link} isWrapper className="inline-block size-full">
         <div className="flex flex-col lg:h-full lg:flex-row">
           {image && (
-            <CardHeader className="relative aspect-[4/3] max-h-[30rem] lg:aspect-auto lg:h-full lg:max-h-none lg:basis-1/2">
+            <CardHeader className="relative aspect-[4/3] max-h-[30rem] lg:aspect-auto lg:h-full lg:max-h-none lg:min-h-[20rem] lg:basis-1/2">
               <Image
                 src={urlForImage(image.asset)}
                 alt=""
