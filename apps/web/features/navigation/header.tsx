@@ -53,7 +53,11 @@ export function Header({
           "background-blur rounded-[3rem] border border-grey-300 bg-white/80"
         )}
       >
-        <Link href="/" onClick={handleItemSelect} className="lg:pr-nav">
+        <Link
+          href="/"
+          onClick={handleItemSelect}
+          className="translate-x-[-2%] lg:translate-x-0 lg:pr-nav"
+        >
           <Logo ariaLabel="Polkadot homepage" className="h-auto w-[9.125rem]" />
         </Link>
         <ul
