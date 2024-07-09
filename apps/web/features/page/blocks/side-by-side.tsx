@@ -17,7 +17,7 @@ export function SideBySideBlock({ content }: Props) {
       <div
         className={cn(
           "col-span-full grid h-fit gap-copy lg:col-span-5",
-          content.isImageOnLeft ? "lg:order-1 lg:pl-card" : "lg:pr-card"
+          content.isImageOnLeft ? "lg:order-1 lg:pl-gutter" : "lg:pr-gutter"
         )}
       >
         <div className="flex flex-col gap-copy">
