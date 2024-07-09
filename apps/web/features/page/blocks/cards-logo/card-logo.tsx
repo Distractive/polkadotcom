@@ -16,20 +16,21 @@ export default function CardLogoBlock({ card, className }: Props) {
     <Card
       key={_key}
       className={cn(
-        "inline-flex items-center justify-center border-0 bg-grey-100",
-        "h-16 px-[0.77rem] lg:h-[7.5rem] lg:px-[1.45rem]",
+        "border-0 bg-grey-100",
         link &&
           "md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
         className
       )}
     >
-      <CustomUrl value={card.link}>
-        <img
-          src={image.asset.url}
-          alt={name}
-          loading="lazy"
-          className="w-full"
-        />
+      <CustomUrl value={card.link} isWrapper>
+        <div className="flex h-20 items-center justify-center px-card md:h-[7.5rem] lg:px-[1.45rem]">
+          <img
+            src={image.asset.url}
+            alt={name}
+            loading="lazy"
+            className="w-full"
+          />
+        </div>
       </CustomUrl>
     </Card>
   )
