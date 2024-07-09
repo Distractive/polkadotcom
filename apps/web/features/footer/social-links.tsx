@@ -19,6 +19,8 @@ export default function SocialLinks({ items }: Props) {
             alt=""
             aria-hidden="true"
             className="fill-black"
+            width={32}
+            height={32}
           />
           <span className="sr-only">{item.title}</span>
         </a>

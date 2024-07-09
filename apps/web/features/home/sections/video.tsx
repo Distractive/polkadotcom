@@ -14,7 +14,7 @@ interface Props {
 
 export function Video({ video }: Props) {
   return (
-    <div id="video-pile" className="grid-pile -mt-[75vh]">
+    <div id="video-pile" className="grid-pile md:-mt-[75vh]">
       <Scrollytelling.Root defaults={{ ease: "linear" }}>
         <Scrollytelling.Pin
           childHeight={"100vh"}
@@ -52,8 +52,9 @@ export function Video({ video }: Props) {
           >
             <img
               src="/gradients/3.webp"
-              alt="gradient"
+              alt=""
               className="absolute top-0 -z-20 h-full w-full rotate-90 scale-50"
+              loading="lazy"
             />
           </Scrollytelling.Animation>
           <Scrollytelling.Animation
@@ -82,9 +83,9 @@ export function Video({ video }: Props) {
             <div>
               <img
                 src="/gradients/5.webp"
-                alt="gradient"
-                role="presentation"
+                alt=""
                 className="absolute -z-30 h-full w-full -translate-x-[-40%] translate-y-[0%] rotate-90 scale-[0.5]"
+                loading="lazy"
               />
             </div>
           </Scrollytelling.Animation>

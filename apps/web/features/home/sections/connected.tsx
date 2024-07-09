@@ -1,5 +1,6 @@
 "use client"
 
+import { urlForImage } from "@/sanity/lib/image"
 import { type connectedSelection } from "@/sanity/selections/home/connected"
 import * as Scrollytelling from "@bsmnt/scrollytelling"
 import { type TypeFromSelection } from "groqd"
@@ -29,7 +30,7 @@ export function Connected({ connected }: Props) {
   return (
     <Scrollytelling.Root defaults={{ ease: "linear" }}>
       <Scrollytelling.Pin
-        childHeight={"100vh"}
+        childHeight={isMobile ? "150vh" : "100vh"}
         pinSpacerHeight={"200vh"}
         top={isMobile ? "12vh" : "0"}
       >
@@ -108,7 +109,7 @@ export function Connected({ connected }: Props) {
                                 <Heading
                                   variant="h3"
                                   className={cn(
-                                    "text-balance transition-colors duration-500 ease-in-out",
+                                    "text-base leading-[1.2] transition-colors duration-500 ease-in-out md:text-2xl",
                                     card.link && "md:group-hover:text-pink"
                                   )}
                                 >
@@ -116,7 +117,9 @@ export function Connected({ connected }: Props) {
                                 </Heading>
                               )}
                               {card.body && (
-                                <CardDescription>{card.body}</CardDescription>
+                                <CardDescription className="line-clamp-3">
+                                  {card.body}
+                                </CardDescription>
                               )}
                             </div>
                           </CardContent>

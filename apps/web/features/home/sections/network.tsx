@@ -26,11 +26,11 @@ export function Network({ network }: Props) {
   const isMobile = useBreakpoint("--screen-lg")
 
   return (
-    <div id="network-pile" className="grid-pile !-mt-[50vh]">
+    <div id="network-pile" className="grid-pile">
       <Scrollytelling.Root defaults={{ ease: "linear" }}>
         <Scrollytelling.Pin
-          childHeight={"100vh"}
-          pinSpacerHeight={"270vh"}
+          childHeight={isMobile ? "200vh" : "100vh"}
+          pinSpacerHeight={"400vh"}
           top={isMobile ? "12vh" : "0"}
           childClassName="-z-10 overflow-hidden"
         >
@@ -66,24 +66,25 @@ export function Network({ network }: Props) {
           >
             <img
               src="/gradients/4.webp"
-              alt="gradient"
+              alt=""
               className={cn(
                 "absolute -z-20 w-full"
                 // "!translate-y-[30%] -translate-x-[50%]"
               )}
+              loading="lazy"
             />
           </Scrollytelling.Animation>
         </Scrollytelling.Pin>
       </Scrollytelling.Root>
       <Scrollytelling.Root defaults={{ ease: "linear" }}>
         <Scrollytelling.Pin
-          childHeight={"100vh"}
-          pinSpacerHeight={"270vh"}
+          childHeight={isMobile ? "200vh" : "100vh"}
+          pinSpacerHeight={"400vh"}
           top={isMobile ? "12vh" : "0"}
         >
           <article
             id="network.wrapper"
-            className="grid-pile grid-system relative col-span-full h-auto w-dvw items-center justify-center overflow-hidden md:h-full"
+            className="grid-system relative col-span-full h-auto w-dvw items-center justify-center overflow-hidden md:h-full"
           >
             <div
               id="network.content"
@@ -147,37 +148,41 @@ export function Network({ network }: Props) {
                     <Card
                       key={index}
                       className={cn(
-                        "background-blur col-span-full flex items-start justify-between gap-card bg-white/80 p-card md:col-span-4 md:col-start-2 lg:col-span-4",
+                        "background-blur col-span-full flex items-start justify-between bg-white/80 md:col-span-4 md:col-start-2 lg:col-span-4",
                         item.link && "md:cursor-pointer md:hover:shadow-card",
-                        "relative !h-auto"
+                        "relative z-30 !h-auto"
                       )}
                     >
-                      <CustomUrl value={item.link} clipText={false}>
-                        <CardHeader className="grid gap-copy">
-                          {item.heading && (
-                            <Heading
-                              variant="h3"
-                              className={cn(
-                                "text-balance text-2xl leading-[1.1] transition-colors duration-500 ease-in-out",
-                                item.link && "md:group-hover:text-pink"
-                              )}
-                            >
-                              {item.heading}
-                            </Heading>
-                          )}
-                          {item.body && (
-                            <CardDescription>{item.body}</CardDescription>
-                          )}
-                        </CardHeader>
-                        {item.link && (
-                          <CardFooter className="flex h-full flex-col justify-center">
-                            {item.link.external ? (
-                              <Icon variant="arrowRightUp" />
-                            ) : (
-                              <Icon variant="arrowRight" />
+                      <CustomUrl value={item.link} isWrapper className="h-full">
+                        <div className={cn("flex h-full p-card")}>
+                          <CardHeader className="grid w-5/6 gap-copy">
+                            {item.heading && (
+                              <Heading
+                                variant="h3"
+                                className={cn(
+                                  "text-balance text-2xl leading-[1.1] transition-colors duration-500 ease-in-out",
+                                  item.link && "md:group-hover:text-pink"
+                                )}
+                              >
+                                {item.heading}
+                              </Heading>
                             )}
-                          </CardFooter>
-                        )}
+                            {item.body && (
+                              <CardDescription>{item.body}</CardDescription>
+                            )}
+                          </CardHeader>
+                          {item.link && !item.link.variant && (
+                            <CardFooter className="ml-auto place-self-center">
+                              <Icon
+                                variant={
+                                  item.link.internal
+                                    ? "arrowRight"
+                                    : "arrowRightUp"
+                                }
+                              />
+                            </CardFooter>
+                          )}
+                        </div>
                       </CustomUrl>
                     </Card>
                   ))}

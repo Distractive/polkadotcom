@@ -14,6 +14,7 @@ import {
   Heading,
   Icon,
 } from "@shared/ui"
+import { CustomUrl } from "@/components/custom-url"
 
 import { StaggerHeader } from "../components/stagger-heading"
 
@@ -32,7 +33,7 @@ export function Build({ build }: Props) {
       >
         <article
           id="build.wrapper"
-          className="grid-pile grid-system !lg:-mt-[100vh] relative col-span-12 h-auto w-lvw items-center justify-center overflow-hidden lg:h-full"
+          className="grid-system !lg:-mt-[100vh] relative col-span-12 h-auto w-lvw items-center justify-center overflow-hidden lg:h-full"
         >
           <div
             id="build.content"
@@ -95,36 +96,48 @@ export function Build({ build }: Props) {
                   <Card
                     key={index}
                     className={cn(
-                      "background-blur col-span-6 flex items-start justify-between gap-card bg-white/80 p-card md:col-span-4 md:col-start-2 lg:col-span-4",
+                      "background-blur col-span-6 flex items-start justify-between bg-white/80 md:col-span-4 md:col-start-2 lg:col-span-4",
                       item.link && "md:cursor-pointer md:hover:shadow-card",
                       "!h-auto"
                     )}
                   >
-                    <CardHeader className="grid h-full items-center">
-                      {item.heading && (
-                        <Heading
-                          variant="h3"
-                          className={cn(
-                            "text-balance text-xl leading-normal transition-colors duration-500 ease-in-out md:text-2xl",
-                            item.link && "md:group-hover:text-pink"
-                          )}
-                        >
-                          {item.heading}
-                        </Heading>
-                      )}
-                      {item.body && (
-                        <CardDescription>{item.body}</CardDescription>
-                      )}
-                    </CardHeader>
-                    {item.link && (
-                      <CardFooter className="flex h-full flex-col justify-center">
-                        {item.link.external ? (
-                          <Icon variant="arrowRightUp" />
-                        ) : (
-                          <Icon variant="arrowRight" />
+                    <CustomUrl
+                      value={item.link}
+                      isWrapper
+                      className="size-full"
+                    >
+                      <div
+                        className={cn(
+                          "flex h-full items-center gap-card p-card"
                         )}
-                      </CardFooter>
-                    )}
+                      >
+                        <CardHeader className="grid h-full items-center">
+                          {item.heading && (
+                            <Heading
+                              variant="h3"
+                              className={cn(
+                                "text-balance text-xl leading-normal transition-colors duration-500 ease-in-out md:text-2xl",
+                                item.link && "md:group-hover:text-pink"
+                              )}
+                            >
+                              {item.heading}
+                            </Heading>
+                          )}
+                          {item.body && (
+                            <CardDescription>{item.body}</CardDescription>
+                          )}
+                        </CardHeader>
+                        {item.link && (
+                          <CardFooter className="ml-auto flex h-full flex-col justify-center">
+                            {item.link.external ? (
+                              <Icon variant="arrowRightUp" />
+                            ) : (
+                              <Icon variant="arrowRight" />
+                            )}
+                          </CardFooter>
+                        )}
+                      </div>
+                    </CustomUrl>
                   </Card>
                 ))}
               </Scrollytelling.Stagger>

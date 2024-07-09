@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { urlForImage } from "@/sanity/lib/image"
 import { type videoSelection } from "@/sanity/selections/blocks/video"
 import { type TypeFromSelection } from "groqd"
 import ReactPlayer from "react-player"
@@ -39,7 +40,7 @@ export function VideoBlock({ video, className }: Props) {
           height="100%"
           controls={false}
           playing
-          light={video.placeholderImage.asset.url}
+          light={urlForImage(video.placeholderImage.asset)}
           loop
           muted
           playIcon={

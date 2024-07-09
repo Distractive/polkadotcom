@@ -44,7 +44,6 @@ export function CardsSmallBlock({ cards }: Props) {
         <img
           src={cards.backgroundImage.asset.url}
           alt=""
-          role="presentation"
           loading="eager"
           className={cn(
             "absolute right-0 top-0 -z-10 hidden h-auto w-2/3 max-w-[90rem] lg:block"

@@ -1,7 +1,9 @@
 import { useRef } from "react"
-import { Float, OrbitControls } from "@react-three/drei"
+import { Float } from "@react-three/drei"
 import { useFrame, useThree } from "@react-three/fiber"
 import type { Group, Mesh } from "three"
+
+import { useMediaQuery } from "@/hooks/use-mediaquery"
 
 import { Cone } from "./meshes/cone"
 import { Connect } from "./meshes/connect"
@@ -28,7 +30,9 @@ export function Objects() {
   const offset = useRef(Math.random() * 10000)
   const SPEED = 2
   const INTENSITY = 0.5
+  const reducedMotion = useMediaQuery("(prefers-reduced-motion)")
   useFrame((state) => {
+    if (reducedMotion) return
     const t = offset.current + state.clock.getElapsedTime()
     if (one.current) {
       one.current.rotation.x = (Math.cos((t / 4) * SPEED) / 8) * INTENSITY
@@ -106,35 +110,35 @@ export function Objects() {
         />
       </group>
       <group visible={true}>
-        <Float speed={0.1}>
+        <Float speed={0.1} enabled={!reducedMotion}>
           <Interlock
             scale={scalingFactor}
             position={[0, 0, -80]}
             rotation={[0, 0, 0]}
           />
         </Float>
-        <Float speed={0.1}>
+        <Float speed={0.1} enabled={!reducedMotion}>
           <Matrix
             scale={scalingFactor}
             position={[0, 3, -70]}
             rotation={[0, 0, 0]}
           />
         </Float>
-        <Float speed={0.1}>
+        <Float speed={0.1} enabled={!reducedMotion}>
           <Rombus
             scale={scalingFactor}
             position={[0, 0.3, -100]}
             rotation={[0, 0, 0]}
           />
         </Float>
-        <Float speed={0.1}>
+        <Float speed={0.1} enabled={!reducedMotion}>
           <Tenta
             scale={scalingFactor}
             position={[0, -0.1, -100]}
             rotation={[0, 0, 0]}
           />
         </Float>
-        <Float speed={0.1}>
+        <Float speed={0.1} enabled={!reducedMotion}>
           <Tetra
             scale={scalingFactor}
             position={[0, -0.2, -100]}

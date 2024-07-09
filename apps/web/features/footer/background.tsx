@@ -4,6 +4,8 @@ import { Suspense } from "react"
 import { Environment, Float, Lightformer } from "@react-three/drei"
 import { Canvas, useThree } from "@react-three/fiber"
 
+import { useMediaQuery } from "@/hooks/use-mediaquery"
+
 import { Hemi } from "../home/webgl/meshes/hemi"
 import { Rombus } from "../home/webgl/meshes/rombus"
 
@@ -12,13 +14,16 @@ export function Background() {
     <div className="grid-pile absolute bottom-[22rem] -z-30 size-full overflow-hidden md:bottom-0">
       <img
         src="/gradients/d-footer.webp"
-        alt="gradient"
-        role="presentation"
+        alt=""
         className="absolute top-[12rem] w-full object-center lg:top-0"
+        loading="lazy"
+        width={1440}
+        height={942}
       />
       <Canvas
         dpr={[1, 1.5]}
         camera={{ position: [0, 0, 30], fov: 20, near: 0.01, far: 200 }}
+        className="not-sr-only"
       >
         <Suspense fallback={null}>
           <ambientLight intensity={1.5} />
@@ -70,10 +75,10 @@ export function Background() {
 
 function Objects() {
   const { viewport } = useThree()
-  const scalingFactor = Math.min(Math.max(window.innerWidth / 1440, 0.5), 1)
   const isMobile = window.innerWidth < 1024 //this is the breakpoint for mobile (md in tailwindcss)
+  const reducedMotion = useMediaQuery("(prefers-reduced-motion)")
   return (
-    <Float>
+    <Float enabled={!reducedMotion}>
       <Hemi
         position={[-viewport.width / 3, 0, 0]}
         rotation={[Math.PI / 1.7, -0.5, 0]}

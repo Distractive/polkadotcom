@@ -8,12 +8,13 @@ import { useBreakpoint } from "@/hooks/use-breakpoint"
 import {
   Card,
   CardDescription,
-  CardFooter,
+  // CardFooter,
   CardHeader,
   cn,
   Heading,
 } from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+
+// import { CustomUrl } from "@/components/custom-url"
 
 import { StaggerHeader } from "../components/stagger-heading"
 
@@ -26,7 +27,7 @@ export function Stats({ stats }: Props) {
   const isTablet = useBreakpoint("--screen-lg")
 
   return (
-    <div id="stats-pile" className="grid-pile -mt-[50vh]">
+    <div id="stats-pile" className="grid-pile">
       <Scrollytelling.Root defaults={{ ease: "linear" }}>
         <Scrollytelling.Pin
           childHeight={"100vh"}
@@ -64,8 +65,9 @@ export function Stats({ stats }: Props) {
           >
             <img
               src="/gradients/2.webp"
-              alt="gradient"
+              alt=""
               className="scale-60 absolute top-0 -z-20 h-full w-full translate-x-[55%] rotate-90"
+              loading="lazy"
             />
           </Scrollytelling.Animation>
           <Scrollytelling.Animation
@@ -97,9 +99,9 @@ export function Stats({ stats }: Props) {
           >
             <img
               src="/gradients/5.webp"
-              alt="gradient"
-              role="presentation"
+              alt=""
               className={cn("absolute top-0 -z-30 h-full w-full")}
+              loading="lazy"
             />
           </Scrollytelling.Animation>
         </Scrollytelling.Pin>
@@ -127,7 +129,7 @@ export function Stats({ stats }: Props) {
               />
               <div
                 className={cn(
-                  "grid-system relative col-span-full m-auto mt-10 auto-rows-[1fr] gap-gutter px-gutter lg:col-start-6 lg:mt-0"
+                  "grid-system relative col-span-full m-auto mt-10 auto-rows-[1fr] gap-card px-gutter lg:col-start-6 lg:mt-0"
                 )}
               >
                 <Scrollytelling.Stagger

@@ -1,5 +1,7 @@
 "use client"
 
+import Image from "next/image"
+import { urlForImage } from "@/sanity/lib/image"
 import { type ecosystemSelection } from "@/sanity/selections/home/ecosystem"
 import * as Scrollytelling from "@bsmnt/scrollytelling"
 import { type TypeFromSelection } from "groqd"
@@ -56,8 +58,9 @@ export function Ecosystem({ ecosystem }: Props) {
           >
             <img
               src="/gradients/3.webp"
-              alt="gradient"
+              alt=""
               className="-z-20 h-full w-full"
+              loading="lazy"
             />
           </Scrollytelling.Animation>
         </Scrollytelling.Pin>
@@ -101,20 +104,9 @@ export function Ecosystem({ ecosystem }: Props) {
                     ],
                   }}
                 >
-                  <div>
-                    <p className="background-blur border-transparent rounded-xl p-2 text-lg lg:w-3/4">
-                      {ecosystem.body}
-                    </p>
-                    <Button
-                      variant="secondary"
-                      size="md"
-                      className="my-gutter w-full !max-w-full md:w-auto"
-                    >
-                      <CustomUrl value={ecosystem.link}>
-                        {ecosystem.link?.label}
-                      </CustomUrl>
-                    </Button>
-                  </div>
+                  <p className="background-blur border-transparent mb-card rounded-xl p-2 text-lg lg:w-3/4">
+                    {ecosystem.body}
+                  </p>
                 </Scrollytelling.Animation>
               </div>
               <Scrollytelling.Animation
@@ -148,27 +140,41 @@ export function Ecosystem({ ecosystem }: Props) {
                       )}
                       data-index={index}
                     >
-                      <img
-                        src={item.image?.asset.url}
-                        alt=""
-                        loading="lazy"
-                        className="absolute inset-0 h-full w-full object-cover object-center"
-                      />
-                      <CardContent className="relative flex flex-col justify-end p-gutter">
-                        <Heading
-                          variant="h4"
-                          className={cn(
-                            "text-balance text-white transition-colors duration-500 ease-in-out"
-                          )}
-                        >
-                          {item.heading}
-                        </Heading>
-                        <p className="text-white">{item.body}</p>
-                      </CardContent>
+                      <CustomUrl value={item.link} clipText={false} isWrapper>
+                        <Image
+                          src={urlForImage(item.image.asset)}
+                          alt=""
+                          loading="lazy"
+                          className="absolute inset-0 h-full w-full object-cover object-center"
+                          width={item.image.asset.metadata.dimensions?.width}
+                          height={item.image.asset.metadata.dimensions?.height}
+                        />
+                        <CardContent className="relative flex flex-col justify-end p-gutter">
+                          <Heading
+                            variant="h3"
+                            className={cn(
+                              "text-balance text-white transition-colors duration-500 ease-in-out"
+                            )}
+                          >
+                            {item.heading}
+                          </Heading>
+                          <p className="text-white">{item.body}</p>
+                        </CardContent>
+                      </CustomUrl>
                     </Card>
                   ))}
                 </div>
               </Scrollytelling.Animation>
+              <Button
+                variant="secondary"
+                size="md"
+                className="my-gutter px-gutter md:w-auto"
+                asChild
+              >
+                <CustomUrl value={ecosystem.link}>
+                  {ecosystem.link?.label}
+                </CustomUrl>
+              </Button>
             </div>
           </article>
         </Scrollytelling.Pin>

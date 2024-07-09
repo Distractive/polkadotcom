@@ -17,8 +17,8 @@ export const ecosystemSelection = {
       .grab({
         _key: q.string(),
         image: sanityImage("image", {
-          withAsset: ["base"],
-        }).nullable(),
+          withAsset: ["base", "dimensions"],
+        }),
         heading: q.string(),
         body: nullToUndefined(q.string().optional()),
         link: q("link")

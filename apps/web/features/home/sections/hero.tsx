@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { type heroSelection } from "@/sanity/selections/home/hero"
 import * as Scrollytelling from "@bsmnt/scrollytelling"
 import { type TypeFromSelection } from "groqd"
@@ -34,14 +35,16 @@ export function Hero({ hero }: Props) {
                 },
               ]}
             >
-              <img
+              <Image
                 src="/gradients/1.webp"
-                alt="gradient"
-                role="presentation"
+                alt=""
                 className={cn(
                   "absolute -z-20 h-full w-full  -rotate-45 scale-50",
                   "-translate-y-[25%] translate-x-[50%] md:translate-y-[0%]"
                 )}
+                priority
+                width={858}
+                height={698}
               />
             </Scrollytelling.Animation>
             <Scrollytelling.Animation
@@ -58,9 +61,9 @@ export function Hero({ hero }: Props) {
             >
               <img
                 src="/gradients/2.webp"
-                alt="gradient"
-                role="presentation"
+                alt=""
                 className="absolute top-0 -z-20 h-full w-full -translate-x-[50%] -translate-y-[40%] rotate-[150deg] scale-50"
+                loading="lazy"
               />
             </Scrollytelling.Animation>
             <Scrollytelling.Animation
@@ -77,21 +80,21 @@ export function Hero({ hero }: Props) {
               <div>
                 <img
                   src="/gradients/5.webp"
-                  alt="gradient"
-                  role="presentation"
+                  alt=""
                   className={cn(
                     "absolute top-0 -z-30 h-full w-full rotate-[90deg] scale-50",
                     "-translate-x-[50%] -translate-y-[30%] md:-translate-y-[20%] lg:-translate-y-[10%]"
                   )}
+                  loading="lazy"
                 />
                 <img
                   src="/gradients/5.webp"
-                  alt="gradient"
-                  role="presentation"
+                  alt=""
                   className={cn(
                     "absolute -z-30 h-full w-full rotate-[90deg] scale-50",
                     "-translate-x-[-50%] -translate-y-[30%] md:-translate-y-[10%]"
                   )}
+                  loading="lazy"
                 />
               </div>
             </Scrollytelling.Animation>
@@ -115,7 +118,7 @@ export function Hero({ hero }: Props) {
                   "max-width relative z-10 col-span-12 flex flex-col items-center justify-center sm:w-dvw md:px-gutter",
                   "md:col-span-12 md:col-start-1 md:w-full",
                   "lg:col-span-10 lg:col-start-2",
-                  "xl:col-span-9 xl:col-start-3"
+                  "xl:col-span-10 xl:col-start-2"
                 )}
               >
                 <div className="col-span-12 px-gutter lg:w-4/6 lg:px-0 2xl:w-1/2">
