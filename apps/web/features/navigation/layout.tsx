@@ -23,8 +23,6 @@ export default function NavigationLayout({ navigation }: Props) {
   const [hovered, setHovered] = useState<string>("")
   const isMobile = useBreakpoint("--screen-lg")
   const { ref } = useHideOnScroll()
-  const pathname = usePathname()
-  const currentPath = useMemo(() => pathname.replace(/^\/+/, ""), [pathname])
 
   const handleKeydown = useCallback(
     (event: KeyboardEvent) => {
@@ -60,14 +58,12 @@ export default function NavigationLayout({ navigation }: Props) {
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           setHovered={setHovered}
-          currentPath={currentPath}
         />
         {isMobile ? (
           <MenuMobile
             menu={navigation.menu}
             isOpen={isOpen}
             setIsOpen={setIsOpen}
-            currentPath={currentPath}
           />
         ) : (
           <MenuDesktop
@@ -76,7 +72,6 @@ export default function NavigationLayout({ navigation }: Props) {
             setHovered={setHovered}
             isOpen={isOpen}
             setIsOpen={setIsOpen}
-            currentPath={currentPath}
           />
         )}
       </nav>

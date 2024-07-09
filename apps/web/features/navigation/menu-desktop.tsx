@@ -5,16 +5,12 @@ import { useToggleAnimation } from "@/hooks/use-toggle-animation"
 import { cn } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
 
-import { ActiveMarker } from "./active-marker"
-import { handleActiveLink } from "./helpers"
-
 interface Props {
   menu: ReadonlyArray<TypeFromSelection<typeof navigationMenuSelection>>
   hovered: string
   setHovered: React.Dispatch<React.SetStateAction<string>>
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-  currentPath: string
 }
 
 export function MenuDesktop({
@@ -23,7 +19,6 @@ export function MenuDesktop({
   isOpen,
   setIsOpen,
   setHovered,
-  currentPath,
 }: Props) {
   const { ref } = useToggleAnimation({ isVisible: isOpen })
 
@@ -46,19 +41,13 @@ export function MenuDesktop({
             >
               <ul className="grid grid-cols-2">
                 {section.items.map((item, index) => {
-                  const isActive = handleActiveLink(item, currentPath)
                   return (
                     <li
                       key={index}
                       className={cn(
-                        "p-nav flex min-w-[21rem] pl-0 shadow-internal-border"
+                        "flex min-w-[21rem] p-nav shadow-internal-border"
                       )}
                     >
-                      <span className="w-nav flex items-center justify-center">
-                        <ActiveMarker
-                          className={isActive ? "opacity-100" : "opacity-0"}
-                        />
-                      </span>
                       <CustomUrl
                         value={item.link}
                         onClick={handleLinkClick}
@@ -78,7 +67,7 @@ export function MenuDesktop({
                 <CustomUrl value={section.aside.link} onClick={handleLinkClick}>
                   <aside
                     className={cn(
-                      "p-nav group grid h-full max-w-[21rem] gap-copy",
+                      "group grid h-full max-w-[21rem] gap-copy p-nav",
                       "cursor-pointer border-l border-grey-300"
                     )}
                   >

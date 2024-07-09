@@ -7,25 +7,16 @@ import { cn } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
 import { Logo } from "@/components/logo"
 
-import { ActiveMarker } from "./active-marker"
 import { Burger } from "./burger"
-import { handleActiveLink } from "./helpers"
 
 interface Props {
   menu: ReadonlyArray<TypeFromSelection<typeof navigationMenuSelection>>
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
   setHovered: React.Dispatch<React.SetStateAction<string>>
-  currentPath: string
 }
 
-export function Header({
-  menu,
-  isOpen,
-  setIsOpen,
-  setHovered,
-  currentPath,
-}: Props) {
+export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
   const handleItemSelect = () => {
     setHovered("")
     setIsOpen(false)
@@ -63,7 +54,6 @@ export function Header({
           )}
         >
           {menu.map((item, index) => {
-            const isActive = handleActiveLink(item, currentPath)
             return (
               <li
                 key={index}
@@ -72,12 +62,6 @@ export function Header({
                 onKeyDown={(event) => handleKeyDown(event, item)}
                 className="relative flex h-full cursor-pointer items-center justify-center transition-colors duration-500 ease-in-out lg:hover:text-pink"
               >
-                <ActiveMarker
-                  className={cn(
-                    "absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2",
-                    isActive ? "opacity-100" : "opacity-0"
-                  )}
-                />
                 <CustomUrl
                   value={item.link}
                   onClick={handleItemSelect}
