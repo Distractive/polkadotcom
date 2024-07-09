@@ -25,14 +25,14 @@ export function CustomUrl({
       tabIndex={tabIndex}
       href={value.external || `/${value.internal?.slug}` || ""}
       target={value.external ? "_blank" : "_self"}
-      className={cn(className, "w-full")}
+      className={className}
       prefetch={!value.external}
       onClick={onClick}
     >
       {isWrapper ? (
         children
       ) : (
-        <span className={cn("inline-flex items-center gap-2 text-center")}>
+        <span className="inline-flex items-center gap-2 text-center">
           <span className="flex-1"> {children}</span>
           {value.external && (
             <Icon
