@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function BlogCard({ post, className }: Props) {
-  const { slug, image, body, tags, title, post_type } = post
+  const { slug, image, body, tags, title, post_type, custom_excerpt } = post
 
   return (
     <Card
@@ -79,10 +79,12 @@ export default function BlogCard({ post, className }: Props) {
         )}
         {body && (
           <CardDescription className="line-clamp-3">
-            {body[0]?.children
-              .filter((child) => child._type === "span")
-              .map((span) => span.text)
-              .join("")}
+            {custom_excerpt
+              ? custom_excerpt
+              : body[0]?.children
+                  .filter((child) => child._type === "span")
+                  .map((span) => span.text)
+                  .join("")}
           </CardDescription>
         )}
       </CardContent>

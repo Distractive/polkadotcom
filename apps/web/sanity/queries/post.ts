@@ -29,8 +29,8 @@ export const postSelection = {
       '_type == "block"': ["{...}", q.contentBlock()],
       '_type == "image"': {
         _type: q.literal("image"),
-        alt: q.string(),
-        caption: q.string(),
+        alt: q.string().optional().nullable(),
+        caption: q.string().optional().nullable(),
         image: q("asset").grabOne("_ref", q.string()),
       },
       '_type == "code"': {
