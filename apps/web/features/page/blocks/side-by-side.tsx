@@ -55,7 +55,7 @@ export function SideBySideBlock({ content }: Props) {
                 customUrl: ({ value }) => {
                   return (
                     <Button
-                      size="sm"
+                      size="md"
                       asChild
                       className="my-copy mr-auto md:cursor-pointer"
                       variant={

@@ -73,7 +73,7 @@ export default function CardTimelineBlock({
                           : "secondary"
                         : "primary"
                     }
-                    size="sm"
+                    size="md"
                   >
                     <CustomUrl
                       className="outline-none"

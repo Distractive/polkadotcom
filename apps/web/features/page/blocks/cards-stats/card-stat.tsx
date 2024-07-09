@@ -81,7 +81,7 @@ export default function CardStatBlock({ card, className }: Props) {
                     return (
                       <Button
                         variant={value.internal ? "primary" : "secondary"}
-                        size="sm"
+                        size="md"
                       >
                         {value.label}
                       </Button>
