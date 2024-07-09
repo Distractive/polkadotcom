@@ -21,6 +21,7 @@ export function ContentBlock({ content }: Props) {
           value={content.content}
           components={{
             block: {
+              h2: ({ children }) => <Heading variant="h2">{children}</Heading>,
               h3: ({ children }) => (
                 <Heading variant="h3" size="h2">
                   {children}
