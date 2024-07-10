@@ -25,6 +25,7 @@ export function VideoBlock({ video, className }: Props) {
   useEffect(() => {
     setIsClient(true)
   }, [])
+
   return (
     <div
       className={cn(
@@ -42,7 +43,6 @@ export function VideoBlock({ video, className }: Props) {
           playing
           light={urlForImage(video.placeholderImage.asset)}
           loop
-          muted
           playIcon={
             <div
               className={cn(
