@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 interface Props {
   region: string
@@ -9,13 +9,18 @@ interface Props {
 }
 
 export function Form({ region, portalId, formId }: Props) {
+  const [loaded, setLoaded] = useState(false)
+  const [error, setError] = useState(false)
+
   useEffect(() => {
+    if (!(region && portalId && formId)) return
+
     const script = document.createElement("script")
     script.src = "http://js.hsforms.net/forms/embed/v2.js"
-    script.id = "hubspot-embed"
     document.body.append(script)
 
-    script.addEventListener("load", () => {
+    const onLoad = () => {
+      setLoaded(true)
       if (window.hbspt) {
         window.hbspt.forms.create({
           portalId,
@@ -24,17 +29,29 @@ export function Form({ region, portalId, formId }: Props) {
           target: "#hubspot-form",
         })
       }
-    })
+    }
+
+    const onError = () => {
+      setLoaded(false)
+      setError(true)
+    }
+
+    script.addEventListener("load", onLoad)
+    script.addEventListener("error", onError)
 
     return () => {
+      script.removeEventListener("load", onLoad)
+      script.removeEventListener("error", onError)
       script.remove()
-      const form = document.querySelector(`#test`)
+      const form = document.querySelector("#hubspot-form")
       if (form) form.innerHTML = ""
     }
   }, [portalId, formId, region])
 
   return (
     <div className="w-full">
+      {!loaded && <p>Loading</p>}
+      {error && <p>Error loading form</p>}
       <div id="hubspot-form" className="hubspot w-full"></div>
     </div>
   )
