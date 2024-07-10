@@ -43,26 +43,24 @@ export function ModalBlock({ modal }: Props) {
             </DialogTrigger>
           </div>
         </div>
-        {formTarget && (
-          <DialogContent className="mx-auto w-[90%] overflow-hidden rounded-2xl border border-grey-300 bg-white lg:w-[70%]">
-            <div className="flex h-[60vh] flex-col gap-card overflow-auto p-gutter">
-              <DialogTitle
-                className={cn(HeadingStyles.base, HeadingStyles.sizes.h2)}
-              >
-                {modal.modalHeading}
-              </DialogTitle>
-              <Form
-                region="na1"
-                portalId="7592558"
-                formId={
-                  modal.formType === "newsletter"
-                    ? "a5ecd657-6aae-4da0-bf08-f3b994919f0b"
-                    : "a5269d0b-bb6c-4e56-aa9c-a7758958d541"
-                }
-              />
-            </div>
-          </DialogContent>
-        )}
+        <DialogContent className="mx-auto w-[90%] overflow-hidden rounded-2xl border border-grey-300 bg-white lg:w-[70%]">
+          <div className="flex h-[60vh] flex-col gap-card overflow-auto p-gutter">
+            <DialogTitle
+              className={cn(HeadingStyles.base, HeadingStyles.sizes.h2)}
+            >
+              {modal.modalHeading}
+            </DialogTitle>
+            <Form
+              region="na1"
+              portalId="7592558"
+              formId={
+                modal.formType === "newsletter"
+                  ? "a5ecd657-6aae-4da0-bf08-f3b994919f0b"
+                  : "a5269d0b-bb6c-4e56-aa9c-a7758958d541"
+              }
+            />
+          </div>
+        </DialogContent>
       </div>
     </Dialog>
   )
