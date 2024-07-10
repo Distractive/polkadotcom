@@ -21,7 +21,7 @@ export default function FooterLayout({ footer }: Props) {
     >
       <Background />
       <footer className="max-width relative">
-        <div className="bg-grey-200 md:mx-gutter md:mb-gutter md:rounded-2xl md:border md:border-grey-300">
+        <div className="bg-blur-sm bg-grey-200/95 md:mx-gutter md:mb-gutter md:rounded-2xl md:border md:border-grey-300">
           <div className="mx-auto w-full">
             <Menu menu={footer.menu} />
           </div>
