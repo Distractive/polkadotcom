@@ -1,36 +1,41 @@
 "use client"
 
-import { type modalSelection } from "@/sanity/selections/blocks/modal"
-import { type TypeFromSelection } from "groqd"
-import { useHubspotForm } from "next-hubspot"
+import { useEffect } from "react"
 
 interface Props {
-  type: TypeFromSelection<typeof modalSelection>["formType"]
-  target: string
+  region: string
+  portalId: string
+  formId: string
 }
 
-export function Form({ type, target }: Props) {
-  const { loaded, error, formCreated } = useHubspotForm({
-    region: "na1",
-    portalId: "7592558",
-    formId:
-      type === "newsletter"
-        ? "a5ecd657-6aae-4da0-bf08-f3b994919f0b"
-        : "a5269d0b-bb6c-4e56-aa9c-a7758958d541",
-    target: `#${target}`,
-  })
+export function Form({ region, portalId, formId }: Props) {
+  useEffect(() => {
+    const script = document.createElement("script")
+    script.src = "http://js.hsforms.net/forms/embed/v2.js"
+    script.id = "hubspot-embed"
+    document.body.append(script)
 
-  console.log("loaded:", loaded)
-  console.log("error:", error)
-  console.log("formCreated:", formCreated)
+    script.addEventListener("load", () => {
+      if (window.hbspt) {
+        window.hbspt.forms.create({
+          portalId,
+          formId,
+          region,
+          target: "#hubspot-form",
+        })
+      }
+    })
+
+    return () => {
+      script.remove()
+      const form = document.querySelector(`#test`)
+      if (form) form.innerHTML = ""
+    }
+  }, [portalId, formId, region])
 
   return (
     <div className="w-full">
-      <div className="flex flex-col gap-copy">
-        {!loaded && <p>Loading</p>}
-        {error && <p>Error loading form</p>}
-      </div>
-      <div id={target} className="hubspot w-full"></div>
+      <div id="hubspot-form" className="hubspot w-full"></div>
     </div>
   )
 }
