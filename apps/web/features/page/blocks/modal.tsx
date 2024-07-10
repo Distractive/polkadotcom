@@ -3,6 +3,7 @@
 import { type modalSelection } from "@/sanity/selections/blocks/modal"
 import { type TypeFromSelection } from "groqd"
 import { HubspotProvider } from "next-hubspot"
+import { v4 as uuidv4 } from "uuid"
 
 import {
   ButtonStyles,
@@ -22,6 +23,8 @@ interface Props {
 }
 
 export function ModalBlock({ modal }: Props) {
+  const formTarget = uuidv4()
+
   return (
     <HubspotProvider>
       <Dialog>
@@ -45,16 +48,18 @@ export function ModalBlock({ modal }: Props) {
               </DialogTrigger>
             </div>
           </div>
-          <DialogContent className="mx-auto w-[90%] overflow-hidden rounded-2xl border border-grey-300 bg-white lg:w-[70%]">
-            <div className="flex h-[60vh] flex-col gap-card overflow-auto p-gutter">
-              <DialogTitle
-                className={cn(HeadingStyles.base, HeadingStyles.sizes.h2)}
-              >
-                {modal.modalHeading}
-              </DialogTitle>
-              <Form type={modal.formType} />
-            </div>
-          </DialogContent>
+          {formTarget && (
+            <DialogContent className="mx-auto w-[90%] overflow-hidden rounded-2xl border border-grey-300 bg-white lg:w-[70%]">
+              <div className="flex h-[60vh] flex-col gap-card overflow-auto p-gutter">
+                <DialogTitle
+                  className={cn(HeadingStyles.base, HeadingStyles.sizes.h2)}
+                >
+                  {modal.modalHeading}
+                </DialogTitle>
+                <Form type={modal.formType} target={formTarget} />
+              </div>
+            </DialogContent>
+          )}
         </div>
       </Dialog>
     </HubspotProvider>
