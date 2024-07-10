@@ -31,6 +31,7 @@ export default function CardBlock({ card, className }: Props) {
     body,
     link,
     useAsBackgroundImage,
+    useSmallHeading,
   } = card
 
   return (
@@ -108,6 +109,8 @@ export default function CardBlock({ card, className }: Props) {
                 {heading && (
                   <Heading
                     variant="h3"
+                    size={useSmallHeading ? "h5" : "h3"}
+                    weight={useSmallHeading ? "bold" : "normal"}
                     className={cn(
                       "transition-colors duration-500 ease-in-out",
                       link &&

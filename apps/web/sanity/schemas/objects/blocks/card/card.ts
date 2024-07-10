@@ -55,7 +55,14 @@ export default defineType({
       group: "content",
       validation: (Rule) => Rule.required(),
     }),
-
+    defineField({
+      name: "useSmallHeading",
+      title: "Use a small heading?",
+      description:
+        "If true, the card will display the heading with a smaller font size. Use this option if the card has a long heading e.g. the 'Newsroom' cards.",
+      type: "boolean",
+      initialValue: false,
+    }),
     defineField({
       name: "body",
       title: "Body",
