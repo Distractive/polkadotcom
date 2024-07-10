@@ -2,8 +2,6 @@
 
 import { type modalSelection } from "@/sanity/selections/blocks/modal"
 import { type TypeFromSelection } from "groqd"
-import { HubspotProvider } from "next-hubspot"
-import { v4 as uuidv4 } from "uuid"
 
 import {
   ButtonStyles,
@@ -23,8 +21,6 @@ interface Props {
 }
 
 export function ModalBlock({ modal }: Props) {
-  const formTarget = uuidv4()
-
   return (
     <Dialog>
       <div className="grid-system max-width">
