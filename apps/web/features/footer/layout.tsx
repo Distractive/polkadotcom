@@ -16,7 +16,7 @@ export default function FooterLayout({ footer }: Props) {
   return (
     <div
       className={cn(
-        "relative flex flex-col font-bold md:h-[70rem] md:justify-end md:overflow-y-hidden lg:h-full lg:min-h-[55rem]"
+        "relative mt-page flex flex-col font-bold md:h-[70rem] md:justify-end md:overflow-y-hidden lg:mt-0 lg:h-full lg:min-h-[55rem]"
       )}
     >
       <Background />
