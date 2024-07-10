@@ -57,7 +57,7 @@ export function SideBySideBlock({ content }: Props) {
                     <Button
                       size="md"
                       asChild
-                      className="my-copy mr-auto md:cursor-pointer"
+                      className="my-card mr-auto md:cursor-pointer"
                       variant={
                         value?.variant
                           ? value.variant === "primary"

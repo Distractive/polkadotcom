@@ -80,7 +80,7 @@ export default function CardSmallBlock({ card, className }: Props) {
                     : "primary"
                 }
                 size="md"
-                className="md:mr-auto"
+                className="mt-copy md:mr-auto"
               >
                 <CustomUrl className="outline-none" value={link}>
                   {link.label}
