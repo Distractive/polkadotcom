@@ -16,7 +16,7 @@ export function Form({ region, portalId, formId }: Props) {
     if (!(region && portalId && formId)) return
 
     const script = document.createElement("script")
-    script.src = "http://js.hsforms.net/forms/embed/v2.js"
+    script.src = "https://js.hsforms.net/forms/embed/v2.js"
     document.body.append(script)
 
     const onLoad = () => {
