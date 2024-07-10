@@ -66,6 +66,7 @@ export default function CardTimelineBlock({
               customUrl: ({ value }) => {
                 return (
                   <Button
+                    asChild
                     variant={
                       value?.variant
                         ? value.variant === "primary"
@@ -77,10 +78,8 @@ export default function CardTimelineBlock({
                   >
                     <CustomUrl
                       className="outline-none"
-                      value={{
-                        internal: value?.internal,
-                        external: value?.external,
-                      }}
+                      tabIndex={-1}
+                      value={value}
                     >
                       {value.label}
                     </CustomUrl>
