@@ -14,11 +14,7 @@ interface Props {
 
 export default function FooterLayout({ footer }: Props) {
   return (
-    <div
-      className={cn(
-        "relative mt-page flex flex-col font-bold md:h-[70rem] md:justify-end md:overflow-y-hidden lg:mt-0 lg:h-full lg:min-h-[55rem]"
-      )}
-    >
+    <div className={cn("relative flex flex-col font-bold md:mt-page")}>
       <Background />
       <footer className="max-width relative">
         <div className="bg-blur-sm bg-grey-200/95 md:mx-gutter md:mb-gutter md:rounded-2xl md:border md:border-grey-300">
