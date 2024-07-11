@@ -14,6 +14,7 @@ export const cardSelection = {
   }).nullable(),
   eyebrow: nullToUndefined(q.string().optional()),
   heading: q.string(),
+  useSmallHeading: q.boolean().nullable(),
   body: nullToUndefined(q.string().optional()),
   selectedTags: q.array(q.string()).nullable(),
   link: q("link")
