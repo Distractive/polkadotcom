@@ -25,7 +25,7 @@ export function ModalBlock({ modal }: Props) {
     <Dialog>
       <div className="grid-system max-width">
         <div className="col-span-full px-gutter lg:col-span-8 lg:col-start-3">
-          <div className="background-blur flex flex-col gap-card rounded-2xl border border-grey-300 p-gutter">
+          <div className="background-blur flex flex-col gap-card rounded-2xl border border-grey-300 bg-grey-200/80 p-gutter">
             <div className="flex flex-col gap-copy ">
               <Heading variant="h2">{modal.heading}</Heading>
               <p>{modal.body}</p>

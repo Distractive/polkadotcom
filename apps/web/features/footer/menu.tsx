@@ -38,7 +38,7 @@ export default function Menu({ menu }: Props) {
                 <li key={index}>
                   <CustomUrl
                     value={item.link}
-                    className="flex gap-2 text-left font-default underline decoration-grey-200 underline-offset-8 transition duration-500 ease-out hover:decoration-black"
+                    className="flex gap-2 text-left font-default underline decoration-black/0 underline-offset-8 transition duration-500 ease-out hover:decoration-black"
                   >
                     {item.link.label}
                   </CustomUrl>

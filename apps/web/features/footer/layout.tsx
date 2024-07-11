@@ -1,8 +1,6 @@
 import type { footerSelection } from "@/sanity/selections/footer/footer"
 import type { TypeFromSelection } from "groqd"
 
-import { cn } from "@shared/ui"
-
 import { Logo } from "../../components/logo"
 import { Background } from "./background"
 import Menu from "./menu"
@@ -14,7 +12,7 @@ interface Props {
 
 export default function FooterLayout({ footer }: Props) {
   return (
-    <div className={cn("relative flex flex-col font-bold md:mt-page")}>
+    <div className="relative flex flex-col font-bold md:mt-page md:pt-page">
       <Background />
       <footer className="max-width relative">
         <div className="bg-blur-sm bg-grey-200/95 md:mx-gutter md:mb-gutter md:rounded-2xl md:border md:border-grey-300">
