@@ -1,31 +1,58 @@
 "use client"
 
-import { type modalSelection } from "@/sanity/selections/blocks/modal"
-import { type TypeFromSelection } from "groqd"
-import { useHubspotForm } from "next-hubspot"
+import { useEffect, useState } from "react"
 
 interface Props {
-  type: TypeFromSelection<typeof modalSelection>["formType"]
+  region: string
+  portalId: string
+  formId: string
 }
 
-export function Form({ type }: Props) {
-  const { loaded, error } = useHubspotForm({
-    region: "na1",
-    portalId: "7592558",
-    formId:
-      type === "newsletter"
-        ? "a5ecd657-6aae-4da0-bf08-f3b994919f0b"
-        : "a5269d0b-bb6c-4e56-aa9c-a7758958d541",
-    target: "#hubspot-form-wrapper",
-  })
+export function Form({ region, portalId, formId }: Props) {
+  const [loaded, setLoaded] = useState(false)
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    if (!(region && portalId && formId)) return
+
+    const script = document.createElement("script")
+    script.src = "https://js.hsforms.net/forms/embed/v2.js"
+    document.body.append(script)
+
+    const onLoad = () => {
+      setLoaded(true)
+      if (window.hbspt) {
+        window.hbspt.forms.create({
+          portalId,
+          formId,
+          region,
+          target: "#hubspot-form",
+        })
+      }
+    }
+
+    const onError = () => {
+      setLoaded(false)
+      setError(true)
+    }
+
+    script.addEventListener("load", onLoad)
+    script.addEventListener("error", onError)
+
+    return () => {
+      script.removeEventListener("load", onLoad)
+      script.removeEventListener("error", onError)
+      script.remove()
+      const form = document.querySelector("#hubspot-form")
+      if (form) form.innerHTML = ""
+    }
+  }, [portalId, formId, region])
 
   return (
     <div className="w-full">
-      <div className="flex flex-col gap-copy">
-        {!loaded && <p>Loading</p>}
-        {error && <p>Error loading form</p>}
-      </div>
-      <div id="hubspot-form-wrapper" className="hubspot w-full"></div>
+      {!loaded && <p>Loading</p>}
+      {error && <p>Error loading form</p>}
+      <div id="hubspot-form" className="hubspot w-full"></div>
     </div>
   )
 }
