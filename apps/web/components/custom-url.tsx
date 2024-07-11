@@ -32,7 +32,7 @@ export function CustomUrl({
       {isWrapper ? (
         children
       ) : (
-        <span className="inline-flex items-center gap-2 text-center">
+        <span className="inline-flex items-center gap-2">
           <span className="flex-1"> {children}</span>
           {value.external && (
             <Icon
