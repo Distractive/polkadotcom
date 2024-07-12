@@ -33,8 +33,8 @@ export function CardsSmallBlock({ cards }: Props) {
               key={card._key}
               card={card}
               className={cn(
-                "col-span-full md:col-span-3 lg:col-span-4",
-                shouldSpan && "lg:col-span-6"
+                "col-span-full md:col-span-3 lg:col-span-6 xl:col-span-4",
+                shouldSpan && "xl:col-span-6"
               )}
             />
           )
@@ -46,7 +46,7 @@ export function CardsSmallBlock({ cards }: Props) {
           alt=""
           loading="eager"
           className={cn(
-            "absolute right-0 top-0 -z-10 hidden h-auto w-2/3 max-w-[90rem] lg:block"
+            "absolute right-0 top-0 -z-10 hidden h-auto w-2/3 max-w-[90rem] xl:block"
           )}
         />
       )}
