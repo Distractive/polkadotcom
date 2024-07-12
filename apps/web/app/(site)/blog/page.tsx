@@ -1,5 +1,4 @@
 import { type Metadata } from "next"
-import { getBlog } from "@/sanity/queries/blog"
 import { getSingletonMeta } from "@/sanity/queries/page"
 
 import { BLOG_POSTTYPE } from "@/constants/global"
@@ -28,7 +27,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Blog() {
-  const blog = await getBlog()
-
   return <Layout page={1} type={BLOG_POSTTYPE} tagSlug="" />
 }
