@@ -35,5 +35,9 @@ export default defineType({
       name: "connected",
       type: "homeConnected",
     }),
+    defineField({
+      name: "meta",
+      type: "meta",
+    }),
   ],
 })
