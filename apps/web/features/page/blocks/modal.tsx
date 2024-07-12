@@ -25,8 +25,13 @@ export function ModalBlock({ modal }: Props) {
     <Dialog>
       <div className="grid-system max-width">
         <div className="col-span-full px-gutter lg:col-span-8 lg:col-start-3">
+<<<<<<< HEAD
           <div className="background-blur flex flex-col gap-card rounded-2xl border border-grey-300 bg-grey-200/80 p-gutter">
             <div className="flex flex-col gap-copy ">
+=======
+          <div className="background-blur flex flex-col gap-card rounded-2xl border border-grey-300 p-gutter">
+            <div className="flex flex-col gap-copy">
+>>>>>>> cee92a07c9e507ae3ee2e505a705200725829645
               <Heading variant="h2">{modal.heading}</Heading>
               <p>{modal.body}</p>
             </div>
@@ -44,7 +49,7 @@ export function ModalBlock({ modal }: Props) {
           </div>
         </div>
         <DialogContent className="mx-auto w-[90%] overflow-hidden rounded-2xl border border-grey-300 bg-white lg:w-[70%]">
-          <div className="flex h-[60vh] flex-col gap-card overflow-auto p-gutter">
+          <div className="mt-card flex h-[70vh] flex-col gap-card overflow-auto p-gutter lg:mt-0">
             <DialogTitle
               className={cn(HeadingStyles.base, HeadingStyles.sizes.h2)}
             >

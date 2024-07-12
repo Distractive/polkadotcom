@@ -42,10 +42,7 @@ const DialogContent = React.forwardRef<
     >
       {children}
       <DialogPrimitive.Close className="">
-        <Icon
-          variant={"close"}
-          className="absolute right-card top-card size-10"
-        />
+        <Icon variant={"close"} className="absolute right-4 top-4 size-10" />
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
