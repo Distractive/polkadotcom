@@ -1,13 +1,13 @@
 import { type Metadata } from "next"
 import { getHome } from "@/sanity/queries/home"
-import { getHomeMeta } from "@/sanity/queries/page"
+import { getSingletonMeta } from "@/sanity/queries/page"
 
 import { Root } from "@/features/home/root"
 
 export const dynamic = "force-static"
 
 export async function generateMetadata(): Promise<Metadata> {
-  const meta = await getHomeMeta()
+  const meta = await getSingletonMeta("_type == 'home'")
   if (!meta)
     return {
       title: "Polkadot 404",

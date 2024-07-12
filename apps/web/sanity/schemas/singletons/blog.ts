@@ -50,5 +50,9 @@ export default defineType({
       group: "heading",
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: "meta",
+      type: "meta",
+    }),
   ],
 })

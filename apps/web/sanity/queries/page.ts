@@ -4,9 +4,9 @@ import { q, sanityImage } from "groqd"
 import { headerSelection } from "../selections/blocks/header"
 import { pageBuilderSelection } from "../selections/page-builder"
 
-export async function getHomeMeta() {
+export async function getSingletonMeta(type: string) {
   const pageQuery = q("*")
-    .filter("_type == 'home'")
+    .filter(type)
     .grab({
       meta: q("meta")
         .grab({

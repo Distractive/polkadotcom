@@ -1,6 +1,8 @@
 import type { Selection } from "groqd"
 import { nullToUndefined, q, sanityImage } from "groqd"
 
+import { singletonMetaSelection } from "../singleton-meta"
+
 export const blogSelection = {
   slug: q.slug("slug"),
   parent: q("parent")
@@ -15,4 +17,5 @@ export const blogSelection = {
     withAsset: ["base", "dimensions"],
   }).nullable(),
   body: nullToUndefined(q.string().optional()),
+  ...singletonMetaSelection,
 } satisfies Selection
