@@ -33,7 +33,7 @@ export default function CardSmallBlock({ card, className }: Props) {
       <CustomUrl value={link} isWrapper>
         <div
           className={cn(
-            "flex h-full gap-card p-card",
+            "flex h-full gap-6 p-6 lg:gap-card lg:p-card",
             icon ? "items-center" : "items-start"
           )}
         >
@@ -42,7 +42,7 @@ export default function CardSmallBlock({ card, className }: Props) {
               src={icon.asset.url}
               alt=""
               loading="lazy"
-              className={cn("size-16 rounded-2xl object-cover object-center")}
+              className={cn("size-14 rounded-2xl object-cover object-center")}
             />
           )}
           <CardContent className="grid gap-copy">
