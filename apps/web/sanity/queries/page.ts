@@ -4,9 +4,11 @@ import { q, sanityImage } from "groqd"
 import { headerSelection } from "../selections/blocks/header"
 import { pageBuilderSelection } from "../selections/page-builder"
 
-export async function getSingletonMeta(type: string) {
+export async function getSingletonMeta(
+  type: "home" | "blog" | "press-release"
+) {
   const pageQuery = q("*")
-    .filter(type)
+    .filter(`_type == '${type}'`)
     .grab({
       meta: q("meta")
         .grab({

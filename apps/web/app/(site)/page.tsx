@@ -7,7 +7,7 @@ import { Root } from "@/features/home/root"
 export const dynamic = "force-static"
 
 export async function generateMetadata(): Promise<Metadata> {
-  const meta = await getSingletonMeta("_type == 'home'")
+  const meta = await getSingletonMeta("home")
   if (!meta)
     return {
       title: "Polkadot 404",
