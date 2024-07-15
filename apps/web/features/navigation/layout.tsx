@@ -48,7 +48,7 @@ export default function NavigationLayout({ navigation }: Props) {
         ref={ref}
         onMouseLeave={() => setIsOpen(false)}
         className={cn(
-          "fixed left-0 right-0 top-0 z-50 m-4 lg:right-auto lg:m-6",
+          "fixed left-0 right-0 top-0 z-[100] m-4 lg:right-auto lg:m-6",
           "flex flex-col gap-nav text-black lg:gap-2",
           isOpen && isMobile && "bottom-0"
         )}

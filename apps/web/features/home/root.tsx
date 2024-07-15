@@ -25,15 +25,15 @@ export function Root({ home }: Props) {
   const scrollRef = useRef<Lenis>()
 
   useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
     window.scrollTo(0, 0)
   }, [])
 
   useEffect(() => {
     scrollRef.current = new Lenis({
-      duration: 2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       touchMultiplier: 2,
-      // infinite: false,
       orientation: "vertical",
       smoothWheel: true,
       gestureOrientation: "vertical",

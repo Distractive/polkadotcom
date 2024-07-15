@@ -1,10 +1,10 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import { type buildSelection } from "@/sanity/selections/home/build"
-import * as Scrollytelling from "@bsmnt/scrollytelling"
 import { type TypeFromSelection } from "groqd"
+import gsap from "gsap"
 
-import { useBreakpoint } from "@/hooks/use-breakpoint"
 import {
   Card,
   CardDescription,
@@ -17,134 +17,175 @@ import {
 import { CustomUrl } from "@/components/custom-url"
 
 import { StaggerHeader } from "../components/stagger-heading"
+import { STANDARD_DELAY } from "../lib/constants"
 
 interface Props {
   build: TypeFromSelection<typeof buildSelection>["build"]
 }
-
+const TIMELINE = {
+  defaults: {
+    ease: "power1.inOut",
+  },
+}
 export function Build({ build }: Props) {
-  const isMobile = useBreakpoint("--screen-lg")
+  const timeline = useRef<gsap.core.Timeline | null>(null)
+  const container = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    timeline.current = gsap.timeline({
+      ...TIMELINE,
+    })
+    return () => {
+      timeline.current?.kill()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!timeline.current) return
+    timeline.current
+      .fromTo(
+        "#building-body",
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          delay: STANDARD_DELAY,
+          scrollTrigger: {
+            trigger: "#building-pile",
+            start: "top 15%",
+            end: "top 90%",
+            scrub: 1,
+            markers: false,
+            once: true,
+          },
+          duration: 0.2,
+        }
+      )
+      .fromTo(
+        ".build-card",
+        {
+          opacity: 0,
+          y: 40,
+          scale: 0.9,
+        },
+        {
+          opacity: 1,
+          stagger: 0.2,
+          y: -40,
+          scale: 1,
+          delay: STANDARD_DELAY,
+          scrollTrigger: {
+            trigger: "#building-pile",
+            start: "top 15%",
+            end: "top 90%",
+            scrub: 1,
+            markers: false,
+            once: true,
+          },
+
+          duration: 0.2,
+        }
+      )
+
+    // timeline.current.fromTo(
+    //   "#network-backgrounds",
+    //   {
+    //     opacity: 0,
+    //   },
+    //   {
+    //     opacity: 1,
+    //     delay: STANDARD_DELAY,
+    //     scrollTrigger: {
+    //       trigger: "#network-pile",
+    //       start: "top top",
+    //       end: "bottom bottom",
+    //       scrub: 1,
+    //       markers: false,
+    //       once: true,
+    //     },
+    //     duration: 0.4,
+    //   }
+    // )
+  }, [])
   return (
-    <Scrollytelling.Root defaults={{ ease: "linear" }}>
-      <Scrollytelling.Pin
-        childHeight={"100vh"}
-        pinSpacerHeight={"400vh"}
-        top={isMobile ? "12vh" : "0"}
+    <div
+      ref={container}
+      id="building-pile"
+      className="grid-pile relative md:pt-[10rem]"
+    >
+      <article
+        id="build.wrapper"
+        className="grid-system relative col-span-full h-full w-lvw items-center justify-center overflow-hidden lg:h-full"
       >
-        <article
-          id="build.wrapper"
-          className="grid-system !lg:-mt-[100vh] relative col-span-12 h-auto w-lvw items-center justify-center overflow-hidden lg:h-full"
+        <div
+          id="build.content"
+          className={cn(
+            "max-width col-span-full flex flex-col items-center justify-center sm:w-dvw",
+            "md:col-span-full md:col-start-1 md:w-full",
+            "lg:col-span-full lg:col-start-1",
+            "xl:col-span-10 xl:col-start-2",
+            "mt-header-top md:mt-0"
+          )}
         >
-          <div
-            id="build.content"
-            className={cn(
-              "max-width relative z-10 col-span-12 flex flex-col items-center justify-center sm:w-dvw md:px-gutter",
-              "md:col-span-12 md:col-start-1 md:w-full",
-              "lg:col-span-12 lg:col-start-1",
-              "xl:col-span-10 xl:col-start-2"
-            )}
-          >
-            <div className="col-span-12 px-gutter pb-[5rem] md:pb-[5rem] lg:w-4/6 lg:px-0">
-              <StaggerHeader
-                title={build.title}
-                className="pb-card text-5xl leading-[1.1] md:text-7xl"
-              />
-              <Scrollytelling.Animation
-                tween={{
-                  start: 30,
-                  end: 50,
-                  fromTo: [
-                    {
-                      opacity: 0,
-                      filter: "blur(10px)",
-                    },
-                    {
-                      ease: "power2.out",
-                      opacity: 1,
-                      filter: "blur(0px)",
-                    },
-                  ],
-                }}
-              >
-                <p className="background-blur border-transparent rounded-xl p-2 text-lg md:w-5/6">
-                  {build.body}
-                </p>
-              </Scrollytelling.Animation>
-            </div>
-            <div className="grid-system col-span-12 flex flex-col gap-gutter px-gutter">
-              <Scrollytelling.Stagger
-                overlap={0.05}
-                tween={{
-                  start: 40,
-                  end: 99,
-                  fromTo: [
-                    {
-                      opacity: 0,
-                      y: 40,
-                      scale: 0.9,
-                    },
-                    {
-                      ease: "power2.out",
-                      opacity: 1,
-                      y: -40,
-                      scale: 1,
-                    },
-                  ],
-                }}
-              >
-                {build.items.map((item, index) => (
-                  <Card
-                    key={index}
-                    className={cn(
-                      "background-blur col-span-6 flex items-start justify-between bg-white/80 md:col-span-4 md:col-start-2 lg:col-span-4",
-                      item.link && "md:cursor-pointer md:hover:shadow-card",
-                      "!h-auto"
-                    )}
-                  >
-                    <CustomUrl
-                      value={item.link}
-                      isWrapper
-                      className="size-full"
-                    >
-                      <div
-                        className={cn(
-                          "flex h-full items-center gap-card p-card"
-                        )}
-                      >
-                        <CardHeader className="grid h-full items-center">
-                          {item.heading && (
-                            <Heading
-                              variant="h3"
-                              className={cn(
-                                "text-balance text-xl leading-normal transition-colors duration-500 ease-in-out md:text-2xl",
-                                item.link && "md:group-hover:text-pink"
-                              )}
-                            >
-                              {item.heading}
-                            </Heading>
-                          )}
-                          {item.body && (
-                            <CardDescription>{item.body}</CardDescription>
-                          )}
-                        </CardHeader>
-                        {item.link && (
-                          <CardFooter className="ml-auto flex h-full flex-col justify-center">
-                            {item.link.external ? (
-                              <Icon variant="arrowRightUp" />
-                            ) : (
-                              <Icon variant="arrowRight" />
-                            )}
-                          </CardFooter>
-                        )}
-                      </div>
-                    </CustomUrl>
-                  </Card>
-                ))}
-              </Scrollytelling.Stagger>
-            </div>
+          <div className="col-span-full px-gutter pb-[5rem] lg:col-span-8 lg:col-start-3 lg:w-4/6 lg:pb-[5rem]">
+            <StaggerHeader
+              timeline={timeline}
+              section="#building-pile"
+              title={build.title}
+              className="pb-card text-5xl leading-[1.1] md:text-7xl"
+            />
+
+            <p id="building-body" className="mb-gutter text-lg">
+              {build.body}
+            </p>
           </div>
-        </article>
-      </Scrollytelling.Pin>
-    </Scrollytelling.Root>
+          <div className="grid-system relative col-span-full gap-card px-card lg:px-gutter">
+            {build.items.map((item, index) => (
+              <Card
+                key={index}
+                className={cn(
+                  "build-card background-blur col-span-6 flex items-start justify-between bg-white/80 md:col-span-4 md:col-start-2 lg:col-span-4",
+                  item.link && "md:cursor-pointer md:hover:shadow-card",
+                  "!h-auto"
+                )}
+              >
+                <CustomUrl value={item.link} isWrapper className="size-full">
+                  <div
+                    className={cn("flex h-full items-center gap-card p-card")}
+                  >
+                    <CardHeader className="grid h-full items-center">
+                      {item.heading && (
+                        <Heading
+                          variant="h3"
+                          className={cn(
+                            "text-balance text-xl leading-normal transition-colors duration-500 ease-in-out md:text-2xl",
+                            item.link && "md:group-hover:text-pink",
+                            "!hyphens-none !break-normal"
+                          )}
+                        >
+                          {item.heading}
+                        </Heading>
+                      )}
+                      {item.body && (
+                        <CardDescription>{item.body}</CardDescription>
+                      )}
+                    </CardHeader>
+                    {item.link && (
+                      <CardFooter className="ml-auto flex h-full flex-col justify-center">
+                        {item.link.external ? (
+                          <Icon variant="arrowRightUp" />
+                        ) : (
+                          <Icon variant="arrowRight" />
+                        )}
+                      </CardFooter>
+                    )}
+                  </div>
+                </CustomUrl>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </article>
+    </div>
   )
 }

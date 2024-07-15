@@ -30,7 +30,7 @@ export default async function Home() {
 
   return (
     <>
-      <section className="col-span-12">
+      <section className="col-span-full overflow-hidden">
         <Root home={home.home} />
       </section>
     </>

@@ -23,31 +23,36 @@ import { Wavy } from "./meshes/wavy"
 export function Objects() {
   const twirly = useRef<Mesh>(null)
   const { viewport } = useThree()
-  const scalingFactor = Math.min(Math.max(window.innerWidth / 1440, 0.5), 1)
-  const isMobile = window.innerWidth < 1024 //this is the breakpoint for mobile (md in tailwindcss)
+  const scalingFactor = Math.min(Math.max(window.innerWidth / 1440, 0.6), 1)
+  const isMobile = window.innerWidth < 1024
   const one = useRef<Group>(null)
   const two = useRef<Group>(null)
+  const large = useRef<Group>(null)
   const offset = useRef(Math.random() * 10000)
   const SPEED = 2
   const INTENSITY = 0.5
   const reducedMotion = useMediaQuery("(prefers-reduced-motion)")
+
   useFrame((state) => {
     if (reducedMotion) return
     const t = offset.current + state.clock.getElapsedTime()
     if (one.current) {
       one.current.rotation.x = (Math.cos((t / 4) * SPEED) / 8) * INTENSITY
       one.current.rotation.y += (Math.sin((t / 4) * 0.001) / 4) * 0.002
-      one.current.rotation.z = (Math.sin((t / 4) * SPEED) / 10) * INTENSITY
     }
     if (two.current) {
       two.current.rotation.x = (Math.cos((t / 4) * SPEED) / 8) * INTENSITY
-      two.current.rotation.y -= (Math.sin((t / 4) * 0.001) / 4) * 0.002
-      two.current.rotation.z = (Math.sin((t / 4) * SPEED) / 10) * INTENSITY
+      two.current.rotation.y -= (Math.sin((t / 4) * 0.001) / 4) * 0.006
+    }
+
+    if (large.current) {
+      large.current.rotation.x = (Math.cos((t / 4) * SPEED) / 4) * INTENSITY
+      large.current.rotation.y -= (Math.sin((t / 4) * 0.001) / 4) * 0.009
     }
   })
   return (
     <>
-      <group visible={true} ref={two} position={[0, 0, 0]}>
+      <group visible={true} ref={two} position={[0, 1, 0]}>
         <Twirly
           scale={scalingFactor}
           position={[0, viewport.height / 3, -2]}
@@ -56,16 +61,20 @@ export function Objects() {
         />
         <Wavy
           scale={scalingFactor / 2.5}
-          position={[viewport.width / 6, viewport.height / 2.2, -2]}
+          position={[viewport.width / 3, viewport.height / 3, -2]}
           rotation={[2, 1, 0]}
         />
         <Cone
-          scale={scalingFactor}
-          position={[viewport.width / 2, 0, 2]}
+          scale={scalingFactor / 2.5}
+          position={[-viewport.width / 2, viewport.height / 3, -2]}
           rotation={[0, 0, 0]}
         />
       </group>
-      <group visible={true} ref={one} position={[0, 0, 0]}>
+      <group
+        visible={true}
+        ref={one}
+        position={[0, isMobile ? -viewport.height / 2.2 : -2.5, 0]}
+      >
         <Donut
           scale={scalingFactor}
           position={[viewport.width / 3.5, 0, -15]}
@@ -109,42 +118,22 @@ export function Objects() {
           rotation={[0, 0, 0]}
         />
       </group>
-      <group visible={true}>
-        <Float speed={0.1} enabled={!reducedMotion}>
-          <Interlock
-            scale={scalingFactor}
-            position={[0, 0, -80]}
-            rotation={[0, 0, 0]}
-          />
-        </Float>
-        <Float speed={0.1} enabled={!reducedMotion}>
-          <Matrix
-            scale={scalingFactor}
-            position={[0, 3, -70]}
-            rotation={[0, 0, 0]}
-          />
-        </Float>
-        <Float speed={0.1} enabled={!reducedMotion}>
-          <Rombus
-            scale={scalingFactor}
-            position={[0, 0.3, -100]}
-            rotation={[0, 0, 0]}
-          />
-        </Float>
-        <Float speed={0.1} enabled={!reducedMotion}>
-          <Tenta
-            scale={scalingFactor}
-            position={[0, -0.1, -100]}
-            rotation={[0, 0, 0]}
-          />
-        </Float>
-        <Float speed={0.1} enabled={!reducedMotion}>
-          <Tetra
-            scale={scalingFactor}
-            position={[0, -0.2, -100]}
-            rotation={[0, 0, 0]}
-          />
-        </Float>
+      <group
+        name="large"
+        ref={large}
+        position={[0, -3, 0]}
+        rotation={[0, 0, -4]}
+      >
+        <Urchin
+          scale={scalingFactor}
+          position={[-viewport.width / 3, -0.3, -20]}
+          rotation={[0, 0, 0]}
+        />
+        <Donut
+          scale={scalingFactor}
+          position={[viewport.width / 3.5, 0, -15]}
+          rotation={[0, Math.PI / 2, 0]}
+        />
       </group>
     </>
   )

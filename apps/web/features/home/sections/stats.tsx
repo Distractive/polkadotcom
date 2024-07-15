@@ -1,204 +1,150 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import { type statsSelection } from "@/sanity/selections/home/stats"
-import * as Scrollytelling from "@bsmnt/scrollytelling"
 import { type TypeFromSelection } from "groqd"
+import { gsap } from "gsap"
 
-import { useBreakpoint } from "@/hooks/use-breakpoint"
-import {
-  Card,
-  CardDescription,
-  // CardFooter,
-  CardHeader,
-  cn,
-  Heading,
-} from "@shared/ui"
-
-// import { CustomUrl } from "@/components/custom-url"
+import { Card, CardDescription, CardHeader, cn, Heading } from "@shared/ui"
 
 import { StaggerHeader } from "../components/stagger-heading"
+import { STANDARD_DELAY } from "../lib/constants"
 
 interface Props {
   stats: TypeFromSelection<typeof statsSelection>["stats"]
 }
 
+const TIMELINE = {
+  defaults: {
+    ease: "power1.inOut",
+  },
+}
+
 export function Stats({ stats }: Props) {
-  const isMobile = useBreakpoint("--screen-md")
-  const isTablet = useBreakpoint("--screen-lg")
+  const timeline = useRef<gsap.core.Timeline | null>(null)
+  useEffect(() => {
+    timeline.current = gsap.timeline(TIMELINE)
+    return () => {
+      timeline.current?.kill()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!timeline.current) return
+
+    timeline.current.fromTo(
+      ".stats-card",
+      {
+        opacity: 0,
+        y: 40,
+        scale: 0.9,
+      },
+      {
+        opacity: 1,
+        stagger: 0.2,
+        y: -40,
+        scale: 1,
+        delay: STANDARD_DELAY,
+        scrollTrigger: {
+          trigger: "#stats-pile",
+          start: "top 15%",
+          end: "top 90%",
+          scrub: 1,
+          markers: false,
+          once: true,
+        },
+        duration: 0.2,
+      }
+    )
+    timeline.current.fromTo(
+      "#stats-backgrounds",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        delay: STANDARD_DELAY,
+        scrollTrigger: {
+          trigger: "#stats-pile",
+          start: "top 15%",
+          end: "top 90%",
+          scrub: 1,
+          markers: false,
+          once: true,
+        },
+        duration: 0.4,
+      }
+    )
+  }, [])
 
   return (
-    <div id="stats-pile" className="grid-pile">
-      <Scrollytelling.Root defaults={{ ease: "linear" }}>
-        <Scrollytelling.Pin
-          childHeight={"100vh"}
-          pinSpacerHeight={"300vh"}
-          top={"0"}
-          childClassName="-z-10 overflow-hidden"
+    <div id="stats-pile" className="grid-pile lg:pt-[10rem]">
+      <div id="stats-backgrounds" className="relative w-[100vw]">
+        <img
+          src="/gradients/2.webp"
+          alt=""
+          className="absolute top-0 -z-20 h-full w-full translate-x-[85%] rotate-[60deg] scale-[0.6] lg:translate-x-[55%]"
+          loading="lazy"
+        />
+        <img
+          src="/gradients/grid.png"
+          alt=""
+          className="absolute -z-30 h-full w-full -translate-x-[30%] -translate-y-[40%] rotate-90 scale-[0.5] object-contain lg:-translate-y-[15%]"
+          loading="lazy"
+        />
+      </div>
+
+      <article
+        id="stats.wrapper"
+        className="grid-pile grid-system relative col-span-12 h-auto w-lvw items-center justify-center overflow-x-hidden lg:h-full"
+      >
+        <div
+          id="stats.content"
+          className={cn(
+            "max-width grid-system col-span-full sm:w-dvw",
+            "md:col-span-full md:col-start-1 md:w-full",
+            "lg:col-span-full lg:col-start-1",
+            "xl:col-span-10 xl:col-start-2",
+            "mt-header-top"
+          )}
         >
-          <Scrollytelling.Animation
-            tween={[
-              {
-                start: 20,
-                end: 80,
-                fromTo: [
-                  {
-                    y: 20,
-                    scale: 0.2,
-                    opacity: 0,
-                  },
-                  {
-                    opacity: 1,
-                    y: 0,
-                    scale: 0.6,
-                  },
-                ],
-              },
-              {
-                start: 90,
-                end: 100,
-                to: {
-                  scale: 0.5,
-                  opacity: 0,
-                },
-              },
-            ]}
+          <StaggerHeader
+            title={stats.title}
+            className={cn(
+              "px-gutter py-gutter text-5xl leading-[1.1] lg:pl-gutter lg:pr-gutter",
+              "col-span-full md:col-span-3 md:text-7xl lg:col-start-2 xl:col-start-2",
+              "!hyphens-none !break-normal"
+            )}
+            timeline={timeline}
+            section="#stats-pile"
+          />
+          <div
+            className={cn(
+              "grid-system relative col-span-full mt-10 gap-card px-gutter lg:mt-0",
+              "lg:col-span-8 lg:col-start-7",
+              "xl:col-span-8 xl:col-start-7"
+            )}
           >
-            <img
-              src="/gradients/2.webp"
-              alt=""
-              className="scale-60 absolute top-0 -z-20 h-full w-full translate-x-[55%] rotate-90"
-              loading="lazy"
-            />
-          </Scrollytelling.Animation>
-          <Scrollytelling.Animation
-            tween={[
-              {
-                start: 20,
-                end: 80,
-                fromTo: [
-                  {
-                    opacity: 0,
-                    x: "-40%",
-                    y: isMobile ? "-30%" : isTablet ? "-20%" : "-10%",
-                    rotate: 90,
-                    scale: 0.5,
-                  },
-                  {
-                    opacity: 1,
-                  },
-                ],
-              },
-              {
-                start: 90,
-                end: 100,
-                to: {
-                  opacity: 0,
-                },
-              },
-            ]}
-          >
-            <img
-              src="/gradients/5.webp"
-              alt=""
-              className={cn("absolute top-0 -z-30 h-full w-full")}
-              loading="lazy"
-            />
-          </Scrollytelling.Animation>
-        </Scrollytelling.Pin>
-      </Scrollytelling.Root>
-      <Scrollytelling.Root defaults={{ ease: "linear" }}>
-        <Scrollytelling.Pin
-          childHeight={"100vh"}
-          pinSpacerHeight={"300vh"}
-          top={isMobile || isTablet ? "12vh" : "0"}
-        >
-          <article
-            id="stats.wrapper"
-            className="grid-pile grid-system relative col-span-12 h-auto w-lvw items-center justify-center overflow-hidden lg:h-full"
-          >
-            <div
-              id="stats.content"
-              className="max-width grid-system relative z-10 col-span-12 sm:w-dvw"
-            >
-              <StaggerHeader
-                title={stats.title}
+            {stats.items.map((item, index) => (
+              <Card
+                key={index}
                 className={cn(
-                  "px-gutter py-gutter text-5xl leading-[1.1] lg:pl-gutter lg:pr-gutter ",
-                  "col-span-12 md:text-7xl lg:col-span-3 lg:col-start-1",
-                  "!hyphens-none !break-normal"
+                  "stats-card background-blur bg-grey-100/80 p-card",
+                  "col-span-full col-start-1 md:col-span-2 lg:col-span-6"
                 )}
-              />
-              <div
-                className={cn(
-                  "grid-system relative col-span-full m-auto mt-10 auto-rows-[1fr] gap-card px-gutter lg:col-start-6 lg:mt-0"
-                )}
+                data-index={index}
               >
-                <Scrollytelling.Stagger
-                  overlap={0.1}
-                  tween={{
-                    start: 35,
-                    end: 100,
-                    fromTo: [
-                      {
-                        opacity: 0,
-                        y: 40,
-                        x: (_i, el) => {
-                          if (isMobile) {
-                            const i = Number(el.dataset.index) + 1
-                            return i * el.offsetWidth
-                          }
-                          return 0
-                        },
-                      },
-                      {
-                        ease: "power2.out",
-                        opacity: 1,
-                        y: (_i, el) => {
-                          if (isMobile) {
-                            const i = Number(el.dataset.index)
-                            return -(i * el.offsetHeight)
-                          }
-                          return 0
-                        },
-                        x: 0,
-                      },
-                    ],
-                  }}
-                >
-                  {stats.items.map((item, index) => (
-                    <Card
-                      key={index}
-                      className={cn(
-                        "background-blur col-span-full col-start-1 bg-grey-100/80 p-card md:col-span-2 lg:col-span-5",
-                        index % 2 && "lg:translate-y-gutter"
-                      )}
-                      data-index={index}
-                    >
-                      <CardHeader className="grid w-5/6 gap-copy">
-                        <Heading variant="h3">{item.heading}</Heading>
-                        <CardDescription>{item.body}</CardDescription>
-                      </CardHeader>
-                      {/* <CardFooter className="pt-[3rem]">
-                        <span className="flex flex-col text-xs md:flex-row md:items-center">
-                          Source:
-                          <span className="font-bold">
-                            <CustomUrl value={item.link}>
-                              {item.link?.label}
-                            </CustomUrl>
-                          </span>
-                        </span>
-                      </CardFooter> */}
-                    </Card>
-                  ))}
-                </Scrollytelling.Stagger>
-              </div>
-            </div>
-            {/* <CanvasContainer>
-            <Background />
-          </CanvasContainer> */}
-          </article>
-        </Scrollytelling.Pin>
-      </Scrollytelling.Root>
+                <CardHeader className="grid w-5/6 gap-copy lg:w-full">
+                  <Heading variant="h3" className="!hyphens-none !break-normal">
+                    {item.heading}
+                  </Heading>
+                  <CardDescription>{item.body}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </article>
     </div>
   )
 }
