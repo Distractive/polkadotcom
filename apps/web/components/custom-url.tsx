@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import Link from "next/link"
 import { type customUrlSelection } from "@/sanity/selections/custom-url"
 import { type TypeFromSelection } from "groqd"
@@ -30,7 +31,7 @@ export function CustomUrl({
       onClick={onClick}
     >
       {isWrapper ? (
-        children
+        <Suspense fallback={null}>{children}</Suspense>
       ) : (
         <span className="inline-flex items-center gap-2">
           <span className="flex-1"> {children}</span>
