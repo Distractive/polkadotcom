@@ -21,7 +21,7 @@ export function Background() {
           width={1440}
           height={942}
         />
-        <div className="max-width absolute -top-6 md:inset-0">
+        <div className="max-width absolute top-0 md:inset-0">
           <Canvas
             dpr={[1, 1.5]}
             camera={{ position: [0, 0, 30], fov: 20, near: 0.01, far: 200 }}
