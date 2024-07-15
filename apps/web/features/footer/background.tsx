@@ -21,7 +21,7 @@ export function Background() {
           width={1440}
           height={942}
         />
-        <div className="max-width absolute top-0 md:inset-0">
+        <div className="max-width absolute top-0 h-full md:inset-0">
           <Canvas
             dpr={[1, 1.5]}
             camera={{ position: [0, 0, 30], fov: 20, near: 0.01, far: 200 }}
@@ -83,12 +83,12 @@ function Objects() {
   return (
     <Float enabled={!reducedMotion}>
       <Hemi
-        position={[-viewport.width / 3, 0, 0]}
+        position={[-viewport.width / 3, isMobile ? 2.2 : 1.2, 0]}
         rotation={[Math.PI / 1.7, -0.5, 0]}
-        scale={isMobile ? 1.5 : 2}
+        scale={isMobile ? 1 : 2}
       />
       <Rombus
-        position={[viewport.width / 3.2, 1.2, 0]}
+        position={[viewport.width / 3.2, isMobile ? 2.3 : 1.2, 0]}
         rotation={[Math.PI / 1.7, 0, 2]}
         scale={isMobile ? 1 : 1.5}
       />
