@@ -12,10 +12,7 @@ export default defineType({
     defineField({
       name: "parent",
       type: "reference",
-      to: [{ type: "landing" }],
-      options: {
-        filter: "!defined(parent)",
-      },
+      to: [{ type: "landing" }, { type: "page" }],
       group: "config",
     }),
     defineField({
@@ -49,6 +46,10 @@ export default defineType({
       rows: 5,
       group: "heading",
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "meta",
+      type: "meta",
     }),
   ],
 })

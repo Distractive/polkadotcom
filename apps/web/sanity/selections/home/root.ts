@@ -1,6 +1,7 @@
 import { q } from "groqd"
 import type { Selection } from "groqd"
 
+import { singletonMetaSelection } from "../singleton-meta"
 import { buildSelection } from "./build"
 import { connectedSelection } from "./connected"
 import { ecosystemSelection } from "./ecosystem"
@@ -22,6 +23,7 @@ export const homeSelection = {
       ...statsSelection,
       ...networkSelection,
       ...buildSelection,
+      ...singletonMetaSelection,
     })
     .slice(0),
 } satisfies Selection

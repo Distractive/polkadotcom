@@ -4,6 +4,28 @@ import { q, sanityImage } from "groqd"
 import { headerSelection } from "../selections/blocks/header"
 import { pageBuilderSelection } from "../selections/page-builder"
 
+export async function getSingletonMeta(
+  type: "home" | "blog" | "press-release"
+) {
+  const pageQuery = q("*")
+    .filter(`_type == '${type}'`)
+    .grab({
+      meta: q("meta")
+        .grab({
+          meta_title: q.string().nullable(),
+          meta_description: q.string().nullable(),
+          meta_image: sanityImage("meta_image", {
+            withAsset: ["base"],
+          }).nullable(),
+        })
+        .nullable(),
+    })
+    .slice(0)
+    .nullable()
+
+  return runQuery(pageQuery)
+}
+
 export async function getPageMeta(slug: string) {
   const pageQuery = q("*")
     .filter("_type == 'landing' || _type == 'page' || _type == 'hygiene'")
@@ -27,11 +49,11 @@ export async function getPageMeta(slug: string) {
         .nullable(),
     })
     .slice(0)
-    .nullable();
+    .nullable()
 
   return runQuery(pageQuery, {
     slug: slug,
-  });
+  })
 }
 
 export async function getPage(slug: string) {
@@ -40,7 +62,9 @@ export async function getPage(slug: string) {
     .filter("slug.current == $slug")
     .grab({
       title: q.string(),
-      header: q("header").grab({ ...headerSelection }).nullable(), 
+      header: q("header")
+        .grab({ ...headerSelection })
+        .nullable(),
       slug: q.slug("slug"),
       parent: q("parent")
         .deref()
