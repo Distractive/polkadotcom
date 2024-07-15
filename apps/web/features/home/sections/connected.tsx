@@ -146,7 +146,7 @@ export function Connected({ connected }: Props) {
             id="connected-carousel"
             className="col-span-12 flex flex-col gap-gutter pb-page pl-gutter md:pb-0 lg:col-span-7 lg:col-start-6 xl:col-start-7"
           >
-            <Carousel navClassName="pr-gutter">
+            <Carousel navClassName="pr-gutter" className="rounded-l-2xl">
               {connected.items.map((card) => (
                 <CarouselItem
                   key={card._key}

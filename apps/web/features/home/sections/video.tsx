@@ -50,16 +50,15 @@ export function Video({ video }: Props) {
         opacity: 1,
         y: 0,
         scale: 1,
-        delay: STANDARD_DELAY,
+        // delay: STANDARD_DELAY,
         scrollTrigger: {
           trigger: "#video-pile",
-          start: "top 15%",
-          end: "top 90%",
-          scrub: 0.5,
+          start: "top 20%",
+          end: "top 80%",
+          scrub: 1.5,
           markers: false,
           once: true,
         },
-        duration: 0.4,
       }
     )
 

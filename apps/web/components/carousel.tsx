@@ -57,6 +57,7 @@ export function Carousel({
         loop,
         active: !isDraggable,
         watchDrag: !isDraggable,
+        duration: 40,
       }}
       className={cn(
         "col-span-full flex flex-col gap-gutter overflow-hidden",

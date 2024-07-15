@@ -76,13 +76,13 @@ export function Ecosystem({ ecosystem }: Props) {
           delay: STANDARD_DELAY,
           scrollTrigger: {
             trigger: "#ecosystem-pile",
-            start: "top 15%",
+            start: "top 20%",
             end: "top 90%",
-            scrub: true,
+            scrub: 2,
             markers: false,
             once: true,
           },
-          duration: 0.4,
+          // duration: 0.4,
         }
       )
     timeline.current.fromTo(
