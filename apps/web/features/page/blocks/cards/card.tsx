@@ -125,6 +125,7 @@ export default function CardBlock({ card, className }: Props) {
               {link && link.variant && (
                 <CardFooter>
                   <Button
+                    tabIndex={-1}
                     asChild
                     size="md"
                     className="md:group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0"
@@ -138,7 +139,7 @@ export default function CardBlock({ card, className }: Props) {
                   >
                     <CustomUrl
                       className="outline-none"
-                      tabIndex={-1}
+                      // tabIndex={-1}
                       value={link}
                     >
                       {link.label}
