@@ -61,7 +61,6 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
             return (
               <li
                 key={index}
-                tabIndex={0}
                 onMouseEnter={() => handleItemHover(item.heading)}
                 onKeyDown={(event) => handleKeyDown(event, item)}
                 className="relative flex h-full cursor-pointer items-center justify-center transition-colors duration-500 ease-in-out lg:hover:text-pink"
@@ -69,10 +68,18 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
                 <CustomUrl
                   value={item.link}
                   onClick={handleItemSelect}
-                  className="transition-colors duration-500 ease-in-out hover:text-pink"
+                  className="transition-colors duration-500 ease-in-out hover:text-pink focus:text-pink peer-focus:text-pink"
                 >
                   {item.heading}
                 </CustomUrl>
+                <button
+                  className="peer sr-only"
+                  aria-expanded={"" === item.heading}
+                  onFocus={() => handleItemHover(item.heading)}
+                  onBlur={() => handleItemHover("")}
+                >
+                  Show submenu
+                </button>
               </li>
             )
           })}
