@@ -23,7 +23,7 @@ export function MenuDesktop({
 }: Props) {
   const { ref } = useToggleAnimation({ isVisible: isOpen })
 
-  const handleLinkClick = () => {
+  const handleCloseMenu = () => {
     setHovered("")
     setIsOpen(false)
   }
@@ -33,6 +33,7 @@ export function MenuDesktop({
       {menu.map((section, index) => (
         <div
           key={index}
+          onMouseLeave={handleCloseMenu}
           id={`${stegaClean(section.heading)}`}
           className={cn(
             "mb-auto mr-auto flex items-start overflow-hidden",
@@ -53,7 +54,7 @@ export function MenuDesktop({
                 >
                   <CustomUrl
                     value={item.link}
-                    onClick={handleLinkClick}
+                    onClick={handleCloseMenu}
                     className="leading-none transition-colors duration-500 ease-in-out hover:text-pink focus:text-pink"
                     tabIndex={0}
                   >
@@ -67,7 +68,7 @@ export function MenuDesktop({
             )}
           </ul>
           {section.aside && (
-            <CustomUrl value={section.aside.link} onClick={handleLinkClick}>
+            <CustomUrl value={section.aside.link} onClick={handleCloseMenu}>
               <aside
                 className={cn(
                   "group grid h-full max-w-[21rem] gap-copy p-nav",
