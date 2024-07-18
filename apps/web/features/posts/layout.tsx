@@ -66,7 +66,7 @@ export default async function Layout({
       )}
       <div className="max-width col-span-full px-gutter">
         {tagSlug !== "" && (
-          <div className="pt-header-top col-span-full mt-gutter flex justify-center pb-gutter">
+          <div className="col-span-full mt-gutter flex justify-center pb-gutter pt-header-top">
             <h1 className="font-display text-3xl capitalize">{tagSlug}</h1>
           </div>
         )}
@@ -92,7 +92,7 @@ export default async function Layout({
           </div>
         </div>
 
-        <section id="main-content" className="col-span-full">
+        <section className="col-span-full">
           <Grid posts={data.posts} />
         </section>
 

@@ -115,8 +115,8 @@ export default async function RootLayout({
         <a
           href="#main-content"
           className={cn(
-            "group absolute -left-[9999px] -top-[9999px] z-[999] w-screen border-b border-b-grey-400 bg-grey-100 p-4 opacity-100 outline-none",
-            "focus:left-0 focus:top-0 focus:opacity-100"
+            "group absolute -left-[9999px] -top-[9999px] z-[999] border-b border-b-grey-400 bg-grey-100 p-4 opacity-100 outline-none",
+            "focus:left-0 focus:right-0 focus:top-0 focus:opacity-100"
           )}
         >
           <span

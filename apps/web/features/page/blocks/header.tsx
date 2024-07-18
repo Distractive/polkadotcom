@@ -43,7 +43,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         <Heading variant="h1">{header.title}</Heading>
 
         {header.body && <p className="text-lg">{header.body}</p>}
-        <div className="mt-card flex w-full flex-wrap gap-4">
+        <div id="main-content" className="mt-card flex w-full flex-wrap gap-4">
           {header.links?.map((link, index) => (
             <Button
               asChild
