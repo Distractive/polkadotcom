@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import type { navigationSelection } from "@/sanity/selections/navigation/navigation"
 import type { TypeFromSelection } from "groqd"
 
@@ -22,6 +22,23 @@ export default function NavigationLayout({ navigation }: Props) {
   const [hovered, setHovered] = useState<string>("")
   const isMobile = useBreakpoint("--screen-lg")
   const { ref } = useHideOnScroll()
+
+  const handleKeydown = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isOpen) {
+        setIsOpen(false)
+        setHovered("")
+      }
+    },
+    [isOpen]
+  )
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeydown)
+    return () => {
+      window.removeEventListener("keydown", handleKeydown)
+    }
+  }, [handleKeydown])
 
   const onLeave = () => {
     if (ref.current) {

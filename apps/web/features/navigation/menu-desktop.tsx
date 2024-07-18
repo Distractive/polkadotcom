@@ -37,7 +37,9 @@ export function MenuDesktop({
           className={cn(
             "mb-auto mr-auto flex items-start overflow-hidden",
             "rounded-2xl border border-grey-300 bg-white",
-            section.heading === hovered ? "visible" : "invisible"
+            section.heading === hovered
+              ? "pointer-events-auto visible"
+              : "pointer-events-none invisible"
           )}
         >
           <ul className="grid grid-cols-2">
