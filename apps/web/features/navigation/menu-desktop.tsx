@@ -52,7 +52,7 @@ export function MenuDesktop({
                   <CustomUrl
                     value={item.link}
                     onClick={handleLinkClick}
-                    className="leading-none transition-colors duration-500 ease-in-out hover:text-pink"
+                    className="leading-none transition-colors duration-500 ease-in-out hover:text-pink focus:text-pink"
                     tabIndex={0}
                   >
                     {item.link.label}

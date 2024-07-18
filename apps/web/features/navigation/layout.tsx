@@ -33,11 +33,6 @@ export default function NavigationLayout({ navigation }: Props) {
     }
   }
 
-  useEffect(() => {
-    if (!ref.current) return
-    const nav = ref.current.querySelector("nav")
-  }, [ref])
-
   return (
     <>
       <Overlay isVisible={isOpen} />
