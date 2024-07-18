@@ -64,7 +64,7 @@ export function AccordionBlock({ accordion }: Props) {
             )}
           >
             <AccordionTrigger
-              aria-label={`View '${stegaClean(item.heading)}' content`}
+              aria-label={`Open '${stegaClean(item.heading)}' content`}
               className={cn(
                 "flex flex-1 items-center justify-between p-gutter py-4",
                 "border border-grey-300 font-display font-medium hover:text-pink data-[state=open]:text-pink",

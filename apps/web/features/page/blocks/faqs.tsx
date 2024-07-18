@@ -1,5 +1,6 @@
 import type { faqsSelection } from "@/sanity/selections/blocks/faqs"
 import { PortableText } from "@portabletext/react"
+import { stegaClean } from "@sanity/client/stega"
 import { cn } from "@shared/ui/lib/utils"
 import type { TypeFromSelection } from "groqd"
 
@@ -37,6 +38,7 @@ export function FAQBlock({ faqs }: Props) {
         {faqs.items.map((faq) => (
           <AccordionItem key={faq._key} value={faq._key}>
             <AccordionTrigger
+              aria-label={`Open answer to '${stegaClean(faq.question)}'`}
               className={cn(
                 "flex flex-1 items-center justify-between py-4",
                 "text-left font-default text-base font-bold",

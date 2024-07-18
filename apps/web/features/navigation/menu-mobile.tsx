@@ -42,7 +42,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                   {section.heading}
                 </CustomUrl>
                 <AccordionTrigger
-                  aria-label={`View '${stegaClean(section.heading)}' page links`}
+                  aria-label={`Open '${stegaClean(section.heading)}' page links`}
                   className="[&>svg]:mx-nav"
                 />
               </div>
