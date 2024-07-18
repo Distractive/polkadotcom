@@ -144,7 +144,7 @@ const SearchBarInput = ({
       {hasDrawerResultsOpen && (
         <button
           role="button"
-          aria-label="clear field"
+          aria-label="Clear search field"
           tabIndex={0}
           onClick={() => {
             if (inputRef.current) {
