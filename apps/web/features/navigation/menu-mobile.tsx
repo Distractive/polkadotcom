@@ -23,6 +23,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
 
   return (
     <div
+      id="page-menu"
       ref={ref}
       className="overflow-scroll rounded-2xl border border-grey-300 bg-white opacity-0"
     >
