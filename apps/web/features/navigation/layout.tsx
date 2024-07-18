@@ -1,7 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useMemo, useState } from "react"
-import { usePathname } from "next/navigation"
+import { useCallback, useEffect, useState } from "react"
 import type { navigationSelection } from "@/sanity/selections/navigation/navigation"
 import type { TypeFromSelection } from "groqd"
 
