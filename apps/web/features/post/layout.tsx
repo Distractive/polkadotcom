@@ -123,7 +123,10 @@ export default async function Layout({ slug, type }: LayoutProps) {
 
 const PostPublish = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="mb-6 flex w-full items-center gap-2 md:mb-12">
+    <div
+      id="main-content"
+      className="mb-6 flex w-full items-center gap-2 md:mb-12"
+    >
       {children}
     </div>
   )
