@@ -1,6 +1,6 @@
 "use client"
 
-import { use, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import type { navigationSelection } from "@/sanity/selections/navigation/navigation"
 import type { TypeFromSelection } from "groqd"
 
@@ -26,7 +26,7 @@ export default function NavigationLayout({ navigation }: Props) {
   const onLeave = () => {
     if (ref.current) {
       if (ref.current.matches(":focus-within")) {
-        setIsOpen(false)
+        return
       } else {
         setIsOpen(false)
       }

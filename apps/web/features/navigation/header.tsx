@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { type navigationMenuSelection } from "@/sanity/selections/navigation/navigation-menu"
+import { stegaClean } from "@sanity/client/stega"
 import { type TypeFromSelection } from "groqd"
 
 import { cn } from "@shared/ui"
@@ -7,6 +8,7 @@ import { CustomUrl } from "@/components/custom-url"
 import { Logo } from "@/components/logo"
 
 import { Burger } from "./burger"
+import { getFocusableElements } from "./utils"
 
 interface Props {
   menu: ReadonlyArray<TypeFromSelection<typeof navigationMenuSelection>>
@@ -24,6 +26,25 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
   const handleCurrentHeading = (heading: string) => {
     setHovered(heading)
     setIsOpen(true)
+  }
+
+  function onSubmenuToggleClick(event: React.MouseEvent<HTMLButtonElement>) {
+    // Get the button clicked.
+    const element = event.target
+    if (!(element instanceof HTMLButtonElement)) return
+
+    // Get the element we want to give focus to.
+    const targetId = element.getAttribute("aria-controls") ?? ""
+    const modal = document.getElementById(targetId)
+    if (!(modal instanceof HTMLElement)) return
+
+    // Find the first element that can receive interaction.
+    const firstFocusableElement = getFocusableElements(modal)[0]
+    // Focus it.
+    if (firstFocusableElement) {
+      console.log(firstFocusableElement)
+      firstFocusableElement.focus()
+    }
   }
 
   return (
@@ -64,8 +85,9 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
                 <button
                   className="peer sr-only"
                   aria-expanded={"" === item.heading}
+                  aria-controls={stegaClean(item.heading)}
                   onFocus={() => handleCurrentHeading(item.heading)}
-                  onBlur={() => handleCurrentHeading("")}
+                  onClick={onSubmenuToggleClick}
                 >
                   Show submenu
                 </button>

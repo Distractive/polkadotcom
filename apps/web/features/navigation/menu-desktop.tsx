@@ -1,4 +1,5 @@
 import { type navigationMenuSelection } from "@/sanity/selections/navigation/navigation-menu"
+import { stegaClean } from "@sanity/client/stega"
 import { type TypeFromSelection } from "groqd"
 
 import { useToggleAnimation } from "@/hooks/use-toggle-animation"
@@ -28,63 +29,62 @@ export function MenuDesktop({
   }
 
   return (
-    <div ref={ref} className="overflow-hidden opacity-0">
-      {menu.map(
-        (section, index) =>
-          section.heading === hovered && (
-            <div
-              key={index}
-              className={cn(
-                "mb-auto mr-auto flex items-start overflow-hidden",
-                "rounded-2xl border border-grey-300 bg-white"
-              )}
-            >
-              <ul className="grid grid-cols-2">
-                {section.items.map((item, index) => {
-                  return (
-                    <li
-                      key={index}
-                      className={cn(
-                        "flex min-w-[21rem] p-nav shadow-internal-border"
-                      )}
-                    >
-                      <CustomUrl
-                        value={item.link}
-                        onClick={handleLinkClick}
-                        className="leading-none transition-colors duration-500 ease-in-out hover:text-pink"
-                        tabIndex={0}
-                      >
-                        {item.link.label}
-                      </CustomUrl>
-                    </li>
-                  )
-                })}
-                {section.items.length % 2 !== 0 && (
-                  <li className="min-w-[21rem] shadow-internal-border"></li>
-                )}
-              </ul>
-              {section.aside && (
-                <CustomUrl value={section.aside.link} onClick={handleLinkClick}>
-                  <aside
-                    className={cn(
-                      "group grid h-full max-w-[21rem] gap-copy p-nav",
-                      "cursor-pointer border-l border-grey-300"
-                    )}
+    <div ref={ref} className="grid-pile overflow-hidden opacity-0">
+      {menu.map((section, index) => (
+        <div
+          key={index}
+          id={`${stegaClean(section.heading)}`}
+          className={cn(
+            "mb-auto mr-auto flex items-start overflow-hidden",
+            "rounded-2xl border border-grey-300 bg-white",
+            section.heading === hovered ? "visible" : "invisible"
+          )}
+        >
+          <ul className="grid grid-cols-2">
+            {section.items.map((item, index) => {
+              return (
+                <li
+                  key={index}
+                  className={cn(
+                    "flex min-w-[21rem] p-nav shadow-internal-border"
+                  )}
+                >
+                  <CustomUrl
+                    value={item.link}
+                    onClick={handleLinkClick}
+                    className="leading-none transition-colors duration-500 ease-in-out hover:text-pink"
+                    tabIndex={0}
                   >
-                    <img
-                      src={section.aside.image.asset.url}
-                      alt=""
-                      className="w-full"
-                    />
-                    <p className="text-lg font-bold transition-colors duration-500 ease-in-out group-hover:text-pink">
-                      {section.aside.heading}
-                    </p>
-                  </aside>
-                </CustomUrl>
-              )}
-            </div>
-          )
-      )}
+                    {item.link.label}
+                  </CustomUrl>
+                </li>
+              )
+            })}
+            {section.items.length % 2 !== 0 && (
+              <li className="min-w-[21rem] shadow-internal-border"></li>
+            )}
+          </ul>
+          {section.aside && (
+            <CustomUrl value={section.aside.link} onClick={handleLinkClick}>
+              <aside
+                className={cn(
+                  "group grid h-full max-w-[21rem] gap-copy p-nav",
+                  "cursor-pointer border-l border-grey-300"
+                )}
+              >
+                <img
+                  src={section.aside.image.asset.url}
+                  alt=""
+                  className="w-full"
+                />
+                <p className="text-lg font-bold transition-colors duration-500 ease-in-out group-hover:text-pink">
+                  {section.aside.heading}
+                </p>
+              </aside>
+            </CustomUrl>
+          )}
+        </div>
+      ))}
     </div>
   )
 }
