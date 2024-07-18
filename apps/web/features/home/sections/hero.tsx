@@ -85,7 +85,10 @@ export function Hero({ hero }: Props) {
             <p className="text-lg md:w-5/6 xl:text-2xl 2xl:w-8/12">
               {hero.copy}
             </p>
-            <div className="flex flex-col gap-4 pt-card md:flex-row">
+            <div
+              id="main-content"
+              className="flex flex-col gap-4 pt-card md:flex-row"
+            >
               {hero.links?.map((link, index) => (
                 <Button
                   asChild
