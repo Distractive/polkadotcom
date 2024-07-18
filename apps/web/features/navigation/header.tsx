@@ -1,4 +1,3 @@
-import { type KeyboardEvent } from "react"
 import Link from "next/link"
 import { type navigationMenuSelection } from "@/sanity/selections/navigation/navigation-menu"
 import { type TypeFromSelection } from "groqd"
@@ -22,18 +21,9 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
     setIsOpen(false)
   }
 
-  const handleItemHover = (heading: string) => {
+  const handleCurrentHeading = (heading: string) => {
     setHovered(heading)
     setIsOpen(true)
-  }
-
-  const handleKeyDown = (
-    event: KeyboardEvent<HTMLLIElement>,
-    item: TypeFromSelection<typeof navigationMenuSelection>
-  ) => {
-    if (event.key === "Enter") {
-      handleItemHover(item.heading)
-    }
   }
 
   return (
@@ -61,8 +51,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
             return (
               <li
                 key={index}
-                onMouseEnter={() => handleItemHover(item.heading)}
-                onKeyDown={(event) => handleKeyDown(event, item)}
+                onMouseEnter={() => handleCurrentHeading(item.heading)}
                 className="relative flex h-full cursor-pointer items-center justify-center transition-colors duration-500 ease-in-out lg:hover:text-pink"
               >
                 <CustomUrl
@@ -75,8 +64,8 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
                 <button
                   className="peer sr-only"
                   aria-expanded={"" === item.heading}
-                  onFocus={() => handleItemHover(item.heading)}
-                  onBlur={() => handleItemHover("")}
+                  onFocus={() => handleCurrentHeading(item.heading)}
+                  onBlur={() => handleCurrentHeading("")}
                 >
                   Show submenu
                 </button>

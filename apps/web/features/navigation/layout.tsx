@@ -1,7 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useMemo, useState } from "react"
-import { usePathname } from "next/navigation"
+import { use, useEffect, useState } from "react"
 import type { navigationSelection } from "@/sanity/selections/navigation/navigation"
 import type { TypeFromSelection } from "groqd"
 
@@ -24,39 +23,28 @@ export default function NavigationLayout({ navigation }: Props) {
   const isMobile = useBreakpoint("--screen-lg")
   const { ref } = useHideOnScroll()
 
-  const handleKeydown = useCallback(
-    (event: KeyboardEvent) => {
-      if (event.key === "Escape" && isOpen) {
-        setIsOpen(false)
-        setHovered("")
-      }
-    },
-    [isOpen]
-  )
-
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeydown)
-    return () => {
-      window.removeEventListener("keydown", handleKeydown)
-    }
-  }, [handleKeydown])
-
-  function onSubmenuClose() {
+  const onLeave = () => {
     if (ref.current) {
       if (ref.current.matches(":focus-within")) {
-        return
+        setIsOpen(false)
+      } else {
+        setIsOpen(false)
       }
     }
-    setIsOpen(false)
   }
+
+  useEffect(() => {
+    if (!ref.current) return
+    const nav = ref.current.querySelector("nav")
+  }, [ref])
 
   return (
     <>
       <Overlay isVisible={isOpen} />
       <nav
         ref={ref}
-        onMouseLeave={onSubmenuClose}
-        onBlur={onSubmenuClose}
+        onMouseLeave={onLeave}
+        onBlur={onLeave}
         className={cn(
           "fixed left-0 right-0 top-0 z-[100] m-4 lg:right-auto lg:m-6",
           "flex flex-col gap-nav text-black lg:gap-2",
