@@ -30,12 +30,13 @@ export function ModalBlock({ modal }: Props) {
               <Heading variant="h2">{modal.heading}</Heading>
               <p>{modal.body}</p>
             </div>
-            <DialogTrigger className="mr-auto">
+            <DialogTrigger className="group mr-auto">
               <span
                 className={cn(
                   ButtonStyles.base,
                   ButtonStyles.variants.primary,
-                  ButtonStyles.sizes.lg
+                  ButtonStyles.sizes.lg,
+                  "md:group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0"
                 )}
               >
                 {modal.cta}
