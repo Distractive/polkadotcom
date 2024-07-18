@@ -70,6 +70,7 @@ export function SearchBar({ searches, postType }: Props) {
   return (
     <SearchBarContent>
       <SearchBarInput
+        aria-label="Enter your search"
         hasDrawerResultsOpen={searchable.length > 0}
         onClick={() => {
           setSearchable("")
