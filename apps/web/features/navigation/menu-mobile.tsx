@@ -1,4 +1,5 @@
 import { type navigationMenuSelection } from "@/sanity/selections/navigation/navigation-menu"
+import { stegaClean } from "@sanity/client/stega"
 import { type TypeFromSelection } from "groqd"
 
 import { useToggleAnimation } from "@/hooks/use-toggle-animation"
@@ -22,6 +23,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
 
   return (
     <div
+      id="page-menu"
       ref={ref}
       className="overflow-scroll rounded-2xl border border-grey-300 bg-white opacity-0"
     >
@@ -40,7 +42,10 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                 >
                   {section.heading}
                 </CustomUrl>
-                <AccordionTrigger className="[&>svg]:mx-nav" />
+                <AccordionTrigger
+                  aria-label={`Open '${stegaClean(section.heading)}' page links`}
+                  className="[&>svg]:mx-nav"
+                />
               </div>
               <AccordionContent className="bg-grey-100">
                 {section.items.map((item, linkIndex) => {

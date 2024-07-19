@@ -57,6 +57,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
           href="/"
           onClick={handleItemSelect}
           className="translate-x-[-2%] lg:translate-x-0 lg:pr-nav"
+          aria-label="Navigate to the home page"
         >
           <Logo ariaLabel="Polkadot homepage" className="h-auto w-[9.125rem]" />
         </Link>

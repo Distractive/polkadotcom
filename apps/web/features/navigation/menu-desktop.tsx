@@ -29,7 +29,11 @@ export function MenuDesktop({
   }
 
   return (
-    <div ref={ref} className="grid-pile overflow-hidden opacity-0">
+    <div
+      ref={ref}
+      id="page-menu"
+      className="grid-pile overflow-hidden opacity-0"
+    >
       {menu.map((section, index) => (
         <div
           key={index}

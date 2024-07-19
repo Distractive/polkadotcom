@@ -52,10 +52,10 @@ export function CardTags({ tags, cards }: Props) {
             "relative",
             currentTag === "All" && "bg-blue text-white"
           )}
-          aria-label={`Filter by All`}
         >
           <button
             type="button"
+            aria-label={`Filter by All`}
             onClick={() => {
               handleTagClick("All")
               setCurrentTag("All")

@@ -70,6 +70,7 @@ export function SearchBar({ searches, postType }: Props) {
   return (
     <SearchBarContent>
       <SearchBarInput
+        aria-label="Enter your search"
         hasDrawerResultsOpen={searchable.length > 0}
         onClick={() => {
           setSearchable("")
@@ -143,7 +144,7 @@ const SearchBarInput = ({
       {hasDrawerResultsOpen && (
         <button
           role="button"
-          aria-label="clear field"
+          aria-label="Clear search field"
           tabIndex={0}
           onClick={() => {
             if (inputRef.current) {
