@@ -1,6 +1,6 @@
-import { type KeyboardEvent } from "react"
 import Link from "next/link"
 import { type navigationMenuSelection } from "@/sanity/selections/navigation/navigation-menu"
+import { stegaClean } from "@sanity/client/stega"
 import { type TypeFromSelection } from "groqd"
 
 import { cn } from "@shared/ui"
@@ -8,6 +8,7 @@ import { CustomUrl } from "@/components/custom-url"
 import { Logo } from "@/components/logo"
 
 import { Burger } from "./burger"
+import { getFocusableElements } from "./utils"
 
 interface Props {
   menu: ReadonlyArray<TypeFromSelection<typeof navigationMenuSelection>>
@@ -22,17 +23,25 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
     setIsOpen(false)
   }
 
-  const handleItemHover = (heading: string) => {
+  const handleCurrentHeading = (heading: string) => {
     setHovered(heading)
     setIsOpen(true)
   }
 
-  const handleKeyDown = (
-    event: KeyboardEvent<HTMLLIElement>,
-    item: TypeFromSelection<typeof navigationMenuSelection>
-  ) => {
-    if (event.key === "Enter") {
-      handleItemHover(item.heading)
+  function onSubmenuToggleClick(event: React.MouseEvent<HTMLButtonElement>) {
+    // Get the button clicked.
+    const element = event.target
+    if (!(element instanceof HTMLButtonElement)) return
+    // Get the element we want to give focus to.
+    const targetId = element.getAttribute("aria-controls") ?? ""
+    const modal = document.getElementById(targetId)
+    if (!(modal instanceof HTMLElement)) return
+    // Find the first element that can receive interaction.
+    const firstFocusableElement = getFocusableElements(modal)[0]
+    // Focus it.
+    if (firstFocusableElement) {
+      console.log(firstFocusableElement)
+      firstFocusableElement.focus()
     }
   }
 
@@ -62,18 +71,25 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
             return (
               <li
                 key={index}
-                tabIndex={0}
-                onMouseEnter={() => handleItemHover(item.heading)}
-                onKeyDown={(event) => handleKeyDown(event, item)}
+                onMouseEnter={() => handleCurrentHeading(item.heading)}
                 className="relative flex h-full cursor-pointer items-center justify-center transition-colors duration-500 ease-in-out lg:hover:text-pink"
               >
                 <CustomUrl
                   value={item.link}
                   onClick={handleItemSelect}
-                  className="transition-colors duration-500 ease-in-out hover:text-pink"
+                  className="transition-colors duration-500 ease-in-out hover:text-pink focus:text-pink peer-focus:text-pink"
                 >
                   {item.heading}
                 </CustomUrl>
+                <button
+                  className="peer sr-only"
+                  aria-expanded={"" === item.heading}
+                  aria-controls={stegaClean(item.heading)}
+                  onFocus={() => handleCurrentHeading(item.heading)}
+                  onClick={onSubmenuToggleClick}
+                >
+                  Show submenu
+                </button>
               </li>
             )
           })}

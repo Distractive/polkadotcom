@@ -71,6 +71,7 @@ export default function CardSmallBlock({ card, className }: Props) {
             )}
             {link && link.variant && (
               <Button
+                tabIndex={-1}
                 asChild
                 variant={
                   link.variant
@@ -80,7 +81,7 @@ export default function CardSmallBlock({ card, className }: Props) {
                     : "primary"
                 }
                 size="md"
-                className="mt-copy md:mr-auto"
+                className="mt-copy md:mr-auto md:group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0"
               >
                 <CustomUrl className="outline-none" value={link}>
                   {link.label}

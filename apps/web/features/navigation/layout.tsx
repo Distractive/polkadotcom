@@ -40,12 +40,23 @@ export default function NavigationLayout({ navigation }: Props) {
     }
   }, [handleKeydown])
 
+  const onLeave = () => {
+    if (ref.current) {
+      if (ref.current.matches(":focus-within")) {
+        return
+      } else {
+        setIsOpen(false)
+      }
+    }
+  }
+
   return (
     <>
       <Overlay isVisible={isOpen} />
       <nav
         ref={ref}
-        onMouseLeave={() => setIsOpen(false)}
+        onMouseLeave={onLeave}
+        onBlur={onLeave}
         className={cn(
           "fixed left-0 right-0 top-0 z-[100] m-4 lg:right-auto lg:m-6",
           "flex flex-col gap-nav text-black lg:gap-2",

@@ -62,7 +62,7 @@ export default async function Page({ params: { slug, childslug } }: Props) {
       {data.header && (
         <HeaderBlock header={data.header} breadcrumb={breadcrumb} />
       )}
-      <section id="main-content" className="flex flex-col gap-page">
+      <section className="flex flex-col gap-page">
         <PageBuilder pageBuilder={data.pageBuilder} />
       </section>
     </>
