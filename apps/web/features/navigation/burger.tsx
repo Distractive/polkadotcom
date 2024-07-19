@@ -54,6 +54,8 @@ export function Burger({ isOpen, setIsOpen }: Props) {
 
   return (
     <button
+      aria-expanded={isOpen ? true : false}
+      aria-controls="page-menu"
       onClick={() => setIsOpen(!isOpen)}
       className={cn(
         "grid-pile h-full w-14 items-center justify-center lg:hidden",

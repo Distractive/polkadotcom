@@ -28,7 +28,7 @@ export function MenuDesktop({
   }
 
   return (
-    <div ref={ref} className="overflow-hidden opacity-0">
+    <div id="page-menu" ref={ref} className="overflow-hidden opacity-0">
       {menu.map(
         (section, index) =>
           section.heading === hovered && (
