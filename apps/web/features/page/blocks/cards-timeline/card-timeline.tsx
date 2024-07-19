@@ -76,11 +76,7 @@ export default function CardTimelineBlock({
                     }
                     size="md"
                   >
-                    <CustomUrl
-                      className="outline-none"
-                      tabIndex={-1}
-                      value={value}
-                    >
+                    <CustomUrl className="outline-none" value={value}>
                       {value.label}
                     </CustomUrl>
                   </Button>
