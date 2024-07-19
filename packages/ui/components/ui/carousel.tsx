@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useId } from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
@@ -67,6 +68,7 @@ const CarouselContainer = React.forwardRef<
     )
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
+    const id = useId()
 
     const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
@@ -138,6 +140,7 @@ const CarouselContainer = React.forwardRef<
           onKeyDownCapture={handleKeyDown}
           className={cn("", className)}
           role="region"
+          aria-label={`carousel-${id}`}
           aria-roledescription="carousel"
           {...props}
         >
