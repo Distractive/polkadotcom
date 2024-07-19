@@ -137,11 +137,7 @@ export default function CardBlock({ card, className }: Props) {
                         : "primary"
                     }
                   >
-                    <CustomUrl
-                      className="outline-none"
-                      // tabIndex={-1}
-                      value={link}
-                    >
+                    <CustomUrl className="outline-none" value={link}>
                       {link.label}
                     </CustomUrl>
                   </Button>
