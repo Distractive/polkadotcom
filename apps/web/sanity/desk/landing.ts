@@ -9,7 +9,7 @@ export function parentChild(
   documentStore: DocumentStore
 ) {
   const filter = `_type == "${schemaType}" && !defined(parent) && !(_id in path("drafts.**"))`
-  const query = `*[${filter}]{ _id, title }`
+  const query = `*[${filter}]{ _id, title, tierthree }`
   const options = { apiVersion: `2023-01-01` }
 
   return (
@@ -46,28 +46,30 @@ export function parentChild(
                       )
                   ),
                 S.divider(),
-                ...parents.map((parent: SanityDocument) =>
-                  S.listItem({
-                    id: parent._id,
-                    title: parent.title || "Untitled",
-                    schemaType,
-                    child: () =>
-                      S.documentTypeList("page")
-                        .title("Tier Two")
-                        .filter(`_type == "page" && parent._ref == $parentId`)
-                        .params({ schemaType, parentId: parent._id })
-                        .canHandleIntent(
-                          (intentName: string, params) =>
-                            intentName === "create" &&
-                            params.template === "landing-child"
-                        )
-                        .initialValueTemplates([
-                          S.initialValueTemplateItem("landing-child", {
-                            parentId: parent._id,
-                          }),
-                        ]),
-                  })
-                ),
+                ...parents
+                  .filter((parent: SanityDocument) => parent.tierthree != true)
+                  .map((parent: SanityDocument) =>
+                    S.listItem({
+                      id: parent._id,
+                      title: parent.title || "Untitled",
+                      schemaType,
+                      child: () =>
+                        S.documentTypeList("page")
+                          .title("Tier Two")
+                          .filter(`_type == "page" && parent._ref == $parentId`)
+                          .params({ schemaType, parentId: parent._id })
+                          .canHandleIntent(
+                            (intentName: string, params) =>
+                              intentName === "create" &&
+                              params.template === "landing-child"
+                          )
+                          .initialValueTemplates([
+                            S.initialValueTemplateItem("landing-child", {
+                              parentId: parent._id,
+                            }),
+                          ]),
+                    })
+                  ),
               ])
           )
         )

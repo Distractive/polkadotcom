@@ -1,4 +1,4 @@
-import { CogIcon, DocumentIcon, SearchIcon } from "@sanity/icons"
+import { CogIcon, DocumentIcon, DocumentsIcon, SearchIcon } from "@sanity/icons"
 import { defineField, defineType } from "sanity"
 
 export default defineType({
@@ -11,6 +11,13 @@ export default defineType({
     { title: "Meta", name: "meta", icon: SearchIcon },
   ],
   fields: [
+    defineField({
+      name: "tierthree",
+      title: "Is Tier 3 page?",
+      type: "boolean",
+      description:
+        "Check if this is a `Tier 3` page so it doesn't create folders",
+    }),
     defineField({
       name: "title",
       title: "Title",
@@ -49,6 +56,11 @@ export default defineType({
   preview: {
     select: {
       title: "title",
+      subtitle: "tierthree",
     },
+    prepare: ({ title, subtitle }) => ({
+      title,
+      media: subtitle ? DocumentIcon : DocumentsIcon,
+    }),
   },
 })
