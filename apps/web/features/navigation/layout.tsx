@@ -12,6 +12,7 @@ import { Header } from "./header"
 import { MenuDesktop } from "./menu-desktop"
 import { MenuMobile } from "./menu-mobile"
 import { Overlay } from "./overlay"
+import SkipToContent from "./skip-to-content"
 
 interface Props {
   navigation: TypeFromSelection<typeof navigationSelection>
@@ -54,6 +55,7 @@ export default function NavigationLayout({ navigation }: Props) {
     <>
       <Overlay isVisible={isOpen} />
       <nav
+        role="navigation"
         ref={ref}
         onMouseLeave={onLeave}
         onBlur={onLeave}
@@ -63,6 +65,7 @@ export default function NavigationLayout({ navigation }: Props) {
           isOpen && isMobile && "bottom-0"
         )}
       >
+        <SkipToContent />
         <Header
           menu={navigation.menu}
           isOpen={isOpen}

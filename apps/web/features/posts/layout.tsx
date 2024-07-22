@@ -72,7 +72,10 @@ export default async function Layout({
         )}
         <div className="grid-system col-span-full mb-card">
           {tagSlug === "" && (
-            <search className="col-span-full mb-8 lg:col-span-8 lg:mb-0">
+            <search
+              role="search"
+              className="col-span-full mb-8 lg:col-span-8 lg:mb-0"
+            >
               <SearchBar searches={searchData} postType={type} />
             </search>
           )}

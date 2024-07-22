@@ -74,6 +74,7 @@ export function MenuDesktop({
           {section.aside && (
             <CustomUrl value={section.aside.link} onClick={handleCloseMenu}>
               <aside
+                role="complementary"
                 className={cn(
                   "group grid h-full max-w-[21rem] gap-copy p-nav",
                   "cursor-pointer border-l border-grey-300"
