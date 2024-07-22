@@ -27,7 +27,7 @@ export default defineType({
       hidden: ({ parent, value }) => !value && !!parent?.internal,
       validation: (Rule) =>
         Rule.uri({
-          scheme: ["https"],
+          scheme: ["https", "mailto"],
         }),
     },
     {

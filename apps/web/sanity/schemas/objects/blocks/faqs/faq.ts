@@ -20,8 +20,10 @@ export default defineType({
           styles: [{ title: "Normal", value: "normal" }],
           lists: [],
           marks: {
-            decorators: [],
-            annotations: [],
+            decorators: [
+              { title: "Strong", value: "strong" },
+              { title: "Emphasis", value: "em" },
+            ],
           },
         },
         {

@@ -18,6 +18,7 @@ export default defineType({
       title: "Image",
       type: "image",
       group: "content",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "link",

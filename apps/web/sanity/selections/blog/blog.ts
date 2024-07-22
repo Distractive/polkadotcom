@@ -8,6 +8,7 @@ export const blogSelection = {
   parent: q("parent")
     .deref()
     .grab({
+      title: q.string(),
       header: q("header").grab({ title: q.string() }),
       slug: q.slug("slug"),
     })

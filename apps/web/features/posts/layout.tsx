@@ -42,7 +42,7 @@ export default async function Layout({
     items: [
       {
         slug: `/${postsData?.parent?.slug}` ?? "",
-        title: postsData?.parent?.header?.title,
+        title: postsData?.parent?.title,
       },
       {
         slug: slugPath,

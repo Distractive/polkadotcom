@@ -6,6 +6,13 @@ export default defineType({
   type: "object",
   fields: [
     defineField({
+      name: "title",
+      title: "title",
+      type: "string",
+      validation: (rule) => rule.required(),
+      description: "Title for purely CMS organization purposes",
+    }),
+    defineField({
       name: "content",
       title: "Content",
       type: "array",

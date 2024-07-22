@@ -44,7 +44,7 @@ export default defineType({
       group: "modal",
       options: {
         list: [
-          { title: "Newsletter", value: "newsletter" },
+          { title: "Polkadot Newsletter", value: "newsletter" },
           { title: "Contact", value: "contact" },
         ],
       },

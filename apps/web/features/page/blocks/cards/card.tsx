@@ -44,7 +44,7 @@ export default function CardBlock({ card, className }: Props) {
       )}
       data-tags={selectedTags?.join(",")}
     >
-      <CustomUrl value={link} isWrapper>
+      <CustomUrl value={link} isWrapper className="inline-grid h-full">
         {headerImage && useAsBackgroundImage && (
           <Image
             src={urlForImage(headerImage.asset)}
@@ -69,7 +69,12 @@ export default function CardBlock({ card, className }: Props) {
             )}
           </CardHeader>
         )}
-        <div className="relative">
+        <div
+          className={cn(
+            "relative",
+            useAsBackgroundImage && "bg-gradient-to-t from-black/60 to-black/0"
+          )}
+        >
           <CardContent
             className={cn(
               "grid gap-card p-card",
@@ -102,7 +107,12 @@ export default function CardBlock({ card, className }: Props) {
               </ul>
             )}
             <div className="grid gap-card">
-              <div className="grid gap-copy">
+              <div
+                className={cn(
+                  "grid gap-copy",
+                  useAsBackgroundImage && "text-white"
+                )}
+              >
                 {eyebrow && (
                   <span className="text-base uppercase">{eyebrow}</span>
                 )}

@@ -118,4 +118,28 @@ export default defineType({
       group: "content",
     }),
   ],
+  orderings: [
+    {
+      title: "Published Date, New",
+      name: "publishedDateDesc",
+      by: [{ field: "published_date", direction: "desc" }],
+    },
+    {
+      title: "Published Date, Old",
+      name: "publishedDateAsc",
+      by: [{ field: "published_date", direction: "asc" }],
+    },
+  ],
+  preview: {
+    select: {
+      title: "title",
+      postType: "post_type",
+      media: "featured_image",
+    },
+    prepare: ({ title, postType, media }) => ({
+      title,
+      subtitle: postType == BLOG_POSTTYPE ? "- Blog" : "- Press Release",
+      media,
+    }),
+  },
 })
