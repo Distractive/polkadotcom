@@ -193,7 +193,7 @@ const CarouselPrevious = React.forwardRef<
   return (
     <Button
       ref={ref}
-      variant="secondary"
+      variant="tertiary"
       className={cn(buttonStyles, className)}
       onClick={scrollPrev}
       {...props}
@@ -214,7 +214,7 @@ const CarouselNext = React.forwardRef<
   return (
     <Button
       ref={ref}
-      variant="secondary"
+      variant="tertiary"
       className={cn(buttonStyles, className)}
       onClick={scrollNext}
       {...props}

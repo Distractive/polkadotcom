@@ -7,15 +7,18 @@ import { cn } from "../../lib/utils"
 const ButtonStyles = {
   base: cn(
     "inline-flex items-center justify-center gap-2 uppercase font-display relative overflow-hidden content-none outline-none",
-    "before:absolute before:inset-0 before:-z-20",
-    "after:absolute after:inset-0 after:-z-10 after:-translate-x-full after:transition-transform after:ease-in-out after:duration-500",
-    "md:hover:after:translate-x-0 focus-within:after:translate-x-0 ",
+    "before:absolute before:inset-0 before:-z-20 before:bg-black",
+    "after:absolute after:-inset-0 after:-z-10 after:bg-gradient-to-r",
+    "after:w-[200%] after:transition-transform after:ease-in-out after:duration-[300ms] after:translate-x-[-200%]",
+    "md:hover:after:translate-x-0 md:focus-within:after:translate-x-0",
     "z-10"
   ),
   variants: {
-    primary: "text-white before:bg-blue after:bg-pink",
+    primary: "text-white after:from-pink after:via-pink after:to-black",
     secondary:
-      "text-black before:bg-grey-200 before:opacity-60 before:backdrop-blur-lg after:bg-grey-300 border-[1px] border-grey-300",
+      "text-black before:bg-grey-200 before:opacity-60 before:backdrop-blur-lg after:from-grey-300 after:to-grey-200 border-[1px] border-grey-300",
+    tertiary:
+      "text-black before:bg-grey-200 before:opacity-60 before:backdrop-blur-lg after:from-grey-300 after:via-grey-300 after:to-grey-200 border-[1px] border-grey-300 after:translate-x-[0%] after:w-[100%]",
     disabled:
       "bg-grey-200 text-grey-300 pointer-events-none border-[1px] border-grey-200",
   },

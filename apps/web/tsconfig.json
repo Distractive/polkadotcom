@@ -4,8 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
-    },
-    "declaration": false
+    }
+    // "declaration": false,
   },
   "include": [
     "next-env.d.ts",
