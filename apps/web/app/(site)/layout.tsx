@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { draftMode } from "next/headers"
 import Script from "next/script"
 import { manrope, unbounded } from "@/styles/fonts"
-import { GoogleAnalytics } from "@next/third-parties/google"
 import { VisualEditing } from "next-sanity"
 
 import "@shared/ui/styles/global.css"
@@ -45,6 +44,19 @@ export default async function RootLayout({
         <Script
           src="https://cmp.osano.com/169unzUF2IaM42S5j/0f63db37-496b-4a14-a233-82bbdf3a4afd/osano.js"
           strategy="beforeInteractive"
+        />
+        <Script
+          id="plausible"
+          src="https://plausible.io/js/script.js"
+          strategy="afterInteractive"
+          data-domain="polkadot.network"
+          defer
+        />
+        <Script
+          id="hotjar"
+          strategy="afterInteractive"
+          src="https://static.hotjar.com/c/hotjar-5063108.js?sv=6"
+          async
         />
         <link
           rel="apple-touch-icon"
@@ -120,7 +132,6 @@ export default async function RootLayout({
         {env.VERCEL_ENV === "development" && <TailwindIndicator />}
         {draftMode().isEnabled && <VisualEditing />}
       </body>
-      <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_ID} />
     </html>
   )
 }
