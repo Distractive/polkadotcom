@@ -53,7 +53,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
 
   return (
     <>
-      <article className="max-width col-span-full mt-gutter px-gutter pt-header-top lg:w-2/3">
+      <article className="max-width col-span-full mb-section mt-gutter px-gutter pt-header-top lg:w-2/3">
         <div className="mb-6">
           <BreadcrumbBlock items={breadcrumb.items} />
         </div>
