@@ -146,7 +146,7 @@ export function Build({ build }: Props) {
                 className={cn(
                   "build-card background-blur col-span-6 flex items-start justify-between bg-white/80 md:col-span-4 md:col-start-2 lg:col-span-4",
                   item.link &&
-                    "md:cursor-pointer md:focus-within:shadow-card md:focus-within:backdrop-blur-0 md:hover:shadow-card",
+                    "focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card",
                   "!h-auto"
                 )}
               >
@@ -161,7 +161,7 @@ export function Build({ build }: Props) {
                           className={cn(
                             "text-balance text-xl leading-normal transition-colors duration-500 ease-in-out md:text-2xl",
                             item.link &&
-                              "md:group-focus-within:text-pink md:group-hover:text-pink",
+                              "group-focus-within:text-pink md:group-hover:text-pink",
                             "!hyphens-none !break-normal"
                           )}
                         >

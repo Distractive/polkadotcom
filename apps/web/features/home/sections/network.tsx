@@ -157,7 +157,7 @@ export function Network({ network }: Props) {
                 key={index}
                 className={cn(
                   "network-card background-blur col-span-full flex items-start justify-between bg-white/80 md:col-span-4 md:col-start-2 lg:col-span-4",
-                  "md:focus-within:shadow-card md:focus-within:backdrop-blur-0",
+                  "focus-within:shadow-card focus-within:backdrop-blur-0",
                   item.link && "md:cursor-pointer md:hover:shadow-card",
                   "relative z-30 !h-auto"
                 )}
@@ -171,7 +171,7 @@ export function Network({ network }: Props) {
                           className={cn(
                             "text-balance text-2xl leading-[1.1] transition-colors duration-500 ease-in-out",
                             item.link &&
-                              "md:group-focus-within:text-pink md:group-hover:text-pink",
+                              "group-focus-within:text-pink md:group-hover:text-pink",
                             "!hyphens-none !break-normal"
                           )}
                         >

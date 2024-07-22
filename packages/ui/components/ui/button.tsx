@@ -9,7 +9,7 @@ const ButtonStyles = {
     "inline-flex items-center justify-center gap-2 uppercase font-display relative overflow-hidden content-none outline-none",
     "before:absolute before:inset-0 before:-z-20",
     "after:absolute after:inset-0 after:-z-10 after:-translate-x-full after:transition-transform after:ease-in-out after:duration-500",
-    "md:hover:after:translate-x-0 md:focus-within:after:translate-x-0 ",
+    "md:hover:after:translate-x-0 focus-within:after:translate-x-0 ",
     "z-10"
   ),
   variants: {

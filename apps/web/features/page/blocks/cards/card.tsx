@@ -39,7 +39,7 @@ export default function CardBlock({ card, className }: Props) {
       key={_key}
       className={cn(
         link &&
-          "md:cursor-pointer md:focus-within:shadow-card md:focus-within:backdrop-blur-0 md:hover:shadow-card md:hover:backdrop-blur-0",
+          "focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
         className
       )}
       data-tags={selectedTags?.join(",")}
@@ -114,7 +114,7 @@ export default function CardBlock({ card, className }: Props) {
                     className={cn(
                       "transition-colors duration-500 ease-in-out",
                       link &&
-                        "md:group-focus-within:text-pink md:group-hover:text-pink"
+                        "group-focus-within:text-pink md:group-hover:text-pink"
                     )}
                   >
                     {heading}
@@ -128,7 +128,7 @@ export default function CardBlock({ card, className }: Props) {
                     tabIndex={-1}
                     asChild
                     size="md"
-                    className="md:group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0"
+                    className="group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0"
                     variant={
                       link.variant
                         ? link.variant === "primary"

@@ -26,7 +26,7 @@ export default function CardSmallBlock({ card, className }: Props) {
       key={_key}
       className={cn(
         link &&
-          "md:cursor-pointer md:focus-within:shadow-card md:focus-within:backdrop-blur-0 md:hover:shadow-card md:hover:backdrop-blur-0",
+          "focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
         className
       )}
     >
@@ -58,7 +58,7 @@ export default function CardSmallBlock({ card, className }: Props) {
                 className={cn(
                   "transition-colors duration-500 ease-in-out",
                   link &&
-                    "md:group-focus-within:text-pink md:group-hover:text-pink"
+                    "group-focus-within:text-pink md:group-hover:text-pink"
                 )}
               >
                 {heading}
@@ -81,7 +81,7 @@ export default function CardSmallBlock({ card, className }: Props) {
                     : "primary"
                 }
                 size="md"
-                className="mt-copy md:mr-auto md:group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0"
+                className="mt-copy group-focus-within:after:translate-x-0 md:mr-auto md:group-hover:after:translate-x-0"
               >
                 <CustomUrl className="outline-none" value={link}>
                   {link.label}

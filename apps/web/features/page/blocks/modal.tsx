@@ -36,7 +36,7 @@ export function ModalBlock({ modal }: Props) {
                   ButtonStyles.base,
                   ButtonStyles.variants.primary,
                   ButtonStyles.sizes.lg,
-                  "md:group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0"
+                  "group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0"
                 )}
               >
                 {modal.cta}

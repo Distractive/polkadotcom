@@ -67,7 +67,7 @@ export default function CardStickyBlock({ card, className }: Props) {
                   className={cn(
                     "transition-colors duration-500 ease-in-out",
                     link &&
-                      "md:group-focus-within:text-pink md:group-hover:text-pink"
+                      "group-focus-within:text-pink md:group-hover:text-pink"
                   )}
                 >
                   {heading}
@@ -80,7 +80,7 @@ export default function CardStickyBlock({ card, className }: Props) {
                 <Button
                   asChild
                   size="md"
-                  className="md:group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0"
+                  className="group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0"
                   variant={
                     !link.variant || link.variant === "primary"
                       ? "primary"

@@ -17,9 +17,9 @@ export default function BlogCard({ post, className }: Props) {
     <Card
       key={slug}
       className={cn(
-        "group relative h-full overflow-hidden rounded-2xl border border-grey-400 bg-white backdrop-blur-lg transition-shadow duration-500 ease-in-out md:cursor-pointer md:focus-within:shadow-card md:focus-within:backdrop-blur-0 md:hover:shadow-card md:hover:backdrop-blur-0",
+        "group relative h-full overflow-hidden rounded-2xl border border-grey-400 bg-white backdrop-blur-lg transition-shadow duration-500 ease-in-out focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
         slug &&
-          "md:cursor-pointer md:focus-within:shadow-card md:focus-within:backdrop-blur-0 md:hover:shadow-card md:hover:backdrop-blur-0",
+          "focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
         className
       )}
     >
@@ -61,7 +61,7 @@ export default function BlogCard({ post, className }: Props) {
           <h2
             className={cn(
               "mb-1 text-lg font-bold transition-colors duration-500 ease-in-out",
-              "md:group-focus-within:text-pink md:group-hover:text-pink"
+              "group-focus-within:text-pink md:group-hover:text-pink"
             )}
           >
             <Link
