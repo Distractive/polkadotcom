@@ -8,7 +8,7 @@ export const dynamic = "force-static"
 export const dynamicParams = true
 
 export async function generateMetadata(): Promise<Metadata> {
-  const meta = await getSingletonMeta("press-release")
+  const meta = await getSingletonMeta("press-releases")
   if (!meta)
     return {
       title: "Polkadot 404",
