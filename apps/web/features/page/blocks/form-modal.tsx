@@ -13,14 +13,13 @@ import {
   Heading,
   HeadingStyles,
 } from "@shared/ui"
-
-import { Form } from "../../../components/form"
+import { HubSpotForm } from "@/components/hubspot-form"
 
 interface Props {
   modal: TypeFromSelection<typeof modalSelection>
 }
 
-export function ModalBlock({ modal }: Props) {
+export function FormModalBlock({ modal }: Props) {
   return (
     <Dialog>
       <div className="grid-system max-width">
@@ -51,15 +50,7 @@ export function ModalBlock({ modal }: Props) {
             >
               {modal.modalHeading}
             </DialogTitle>
-            <Form
-              region="na1"
-              portalId="7592558"
-              formId={
-                modal.formType === "newsletter"
-                  ? "a5ecd657-6aae-4da0-bf08-f3b994919f0b"
-                  : "a5269d0b-bb6c-4e56-aa9c-a7758958d541"
-              }
-            />
+            <HubSpotForm type={modal.formType} id={modal._key} />
           </div>
         </DialogContent>
       </div>

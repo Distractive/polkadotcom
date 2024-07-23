@@ -66,6 +66,10 @@ export default defineType({
           name: "modal",
           type: "modal",
         }),
+        defineArrayMember({
+          name: "form",
+          type: "form",
+        }),
       ],
     }),
   ],

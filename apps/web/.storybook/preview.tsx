@@ -50,6 +50,10 @@ const preview: Preview = {
         )}
       >
         <Story />
+        <script
+          type="text/javascript"
+          src="https://js.hsforms.net/forms/v2.js"
+        />
       </div>
     ),
   ],

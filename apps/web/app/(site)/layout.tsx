@@ -46,6 +46,10 @@ export default async function RootLayout({
           strategy="beforeInteractive"
         />
         <Script
+          src="https://js.hsforms.net/forms/embed/v2.js"
+          strategy="beforeInteractive"
+        />
+        <Script
           id="plausible"
           src="https://plausible.io/js/script.js"
           strategy="afterInteractive"

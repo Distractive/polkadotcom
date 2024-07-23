@@ -11,8 +11,9 @@ import { CardsTimelineBlock } from "@/features/page/blocks/cards-timeline/cards-
 import { CardsBlock } from "@/features/page/blocks/cards/cards"
 import { ContentBlock } from "@/features/page/blocks/content"
 import { FAQBlock } from "@/features/page/blocks/faqs"
+import { EmbedFormBlock } from "@/features/page/blocks/form-embed"
+import { FormModalBlock } from "@/features/page/blocks/form-modal"
 import { MediaBlock } from "@/features/page/blocks/media-block"
-import { ModalBlock } from "@/features/page/blocks/modal"
 import { QuoteBlock } from "@/features/page/blocks/quote"
 import { SideBySideBlock } from "@/features/page/blocks/side-by-side"
 
@@ -50,7 +51,9 @@ export function PageBuilder({ pageBuilder }: Props) {
       case "mediaBlock":
         return <MediaBlock mediaBlock={item} />
       case "modal":
-        return <ModalBlock modal={item} />
+        return <FormModalBlock modal={item} />
+      case "form":
+        return <EmbedFormBlock form={item} />
       default:
         return <p>Unknown type: {item._type}</p>
     }
