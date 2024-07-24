@@ -41,8 +41,8 @@ const DialogContent = React.forwardRef<
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="">
-        <Icon variant={"close"} className="absolute right-4 top-4 size-10" />
+      <DialogPrimitive.Close className=" absolute right-4 top-4 size-14 items-center justify-center rounded-full border border-grey-300 bg-white">
+        <Icon variant={"close"} className="size-10" />
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
