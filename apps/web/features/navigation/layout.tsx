@@ -53,7 +53,6 @@ export default function NavigationLayout({ navigation }: Props) {
 
   return (
     <>
-      <Overlay isVisible={isOpen} />
       <nav
         role="navigation"
         ref={ref}
@@ -88,6 +87,7 @@ export default function NavigationLayout({ navigation }: Props) {
           />
         )}
       </nav>
+      <Overlay isVisible={isOpen} />
     </>
   )
 }
