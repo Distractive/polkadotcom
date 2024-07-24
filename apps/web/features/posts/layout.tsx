@@ -14,6 +14,7 @@ import type { BreadcrumbProps } from "../page/blocks/breadcrumb"
 import { HeaderBlock } from "../page/blocks/header"
 import { Grid } from "./grid"
 import { PostPagination } from "./pagination"
+import { ScrollToView } from "./scroll-to-view"
 import { SearchBar } from "./search-bar"
 
 interface LayoutProps {
@@ -61,10 +62,11 @@ export default async function Layout({
 
   return (
     <>
+      <ScrollToView page={Number(page)} />
       {withHeader && tagSlug === "" && (
         <HeaderBlock header={header} breadcrumb={breadcrumb} />
       )}
-      <div className="max-width col-span-full px-gutter">
+      <div id="main-content" className="max-width col-span-full px-gutter">
         {tagSlug !== "" && (
           <div className="col-span-full mt-gutter flex justify-center pb-gutter pt-header-top">
             <h1 className="font-display text-3xl capitalize">{tagSlug}</h1>
