@@ -55,7 +55,7 @@ export function Network({ network }: Props) {
           delay: STANDARD_DELAY,
           scrollTrigger: {
             trigger: "#network-pile",
-            start: "top 15%",
+            start: "top 50%",
             end: "top 90%",
             scrub: 1,
             markers: false,
@@ -79,7 +79,7 @@ export function Network({ network }: Props) {
           delay: STANDARD_DELAY * 2,
           scrollTrigger: {
             trigger: "#network-pile",
-            start: "top 15%",
+            start: "top 50%",
             end: "top 90%",
             scrub: 1.5,
             markers: false,
@@ -89,37 +89,41 @@ export function Network({ network }: Props) {
         }
       )
 
-    timeline.current.fromTo(
-      "#network-backgrounds",
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        delay: STANDARD_DELAY,
-        scrollTrigger: {
-          trigger: "#network-pile",
-          start: "top 15%",
-          end: "top 90%",
-          scrub: 1,
-          markers: false,
-          once: true,
-        },
-        duration: 0.4,
-      }
-    )
+    // timeline.current.fromTo(
+    //   "#network-backgrounds",
+    //   {
+    //     opacity: 0,
+    //   },
+    //   {
+    //     opacity: 1,
+    //     delay: STANDARD_DELAY,
+    //     scrollTrigger: {
+    //       trigger: "#network-pile",
+    //       start: "top 50%",
+    //       end: "top 90%",
+    //       scrub: 1,
+    //       markers: false,
+    //       once: true,
+    //     },
+    //     duration: 0.4,
+    //   }
+    // )
   }, [])
 
   return (
-    <div ref={container} id="network-pile" className="grid-pile md:pt-[10rem]">
-      <div id="network-backgrounds" className="relative top-0 w-[100vw]">
+    <div
+      ref={container}
+      id="network-pile"
+      className="grid-pile pt-[6rem] md:pt-[10rem]"
+    >
+      {/* <div id="network-backgrounds" className="relative top-0 w-[100vw]">
         <img
           src="/gradients/4.webp"
           alt=""
           className="absolute top-0 -z-20 w-full origin-center -translate-x-[60%] rotate-90 scale-[0.6]"
           loading="lazy"
         />
-      </div>
+      </div> */}
       <article
         id="network.wrapper"
         className="grid-system relative col-span-full h-full w-dvw items-center justify-center overflow-x-hidden md:h-full"

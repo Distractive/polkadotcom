@@ -29,33 +29,33 @@ export function StaggerHeader({ title, className, timeline, section }: Props) {
     }
   }, [])
 
-  useEffect(() => {
-    if (!timeline || !timeline.current) return
+  // useEffect(() => {
+  //   if (!timeline || !timeline.current) return
 
-    timeline.current.fromTo(
-      lines,
-      {
-        opacity: 0,
-        filter: "blur(5px)",
-        y: 15,
-      },
-      {
-        ease: "power1.inOut",
-        opacity: 1,
-        stagger: 0.05,
-        y: 0,
-        filter: "blur(0px)",
-        duration: 0.4,
-        scrollTrigger: {
-          trigger: section,
-          start: "top 20%",
-          end: "top 90%",
-          scrub: 1,
-          once: true,
-        },
-      }
-    )
-  }, [lines])
+  //   timeline.current.fromTo(
+  //     lines,
+  //     {
+  //       opacity: 0,
+  //       filter: "blur(5px)",
+  //       y: 15,
+  //     },
+  //     {
+  //       ease: "power1.inOut",
+  //       opacity: 1,
+  //       stagger: 0.05,
+  //       y: 0,
+  //       filter: "blur(0px)",
+  //       duration: 0.4,
+  //       scrollTrigger: {
+  //         trigger: section,
+  //         start: "top 50%",
+  //         end: "top 90%",
+  //         scrub: 1,
+  //         once: true,
+  //       },
+  //     }
+  //   )
+  // }, [lines])
 
   return (
     <>

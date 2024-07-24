@@ -9,6 +9,8 @@ import { gsap } from "gsap"
 
 import { Button, Card, CardContent, cn, Heading } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
+import { EcosystemGradientBlue } from "@/features/gradients/ecosystem-blue"
+import { EcosystemGradientPink } from "@/features/gradients/ecosystem-pink"
 
 import { StaggerHeader } from "../components/stagger-heading"
 import { STANDARD_DELAY } from "../lib/constants"
@@ -52,7 +54,7 @@ export function Ecosystem({ ecosystem }: Props) {
           delay: STANDARD_DELAY,
           scrollTrigger: {
             trigger: "#ecosystem-pile",
-            start: "top 15%",
+            start: "top 50%",
             end: "top 90%",
             scrub: 1,
             markers: false,
@@ -76,7 +78,7 @@ export function Ecosystem({ ecosystem }: Props) {
           delay: STANDARD_DELAY,
           scrollTrigger: {
             trigger: "#ecosystem-pile",
-            start: "top 20%",
+            start: "top 50%",
             end: "top 90%",
             scrub: 2,
             markers: false,
@@ -85,40 +87,38 @@ export function Ecosystem({ ecosystem }: Props) {
           // duration: 0.4,
         }
       )
-    timeline.current.fromTo(
-      "#ecosystem-backgrounds",
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        delay: STANDARD_DELAY,
-        scrollTrigger: {
-          trigger: "#ecosystem-pile",
-          start: "top 15%",
-          end: "top 90%",
-          scrub: 1,
-          markers: false,
-          once: true,
-        },
-        duration: 0.4,
-      }
-    )
+    // timeline.current.fromTo(
+    //   "#ecosystem-backgrounds",
+    //   {
+    //     opacity: 0,
+    //   },
+    //   {
+    //     opacity: 1,
+    //     delay: STANDARD_DELAY,
+    //     scrollTrigger: {
+    //       trigger: "#ecosystem-pile",
+    //       start: "top 50%",
+    //       end: "top 90%",
+    //       scrub: 1,
+    //       markers: false,
+    //       once: true,
+    //     },
+    //     duration: 0.4,
+    //   }
+    // )
   }, [])
 
   return (
-    <div id="ecosystem-pile" className="grid-pile" ref={container}>
-      <div
-        id="ecosystem-backgrounds"
-        className="relative w-[100vw] overflow-x-hidden"
-      >
-        <img
-          src="/gradients/3.webp"
-          alt=""
-          className="absolute h-full w-full -translate-y-[10%] translate-x-[62%] rotate-[130deg] scale-50"
-          loading="lazy"
-        />
+    <div id="ecosystem-pile" className="grid-pile md:pt-[6rem]" ref={container}>
+      <div id="" className="max-width relative -z-50 ">
+        <div className="absolute right-0 top-0  translate-x-[40%] translate-y-[-20%] transform lg:translate-x-[25%] ">
+          <EcosystemGradientPink />
+        </div>
+        <div className="absolute bottom-0 left-0 translate-x-[-40%] translate-y-[15%]  transform lg:translate-y-[20%]">
+          <EcosystemGradientBlue />
+        </div>
       </div>
+
       <article
         id="ecosystem.wrapper"
         className="grid-system relative col-span-full h-auto w-lvw items-center justify-center overflow-hidden"
@@ -139,7 +139,10 @@ export function Ecosystem({ ecosystem }: Props) {
               timeline={timeline}
               section="#ecosystem-pile"
             />
-            <p id="ecosystem-body" className="mb-card text-lg lg:w-3/4">
+            <p
+              id="ecosystem-body"
+              className="mb-card text-lg lg:w-9/12 xl:w-11/12"
+            >
               {ecosystem.body}
             </p>
           </div>
