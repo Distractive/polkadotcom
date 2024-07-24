@@ -44,7 +44,7 @@ export default function CardBlock({ card, className }: Props) {
       )}
       data-tags={selectedTags?.join(",")}
     >
-      <CustomUrl value={link} isWrapper className="inline-grid h-full w-full">
+      <CustomUrl value={link} isWrapper className="flex h-full w-full flex-col">
         {headerImage && useAsBackgroundImage && (
           <Image
             src={urlForImage(headerImage.asset)}
@@ -71,13 +71,13 @@ export default function CardBlock({ card, className }: Props) {
         )}
         <div
           className={cn(
-            "relative",
+            "relative flex flex-grow flex-col",
             useAsBackgroundImage && "bg-gradient-to-t from-black/60 to-black/0"
           )}
         >
           <CardContent
             className={cn(
-              "grid gap-card p-card",
+              "flex flex-grow flex-col gap-card p-card",
               headerImage && icon && "pt-0"
             )}
           >
@@ -90,7 +90,7 @@ export default function CardBlock({ card, className }: Props) {
                 height={icon.asset.metadata.dimensions?.height}
                 className={cn(
                   headerImage && icon && "relative z-10 -mt-[2.25rem]",
-                  "h-[4.5rem] w-auto rounded-2xl"
+                  "mr-auto h-[4.5rem] w-auto rounded-2xl"
                 )}
               />
             )}
@@ -106,7 +106,7 @@ export default function CardBlock({ card, className }: Props) {
                 ))}
               </ul>
             )}
-            <div className="grid gap-card">
+            <div className="flex flex-grow flex-col gap-card">
               <div
                 className={cn(
                   "grid gap-copy",
@@ -133,7 +133,7 @@ export default function CardBlock({ card, className }: Props) {
                 {body && <CardDescription>{body}</CardDescription>}
               </div>
               {link && link.variant && (
-                <CardFooter>
+                <CardFooter className="mt-auto">
                   <Button
                     tabIndex={-1}
                     asChild

@@ -40,7 +40,6 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
     const firstFocusableElement = getFocusableElements(modal)[0]
     // Focus it.
     if (firstFocusableElement) {
-      console.log(firstFocusableElement)
       firstFocusableElement.focus()
     }
   }
