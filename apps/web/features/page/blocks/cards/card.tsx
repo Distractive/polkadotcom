@@ -44,7 +44,7 @@ export default function CardBlock({ card, className }: Props) {
       )}
       data-tags={selectedTags?.join(",")}
     >
-      <CustomUrl value={link} isWrapper className="inline-grid h-full">
+      <CustomUrl value={link} isWrapper className="inline-grid h-full w-full">
         {headerImage && useAsBackgroundImage && (
           <Image
             src={urlForImage(headerImage.asset)}
