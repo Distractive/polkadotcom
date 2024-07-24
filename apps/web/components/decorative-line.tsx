@@ -19,6 +19,8 @@ export function DecorativeLine({
       )}
     >
       <hr
+        aria-hidden={true}
+        tabIndex={-1}
         className={cn(
           "w-full border-grey-300",
           forButtonBlock && "sm:hidden md:block"

@@ -42,6 +42,7 @@ export default function NavigationLayout({ navigation }: Props) {
   }, [handleKeydown])
 
   const onLeave = () => {
+    if (isMobile) return
     if (ref.current) {
       if (ref.current.matches(":focus-within")) {
         return

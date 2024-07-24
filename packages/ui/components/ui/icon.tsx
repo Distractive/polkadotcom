@@ -32,8 +32,15 @@ export type IconProps = React.HTMLAttributes<SVGElement> &
 const Icon: React.FC<IconProps> = ({ className, variant }) => {
   if (!variant) return
 
+  const shouldAnnounce =
+    variant === "arrowRight" || variant === "arrowRightUp" ? true : false
+
   return (
-    <svg className={cn(iconVariants({ className }))}>
+    <svg
+      focusable={!shouldAnnounce}
+      aria-hidden={shouldAnnounce}
+      className={cn(iconVariants({ className }))}
+    >
       <use
         xlinkHref={`${typeof Icons == "object" ? Icons.src : Icons}#${IconStyles.variants[variant]}`}
         className={cn(iconVariants({ className }))}
