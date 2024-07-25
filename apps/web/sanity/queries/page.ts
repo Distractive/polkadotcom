@@ -23,7 +23,7 @@ export async function getSingletonMeta(
     .slice(0)
     .nullable()
 
-  return runQuery(pageQuery)
+  return await runQuery(pageQuery, {}, false)
 }
 
 export async function getPageMeta(slug: string) {
@@ -51,12 +51,16 @@ export async function getPageMeta(slug: string) {
     .slice(0)
     .nullable()
 
-  return runQuery(pageQuery, {
-    slug: slug,
-  })
+  return await runQuery(
+    pageQuery,
+    {
+      slug: slug,
+    },
+    false
+  )
 }
 
-export async function getPage(slug: string) {
+export async function getPage(slug: string, isDraftMode: boolean) {
   const pageQuery = q("*")
     .filter("_type == 'landing' || _type == 'page' || _type == 'hygiene'")
     .filter("slug.current == $slug")
@@ -78,7 +82,7 @@ export async function getPage(slug: string) {
     .slice(0)
     .nullable()
 
-  return await runQuery(pageQuery, { slug })
+  return await runQuery(pageQuery, { slug }, isDraftMode)
 }
 
 export async function getSlugs(type: "landing" | "page" | "hygiene") {
@@ -93,5 +97,5 @@ export async function getSlugs(type: "landing" | "page" | "hygiene") {
         })
         .nullable(),
     })
-  return runQuery(slugQuery, {}, false)
+  return await runQuery(slugQuery, {}, false)
 }

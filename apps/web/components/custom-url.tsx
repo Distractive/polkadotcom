@@ -27,7 +27,7 @@ export function CustomUrl({
       href={value.external || `/${value.internal?.slug}` || ""}
       target={value.external ? "_blank" : "_self"}
       className={className}
-      prefetch={!value.external}
+      prefetch={false}
       onClick={onClick}
     >
       {isWrapper ? (

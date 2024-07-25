@@ -2,7 +2,10 @@ import { runQuery } from "@/sanity/lib/groqd-query"
 import { q } from "groqd"
 import type { Selection } from "groqd"
 
-import { BLOG_POSTTYPE, PRESS_RELEASE_POSTTYPE } from "@/constants/global"
+import {
+  type BLOG_POSTTYPE,
+  type PRESS_RELEASE_POSTTYPE,
+} from "@/constants/global"
 
 export const searchSelection = {
   title: q.string(),
@@ -18,5 +21,5 @@ export async function getSearchData(
     .filter(`post_type == "${postType}"`)
     .grab(searchSelection)
 
-  return runQuery(postQuery, {})
+  return await runQuery(postQuery, {}, false)
 }

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react"
+import { draftMode } from "next/headers"
 import { getPost } from "@/sanity/queries/post"
 import {
   getPostHeading,
@@ -22,8 +23,9 @@ interface LayoutProps {
 }
 
 export default async function Layout({ slug, type }: LayoutProps) {
-  const post = await getPost(slug)
-  const allPosts = await getPosts(1, type, "", slug)
+  const isDraftMode = draftMode().isEnabled
+  const post = await getPost(slug, isDraftMode)
+  const allPosts = await getPosts(1, type, "", false, slug)
   const headingType = type == BLOG_POSTTYPE ? "blog" : "press-releases"
   const postsData = await getPostHeading(headingType)
 

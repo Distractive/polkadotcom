@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { draftMode } from "next/headers"
 import { notFound } from "next/navigation"
 import { getPage, getPageMeta, getSlugs } from "@/sanity/queries/page"
 
@@ -8,9 +9,6 @@ import { PageBuilder } from "@/features/page/page-builder"
 interface Props {
   params: { slug: string }
 }
-
-export const dynamic = "force-static"
-export const dynamicParams = true
 
 export async function generateMetadata({
   params: { slug },
@@ -44,7 +42,8 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params: { slug } }: Props) {
-  const data = await getPage(slug)
+  const isDraftMode = draftMode().isEnabled
+  const data = await getPage(slug, isDraftMode)
   if (!data) return notFound()
   return (
     <>

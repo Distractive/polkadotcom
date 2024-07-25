@@ -21,9 +21,9 @@ interface Props {
 }
 
 export function PostPagination({ total, page, limit, type, tagSlug }: Props) {
-  let pages = Math.ceil(total / limit)
-  let paginationArray: Array<number | string>
-  let postPath = type == BLOG_POSTTYPE ? "/blog" : "/newsroom/press-releases"
+  const pages = Math.ceil(total / limit)
+  let paginationArray: Array<number | string> = []
+  const postPath = type == BLOG_POSTTYPE ? "/blog" : "/newsroom/press-releases"
 
   paginationArray = generatePagination(page, pages)
 

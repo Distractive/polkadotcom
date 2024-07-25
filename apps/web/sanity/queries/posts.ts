@@ -31,6 +31,7 @@ export async function getPosts(
   page: number,
   postType: string,
   tagSlug: string,
+  isDraftMode: boolean,
   filteredSlug?: string // slug param to not include in query results
 ) {
   const unknownArrayQuery = q("").filter("").filter("")
@@ -72,9 +73,10 @@ export async function getPosts(
     params.filteredSlug = filteredSlug // Add filteredSlug only if it's defined
   }
 
-  return runQuery(
+  return await runQuery(
     paginate(postQuery, postSelection, page, POSTS_PER_PAGE),
-    params
+    params,
+    isDraftMode
   )
 }
 
@@ -88,7 +90,7 @@ export async function getPostHeading(postType: PostType) {
     })
     .slice(0)
 
-  return runQuery(query, {})
+  return await runQuery(query, {}, false)
 }
 
 export async function getSlugs(postType: string) {
@@ -99,5 +101,5 @@ export async function getSlugs(postType: string) {
       slug: q.slug("slug"),
     })
 
-  return runQuery(query, {})
+  return await runQuery(query, {}, false)
 }

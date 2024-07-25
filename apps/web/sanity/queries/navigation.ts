@@ -10,6 +10,5 @@ export async function getNavigation() {
       ...navigationSelection,
     })
     .slice(0)
-
-  return runQuery(query, {})
+  return await runQuery(query, {}, false)
 }

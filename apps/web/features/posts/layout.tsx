@@ -1,3 +1,4 @@
+import { draftMode } from "next/headers"
 import { getPostHeading, getPosts } from "@/sanity/queries/posts"
 import { getSearchData } from "@/sanity/queries/search"
 import type { headerSelection } from "@/sanity/selections/blocks/header"
@@ -30,10 +31,12 @@ export default async function Layout({
   type,
   withHeader = true,
 }: LayoutProps) {
-  const data = await getPosts(page, type, tagSlug)
+  const isDraftMode = draftMode().isEnabled
+  const data = await getPosts(page, type, tagSlug, isDraftMode)
   const postType = type == BLOG_POSTTYPE ? "blog" : "press-releases"
   const postsData = await getPostHeading(postType)
   const searchData = await getSearchData(type)
+
   const slugPath =
     type === "Blog"
       ? `/${postsData?.slug}`

@@ -10,5 +10,5 @@ export async function getPageNotFound() {
       ...notfoundSelection,
     })
     .slice(0)
-  return runQuery(query, {})
+  return await runQuery(query, {}, false)
 }

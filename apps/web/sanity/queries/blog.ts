@@ -5,5 +5,5 @@ import { blogSelection } from "../selections/blog/blog"
 
 export async function getBlog() {
   const query = q("").grab({ ...blogSelection })
-  return runQuery(query, {})
+  return await runQuery(query, {}, false)
 }

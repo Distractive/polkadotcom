@@ -12,6 +12,18 @@ interface Props {
 
 export default function BlogCard({ post, className }: Props) {
   const { slug, image, body, tags, title, post_type, custom_excerpt } = post
+  // Becuase not all blog posts have a custom excerpt imported
+  // we have to loop round the content to find the first text block to show
+  const excerpt =
+    body && custom_excerpt
+      ? custom_excerpt
+      : body
+          .find((item) =>
+            item.children?.some((child) => child._type === "span")
+          )
+          ?.children.filter((child) => child._type === "span")
+          .map((span) => span.text)
+          .join("")
 
   return (
     <Card
@@ -78,14 +90,7 @@ export default function BlogCard({ post, className }: Props) {
           </h2>
         )}
         {body && (
-          <CardDescription className="line-clamp-3">
-            {custom_excerpt
-              ? custom_excerpt
-              : body[0]?.children
-                  .filter((child) => child._type === "span")
-                  .map((span) => span.text)
-                  .join("")}
-          </CardDescription>
+          <CardDescription className="line-clamp-3">{excerpt}</CardDescription>
         )}
       </CardContent>
     </Card>

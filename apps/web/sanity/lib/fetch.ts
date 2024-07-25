@@ -1,6 +1,6 @@
-"use server"
-
 import type { ClientPerspective, QueryParams } from "@sanity/client"
+
+import { env } from "@/env.mjs"
 
 import { client } from "./client"
 import { token } from "./token"
@@ -18,6 +18,9 @@ export async function sanityFetch<QueryResponse>({
   perspective?: Omit<ClientPerspective, "raw">
   stega?: boolean
 }): Promise<QueryResponse> {
+  // if the build flag is set to true then don't use sanity cdn
+  // this is for when triggering builds only so we get fresh content
+  const useCdn = env.BUILD_FLAG === "true" ? false : true
   if (perspective === "previewDrafts") {
     return client.fetch<QueryResponse>(query, params, {
       stega,
@@ -28,8 +31,8 @@ export async function sanityFetch<QueryResponse>({
     })
   }
   return client.fetch<QueryResponse>(query, params, {
-    stega,
+    stega: false,
     perspective: "published",
-    useCdn: true,
+    useCdn: useCdn,
   })
 }

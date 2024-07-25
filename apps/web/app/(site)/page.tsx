@@ -1,10 +1,9 @@
 import { type Metadata } from "next"
+import { draftMode } from "next/headers"
 import { getHome } from "@/sanity/queries/home"
 import { getSingletonMeta } from "@/sanity/queries/page"
 
 import { Root } from "@/features/home/root"
-
-export const dynamic = "force-static"
 
 export async function generateMetadata(): Promise<Metadata> {
   const meta = await getSingletonMeta("home")
@@ -26,7 +25,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const home = await getHome()
+  const isDraftMode = draftMode().isEnabled
+  const home = await getHome(isDraftMode)
 
   return (
     <>

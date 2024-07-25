@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { draftMode } from "next/headers"
 import { notFound } from "next/navigation"
 import { getPage, getPageMeta, getSlugs } from "@/sanity/queries/page"
 
@@ -9,9 +10,6 @@ import { PageBuilder } from "@/features/page/page-builder"
 interface Props {
   params: { slug: string; childslug: string }
 }
-
-export const dynamic = "force-static"
-export const dynamicParams = true
 
 export async function generateMetadata({
   params: { slug, childslug },
@@ -46,7 +44,8 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params: { slug, childslug } }: Props) {
-  const data = await getPage(`${slug}/${childslug}`)
+  const isDraftMode = draftMode().isEnabled
+  const data = await getPage(`${slug}/${childslug}`, isDraftMode)
 
   const breadcrumb: BreadcrumbProps = {
     items: [

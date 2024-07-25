@@ -11,5 +11,5 @@ export async function getFooter() {
     })
     .slice(0)
 
-  return runQuery(query, {})
+  return await runQuery(query, {}, false)
 }

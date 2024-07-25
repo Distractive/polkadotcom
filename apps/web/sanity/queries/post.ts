@@ -61,16 +61,20 @@ export const metaSelection = {
   custom_excerpt: nullToUndefined(q.string().optional()),
 } satisfies Selection
 
-export async function getPost(slug: string) {
+export async function getPost(slug: string, isDraftMode: boolean) {
   const postQuery = q("*")
     .filterByType("post")
     .filter("slug.current == $slug")
     .grab(postSelection)
     .slice(0)
 
-  return runQuery(postQuery, {
-    slug: slug,
-  })
+  return await runQuery(
+    postQuery,
+    {
+      slug: slug,
+    },
+    isDraftMode
+  )
 }
 
 export async function getPostMeta(slug: string) {
@@ -79,5 +83,5 @@ export async function getPostMeta(slug: string) {
     .filter("slug.current == $slug")
     .grab(metaSelection)
     .slice(0)
-  return runQuery(metaQuery, { slug: slug })
+  return await runQuery(metaQuery, { slug: slug }, false)
 }
