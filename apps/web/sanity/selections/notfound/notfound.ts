@@ -10,11 +10,12 @@ export const notfoundSelection = {
   }).nullable(),
   body: nullToUndefined(q.string().optional()),
   links: q("links")
-  .filter()
-  .select({
-    '_type == "customUrl"': {
-      _type: q.literal("customUrl"),
-      ...customUrlSelection,
-    },
-  }).nullable(),
+    .filter()
+    .select({
+      '_type == "customUrl"': {
+        _type: q.literal("customUrl"),
+        ...customUrlSelection,
+      },
+    })
+    .nullable(),
 } satisfies Selection

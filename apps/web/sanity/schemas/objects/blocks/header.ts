@@ -6,10 +6,21 @@ export default defineType({
   type: "object",
   fields: [
     defineField({
+      name: "isAlternate",
+      title: "Use alternate header layout?",
+      type: "boolean",
+    }),
+    defineField({
       name: "image",
-      title: "Header Image",
+      title: "Header Image [1600x400 for alternate layout]",
       type: "image",
     }),
+    defineField({
+      name: "mobileImage",
+      title: "Alternate Layout Mobile Image [400x300]",
+      type: "image",
+    }),
+
     defineField({
       name: "title",
       title: "Title",
