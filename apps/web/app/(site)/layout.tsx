@@ -125,7 +125,7 @@ export default async function RootLayout({
         className={cn(
           unbounded.variable,
           manrope.variable,
-          "flex min-h-screen flex-col font-default antialiased"
+          "bg-lightGrey flex min-h-screen flex-col font-default antialiased"
         )}
       >
         <NavigationLayout navigation={navigation} />

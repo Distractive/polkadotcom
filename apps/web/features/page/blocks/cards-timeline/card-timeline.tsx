@@ -19,7 +19,7 @@ export default function CardTimelineBlock({
   return (
     <Card
       className={cn(
-        "flex flex-col rounded-none border-0 pt-4 md:pt-6",
+        "bg-lightGrey flex flex-col rounded-none border-0 pt-4 md:pt-6",
         className
       )}
     >
@@ -34,7 +34,7 @@ export default function CardTimelineBlock({
           {card.year}
         </h3>
       </CardHeader>
-      <CardContent className="group mr-gutter flex h-full flex-col justify-between gap-copy rounded-2xl bg-grey-100 p-card">
+      <CardContent className="group mr-gutter flex h-full flex-col justify-between gap-copy rounded-2xl p-card">
         <PortableText
           value={card.content}
           components={{
