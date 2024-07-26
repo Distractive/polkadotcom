@@ -7,6 +7,7 @@ import { codeInput } from "@sanity/code-input"
 import { visionTool } from "@sanity/vision"
 import { groqdPlaygroundTool } from "groqd-playground"
 import { defineConfig } from "sanity"
+import { media } from "sanity-plugin-media"
 import { vercelDeployTool } from "sanity-plugin-vercel-deploy"
 import { presentationTool } from "sanity/presentation"
 import { structureTool } from "sanity/structure"
@@ -37,21 +38,40 @@ export default defineConfig({
       return [...prev, landingChild]
     },
   },
-  plugins: [
-    structureTool({
-      structure: deskStructure,
-    }),
-    visionTool({ defaultApiVersion: env.NEXT_PUBLIC_SANITY_API_VERSION }),
-    groqdPlaygroundTool(),
-    codeInput(),
-    presentationTool({
-      resolve,
-      previewUrl: {
-        draftMode: {
-          enable: "/api/draft",
-        },
-      },
-    }),
-    vercelDeployTool(),
-  ],
+  plugins:
+    process.env.NODE_ENV === "development"
+      ? [
+          structureTool({
+            structure: deskStructure,
+          }),
+          visionTool({ defaultApiVersion: env.NEXT_PUBLIC_SANITY_API_VERSION }),
+          groqdPlaygroundTool(),
+          codeInput(),
+          presentationTool({
+            resolve,
+            previewUrl: {
+              draftMode: {
+                enable: "/api/draft",
+              },
+            },
+          }),
+          media(),
+          vercelDeployTool(),
+        ]
+      : [
+          structureTool({
+            structure: deskStructure,
+          }),
+          codeInput(),
+          presentationTool({
+            resolve,
+            previewUrl: {
+              draftMode: {
+                enable: "/api/draft",
+              },
+            },
+          }),
+          media(),
+          vercelDeployTool(),
+        ],
 })
