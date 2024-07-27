@@ -35,7 +35,7 @@ export async function sanityFetch<QueryResponse>({
     perspective: "published",
     useCdn: useCdn,
     next: {
-      revalidate: 60,
+      revalidate: false,
     },
   })
 }
