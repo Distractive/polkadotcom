@@ -125,7 +125,7 @@ export default async function RootLayout({
         className={cn(
           unbounded.variable,
           manrope.variable,
-          "bg-lightGrey flex min-h-screen flex-col font-default antialiased"
+          "flex min-h-screen flex-col bg-lightGrey font-default antialiased"
         )}
       >
         <a
@@ -143,8 +143,10 @@ export default async function RootLayout({
           </span>
         </a>
         <NavigationLayout navigation={navigation} />
-        <main className="flex-grow">{children}</main>
 
+        <main role="main" className="flex-grow">
+          {children}
+        </main>
         <FooterLayout footer={footer} />
         {env.VERCEL_ENV === "development" && <TailwindIndicator />}
         {draftMode().isEnabled && <VisualEditing />}

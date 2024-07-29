@@ -32,7 +32,7 @@ export function MenuDesktop({
     <div
       ref={ref}
       id="page-menu"
-      className="grid-pile overflow-hidden opacity-0"
+      className="max-width grid-pile popacity-0 overflow-hidden px-gutter"
     >
       {menu.map((section, index) => (
         <div
