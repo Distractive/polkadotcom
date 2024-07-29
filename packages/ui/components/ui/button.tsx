@@ -16,7 +16,7 @@ const ButtonStyles = {
   variants: {
     primary: "text-white after:from-pink after:via-pink after:to-black",
     secondary:
-      "text-black before:bg-grey-200 before:opacity-60 before:backdrop-blur-lg after:from-grey-300 after:to-grey-200 border-[1px] border-grey-300",
+      "text-black before:bg-greyLavender before:opacity-60 before:backdrop-blur-lg after:from-grey-400 after:via-grey-400 after-to:greyLavender border-[1px] border-grey-300",
     tertiary:
       "text-black before:bg-grey-200 before:opacity-60 before:backdrop-blur-lg after:from-grey-300 after:via-grey-300 after:to-grey-200 border-[1px] border-grey-300 after:translate-x-[0%] after:w-[100%]",
     disabled:
