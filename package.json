@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "BUILD_FLAG=true turbo run build",
+    "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "dev:turbo": "turbo run dev:turbo --parallel",
     "lint": "turbo run lint",
