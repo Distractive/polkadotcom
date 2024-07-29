@@ -55,6 +55,7 @@ const config = {
       "grey-300": "#E7E7EC",
       "grey-400": "#D5D4D8",
       "grey-500": "#4C4C4C",
+      greyLavender: "#DCDFEF",
       white: "#ffffff",
       pink: "#E2195E",
       blue: "#111F77",

@@ -5,7 +5,8 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "declaration": false
+    "declaration": false,
+    "declarationMap": false
   },
   "include": [
     "next-env.d.ts",
