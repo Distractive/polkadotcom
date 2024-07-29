@@ -16,8 +16,8 @@ export function SideBySideBlock({ content }: Props) {
     <div className="grid-system max-width gap-y-gutter px-gutter lg:gap-y-0">
       <div
         className={cn(
-          "col-span-full grid h-fit gap-copy lg:col-span-5",
-          content.isImageOnLeft ? "lg:order-1 lg:pl-gutter" : "lg:pr-gutter"
+          "order-2 col-span-full grid h-fit gap-copy lg:col-span-5",
+          content.isImageOnLeft ? "lg:pl-gutter" : "lg:order-1 lg:pr-gutter"
         )}
       >
         <div className="flex flex-col gap-copy">
@@ -87,7 +87,10 @@ export function SideBySideBlock({ content }: Props) {
         <Image
           src={urlForImage(content.image.asset)}
           alt=""
-          className="col-span-full my-auto h-auto lg:col-span-7"
+          className={cn(
+            "order-1 col-span-full h-auto lg:col-span-7 lg:my-auto",
+            content.isImageOnLeft ? "" : "lg:order-2"
+          )}
           width={content.image.asset.metadata.dimensions?.width}
           height={content.image.asset.metadata.dimensions?.height}
         />
