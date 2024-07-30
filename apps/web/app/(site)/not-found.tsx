@@ -20,6 +20,7 @@ export default async function NotFound() {
     body: data.body,
     links: data.links,
     video: null,
+    mobileImage: null,
   }
 
   return (

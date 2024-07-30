@@ -8,7 +8,11 @@ export const headerSelection = {
   image: sanityImage("image", {
     withAsset: ["base", "dimensions"],
   }).nullable(),
+  mobileImage: sanityImage("mobileImage", {
+    withAsset: ["base", "dimensions"],
+  }).nullable(),
   title: q.string(),
+  isAlternate: q.boolean().optional().nullable(),
   body: nullToUndefined(q.string().optional()),
   links: q("links")
     .filter()
@@ -17,7 +21,8 @@ export const headerSelection = {
         _type: q.literal("customUrl"),
         ...customUrlSelection,
       },
-    }).nullable(),
+    })
+    .nullable(),
   video: q("video")
     .grab$({
       ...videoSelection,

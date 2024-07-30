@@ -57,10 +57,12 @@ export default async function Layout({
 
   const header: TypeFromSelection<typeof headerSelection> = {
     image: postsData.headerImage,
+    isAlternate: (postsData as any).isAlternate,
     title: postsData.heading,
     body: postsData.body,
     video: null,
     links: null,
+    mobileImage: null,
   }
 
   return (
