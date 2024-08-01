@@ -52,7 +52,7 @@ export function Build({ build }: Props) {
           delay: STANDARD_DELAY,
           scrollTrigger: {
             trigger: "#building-pile",
-            start: "top 15%",
+            start: "top 50%",
             end: "top 90%",
             scrub: 1,
             markers: false,
@@ -76,7 +76,7 @@ export function Build({ build }: Props) {
           delay: STANDARD_DELAY,
           scrollTrigger: {
             trigger: "#building-pile",
-            start: "top 15%",
+            start: "top 50%",
             end: "top 90%",
             scrub: 1,
             markers: false,

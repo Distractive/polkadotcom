@@ -6,6 +6,7 @@ import { type TypeFromSelection } from "groqd"
 import { gsap } from "gsap"
 
 import { cn } from "@shared/ui"
+import { VideoGrid } from "@/features/gradients/video-grid"
 import { VideoBlock } from "@/features/page/blocks/video"
 
 import { StaggerHeader } from "../components/stagger-heading"
@@ -53,7 +54,7 @@ export function Video({ video }: Props) {
         // delay: STANDARD_DELAY,
         scrollTrigger: {
           trigger: "#video-pile",
-          start: "top 20%",
+          start: "top 50%",
           end: "top 80%",
           scrub: 1.5,
           markers: false,
@@ -62,34 +63,34 @@ export function Video({ video }: Props) {
       }
     )
 
-    timeline.current.fromTo(
-      "#video-backgrounds",
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        delay: STANDARD_DELAY,
-        scrollTrigger: {
-          trigger: "#video-pile",
-          start: "top 15%",
-          end: "top 90%",
-          scrub: 1,
-          markers: false,
-          once: true,
-        },
-        duration: 0.4,
-      }
-    )
+    // timeline.current.fromTo(
+    //   "#video-backgrounds",
+    //   {
+    //     opacity: 0,
+    //   },
+    //   {
+    //     opacity: 1,
+    //     delay: STANDARD_DELAY,
+    //     scrollTrigger: {
+    //       trigger: "#video-pile",
+    //       start: "top 15%",
+    //       end: "top 90%",
+    //       scrub: 1,
+    //       markers: false,
+    //       once: true,
+    //     },
+    //     duration: 0.4,
+    //   }
+    // )
   }, [])
 
   return (
     <div
       ref={container}
       id="video-pile"
-      className="grid-pile -mt-header-top pt-[10rem]"
+      className="grid-pile -mt-header-top  md:pt-[10rem]"
     >
-      <div
+      {/* <div
         id="video-backgrounds"
         className="relative w-[100vw] overflow-x-hidden"
       >
@@ -105,6 +106,12 @@ export function Video({ video }: Props) {
           className="absolute -z-30 h-full w-full -translate-x-[-40%] translate-y-[0%] rotate-90 scale-[0.5] object-contain"
           loading="lazy"
         />
+      </div> */}
+
+      <div id="" className="max-width relative -z-50 h-full ">
+        <div className="absolute left-0 top-0 translate-x-[20%] translate-y-[-15%] md:translate-x-[40%] lg:translate-x-[-50%] xl:translate-x-[-70%]  ">
+          <VideoGrid />
+        </div>
       </div>
       <article
         id="video.wrapper"

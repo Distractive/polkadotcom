@@ -99,7 +99,7 @@ export default function CardBlock({ card, className }: Props) {
                 {selectedTags.map((tag) => (
                   <li
                     key={tag}
-                    className="flex items-center justify-center rounded bg-grey-200 px-3 py-1 text-sm leading-relaxed"
+                    className="flex items-center justify-center rounded bg-greyLavender px-3 py-1 text-sm leading-relaxed"
                   >
                     {tag}
                   </li>

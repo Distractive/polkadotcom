@@ -54,7 +54,7 @@ export function Connected({ connected }: Props) {
           delay: STANDARD_DELAY,
           scrollTrigger: {
             trigger: "#connected-pile",
-            start: "top 15%",
+            start: "top 50%",
             end: "top 90%",
             scrub: 1,
             markers: false,
@@ -75,7 +75,7 @@ export function Connected({ connected }: Props) {
           delay: STANDARD_DELAY,
           scrollTrigger: {
             trigger: "#connected-pile",
-            start: "top 15%",
+            start: "top 50%",
             end: "top 90%",
             scrub: 1,
             markers: false,
@@ -86,29 +86,29 @@ export function Connected({ connected }: Props) {
         }
       )
 
-    timeline.current.fromTo(
-      "#connected-backgrounds",
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        delay: STANDARD_DELAY,
-        scrollTrigger: {
-          trigger: "#connected-pile",
-          start: "top 15%",
-          end: "top 90%",
-          scrub: 1,
-          markers: false,
-          once: true,
-        },
-        duration: 0.4,
-      }
-    )
+    // timeline.current.fromTo(
+    //   "#connected-backgrounds",
+    //   {
+    //     opacity: 0,
+    //   },
+    //   {
+    //     opacity: 1,
+    //     delay: STANDARD_DELAY,
+    //     scrollTrigger: {
+    //       trigger: "#connected-pile",
+    //       start: "top 50%",
+    //       end: "top 90%",
+    //       scrub: 1,
+    //       markers: false,
+    //       once: true,
+    //     },
+    //     duration: 0.4,
+    //   }
+    // )
   }, [])
   return (
-    <div id="connected-pile" className="grid-pile lg:pt-[10rem]">
-      <div
+    <div id="connected-pile" className="grid-pile md:pt-[6rem] lg:pt-[12rem]">
+      {/* <div
         id="connected-backgrounds"
         className="relative w-[100vw] overflow-x-hidden"
       >
@@ -122,7 +122,7 @@ export function Connected({ connected }: Props) {
           )}
           loading="lazy"
         />
-      </div>
+      </div> */}
       <article
         id="connected.wrapper"
         className="grid-system grid-pile relative col-span-12 h-full w-lvw items-center justify-center overflow-hidden"

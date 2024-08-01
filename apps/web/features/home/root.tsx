@@ -29,32 +29,33 @@ export function Root({ home }: Props) {
     window.scrollTo(0, 0)
   }, [])
 
-  useEffect(() => {
-    scrollRef.current = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      touchMultiplier: 2,
-      orientation: "vertical",
-      smoothWheel: true,
-      gestureOrientation: "vertical",
-    })
+  // useEffect(() => {
+  //   scrollRef.current = new Lenis({
+  //     duration: 1.2,
+  //     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  //     touchMultiplier: 2,
+  //     orientation: "vertical",
+  //     smoothWheel: true,
+  //     gestureOrientation: "vertical",
+  //   })
 
-    scrollRef.current.on("scroll", ScrollTrigger.update)
+  //   scrollRef.current.on("scroll", ScrollTrigger.update)
 
-    const updateFunc: gsap.TickerCallback = (time) => {
-      scrollRef.current?.raf(time * 1000)
-    }
+  //   const updateFunc: gsap.TickerCallback = (time) => {
+  //     scrollRef.current?.raf(time * 1000)
+  //   }
 
-    gsap.ticker.add(updateFunc, false, true)
+  //   gsap.ticker.add(updateFunc, false, true)
 
-    return () => {
-      gsap.ticker.remove(updateFunc)
-      scrollRef.current?.destroy()
-    }
-  }, [])
+  //   return () => {
+  //     gsap.ticker.remove(updateFunc)
+  //     scrollRef.current?.destroy()
+  //   }
+  // }, [])
 
   return (
-    <>
+    // <div className="bg-gradient-to-b from-white to-[#D9E0FF]">
+    <div>
       <Hero hero={home.hero} />
       <Video video={home.video} />
       <Network network={home.network} />
@@ -62,7 +63,7 @@ export function Root({ home }: Props) {
       <Ecosystem ecosystem={home.ecosystem} />
       <Build build={home.build} />
       <Connected connected={home.connected} />
-      <Experience />
-    </>
+      {/* <Experience /> */}
+    </div>
   )
 }

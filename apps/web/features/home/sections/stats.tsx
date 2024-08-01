@@ -6,6 +6,7 @@ import { type TypeFromSelection } from "groqd"
 import { gsap } from "gsap"
 
 import { Card, CardDescription, CardHeader, cn, Heading } from "@shared/ui"
+import { StatsGradient } from "@/features/gradients/stats-yellow"
 
 import { StaggerHeader } from "../components/stagger-heading"
 import { STANDARD_DELAY } from "../lib/constants"
@@ -47,7 +48,7 @@ export function Stats({ stats }: Props) {
         delay: STANDARD_DELAY,
         scrollTrigger: {
           trigger: "#stats-pile",
-          start: "top 15%",
+          start: "top 50%",
           end: "top 90%",
           scrub: 1,
           markers: false,
@@ -56,42 +57,36 @@ export function Stats({ stats }: Props) {
         duration: 0.2,
       }
     )
-    timeline.current.fromTo(
-      "#stats-backgrounds",
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        delay: STANDARD_DELAY,
-        scrollTrigger: {
-          trigger: "#stats-pile",
-          start: "top 15%",
-          end: "top 90%",
-          scrub: 1,
-          markers: false,
-          once: true,
-        },
-        duration: 0.4,
-      }
-    )
+    // timeline.current.fromTo(
+    //   "#stats-backgrounds",
+    //   {
+    //     opacity: 0,
+    //   },
+    //   {
+    //     opacity: 1,
+    //     delay: STANDARD_DELAY,
+    //     scrollTrigger: {
+    //       trigger: "#stats-pile",
+    //       start: "top 90%",
+    //       end: "top 90%",
+    //       scrub: 1,
+    //       markers: false,
+    //       once: true,
+    //     },
+    //     duration: 0.4,
+    //   }
+    // )
   }, [])
 
   return (
-    <div id="stats-pile" className="grid-pile lg:pt-[10rem]">
-      <div id="stats-backgrounds" className="relative w-[100vw]">
-        <img
-          src="/gradients/2.webp"
-          alt=""
-          className="absolute top-0 -z-20 h-full w-full translate-x-[85%] rotate-[60deg] scale-[0.6] lg:translate-x-[55%]"
-          loading="lazy"
-        />
-        <img
-          src="/gradients/grid.png"
-          alt=""
-          className="absolute -z-30 h-full w-full -translate-x-[30%] -translate-y-[40%] rotate-90 scale-[0.5] object-contain lg:-translate-y-[15%]"
-          loading="lazy"
-        />
+    <div
+      id="stats-pile"
+      className="grid-pile relative flex items-center justify-center lg:pt-[10rem]"
+    >
+      <div id="" className="max-width absolute -z-50 h-full">
+        <div className="absolute -right-96 top-0 translate-y-[-50%] transform">
+          <StatsGradient />
+        </div>
       </div>
 
       <article
@@ -129,7 +124,7 @@ export function Stats({ stats }: Props) {
               <Card
                 key={index}
                 className={cn(
-                  "stats-card background-blur bg-grey-100/80 p-card",
+                  "stats-card background-blur bg-grey-100/50 p-card",
                   "col-span-full col-start-1 md:col-span-2 lg:col-span-6"
                 )}
                 data-index={index}
