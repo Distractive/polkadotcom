@@ -2,6 +2,7 @@ import { type Metadata } from "next"
 import { getSingletonMeta } from "@/sanity/queries/page"
 
 import { BLOG_POSTTYPE } from "@/constants/global"
+import { Newsletter } from "@/features/page/blocks/newsletter"
 import Layout from "@/features/posts/layout"
 
 export const dynamicParams = true
@@ -37,5 +38,10 @@ export default async function Page({
 }: {
   params: { page: string }
 }) {
-  return <Layout page={Number(page)} tagSlug="" type={BLOG_POSTTYPE} />
+  return (
+    <>
+      <Layout page={Number(page)} tagSlug="" type={BLOG_POSTTYPE} />
+      <Newsletter />
+    </>
+  )
 }

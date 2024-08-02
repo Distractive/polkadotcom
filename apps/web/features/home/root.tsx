@@ -15,6 +15,9 @@ import { Build } from "@/features/home/sections/start-building"
 import { Stats } from "@/features/home/sections/stats"
 import { Video } from "@/features/home/sections/video"
 
+import { polkadotNewsletter } from "../forms/newsletters"
+import { FormModalBlock } from "../page/blocks/form-modal"
+import { Newsletter } from "../page/blocks/newsletter"
 import { Experience } from "./webgl/experience"
 
 interface Props {
@@ -63,6 +66,7 @@ export function Root({ home }: Props) {
       <Ecosystem ecosystem={home.ecosystem} />
       <Build build={home.build} />
       <Connected connected={home.connected} />
+      <Newsletter />
       {/* <Experience /> */}
     </div>
   )
