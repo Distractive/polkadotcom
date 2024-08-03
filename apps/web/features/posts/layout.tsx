@@ -9,9 +9,12 @@ import {
   POSTS_PER_PAGE,
   type PRESS_RELEASE_POSTTYPE,
 } from "@/constants/global"
-import { cn } from "@shared/ui"
+import { cn, Heading } from "@shared/ui"
 
-import type { BreadcrumbProps } from "../page/blocks/breadcrumb"
+import {
+  BreadcrumbBlock,
+  type BreadcrumbProps,
+} from "../page/blocks/breadcrumb"
 import { HeaderBlock } from "../page/blocks/header"
 import { Grid } from "./grid"
 import { PostPagination } from "./pagination"
@@ -68,9 +71,25 @@ export default async function Layout({
   return (
     <>
       <ScrollToView page={Number(page)} />
-      {withHeader && tagSlug === "" && (
+      {/* {withHeader && tagSlug === "" && (
         <HeaderBlock header={header} breadcrumb={breadcrumb} />
-      )}
+      )} */}
+      <header className="max-width mb-page mt-page flex flex-col">
+        <div
+          className={cn(
+            "flex max-w-4xl flex-col justify-center gap-copy lg:pt-16",
+            header.image
+              ? "px-gutter pt-card"
+              : "mt-gutter px-gutter pt-header-top"
+          )}
+        >
+          {breadcrumb && <BreadcrumbBlock items={breadcrumb.items} />}
+
+          <Heading variant="h1">{header.title}</Heading>
+
+          {header.body && <p className="text-lg">{header.body}</p>}
+        </div>
+      </header>
       <div id="main-content" className="max-width col-span-full px-gutter">
         {tagSlug !== "" && (
           <div className="col-span-full mt-gutter flex justify-center pb-gutter pt-header-top">
@@ -94,7 +113,7 @@ export default async function Layout({
             )}
           >
             <span className="text-sm lg:px-gutter">
-              Page:
+              Page:{" "}
               <span className="text-center font-bold">
                 {page} of {Math.ceil(data.totalCount / POSTS_PER_PAGE)}
               </span>
