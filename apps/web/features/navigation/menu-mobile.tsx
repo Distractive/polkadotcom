@@ -26,7 +26,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
       <div
         id="page-menu"
         ref={ref}
-        className="mx-gutter flex w-full items-end overflow-scroll rounded-2xl border border-grey-300 bg-white opacity-0 md:w-[20rem] "
+        className="mx-gutter flex max-h-[80vh] w-full items-end overflow-scroll rounded-2xl border border-grey-300 bg-white opacity-0 md:w-[20rem] "
       >
         <Accordion type="single" collapsible defaultValue={undefined}>
           {menu.map((section, sectionIndex) => {
