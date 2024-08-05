@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://www.polkdot.com",
+  siteUrl: "https://www.polkadot.com",
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   additionalPaths: async (config) => {

@@ -6,6 +6,7 @@ import { VisualEditing } from "next-sanity"
 
 import "@shared/ui/styles/global.css"
 
+import { headers } from "next/headers"
 import { getFooter } from "@/sanity/queries/footer"
 import { getNavigation } from "@/sanity/queries/navigation"
 import { cn } from "@shared/ui/lib/utils"
@@ -38,13 +39,28 @@ export default async function RootLayout({
   const footer = await getFooter()
   const navigation = await getNavigation()
 
+  const headersList = headers()
+  const hostname = headersList.get("host")
+  const isProduction = hostname === "polkadot.com"
+
+  if (!isProduction) console.log("Running in staging environment...")
+
   return (
     <html lang="en">
       <head>
-        <Script
-          src="https://cmp.osano.com/169unzUF2IaM42S5j/0f63db37-496b-4a14-a233-82bbdf3a4afd/osano.js"
-          strategy="beforeInteractive"
-        />
+        {isProduction ? (
+          // Production script
+          <Script
+            src="https://cmp.osano.com/169unzUF2IaM42S5j/80a27ab0-b5e2-40d2-b909-d45519c89760/osano.js"
+            strategy="beforeInteractive"
+          />
+        ) : (
+          // Staging script
+          <Script
+            src="https://cmp.osano.com/169unzUF2IaM42S5j/0f63db37-496b-4a14-a233-82bbdf3a4afd/osano.js"
+            strategy="beforeInteractive"
+          />
+        )}
         <Script
           src="https://js.hsforms.net/forms/embed/v2.js"
           strategy="beforeInteractive"
@@ -53,7 +69,7 @@ export default async function RootLayout({
           id="plausible"
           src="https://plausible.io/js/script.js"
           strategy="afterInteractive"
-          data-domain="polkadot.network"
+          data-domain="polkadot.com"
           defer
         />
         <Script
