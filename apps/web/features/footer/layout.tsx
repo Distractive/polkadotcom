@@ -14,7 +14,7 @@ interface Props {
 
 export default function FooterLayout({ footer }: Props) {
   return (
-    <div className="relative flex  flex-col font-bold md:mt-page md:pt-page">
+    <div className="relative flex  flex-col pt-page font-bold md:mt-page">
       {/* <Background /> */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 transform 2xl:translate-x-[-5%]">

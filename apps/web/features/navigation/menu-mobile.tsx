@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react"
 import { type navigationMenuSelection } from "@/sanity/selections/navigation/navigation-menu"
 import { stegaClean } from "@sanity/client/stega"
 import { type TypeFromSelection } from "groqd"
@@ -20,6 +21,24 @@ interface Props {
 
 export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
   const { ref } = useToggleAnimation({ isVisible: isOpen })
+
+  useEffect(() => {
+    const menuElement = document.getElementById("page-menu")
+
+    const preventScroll = (e: WheelEvent) => {
+      e.stopPropagation()
+    }
+
+    if (isOpen && menuElement) {
+      menuElement.addEventListener("wheel", preventScroll, { passive: false })
+    }
+
+    return () => {
+      if (menuElement) {
+        menuElement.removeEventListener("wheel", preventScroll)
+      }
+    }
+  }, [isOpen])
 
   return (
     <div className="flex w-full items-end justify-end">

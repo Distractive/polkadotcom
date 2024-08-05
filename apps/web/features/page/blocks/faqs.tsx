@@ -21,7 +21,7 @@ interface Props {
 
 export function FAQBlock({ faqs }: Props) {
   return (
-    <div className="grid-system max-width gap-gutter px-gutter">
+    <div className="grid-system max-width gap-gutter px-gutter ">
       <Heading
         variant="h2"
         className="col-span-full lg:col-span-8 lg:col-start-3"
