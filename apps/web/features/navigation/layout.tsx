@@ -35,6 +35,18 @@ export default function NavigationLayout({ navigation }: Props) {
   )
 
   useEffect(() => {
+    if (isOpen && isMobile) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [isOpen, isMobile])
+
+  useEffect(() => {
     window.addEventListener("keydown", handleKeydown)
     return () => {
       window.removeEventListener("keydown", handleKeydown)

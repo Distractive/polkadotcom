@@ -45,7 +45,7 @@ export function Hero({ hero }: Props) {
 
       <article
         id="hero.wrapper"
-        className={cn(" grid-system relative z-50 col-span-12 w-lvw  ")}
+        className={cn(" grid-system relative z-40 col-span-12 w-lvw  ")}
       >
         <div
           id="network.content"

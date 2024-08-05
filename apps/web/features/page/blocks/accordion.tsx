@@ -49,7 +49,7 @@ export function AccordionBlock({ accordion }: Props) {
         collapsible
         defaultValue={accordion.items[0]?._key} // default to first item open
         className={cn(
-          "col-span-full lg:col-span-8 lg:col-start-3",
+          "col-span-full lg:col-span-8 lg:col-start-3 ",
           accordion.hasTitleOnSide &&
             "lg:col-start-0 col-span-full lg:col-span-7 lg:col-start-6"
         )}
@@ -60,13 +60,13 @@ export function AccordionBlock({ accordion }: Props) {
             value={item._key}
             className={cn(
               index !== accordion.items.length - 1 &&
-                "data-[state=open]:border-b data-[state=open]:border-grey-300"
+                " data-[state=open]:border-b data-[state=open]:border-grey-300"
             )}
           >
             <AccordionTrigger
               aria-label={`Open '${stegaClean(item.heading)}' content`}
               className={cn(
-                "flex flex-1 items-center justify-between p-gutter py-4",
+                "flex flex-1 items-center justify-between p-gutter py-4 ",
                 "border border-grey-300 font-display font-medium hover:text-pink data-[state=open]:text-pink",
                 index === accordion.items.length - 1 &&
                   "rounded-b-2xl data-[state=open]:rounded-b-none",

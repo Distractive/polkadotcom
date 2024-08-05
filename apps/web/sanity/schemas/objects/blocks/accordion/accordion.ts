@@ -45,7 +45,7 @@ export default defineType({
           type: "accordion-item",
         }),
       ],
-      validation: (Rule) => Rule.required().min(2).max(5),
+      validation: (Rule) => Rule.required().min(2).max(12),
     }),
   ],
   preview: {
