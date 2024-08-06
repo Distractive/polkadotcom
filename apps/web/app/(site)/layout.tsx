@@ -43,8 +43,6 @@ export default async function RootLayout({
   const hostname = headersList.get("host")
   const isProduction = hostname === "polkadot.com"
 
-  if (!isProduction) console.log("Running in staging environment...")
-
   return (
     <html lang="en">
       <head>
