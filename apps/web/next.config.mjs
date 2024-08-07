@@ -49,6 +49,7 @@ const cspSources = {
   "connect-src": [
     "'self'",
     "https://api.sanity.io",
+    "https://*.api.sanity.io",
     "https://*.hubspot.com",
     "https://plausible.io",
     "https://app.spline.design",
