@@ -23,6 +23,8 @@ const cspSources = {
     "https://app.spline.design",
     "https://*.spline.design",
     "https://cmp.osano.com",
+    "https://*.osano.com",
+    "https://osano.com",
     "https://*.hotjar.com",
     "https://*.hotjar.io",
     "https://www.youtube.com",
@@ -45,6 +47,7 @@ const cspSources = {
     "https://*.hotjar.com",
     "https://*.hsforms.com",
     "https://*.hubspot.com",
+    "https://forms-na1.hsforms.com",
   ],
   "connect-src": [
     "'self'",
@@ -76,11 +79,12 @@ const cspSources = {
     "https://app.spline.design",
     "https://*.hotjar.com",
     "https://www.youtube.com",
+    "https://*.hsforms.com",
   ],
   "worker-src": ["'self'", "blob:", "https://cmp.osano.com"],
   "frame-ancestors": ["'none'"],
   "base-uri": ["'self'"],
-  "form-action": ["'self'", "https://*.hsforms.net"],
+  "form-action": ["'self'", "https://*.hsforms.net", "https://*.hsforms.com"],
 }
 
 // Function to generate CSP string

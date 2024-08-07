@@ -59,10 +59,7 @@ export default async function RootLayout({
             strategy="beforeInteractive"
           />
         )}
-        <Script
-          src="https://js.hsforms.net/forms/embed/v2.js"
-          strategy="beforeInteractive"
-        />
+        <Script src="https://js.hsforms.net/forms/embed/v2.js" />
         <Script
           id="plausible"
           src="https://plausible.io/js/script.js"
@@ -132,6 +129,7 @@ export default async function RootLayout({
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#E6007A" />
+
         <meta name="msapplication-TileColor" content="#FFFFFF" />
         <meta name="theme-color" content="#fff" />
       </head>
