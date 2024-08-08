@@ -1,11 +1,12 @@
-"use client"
+// "use client"
 
-import { useEffect, useLayoutEffect, useRef } from "react"
+// import { useEffect, useLayoutEffect, useRef } from "react"
 import { type homeSelection } from "@/sanity/selections/home/root"
-import Lenis from "@studio-freight/lenis"
+// import Lenis from "@studio-freight/lenis"
 import { type TypeFromSelection } from "groqd"
-import gsap from "gsap"
-import ScrollTrigger from "gsap/ScrollTrigger"
+
+// import gsap from "gsap"
+// import ScrollTrigger from "gsap/ScrollTrigger"
 
 import { Connected } from "@/features/home/sections/connected"
 import { Ecosystem } from "@/features/home/sections/ecosystem"
@@ -15,22 +16,23 @@ import { Build } from "@/features/home/sections/start-building"
 import { Stats } from "@/features/home/sections/stats"
 import { Video } from "@/features/home/sections/video"
 
-import { polkadotNewsletter } from "../forms/newsletters"
-import { FormModalBlock } from "../page/blocks/form-modal"
+// import { polkadotNewsletter } from "../forms/newsletters"
+// import { FormModalBlock } from "../page/blocks/form-modal"
 import { Newsletter } from "../page/blocks/newsletter"
-import { Experience } from "./webgl/experience"
+
+// import { Experience } from "./webgl/experience"
 
 interface Props {
   home: TypeFromSelection<typeof homeSelection>["home"]
 }
 
 export function Root({ home }: Props) {
-  const scrollRef = useRef<Lenis>()
+  // const scrollRef = useRef<Lenis>()
 
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
-    window.scrollTo(0, 0)
-  }, [])
+  // useLayoutEffect(() => {
+  //   gsap.registerPlugin(ScrollTrigger)
+  //   window.scrollTo(0, 0)
+  // }, [])
 
   // useEffect(() => {
   //   scrollRef.current = new Lenis({

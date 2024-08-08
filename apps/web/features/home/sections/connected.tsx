@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 
 import { useEffect, useRef } from "react"
 import { type connectedSelection } from "@/sanity/selections/home/connected"
@@ -17,95 +17,95 @@ import {
 import { Carousel } from "@/components/carousel"
 import { CustomUrl } from "@/components/custom-url"
 
-import { StaggerHeader } from "../components/stagger-heading"
-import { STANDARD_DELAY } from "../lib/constants"
+// import { StaggerHeader } from "../components/stagger-heading"
+// import { STANDARD_DELAY } from "../lib/constants"
 
 interface Props {
   connected: TypeFromSelection<typeof connectedSelection>["connected"]
 }
 
-const TIMELINE = {
-  defaults: {
-    ease: "power1.inOut",
-  },
-}
+// const TIMELINE = {
+//   defaults: {
+//     ease: "power1.inOut",
+//   },
+// }
 
 export function Connected({ connected }: Props) {
-  const timeline = useRef<gsap.core.Timeline | null>(null)
-  useEffect(() => {
-    timeline.current = gsap.timeline({
-      ...TIMELINE,
-    })
-    return () => {
-      timeline.current?.kill()
-    }
-  }, [])
+  // const timeline = useRef<gsap.core.Timeline | null>(null)
+  // useEffect(() => {
+  //   timeline.current = gsap.timeline({
+  //     ...TIMELINE,
+  //   })
+  //   return () => {
+  //     timeline.current?.kill()
+  //   }
+  // }, [])
 
-  useEffect(() => {
-    if (!timeline.current) return
-    timeline.current
-      .fromTo(
-        "#connected-body",
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          delay: STANDARD_DELAY,
-          scrollTrigger: {
-            trigger: "#connected-pile",
-            start: "top 50%",
-            end: "top 90%",
-            scrub: 1,
-            markers: false,
-            once: true,
-          },
-          duration: 0.2,
-        }
-      )
-      .fromTo(
-        "#connected-carousel",
-        {
-          opacity: 0,
-          x: 999,
-        },
-        {
-          opacity: 1,
-          x: 0,
-          delay: STANDARD_DELAY,
-          scrollTrigger: {
-            trigger: "#connected-pile",
-            start: "top 50%",
-            end: "top 90%",
-            scrub: 1,
-            markers: false,
-            once: true,
-          },
+  // useEffect(() => {
+  //   if (!timeline.current) return
+  //   timeline.current
+  //     .fromTo(
+  //       "#connected-body",
+  //       {
+  //         opacity: 0,
+  //       },
+  //       {
+  //         opacity: 1,
+  //         delay: STANDARD_DELAY,
+  //         scrollTrigger: {
+  //           trigger: "#connected-pile",
+  //           start: "top 50%",
+  //           end: "top 90%",
+  //           scrub: 1,
+  //           markers: false,
+  //           once: true,
+  //         },
+  //         duration: 0.2,
+  //       }
+  //     )
+  //     .fromTo(
+  //       "#connected-carousel",
+  //       {
+  //         opacity: 0,
+  //         x: 999,
+  //       },
+  //       {
+  //         opacity: 1,
+  //         x: 0,
+  //         delay: STANDARD_DELAY,
+  //         scrollTrigger: {
+  //           trigger: "#connected-pile",
+  //           start: "top 50%",
+  //           end: "top 90%",
+  //           scrub: 1,
+  //           markers: false,
+  //           once: true,
+  //         },
 
-          duration: 0.7,
-        }
-      )
+  //         duration: 0.7,
+  //       }
+  //     )
 
-    // timeline.current.fromTo(
-    //   "#connected-backgrounds",
-    //   {
-    //     opacity: 0,
-    //   },
-    //   {
-    //     opacity: 1,
-    //     delay: STANDARD_DELAY,
-    //     scrollTrigger: {
-    //       trigger: "#connected-pile",
-    //       start: "top 50%",
-    //       end: "top 90%",
-    //       scrub: 1,
-    //       markers: false,
-    //       once: true,
-    //     },
-    //     duration: 0.4,
-    //   }
-    // )
-  }, [])
+  // timeline.current.fromTo(
+  //   "#connected-backgrounds",
+  //   {
+  //     opacity: 0,
+  //   },
+  //   {
+  //     opacity: 1,
+  //     delay: STANDARD_DELAY,
+  //     scrollTrigger: {
+  //       trigger: "#connected-pile",
+  //       start: "top 50%",
+  //       end: "top 90%",
+  //       scrub: 1,
+  //       markers: false,
+  //       once: true,
+  //     },
+  //     duration: 0.4,
+  //   }
+  // )
+  // }, [])
   return (
     <div id="connected-pile" className="grid-pile md:pt-[6rem] lg:pt-[12rem]">
       {/* <div
@@ -132,12 +132,20 @@ export function Connected({ connected }: Props) {
           className="grid-system relative z-10 col-span-12 mt-header-top !w-[100vw] md:mt-0"
         >
           <div className="col-span-6 px-gutter pb-gutter lg:col-span-4 lg:col-start-2 xl:col-start-3">
-            <StaggerHeader
+            {/* <StaggerHeader
               timeline={timeline}
               section="#connected-pile"
               title={connected.title}
               className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"
-            />
+            /> */}
+            <Heading
+              variant="h2"
+              className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"
+              aria-label={connected.title}
+              role="heading"
+            >
+              {connected.title}
+            </Heading>
             <p id="connected-body" className="text-lg">
               {connected.body}
             </p>

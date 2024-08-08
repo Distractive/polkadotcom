@@ -1,82 +1,83 @@
-"use client"
+// "use client"
 
-import { useEffect, useRef } from "react"
+// import { useEffect, useRef } from "react"
 import { type statsSelection } from "@/sanity/selections/home/stats"
 import { type TypeFromSelection } from "groqd"
-import { gsap } from "gsap"
+
+// import { gsap } from "gsap"
 
 import { Card, CardDescription, CardHeader, cn, Heading } from "@shared/ui"
 import { StatsGradient } from "@/features/gradients/stats-yellow"
 
-import { StaggerHeader } from "../components/stagger-heading"
-import { STANDARD_DELAY } from "../lib/constants"
+// import { StaggerHeader } from "../components/stagger-heading"
+// import { STANDARD_DELAY } from "../lib/constants"
 
 interface Props {
   stats: TypeFromSelection<typeof statsSelection>["stats"]
 }
 
-const TIMELINE = {
-  defaults: {
-    ease: "power1.inOut",
-  },
-}
+// const TIMELINE = {
+//   defaults: {
+//     ease: "power1.inOut",
+//   },
+// }
 
 export function Stats({ stats }: Props) {
-  const timeline = useRef<gsap.core.Timeline | null>(null)
-  useEffect(() => {
-    timeline.current = gsap.timeline(TIMELINE)
-    return () => {
-      timeline.current?.kill()
-    }
-  }, [])
+  // const timeline = useRef<gsap.core.Timeline | null>(null)
+  // useEffect(() => {
+  //   timeline.current = gsap.timeline(TIMELINE)
+  //   return () => {
+  //     timeline.current?.kill()
+  //   }
+  // }, [])
 
-  useEffect(() => {
-    if (!timeline.current) return
+  // useEffect(() => {
+  //   if (!timeline.current) return
 
-    timeline.current.fromTo(
-      ".stats-card",
-      {
-        opacity: 0,
-        y: 40,
-        scale: 0.9,
-      },
-      {
-        opacity: 1,
-        stagger: 0.2,
-        y: -40,
-        scale: 1,
-        delay: STANDARD_DELAY,
-        scrollTrigger: {
-          trigger: "#stats-pile",
-          start: "top 50%",
-          end: "top 90%",
-          scrub: 1,
-          markers: false,
-          once: true,
-        },
-        duration: 0.2,
-      }
-    )
-    // timeline.current.fromTo(
-    //   "#stats-backgrounds",
-    //   {
-    //     opacity: 0,
-    //   },
-    //   {
-    //     opacity: 1,
-    //     delay: STANDARD_DELAY,
-    //     scrollTrigger: {
-    //       trigger: "#stats-pile",
-    //       start: "top 90%",
-    //       end: "top 90%",
-    //       scrub: 1,
-    //       markers: false,
-    //       once: true,
-    //     },
-    //     duration: 0.4,
-    //   }
-    // )
-  }, [])
+  //   timeline.current.fromTo(
+  //     ".stats-card",
+  //     {
+  //       opacity: 0,
+  //       y: 40,
+  //       scale: 0.9,
+  //     },
+  //     {
+  //       opacity: 1,
+  //       stagger: 0.2,
+  //       y: -40,
+  //       scale: 1,
+  //       delay: STANDARD_DELAY,
+  //       scrollTrigger: {
+  //         trigger: "#stats-pile",
+  //         start: "top 50%",
+  //         end: "top 90%",
+  //         scrub: 1,
+  //         markers: false,
+  //         once: true,
+  //       },
+  //       duration: 0.2,
+  //     }
+  //   )
+  //   // timeline.current.fromTo(
+  //   //   "#stats-backgrounds",
+  //   //   {
+  //   //     opacity: 0,
+  //   //   },
+  //   //   {
+  //   //     opacity: 1,
+  //   //     delay: STANDARD_DELAY,
+  //   //     scrollTrigger: {
+  //   //       trigger: "#stats-pile",
+  //   //       start: "top 90%",
+  //   //       end: "top 90%",
+  //   //       scrub: 1,
+  //   //       markers: false,
+  //   //       once: true,
+  //   //     },
+  //   //     duration: 0.4,
+  //   //   }
+  //   // )
+  // }, [])
 
   return (
     <div
@@ -103,7 +104,7 @@ export function Stats({ stats }: Props) {
             "mt-header-top"
           )}
         >
-          <StaggerHeader
+          {/* <StaggerHeader
             title={stats.title}
             className={cn(
               "px-gutter py-gutter text-5xl leading-[1.1] lg:pl-gutter lg:pr-gutter",
@@ -112,7 +113,19 @@ export function Stats({ stats }: Props) {
             )}
             timeline={timeline}
             section="#stats-pile"
-          />
+          /> */}
+          <Heading
+            variant="h2"
+            className={cn(
+              "px-gutter py-gutter text-5xl leading-[1.1] lg:pl-gutter lg:pr-gutter",
+              "col-span-full md:col-span-3 md:text-7xl lg:col-start-2 xl:col-start-2",
+              "!hyphens-none !break-normal"
+            )}
+            aria-label={stats.title}
+            role="heading"
+          >
+            {stats.title}
+          </Heading>
           <div
             className={cn(
               "grid-system relative col-span-full mt-10 gap-card px-gutter lg:mt-0",

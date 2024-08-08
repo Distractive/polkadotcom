@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 
 import { useEffect, useRef } from "react"
 import Image from "next/image"
@@ -20,96 +20,96 @@ interface Props {
 }
 
 export function Ecosystem({ ecosystem }: Props) {
-  const TIMELINE = {
-    defaults: {
-      ease: "power1.inOut",
-    },
-  }
-  const timeline = useRef<gsap.core.Timeline | null>(null)
-  const container = useRef<HTMLDivElement>(null)
+  // const TIMELINE = {
+  //   defaults: {
+  //     ease: "power1.inOut",
+  //   },
+  // }
+  // const timeline = useRef<gsap.core.Timeline | null>(null)
+  // const container = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    if (!container.current) return
+  // useEffect(() => {
+  //   if (!container.current) return
 
-    timeline.current = gsap.timeline({
-      ...TIMELINE,
-    })
+  //   timeline.current = gsap.timeline({
+  //     ...TIMELINE,
+  //   })
 
-    return () => {
-      timeline.current?.kill()
-    }
-  }, [])
+  //   return () => {
+  //     timeline.current?.kill()
+  //   }
+  // }, [])
 
-  useEffect(() => {
-    if (!timeline.current) return
+  // useEffect(() => {
+  //   if (!timeline.current) return
 
-    timeline.current
-      .fromTo(
-        "#ecosystem-body",
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          delay: STANDARD_DELAY,
-          scrollTrigger: {
-            trigger: "#ecosystem-pile",
-            start: "top 50%",
-            end: "top 90%",
-            scrub: 1,
-            markers: false,
-            once: true,
-          },
-          duration: 0.2,
-        }
-      )
-      .fromTo(
-        ".eco-card",
-        {
-          opacity: 0,
-          y: 40,
-          scale: 0.9,
-        },
-        {
-          opacity: 1,
-          stagger: 0.2,
-          y: 0,
-          scale: 1,
-          delay: STANDARD_DELAY,
-          scrollTrigger: {
-            trigger: "#ecosystem-pile",
-            start: "top 50%",
-            end: "top 90%",
-            scrub: 2,
-            markers: false,
-            once: true,
-          },
-          // duration: 0.4,
-        }
-      )
-    // timeline.current.fromTo(
-    //   "#ecosystem-backgrounds",
-    //   {
-    //     opacity: 0,
-    //   },
-    //   {
-    //     opacity: 1,
-    //     delay: STANDARD_DELAY,
-    //     scrollTrigger: {
-    //       trigger: "#ecosystem-pile",
-    //       start: "top 50%",
-    //       end: "top 90%",
-    //       scrub: 1,
-    //       markers: false,
-    //       once: true,
-    //     },
-    //     duration: 0.4,
-    //   }
-    // )
-  }, [])
+  //   timeline.current
+  //     .fromTo(
+  //       "#ecosystem-body",
+  //       {
+  //         opacity: 0,
+  //       },
+  //       {
+  //         opacity: 1,
+  //         delay: STANDARD_DELAY,
+  //         scrollTrigger: {
+  //           trigger: "#ecosystem-pile",
+  //           start: "top 50%",
+  //           end: "top 90%",
+  //           scrub: 1,
+  //           markers: false,
+  //           once: true,
+  //         },
+  //         duration: 0.2,
+  //       }
+  //     )
+  //     .fromTo(
+  //       ".eco-card",
+  //       {
+  //         opacity: 0,
+  //         y: 40,
+  //         scale: 0.9,
+  //       },
+  //       {
+  //         opacity: 1,
+  //         stagger: 0.2,
+  //         y: 0,
+  //         scale: 1,
+  //         delay: STANDARD_DELAY,
+  //         scrollTrigger: {
+  //           trigger: "#ecosystem-pile",
+  //           start: "top 50%",
+  //           end: "top 90%",
+  //           scrub: 2,
+  //           markers: false,
+  //           once: true,
+  //         },
+  //         // duration: 0.4,
+  //       }
+  //     )
+  //   // timeline.current.fromTo(
+  //   //   "#ecosystem-backgrounds",
+  //   //   {
+  //   //     opacity: 0,
+  //   //   },
+  //   //   {
+  //   //     opacity: 1,
+  //   //     delay: STANDARD_DELAY,
+  //   //     scrollTrigger: {
+  //   //       trigger: "#ecosystem-pile",
+  //   //       start: "top 50%",
+  //   //       end: "top 90%",
+  //   //       scrub: 1,
+  //   //       markers: false,
+  //   //       once: true,
+  //   //     },
+  //   //     duration: 0.4,
+  //   //   }
+  //   // )
+  // }, [])
 
   return (
-    <div id="ecosystem-pile" className="grid-pile md:pt-[6rem]" ref={container}>
+    <div id="ecosystem-pile" className="grid-pile md:pt-[6rem]">
       <div id="" className="max-width relative -z-50 ">
         <div className="absolute right-0 top-0  translate-x-[40%] translate-y-[-20%] transform lg:translate-x-[25%] ">
           <EcosystemGradientPink />
@@ -133,12 +133,20 @@ export function Ecosystem({ ecosystem }: Props) {
           )}
         >
           <div className="col-span-12 px-gutter md:w-3/4 lg:w-4/6 lg:px-0">
-            <StaggerHeader
+            {/* <StaggerHeader
               className="pb-copy font-display text-5xl leading-[1.1] md:text-7xl"
               title={ecosystem.title}
               timeline={timeline}
               section="#ecosystem-pile"
-            />
+            /> */}
+            <Heading
+              variant="h2"
+              className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"
+              aria-label={ecosystem.title}
+              role="heading"
+            >
+              {ecosystem.title}
+            </Heading>
             <p
               id="ecosystem-body"
               className="mb-card text-lg lg:w-9/12 xl:w-11/12"

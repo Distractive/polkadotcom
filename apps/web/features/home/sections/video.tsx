@@ -1,95 +1,93 @@
-"use client"
+// "use client"
 
-import { useEffect, useRef } from "react"
+// import { useEffect, useRef } from "react"
 import { type videoSelection } from "@/sanity/selections/home/video"
 import { type TypeFromSelection } from "groqd"
-import { gsap } from "gsap"
 
-import { cn } from "@shared/ui"
+// import { gsap } from "gsap"
+
+import { cn, Heading } from "@shared/ui"
 import { VideoGrid } from "@/features/gradients/video-grid"
 import { VideoBlock } from "@/features/page/blocks/video"
 
 import { StaggerHeader } from "../components/stagger-heading"
-import { STANDARD_DELAY } from "../lib/constants"
+
+// import { STANDARD_DELAY } from "../lib/constants"
 
 interface Props {
   video: TypeFromSelection<typeof videoSelection>["video"]
 }
 
 export function Video({ video }: Props) {
-  const container = useRef<HTMLDivElement>(null)
-  const TIMELINE = {
-    defaults: {
-      ease: "power1.inOut",
-    },
-  }
-  const timeline = useRef<gsap.core.Timeline | null>(null)
+  // const container = useRef<HTMLDivElement>(null)
+  // const TIMELINE = {
+  //   defaults: {
+  //     ease: "power1.inOut",
+  //   },
+  // }
+  // const timeline = useRef<gsap.core.Timeline | null>(null)
 
-  useEffect(() => {
-    if (!container.current) return
+  // useEffect(() => {
+  //   if (!container.current) return
 
-    timeline.current = gsap.timeline({
-      ...TIMELINE,
-    })
+  //   timeline.current = gsap.timeline({
+  //     ...TIMELINE,
+  //   })
 
-    return () => {
-      timeline.current?.kill()
-    }
-  }, [])
+  //   return () => {
+  //     timeline.current?.kill()
+  //   }
+  // }, [])
 
-  useEffect(() => {
-    if (!timeline.current) return
+  // useEffect(() => {
+  //   if (!timeline.current) return
 
-    timeline.current.fromTo(
-      "#video-block",
-      {
-        y: 20,
-        scale: 0.6,
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        // delay: STANDARD_DELAY,
-        scrollTrigger: {
-          trigger: "#video-pile",
-          start: "top 50%",
-          end: "top 80%",
-          scrub: 1.5,
-          markers: false,
-          once: true,
-        },
-      }
-    )
+  //   timeline.current.fromTo(
+  //     "#video-block",
+  //     {
+  //       y: 20,
+  //       scale: 0.6,
+  //       opacity: 0,
+  //     },
+  //     {
+  //       opacity: 1,
+  //       y: 0,
+  //       scale: 1,
+  //       // delay: STANDARD_DELAY,
+  //       scrollTrigger: {
+  //         trigger: "#video-pile",
+  //         start: "top 50%",
+  //         end: "top 80%",
+  //         scrub: 1.5,
+  //         markers: false,
+  //         once: true,
+  //       },
+  //     }
+  //   )
 
-    // timeline.current.fromTo(
-    //   "#video-backgrounds",
-    //   {
-    //     opacity: 0,
-    //   },
-    //   {
-    //     opacity: 1,
-    //     delay: STANDARD_DELAY,
-    //     scrollTrigger: {
-    //       trigger: "#video-pile",
-    //       start: "top 15%",
-    //       end: "top 90%",
-    //       scrub: 1,
-    //       markers: false,
-    //       once: true,
-    //     },
-    //     duration: 0.4,
-    //   }
-    // )
-  }, [])
+  //   // timeline.current.fromTo(
+  //   //   "#video-backgrounds",
+  //   //   {
+  //   //     opacity: 0,
+  //   //   },
+  //   //   {
+  //   //     opacity: 1,
+  //   //     delay: STANDARD_DELAY,
+  //   //     scrollTrigger: {
+  //   //       trigger: "#video-pile",
+  //   //       start: "top 15%",
+  //   //       end: "top 90%",
+  //   //       scrub: 1,
+  //   //       markers: false,
+  //   //       once: true,
+  //   //     },
+  //   //     duration: 0.4,
+  //   //   }
+  //   // )
+  // }, [])
 
   return (
-    <div
-      ref={container}
-      id="video-pile"
-      className="grid-pile -mt-header-top  md:pt-[10rem]"
-    >
+    <div id="video-pile" className="grid-pile -mt-header-top  md:pt-[10rem]">
       {/* <div
         id="video-backgrounds"
         className="relative w-[100vw] overflow-x-hidden"
@@ -124,12 +122,20 @@ export function Video({ video }: Props) {
             "md:w-full lg:col-span-8 lg:col-start-3"
           )}
         >
-          <StaggerHeader
+          {/* <StaggerHeader
             timeline={timeline}
             title={video.title}
             className="w-5/6 pb-gutter text-5xl leading-[1.1] md:w-full md:text-7xl"
             section="#video-pile"
-          />
+          /> */}
+          <Heading
+            variant="h2"
+            className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"
+            aria-label={video.title}
+            role="heading"
+          >
+            {video.title}
+          </Heading>
           <div id="video-block">
             <VideoBlock video={video.video} />
           </div>

@@ -1,9 +1,10 @@
-"use client"
+// "use client"
 
-import { useEffect, useRef } from "react"
+// import { useEffect, useRef } from "react"
 import { type buildSelection } from "@/sanity/selections/home/build"
 import { type TypeFromSelection } from "groqd"
-import gsap from "gsap"
+
+// import gsap from "gsap"
 
 import {
   Card,
@@ -16,103 +17,100 @@ import {
 } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
 
-import { StaggerHeader } from "../components/stagger-heading"
-import { STANDARD_DELAY } from "../lib/constants"
+// import { StaggerHeader } from "../components/stagger-heading"
+// import { STANDARD_DELAY } from "../lib/constants"
 
 interface Props {
   build: TypeFromSelection<typeof buildSelection>["build"]
 }
-const TIMELINE = {
-  defaults: {
-    ease: "power1.inOut",
-  },
-}
+// const TIMELINE = {
+//   defaults: {
+//     ease: "power1.inOut",
+//   },
+// }
+
 export function Build({ build }: Props) {
-  const timeline = useRef<gsap.core.Timeline | null>(null)
-  const container = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    timeline.current = gsap.timeline({
-      ...TIMELINE,
-    })
-    return () => {
-      timeline.current?.kill()
-    }
-  }, [])
+  // const timeline = useRef<gsap.core.Timeline | null>(null)
+  // const container = useRef<HTMLDivElement>(null)
+  // useEffect(() => {
+  //   timeline.current = gsap.timeline({
+  //     ...TIMELINE,
+  //   })
+  //   return () => {
+  //     timeline.current?.kill()
+  //   }
+  // }, [])
 
-  useEffect(() => {
-    if (!timeline.current) return
-    timeline.current
-      .fromTo(
-        "#building-body",
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          delay: STANDARD_DELAY,
-          scrollTrigger: {
-            trigger: "#building-pile",
-            start: "top 50%",
-            end: "top 90%",
-            scrub: 1,
-            markers: false,
-            once: true,
-          },
-          duration: 0.2,
-        }
-      )
-      .fromTo(
-        ".build-card",
-        {
-          opacity: 0,
-          y: 40,
-          scale: 0.9,
-        },
-        {
-          opacity: 1,
-          stagger: 0.2,
-          y: -40,
-          scale: 1,
-          delay: STANDARD_DELAY,
-          scrollTrigger: {
-            trigger: "#building-pile",
-            start: "top 50%",
-            end: "top 90%",
-            scrub: 1,
-            markers: false,
-            once: true,
-          },
+  // useEffect(() => {
+  //   if (!timeline.current) return
+  //   timeline.current
+  //     .fromTo(
+  //       "#building-body",
+  //       {
+  //         opacity: 0,
+  //       },
+  //       {
+  //         opacity: 1,
+  //         delay: STANDARD_DELAY,
+  //         scrollTrigger: {
+  //           trigger: "#building-pile",
+  //           start: "top 50%",
+  //           end: "top 90%",
+  //           scrub: 1,
+  //           markers: false,
+  //           once: true,
+  //         },
+  //         duration: 0.2,
+  //       }
+  //     )
+  //     .fromTo(
+  //       ".build-card",
+  //       {
+  //         opacity: 0,
+  //         y: 40,
+  //         scale: 0.9,
+  //       },
+  //       {
+  //         opacity: 1,
+  //         stagger: 0.2,
+  //         y: -40,
+  //         scale: 1,
+  //         delay: STANDARD_DELAY,
+  //         scrollTrigger: {
+  //           trigger: "#building-pile",
+  //           start: "top 50%",
+  //           end: "top 90%",
+  //           scrub: 1,
+  //           markers: false,
+  //           once: true,
+  //         },
 
-          duration: 0.2,
-        }
-      )
+  //         duration: 0.2,
+  //       }
+  //     )
 
-    // timeline.current.fromTo(
-    //   "#network-backgrounds",
-    //   {
-    //     opacity: 0,
-    //   },
-    //   {
-    //     opacity: 1,
-    //     delay: STANDARD_DELAY,
-    //     scrollTrigger: {
-    //       trigger: "#network-pile",
-    //       start: "top top",
-    //       end: "bottom bottom",
-    //       scrub: 1,
-    //       markers: false,
-    //       once: true,
-    //     },
-    //     duration: 0.4,
-    //   }
-    // )
-  }, [])
+  // timeline.current.fromTo(
+  //   "#network-backgrounds",
+  //   {
+  //     opacity: 0,
+  //   },
+  //   {
+  //     opacity: 1,
+  //     delay: STANDARD_DELAY,
+  //     scrollTrigger: {
+  //       trigger: "#network-pile",
+  //       start: "top top",
+  //       end: "bottom bottom",
+  //       scrub: 1,
+  //       markers: false,
+  //       once: true,
+  //     },
+  //     duration: 0.4,
+  //   }
+  // )
+  // }, [])
   return (
-    <div
-      ref={container}
-      id="building-pile"
-      className="grid-pile relative md:pt-[10rem]"
-    >
+    <div id="building-pile" className="grid-pile relative md:pt-[10rem]">
       <article
         id="build.wrapper"
         className="grid-system relative col-span-full h-full w-lvw items-center justify-center overflow-hidden lg:h-full"
@@ -128,12 +126,20 @@ export function Build({ build }: Props) {
           )}
         >
           <div className="col-span-full px-gutter pb-[5rem] lg:col-span-8 lg:col-start-3 lg:w-4/6 lg:pb-[5rem]">
-            <StaggerHeader
+            {/* <StaggerHeader
               timeline={timeline}
               section="#building-pile"
               title={build.title}
               className="pb-card text-5xl leading-[1.1] md:text-7xl"
-            />
+            /> */}
+            <Heading
+              variant="h2"
+              className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"
+              aria-label={build.title}
+              role="heading"
+            >
+              {build.title}
+            </Heading>
 
             <p id="building-body" className="mb-gutter text-lg">
               {build.body}
