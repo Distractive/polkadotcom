@@ -102,6 +102,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn.sanity.io",
         port: "",
+        pathname: "/images/qf32zgfm/production/**",
       },
     ],
   },
