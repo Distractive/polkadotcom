@@ -48,9 +48,11 @@ const cspSources = {
     "https://*.hsforms.com",
     "https://*.hubspot.com",
     "https://forms-na1.hsforms.com",
+    "https://lh3.googleusercontent.com",
   ],
   "connect-src": [
     "'self'",
+    "wss://qf32zgfm.api.sanity.io",
     "https://api.sanity.io",
     "https://*.api.sanity.io",
     "https://*.hubspot.com",
@@ -64,6 +66,7 @@ const cspSources = {
     "https://hubspot-forms-static-embed.s3.amazonaws.com",
     "https://tattle.api.osano.com",
     "https://consent.api.osano.com",
+    "https://api.vercel.com",
   ],
   "font-src": [
     "'self'",
