@@ -55,6 +55,8 @@ const cspSources = {
     "wss://qf32zgfm.api.sanity.io",
     "https://api.sanity.io",
     "https://*.api.sanity.io",
+    "https://api.vercel.com",
+    "wss://qf32zgfm.api.sanity.io",
     "https://*.hubspot.com",
     "https://plausible.io",
     "https://app.spline.design",
@@ -75,7 +77,6 @@ const cspSources = {
     "https://*.hotjar.com",
   ],
   "object-src": ["'none'"],
-  "frame-ancestors": ["'none'"],
   "frame-src": [
     "'self'",
     "https://*.hsforms.net",
@@ -85,7 +86,7 @@ const cspSources = {
     "https://*.hsforms.com",
   ],
   "worker-src": ["'self'", "blob:", "https://cmp.osano.com"],
-  "frame-ancestors": ["'none'"],
+  "frame-ancestors": ["'self'", "https://polkadot.com"],
   "base-uri": ["'self'"],
   "form-action": ["'self'", "https://*.hsforms.net", "https://*.hsforms.com"],
 }
