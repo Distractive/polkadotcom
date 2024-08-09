@@ -11,6 +11,17 @@
         "storybook-static/**"
       ]
     },
+    "web#build": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "dist/**",
+        "storybook-static/**",
+        "public/sitemap*.xml",
+        "public/robots.txt"
+      ]
+    },
     "lint": {},
     "typecheck": {},
     "dev": {

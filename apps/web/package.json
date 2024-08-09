@@ -17,7 +17,7 @@
     "export": "next build && next export",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap --config next-sitemap.config.mjs"
   },
   "dependencies": {
     "@bsmnt/scrollytelling": "^0.3.3",

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://polkadot.com
+
+# Sitemaps
+Sitemap: https://polkadot.com/sitemap.xml
