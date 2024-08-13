@@ -1,6 +1,7 @@
 // "use client"
 
 import { useEffect, useRef } from "react"
+import Image from "next/image"
 import { type connectedSelection } from "@/sanity/selections/home/connected"
 import { type TypeFromSelection } from "groqd"
 import gsap from "gsap"
@@ -170,12 +171,17 @@ export function Connected({ connected }: Props) {
                   >
                     <CustomUrl value={card.link} isWrapper>
                       <CardHeader className={cn("relative z-10 aspect-video")}>
-                        <img
-                          src={card.headerImage?.asset.url}
-                          alt=""
-                          loading="lazy"
-                          className="absolute inset-0 h-full w-full object-cover object-center"
-                        />
+                        {card.headerImage && (
+                          <Image
+                            src={card.headerImage?.asset.url}
+                            alt=""
+                            height={790}
+                            width={592}
+                            priority={false}
+                            style={{ width: "100%", height: "auto" }}
+                            className={cn("object-cover object-center")}
+                          />
+                        )}
                       </CardHeader>
 
                       <div className={cn("relative")}>

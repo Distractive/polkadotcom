@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { draftMode } from "next/headers"
 import Script from "next/script"
 import { manrope, unbounded } from "@/styles/fonts"
+import { Analytics } from "@vercel/analytics/react"
 import { VisualEditing } from "next-sanity"
 
 import "@shared/ui/styles/global.css"
@@ -162,6 +163,7 @@ export default async function RootLayout({
         <FooterLayout footer={footer} />
         {env.VERCEL_ENV === "development" && <TailwindIndicator />}
         {draftMode().isEnabled && <VisualEditing />}
+        {env.VERCEL_ENV === "production" && <Analytics />}
       </body>
     </html>
   )

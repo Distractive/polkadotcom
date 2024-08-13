@@ -49,8 +49,8 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
       <div className="relative flex h-nav-height flex-shrink-0 items-start justify-between px-gutter">
         <div
           className={cn(
-            "flex h-full items-center justify-center px-nav lg:pr-0",
-            "background-blur rounded-[3rem] border border-grey-300 bg-white/80"
+            "flex h-full items-center justify-center px-nav lg:pl-8",
+            "rounded-[3rem] border border-grey-300 bg-white"
           )}
         >
           <Link
@@ -59,10 +59,9 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
             className="translate-x-[-2%] lg:translate-x-0 lg:pr-nav"
             aria-label="Navigate to the home page"
           >
-            <Logo
-              ariaLabel="Polkadot homepage"
-              className="h-auto w-[9.125rem]"
-            />
+            <div className="ml-[0.2rem] lg:ml-[-0.3rem]">
+              <Logo ariaLabel="Polkadot homepage" />
+            </div>
           </Link>
           <ul
             className={cn(

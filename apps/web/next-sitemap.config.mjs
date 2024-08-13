@@ -8,7 +8,7 @@ const docTypes = ["post", "page", "landing"]
 const sanityClient = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-  apiVersion: "2023-05-03", // Use current date in YYYY-MM-DD format
+  apiVersion: "2023-05-03",
   useCdn: false,
 })
 
@@ -24,14 +24,14 @@ async function fetchDataFromSanity() {
     const data = await sanityClient.fetch(query)
     console.log(`Total documents fetched: ${data.length}`)
     // Log all documents
-    console.log("Fetched documents:")
-    data.forEach((doc, index) => {
-      console.log(`Document ${index + 1}:`, {
-        _type: doc._type,
-        slug: doc.slug?.current,
-        _updatedAt: doc._updatedAt,
-      })
-    })
+    // console.log("Fetched documents:")
+    // data.forEach((doc, index) => {
+    //   console.log(`Document ${index + 1}:`, {
+    //     _type: doc._type,
+    //     slug: doc.slug?.current,
+    //     _updatedAt: doc._updatedAt,
+    //   })
+    // })
     return data
   } catch (error) {
     console.error("Sanity query error:", error)
@@ -85,22 +85,3 @@ export default {
     }
   },
 }
-
-// module.exports = {
-//   siteUrl: "https://www.polkadot.com",
-//   generateRobotsTxt: true,
-//   generateIndexSitemap: false,
-//   additionalPaths: async (config) => {
-//     const result = []
-
-//     result.push({ loc: "/", lastmod: new Date().toISOString() })
-
-//     return result
-//   },
-//   transform: async (config, path) => {
-//     return {
-//       loc: path,
-//       lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
-//     }
-//   },
-// }
