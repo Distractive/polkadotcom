@@ -130,7 +130,7 @@ export function Video({ video }: Props) {
           /> */}
           <Heading
             variant="h2"
-            className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"
+            className="!hyphens-none !break-normal pb-5 text-5xl  leading-[1.1] md:text-7xl"
             aria-label={video.title}
             role="heading"
           >

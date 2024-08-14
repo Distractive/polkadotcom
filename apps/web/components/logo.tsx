@@ -12,7 +12,7 @@ export function Logo({ ariaLabel }: Props) {
       src={logo}
       alt="Polkadot logo"
       width={160}
-      height={49}
+      style={{ height: "auto" }}
       role="img"
       aria-label={ariaLabel}
       priority

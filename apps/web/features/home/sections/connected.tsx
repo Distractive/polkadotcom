@@ -159,12 +159,12 @@ export function Connected({ connected }: Props) {
               {connected.items.map((card) => (
                 <CarouselItem
                   key={card._key}
-                  className="basis-5/6 md:basis-3/6 lg:basis-4/6"
+                  className="basis-5/6 md:basis-3/6 lg:basis-4/6 "
                 >
                   <Card
                     key={card._key}
                     className={cn(
-                      "background-blur bg-white/80",
+                      "background-blur bg-white/80 ",
                       card.link &&
                         "md:cursor-pointer md:hover:bg-white md:hover:shadow-card"
                     )}
@@ -175,10 +175,9 @@ export function Connected({ connected }: Props) {
                           <Image
                             src={card.headerImage?.asset.url}
                             alt=""
-                            height={790}
-                            width={592}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             priority={false}
-                            style={{ width: "100%", height: "auto" }}
                             className={cn("object-cover object-center")}
                           />
                         )}

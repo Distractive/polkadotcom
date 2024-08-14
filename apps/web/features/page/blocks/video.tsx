@@ -1,10 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react"
+// import ReactPlayer from "react-player"
+
+import dynamic from "next/dynamic"
 import { urlForImage } from "@/sanity/lib/image"
 import { type videoSelection } from "@/sanity/selections/blocks/video"
 import { type TypeFromSelection } from "groqd"
-import ReactPlayer from "react-player"
 
 import { cn, Icon } from "@shared/ui"
 
@@ -18,6 +20,9 @@ interface Props {
   video: TypeFromSelection<typeof videoSelection>
   className?: string
 }
+
+// Use dynamic import to fix hydration error
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false })
 
 export function VideoBlock({ video, className }: Props) {
   const [isClient, setIsClient] = useState(false)
@@ -35,41 +40,43 @@ export function VideoBlock({ video, className }: Props) {
       )}
     >
       <div className="size-full">
-        <ReactPlayer
-          url={video.url}
-          width="100%"
-          height="100%"
-          controls={false}
-          playing
-          light={urlForImage(video.placeholderImage.asset)}
-          loop
-          playIcon={
-            <div
-              className={cn(
-                "flex size-16 items-center justify-center rounded-2xl",
-                "border border-grey-300 bg-white/80 backdrop-blur-md",
-                "group transition-colors duration-500 ease-in-out"
-              )}
-            >
-              <Icon variant="videoPlay" className="group-hover:fill-pink" />
-            </div>
-          }
-          wrapper={Wrapper}
-          config={{
-            youtube: {
-              playerVars: {
-                showinfo: 0,
-                controls: 1,
-                disablekb: 1,
-                rel: 0,
-                autoplay: 1,
-                playsinline: 1,
-                modestbranding: 1,
-                loop: 1,
+        {isClient && (
+          <ReactPlayer
+            url={video.url}
+            width="100%"
+            height="100%"
+            controls={false}
+            playing
+            light={urlForImage(video.placeholderImage.asset)}
+            loop
+            playIcon={
+              <div
+                className={cn(
+                  "flex size-16 items-center justify-center rounded-2xl",
+                  "border border-grey-300 bg-white/80 backdrop-blur-md",
+                  "group transition-colors duration-500 ease-in-out"
+                )}
+              >
+                <Icon variant="videoPlay" className="group-hover:fill-pink" />
+              </div>
+            }
+            wrapper={Wrapper}
+            config={{
+              youtube: {
+                playerVars: {
+                  showinfo: 0,
+                  controls: 1,
+                  disablekb: 1,
+                  rel: 0,
+                  autoplay: 1,
+                  playsinline: 1,
+                  modestbranding: 1,
+                  loop: 1,
+                },
               },
-            },
-          }}
-        />
+            }}
+          />
+        )}
       </div>
     </div>
   )
