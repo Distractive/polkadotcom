@@ -18,6 +18,7 @@ interface Props {
 }
 
 export function HeaderBlock({ header, breadcrumb, className }: Props) {
+  console.log("header:", header)
   // Alternate Header
   if (header.isAlternate) {
     return (
@@ -101,6 +102,8 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
   // Original side-by-side header
   return (
     <header className={cn("grid-system col-span-full mb-page", className)}>
+      {!header.image && <div className="pt-4"></div>}
+
       {header.image && (
         <Image
           src={urlForImage(header.image.asset)}

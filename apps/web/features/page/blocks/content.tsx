@@ -8,7 +8,14 @@ import { CustomUrl } from "@/components/custom-url"
 interface Props {
   content: TypeFromSelection<typeof contentSelection>
 }
+
+interface BreakNode {
+  _type: "break"
+  style: "break"
+}
+
 export function ContentBlock({ content }: Props) {
+  console.log("content: ", content)
   return (
     <div className="grid-system max-width px-gutter">
       <div
@@ -77,6 +84,9 @@ export function ContentBlock({ content }: Props) {
                     </CustomUrl>
                   </Button>
                 )
+              },
+              break: ({ value }: { value: BreakNode }) => {
+                return <br className="my-4" />
               },
             },
           }}

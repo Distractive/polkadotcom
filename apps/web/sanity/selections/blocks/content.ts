@@ -13,6 +13,10 @@ export const contentSelection = {
         _type: q.literal("customUrl"),
         ...customUrlSelection,
       },
+      '_type == "break"': {
+        _key: q.string(),
+        _type: q.literal("break"),
+      },
       default: {
         _key: q.string(),
         _type: ['"unsupported"', q.literal("unsupported")],
