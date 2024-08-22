@@ -147,7 +147,7 @@ export default function CardBlock({ card, className }: Props) {
                         : "primary"
                     }
                   >
-                    <CustomUrl className="outline-none" value={link}>
+                    <CustomUrl className="outline-none" value={link} isNested>
                       {link.label}
                     </CustomUrl>
                   </Button>

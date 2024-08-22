@@ -11,16 +11,45 @@ interface Props {
   className?: string
   isWrapper?: boolean
   tabIndex?: number
+  isNested?: boolean
   onClick?: () => void
 }
+
 export function CustomUrl({
   value,
   children,
   className,
   tabIndex,
   isWrapper = false,
+  isNested,
   onClick,
 }: Props) {
+  // isNested is for buttons inside of cards and prevents hydration errors due to nested <a> tags
+  if (isNested) {
+    return value ? (
+      isWrapper ? (
+        <Suspense fallback={null}>{children}</Suspense>
+      ) : (
+        <div className={className}>
+          <span className="inline-flex items-center gap-2">
+            <span className="flex-1">{children}</span>
+            {value.external && (
+              <Icon
+                variant="arrowRightUp"
+                className={cn(
+                  "size-4 shrink-0 fill-current lg:size-5",
+                  value.variant === "primary" && "fill-white"
+                )}
+              />
+            )}
+          </span>
+        </div>
+      )
+    ) : (
+      children
+    )
+  }
+
   return value ? (
     <Link
       tabIndex={tabIndex}
