@@ -8,8 +8,11 @@ export function parentChild(
   S: StructureBuilder,
   documentStore: DocumentStore
 ) {
-  const filter = `_type == "${schemaType}" && !defined(parent) && !(_id in path("drafts.**"))`
-  const query = `*[${filter}]{ _id, title, tierthree }`
+  const filter = `_type == "${schemaType}" && !defined(parent) && (
+    !(_id in path("drafts.**")) ||
+    !defined(*[_id == string::split(^._id, "drafts.")[1]][0])
+  )`
+  const query = `*[${filter}] | order(title asc){ _id, title, tierthree }`
   const options = { apiVersion: `2023-01-01` }
 
   return (
@@ -31,20 +34,32 @@ export function parentChild(
                 S.listItem()
                   .title("Landing Pages")
                   .schemaType(schemaType)
-                  .child(() =>
-                    S.documentList()
-                      .schemaType(schemaType)
+                  .child(() => {
+                    return S.list()
                       .title("Landing Pages")
-                      .filter(filter)
+                      .items(
+                        parents.map((doc: any) =>
+                          S.documentListItem()
+                            .id(doc._id)
+                            .title(
+                              doc._id.startsWith("drafts.")
+                                ? `${doc.title || "Untitled"} (Unpublished)`
+                                : doc.title || "Untitled"
+                            )
+                            .schemaType(schemaType)
+                            .child(
+                              S.document()
+                                .documentId(doc._id.replace("drafts.", ""))
+                                .schemaType(schemaType)
+                            )
+                        )
+                      )
                       .canHandleIntent(
                         (intentName: string, params) =>
                           intentName === "create" &&
                           params.template === "landing"
                       )
-                      .child((id: string) =>
-                        S.document().documentId(id).schemaType(schemaType)
-                      )
-                  ),
+                  }),
                 S.divider(),
                 ...parents
                   .filter((parent: SanityDocument) => parent.tierthree != true)
@@ -57,6 +72,7 @@ export function parentChild(
                         S.documentTypeList("page")
                           .title("Tier Two")
                           .filter(`_type == "page" && parent._ref == $parentId`)
+                          .apiVersion("v2023-01-01")
                           .params({ schemaType, parentId: parent._id })
                           .canHandleIntent(
                             (intentName: string, params) =>
@@ -76,3 +92,85 @@ export function parentChild(
       )
   )
 }
+
+// import type { SanityDocument } from "@sanity/client"
+// import { map } from "rxjs/operators"
+// import type { DocumentStore } from "sanity"
+// import type { StructureBuilder } from "sanity/structure"
+
+// export function parentChild(
+//   schemaType: string,
+//   S: StructureBuilder,
+//   documentStore: DocumentStore
+// ) {
+//   const filter = `_type == "${schemaType}" && !defined(parent) && (
+//     !(_id in path("drafts.**")) ||
+//     !defined(*[_id == string::split(^._id, "drafts.")[1]][0])
+//   )`
+//   const query = `*[${filter}]{ _id, title, tierthree }`
+//   const options = { apiVersion: `2023-01-01` }
+
+//   return (
+//     S.listItem()
+//       .title("Sections")
+//       // .icon(TagIcon)
+//       .child(() =>
+//         documentStore.listenQuery(query, {}, options).pipe(
+//           map((parents) =>
+//             S.list()
+//               .title("Sections")
+//               .menuItems([
+//                 S.menuItem()
+//                   .title("Add")
+//                   // .icon(TagIcon)
+//                   .intent({ type: "create", params: { type: schemaType } }),
+//               ])
+//               .items([
+//                 S.listItem()
+//                   .title("Landing Pages")
+//                   .schemaType(schemaType)
+//                   .child(() => {
+//                     return S.documentList()
+//                       .schemaType(schemaType)
+//                       .title("Landing Pages")
+//                       .filter(filter)
+//                       .canHandleIntent(
+//                         (intentName: string, params) =>
+//                           intentName === "create" &&
+//                           params.template === "landing"
+//                       )
+//                       .child((id: string) =>
+//                         S.document().documentId(id).schemaType(schemaType)
+//                       )
+//                   }),
+//                 S.divider(),
+//                 ...parents
+//                   .filter((parent: SanityDocument) => parent.tierthree != true)
+//                   .map((parent: SanityDocument) =>
+//                     S.listItem({
+//                       id: parent._id,
+//                       title: parent.title || "Untitled",
+//                       schemaType,
+//                       child: () =>
+//                         S.documentTypeList("page")
+//                           .title("Tier Two")
+//                           .filter(`_type == "page" && parent._ref == $parentId`)
+//                           .params({ schemaType, parentId: parent._id })
+//                           .canHandleIntent(
+//                             (intentName: string, params) =>
+//                               intentName === "create" &&
+//                               params.template === "landing-child"
+//                           )
+//                           .initialValueTemplates([
+//                             S.initialValueTemplateItem("landing-child", {
+//                               parentId: parent._id,
+//                             }),
+//                           ]),
+//                     })
+//                   ),
+//               ])
+//           )
+//         )
+//       )
+//   )
+// }
