@@ -83,7 +83,7 @@ export default function CardSmallBlock({ card, className }: Props) {
                 size="md"
                 className="mt-copy group-focus-within:after:translate-x-0 md:mr-auto md:group-hover:after:translate-x-0"
               >
-                <CustomUrl className="outline-none" value={link}>
+                <CustomUrl className="outline-none" value={link} isNested>
                   {link.label}
                 </CustomUrl>
               </Button>

@@ -15,7 +15,6 @@ interface BreakNode {
 }
 
 export function ContentBlock({ content }: Props) {
-  console.log("content: ", content)
   return (
     <div className="grid-system max-width px-gutter">
       <div

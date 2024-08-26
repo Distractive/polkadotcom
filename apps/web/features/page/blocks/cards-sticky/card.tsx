@@ -91,6 +91,7 @@ export default function CardStickyBlock({ card, className }: Props) {
                     className="outline-none"
                     tabIndex={-1}
                     value={link}
+                    isNested
                   >
                     {link.label}
                   </CustomUrl>

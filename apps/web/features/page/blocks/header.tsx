@@ -18,7 +18,6 @@ interface Props {
 }
 
 export function HeaderBlock({ header, breadcrumb, className }: Props) {
-  console.log("header:", header)
   // Alternate Header
   if (header.isAlternate) {
     return (
