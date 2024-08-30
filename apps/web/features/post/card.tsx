@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import type { postSelection } from "@/sanity/queries/posts"
 import type { TypeFromSelection } from "groqd"
@@ -37,11 +38,12 @@ export default function BlogCard({ post, className }: Props) {
     >
       {image && (
         <CardHeader className={cn("relative z-10 aspect-video")}>
-          <img
+          <Image
             src={image.asset.url}
             alt=""
-            loading="lazy"
             className="absolute inset-0 h-full w-full object-cover object-center"
+            width={image.asset.metadata.dimensions?.width}
+            height={image.asset.metadata.dimensions?.height}
           />
         </CardHeader>
       )}
