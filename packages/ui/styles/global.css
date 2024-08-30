@@ -20,7 +20,7 @@
   }
 
   .link-styling {
-    @apply font-[700] underline transition-colors duration-500 ease-in-out hover:text-pink;
+    @apply font-[700] underline hover:text-pink;
   }
 
   .background-blur {

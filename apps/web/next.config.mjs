@@ -29,6 +29,7 @@ const cspSources = {
     "https://*.hotjar.io",
     "https://www.youtube.com",
     "https://www.googletagmanager.com",
+    "https://scripts.simpleanalyticscdn.com",
   ],
   "style-src": [
     "'self'",
@@ -43,12 +44,14 @@ const cspSources = {
     "'self'",
     "data:",
     "https://cdn.sanity.io",
+    "https://i.ytimg.com",
     "https://plausible.io",
     "https://*.hotjar.com",
     "https://*.hsforms.com",
     "https://*.hubspot.com",
     "https://forms-na1.hsforms.com",
     "https://lh3.googleusercontent.com",
+    "https://queue.simpleanalyticscdn.com",
   ],
   "connect-src": [
     "'self'",

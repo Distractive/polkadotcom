@@ -1,5 +1,5 @@
 import Image from "next/image"
-import logo from "@/public/polkadot-logo-horizontal-pink-black.png"
+import logo from "@/public/polkadot-logo.png"
 
 interface Props {
   ariaLabel?: string

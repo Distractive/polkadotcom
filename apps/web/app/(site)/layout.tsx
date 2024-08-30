@@ -8,6 +8,7 @@ import { VisualEditing } from "next-sanity"
 import "@shared/ui/styles/global.css"
 
 import { headers } from "next/headers"
+import Image from "next/image"
 import { getFooter } from "@/sanity/queries/footer"
 import { getNavigation } from "@/sanity/queries/navigation"
 import { cn } from "@shared/ui/lib/utils"
@@ -49,17 +50,18 @@ export default async function RootLayout({
       <head>
         {isProduction ? (
           // Production script
-          <Script
-            src="https://cmp.osano.com/169unzUF2IaM42S5j/80a27ab0-b5e2-40d2-b909-d45519c89760/osano.js"
-            strategy="beforeInteractive"
-          />
+          <Script src="https://cmp.osano.com/169unzUF2IaM42S5j/80a27ab0-b5e2-40d2-b909-d45519c89760/osano.js" />
         ) : (
           // Staging script
-          <Script
-            src="https://cmp.osano.com/169unzUF2IaM42S5j/0f63db37-496b-4a14-a233-82bbdf3a4afd/osano.js"
-            strategy="beforeInteractive"
-          />
+          <Script src="https://cmp.osano.com/169unzUF2IaM42S5j/0f63db37-496b-4a14-a233-82bbdf3a4afd/osano.js" />
         )}
+        <Script
+          id="simple-analytics"
+          src="https://scripts.simpleanalyticscdn.com/latest.js"
+          strategy="afterInteractive"
+          data-domain="polkadot.com"
+          defer
+        />
         <Script src="https://js.hsforms.net/forms/embed/v2.js" />
         <Script
           id="plausible"
@@ -68,12 +70,19 @@ export default async function RootLayout({
           data-domain="polkadot.com"
           defer
         />
-        <Script
-          id="hotjar"
-          strategy="afterInteractive"
-          src="https://static.hotjar.com/c/hotjar-5063108.js?sv=6"
-          async
-        />
+        {/* @ts-ignore */}
+        <Script id="hotjar" strategy="afterInteractive">
+          {`
+            (function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:5063108,hjsv:6};
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                a.appendChild(r);
+            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+            `}
+        </Script>
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -108,13 +117,13 @@ export default async function RootLayout({
           rel="icon"
           type="image/png"
           sizes="192x192"
-          href="/favicon/android-chrome-192x192"
+          href="/favicon/android-chrome-192x192.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="512x512"
-          href="/favicon/android-chrome-512x512"
+          href="/favicon/android-chrome-512x512.png"
         />
         <link
           rel="icon"
@@ -164,6 +173,14 @@ export default async function RootLayout({
         {env.VERCEL_ENV === "development" && <TailwindIndicator />}
         {draftMode().isEnabled && <VisualEditing />}
         {env.VERCEL_ENV === "production" && <Analytics />}
+
+        <noscript>
+          <Image
+            src="https://queue.simpleanalyticscdn.com/noscript.gif"
+            alt=""
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </noscript>
       </body>
     </html>
   )
