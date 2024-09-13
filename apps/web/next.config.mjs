@@ -111,6 +111,12 @@ const nextConfig = {
         port: "",
         pathname: "/images/qf32zgfm/production/**",
       },
+      {
+        protocol: "https",
+        hostname: "queue.simpleanalyticscdn.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   experimental: {

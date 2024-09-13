@@ -16,9 +16,9 @@ const ButtonStyles = {
   variants: {
     primary: "text-white after:from-pink after:via-pink after:to-black",
     secondary:
-      "text-black before:bg-greyLavender before:opacity-80 before:backdrop-blur-lg after:from-greyBlue after:via-greyBlue after-to:greyLavender border-[1px] border-grey-300",
+      "text-black before:bg-greyLavender before:opacity-80 after:from-greyBlue after:via-greyBlue after-to:greyLavender border-[1px] border-grey-300",
     tertiary:
-      "text-black before:bg-greyLavender before:opacity-60 before:backdrop-blur-lg after:from-greyBlue after:via-greyBlue after:to-greyLavender border-[1px] border-grey-300 after:translate-x-[0%] after:w-[100%]",
+      "text-black before:bg-greyLavender before:opacity-60  after:from-greyBlue after:via-greyBlue after:to-greyLavender border-[1px] border-grey-300 after:translate-x-[0%] after:w-[100%]",
     disabled:
       "bg-grey-200 text-grey-300 pointer-events-none border-[1px] border-grey-200",
   },

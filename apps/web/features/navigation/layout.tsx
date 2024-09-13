@@ -101,7 +101,7 @@ export default function NavigationLayout({ navigation }: Props) {
         )}
       </nav>
 
-      <Overlay isVisible={isOpen} />
+      <Overlay isVisible={isOpen && isMobile} />
     </>
   )
 }

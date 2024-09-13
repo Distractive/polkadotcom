@@ -178,6 +178,8 @@ export default async function RootLayout({
           <Image
             src="https://queue.simpleanalyticscdn.com/noscript.gif"
             alt=""
+            width="0"
+            height="0"
             referrerPolicy="no-referrer-when-downgrade"
           />
         </noscript>

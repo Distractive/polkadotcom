@@ -69,7 +69,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
               {tags.map((tag) => (
                 <li
                   key={tag.slug}
-                  className="mb-1 flex rounded bg-grey-200 px-3 py-1 text-left text-sm leading-relaxed"
+                  className="mb-1 flex rounded bg-greyLavender px-3 py-1 text-left text-sm leading-relaxed"
                 >
                   <a
                     className="relative z-20"
