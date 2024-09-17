@@ -145,6 +145,10 @@ const nextConfig = {
             key: "X-Content-Type-Options",
             value: "nosniff",
           },
+          {
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin",
+          },
         ],
       },
     ]
