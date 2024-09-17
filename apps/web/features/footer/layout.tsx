@@ -1,9 +1,10 @@
+import Image from "next/image"
+import footerGradientPink from "@/public/gradients/ecosystem-pink.png"
+import footerGradientYellow from "@/public/gradients/footer-yellow.png"
 import type { footerSelection } from "@/sanity/selections/footer/footer"
 import type { TypeFromSelection } from "groqd"
 
 import { Logo } from "../../components/logo"
-import { FooterGradientPink } from "../gradients/footer-pink"
-import { FooterGradientYellow } from "../gradients/footer-yellow"
 import { Background } from "./background"
 import Menu from "./menu"
 import SocialLinks from "./social-links"
@@ -18,10 +19,20 @@ export default function FooterLayout({ footer }: Props) {
       {/* <Background /> */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 transform 2xl:translate-x-[-5%]">
-          <FooterGradientYellow />
+          <Image
+            src={footerGradientPink}
+            alt="Footer Gradient"
+            height={1600}
+            width={1600}
+          />
         </div>
         <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-[60%] transform 2xl:translate-x-[10%]">
-          <FooterGradientPink />
+          <Image
+            src={footerGradientYellow}
+            alt="Footer Gradient"
+            height={1600}
+            width={1600}
+          />
         </div>
       </div>
 

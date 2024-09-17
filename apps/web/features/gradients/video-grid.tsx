@@ -394,10 +394,10 @@ export const VideoGrid: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
             in2="BackgroundImageFix"
             result="shape"
           />
-          <feGaussianBlur
+          {/* <feGaussianBlur
             stdDeviation="50"
             result="effect1_foregroundBlur_1031_3244"
-          />
+          /> */}
         </filter>
       </defs>
     </svg>

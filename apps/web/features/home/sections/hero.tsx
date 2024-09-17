@@ -1,6 +1,9 @@
 // "use client"
 
 import Image from "next/image"
+// import { HeroGradient } from "@/features/gradients/hero-rainbow"
+
+import HeroGradient from "@/public/gradients/hero-gradient.png"
 import { type heroSelection } from "@/sanity/selections/home/hero"
 import Spline from "@splinetool/react-spline"
 // import * as Scrollytelling from "@bsmnt/scrollytelling"
@@ -8,7 +11,6 @@ import { type TypeFromSelection } from "groqd"
 
 import { Button, cn, Heading } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
-import { HeroGradient } from "@/features/gradients/hero-rainbow"
 
 interface Props {
   hero: TypeFromSelection<typeof heroSelection>["hero"]
@@ -16,31 +18,26 @@ interface Props {
 
 export function Hero({ hero }: Props) {
   return (
-    // <div
-    //   id="hero-pile"
-    //   className="grid-pile relative flex h-[100vh] flex-col overflow-hidden"
-    // >
     <div
       id="hero-pile"
       className="relative flex  flex-col items-center justify-center pt-40"
     >
       <div
         id="hero-backgrounds"
-        className="max-width absolute top-0 -z-50 h-full w-[100vw] "
+        className={cn(
+          "absolute top-0 -z-50 w-full scale-[1.1]",
+          "translate-x-[-50%] translate-y-[-27%] md:translate-x-[0] 2xl:translate-x-[10%]"
+        )}
       >
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 translate-y-[-35%] transform">
-          <HeroGradient />
+        <div className="relative h-full  w-full min-w-[1000px]">
+          <Image
+            src={HeroGradient}
+            alt="Hero Gradient"
+            width={2000}
+            height={2000}
+            priority
+          />
         </div>
-
-        {/* <img
-          src="/gradients/grid.png"
-          alt=""
-          className={cn(
-            " absolute -z-30 h-full w-full origin-center rotate-[90deg] scale-50 object-contain",
-            "-translate-x-[-50%] -translate-y-[30%] md:-translate-y-[10%]"
-          )}
-          loading="lazy"
-        /> */}
       </div>
 
       <article

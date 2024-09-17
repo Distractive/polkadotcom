@@ -42,10 +42,10 @@ export const FooterGradientYellow: React.FC<React.SVGProps<SVGSVGElement>> = (
             in2="BackgroundImageFix"
             result="shape"
           />
-          <feGaussianBlur
+          {/* <feGaussianBlur
             stdDeviation="50"
             result="effect1_foregroundBlur_1031_3090"
-          />
+          /> */}
         </filter>
         <filter
           id="filter1_f_1031_3090"
@@ -63,10 +63,10 @@ export const FooterGradientYellow: React.FC<React.SVGProps<SVGSVGElement>> = (
             in2="BackgroundImageFix"
             result="shape"
           />
-          <feGaussianBlur
+          {/* <feGaussianBlur
             stdDeviation="50"
             result="effect1_foregroundBlur_1031_3090"
-          />
+          /> */}
         </filter>
       </defs>
     </svg>

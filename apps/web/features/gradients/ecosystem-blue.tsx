@@ -412,10 +412,10 @@ export const EcosystemGradientBlue: React.FC<React.SVGProps<SVGSVGElement>> = (
             in2="BackgroundImageFix"
             result="shape"
           />
-          <feGaussianBlur
+          {/* <feGaussianBlur
             stdDeviation="50"
             result="effect1_foregroundBlur_1031_2936"
-          />
+          /> */}
         </filter>
         <filter
           id="filter1_f_1031_2936"
@@ -433,10 +433,10 @@ export const EcosystemGradientBlue: React.FC<React.SVGProps<SVGSVGElement>> = (
             in2="BackgroundImageFix"
             result="shape"
           />
-          <feGaussianBlur
+          {/* <feGaussianBlur
             stdDeviation="200"
             result="effect1_foregroundBlur_1031_2936"
-          />
+          /> */}
         </filter>
         <filter
           id="filter2_f_1031_2936"
@@ -454,10 +454,10 @@ export const EcosystemGradientBlue: React.FC<React.SVGProps<SVGSVGElement>> = (
             in2="BackgroundImageFix"
             result="shape"
           />
-          <feGaussianBlur
+          {/* <feGaussianBlur
             stdDeviation="50"
             result="effect1_foregroundBlur_1031_2936"
-          />
+          /> */}
         </filter>
       </defs>
     </svg>

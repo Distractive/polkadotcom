@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react"
 import Image from "next/image"
+import ecosystemGradientBlue from "@/public/gradients/ecosystem-blue.png"
+import ecosystemGradientPink from "@/public/gradients/ecosystem-pink.png"
 import { urlForImage } from "@/sanity/lib/image"
 import { type ecosystemSelection } from "@/sanity/selections/home/ecosystem"
 import { type TypeFromSelection } from "groqd"
@@ -9,8 +11,6 @@ import { gsap } from "gsap"
 
 import { Button, Card, CardContent, cn, Heading } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
-import { EcosystemGradientBlue } from "@/features/gradients/ecosystem-blue"
-import { EcosystemGradientPink } from "@/features/gradients/ecosystem-pink"
 
 import { StaggerHeader } from "../components/stagger-heading"
 import { STANDARD_DELAY } from "../lib/constants"
@@ -20,102 +20,24 @@ interface Props {
 }
 
 export function Ecosystem({ ecosystem }: Props) {
-  // const TIMELINE = {
-  //   defaults: {
-  //     ease: "power1.inOut",
-  //   },
-  // }
-  // const timeline = useRef<gsap.core.Timeline | null>(null)
-  // const container = useRef<HTMLDivElement>(null)
-
-  // useEffect(() => {
-  //   if (!container.current) return
-
-  //   timeline.current = gsap.timeline({
-  //     ...TIMELINE,
-  //   })
-
-  //   return () => {
-  //     timeline.current?.kill()
-  //   }
-  // }, [])
-
-  // useEffect(() => {
-  //   if (!timeline.current) return
-
-  //   timeline.current
-  //     .fromTo(
-  //       "#ecosystem-body",
-  //       {
-  //         opacity: 0,
-  //       },
-  //       {
-  //         opacity: 1,
-  //         delay: STANDARD_DELAY,
-  //         scrollTrigger: {
-  //           trigger: "#ecosystem-pile",
-  //           start: "top 50%",
-  //           end: "top 90%",
-  //           scrub: 1,
-  //           markers: false,
-  //           once: true,
-  //         },
-  //         duration: 0.2,
-  //       }
-  //     )
-  //     .fromTo(
-  //       ".eco-card",
-  //       {
-  //         opacity: 0,
-  //         y: 40,
-  //         scale: 0.9,
-  //       },
-  //       {
-  //         opacity: 1,
-  //         stagger: 0.2,
-  //         y: 0,
-  //         scale: 1,
-  //         delay: STANDARD_DELAY,
-  //         scrollTrigger: {
-  //           trigger: "#ecosystem-pile",
-  //           start: "top 50%",
-  //           end: "top 90%",
-  //           scrub: 2,
-  //           markers: false,
-  //           once: true,
-  //         },
-  //         // duration: 0.4,
-  //       }
-  //     )
-  //   // timeline.current.fromTo(
-  //   //   "#ecosystem-backgrounds",
-  //   //   {
-  //   //     opacity: 0,
-  //   //   },
-  //   //   {
-  //   //     opacity: 1,
-  //   //     delay: STANDARD_DELAY,
-  //   //     scrollTrigger: {
-  //   //       trigger: "#ecosystem-pile",
-  //   //       start: "top 50%",
-  //   //       end: "top 90%",
-  //   //       scrub: 1,
-  //   //       markers: false,
-  //   //       once: true,
-  //   //     },
-  //   //     duration: 0.4,
-  //   //   }
-  //   // )
-  // }, [])
-
   return (
     <div id="ecosystem-pile" className="grid-pile md:pt-[6rem]">
       <div id="" className="max-width relative -z-50 ">
-        <div className="absolute right-0 top-0  translate-x-[40%] translate-y-[-20%] transform lg:translate-x-[25%] ">
-          <EcosystemGradientPink />
+        <div className="absolute right-0 top-0 translate-x-[40%] translate-y-[-20%] scale-[2.5] md:scale-[1] lg:translate-x-[25%]">
+          <Image
+            src={ecosystemGradientPink}
+            alt="Ecosystem Gradient"
+            height={1600}
+            width={1600}
+          />
         </div>
-        <div className="absolute bottom-0 left-0 translate-x-[-40%] translate-y-[15%]  transform lg:translate-y-[20%]">
-          <EcosystemGradientBlue />
+        <div className="absolute bottom-0 left-0 translate-x-[-40%] translate-y-[15%] scale-[2.5] md:scale-[1] lg:translate-y-[20%]">
+          <Image
+            src={ecosystemGradientBlue}
+            alt="Ecosystem Gradient"
+            height={1600}
+            width={1600}
+          />
         </div>
       </div>
 
@@ -133,12 +55,6 @@ export function Ecosystem({ ecosystem }: Props) {
           )}
         >
           <div className="col-span-12 px-gutter md:w-3/4 lg:w-4/6 lg:px-0">
-            {/* <StaggerHeader
-              className="pb-copy font-display text-5xl leading-[1.1] md:text-7xl"
-              title={ecosystem.title}
-              timeline={timeline}
-              section="#ecosystem-pile"
-            /> */}
             <Heading
               variant="h2"
               className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"

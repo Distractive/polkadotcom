@@ -109,21 +109,6 @@ export function Connected({ connected }: Props) {
   // }, [])
   return (
     <div id="connected-pile" className="grid-pile md:pt-[6rem] lg:pt-[12rem]">
-      {/* <div
-        id="connected-backgrounds"
-        className="relative w-[100vw] overflow-x-hidden"
-      >
-        <img
-          src="/gradients/1.webp"
-          alt=""
-          className={cn(
-            "absolute -z-20 h-full w-full rotate-[83deg] scale-50",
-            "-translate-x-[50%] -translate-y-[25%] md:translate-y-[0%]",
-            "object-contain"
-          )}
-          loading="lazy"
-        />
-      </div> */}
       <article
         id="connected.wrapper"
         className="grid-system grid-pile relative col-span-12 h-full w-lvw items-center justify-center overflow-hidden"
@@ -133,12 +118,6 @@ export function Connected({ connected }: Props) {
           className="grid-system relative z-10 col-span-12 mt-header-top !w-[100vw] md:mt-0"
         >
           <div className="col-span-6 px-gutter pb-gutter lg:col-span-4 lg:col-start-2 xl:col-start-3">
-            {/* <StaggerHeader
-              timeline={timeline}
-              section="#connected-pile"
-              title={connected.title}
-              className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"
-            /> */}
             <Heading
               variant="h2"
               className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"

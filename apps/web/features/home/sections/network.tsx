@@ -1,10 +1,5 @@
-// "use client"
-
-// import { useEffect, useRef } from "react"
 import { type networkSelection } from "@/sanity/selections/home/network"
 import { type TypeFromSelection } from "groqd"
-
-// import { gsap } from "gsap"
 
 import {
   Card,
@@ -17,110 +12,13 @@ import {
 } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
 
-// import { StaggerHeader } from "../components/stagger-heading"
-// import { STANDARD_DELAY } from "../lib/constants"
-
 interface Props {
   network: TypeFromSelection<typeof networkSelection>["network"]
 }
 
-const TIMELINE = {
-  defaults: {
-    ease: "power1.inOut",
-  },
-}
-
 export function Network({ network }: Props) {
-  // const timeline = useRef<gsap.core.Timeline | null>(null)
-  // const container = useRef<HTMLDivElement>(null)
-  // useEffect(() => {
-  //   timeline.current = gsap.timeline({
-  //     ...TIMELINE,
-  //   })
-  //   return () => {
-  //     timeline.current?.kill()
-  //   }
-  // }, [])
-
-  // useEffect(() => {
-  //   if (!timeline.current) return
-
-  //   timeline.current
-  //     .fromTo(
-  //       "#network-body",
-  //       {
-  //         opacity: 0,
-  //       },
-  //       {
-  //         opacity: 1,
-  //         delay: STANDARD_DELAY,
-  //         scrollTrigger: {
-  //           trigger: "#network-pile",
-  //           start: "top 50%",
-  //           end: "top 90%",
-  //           scrub: 1,
-  //           markers: false,
-  //           once: true,
-  //         },
-  //         duration: 0.2,
-  //       }
-  //     )
-  //     .fromTo(
-  //       ".network-card",
-  //       {
-  //         opacity: 0,
-  //         y: 40,
-  //         scale: 0.9,
-  //       },
-  //       {
-  //         opacity: 1,
-  //         stagger: 0.2,
-  //         y: -40,
-  //         scale: 1,
-  //         delay: STANDARD_DELAY * 2,
-  //         scrollTrigger: {
-  //           trigger: "#network-pile",
-  //           start: "top 50%",
-  //           end: "top 90%",
-  //           scrub: 1.5,
-  //           markers: false,
-  //           once: true,
-  //         },
-  //         duration: 0.2,
-  //       }
-  //     )
-
-  //   // timeline.current.fromTo(
-  //   //   "#network-backgrounds",
-  //   //   {
-  //   //     opacity: 0,
-  //   //   },
-  //   //   {
-  //   //     opacity: 1,
-  //   //     delay: STANDARD_DELAY,
-  //   //     scrollTrigger: {
-  //   //       trigger: "#network-pile",
-  //   //       start: "top 50%",
-  //   //       end: "top 90%",
-  //   //       scrub: 1,
-  //   //       markers: false,
-  //   //       once: true,
-  //   //     },
-  //   //     duration: 0.4,
-  //   //   }
-  //   // )
-  // }, [])
-
   return (
     <div id="network-pile" className="grid-pile pt-[6rem] md:pt-[10rem]">
-      {/* <div id="network-backgrounds" className="relative top-0 w-[100vw]">
-        <img
-          src="/gradients/4.webp"
-          alt=""
-          className="absolute top-0 -z-20 w-full origin-center -translate-x-[60%] rotate-90 scale-[0.6]"
-          loading="lazy"
-        />
-      </div> */}
       <article
         id="network.wrapper"
         className="grid-system relative col-span-full h-full w-dvw items-center justify-center overflow-x-hidden md:h-full"
@@ -141,12 +39,6 @@ export function Network({ network }: Props) {
               "md:col-span-8 md:col-start-3 lg:w-4/6 lg:pb-[5rem]"
             )}
           >
-            {/* <StaggerHeader
-              title={network.title}
-              className="pb-card text-5xl leading-[1.1] md:text-7xl"
-              timeline={timeline}
-              section="#network-pile"
-            /> */}
             <Heading
               variant="h2"
               className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"

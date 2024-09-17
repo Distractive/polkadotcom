@@ -404,10 +404,10 @@ export const FooterGradientPink: React.FC<React.SVGProps<SVGSVGElement>> = (
             in2="BackgroundImageFix"
             result="shape"
           />
-          <feGaussianBlur
+          {/* <feGaussianBlur
             stdDeviation="200"
             result="effect1_foregroundBlur_1031_3093"
-          />
+          /> */}
         </filter>
         <filter
           id="filter1_f_1031_3093"
@@ -425,10 +425,10 @@ export const FooterGradientPink: React.FC<React.SVGProps<SVGSVGElement>> = (
             in2="BackgroundImageFix"
             result="shape"
           />
-          <feGaussianBlur
+          {/* <feGaussianBlur
             stdDeviation="100"
             result="effect1_foregroundBlur_1031_3093"
-          />
+          /> */}
         </filter>
       </defs>
     </svg>
