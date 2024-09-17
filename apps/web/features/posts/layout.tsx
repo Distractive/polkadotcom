@@ -45,17 +45,35 @@ export default async function Layout({
       ? `/${postsData?.slug}`
       : `/${postsData?.parent?.slug}/${postsData?.slug}`
 
-  const breadcrumb: BreadcrumbProps = {
-    items: [
-      {
-        slug: `/${postsData?.parent?.slug}` ?? "",
-        title: postsData?.parent?.title,
-      },
-      {
-        slug: slugPath,
-        title: postsData?.heading,
-      },
-    ],
+  let breadcrumb: BreadcrumbProps = { items: [] }
+
+  // Hard code press release breadcrumb due to URL structure of parent pages
+  if (type === "Press Release") {
+    breadcrumb = {
+      items: [
+        {
+          slug: "/community/newsroom",
+          title: "Newsroom",
+        },
+        {
+          slug: "/newsroom/press-releases",
+          title: "Press Releases",
+        },
+      ],
+    }
+  } else {
+    breadcrumb = {
+      items: [
+        {
+          slug: `/${postsData?.parent?.slug}` ?? "",
+          title: postsData?.parent?.header?.title,
+        },
+        {
+          slug: `/${postsData?.parent?.slug}/${postsData?.slug}` ?? "",
+          title: postsData?.heading,
+        },
+      ],
+    }
   }
 
   const header: TypeFromSelection<typeof headerSelection> = {

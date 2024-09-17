@@ -29,17 +29,35 @@ export default async function Layout({ slug, type }: LayoutProps) {
   const headingType = type == BLOG_POSTTYPE ? "blog" : "press-releases"
   const postsData = await getPostHeading(headingType)
 
-  const breadcrumb: BreadcrumbProps = {
-    items: [
-      {
-        slug: `/${postsData?.parent?.slug}` ?? "",
-        title: postsData?.parent?.header?.title,
-      },
-      {
-        slug: `/${postsData?.parent?.slug}/${postsData?.slug}` ?? "",
-        title: postsData?.heading,
-      },
-    ],
+  let breadcrumb: BreadcrumbProps = { items: [] }
+
+  // Hard code press release breadcrumb due to URL structure of parent pages
+  if (type === "Press Release") {
+    breadcrumb = {
+      items: [
+        {
+          slug: "/community/newsroom",
+          title: "Newsroom",
+        },
+        {
+          slug: "/newsroom/press-releases",
+          title: "Press Releases",
+        },
+      ],
+    }
+  } else {
+    breadcrumb = {
+      items: [
+        {
+          slug: `/${postsData?.parent?.slug}` ?? "",
+          title: postsData?.parent?.header?.title,
+        },
+        {
+          slug: `/${postsData?.parent?.slug}/${postsData?.slug}` ?? "",
+          title: postsData?.heading,
+        },
+      ],
+    }
   }
 
   const {
