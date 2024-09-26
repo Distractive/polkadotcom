@@ -44,6 +44,7 @@ export default function BlogCard({ post, className }: Props) {
             className="absolute inset-0 h-full w-full object-cover object-center"
             width={image.asset.metadata.dimensions?.width}
             height={image.asset.metadata.dimensions?.height}
+            priority
           />
         </CardHeader>
       )}
