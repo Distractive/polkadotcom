@@ -45,6 +45,8 @@ export default async function Layout({
       ? `/${postsData?.slug}`
       : `/${postsData?.parent?.slug}/${postsData?.slug}`
 
+  console.log("tagSlug", tagSlug)
+
   let breadcrumb: BreadcrumbProps = { items: [] }
 
   // Hard code press release breadcrumb due to URL structure of parent pages
@@ -86,6 +88,7 @@ export default async function Layout({
     mobileImage: null,
   }
 
+  console.log("header", header)
   return (
     <>
       <ScrollToView page={Number(page)} />
@@ -103,17 +106,16 @@ export default async function Layout({
         >
           {breadcrumb && <BreadcrumbBlock items={breadcrumb.items} />}
 
-          <Heading variant="h1">{header.title}</Heading>
+          <Heading variant="h1">
+            {header.title}
+            {tagSlug &&
+              " - " + tagSlug?.charAt(0).toUpperCase() + tagSlug.slice(1)}
+          </Heading>
 
           {header.body && <p className="text-lg">{header.body}</p>}
         </div>
       </header>
       <div id="main-content" className="max-width col-span-full px-gutter">
-        {tagSlug !== "" && (
-          <div className="col-span-full mt-gutter flex justify-center pb-gutter pt-header-top">
-            <h1 className="font-display text-3xl capitalize">{tagSlug}</h1>
-          </div>
-        )}
         <div className="grid-system col-span-full mb-card">
           {tagSlug === "" && (
             <search
