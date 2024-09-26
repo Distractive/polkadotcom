@@ -15,12 +15,14 @@ export async function generateMetadata(): Promise<Metadata> {
     }
 
   return {
-    title: meta.meta?.meta_title || "Polkadot",
+    title: "Polkadot Blog",
     description:
-      meta.meta?.meta_description ||
-      "Polkadot empowers blockchain networks to work together under the protection of shared security.",
+      "Explore the Polkadot ecosystem through in-depth articles,and insights. Polkadot empowers blockchain networks to work together under the protection of shared security.",
     openGraph: {
       images: [meta.meta?.meta_image?.asset.url || ""],
+      title: "Polkadot Blog",
+      description:
+        "Explore the Polkadot ecosystem through in-depth articles,and insights. Polkadot empowers blockchain networks to work together under the protection of shared security.",
     },
   }
 }

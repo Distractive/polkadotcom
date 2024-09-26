@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import { type Metadata } from "next"
 import { getPostMeta } from "@/sanity/queries/post"
 import { getSlugs } from "@/sanity/queries/posts"
 

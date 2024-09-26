@@ -16,12 +16,14 @@ export async function generateMetadata(): Promise<Metadata> {
     }
 
   return {
-    title: meta.meta?.meta_title || "Polkadot",
+    title: "Polkadot Press Releases",
     description:
-      meta.meta?.meta_description ||
-      "Polkadot empowers blockchain networks to work together under the protection of shared security.",
+      "Stay updated with the latest Polkadot news and announcements. Official press releases covering network upgrades, partnerships, and ecosystem developments.",
     openGraph: {
       images: [meta.meta?.meta_image?.asset.url || ""],
+      title: "Polkadot Press Releases",
+      description:
+        "Stay updated with the latest Polkadot news and announcements. Official press releases covering network upgrades, partnerships, and ecosystem developments.",
     },
   }
 }

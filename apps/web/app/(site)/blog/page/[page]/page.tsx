@@ -1,5 +1,4 @@
 import { type Metadata } from "next"
-import { getSingletonMeta } from "@/sanity/queries/page"
 
 import { BLOG_POSTTYPE } from "@/constants/global"
 import { Newsletter } from "@/features/page/blocks/newsletter"
@@ -7,21 +6,19 @@ import Layout from "@/features/posts/layout"
 
 export const dynamicParams = true
 
-export async function generateMetadata(): Promise<Metadata> {
-  const meta = await getSingletonMeta("blog")
-  if (!meta)
-    return {
-      title: "Polkadot 404",
-      description: "Page not found",
-    }
+export async function generateMetadata({
+  params,
+}: {
+  params: { page: string }
+}): Promise<Metadata> {
+  const { page } = params
 
   return {
-    title: meta.meta?.meta_title || "Polkadot",
-    description:
-      meta.meta?.meta_description ||
-      "Polkadot empowers blockchain networks to work together under the protection of shared security.",
+    title: `Polkadot Blog | Page ${page}`,
+    description: `Learn about the Polkadot ecosystem through in-depth articles, overviews, and insights. Page ${page}.`,
     openGraph: {
-      images: [meta.meta?.meta_image?.asset.url || ""],
+      title: `Polkadot Blog | Page ${page}`,
+      description: `Learn about the Polkadot ecosystem through in-depth articles, overviews, and insights. Page ${page}.`,
     },
   }
 }
