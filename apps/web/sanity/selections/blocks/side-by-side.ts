@@ -10,6 +10,7 @@ export const sideBySideSelection = {
   image: sanityImage("image", {
     withAsset: ["base", "dimensions"],
   }),
+  altText: q.string().nullable().optional(),
   isImageOnLeft: q.boolean(),
   content: q("content")
     .filter()

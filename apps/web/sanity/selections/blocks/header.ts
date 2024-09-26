@@ -11,6 +11,7 @@ export const headerSelection = {
   mobileImage: sanityImage("mobileImage", {
     withAsset: ["base", "dimensions"],
   }).nullable(),
+  altText: nullToUndefined(q.string().optional()),
   title: q.string(),
   isAlternate: q.boolean().optional().nullable(),
   body: nullToUndefined(q.string().optional()),

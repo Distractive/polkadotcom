@@ -86,7 +86,7 @@ export function SideBySideBlock({ content }: Props) {
       {content.image && (
         <Image
           src={urlForImage(content.image.asset)}
-          alt=""
+          alt={content?.altText || ""}
           className={cn(
             "order-1 col-span-full h-auto lg:col-span-7 lg:my-auto",
             content.isImageOnLeft ? "" : "lg:order-2"

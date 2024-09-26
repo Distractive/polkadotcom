@@ -28,7 +28,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
             <div className="absolute inset-0 hidden overflow-hidden md:block">
               <Image
                 src={urlForImage(header.image.asset)}
-                alt=""
+                alt={header?.altText || ""}
                 className="hidden h-[400px] w-full rounded-b-2xl object-cover md:block"
                 width={header.image.asset.metadata.dimensions?.width}
                 height={header.image.asset.metadata.dimensions?.height}

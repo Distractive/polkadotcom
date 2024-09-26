@@ -20,7 +20,11 @@ export default defineType({
       title: "Alternate Layout Mobile Image [400x300]",
       type: "image",
     }),
-
+    defineField({
+      name: "altText",
+      title: "Alt Text",
+      type: "string",
+    }),
     defineField({
       name: "title",
       title: "Title",

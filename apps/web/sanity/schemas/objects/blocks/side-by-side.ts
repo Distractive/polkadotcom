@@ -23,6 +23,11 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "altText",
+      title: "Alt Text",
+      type: "string",
+    }),
+    defineField({
       title: "is image on left?",
       name: "isImageOnLeft",
       type: "boolean",
@@ -40,7 +45,7 @@ export default defineType({
           styles: [
             { title: "Normal", value: "normal" },
             { title: "H3", value: "h3" },
-            { title: "Smallprint", value: "smallprint"}
+            { title: "Smallprint", value: "smallprint" },
           ],
           marks: {
             decorators: [{ title: "Strong", value: "strong" }],
