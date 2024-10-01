@@ -99,7 +99,7 @@ export function Hero({ hero }: Props) {
       </article>
       <div className="relative -z-10 min-h-[36rem] w-full translate-y-[-15%] overflow-visible md:h-[40rem] md:scale-125">
         <div className="absolute inset-0">
-          <Spline scene="https://prod.spline.design/G1XWvgK96wWX4OU7/scene.splinecode" />
+          <Spline scene="/scene.spline" />
         </div>
       </div>
     </div>
