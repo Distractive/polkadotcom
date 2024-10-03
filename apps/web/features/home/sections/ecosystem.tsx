@@ -1,19 +1,14 @@
-// "use client"
+"use client"
 
-import { useEffect, useRef } from "react"
 import Image from "next/image"
 import ecosystemGradientBlue from "@/public/gradients/ecosystem-blue.png"
 import ecosystemGradientPink from "@/public/gradients/ecosystem-pink.png"
 import { urlForImage } from "@/sanity/lib/image"
 import { type ecosystemSelection } from "@/sanity/selections/home/ecosystem"
 import { type TypeFromSelection } from "groqd"
-import { gsap } from "gsap"
 
 import { Button, Card, CardContent, cn, Heading } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
-
-import { StaggerHeader } from "../components/stagger-heading"
-import { STANDARD_DELAY } from "../lib/constants"
 
 interface Props {
   ecosystem: TypeFromSelection<typeof ecosystemSelection>["ecosystem"]
@@ -80,7 +75,7 @@ export function Ecosystem({ ecosystem }: Props) {
                   "col-span-full col-start-1 md:col-span-4 md:col-start-2 lg:col-span-8 lg:col-start-3",
                   (index == 2 || index == 5) && "lg:col-start-7",
                   (index == 1 || index == 2 || index == 4 || index == 5) &&
-                    "relative lg:col-span-4"
+                  "relative lg:col-span-4"
                 )}
                 data-index={index}
               >

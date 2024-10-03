@@ -1,10 +1,8 @@
-// "use client"
+"use client"
 
-import { useEffect, useRef } from "react"
 import Image from "next/image"
 import { type connectedSelection } from "@/sanity/selections/home/connected"
 import { type TypeFromSelection } from "groqd"
-import gsap from "gsap"
 
 import {
   Card,
@@ -18,95 +16,12 @@ import {
 import { Carousel } from "@/components/carousel"
 import { CustomUrl } from "@/components/custom-url"
 
-// import { StaggerHeader } from "../components/stagger-heading"
-// import { STANDARD_DELAY } from "../lib/constants"
-
 interface Props {
   connected: TypeFromSelection<typeof connectedSelection>["connected"]
 }
 
-// const TIMELINE = {
-//   defaults: {
-//     ease: "power1.inOut",
-//   },
-// }
-
 export function Connected({ connected }: Props) {
-  // const timeline = useRef<gsap.core.Timeline | null>(null)
-  // useEffect(() => {
-  //   timeline.current = gsap.timeline({
-  //     ...TIMELINE,
-  //   })
-  //   return () => {
-  //     timeline.current?.kill()
-  //   }
-  // }, [])
 
-  // useEffect(() => {
-  //   if (!timeline.current) return
-  //   timeline.current
-  //     .fromTo(
-  //       "#connected-body",
-  //       {
-  //         opacity: 0,
-  //       },
-  //       {
-  //         opacity: 1,
-  //         delay: STANDARD_DELAY,
-  //         scrollTrigger: {
-  //           trigger: "#connected-pile",
-  //           start: "top 50%",
-  //           end: "top 90%",
-  //           scrub: 1,
-  //           markers: false,
-  //           once: true,
-  //         },
-  //         duration: 0.2,
-  //       }
-  //     )
-  //     .fromTo(
-  //       "#connected-carousel",
-  //       {
-  //         opacity: 0,
-  //         x: 999,
-  //       },
-  //       {
-  //         opacity: 1,
-  //         x: 0,
-  //         delay: STANDARD_DELAY,
-  //         scrollTrigger: {
-  //           trigger: "#connected-pile",
-  //           start: "top 50%",
-  //           end: "top 90%",
-  //           scrub: 1,
-  //           markers: false,
-  //           once: true,
-  //         },
-
-  //         duration: 0.7,
-  //       }
-  //     )
-
-  // timeline.current.fromTo(
-  //   "#connected-backgrounds",
-  //   {
-  //     opacity: 0,
-  //   },
-  //   {
-  //     opacity: 1,
-  //     delay: STANDARD_DELAY,
-  //     scrollTrigger: {
-  //       trigger: "#connected-pile",
-  //       start: "top 50%",
-  //       end: "top 90%",
-  //       scrub: 1,
-  //       markers: false,
-  //       once: true,
-  //     },
-  //     duration: 0.4,
-  //   }
-  // )
-  // }, [])
   return (
     <div id="connected-pile" className="grid-pile md:pt-[6rem] lg:pt-[12rem]">
       <article
@@ -145,7 +60,7 @@ export function Connected({ connected }: Props) {
                     className={cn(
                       "background-blur bg-white/80 ",
                       card.link &&
-                        "md:cursor-pointer md:hover:bg-white md:hover:shadow-card"
+                      "md:cursor-pointer md:hover:bg-white md:hover:shadow-card"
                     )}
                   >
                     <CustomUrl value={card.link} isWrapper>

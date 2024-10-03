@@ -9,12 +9,8 @@ const imageBuilder = createImageUrlBuilder({
 })
 
 export const urlForImage = (source: Image) => {
-  console.log("source", source)
-
   // Check if the image is an SVG, don't apply webp conversion
   if (source.mimeType === "image/svg+xml" || source.extension === "svg") {
-    console.log("image is svg")
-    console.log(imageBuilder?.image(source).fit("max").url())
     return imageBuilder?.image(source).url()
   }
 

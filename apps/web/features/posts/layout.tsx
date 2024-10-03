@@ -45,8 +45,6 @@ export default async function Layout({
       ? `/${postsData?.slug}`
       : `/${postsData?.parent?.slug}/${postsData?.slug}`
 
-  console.log("tagSlug", tagSlug)
-
   let breadcrumb: BreadcrumbProps = { items: [] }
 
   // Hard code press release breadcrumb due to URL structure of parent pages
@@ -88,7 +86,6 @@ export default async function Layout({
     mobileImage: null,
   }
 
-  console.log("header", header)
   return (
     <>
       <ScrollToView page={Number(page)} />
