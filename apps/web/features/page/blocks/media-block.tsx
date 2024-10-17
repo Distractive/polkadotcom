@@ -27,11 +27,11 @@ export function MediaBlock({ mediaBlock, className }: Props) {
   const { _key, image, video, eyebrow, heading, body, links } = mediaBlock
 
   return (
-    <div className={cn("grid-system gap-card px-gutter", className)}>
+    <div className={cn("grid-system max-width gap-card px-gutter", className)}>
       <Card
         key={_key}
         className={cn(
-          "col-span-full rounded-none border-none bg-lightGrey lg:col-span-8 lg:col-start-3",
+          "col-span-full rounded-none border-none bg-lightGrey  md:!h-auto lg:col-span-8 lg:col-start-3",
           className
         )}
       >
@@ -50,7 +50,7 @@ export function MediaBlock({ mediaBlock, className }: Props) {
           <CardContent className={cn("grid")}>
             <div className="grid gap-copy py-card">
               {eyebrow && (
-                <span className="text-base font-bold uppercase text-grey-500">
+                <span className="text-base font-bold uppercase ">
                   {eyebrow}
                 </span>
               )}
@@ -60,7 +60,7 @@ export function MediaBlock({ mediaBlock, className }: Props) {
                 </Heading>
               )}
               {body && (
-                <CardDescription className={cn("text-base text-grey-500")}>
+                <CardDescription className={cn("text-base text-black")}>
                   {body}
                 </CardDescription>
               )}
