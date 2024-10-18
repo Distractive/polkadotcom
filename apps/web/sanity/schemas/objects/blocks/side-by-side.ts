@@ -17,6 +17,11 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "video",
+      title: "Video",
+      type: "video",
+    }),
+    defineField({
       title: "Image",
       name: "image",
       type: "image",

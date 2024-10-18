@@ -30,6 +30,7 @@ const cspSources = {
     "https://www.youtube.com",
     "https://www.googletagmanager.com",
     "https://scripts.simpleanalyticscdn.com",
+    "https://player.vimeo.com"
   ],
   "style-src": [
     "'self'",
@@ -72,6 +73,7 @@ const cspSources = {
     "https://tattle.api.osano.com",
     "https://consent.api.osano.com",
     "https://api.vercel.com",
+    "https://vimeo.com"
   ],
   "font-src": [
     "'self'",
@@ -87,6 +89,7 @@ const cspSources = {
     "https://*.hotjar.com",
     "https://www.youtube.com",
     "https://*.hsforms.com",
+    "https://player.vimeo.com"
   ],
   "worker-src": ["'self'", "blob:", "https://cmp.osano.com"],
   "frame-ancestors": ["'self'", "https://polkadot.com"],

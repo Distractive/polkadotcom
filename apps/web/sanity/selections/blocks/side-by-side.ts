@@ -1,5 +1,7 @@
 import { nullToUndefined, q, sanityImage } from "groqd"
 import type { Selection } from "groqd"
+import { videoSelection } from "./video"
+
 
 import { customUrlSelection } from "../custom-url"
 
@@ -9,7 +11,12 @@ export const sideBySideSelection = {
   subheading: nullToUndefined(q.string().optional()),
   image: sanityImage("image", {
     withAsset: ["base", "dimensions"],
-  }),
+  }).nullable(),
+  video: q("video")
+    .grab$({
+      ...videoSelection,
+    })
+    .nullable(),
   altText: q.string().nullable().optional(),
   isImageOnLeft: q.boolean(),
   content: q("content")
