@@ -1,10 +1,5 @@
-// "use client"
-
-// import { useEffect, useRef } from "react"
 import { type buildSelection } from "@/sanity/selections/home/build"
 import { type TypeFromSelection } from "groqd"
-
-// import gsap from "gsap"
 
 import {
   Card,
@@ -17,16 +12,16 @@ import {
 } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
 
-// import { StaggerHeader } from "../components/stagger-heading"
-// import { STANDARD_DELAY } from "../lib/constants"
-
 interface Props {
   build: TypeFromSelection<typeof buildSelection>["build"]
 }
 
 export function Build({ build }: Props) {
   return (
-    <div id="building-pile" className="grid-pile relative md:pt-[10rem]">
+    <div
+      id="building-pile"
+      className="grid-pile relative bg-[image:linear-gradient(to_top_left,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_top,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_top_left,#AF04FF_0%,#07FFFF_100%)] bg-[length:101%_100%] bg-no-repeat py-[4rem] md:py-[10rem]"
+    >
       <article
         id="build.wrapper"
         className="grid-system relative col-span-full h-full w-lvw items-center justify-center overflow-hidden lg:h-full"
@@ -41,7 +36,7 @@ export function Build({ build }: Props) {
             "mt-header-top md:mt-0"
           )}
         >
-          <div className="col-span-full px-gutter pb-[5rem] lg:col-span-8 lg:col-start-3 lg:w-4/6 lg:pb-[5rem]">
+          <div className="col-span-full px-gutter pb-[5rem] lg:col-span-8 lg:col-start-3 lg:w-4/6 lg:pb-[2rem]">
             <Heading
               variant="h2"
               className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"

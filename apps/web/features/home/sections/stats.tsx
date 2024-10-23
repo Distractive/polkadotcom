@@ -12,20 +12,8 @@ interface Props {
 
 export function Stats({ stats }: Props) {
   return (
-    <div
-      id="stats-pile"
-      className="grid-pile relative flex items-center justify-center lg:pt-[10rem]"
-    >
-      <div id="" className="max-width absolute -z-50 h-full">
-        <div className="absolute -right-96 top-0 translate-y-[-50%] transform">
-          <Image
-            src={statsGradient}
-            alt="Stats Gradient"
-            width={1000}
-            height={1000}
-          />
-        </div>
-      </div>
+    <div id="stats-pile" className="grid-pile relative  ">
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(225deg,rgba(240,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(225deg,#E4FF07_0%,#07FFFF_100%)]"></div>
 
       <article
         id="stats.wrapper"
@@ -44,7 +32,7 @@ export function Stats({ stats }: Props) {
           <Heading
             variant="h2"
             className={cn(
-              "px-gutter py-gutter text-5xl leading-[1.1] lg:pl-gutter lg:pr-gutter",
+              "px-gutter  text-5xl leading-[1.1] lg:pl-gutter lg:pr-gutter",
               "col-span-full md:col-span-3 md:text-7xl lg:col-start-2 xl:col-start-2",
               "!hyphens-none !break-normal"
             )}
@@ -65,7 +53,9 @@ export function Stats({ stats }: Props) {
                 key={index}
                 className={cn(
                   "stats-card background-blur bg-grey-100/50 p-card",
-                  "col-span-full col-start-1 md:col-span-2 lg:col-span-6"
+                  "col-span-full col-start-1 md:col-span-2 lg:col-span-6",
+                  // nudge down second column
+                  index % 2 !== 0 && "lg:translate-y-24"
                 )}
                 data-index={index}
               >

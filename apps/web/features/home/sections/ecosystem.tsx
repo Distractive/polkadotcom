@@ -17,25 +17,6 @@ interface Props {
 export function Ecosystem({ ecosystem }: Props) {
   return (
     <div id="ecosystem-pile" className="grid-pile md:pt-[6rem]">
-      <div id="" className="max-width relative -z-50 ">
-        <div className="absolute right-0 top-0 translate-x-[40%] translate-y-[-20%] scale-[2.5] md:scale-[1] lg:translate-x-[25%]">
-          <Image
-            src={ecosystemGradientPink}
-            alt="Ecosystem Gradient"
-            height={1600}
-            width={1600}
-          />
-        </div>
-        <div className="absolute bottom-0 left-0 translate-x-[-40%] translate-y-[15%] scale-[2.5] md:scale-[1] lg:translate-y-[20%]">
-          <Image
-            src={ecosystemGradientBlue}
-            alt="Ecosystem Gradient"
-            height={1600}
-            width={1600}
-          />
-        </div>
-      </div>
-
       <article
         id="ecosystem.wrapper"
         className="grid-system relative col-span-full h-auto w-lvw items-center justify-center overflow-hidden"
@@ -75,7 +56,7 @@ export function Ecosystem({ ecosystem }: Props) {
                   "col-span-full col-start-1 md:col-span-4 md:col-start-2 lg:col-span-8 lg:col-start-3",
                   (index == 2 || index == 5) && "lg:col-start-7",
                   (index == 1 || index == 2 || index == 4 || index == 5) &&
-                  "relative lg:col-span-4"
+                    "relative lg:col-span-4"
                 )}
                 data-index={index}
               >

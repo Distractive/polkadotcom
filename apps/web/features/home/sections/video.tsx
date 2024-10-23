@@ -12,12 +12,10 @@ interface Props {
 
 export function Video({ video }: Props) {
   return (
-    <div id="video-pile" className="grid-pile -mt-header-top  md:pt-[10rem]">
-      <div id="" className="max-width relative -z-50 h-full ">
-        <div className="absolute left-0 top-0 translate-x-[20%] translate-y-[-15%] scale-[0.8] md:translate-x-[40%] lg:translate-x-[-50%] xl:translate-x-[-70%] ">
-          <Image src={videoGrid} alt="Video Grid" width={1000} height={1000} />
-        </div>
-      </div>
+    <div
+      id="video-pile"
+      className="grid-pile -mt-header-top pb-16 pt-64 lg:pt-24"
+    >
       <article
         id="video.wrapper"
         className="grid-system col-span-full h-full w-dvw items-center justify-center overflow-hidden"
@@ -25,7 +23,7 @@ export function Video({ video }: Props) {
         <div
           id="video.content"
           className={cn(
-            "max-width relative z-10 col-span-12 px-gutter sm:w-dvw",
+            "max-width relative z-10 col-span-12 !max-w-[80rem] px-gutter sm:w-dvw",
             "md:w-full lg:col-span-8 lg:col-start-3"
           )}
         >

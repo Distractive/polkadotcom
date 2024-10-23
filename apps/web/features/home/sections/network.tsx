@@ -18,7 +18,12 @@ interface Props {
 
 export function Network({ network }: Props) {
   return (
-    <div id="network-pile" className="grid-pile pt-[6rem] md:pt-[10rem]">
+    <div
+      id="network-pile"
+      className="grid-pile relative py-[6rem] md:py-[10rem]"
+    >
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(315deg,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_top,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(315deg,#E4FF07_0%,#07FFFF_100%)]"></div>
+
       <article
         id="network.wrapper"
         className="grid-system relative col-span-full h-full w-dvw items-center justify-center overflow-x-hidden md:h-full"

@@ -22,7 +22,10 @@ interface Props {
 
 export function Connected({ connected }: Props) {
   return (
-    <div id="connected-pile" className="grid-pile md:pt-[6rem] lg:pt-[12rem]">
+    <div
+      id="connected-pile"
+      className="grid-pile relative bg-[image:linear-gradient(to_bottom_left,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom_left,#AF04FF_0%,#07FFFF_100%)] bg-[length:101%_100%] bg-no-repeat py-[4rem] md:py-[6rem]"
+    >
       <article
         id="connected.wrapper"
         className="grid-system grid-pile relative col-span-12 h-full w-lvw items-center justify-center overflow-hidden"
@@ -52,7 +55,7 @@ export function Connected({ connected }: Props) {
               {connected.items.map((card) => (
                 <CarouselItem
                   key={card._key}
-                  className="basis-5/6 md:basis-3/6 lg:basis-4/6 "
+                  className="basis-5/6 md:basis-3/6 lg:basis-4/6"
                 >
                   <Card
                     key={card._key}
@@ -70,7 +73,6 @@ export function Connected({ connected }: Props) {
                             alt=""
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            priority={false}
                             className={cn("object-cover object-center")}
                           />
                         )}
