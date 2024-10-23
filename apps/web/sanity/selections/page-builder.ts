@@ -11,6 +11,7 @@ import { cardsStatSelection } from "./blocks/cards-stat"
 import { cardsStickySelection } from "./blocks/cards-sticky"
 import { cardsTimelineSelection } from "./blocks/cards-timeline"
 import { contentSelection } from "./blocks/content"
+import { ctaSelection } from "./blocks/cta"
 import { formSelection } from "./blocks/form"
 import { mediaBlockSelection } from "./blocks/media-block"
 import { modalSelection } from "./blocks/modal"
@@ -80,6 +81,10 @@ export const pageBuilderSelection = {
       '_type == "form"': {
         _type: q.literal("form"),
         ...formSelection,
+      },
+      '_type == "cta"': {
+        _type: q.literal("cta"),
+        ...ctaSelection,
       },
       default: {
         _key: q.string(),

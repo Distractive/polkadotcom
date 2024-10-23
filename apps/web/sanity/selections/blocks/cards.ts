@@ -1,3 +1,4 @@
+import { use } from "react"
 import { nullToUndefined, q } from "groqd"
 import type { Selection } from "groqd"
 
@@ -9,6 +10,7 @@ export const cardsSelection = {
   body: nullToUndefined(q.string().optional()),
   isCarousel: nullToUndefined(q.boolean().optional()),
   hasTags: nullToUndefined(q.boolean().optional()),
+  useFourColumns: nullToUndefined(q.boolean().optional()),
   tags: q.array(q.string()).nullable(),
   items: q("items")
     .filter()

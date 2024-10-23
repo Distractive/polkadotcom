@@ -24,7 +24,7 @@ export function SideBySideBlock({ content }: Props) {
         <div className="flex flex-col gap-copy">
           <Heading variant="h2">{content.heading}</Heading>
           {content.subheading && (
-            <p className="text-lg text-black">{content.subheading}</p>
+            <p className="text-lg ">{content.subheading}</p>
           )}
         </div>
         <div className="flex flex-col gap-copy">
@@ -36,15 +36,15 @@ export function SideBySideBlock({ content }: Props) {
                   <Heading variant="h3">{children}</Heading>
                 ),
                 normal: ({ children }) => (
-                  <p className="text-lg text-black">{children}</p>
+                  <p className="text-lg ">{children}</p>
                 ),
                 smallprint: ({ children }) => (
-                  <p className="text-sm text-black">{children}</p>
+                  <p className="text-sm ">{children}</p>
                 ),
               },
               list: {
                 bullet: ({ children }) => (
-                  <ul className="flex list-inside list-disc flex-col gap-copy text-black marker:text-black">
+                  <ul className="flex list-inside list-disc flex-col gap-copy ">
                     {children}
                   </ul>
                 ),

@@ -3,7 +3,7 @@ import type { StructureBuilder } from "sanity/structure"
 
 export const postStructure = (S: StructureBuilder) =>
   S.listItem()
-    .title("Post Managment")
+    .title("Post Management")
     .icon(DocumentsIcon)
     .child(
       S.list()

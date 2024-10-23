@@ -47,7 +47,7 @@ export default function CardSmallBlock({ card, className }: Props) {
           )}
           <CardContent className="grid gap-copy">
             {eyebrow && (
-              <span className="text-base font-bold uppercase text-grey-500">
+              <span className="text-caps-small text-base font-bold uppercase">
                 {eyebrow}
               </span>
             )}
@@ -64,11 +64,7 @@ export default function CardSmallBlock({ card, className }: Props) {
                 {heading}
               </Heading>
             )}
-            {body && (
-              <CardDescription className="text-grey-500">
-                {body}
-              </CardDescription>
-            )}
+            {body && <CardDescription className="">{body}</CardDescription>}
             {link && link.variant && (
               <Button
                 tabIndex={-1}

@@ -47,25 +47,25 @@ export function FAQBlock({ faqs }: Props) {
             >
               {faq.question}
             </AccordionTrigger>
-            <AccordionContent className="py-card text-grey-500">
+            <AccordionContent className="py-card text-black">
               <PortableText
                 value={faq.answer}
                 components={{
                   block: {
                     normal: ({ children }) => (
-                      <p className="text-grey-500 not-last:mb-copy md:w-3/4">
+                      <p className="text-pink not-last:mb-copy md:w-3/4">
                         {children}
                       </p>
                     ),
                   },
                   list: {
                     bullet: ({ children }) => (
-                      <ul className="my-4 list-outside list-disc pl-8 text-grey-500 marker:text-grey-500">
+                      <ul className="my-4 list-outside list-disc pl-8 text-pink marker:text-black">
                         {children}
                       </ul>
                     ),
                     number: ({ children }) => (
-                      <ol className="my-4 list-outside list-decimal pl-8 text-grey-500 marker:text-grey-500">
+                      <ol className="my-4 list-outside list-decimal pl-8 text-black marker:text-black">
                         {children}
                       </ol>
                     ),

@@ -49,18 +49,18 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
       <div className="relative flex h-nav-height flex-shrink-0 items-start justify-between px-gutter">
         <div
           className={cn(
-            "flex h-full items-center justify-center px-nav lg:pl-8",
+            "flex h-full items-center justify-center pl-4 ",
             "rounded-[3rem] border border-grey-300 bg-white"
           )}
         >
           <Link
             href="/"
             onClick={handleItemSelect}
-            className="translate-x-[-2%] lg:translate-x-0 lg:pr-nav"
+            className="lg:pr-nav"
             aria-label="Navigate to the home page"
           >
-            <div className="ml-[0.2rem] lg:ml-[-0.3rem]">
-              <Logo ariaLabel="Polkadot homepage" />
+            <div className="">
+              <Logo ariaLabel="Polkadot homepage" width={140} />
             </div>
           </Link>
           <ul

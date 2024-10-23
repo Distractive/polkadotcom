@@ -20,7 +20,7 @@
   }
 
   .link-styling {
-    @apply font-[700] underline hover:text-pink;
+    @apply font-[700] underline hover:text-pink-500;
   }
 
   .background-blur {
@@ -33,6 +33,20 @@
     hyphens: auto;
     word-break: break-word;
     overflow-wrap: break-word;
+  }
+}
+
+@layer base {
+  body {
+    @apply text-grey-700;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-black;
   }
 }
 
@@ -59,7 +73,7 @@ html.lenis body {
   --spacing-gutter: 1.5rem;
   --spacing-card: 2rem;
   --spacing-copy: 0.5rem;
-  --spacing-nav: 1.25rem;
+  --spacing-nav: 1rem;
 
   /* The nav component is fixed. Spacing to prevent initial header overlap */
   --spacing-nav-height: 3.5rem;
@@ -177,13 +191,16 @@ html {
 .hubspot input[type="submit"] {
   padding: 1rem 2rem;
   border-radius: 0.75rem;
-  background: #111f77;
+  background: black !important;
   cursor: pointer;
   text-transform: uppercase;
   color: white;
   font-family: var(--font-unbounded), system-ui, sans-serif;
   font-style: normal;
   font-weight: 400;
+}
+.hubspot input[type="submit"]:hover {
+  background: #ff2670 !important;
 }
 
 .hubspot p {

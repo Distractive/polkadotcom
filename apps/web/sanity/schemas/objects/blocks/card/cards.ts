@@ -32,6 +32,17 @@ export default defineType({
         (!value && !!parent?.isCarousel) || !!parent?.showSideBySide,
     }),
     defineField({
+      name: "useFourColumns",
+      title: "Use 4 columns?",
+      description:
+        "If true, layout will use 4 columns instead of 3 at extra-large screen sizes",
+      type: "boolean",
+      initialValue: false,
+      group: "config",
+      // hidden: ({ parent, value }) =>
+      //   (!value && !!parent?.isCarousel) || !!parent?.showSideBySide,
+    }),
+    defineField({
       title: "Heading",
       name: "heading",
       type: "string",

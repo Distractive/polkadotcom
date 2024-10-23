@@ -89,8 +89,8 @@ export function AccordionBlock({ accordion }: Props) {
             <AccordionContent
               className={cn(
                 index === accordion.items.length - 1 &&
-                  "rounded-b-2xl border-b text-sm",
-                "border-x border-grey-300 bg-grey-100 px-gutter py-gutter"
+                  "rounded-b-2xl border-b ",
+                "border-x border-grey-300 bg-grey-50 px-gutter py-gutter"
               )}
             >
               <PortableText
@@ -103,17 +103,17 @@ export function AccordionBlock({ accordion }: Props) {
                       </Heading>
                     ),
                     normal: ({ children }) => (
-                      <p className="text-grey-500 md:w-3/4">{children}</p>
+                      <p className="text-black md:w-3/4">{children}</p>
                     ),
                   },
                   list: {
                     bullet: ({ children }) => (
-                      <ul className="my-4 list-outside list-disc pl-8 text-grey-500 marker:text-grey-500">
+                      <ul className="my-4 list-outside list-disc pl-8 text-black marker:text-black">
                         {children}
                       </ul>
                     ),
                     number: ({ children }) => (
-                      <ol className="my-4 list-outside list-decimal pl-8 text-grey-500 marker:text-grey-500">
+                      <ol className="my-4 list-outside list-decimal pl-8 text-black marker:text-black">
                         {children}
                       </ol>
                     ),

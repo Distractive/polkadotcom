@@ -49,11 +49,11 @@ export default async function Layout({ slug, type }: LayoutProps) {
     breadcrumb = {
       items: [
         {
-          slug: `/${postsData?.parent?.slug}` ?? "",
+          slug: `/${postsData?.parent?.slug}` && "",
           title: postsData?.parent?.header?.title,
         },
         {
-          slug: `/${postsData?.parent?.slug}/${postsData?.slug}` ?? "",
+          slug: `/${postsData?.parent?.slug}/${postsData?.slug}` && "",
           title: postsData?.heading,
         },
       ],
@@ -87,7 +87,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
               {tags.map((tag) => (
                 <li
                   key={tag.slug}
-                  className="mb-1 flex rounded bg-greyLavender px-3 py-1 text-left text-sm leading-relaxed"
+                  className="bg-greyLavender mb-1 flex rounded px-3 py-1 text-left text-sm leading-relaxed"
                 >
                   <a
                     className="relative z-20"

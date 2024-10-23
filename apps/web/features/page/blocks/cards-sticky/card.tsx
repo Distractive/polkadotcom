@@ -59,7 +59,9 @@ export default function CardStickyBlock({ card, className }: Props) {
           >
             <CardContent className="flex flex-col gap-copy">
               {eyebrow && (
-                <span className="text-base uppercase">{eyebrow}</span>
+                <span className="text-base text-caps-sm uppercase">
+                  {eyebrow}
+                </span>
               )}
               {heading && (
                 <Heading

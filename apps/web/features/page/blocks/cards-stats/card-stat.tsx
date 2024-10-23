@@ -22,13 +22,7 @@ export default function CardStatBlock({ card, className }: Props) {
 
   return (
     <>
-      <Card
-        key={_key}
-        className={cn(
-          "border-grey-300 bg-grey-100 bg-opacity-80 p-gutter",
-          className
-        )}
-      >
+      <Card key={_key} className={cn(" bg-white  p-gutter", className)}>
         <CardHeader className="grid gap-copy">
           <Heading variant="h3" size="h2">
             {heading}

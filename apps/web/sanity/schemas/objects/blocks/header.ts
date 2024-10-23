@@ -12,7 +12,7 @@ export default defineType({
     }),
     defineField({
       name: "image",
-      title: "Header Image [1600x400 for alternate layout]",
+      title: "Header Image [Regular: 1000x750, Alternate: 1600x400]",
       type: "image",
     }),
     defineField({

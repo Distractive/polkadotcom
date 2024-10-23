@@ -17,6 +17,8 @@ import { MediaBlock } from "@/features/page/blocks/media-block"
 import { QuoteBlock } from "@/features/page/blocks/quote"
 import { SideBySideBlock } from "@/features/page/blocks/side-by-side"
 
+import { CTA } from "./blocks/cta"
+
 interface Props {
   pageBuilder: TypeFromSelection<typeof pageBuilderSelection>["pageBuilder"]
 }
@@ -54,6 +56,8 @@ export function PageBuilder({ pageBuilder }: Props) {
         return <FormModalBlock modal={item} />
       case "form":
         return <EmbedFormBlock form={item} />
+      case "cta":
+        return <CTA cta={item} />
       default:
         return <p>Unknown type: {item._type}</p>
     }

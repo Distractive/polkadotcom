@@ -1,5 +1,6 @@
 "use client"
 
+import { use } from "react"
 import type { cardsSelection } from "@/sanity/selections/blocks/cards"
 import type { TypeFromSelection } from "groqd"
 
@@ -14,6 +15,7 @@ interface Props {
 }
 
 export function CardsBlock({ cards }: Props) {
+  console.log("use four columns:", cards.useFourColumns)
   return (
     <div
       key={cards._key}
@@ -38,7 +40,10 @@ export function CardsBlock({ cards }: Props) {
           {cards.items.map((card) => (
             <CarouselItem
               key={card._key}
-              className="basis-5/6 lg:basis-[40%] xl:basis-1/3"
+              className={cn(
+                "basis-5/6 lg:basis-[40%]",
+                cards.useFourColumns ? "xl:basis-1/4" : "xl:basis-1/3"
+              )}
             >
               <CardBlock key={card._key} card={card} className="h-full" />
             </CarouselItem>
@@ -53,16 +58,25 @@ export function CardsBlock({ cards }: Props) {
             )}
           >
             {cards.hasTags ? (
-              <CardTags tags={cards.tags} cards={cards.items} />
+              <CardTags
+                tags={cards.tags}
+                cards={cards.items}
+                useFourColumns={cards.useFourColumns}
+              />
             ) : (
-              cards.items.map((card) => (
-                <div
-                  key={card._key}
-                  className="col-span-full md:col-span-3 lg:col-span-4"
-                >
-                  <CardBlock card={card} />
-                </div>
-              ))
+              cards.items.map((card) => {
+                return (
+                  <div
+                    key={card._key}
+                    className={cn(
+                      "col-span-full md:col-span-3 lg:col-span-4",
+                      cards.useFourColumns ? "xl:col-span-3" : "xl:col-span-4"
+                    )}
+                  >
+                    <CardBlock card={card} />
+                  </div>
+                )
+              })
             )}
           </div>
         </>

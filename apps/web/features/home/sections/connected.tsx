@@ -21,7 +21,6 @@ interface Props {
 }
 
 export function Connected({ connected }: Props) {
-
   return (
     <div id="connected-pile" className="grid-pile md:pt-[6rem] lg:pt-[12rem]">
       <article
@@ -58,9 +57,9 @@ export function Connected({ connected }: Props) {
                   <Card
                     key={card._key}
                     className={cn(
-                      "background-blur bg-white/80 ",
+                      "background-blur ",
                       card.link &&
-                      "md:cursor-pointer md:hover:bg-white md:hover:shadow-card"
+                        "md:cursor-pointer md:hover:bg-white md:hover:shadow-card"
                     )}
                   >
                     <CustomUrl value={card.link} isWrapper>
@@ -81,7 +80,7 @@ export function Connected({ connected }: Props) {
                         <CardContent className={cn("grid gap-card p-card")}>
                           <div className="grid gap-copy">
                             {card.eyebrow && (
-                              <span className="text-base uppercase">
+                              <span className="text-caps-sm  uppercase">
                                 {card.eyebrow}
                               </span>
                             )}

@@ -70,6 +70,10 @@ export default defineType({
           name: "form",
           type: "form",
         }),
+        defineArrayMember({
+          name: "cta",
+          type: "cta",
+        }),
       ],
     }),
   ],

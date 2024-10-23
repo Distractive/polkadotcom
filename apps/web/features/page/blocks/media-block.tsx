@@ -50,7 +50,7 @@ export function MediaBlock({ mediaBlock, className }: Props) {
           <CardContent className={cn("grid")}>
             <div className="grid gap-copy py-card">
               {eyebrow && (
-                <span className="text-base font-bold uppercase ">
+                <span className="text-base text-caps-sm font-bold uppercase">
                   {eyebrow}
                 </span>
               )}
@@ -60,7 +60,7 @@ export function MediaBlock({ mediaBlock, className }: Props) {
                 </Heading>
               )}
               {body && (
-                <CardDescription className={cn("text-base text-black")}>
+                <CardDescription className={cn("text-base text-caps-sm")}>
                   {body}
                 </CardDescription>
               )}

@@ -99,7 +99,7 @@ export default function CardBlock({ card, className }: Props) {
                 {selectedTags.map((tag) => (
                   <li
                     key={tag}
-                    className="flex items-center justify-center rounded bg-greyLavender px-3 py-1 text-sm leading-relaxed"
+                    className="bg-greyLavender flex items-center justify-center rounded px-3 py-1 text-sm leading-relaxed"
                   >
                     {tag}
                   </li>
@@ -114,7 +114,9 @@ export default function CardBlock({ card, className }: Props) {
                 )}
               >
                 {eyebrow && (
-                  <span className="text-base uppercase">{eyebrow}</span>
+                  <span className="text-base text-caps-sm uppercase">
+                    {eyebrow}
+                  </span>
                 )}
                 {heading && (
                   <Heading

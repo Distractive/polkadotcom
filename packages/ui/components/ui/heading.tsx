@@ -4,9 +4,10 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "../../lib/utils"
 
 const SIZES = {
-  h1: "text-[2.375rem] md:text-7xl leading-snug heading-break",
-  h2: "text-4xl md:text-5xl leading-snug heading-break",
-  h3: "text-2xl md:text-3xl leading-snug heading-break",
+  display: "text-9xl md:text-10xl leading-snug heading-break",
+  h1: "text-7xl md:text-8xl leading-snug heading-break",
+  h2: "text-5xl md:text-6xl leading-snug heading-break",
+  h3: "text-3xl md:text-5xl leading-snug heading-break",
   h4: "text-xl md:text-2xl leading-normal",
   h5: "text-sm md:text-base font-default",
 }

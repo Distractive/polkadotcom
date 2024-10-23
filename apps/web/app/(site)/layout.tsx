@@ -8,7 +8,6 @@ import { VisualEditing } from "next-sanity"
 import "@shared/ui/styles/global.css"
 
 import { headers } from "next/headers"
-import Image from "next/image"
 import { getFooter } from "@/sanity/queries/footer"
 import { getNavigation } from "@/sanity/queries/navigation"
 import { cn } from "@shared/ui/lib/utils"
@@ -147,7 +146,7 @@ export default async function RootLayout({
         className={cn(
           unbounded.variable,
           manrope.variable,
-          "flex min-h-screen flex-col bg-lightGrey font-default antialiased"
+          "flex min-h-screen flex-col bg-white font-default antialiased"
         )}
       >
         <a
@@ -159,7 +158,7 @@ export default async function RootLayout({
         >
           <span
             tabIndex={0}
-            className="inline-block rounded-lg bg-blue px-10 py-4 font-display text-xs uppercase tracking-wide text-white group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#1351d8]"
+            className="bg-blue inline-block rounded-lg px-10 py-4 font-display text-xs uppercase tracking-wide text-white group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#1351d8]"
           >
             Skip to main content
           </span>
@@ -175,7 +174,7 @@ export default async function RootLayout({
         {env.VERCEL_ENV === "production" && <Analytics />}
 
         <noscript>
-          <Image
+          <img
             src="https://queue.simpleanalyticscdn.com/noscript.gif"
             alt=""
             width="0"

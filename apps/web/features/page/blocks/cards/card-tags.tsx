@@ -13,10 +13,12 @@ import CardBlock from "./card"
 interface Props {
   tags: string[] | null
   cards: TypeFromSelection<typeof cardSelection>[]
+  useFourColumns?: boolean
 }
 
-export function CardTags({ tags, cards }: Props) {
-  const VISIBLE_COUNT = 6
+export function CardTags({ tags, cards, useFourColumns }: Props) {
+  console.log("4 columns", useFourColumns)
+  const VISIBLE_COUNT = useFourColumns ? 8 : 6
   const [filteredItems, setFilteredItems] = useState(cards)
   const [currentTag, setCurrentTag] = useState("All")
   const [visibleCount, setVisibleCount] = useState(VISIBLE_COUNT)
@@ -40,7 +42,10 @@ export function CardTags({ tags, cards }: Props) {
   const showMoreItems = () => {
     setVisibleCount((prevCount) => prevCount + VISIBLE_COUNT)
   }
-
+  console.log(
+    "disabled?",
+    visibleCount >= filteredItems.length ? "disabled" : "secondary"
+  )
   return (
     <>
       <ul className="col-span-full flex flex-wrap gap-3">
@@ -66,6 +71,7 @@ export function CardTags({ tags, cards }: Props) {
             All
           </button>
         </li>
+
         {tags?.map((tag) => (
           <li
             key={tag}
@@ -98,7 +104,10 @@ export function CardTags({ tags, cards }: Props) {
           <CardBlock
             key={card._key}
             card={card}
-            className={cn("col-span-full md:col-span-3 lg:col-span-4")}
+            className={cn(
+              "col-span-full md:col-span-3 lg:col-span-4",
+              useFourColumns ? "xl:col-span-3" : "xl:col-span-4"
+            )}
           />
         ))}
       </div>

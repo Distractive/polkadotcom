@@ -25,7 +25,7 @@ export function CardsStatBlock({ cards }: Props) {
           <CardStatBlock
             key={card._key}
             card={card}
-            className="col-span-full md:col-span-3 lg:col-span-4"
+            className="col-span-full md:col-span-3 lg:col-span-3"
           />
         ))}
       </div>

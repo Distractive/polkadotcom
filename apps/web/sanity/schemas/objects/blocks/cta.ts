@@ -1,35 +1,36 @@
 import { defineArrayMember, defineField, defineType } from "sanity"
 
 export default defineType({
-  name: "mediaBlock",
-  title: "Media Block",
+  name: "cta",
+  title: "CTA",
   type: "object",
   fields: [
     defineField({
       name: "image",
-      title: "Image",
+      title: "Background Image",
       type: "image",
     }),
     defineField({
-      name: "video",
-      title: "Video",
-      type: "video",
-    }),
-    defineField({
-      name: "eyebrow",
-      title: "Eyebrow",
+      name: "altText",
+      title: "Alt Text",
       type: "string",
     }),
     defineField({
       name: "heading",
       title: "Heading",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "body",
       title: "Body",
-      type: "text",
-      rows: 5,
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "useWhiteText",
+      title: "Use white text?",
+      type: "boolean",
     }),
     defineField({
       name: "links",
@@ -41,15 +42,14 @@ export default defineType({
       ],
     }),
   ],
+
   preview: {
     select: {
       title: "heading",
     },
-    prepare: ({ title }) => {
-      return {
-        title: title || "Media",
-        subtitle: "- Media block",
-      }
-    },
+    prepare: ({ title }) => ({
+      title,
+      subtitle: "- CTA",
+    }),
   },
 })
