@@ -87,10 +87,10 @@ export default async function Layout({ slug, type }: LayoutProps) {
               {tags.map((tag) => (
                 <li
                   key={tag.slug}
-                  className="bg-greyLavender mb-1 flex rounded px-3 py-1 text-left text-sm leading-relaxed"
+                  className="mb-1 flex rounded bg-grey-200 px-3 py-1 text-left text-sm leading-relaxed text-black hover:bg-black hover:text-white"
                 >
                   <a
-                    className="relative z-20"
+                    className="relative z-20  "
                     href={
                       post_type == BLOG_POSTTYPE
                         ? `/blog/tag/${tag.slug}`
@@ -134,7 +134,9 @@ export default async function Layout({ slug, type }: LayoutProps) {
             />
           </PostImage>
         )}
-        <Body body={body} />
+        <div className="mb-32">
+          <Body body={body} />
+        </div>
       </article>
       <MorePost posts={allPosts.posts} post_type={post_type} />
     </>
@@ -178,7 +180,7 @@ const MorePost = ({
   const headingLabel =
     post_type == BLOG_POSTTYPE ? "From the blog" : "More from newsroom"
   return (
-    <div className="max-width col-span-full mb-12 px-gutter">
+    <div className="max-width col-span-full  px-gutter">
       <div className={cn("col-span-full mb-12")}>
         <div className="flex flex-col gap-copy lg:w-5/6">
           <Heading variant="h2">{headingLabel}</Heading>

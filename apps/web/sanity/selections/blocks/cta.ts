@@ -10,7 +10,7 @@ export const ctaSelection = {
   useWhiteText: q.boolean().nullable(),
   image: sanityImage("image", {
     withAsset: ["base", "dimensions"],
-  }),
+  }).nullable(),
   altText: nullToUndefined(q.string().optional()),
   links: q("links")
     .filter()

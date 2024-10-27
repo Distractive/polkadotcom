@@ -65,11 +65,11 @@ export default async function Layout({
     breadcrumb = {
       items: [
         {
-          slug: `/${postsData?.parent?.slug}` ?? "",
+          slug: `/${postsData?.parent?.slug}`,
           title: postsData?.parent?.header?.title,
         },
         {
-          slug: `/${postsData?.parent?.slug}/${postsData?.slug}` ?? "",
+          slug: `/${postsData?.parent?.slug}/${postsData?.slug}`,
           title: postsData?.heading,
         },
       ],

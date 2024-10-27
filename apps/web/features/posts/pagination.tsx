@@ -61,7 +61,7 @@ export function PostPagination({ total, page, limit, type, tagSlug }: Props) {
                   isActive={currentPage == page}
                   className={cn(
                     "font-normal",
-                    "after:absolute after:-top-2 after:left-0 after:z-10 after:h-[2px] after:w-full after:transition-all after:duration-500"
+                    "after:absolute after:-top-2 after:left-0 after:z-10 after:h-[2px] after:w-full after:transition-all after:duration-200"
                   )}
                 >
                   {currentPage}

@@ -14,7 +14,7 @@ export default async function NotFound() {
   const data = await getPageNotFound()
 
   const breadcrumb: BreadcrumbProps = {
-    items: [{ slug: `/` ?? "404", title: "404" }],
+    items: [{ slug: `/`, title: "404" }],
   }
 
   const header: TypeFromSelection<typeof headerSelection> = {

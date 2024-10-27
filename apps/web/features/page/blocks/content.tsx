@@ -19,7 +19,7 @@ export function ContentBlock({ content }: Props) {
     <div className="grid-system max-width px-gutter">
       <div
         className={cn(
-          "col-span-full col-start-1 flex flex-col gap-copy",
+          "col-span-full col-start-1 flex flex-col gap-copy text-grey-900",
           !content.fullWidth && "lg:col-span-8"
         )}
       >
@@ -37,12 +37,12 @@ export function ContentBlock({ content }: Props) {
             },
             list: {
               bullet: ({ children }) => (
-                <ul className="my-4 list-outside list-disc pl-8 text-black marker:text-black">
+                <ul className="tmarker:text-black my-4 list-outside list-disc pl-8">
                   {children}
                 </ul>
               ),
               number: ({ children }) => (
-                <ol className="my-4 list-outside list-decimal pl-8 text-black marker:text-black">
+                <ol className="my-4 list-outside list-decimal pl-8 text-grey-900 marker:text-black ">
                   {children}
                 </ol>
               ),

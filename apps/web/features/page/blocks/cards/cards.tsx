@@ -15,7 +15,6 @@ interface Props {
 }
 
 export function CardsBlock({ cards }: Props) {
-  console.log("use four columns:", cards.useFourColumns)
   return (
     <div
       key={cards._key}

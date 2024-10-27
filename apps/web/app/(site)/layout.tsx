@@ -175,7 +175,7 @@ export default async function RootLayout({
 
         <noscript>
           <img
-            src="https://queue.simpleanalyticscdn.com/noscript.gif"
+            src={`https://queue.simpleanalyticscdn.com/noscript.gif?hostname=${hostname}`}
             alt=""
             width="0"
             height="0"

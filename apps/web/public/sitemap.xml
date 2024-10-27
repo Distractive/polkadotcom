@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-
-<url><loc>https://polkadot.com</loc><lastmod>2024-10-23T03:55:28.882Z</lastmod></url>
+<url><loc>https://polkadot.com</loc><lastmod>2024-10-24T15:04:14.493Z</lastmod></url>
 <url><loc>https://polkadot.com/developers</loc><lastmod>2024-10-16T23:09:45.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/making-history-again-polkadot-auctions-1-5</loc><lastmod>2024-09-25T01:45:16.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/polkadot-decoded-brings-web3-community-to-denmark-with-speakers-from-vodafone-deloitte-and-more</loc><lastmod>2024-09-27T19:07:53.000Z</lastmod></url>
@@ -11,9 +10,7 @@
 <url><loc>https://polkadot.com/blog/a-year-in-parachains-part-1-defi</loc><lastmod>2024-10-18T03:22:35.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/web3-foundation-announces-polkadot-blockchains-native-token-dot-has-morphed-and-is-software-not-a-security</loc><lastmod>2024-09-27T19:08:25.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/polkadot-decoded-2023-call-for-proposals-now-open</loc><lastmod>2024-07-20T09:11:49.000Z</lastmod></url>
-
 <url><loc>https://polkadot.com/community/newsroom</loc><lastmod>2024-10-22T01:08:38.000Z</lastmod></url>
-
 <url><loc>https://polkadot.com/blog/kusamas-first-adventure</loc><lastmod>2024-07-20T09:11:50.000Z</lastmod></url>
 <url><loc>https://polkadot.com/use-cases</loc><lastmod>2024-10-17T20:50:36.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/que-es-polkadot-una-breve-presentacion</loc><lastmod>2024-10-18T19:36:33.000Z</lastmod></url>
@@ -46,9 +43,7 @@
 <url><loc>https://polkadot.com/blog/the-path-of-a-parachain-block</loc><lastmod>2024-08-07T19:33:29.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/polkadot-and-the-future-of-real-world-asset-tokenization</loc><lastmod>2024-10-01T16:18:51.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/interlay-launches-landmark-trustless-bitcoin-bridge-on-polkadot</loc><lastmod>2024-09-27T19:10:41.000Z</lastmod></url>
-
-<url><loc>https://polkadot.com/get-started</loc><lastmod>2024-10-22T13:29:47.000Z</lastmod></url>
-
+<url><loc>https://polkadot.com/get-started</loc><lastmod>2024-10-23T19:07:22.000Z</lastmod></url>
 <url><loc>https://polkadot.com/community/decentralized-jobs</loc><lastmod>2024-10-01T14:22:36.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/parachains-are-live-polkadot-launch-is-now-complete</loc><lastmod>2024-09-25T00:26:23.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/xcm-part-three-execution-and-error-management</loc><lastmod>2024-09-24T23:23:31.000Z</lastmod></url>
@@ -78,11 +73,9 @@
 <url><loc>https://polkadot.com/platform/sdk</loc><lastmod>2024-10-01T14:41:45.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/the-ultimate-2024-polkadot-grants-and-funding-guide</loc><lastmod>2024-09-27T14:15:13.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/polkadot-2022-roundup</loc><lastmod>2024-09-24T23:29:53.000Z</lastmod></url>
-
-<url><loc>https://polkadot.com/blog/scaling-ambition-with-agile-coretime</loc><lastmod>2024-10-22T17:11:18.000Z</lastmod></url>
+<url><loc>https://polkadot.com/blog/scaling-ambition-with-agile-coretime</loc><lastmod>2024-10-23T20:19:25.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/web3-foundation-launches-polkadot-claims-process-partners-with-coinbase-custody-for-claiming-dots</loc><lastmod>2024-09-25T14:12:03.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/denomination-day-ecosystem-project-guidance</loc><lastmod>2024-09-24T21:08:59.000Z</lastmod></url>
-
 <url><loc>https://polkadot.com/blog/6-ways-you-can-get-involved-in-the-polkadot-community</loc><lastmod>2024-09-27T18:56:50.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/chainlink-reaches-milestone-with-polkadot</loc><lastmod>2024-09-25T12:10:23.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/what-is-polkadot-part-2-the-vision</loc><lastmod>2024-09-27T18:57:27.000Z</lastmod></url>
@@ -119,9 +112,7 @@
 <url><loc>https://polkadot.com/blog/kusama-and-polkadot-now-reward-curators-helping-to-scale-councils-functions-join-the-force-moving-the-community-forward</loc><lastmod>2024-09-25T12:38:31.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/preparing-for-polkadots-launch-with-substrate</loc><lastmod>2024-09-25T14:30:33.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/polkadot-launches-pioneering-cross-chain-communication-with-nft-functionality</loc><lastmod>2024-09-27T21:00:08.000Z</lastmod></url>
-
-<url><loc>https://polkadot.com/get-started/dapps</loc><lastmod>2024-10-22T12:46:21.000Z</lastmod></url>
-
+<url><loc>https://polkadot.com/get-started/dapps</loc><lastmod>2024-10-23T15:23:49.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/introducing-the-polkadot-staking-dashboard-the-easiest-way-to-nominate-and-stake-your-dot</loc><lastmod>2024-09-24T23:34:47.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/the-wolf-of-wall-street-film-to-launch-nft-offering-powered-by-aventus</loc><lastmod>2024-09-27T21:03:19.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/polkadot-introduces-substrate-marketplace-a-one-stop-resource-for-substrate-pallets</loc><lastmod>2024-09-27T21:04:35.000Z</lastmod></url>
@@ -188,9 +179,7 @@
 <url><loc>https://polkadot.com/blog/polkadot-decoded-presents-powerful-vision-across-the-ecosystem-in-two-action-packed-days</loc><lastmod>2024-09-24T23:41:55.000Z</lastmod></url>
 <url><loc>https://polkadot.com/community</loc><lastmod>2024-10-01T14:35:21.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/agrotoken-polkadot</loc><lastmod>2024-09-27T21:09:41.000Z</lastmod></url>
-
 <url><loc>https://polkadot.com/polkadot-nexus</loc><lastmod>2024-10-22T13:26:40.000Z</lastmod></url>
-
 <url><loc>https://polkadot.com/blog/zodia-parity-polkadot</loc><lastmod>2024-09-27T21:10:35.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/polkadot-staking-an-update</loc><lastmod>2024-09-25T12:28:41.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/polkadot-community-introduces-rewards-initiative-to-help-eliminate-scammers</loc><lastmod>2024-09-27T19:02:17.000Z</lastmod></url>
@@ -210,7 +199,7 @@
 <url><loc>https://polkadot.com/blog/staking-update-june-july-2022</loc><lastmod>2024-09-25T14:11:08.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/a-year-in-parachains-part-2-system-chains-smart-contracts-social-media</loc><lastmod>2024-09-25T01:40:50.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/token-2049-decoded-asia-2024-recap</loc><lastmod>2024-10-18T19:00:43.000Z</lastmod></url>
-<url><loc>https://polkadot.com/blockchain-academy</loc><lastmod>2024-09-27T20:37:31.000Z</lastmod></url>
+<url><loc>https://polkadot.com/blockchain-academy</loc><lastmod>2024-10-24T13:54:19.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/network-stability-report-kusama-with-parachains</loc><lastmod>2024-09-25T01:40:39.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/the-tie-launches-polkadot-ecosystem-dashboard</loc><lastmod>2024-09-24T23:59:56.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/kusama-upgrade-bulletin</loc><lastmod>2024-09-24T20:43:29.000Z</lastmod></url>
@@ -243,7 +232,6 @@
 <url><loc>https://polkadot.com/blog/mandala-chooses-astar-for-nft-drop-leveraging-a-myriad-of-features-only-available-on-polkadot</loc><lastmod>2024-09-27T21:15:22.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/polkadot-research-update</loc><lastmod>2024-09-25T14:28:04.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/obtener-un-parachain-slot-en-polkadot</loc><lastmod>2024-10-18T20:01:12.000Z</lastmod></url>
-
 <url><loc>https://polkadot.com/platform/chain</loc><lastmod>2024-10-21T14:33:02.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/research-update-the-case-for-candle-auctions</loc><lastmod>2024-09-25T01:38:29.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/kusama-treasury-funds-seven-teams-in-seven-weeks</loc><lastmod>2024-09-25T14:02:42.000Z</lastmod></url>
@@ -261,9 +249,7 @@
 <url><loc>https://polkadot.com/alpha-program</loc><lastmod>2024-10-01T14:32:55.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/w3f-inicia-el-lanzamiento-polkadot-cobra-vida</loc><lastmod>2024-09-25T01:57:36.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/parachain-dispatch-august-2023</loc><lastmod>2024-09-25T01:37:30.000Z</lastmod></url>
-
 <url><loc>https://polkadot.com/community/brand-hub</loc><lastmod>2024-10-22T13:28:20.000Z</lastmod></url>
-
 <url><loc>https://polkadot.com/community/about</loc><lastmod>2024-10-01T14:39:12.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/polkadot-governance</loc><lastmod>2024-09-27T19:04:29.000Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/que-es-polkadot-parte-2-la-vision</loc><lastmod>2024-10-18T20:00:03.000Z</lastmod></url>

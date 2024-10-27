@@ -67,7 +67,7 @@ export default function CardStickyBlock({ card, className }: Props) {
                 <Heading
                   variant="h3"
                   className={cn(
-                    "transition-colors duration-500 ease-in-out",
+                    "transition-colors duration-200 ease-in-out",
                     link &&
                       "group-focus-within:text-pink md:group-hover:text-pink"
                   )}

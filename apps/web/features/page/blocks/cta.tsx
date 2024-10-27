@@ -26,14 +26,19 @@ export function CTA({ cta }: Props) {
             />
           </div>
         )}
-        <div className="flex flex-col gap-card rounded-2xl border border-grey-300  p-gutter">
+        <div className="flex flex-col  rounded-2xl border border-grey-300  p-gutter">
           <div
             className={cn(
               "flex flex-col gap-copy",
               cta.useWhiteText ? "text-white" : "text-black"
             )}
           >
-            <Heading variant="h2">{cta.heading}</Heading>
+            <Heading
+              variant="h2"
+              className={cta.useWhiteText ? "text-white" : "text-black"}
+            >
+              {cta.heading}
+            </Heading>
             <p>{cta.body}</p>
           </div>
           <div className="group mr-auto">

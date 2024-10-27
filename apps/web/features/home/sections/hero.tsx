@@ -17,8 +17,8 @@ export function Hero({ hero }: Props) {
       id="hero-pile"
       className="md:pt-30 relative flex flex-col overflow-visible pt-24 lg:pt-80"
     >
-      {/* <div className="absolute inset-0 -z-20 bg-[image:linear-gradient(to_bottom_right,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom_right,#07FFFF_0%,#7916F3_100%)] bg-[length:101%_100%] bg-no-repeat "></div> */}
-      <div className="home-hero-background absolute inset-0 -z-20"></div>
+      <div className="absolute inset-0 -z-20 bg-[image:linear-gradient(to_bottom_right,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom_right,#07FFFF_0%,#7916F3_100%)] bg-[length:101%_100%] bg-no-repeat "></div>
+      {/* <div className="home-hero-background absolute inset-0 -z-20"></div> */}
 
       <article
         id="hero.wrapper"
@@ -37,7 +37,7 @@ export function Hero({ hero }: Props) {
             <div className="sm:max-w-xl md:max-w-2xl lg:max-w-2xl xl:max-w-6xl  ">
               <Heading
                 variant="h1"
-                className="pb-card  leading-[1] md:text-[61px] "
+                className="pb-card leading-[1] md:!text-[3.813rem] "
               >
                 {hero.title}
               </Heading>
@@ -79,8 +79,9 @@ export function Hero({ hero }: Props) {
             </div>
           </div>
           {/* ANIMATION */}
-          <div className="relative -z-50 min-h-[48rem] lg:min-h-[48rem] md:min-w-[36rem] lg:min-w-[48rem] w-full overflow-visible style={{ transformStyle: 'preserve-3d' }} -mt-48 lg:-mt-80 lg:order-2 order-1">
-            <div className="absolute inset-0 w-full origin-center md:scale-100 lg:scale-125 xl:scale-150 !overflow-visible style={{ willChange: 'transform' }}">
+
+          <div className="bg-transparent relative -z-50 order-1 -mt-36 min-h-[48rem] w-full overflow-visible  md:min-w-[36rem] lg:order-2 lg:-mt-80 lg:min-w-[48rem]">
+            <div className="bg-transparent absolute inset-0 w-full origin-center   !overflow-visible ">
               <Spline scene="/scene.spline" />
             </div>
           </div>

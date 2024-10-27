@@ -46,7 +46,7 @@ const PaginationLink = ({
     aria-current={isActive ? "page" : undefined}
     role="button"
     className={cn(
-      "transition-all duration-500 hover:text-pink",
+      "transition-all duration-200 hover:text-pink",
       isActive
         ? "text-pink after:bg-pink"
         : "text-black hover:after:bg-grey-300",
@@ -65,7 +65,7 @@ const PaginationPrevious = ({
     aria-label="Go to previous page"
     className={cn(
       "gap-1 pl-2.5",
-      "transition-all duration-500 hover:fill-pink",
+      "transition-all duration-200 hover:fill-pink",
       className
     )}
     {...props}
@@ -83,7 +83,7 @@ const PaginationNext = ({
     aria-label="Go to next page"
     className={cn(
       "gap-1 pr-2.5",
-      "transition-all duration-500 hover:fill-pink",
+      "transition-all duration-200 hover:fill-pink",
       className
     )}
     {...props}

@@ -17,7 +17,7 @@ export function Body({ body }: Props) {
             const isExternal = value.href.startsWith("http")
             return (
               <a
-                className="inline-flex font-default font-bold underline underline-offset-2  transition-colors duration-500 ease-in-out hover:text-pink"
+                className="inline-flex font-default font-bold text-grey-900 underline  underline-offset-2 transition-colors duration-200 ease-in-out hover:text-pink"
                 href={value.href}
                 target={isExternal ? "_blank" : "_self"}
                 rel={isExternal ? "noopener noreferrer" : ""}
@@ -29,37 +29,39 @@ export function Body({ body }: Props) {
         },
         block: {
           normal: ({ children }) => (
-            <p className="mb-6 font-default text-lg">{children}</p>
+            <p className="mb-6 font-default text-lg text-grey-900">
+              {children}
+            </p>
           ),
           h1: ({ children }) => (
-            <Heading variant={"h1"} className="mb-6">
+            <Heading variant={"h1"} className="mb-4 mt-12">
               {children}
             </Heading>
           ),
           h2: ({ children }) => (
-            <Heading variant={"h2"} className="mb-6">
+            <Heading variant={"h2"} className="mb-4 mt-16">
               {children}
             </Heading>
           ),
           h3: ({ children }) => (
-            <Heading variant={"h3"} className="mb-6">
+            <Heading variant={"h3"} className="mb-4 mt-16">
               {children}
             </Heading>
           ),
           h4: ({ children }) => (
-            <Heading variant={"h4"} className="mb-6">
+            <Heading variant={"h4"} className="mb-4 mt-16">
               {children}
             </Heading>
           ),
         },
         list: {
           bullet: ({ children }) => (
-            <ul className="mx-0 my-4 list-outside list-disc pl-7 md:my-6">
+            <ul className="mx-0 my-4 list-outside list-disc pl-7 text-grey-900 md:my-6">
               {children}
             </ul>
           ),
           number: ({ children }) => (
-            <ol className="mx-0 my-4 list-outside list-decimal pl-7 md:my-6">
+            <ol className="mx-0 my-4 list-outside list-decimal pl-7 text-grey-900 md:my-6">
               {children}
             </ol>
           ),
@@ -71,7 +73,7 @@ export function Body({ body }: Props) {
         types: {
           image: ({ value }) => {
             return (
-              <figure className="my-12">
+              <figure className="my-6">
                 <img
                   className="aspect-2 m-0 mb-4 block w-full rounded-2xl object-cover object-center"
                   src={urlForImage(value.image)}

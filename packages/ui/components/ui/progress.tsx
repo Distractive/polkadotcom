@@ -18,7 +18,7 @@ export function Progress({ current, count, className }: Props) {
         <div
           key={index}
           className={cn(
-            "size-2 rounded-full bg-black transition-[width] duration-500 ease-in-out",
+            "size-2 rounded-full bg-black transition-[width] duration-200 ease-in-out",
             current === index && "w-gutter"
           )}
         ></div>

@@ -29,7 +29,7 @@ export function BreadcrumbBlock({ items }: BreadcrumbProps) {
                 <BreadcrumbLink
                   href={item.slug}
                   className={cn(
-                    "transition-all duration-500 ease-out hover:text-black hover:underline hover:underline-offset-4",
+                    "transition-all duration-200 ease-out hover:text-black hover:underline hover:underline-offset-4",
                     index == items.length - 1 ? "text-pink" : ""
                   )}
                 >

@@ -24,7 +24,7 @@ export function Connected({ connected }: Props) {
   return (
     <div
       id="connected-pile"
-      className="grid-pile relative bg-[image:linear-gradient(to_bottom_left,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom_left,#AF04FF_0%,#07FFFF_100%)] bg-[length:101%_100%] bg-no-repeat py-[4rem] md:py-[6rem]"
+      className="grid-pile relative bg-[image:linear-gradient(to_bottom_left,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom_left,rgba(121,22,243,1)_0%,rgba(7,255,255,1)_100%)] bg-[length:101%_100%] bg-no-repeat py-[4rem] md:py-[6rem]"
     >
       <article
         id="connected.wrapper"
@@ -60,7 +60,6 @@ export function Connected({ connected }: Props) {
                   <Card
                     key={card._key}
                     className={cn(
-                      "background-blur ",
                       card.link &&
                         "md:cursor-pointer md:hover:bg-white md:hover:shadow-card"
                     )}
@@ -90,7 +89,7 @@ export function Connected({ connected }: Props) {
                               <Heading
                                 variant="h3"
                                 className={cn(
-                                  "text-base leading-[1.2] transition-colors duration-500 ease-in-out md:text-2xl",
+                                  "text-base leading-[1.2] transition-colors duration-200 ease-in-out md:text-2xl",
                                   card.link && "md:group-hover:text-pink"
                                 )}
                               >

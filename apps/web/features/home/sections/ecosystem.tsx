@@ -73,7 +73,7 @@ export function Ecosystem({ ecosystem }: Props) {
                     <Heading
                       variant="h3"
                       className={cn(
-                        "text-balance text-white transition-colors duration-500 ease-in-out"
+                        "text-balance text-white transition-colors duration-200 ease-in-out"
                       )}
                     >
                       {item.heading}

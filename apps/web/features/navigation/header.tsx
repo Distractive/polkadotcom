@@ -56,7 +56,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
           <Link
             href="/"
             onClick={handleItemSelect}
-            className="lg:pr-nav"
+            className="pr-nav"
             aria-label="Navigate to the home page"
           >
             <div className="">
@@ -74,12 +74,12 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
                 <li
                   key={index}
                   onMouseEnter={() => handleCurrentHeading(item.heading)}
-                  className="relative flex h-full cursor-pointer items-center justify-center transition-colors duration-500 ease-in-out lg:hover:text-pink"
+                  className="relative flex h-full cursor-pointer items-center justify-center transition-colors duration-200 ease-in-out lg:hover:text-pink"
                 >
                   <CustomUrl
                     value={item.link}
                     onClick={handleItemSelect}
-                    className="transition-colors duration-500 ease-in-out hover:text-pink focus:text-pink peer-focus:text-pink"
+                    className="transition-colors duration-200 ease-in-out hover:text-pink focus:text-pink peer-focus:text-pink"
                   >
                     {item.heading}
                   </CustomUrl>

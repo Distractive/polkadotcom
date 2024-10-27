@@ -32,10 +32,11 @@ export function Stats({ stats }: Props) {
           <Heading
             variant="h2"
             className={cn(
-              "px-gutter  text-5xl leading-[1.1] lg:pl-gutter lg:pr-gutter",
-              "col-span-full md:col-span-3 md:text-7xl lg:col-start-2 xl:col-start-2",
+              "px-gutter  leading-[1.1] lg:pl-gutter lg:pr-gutter",
+              "col-span-full  md:col-span-3 md:text-[3.813rem] lg:col-start-2 xl:col-start-2",
               "!hyphens-none !break-normal"
             )}
+            size="display"
             aria-label={stats.title}
             role="heading"
           >
@@ -52,7 +53,7 @@ export function Stats({ stats }: Props) {
               <Card
                 key={index}
                 className={cn(
-                  "stats-card background-blur bg-grey-100/50 p-card",
+                  "stats-card background-blur bg-white p-card",
                   "col-span-full col-start-1 md:col-span-2 lg:col-span-6",
                   // nudge down second column
                   index % 2 !== 0 && "lg:translate-y-24"

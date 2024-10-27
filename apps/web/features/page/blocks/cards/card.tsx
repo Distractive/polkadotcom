@@ -99,7 +99,7 @@ export default function CardBlock({ card, className }: Props) {
                 {selectedTags.map((tag) => (
                   <li
                     key={tag}
-                    className="bg-greyLavender flex items-center justify-center rounded px-3 py-1 text-sm leading-relaxed"
+                    className="flex items-center justify-center rounded bg-grey-200 px-3 py-1 text-sm leading-relaxed text-black "
                   >
                     {tag}
                   </li>
@@ -124,7 +124,7 @@ export default function CardBlock({ card, className }: Props) {
                     size={useSmallHeading ? "h5" : "h3"}
                     weight={useSmallHeading ? "bold" : "normal"}
                     className={cn(
-                      "transition-colors duration-500 ease-in-out",
+                      "transition-colors duration-200 ease-in-out",
                       link &&
                         "group-focus-within:text-pink md:group-hover:text-pink"
                     )}

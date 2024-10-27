@@ -90,16 +90,13 @@ const config = {
       lime: "#E4FF07",
       cyan: "#07FFFF",
       purple: "#7916F3",
-      // greyLavender: "#DCDFEF",
-      // grey: "#E1E3F1",
-      // greyBlue: "#C8CCE4",
-      // lightGrey: "#F4F6FA",
-      // blue: "#111F77",
       current: "currentColor",
     },
     extend: {
-      textColor: {
-        DEFAULT: "#6E7391",
+      theme: {
+        fontFamily: {
+          default: ["var(--font-manrope)", "system-ui", "sans-serif"],
+        },
       },
       gridAutoRows: {
         "1fr": "1fr",

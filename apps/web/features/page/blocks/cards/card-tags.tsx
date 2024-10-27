@@ -17,7 +17,6 @@ interface Props {
 }
 
 export function CardTags({ tags, cards, useFourColumns }: Props) {
-  console.log("4 columns", useFourColumns)
   const VISIBLE_COUNT = useFourColumns ? 8 : 6
   const [filteredItems, setFilteredItems] = useState(cards)
   const [currentTag, setCurrentTag] = useState("All")
@@ -42,20 +41,19 @@ export function CardTags({ tags, cards, useFourColumns }: Props) {
   const showMoreItems = () => {
     setVisibleCount((prevCount) => prevCount + VISIBLE_COUNT)
   }
-  console.log(
-    "disabled?",
-    visibleCount >= filteredItems.length ? "disabled" : "secondary"
-  )
+
   return (
     <>
       <ul className="col-span-full flex flex-wrap gap-3">
         <li
           key="all"
           className={cn(
-            "flex cursor-pointer items-center justify-center rounded bg-greyLavender text-sm leading-relaxed transition-colors  ",
+            "flex cursor-pointer items-center justify-center rounded  text-sm leading-relaxed  transition-colors  ",
             "hover:bg-black hover:text-white",
             "relative",
-            currentTag === "All" && "bg-black text-white"
+            currentTag === "All"
+              ? "bg-black text-white"
+              : "bg-grey-200 text-black"
           )}
         >
           <button
@@ -66,7 +64,7 @@ export function CardTags({ tags, cards, useFourColumns }: Props) {
               setCurrentTag("All")
               setVisibleCount(VISIBLE_COUNT)
             }}
-            className="px-4 py-1 hover:!bg-black"
+            className="px-4 py-1 "
           >
             All
           </button>
@@ -76,7 +74,7 @@ export function CardTags({ tags, cards, useFourColumns }: Props) {
           <li
             key={tag}
             className={cn(
-              "flex cursor-pointer flex-wrap items-center justify-center rounded bg-greyLavender  text-sm leading-relaxed transition-colors",
+              "flex cursor-pointer flex-wrap items-center justify-center rounded bg-grey-200 text-sm  leading-relaxed text-black transition-colors",
               "hover:bg-black hover:text-white",
               "relative",
               currentTag === tag && "bg-black text-white"

@@ -54,7 +54,7 @@ export function VideoBlock({ video, className }: Props) {
                 className={cn(
                   "flex size-16 items-center justify-center rounded-2xl",
                   "border border-grey-300 bg-white/80 backdrop-blur-md",
-                  "group transition-colors duration-500 ease-in-out"
+                  "group transition-colors duration-200 ease-in-out"
                 )}
               >
                 <Icon variant="videoPlay" className="group-hover:fill-pink" />

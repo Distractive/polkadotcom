@@ -30,7 +30,7 @@ export default function BlogCard({ post, className }: Props) {
     <Card
       key={slug}
       className={cn(
-        "group relative h-full overflow-hidden rounded-2xl border border-grey-400 bg-white backdrop-blur-lg transition-shadow duration-500 ease-in-out focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
+        "group relative h-full overflow-hidden rounded-2xl border border-grey-400 bg-white backdrop-blur-lg transition-shadow duration-200 ease-in-out focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
         slug &&
           "focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
         className
@@ -54,7 +54,7 @@ export default function BlogCard({ post, className }: Props) {
             {tags.map((tag) => (
               <li
                 key={tag.slug}
-                className="mb-1 flex rounded bg-grey-200 px-3 py-1 text-left text-sm leading-relaxed"
+                className="mb-1 flex rounded bg-grey-200 px-3 py-1 text-left text-sm leading-relaxed text-black hover:bg-black hover:text-white"
               >
                 <a
                   className="relative z-20"
@@ -75,7 +75,7 @@ export default function BlogCard({ post, className }: Props) {
         {title && (
           <h2
             className={cn(
-              "mb-1 text-lg font-bold transition-colors duration-500 ease-in-out",
+              "mb-1 text-lg font-bold transition-colors duration-200 ease-in-out",
               "group-focus-within:text-pink md:group-hover:text-pink"
             )}
           >
@@ -93,7 +93,9 @@ export default function BlogCard({ post, className }: Props) {
           </h2>
         )}
         {body && (
-          <CardDescription className="line-clamp-3">{excerpt}</CardDescription>
+          <CardDescription className="line-clamp-3 text-grey-900">
+            {excerpt}
+          </CardDescription>
         )}
       </CardContent>
     </Card>

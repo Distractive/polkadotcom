@@ -20,7 +20,7 @@ export function Build({ build }: Props) {
   return (
     <div
       id="building-pile"
-      className="grid-pile relative bg-[image:linear-gradient(to_top_left,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_top,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_top_left,#AF04FF_0%,#07FFFF_100%)] bg-[length:101%_100%] bg-no-repeat py-[4rem] md:py-[10rem]"
+      className="grid-pile relative bg-[image:linear-gradient(to_top_left,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_top,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_top_left,rgba(121,22,243,1)_0%,rgba(7,255,255,1)_100%)] bg-[length:101%_100%] bg-no-repeat py-[4rem] md:py-[10rem]"
     >
       <article
         id="build.wrapper"
@@ -55,7 +55,7 @@ export function Build({ build }: Props) {
               <Card
                 key={index}
                 className={cn(
-                  "build-card background-blur col-span-6 flex items-start justify-between bg-white/80 md:col-span-4 md:col-start-2 lg:col-span-4",
+                  "build-card  col-span-6 flex items-start justify-between !bg-white md:col-span-4 md:col-start-2 lg:col-span-4",
                   item.link &&
                     "focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card",
                   "!h-auto"
@@ -70,7 +70,7 @@ export function Build({ build }: Props) {
                         <Heading
                           variant="h3"
                           className={cn(
-                            "text-balance text-xl leading-normal transition-colors duration-500 ease-in-out md:text-2xl",
+                            "text-balance text-xl leading-normal transition-colors duration-200 ease-in-out md:text-2xl",
                             item.link &&
                               "group-focus-within:text-pink md:group-hover:text-pink",
                             "!hyphens-none !break-normal"
