@@ -59,6 +59,16 @@ export default async function RootLayout({
           src="https://scripts.simpleanalyticscdn.com/latest.js"
           strategy="afterInteractive"
           data-domain="polkadot.com"
+        />
+        <Script
+          id="simple-analytics"
+          src="https://scripts.simpleanalyticscdn.com/auto-events.js"
+          strategy="afterInteractive"
+          data-domain="polkadot.com"
+          data-collect="outbound,emails,downloads"
+          data-extensions="pdf,csv,docx,xlsx,zip,doc,xls"
+          data-use-title="true"
+          data-full-urls="false"
           defer
         />
         <Script src="https://js.hsforms.net/forms/embed/v2.js" />
@@ -82,6 +92,7 @@ export default async function RootLayout({
             })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
             `}
         </Script>
+
         <link
           rel="apple-touch-icon"
           sizes="180x180"
