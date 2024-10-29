@@ -36,7 +36,7 @@ export function Build({ build }: Props) {
             "mt-header-top md:mt-0"
           )}
         >
-          <div className="col-span-full px-gutter pb-[5rem] lg:col-span-8 lg:col-start-3 lg:w-4/6 lg:pb-[2rem]">
+          <div className="col-span-full px-gutter pb-[2rem] lg:col-span-8 lg:col-start-3 lg:w-4/6 ">
             <Heading
               variant="h2"
               className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"

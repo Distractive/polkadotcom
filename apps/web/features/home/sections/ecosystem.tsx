@@ -16,7 +16,7 @@ interface Props {
 
 export function Ecosystem({ ecosystem }: Props) {
   return (
-    <div id="ecosystem-pile" className="grid-pile md:pt-[6rem]">
+    <div id="ecosystem-pile" className="grid-pile pt-20 md:pt-[6rem]">
       <article
         id="ecosystem.wrapper"
         className="grid-system relative col-span-full h-auto w-lvw items-center justify-center overflow-hidden"

@@ -14,7 +14,7 @@ export function Video({ video }: Props) {
   return (
     <div
       id="video-pile"
-      className="grid-pile -mt-header-top pb-16 pt-64 lg:pt-24"
+      className="grid-pile -mt-header-top pt-48 md:pb-8 md:pt-64 lg:pt-24"
     >
       <article
         id="video.wrapper"

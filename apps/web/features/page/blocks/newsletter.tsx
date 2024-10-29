@@ -6,7 +6,7 @@ import { FormModalBlock } from "./form-modal"
 
 export function Newsletter() {
   return (
-    <div className="pb-24 pt-24 md:pb-0 ">
+    <div className="py-16  ">
       <FormModalBlock modal={polkadotNewsletter} />
     </div>
   )

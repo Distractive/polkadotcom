@@ -20,7 +20,7 @@ export default function Menu({ menu, modal }: Props) {
     <>
       <div className="grid grid-cols-1 gap-6 px-gutter py-gutter sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         {/* ModalButton */}
-        <div className="order-0 col-span-1 font-default text-black sm:order-1 md:order-7">
+        <div className="order-3 col-span-1 font-default text-black sm:order-1 md:order-7">
           <div className="flex flex-col items-start gap-2">
             <ModalButton modal={modal} buttonClassName="font-medium" />
           </div>

@@ -19,7 +19,7 @@ const modalData = {
 
 export default function FooterLayout({ footer }: Props) {
   return (
-    <div className="relative flex  flex-col pt-page font-bold md:mt-page">
+    <div className="relative flex  flex-col  pt-40 font-bold md:pt-36 ">
       <footer className="max-width relative">
         <div className="bg-blur-sm  border border-grey-200 md:mx-gutter md:mb-gutter md:rounded-2xl">
           <div className="mx-auto w-full">

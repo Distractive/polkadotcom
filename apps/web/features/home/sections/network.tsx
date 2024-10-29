@@ -40,7 +40,7 @@ export function Network({ network }: Props) {
         >
           <div
             className={cn(
-              "col-span-full px-gutter pb-[5rem]",
+              "col-span-full px-gutter pb-[4rem]",
               "md:col-span-8 md:col-start-3 lg:w-4/6 lg:pb-[5rem]"
             )}
           >
