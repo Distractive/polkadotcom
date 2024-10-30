@@ -6,9 +6,14 @@ import {
   getPosts,
   type postSelection,
 } from "@/sanity/queries/posts"
+import generateBreadcrumbs from "@/utils/breadcrumbs/generateBreadcrumbs"
 import { type TypeFromSelection } from "groqd"
 
-import { BLOG_POSTTYPE, type PRESS_RELEASE_POSTTYPE } from "@/constants/global"
+import {
+  BLOG_POSTTYPE,
+  CASE_STUDY_POSTTYPE,
+  PRESS_RELEASE_POSTTYPE,
+} from "@/constants/global"
 import { CarouselItem, cn, Heading } from "@shared/ui"
 
 import { Carousel } from "../../components/carousel"
@@ -19,15 +24,30 @@ import BlogCard from "./card"
 
 interface LayoutProps {
   slug: string
-  type: typeof BLOG_POSTTYPE | typeof PRESS_RELEASE_POSTTYPE
+  type:
+    | typeof BLOG_POSTTYPE
+    | typeof PRESS_RELEASE_POSTTYPE
+    | typeof CASE_STUDY_POSTTYPE
 }
 
 export default async function Layout({ slug, type }: LayoutProps) {
   const isDraftMode = draftMode().isEnabled
   const post = await getPost(slug, isDraftMode)
+
   const allPosts = await getPosts(1, type, "", false, slug)
-  const headingType = type == BLOG_POSTTYPE ? "blog" : "press-releases"
-  const postsData = await getPostHeading(headingType)
+  const headingType = (() => {
+    switch (type) {
+      case BLOG_POSTTYPE:
+        return "blog"
+      case PRESS_RELEASE_POSTTYPE:
+        return "press-releases"
+      case CASE_STUDY_POSTTYPE:
+        return "case-studies"
+    }
+  })()
+
+  //
+  const [postsData] = await getPostHeading(headingType)
 
   let breadcrumb: BreadcrumbProps = { items: [] }
 
@@ -92,9 +112,11 @@ export default async function Layout({ slug, type }: LayoutProps) {
                   <a
                     className="relative z-20  "
                     href={
-                      post_type == BLOG_POSTTYPE
-                        ? `/blog/tag/${tag.slug}`
-                        : `/newsroom/press-releases/tag/${tag.slug}`
+                      {
+                        [BLOG_POSTTYPE]: `/blog/tag/${tag.slug}`,
+                        [PRESS_RELEASE_POSTTYPE]: `/newsroom/press-releases/tag/${tag.slug}`,
+                        [CASE_STUDY_POSTTYPE]: `/case-studies/tag/${tag.slug}`,
+                      }[post_type] || "/"
                     }
                   >
                     {tag.name}
@@ -177,8 +199,16 @@ const MorePost = ({
   posts: Array<TypeFromSelection<typeof postSelection>>
   post_type: string
 }) => {
-  const headingLabel =
-    post_type == BLOG_POSTTYPE ? "From the blog" : "More from newsroom"
+  const headingLabel = (() => {
+    switch (post_type) {
+      case BLOG_POSTTYPE:
+        return "From the blog"
+      case PRESS_RELEASE_POSTTYPE:
+        return "More from newsroom"
+      case CASE_STUDY_POSTTYPE:
+        return "More case studies"
+    }
+  })()
   return (
     <div className="max-width col-span-full  px-gutter">
       <div className={cn("col-span-full mb-12")}>

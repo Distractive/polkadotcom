@@ -5,7 +5,7 @@ import { headerSelection } from "../selections/blocks/header"
 import { pageBuilderSelection } from "../selections/page-builder"
 
 export async function getSingletonMeta(
-  type: "home" | "blog" | "press-releases"
+  type: "home" | "blog" | "press-releases" | "case-studies"
 ) {
   const pageQuery = q("*")
     .filter(`_type == '${type}'`)

@@ -17,6 +17,7 @@ import { mediaBlockSelection } from "./blocks/media-block"
 import { modalSelection } from "./blocks/modal"
 import { quoteSelection } from "./blocks/quote"
 import { sideBySideSelection } from "./blocks/side-by-side"
+import { customQuoteSelection } from "./blog/custom-quote"
 
 export const pageBuilderSelection = {
   pageBuilder: q("pageBuilder.pageBuilder")

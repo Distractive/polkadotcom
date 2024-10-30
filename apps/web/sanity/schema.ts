@@ -21,6 +21,7 @@ import {
   cardsTimeline,
   cardTimeline,
   connectedCard,
+  customQuote,
   cta,
   customUrl,
   ecosystemCard,
@@ -47,11 +48,13 @@ import {
   smallHomeCard,
   socialLink,
   statsCard,
+  summary,
   video,
   youtube,
 } from "./schemas/objects"
 import {
   blog,
+  caseStudies,
   footer,
   home,
   navigation,
@@ -80,6 +83,7 @@ const objectTypes = [
   cardStat,
   cta,
   customUrl,
+  customQuote,
   header,
   form,
   pageBuilder,
@@ -107,9 +111,18 @@ const objectTypes = [
   homeNetwork,
   smallHomeCard,
   homeBuild,
+  summary,
 ]
 
-const singletons = [footer, navigation, notfound, home, blog, pressReleases]
+const singletons = [
+  footer,
+  navigation,
+  notfound,
+  home,
+  blog,
+  pressReleases,
+  caseStudies,
+]
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [...documentTypes, ...objectTypes, ...singletons],

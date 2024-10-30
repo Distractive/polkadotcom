@@ -3,6 +3,7 @@ import { q } from "groqd"
 import type { Selection } from "groqd"
 
 import {
+  CASE_STUDY_POSTTYPE,
   type BLOG_POSTTYPE,
   type PRESS_RELEASE_POSTTYPE,
 } from "@/constants/global"
@@ -14,7 +15,10 @@ export const searchSelection = {
 } satisfies Selection
 
 export async function getSearchData(
-  postType: typeof BLOG_POSTTYPE | typeof PRESS_RELEASE_POSTTYPE
+  postType:
+    | typeof BLOG_POSTTYPE
+    | typeof PRESS_RELEASE_POSTTYPE
+    | typeof CASE_STUDY_POSTTYPE
 ) {
   const postQuery = q("*")
     .filterByType("post")

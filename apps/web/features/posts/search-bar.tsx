@@ -6,12 +6,19 @@ import Link from "next/link"
 import type { searchSelection } from "@/sanity/queries/search"
 import type { TypeFromSelection } from "groqd"
 
-import { BLOG_POSTTYPE, type PRESS_RELEASE_POSTTYPE } from "@/constants/global"
+import {
+  BLOG_POSTTYPE,
+  CASE_STUDY_POSTTYPE,
+  type PRESS_RELEASE_POSTTYPE,
+} from "@/constants/global"
 import { cn, Icon } from "@shared/ui"
 
 interface Props {
   searches: ReadonlyArray<TypeFromSelection<typeof searchSelection>>
-  postType: typeof BLOG_POSTTYPE | typeof PRESS_RELEASE_POSTTYPE
+  postType:
+    | typeof BLOG_POSTTYPE
+    | typeof PRESS_RELEASE_POSTTYPE
+    | typeof CASE_STUDY_POSTTYPE
 }
 
 export function SearchBar({ searches, postType }: Props) {

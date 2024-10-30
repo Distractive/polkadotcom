@@ -4,6 +4,7 @@ import type {
 } from "sanity/structure"
 
 import { blogStructure } from "./blog"
+import { caseStudiesStructure } from "./case-studies"
 import { footerStructure } from "./footer"
 import { homeStructure } from "./home"
 import { hygieneStructure } from "./hygiene"
@@ -32,6 +33,8 @@ export const deskStructure = (
       blogStructure(S),
       S.divider(),
       pressReleasesStructure(S),
+      S.divider(),
+      caseStudiesStructure(S),
       S.divider(),
       navigationStructure(S),
       S.divider(),

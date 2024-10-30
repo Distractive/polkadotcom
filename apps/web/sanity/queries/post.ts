@@ -2,6 +2,8 @@ import { runQuery } from "@/sanity/lib/groqd-query"
 import { nullToUndefined, q, sanityImage } from "groqd"
 import type { Selection } from "groqd"
 
+import { customUrlSelection } from "../selections/custom-url"
+
 export const postSelection = {
   title: q.string(),
   slug: q.slug("slug"),
@@ -42,6 +44,41 @@ export const postSelection = {
         url: q.string(),
         title: q.string(),
       },
+      '_type == "custom_quote"': {
+        _key: q.string(),
+        _type: q.literal("custom_quote"),
+        text: q.string(),
+        author: q.string().optional(),
+        image: sanityImage("image", {
+          additionalFields: {
+            alt: q.string().optional(),
+          },
+        }).nullable(),
+      },
+      '_type == "summary"': {
+        _key: q.string(),
+        _type: q.literal("summary"),
+        title: q.string(),
+        titleLink: q("titleLink")
+          .grab({
+            _type: q.literal("customUrl"),
+            ...customUrlSelection,
+          })
+          .nullable(),
+        links: q("links")
+          .filter()
+          .select({
+            '_type == "customUrl"': {
+              _type: q.literal("customUrl"),
+              ...customUrlSelection,
+            },
+          }),
+        callouts: q.array(
+          q.object({
+            text: q.array(q.contentBlock()),
+          })
+        ),
+      },
       default: {
         _key: q.string(),
         _type: ['"unsupported"', q.literal("unsupported")],
@@ -68,13 +105,14 @@ export async function getPost(slug: string, isDraftMode: boolean) {
     .grab(postSelection)
     .slice(0)
 
-  return await runQuery(
+  const result = await runQuery(
     postQuery,
     {
       slug: slug,
     },
     isDraftMode
   )
+  return result
 }
 
 export async function getPostMeta(slug: string) {
@@ -83,5 +121,6 @@ export async function getPostMeta(slug: string) {
     .filter("slug.current == $slug")
     .grab(metaSelection)
     .slice(0)
-  return await runQuery(metaQuery, { slug: slug }, false)
+
+  return await runQuery(metaQuery, { slug }, true)
 }

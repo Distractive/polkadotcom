@@ -3,7 +3,11 @@ import Link from "next/link"
 import type { postSelection } from "@/sanity/queries/posts"
 import type { TypeFromSelection } from "groqd"
 
-import { BLOG_POSTTYPE } from "@/constants/global"
+import {
+  BLOG_POSTTYPE,
+  CASE_STUDY_POSTTYPE,
+  PRESS_RELEASE_POSTTYPE,
+} from "@/constants/global"
 import { Card, CardContent, CardDescription, CardHeader, cn } from "@shared/ui"
 
 interface Props {
@@ -60,9 +64,11 @@ export default function BlogCard({ post, className }: Props) {
                   className="relative z-20"
                   tabIndex={-1}
                   href={
-                    post_type == BLOG_POSTTYPE
-                      ? `/blog/tag/${tag.slug}`
-                      : `/newsroom/press-releases/tag/${tag.slug}`
+                    {
+                      [BLOG_POSTTYPE]: `/blog/tag/${tag.slug}`,
+                      [PRESS_RELEASE_POSTTYPE]: `/newsroom/press-releases/tag/${tag.slug}`,
+                      [CASE_STUDY_POSTTYPE]: `/case-studies/tag/${tag.slug}`,
+                    }[post_type] || "/"
                   }
                 >
                   {tag.name}
@@ -82,9 +88,11 @@ export default function BlogCard({ post, className }: Props) {
             <Link
               tabIndex={0}
               href={
-                post_type == BLOG_POSTTYPE
-                  ? `/blog/${post.slug}`
-                  : `/newsroom/press-releases/${post.slug}`
+                {
+                  [BLOG_POSTTYPE]: `/blog/${post.slug}`,
+                  [PRESS_RELEASE_POSTTYPE]: `/newsroom/press-releases/${post.slug}`,
+                  [CASE_STUDY_POSTTYPE]: `/case-studies/${post.slug}`,
+                }[post_type] || "/"
               }
               className="outline-none after:absolute after:inset-0 after:z-10 after:cursor-pointer"
             >

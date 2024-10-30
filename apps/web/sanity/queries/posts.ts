@@ -73,14 +73,16 @@ export async function getPosts(
     params.filteredSlug = filteredSlug // Add filteredSlug only if it's defined
   }
 
-  return await runQuery(
+  const result = await runQuery(
     paginate(postQuery, postSelection, page, POSTS_PER_PAGE),
     params,
     isDraftMode
   )
+
+  return result
 }
 
-export type PostType = "blog" | "press-releases"
+export type PostType = "blog" | "press-releases" | "case-studies"
 
 export async function getPostHeading(postType: PostType) {
   const query = q("*")
@@ -88,9 +90,14 @@ export async function getPostHeading(postType: PostType) {
     .grab$({
       ...blogSelection,
     })
-    .slice(0)
 
-  return await runQuery(query, {}, false)
+  try {
+    const result = await runQuery(query, {}, false)
+    return result
+  } catch (error) {
+    console.error("Error running query:", error)
+    throw error
+  }
 }
 
 export async function getSlugs(postType: string) {

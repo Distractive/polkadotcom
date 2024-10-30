@@ -1,7 +1,11 @@
 import { CogIcon, DocumentIcon, SearchIcon } from "@sanity/icons"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
-import { BLOG_POSTTYPE, PRESS_RELEASE_POSTTYPE } from "@/constants/global"
+import {
+  BLOG_POSTTYPE,
+  CASE_STUDY_POSTTYPE,
+  PRESS_RELEASE_POSTTYPE,
+} from "@/constants/global"
 
 export default defineType({
   name: "post",
@@ -24,7 +28,7 @@ export default defineType({
       title: "Post Type",
       type: "string",
       options: {
-        list: [BLOG_POSTTYPE, PRESS_RELEASE_POSTTYPE],
+        list: [BLOG_POSTTYPE, PRESS_RELEASE_POSTTYPE, CASE_STUDY_POSTTYPE],
       },
     }),
     defineField({
@@ -88,6 +92,16 @@ export default defineType({
       of: [
         defineArrayMember({
           type: "block",
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "Heading 1", value: "h1" },
+            { title: "Heading 2", value: "h2" },
+            { title: "Heading 3", value: "h3" },
+            { title: "Heading 4", value: "h4" },
+            { title: "Heading 5", value: "h5" },
+            { title: "Heading 6", value: "h6" },
+            { title: "Quote", value: "blockquote" },
+          ],
         }),
         defineArrayMember({
           type: "image",
@@ -110,9 +124,19 @@ export default defineType({
           type: "youtube",
         }),
         defineArrayMember({
+          type: "code",
           name: "code",
           title: "Code Block",
-          type: "code",
+        }),
+        defineArrayMember({
+          type: "custom_quote",
+          name: "custom_quote",
+          title: "Custom Quote",
+        }),
+        defineArrayMember({
+          type: "summary",
+          name: "summary",
+          title: "Summary",
         }),
       ],
       group: "content",
@@ -136,10 +160,24 @@ export default defineType({
       postType: "post_type",
       media: "featured_image",
     },
-    prepare: ({ title, postType, media }) => ({
-      title,
-      subtitle: postType == BLOG_POSTTYPE ? "- Blog" : "- Press Release",
-      media,
-    }),
+    prepare: ({ title, postType, media }) => {
+      let subtitle
+      switch (postType) {
+        case BLOG_POSTTYPE:
+          subtitle = "- Blog"
+          break
+        case PRESS_RELEASE_POSTTYPE:
+          subtitle = "- Press Release"
+          break
+        case CASE_STUDY_POSTTYPE:
+          subtitle = "- Case Study"
+          break
+      }
+      return {
+        title,
+        subtitle,
+        media,
+      }
+    },
   },
 })

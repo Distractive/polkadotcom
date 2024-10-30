@@ -2,12 +2,14 @@ import { draftMode } from "next/headers"
 import { getPostHeading, getPosts } from "@/sanity/queries/posts"
 import { getSearchData } from "@/sanity/queries/search"
 import type { headerSelection } from "@/sanity/selections/blocks/header"
+import generateBreadcrumbs from "@/utils/breadcrumbs/generateBreadcrumbs"
 import type { TypeFromSelection } from "groqd"
 
 import {
   BLOG_POSTTYPE,
+  CASE_STUDY_POSTTYPE,
   POSTS_PER_PAGE,
-  type PRESS_RELEASE_POSTTYPE,
+  PRESS_RELEASE_POSTTYPE,
 } from "@/constants/global"
 import { cn, Heading } from "@shared/ui"
 
@@ -23,7 +25,10 @@ import { SearchBar } from "./search-bar"
 
 interface LayoutProps {
   page: number
-  type: typeof BLOG_POSTTYPE | typeof PRESS_RELEASE_POSTTYPE
+  type:
+    | typeof BLOG_POSTTYPE
+    | typeof PRESS_RELEASE_POSTTYPE
+    | typeof CASE_STUDY_POSTTYPE
   tagSlug: string
   withHeader?: boolean
 }
@@ -36,14 +41,27 @@ export default async function Layout({
 }: LayoutProps) {
   const isDraftMode = draftMode().isEnabled
   const data = await getPosts(page, type, tagSlug, isDraftMode)
-  const postType = type == BLOG_POSTTYPE ? "blog" : "press-releases"
-  const postsData = await getPostHeading(postType)
+
+  const postType = (() => {
+    switch (type) {
+      case BLOG_POSTTYPE:
+        return "blog"
+      case CASE_STUDY_POSTTYPE:
+        return "case-studies"
+      case PRESS_RELEASE_POSTTYPE:
+        return "press-releases"
+    }
+  })()
+
+  const [postsData] = await getPostHeading(postType)
+
   const searchData = await getSearchData(type)
 
   const slugPath =
     type === "Blog"
       ? `/${postsData?.slug}`
       : `/${postsData?.parent?.slug}/${postsData?.slug}`
+
 
   let breadcrumb: BreadcrumbProps = { items: [] }
 
@@ -77,10 +95,10 @@ export default async function Layout({
   }
 
   const header: TypeFromSelection<typeof headerSelection> = {
-    image: postsData.headerImage,
+    image: postsData?.headerImage || null,
     isAlternate: (postsData as any).isAlternate,
-    title: postsData.heading,
-    body: postsData.body,
+    title: postsData?.heading || "",
+    body: postsData?.body || "",
     video: null,
     links: null,
     mobileImage: null,

@@ -1,7 +1,10 @@
+import { Key } from "react"
+import Image from "next/image"
 import { urlForImage } from "@/sanity/lib/image"
 import { PortableText } from "@portabletext/react"
 
-import { Heading } from "@shared/ui"
+import { cn, Heading } from "@shared/ui"
+import { CustomUrl } from "@/components/custom-url"
 
 interface Props {
   body: any
@@ -102,6 +105,115 @@ export function Body({ body }: Props) {
                 src={value.url}
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               />
+            )
+          },
+          custom_quote: ({ value }) => {
+            return (
+              <div className="mx-auto my-10">
+                <blockquote className="rounded-3xl border border-grey-400 p-4 md:p-12">
+                  <div className="flex flex-col items-start gap-10 md:flex-row">
+                    {value.image && (
+                      <div className="shrink-0">
+                        <div className="w-[10rem] overflow-hidden rounded-3xl">
+                          <img
+                            src={urlForImage(value.image)}
+                            alt={value.image.alt || `Image of ${value.author}`}
+                            className="h-full w-full object-cover"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                    )}
+                    <div className="flex flex-col justify-center">
+                      <p className="font-default">{value.text}</p>
+                      {value.author && (
+                        <footer className="mt-4">
+                          <cite className="font-default font-bold not-italic">
+                            - {value.author}
+                          </cite>
+                        </footer>
+                      )}
+                    </div>
+                  </div>
+                </blockquote>
+              </div>
+            )
+          },
+          summary: ({ value }) => {
+            const callouts = value.callouts || []
+
+            return (
+              <div className="mx-auto mb-10">
+                <div className="rounded-3xl border border-grey-400 p-8 md:p-12">
+                  <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
+                    {/* First Column: Sector and Links */}
+                    <div className="pr-4 xl:col-span-1">
+                      <Heading
+                        variant="h3"
+                        className="mb-4 hover:cursor-pointer hover:text-pink"
+                      >
+                        {value.titleLink ? (
+                          <CustomUrl value={value.titleLink}>
+                            {value.title}
+                          </CustomUrl>
+                        ) : (
+                          value.title
+                        )}
+                      </Heading>
+                      {value.links && value.links.length > 0 && (
+                        <ul className="list-disc pl-5">
+                          {value.links.map((link: any, index: Key) => (
+                            <li key={index}>
+                              <CustomUrl
+                                className="flex gap-2 text-left font-default underline decoration-black/0 underline-offset-4 transition duration-500 ease-out hover:decoration-black"
+                                value={link}
+                              >
+                                {link.label}
+                              </CustomUrl>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+
+                    {/* Second and Third Columns: Callouts */}
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:col-span-2">
+                      {callouts.map((callout: any, index: Key) => (
+                        <div key={index} className="font-default">
+                          <PortableText
+                            value={callout.text}
+                            components={{
+                              marks: {
+                                strong: ({ children }) => (
+                                  <strong className="font-bold">
+                                    {children}
+                                  </strong>
+                                ),
+                                link: ({ children, value }) => {
+                                  const isExternal =
+                                    value.href.startsWith("http")
+                                  return (
+                                    <a
+                                      className="inline-flex font-default font-bold underline underline-offset-2 transition-colors duration-500 ease-in-out hover:text-pink"
+                                      href={value.href}
+                                      target={isExternal ? "_blank" : "_self"}
+                                      rel={
+                                        isExternal ? "noopener noreferrer" : ""
+                                      }
+                                    >
+                                      {children}
+                                    </a>
+                                  )
+                                },
+                              },
+                            }}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             )
           },
         },
