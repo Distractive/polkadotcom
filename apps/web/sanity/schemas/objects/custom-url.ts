@@ -39,6 +39,7 @@ export default defineType({
         { type: "hygiene" },
         { type: "blog" },
         { type: "press-releases" },
+        { type: "case-studies" },
       ],
       hidden: ({ parent, value }) => !value && !!parent?.external,
     },
