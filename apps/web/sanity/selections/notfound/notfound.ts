@@ -5,9 +5,6 @@ import { customUrlSelection } from "../custom-url"
 
 export const notfoundSelection = {
   heading: q.string(),
-  headerImage: sanityImage("headerImage", {
-    withAsset: ["base", "dimensions"],
-  }).nullable(),
   body: nullToUndefined(q.string().optional()),
   links: q("links")
     .filter()

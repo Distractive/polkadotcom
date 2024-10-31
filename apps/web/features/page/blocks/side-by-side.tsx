@@ -6,6 +6,7 @@ import { PortableText } from "next-sanity"
 
 import { Button, cn, Heading } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
+
 import { VideoBlock } from "./video"
 
 interface Props {
@@ -87,10 +88,11 @@ export function SideBySideBlock({ content }: Props) {
       {content.video && (
         <>
           <div
-          className={cn(
-            "order-1 col-span-full h-auto lg:col-span-7 lg:my-auto",
-            content.isImageOnLeft ? "" : "lg:order-2"
-          )}>
+            className={cn(
+              "order-1 col-span-full h-auto lg:col-span-7 lg:my-auto",
+              content.isImageOnLeft ? "" : "lg:order-2"
+            )}
+          >
             <VideoBlock video={content.video} />
           </div>
         </>
@@ -100,7 +102,7 @@ export function SideBySideBlock({ content }: Props) {
           src={urlForImage(content.image.asset)}
           alt={content?.altText || ""}
           className={cn(
-            "order-1 col-span-full h-auto lg:col-span-7 lg:my-auto",
+            "order-1 col-span-full h-auto rounded-3xl lg:col-span-7 lg:my-auto",
             content.isImageOnLeft ? "" : "lg:order-2"
           )}
           width={content.image.asset.metadata.dimensions?.width}

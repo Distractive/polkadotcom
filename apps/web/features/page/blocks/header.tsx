@@ -7,6 +7,7 @@ import type { TypeFromSelection } from "groqd"
 
 import { Button, cn, Heading } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
+import GlobalGradient from "@/features/gradients/global-gradient"
 
 import { BreadcrumbBlock, type BreadcrumbProps } from "./breadcrumb"
 import { VideoBlock } from "./video"
@@ -21,7 +22,10 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
   // Alternate Header
   if (header.isAlternate) {
     return (
-      <header className={cn("max-width mb-page flex flex-col", className)}>
+      <header
+        className={cn("max-width relative mb-page flex flex-col", className)}
+      >
+        <GlobalGradient />
         {/* Desktop and tablet image */}
         {header.image && (
           <div className="relative hidden h-[400px] w-full md:block">
@@ -104,11 +108,13 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
   return (
     <header
       className={cn(
-        "grid-system max-width col-span-full mb-page",
-        header.image ? "pt-36" : "pt-0",
+        "grid-system max-width relative col-span-full mb-16 lg:mb-page",
+        header.image ? "pt-32" : "pt-0",
         className
       )}
     >
+      <GlobalGradient />
+
       {!header.image && <div className="pt-4"></div>}
 
       {header.image && (
@@ -120,6 +126,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
             height={header.image.asset.metadata.dimensions?.height}
             priority
             quality={90}
+            className="w-full rounded-2xl object-cover"
           />
         </div>
       )}
