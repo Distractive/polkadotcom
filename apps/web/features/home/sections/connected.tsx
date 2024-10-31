@@ -28,7 +28,7 @@ export function Connected({ connected }: Props) {
     >
       <article
         id="connected.wrapper"
-        className="grid-system grid-pile relative col-span-12 h-full w-lvw items-center justify-center overflow-hidden"
+        className="grid-system grid-pile relative col-span-12 h-full items-center justify-center overflow-hidden"
       >
         <div
           id="connected.content"

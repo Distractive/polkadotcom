@@ -45,7 +45,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
       <div
         id="page-menu"
         ref={ref}
-        className="mx-gutter flex max-h-[80vh] w-full items-end overflow-scroll rounded-2xl border border-grey-300 bg-white opacity-0 md:w-[20rem] "
+        className="mx-gutter flex max-h-[80vh] w-full items-end overflow-scroll rounded-2xl border border-grey-200 bg-white opacity-0 md:w-[20rem] "
       >
         <Accordion type="single" collapsible defaultValue={undefined}>
           {menu.map((section, sectionIndex) => {
@@ -57,7 +57,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                     onClick={() => setIsOpen(false)}
                     className={cn(
                       "flex-1 p-nav",
-                      "border-r border-grey-300 text-left font-bold"
+                      "border-r border-grey-200 text-left font-bold"
                     )}
                   >
                     {section.heading}
@@ -67,7 +67,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                     className="[&>svg]:mx-nav"
                   />
                 </div>
-                <AccordionContent className="bg-grey-100">
+                <AccordionContent className="bg-grey-50">
                   {section.items.map((item, linkIndex) => {
                     const lastLink = linkIndex === section.items.length - 1
                     const lastSection = sectionIndex === menu.length - 1
@@ -76,8 +76,8 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                         key={linkIndex}
                         onClick={() => setIsOpen(false)}
                         className={cn(
-                          "flex w-full p-nav text-left shadow-internal-border",
-                          lastLink && "border-b border-grey-300",
+                          "flex w-full  p-nav text-left shadow-internal-border",
+                          lastLink && "border-b border-grey-200",
                           lastSection && lastLink && "border-none"
                         )}
                       >

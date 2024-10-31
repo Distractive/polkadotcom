@@ -24,12 +24,12 @@ export function Build({ build }: Props) {
     >
       <article
         id="build.wrapper"
-        className="grid-system relative col-span-full h-full w-lvw items-center justify-center overflow-hidden lg:h-full"
+        className="grid-system relative col-span-full h-full  items-center justify-center overflow-hidden lg:h-full"
       >
         <div
           id="build.content"
           className={cn(
-            "max-width col-span-full flex flex-col items-center justify-center sm:w-dvw",
+            "max-width col-span-full flex flex-col items-center justify-center ",
             "md:col-span-full md:col-start-1 md:w-full",
             "lg:col-span-full lg:col-start-1",
             "xl:col-span-10 xl:col-start-2",

@@ -53,7 +53,7 @@ export function VideoBlock({ video, className }: Props) {
               <div
                 className={cn(
                   "flex size-16 items-center justify-center rounded-2xl",
-                  "border border-grey-300 bg-white/80 backdrop-blur-md",
+                  "border border-grey-300 bg-white/90 ",
                   "group transition-colors duration-200 ease-in-out"
                 )}
               >

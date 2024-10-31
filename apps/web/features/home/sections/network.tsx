@@ -26,12 +26,12 @@ export function Network({ network }: Props) {
 
       <article
         id="network.wrapper"
-        className="grid-system relative col-span-full h-full w-dvw items-center justify-center overflow-x-hidden md:h-full"
+        className="grid-system relative col-span-full h-full items-center justify-center overflow-x-hidden md:h-full"
       >
         <div
           id="network.content"
           className={cn(
-            "max-width col-span-full flex flex-col items-center justify-center sm:w-dvw",
+            "max-width col-span-full flex flex-col items-center justify-center",
             "md:col-span-full md:col-start-1 md:w-full",
             "lg:col-span-full lg:col-start-1",
             "xl:col-span-10 xl:col-start-2",

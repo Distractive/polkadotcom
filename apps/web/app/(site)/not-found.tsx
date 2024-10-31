@@ -17,8 +17,6 @@ export default async function NotFound() {
     links: data.links,
   }
 
-  console.log("header", header)
-
   return (
     <div className="relative col-span-full mb-24  md:mb-32">
       <GlobalGradient />

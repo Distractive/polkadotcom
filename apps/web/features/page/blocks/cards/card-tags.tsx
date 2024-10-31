@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { type cardSelection } from "@/sanity/selections/blocks/card"
 import { stegaClean } from "@sanity/client/stega"
 import type { TypeFromSelection } from "groqd"
@@ -10,6 +10,22 @@ import { DecorativeLine } from "@/components/decorative-line"
 
 import CardBlock from "./card"
 
+const useBreakpoint = () => {
+  const [isXl, setIsXl] = useState(false)
+
+  useEffect(() => {
+    const checkSize = () => {
+      setIsXl(window.innerWidth >= 1280)
+    }
+
+    checkSize()
+    window.addEventListener("resize", checkSize)
+    return () => window.removeEventListener("resize", checkSize)
+  }, [])
+
+  return isXl
+}
+
 interface Props {
   tags: string[] | null
   cards: TypeFromSelection<typeof cardSelection>[]
@@ -17,10 +33,15 @@ interface Props {
 }
 
 export function CardTags({ tags, cards, useFourColumns }: Props) {
-  const VISIBLE_COUNT = useFourColumns ? 8 : 6
+  const isXl = useBreakpoint()
+  const VISIBLE_COUNT = isXl && useFourColumns ? 8 : 6
   const [filteredItems, setFilteredItems] = useState(cards)
   const [currentTag, setCurrentTag] = useState("All")
   const [visibleCount, setVisibleCount] = useState(VISIBLE_COUNT)
+
+  useEffect(() => {
+    setVisibleCount(VISIBLE_COUNT)
+  }, [isXl, VISIBLE_COUNT])
 
   const handleTagClick = useCallback(
     (tag: string) => {
@@ -38,9 +59,13 @@ export function CardTags({ tags, cards, useFourColumns }: Props) {
     [cards]
   )
 
-  const showMoreItems = () => {
-    setVisibleCount((prevCount) => prevCount + VISIBLE_COUNT)
-  }
+  const showMoreItems = useCallback(() => {
+    const increment = isXl && useFourColumns ? 8 : 6
+    setVisibleCount((prevCount) => prevCount + increment)
+  }, [isXl, useFourColumns])
+
+  const shouldShowLine =
+    isXl && useFourColumns ? filteredItems.length > 8 : filteredItems.length > 6
 
   return (
     <>
@@ -109,23 +134,25 @@ export function CardTags({ tags, cards, useFourColumns }: Props) {
           />
         ))}
       </div>
-      <DecorativeLine>
-        <Button
-          variant={
-            visibleCount >= filteredItems.length ? "disabled" : "secondary"
-          }
-          size={"sm"}
-          onClick={showMoreItems}
-        >
-          Show More
-          <Icon
-            variant="chevronDown"
-            className={cn(
-              visibleCount >= filteredItems.length && "fill-grey-300"
-            )}
-          />
-        </Button>
-      </DecorativeLine>
+      {shouldShowLine && (
+        <DecorativeLine>
+          <Button
+            variant={
+              visibleCount >= filteredItems.length ? "disabled" : "secondary"
+            }
+            size={"sm"}
+            onClick={showMoreItems}
+          >
+            Show More
+            <Icon
+              variant="chevronDown"
+              className={cn(
+                visibleCount >= filteredItems.length && "fill-grey-300"
+              )}
+            />
+          </Button>
+        </DecorativeLine>
+      )}
     </>
   )
 }

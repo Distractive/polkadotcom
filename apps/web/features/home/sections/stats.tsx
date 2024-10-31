@@ -17,12 +17,12 @@ export function Stats({ stats }: Props) {
 
       <article
         id="stats.wrapper"
-        className="grid-pile grid-system relative col-span-12 h-auto w-lvw items-center justify-center overflow-x-hidden lg:h-full"
+        className="grid-pile grid-system relative col-span-12 h-auto items-center justify-center overflow-x-hidden lg:h-full"
       >
         <div
           id="stats.content"
           className={cn(
-            "max-width grid-system col-span-full sm:w-dvw",
+            "max-width grid-system col-span-full",
             "md:col-span-full md:col-start-1 md:w-full",
             "lg:col-span-full lg:col-start-1",
             "xl:col-span-10 xl:col-start-2",
@@ -53,7 +53,7 @@ export function Stats({ stats }: Props) {
               <Card
                 key={index}
                 className={cn(
-                  "stats-card background-blur bg-white p-card",
+                  "stats-card  bg-white p-card",
                   "col-span-full col-start-1 md:col-span-2 lg:col-span-6",
                   // nudge down second column
                   index % 2 !== 0 && "lg:translate-y-24"

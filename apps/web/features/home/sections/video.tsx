@@ -18,12 +18,12 @@ export function Video({ video }: Props) {
     >
       <article
         id="video.wrapper"
-        className="grid-system col-span-full h-full w-dvw items-center justify-center overflow-hidden"
+        className="grid-system col-span-full h-full  items-center justify-center overflow-hidden"
       >
         <div
           id="video.content"
           className={cn(
-            "max-width relative z-10 col-span-12 !max-w-[80rem] px-gutter sm:w-dvw",
+            "max-width relative z-10 col-span-12 !max-w-[80rem] px-gutter ",
             "md:w-full lg:col-span-8 lg:col-start-3"
           )}
         >

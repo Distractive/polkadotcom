@@ -23,10 +23,10 @@ export function Hero({ hero }: Props) {
       <article
         id="hero.wrapper"
         className={cn(
-          "grid-system max-width relative z-40 w-lvw !overflow-visible lg:px-gutter"
+          "grid-system max-width relative z-40  !overflow-visible lg:px-gutter"
         )}
       >
-        <div className="max-width col-span-12 flex flex-col !overflow-visible  sm:w-dvw lg:flex-row">
+        <div className="max-width col-span-12 flex flex-col !overflow-visible  lg:flex-row">
           {/* HEADING */}
           <div
             id="network.content"
@@ -83,7 +83,7 @@ export function Hero({ hero }: Props) {
 
           <div className="bg-transparent relative -z-50 order-1   min-h-[36rem] w-full scale-75 overflow-visible  md:min-w-[36rem] md:scale-100 lg:order-2 lg:mb-0 lg:min-h-[48rem] xl:translate-x-[5%] 2xl:translate-x-[10%]">
             <div className="bg-transparent absolute inset-0 w-full origin-center  !overflow-visible lg:pl-10 lg:pr-16">
-              <Spline scene="/scene1.splinecode" />
+              <Spline scene="/scene3.splinecode" />
             </div>
           </div>
         </div>
