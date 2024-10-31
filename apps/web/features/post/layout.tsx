@@ -49,35 +49,47 @@ export default async function Layout({ slug, type }: LayoutProps) {
   //
   const [postsData] = await getPostHeading(headingType)
 
-  let breadcrumb: BreadcrumbProps = { items: [] }
-
-  // Hard code press release breadcrumb due to URL structure of parent pages
-  if (type === "Press Release") {
-    breadcrumb = {
-      items: [
-        {
-          slug: "/community/newsroom",
-          title: "Newsroom",
-        },
-        {
-          slug: "/newsroom/press-releases",
-          title: "Press Releases",
-        },
-      ],
-    }
-  } else {
-    breadcrumb = {
-      items: [
-        {
-          slug: `/${postsData?.parent?.slug}` && "",
-          title: postsData?.parent?.header?.title,
-        },
-        {
-          slug: `/${postsData?.parent?.slug}/${postsData?.slug}` && "",
-          title: postsData?.heading,
-        },
-      ],
-    }
+  const breadcrumb: BreadcrumbProps = {
+    items: (() => {
+      switch (type) {
+        case "Press Release":
+          return [
+            {
+              slug: "/community/newsroom",
+              title: "Newsroom",
+            },
+            {
+              slug: "/newsroom/press-releases",
+              title: "Press Releases",
+            },
+          ]
+        case "Case Study":
+          return [
+            {
+              slug: "/platform",
+              title: "Platform",
+            },
+            {
+              slug: "/case-studies",
+              title: "Case Studies",
+            },
+          ]
+        default:
+          return [
+            {
+              slug: postsData?.parent?.slug ? `/${postsData.parent.slug}` : "",
+              title: postsData?.parent?.header?.title,
+            },
+            {
+              slug:
+                postsData?.parent?.slug && postsData?.slug
+                  ? `/${postsData.parent.slug}/${postsData.slug}`
+                  : "",
+              title: postsData?.heading,
+            },
+          ]
+      }
+    })(),
   }
 
   const {

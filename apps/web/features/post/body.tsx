@@ -109,8 +109,8 @@ export function Body({ body }: Props) {
           },
           custom_quote: ({ value }) => {
             return (
-              <div className="mx-auto my-10">
-                <blockquote className="rounded-3xl border border-grey-400 p-4 md:p-12">
+              <div className="mx-auto my-10 text-lg">
+                <blockquote className="rounded-3xl border border-grey-400  p-4 text-grey-900 md:p-12">
                   <div className="flex flex-col items-start gap-10 md:flex-row">
                     {value.image && (
                       <div className="shrink-0">
@@ -142,18 +142,23 @@ export function Body({ body }: Props) {
           summary: ({ value }) => {
             const callouts = value.callouts || []
 
+            const linkTitle =
+              value.titleLink.internal || value.titleLink.external
+
+            console.log("linkTitle", linkTitle)
+
             return (
-              <div className="mx-auto mb-10">
-                <div className="rounded-3xl border border-grey-400 p-8 md:p-12">
+              <div className="mx-auto mb-10 text-lg">
+                <div className="rounded-3xl border border-grey-400  p-8 text-grey-900 md:p-12">
                   <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
                     {/* First Column: Sector and Links */}
                     <div className="pr-4 xl:col-span-1">
-                      <Heading
-                        variant="h3"
-                        className="mb-4 hover:cursor-pointer hover:text-pink"
-                      >
-                        {value.titleLink ? (
-                          <CustomUrl value={value.titleLink}>
+                      <Heading variant="h3" className="mb-4">
+                        {linkTitle ? (
+                          <CustomUrl
+                            value={value.titleLink}
+                            className="hover:cursor-pointer hover:text-pink "
+                          >
                             {value.title}
                           </CustomUrl>
                         ) : (
@@ -165,7 +170,7 @@ export function Body({ body }: Props) {
                           {value.links.map((link: any, index: Key) => (
                             <li key={index}>
                               <CustomUrl
-                                className="flex gap-2 text-left font-default underline decoration-black/0 underline-offset-4 transition duration-500 ease-out hover:decoration-black"
+                                className="inline-flex gap-2 text-left  underline decoration-black/0 underline-offset-4 transition duration-500 ease-out hover:decoration-black"
                                 value={link}
                               >
                                 {link.label}
@@ -194,7 +199,7 @@ export function Body({ body }: Props) {
                                     value.href.startsWith("http")
                                   return (
                                     <a
-                                      className="inline-flex font-default font-bold underline underline-offset-2 transition-colors duration-500 ease-in-out hover:text-pink"
+                                      className="inline-flex font-bold underline underline-offset-2 transition-colors duration-500 ease-in-out hover:text-pink"
                                       href={value.href}
                                       target={isExternal ? "_blank" : "_self"}
                                       rel={

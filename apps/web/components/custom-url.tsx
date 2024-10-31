@@ -69,7 +69,7 @@ export function CustomUrl({
               variant="arrowRightUp"
               className={cn(
                 "size-4 shrink-0 fill-current lg:size-5",
-                value.variant && value.variant === "primary" && "fill-white"
+                value.variant && value.variant === "primary" && "fill-grey-900"
               )}
             />
           )}
