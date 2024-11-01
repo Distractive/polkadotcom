@@ -30,7 +30,7 @@ const cspSources = {
     "https://www.youtube.com",
     "https://www.googletagmanager.com",
     "https://scripts.simpleanalyticscdn.com",
-    "https://player.vimeo.com"
+    "https://player.vimeo.com",
   ],
   "style-src": [
     "'self'",
@@ -73,7 +73,7 @@ const cspSources = {
     "https://tattle.api.osano.com",
     "https://consent.api.osano.com",
     "https://api.vercel.com",
-    "https://vimeo.com"
+    "https://vimeo.com",
   ],
   "font-src": [
     "'self'",
@@ -89,7 +89,7 @@ const cspSources = {
     "https://*.hotjar.com",
     "https://www.youtube.com",
     "https://*.hsforms.com",
-    "https://player.vimeo.com"
+    "https://player.vimeo.com",
   ],
   "worker-src": ["'self'", "blob:", "https://cmp.osano.com"],
   "frame-ancestors": ["'self'", "https://polkadot.com"],
@@ -126,13 +126,24 @@ const nextConfig = {
     taint: true,
   },
   async redirects() {
+    console.log("Fetching redirects from Sanity...")
     const redirects = await client.fetch(
       `*[_type == "redirects"]{
-            "source":source,
-            "destination":destination,
-            permanent
-          }`
+        "source":source,
+        "destination":destination,
+        permanent
+      }`
     )
+
+    console.log("==== REDIRECT DEBUG ====")
+    console.log("Redirects from Sanity:", JSON.stringify(redirects, null, 2))
+    console.log("Number of redirects:", redirects.length)
+    console.log(
+      "VC redirect:",
+      redirects.find((r) => r.source === "/vc")
+    )
+    console.log("==== END REDIRECT DEBUG ====")
+
     return redirects
   },
   async headers() {
