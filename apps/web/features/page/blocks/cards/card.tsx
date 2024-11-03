@@ -125,8 +125,7 @@ export default function CardBlock({ card, className }: Props) {
                     weight={useSmallHeading ? "bold" : "normal"}
                     className={cn(
                       "transition-colors duration-200 ease-in-out",
-                      link &&
-                        "group-focus-within:text-pink md:group-hover:text-pink"
+                      useAsBackgroundImage && "text-white"
                     )}
                   >
                     {heading}

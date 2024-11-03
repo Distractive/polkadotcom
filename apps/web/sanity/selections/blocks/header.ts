@@ -12,6 +12,7 @@ export const headerSelection = {
     withAsset: ["base", "dimensions"],
   }).nullable(),
   altText: nullToUndefined(q.string().optional()),
+  hideBreadcrumbs: q.boolean().optional().nullable(),
   title: q.string(),
   isAlternate: q.boolean().optional().nullable(),
   body: nullToUndefined(q.string().optional()),

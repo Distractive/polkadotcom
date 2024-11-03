@@ -26,6 +26,12 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "hideBreadcrumbs",
+      title: "Hide breadcrumbs?",
+      type: "boolean",
+      initialValue: false,
+    }),
+    defineField({
       name: "title",
       title: "Title",
       type: "string",

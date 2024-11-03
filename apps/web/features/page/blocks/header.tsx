@@ -1,5 +1,3 @@
-"use client"
-
 import Image from "next/image"
 import { urlForImage } from "@/sanity/lib/image"
 import { type headerSelection } from "@/sanity/selections/blocks/header"
@@ -65,7 +63,9 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
               : "mt-gutter px-gutter pt-header-top"
           )}
         >
-          {breadcrumb && <BreadcrumbBlock items={breadcrumb.items} />}
+          {breadcrumb && !header.hideBreadcrumbs && (
+            <BreadcrumbBlock items={breadcrumb.items} />
+          )}
 
           <Heading variant="h1">{header.title}</Heading>
 
@@ -138,7 +138,9 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
             : "mt-gutter px-gutter pt-header-top lg:col-span-8 lg:col-start-3"
         )}
       >
-        {breadcrumb && <BreadcrumbBlock items={breadcrumb.items} />}
+        {breadcrumb && !header.hideBreadcrumbs && (
+          <BreadcrumbBlock items={breadcrumb.items} />
+        )}
 
         <Heading variant="h1">{header.title}</Heading>
 

@@ -145,8 +145,6 @@ export function Body({ body }: Props) {
             const linkTitle =
               value.titleLink.internal || value.titleLink.external
 
-            console.log("linkTitle", linkTitle)
-
             return (
               <div className="mx-auto mb-10 text-lg">
                 <div className="rounded-3xl border border-grey-400  p-8 text-grey-900 md:p-12">

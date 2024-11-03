@@ -12,6 +12,7 @@ interface Props {
   isWrapper?: boolean
   tabIndex?: number
   isNested?: boolean
+  disableArrow?: boolean
   onClick?: () => void
 }
 
@@ -20,8 +21,10 @@ export function CustomUrl({
   children,
   className,
   tabIndex,
+  disableArrow,
   isWrapper = false,
   isNested,
+
   onClick,
 }: Props) {
   // isNested is for buttons inside of cards and prevents hydration errors due to nested <a> tags
@@ -33,7 +36,7 @@ export function CustomUrl({
         <div className={className}>
           <span className="inline-flex items-center gap-2">
             <span className="flex-1">{children}</span>
-            {value.external && (
+            {value.external && !disableArrow && (
               <Icon
                 variant="arrowRightUp"
                 className={cn(
@@ -64,7 +67,7 @@ export function CustomUrl({
       ) : (
         <span className="inline-flex items-center gap-2">
           <span className="flex-1"> {children}</span>
-          {value.external && (
+          {value.external && !disableArrow && (
             <Icon
               variant="arrowRightUp"
               className={cn(
