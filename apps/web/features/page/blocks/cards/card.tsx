@@ -38,23 +38,30 @@ export default function CardBlock({ card, className }: Props) {
     <Card
       key={_key}
       className={cn(
+        "relative",
         link &&
-          "focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
+          "group focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
         className
       )}
       data-tags={selectedTags?.join(",")}
     >
-      <CustomUrl value={link} isWrapper className="flex h-full w-full flex-col">
-        {headerImage && useAsBackgroundImage && (
+      {headerImage && useAsBackgroundImage && (
+        <div className="absolute inset-0 overflow-hidden">
           <Image
             src={urlForImage(headerImage.asset)}
             alt=""
             loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover object-center"
+            className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
             width={headerImage.asset.metadata.dimensions?.width}
             height={headerImage.asset.metadata.dimensions?.height}
           />
-        )}
+        </div>
+      )}
+      <CustomUrl
+        value={link}
+        isWrapper
+        className="relative flex h-full w-full flex-col"
+      >
         {headerImage && (
           <CardHeader className="relative z-10 aspect-[4/3]">
             {!useAsBackgroundImage && (

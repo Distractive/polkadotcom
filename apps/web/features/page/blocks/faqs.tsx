@@ -53,14 +53,12 @@ export function FAQBlock({ faqs }: Props) {
                 components={{
                   block: {
                     normal: ({ children }) => (
-                      <p className="text-pink not-last:mb-copy md:w-3/4">
-                        {children}
-                      </p>
+                      <p className="not-last:mb-copy md:w-3/4">{children}</p>
                     ),
                   },
                   list: {
                     bullet: ({ children }) => (
-                      <ul className="my-4 list-outside list-disc pl-8 text-pink marker:text-black">
+                      <ul className="my-4 list-outside list-disc pl-8  marker:text-black">
                         {children}
                       </ul>
                     ),
