@@ -14,7 +14,7 @@ const sanityClient = createClient({
 
 async function fetchDataFromSanity() {
   const query = `
-    *[_type in [${docTypes.map((type) => `"${type}"`).join(", ")}]] {
+    *[_type in [${docTypes.map((type) => `"${type}"`).join(", ")}] && _id in path("drafts.**") == false] {
       _type,
       slug,
       _updatedAt
@@ -22,8 +22,8 @@ async function fetchDataFromSanity() {
   `
   try {
     const data = await sanityClient.fetch(query)
-    console.log(`Total documents fetched: ${data.length}`)
-    // Log all documents
+    // console.log(`Total documents fetched: ${data.length}`)
+    // // Log all documents
     // console.log("Fetched documents:")
     // data.forEach((doc, index) => {
     //   console.log(`Document ${index + 1}:`, {
@@ -58,7 +58,18 @@ export default {
       let path
       switch (doc._type) {
         case "post":
-          path = `/blog/${doc.slug.current}`
+          switch (doc.post_type) {
+            case "Case Study":
+              path = `/case-studies/${doc.slug.current}`
+              break
+            case "Press Release":
+              path = `/newsroom/press-releases/${doc.slug.current}`
+              break
+            case "Blog":
+            default:
+              path = `/blog/${doc.slug.current}`
+              break
+          }
           break
         case "page":
           path = `/${doc.slug.current}`
@@ -67,7 +78,7 @@ export default {
           path = `/${doc.slug.current}`
           break
         default:
-          return // Skip unknown types
+          return
       }
 
       result.push({

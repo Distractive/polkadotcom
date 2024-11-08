@@ -126,7 +126,6 @@ const nextConfig = {
     taint: true,
   },
   async redirects() {
-    console.log("Fetching redirects from Sanity...")
     const redirects = await client.fetch(
       `*[_type == "redirects"]{
         "source":source,
@@ -134,15 +133,6 @@ const nextConfig = {
         permanent
       }`
     )
-
-    console.log("==== REDIRECT DEBUG ====")
-    console.log("Redirects from Sanity:", JSON.stringify(redirects, null, 2))
-    console.log("Number of redirects:", redirects.length)
-    console.log(
-      "VC redirect:",
-      redirects.find((r) => r.source === "/vc")
-    )
-    console.log("==== END REDIRECT DEBUG ====")
 
     return redirects
   },
