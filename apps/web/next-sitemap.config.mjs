@@ -17,7 +17,8 @@ async function fetchDataFromSanity() {
     *[_type in [${docTypes.map((type) => `"${type}"`).join(", ")}] && _id in path("drafts.**") == false] {
       _type,
       slug,
-      _updatedAt
+      post_type,
+      _updatedAt,
     }
   `
   try {
