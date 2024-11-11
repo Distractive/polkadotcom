@@ -21,7 +21,10 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
   if (header.isAlternate) {
     return (
       <header
-        className={cn("max-width relative mb-page flex flex-col", className)}
+        className={cn(
+          "max-width relative mb-page flex flex-col overflow-hidden",
+          className
+        )}
       >
         <GlobalGradient />
         {/* Desktop and tablet image */}
@@ -108,7 +111,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
   return (
     <header
       className={cn(
-        "grid-system max-width relative col-span-full mb-16 lg:mb-page",
+        "grid-system max-width relative col-span-full mb-16 overflow-hidden lg:mb-page",
         header.image ? "pt-32" : "pt-0",
         className
       )}

@@ -11,7 +11,7 @@ const backgroundGradient = {
 export default async function GlobalGradient() {
   return (
     <div
-      className="absolute left-1/2 top-0 -z-50 min-h-[30rem] min-w-[90rem] -translate-x-1/2"
+      className="absolute left-1/2 top-0 -z-50 min-h-[30rem] min-w-[90rem] -translate-x-1/2 "
       style={backgroundGradient}
     ></div>
   )
