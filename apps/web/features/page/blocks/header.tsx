@@ -30,7 +30,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         {/* Desktop and tablet image */}
         {header.image && (
           <div className="relative hidden h-[400px] w-full md:block">
-            <div className="absolute inset-0 hidden overflow-hidden md:block">
+            <div className="absolute inset-0 hidden md:block">
               <Image
                 src={urlForImage(header.image.asset)}
                 alt={header?.altText || ""}
@@ -111,7 +111,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
   return (
     <header
       className={cn(
-        "grid-system max-width relative col-span-full mb-16 overflow-hidden lg:mb-page",
+        "grid-system max-width relative col-span-full mb-16 lg:mb-page",
         header.image ? "pt-32" : "pt-0",
         className
       )}

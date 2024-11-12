@@ -176,7 +176,7 @@ export default async function RootLayout({
         </a>
         <NavigationLayout navigation={navigation} />
 
-        <main role="main" className="flex-grow">
+        <main role="main" className="flex-grow overflow-x-hidden">
           {children}
         </main>
         <FooterLayout footer={footer} />
