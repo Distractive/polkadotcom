@@ -6,13 +6,23 @@ import { schema } from "@/sanity/schema"
 import { codeInput } from "@sanity/code-input"
 import { visionTool } from "@sanity/vision"
 import { groqdPlaygroundTool } from "groqd-playground"
-import { defineConfig } from "sanity"
+import {
+  defineConfig,
+  definePlugin,
+  type ConfigContext,
+  type CurrentUser,
+} from "sanity"
 import { media } from "sanity-plugin-media"
 import { vercelDeployTool } from "sanity-plugin-vercel-deploy"
 import { presentationTool } from "sanity/presentation"
 import { structureTool } from "sanity/structure"
 
 import { env } from "@/env.mjs"
+
+// Helper function to check user roles
+const userHasRole = (user: CurrentUser | null, role: string): boolean => {
+  return user?.roles?.some((r) => r.name === role) ?? false
+}
 
 export default defineConfig({
   basePath: "/admin",
@@ -74,4 +84,14 @@ export default defineConfig({
           media(),
           vercelDeployTool(),
         ],
+  // Show or hide vercelDeployTool based on user role
+  tools: (prevTools, context: ConfigContext) => {
+    const { currentUser } = context
+
+    if (!userHasRole(currentUser, "administrator")) {
+      return prevTools.filter((tool) => tool.name !== "vercel-deploy")
+    }
+
+    return prevTools
+  },
 })
