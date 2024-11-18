@@ -13,7 +13,7 @@ export const headerSelection = {
   }).nullable(),
   altText: nullToUndefined(q.string().optional()),
   hideBreadcrumbs: q.boolean().optional().nullable(),
-  title: q.string().nullable(),
+  title: q.string().optional().nullable(),
   isAlternate: q.boolean().optional().nullable(),
   body: nullToUndefined(q.string().optional()),
   links: q("links")

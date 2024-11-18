@@ -2,9 +2,12 @@ import Image from "next/image"
 import { urlForImage } from "@/sanity/lib/image"
 import { type ctaSelection } from "@/sanity/selections/blocks/cta"
 import { type TypeFromSelection } from "groqd"
+import { PortableText } from "next-sanity"
 
-import { Button, ButtonStyles, cn, Heading } from "@shared/ui"
+import { Button, cn, Heading } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
+
+import { NewsletterButton } from "./newsletter-button"
 
 interface Props {
   cta: TypeFromSelection<typeof ctaSelection>
@@ -13,7 +16,12 @@ interface Props {
 export function CTA({ cta }: Props) {
   return (
     <div className="grid-system max-width ">
-      <div className="background-blur relative col-span-full overflow-hidden rounded-2xl px-gutter lg:col-span-8 lg:col-start-3">
+      <div
+        className={cn(
+          "background-blur relative col-span-full overflow-hidden rounded-2xl px-gutter lg:col-span-8 ",
+          cta.isCentered ? "lg:col-start-3" : "lg:col-start-1"
+        )}
+      >
         {cta.image && (
           <div className="absolute inset-0 -z-10 mx-gutter overflow-hidden rounded-2xl">
             <Image
@@ -26,10 +34,10 @@ export function CTA({ cta }: Props) {
             />
           </div>
         )}
-        <div className="flex flex-col  rounded-2xl border border-grey-300  p-gutter">
+        <div className="flex rounded-2xl border border-grey-300 p-6 md:p-gutter">
           <div
             className={cn(
-              "flex flex-col gap-copy",
+              "flex flex-col gap-4",
               cta.useWhiteText ? "text-white" : "text-black"
             )}
           >
@@ -39,37 +47,89 @@ export function CTA({ cta }: Props) {
             >
               {cta.heading}
             </Heading>
-            <p>{cta.body}</p>
-          </div>
-          <div className="group mr-auto">
-            <div
-              id="main-content"
-              className="mt-card flex w-full flex-wrap gap-4"
-            >
-              {cta.links?.map((link, index) => (
-                <Button
-                  asChild
-                  key={index}
-                  variant={
-                    link?.variant
-                      ? link.variant === "primary"
-                        ? "primary"
-                        : "secondary"
-                      : "primary"
-                  }
-                  size="lg"
-                >
-                  <CustomUrl
-                    className="outline-none"
-                    value={{
-                      internal: link?.internal,
-                      external: link?.external,
-                    }}
-                  >
-                    {link.label}
-                  </CustomUrl>
-                </Button>
-              ))}
+            <PortableText
+              value={cta.content}
+              components={{
+                block: {
+                  h3: ({ children }) => (
+                    <Heading variant="h3" className="w-full">
+                      {children}
+                    </Heading>
+                  ),
+                  normal: ({ children }) => (
+                    <p className="text-lg ">{children}</p>
+                  ),
+                  smallprint: ({ children }) => (
+                    <p className="text-sm ">{children}</p>
+                  ),
+                },
+                list: {
+                  bullet: ({ children }) => (
+                    <ul className="flex list-inside list-disc flex-col gap-copy ">
+                      {children}
+                    </ul>
+                  ),
+                },
+                listItem: {
+                  bullet: ({ children }) => <li>{children}</li>,
+                },
+              }}
+            />
+            {/* BUTTON BLOCK (ENABLES ROW WRAPPING FOR BUTTONS) */}
+            <div className="flex flex-col gap-3 pt-3 md:flex-row">
+              <PortableText
+                value={cta.content}
+                components={{
+                  block: {
+                    h3: ({ children }) => null,
+                    normal: ({ children }) => null,
+                    smallprint: ({ children }) => null,
+                  },
+                  list: {
+                    bullet: ({ children }) => null,
+                  },
+                  listItem: {
+                    bullet: ({ children }) => null,
+                  },
+                  types: {
+                    customUrl: ({ value }) => {
+                      return (
+                        <span className="">
+                          <Button
+                            size="md"
+                            asChild
+                            className="no-wrap md:cursor-pointer"
+                            variant={
+                              value?.variant
+                                ? value.variant === "primary"
+                                  ? "primary"
+                                  : "secondary"
+                                : "primary"
+                            }
+                          >
+                            <CustomUrl
+                              className="outline-none"
+                              value={{
+                                internal: value?.internal,
+                                external: value?.external,
+                              }}
+                            >
+                              {value.label}
+                            </CustomUrl>
+                          </Button>
+                        </span>
+                      )
+                    },
+                    newsletterButton: ({ value }) => {
+                      return (
+                        <span className="">
+                          <NewsletterButton value={value} />
+                        </span>
+                      )
+                    },
+                  },
+                }}
+              />
             </div>
           </div>
         </div>

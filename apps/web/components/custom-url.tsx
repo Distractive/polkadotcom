@@ -40,7 +40,7 @@ export function CustomUrl({
               <Icon
                 variant="arrowRightUp"
                 className={cn(
-                  "size-4 shrink-0 fill-current lg:size-5",
+                  "size-4 shrink-0 fill-current",
                   value.variant === "primary" && "fill-white"
                 )}
               />
@@ -71,7 +71,7 @@ export function CustomUrl({
             <Icon
               variant="arrowRightUp"
               className={cn(
-                "size-4 shrink-0 fill-current lg:size-5",
+                "size-4 shrink-0 fill-current ",
                 value.variant && value.variant === "primary" && "fill-white"
               )}
             />

@@ -22,23 +22,41 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "body",
-      title: "Body",
-      type: "string",
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: "useWhiteText",
       title: "Use white text?",
       type: "boolean",
     }),
     defineField({
-      name: "links",
+      name: "isCentered",
+      title: "Center the box?",
+      type: "boolean",
+    }),
+    defineField({
+      name: "content",
+      title: "Content",
       type: "array",
       of: [
-        defineArrayMember({
+        {
+          type: "block",
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "H3", value: "h3" },
+            { title: "Smallprint", value: "smallprint" },
+          ],
+          marks: {
+            decorators: [{ title: "Strong", value: "strong" }],
+          },
+        },
+        {
+          type: "break",
+          initialValue: { style: "lineBreak" },
+        },
+        {
           type: "customUrl",
-        }),
+        },
+        {
+          type: "newsletterButton",
+        },
       ],
     }),
   ],

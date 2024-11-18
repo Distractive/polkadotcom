@@ -1,24 +1,34 @@
+import { is } from "@react-three/fiber/dist/declarations/src/core/utils"
 import { nullToUndefined, q, sanityImage } from "groqd"
 import type { Selection } from "groqd"
 
 import { customUrlSelection } from "../custom-url"
+import { newsletterButtonSelection } from "./newsletter-button"
 
 export const ctaSelection = {
   _key: q.string(),
   heading: q.string(),
-  body: q.string(),
   useWhiteText: q.boolean().nullable(),
+  isCentered: q.boolean().nullable(),
   image: sanityImage("image", {
     withAsset: ["base", "dimensions"],
   }).nullable(),
   altText: nullToUndefined(q.string().optional()),
-  links: q("links")
+  content: q("content")
     .filter()
     .select({
+      '_type == "block"': ["{...}", q.contentBlock()],
       '_type == "customUrl"': {
         _type: q.literal("customUrl"),
         ...customUrlSelection,
       },
-    })
-    .nullable(),
+      '_type == "newsletterButton"': {
+        ...newsletterButtonSelection,
+      },
+      default: {
+        _key: q.string(),
+        _type: ['"unsupported"', q.literal("unsupported")],
+        unsupportedType: ["_type", q.string()],
+      },
+    }),
 } satisfies Selection

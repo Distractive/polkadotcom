@@ -46,4 +46,6 @@ export { default as homeNetwork } from "./home/network"
 export { default as smallHomeCard } from "./home/small-card"
 export { default as homeBuild } from "./home/build"
 export { default as cta } from "./blocks/cta"
+export { default as newsletterButton } from "./blocks/newsletter-button"
 export { default as countdownTimer } from "./blocks/countdown-timer"
+

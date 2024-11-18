@@ -43,6 +43,7 @@ import {
   menuItem,
   meta,
   modal,
+  newsletterButton,
   pageBuilder,
   quote,
   sideBySide,
@@ -114,6 +115,7 @@ const objectTypes = [
   smallHomeCard,
   homeBuild,
   summary,
+  newsletterButton,
 ]
 
 const singletons = [
