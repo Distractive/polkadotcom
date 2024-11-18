@@ -16,7 +16,7 @@ export default defineType({
       type: "video",
     }),
     defineField({
-      name: "fullWidthVideo",
+      name: "isFullWidthVideo",
       title: "Makes the video full width with no text fields.",
       type: "boolean",
       initialValue: false,

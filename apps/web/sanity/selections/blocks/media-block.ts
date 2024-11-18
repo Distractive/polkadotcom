@@ -9,7 +9,7 @@ export const mediaBlockSelection = {
   image: sanityImage("image", {
     withAsset: ["base", "dimensions"],
   }).nullable(),
-  makeVideoFullWidth: q.boolean().optional().nullable(),
+  isFullWidthVideo: q.boolean().optional().nullable(),
   video: q("video")
     .grab$({
       ...videoSelection,

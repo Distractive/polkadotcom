@@ -26,7 +26,7 @@ interface Props {
 export function MediaBlock({ mediaBlock, className }: Props) {
   const { _key, image, video, eyebrow, heading, body, links } = mediaBlock
 
-  if (mediaBlock.makeVideoFullWidth) {
+  if (mediaBlock.isFullWidthVideo) {
     return (
       <div className="max-width px-gutter 2xl:px-0">
         {video && <VideoBlock video={video} className={cn("aspect-video")} />}
