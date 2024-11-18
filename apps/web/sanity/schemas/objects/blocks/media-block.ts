@@ -16,6 +16,12 @@ export default defineType({
       type: "video",
     }),
     defineField({
+      name: "fullWidthVideo",
+      title: "Makes the video full width with no text fields.",
+      type: "boolean",
+      initialValue: false,
+    }),
+    defineField({
       name: "eyebrow",
       title: "Eyebrow",
       type: "string",

@@ -46,11 +46,12 @@ export default async function Page({ params: { slug } }: Props) {
   const data = await getPage(slug, isDraftMode)
   if (!data) return notFound()
   return (
-    <>
+    <div className="relative">
       {data.header && <HeaderBlock header={data.header} />}
+
       <section className="flex flex-col gap-page">
         <PageBuilder pageBuilder={data.pageBuilder} />
       </section>
-    </>
+    </div>
   )
 }

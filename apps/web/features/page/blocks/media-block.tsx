@@ -26,12 +26,20 @@ interface Props {
 export function MediaBlock({ mediaBlock, className }: Props) {
   const { _key, image, video, eyebrow, heading, body, links } = mediaBlock
 
+  if (mediaBlock.makeVideoFullWidth) {
+    return (
+      <div className="max-width px-gutter 2xl:px-0">
+        {video && <VideoBlock video={video} className={cn("aspect-video")} />}
+      </div>
+    )
+  }
+
   return (
     <div className={cn("grid-system max-width gap-card px-gutter", className)}>
       <Card
         key={_key}
         className={cn(
-          "col-span-full rounded-none border-none bg-lightGrey  md:!h-auto lg:col-span-8 lg:col-start-3",
+          "bg-lightGrey col-span-full rounded-none border-none md:!h-auto lg:col-span-8 lg:col-start-3",
           className
         )}
       >

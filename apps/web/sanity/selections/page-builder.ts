@@ -11,13 +11,13 @@ import { cardsStatSelection } from "./blocks/cards-stat"
 import { cardsStickySelection } from "./blocks/cards-sticky"
 import { cardsTimelineSelection } from "./blocks/cards-timeline"
 import { contentSelection } from "./blocks/content"
+import { countdownTimerSelection } from "./blocks/countdown-timer"
 import { ctaSelection } from "./blocks/cta"
 import { formSelection } from "./blocks/form"
 import { mediaBlockSelection } from "./blocks/media-block"
 import { modalSelection } from "./blocks/modal"
 import { quoteSelection } from "./blocks/quote"
 import { sideBySideSelection } from "./blocks/side-by-side"
-import { customQuoteSelection } from "./blog/custom-quote"
 
 export const pageBuilderSelection = {
   pageBuilder: q("pageBuilder.pageBuilder")
@@ -86,6 +86,10 @@ export const pageBuilderSelection = {
       '_type == "cta"': {
         _type: q.literal("cta"),
         ...ctaSelection,
+      },
+      '_type == "countdownTimer"': {
+        _type: q.literal("countdownTimer"),
+        ...countdownTimerSelection,
       },
       default: {
         _key: q.string(),

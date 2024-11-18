@@ -14,7 +14,7 @@ export default defineType({
   fields: [
     defineField({
       name: "title",
-      title: "Title",
+      title: "Page Title",
       type: "string",
       validation: (rule) => rule.required(),
       description: "The title of the page used for navigation",
@@ -37,13 +37,14 @@ export default defineType({
       type: "meta",
       group: "meta",
     }),
+
     defineField({
       name: "header",
       title: "Header",
       type: "header",
       group: "config",
+      hidden: ({ parent }) => parent.hideHeader,
     }),
-
     defineField({
       name: "pageBuilder",
       type: "pageBuilder",

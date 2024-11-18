@@ -33,7 +33,7 @@ export async function getPageMeta(slug: string) {
     .grab({
       header: q("header")
         .grab({
-          title: q.string(),
+          title: q.string().nullable(),
           body: q.string().nullable(),
         })
         .nullable(),
@@ -65,7 +65,7 @@ export async function getPage(slug: string, isDraftMode: boolean) {
     .filter("_type == 'landing' || _type == 'page' || _type == 'hygiene'")
     .filter("slug.current == $slug")
     .grab({
-      title: q.string(),
+      title: q.string().nullable(),
       header: q("header")
         .grab({ ...headerSelection })
         .nullable(),

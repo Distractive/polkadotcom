@@ -40,11 +40,13 @@ export default defineType({
       type: "meta",
       group: "meta",
     }),
+
     defineField({
       name: "header",
       title: "Header",
       type: "header",
       group: "config",
+      hidden: ({ parent }) => parent.hideHeader,
     }),
 
     defineField({

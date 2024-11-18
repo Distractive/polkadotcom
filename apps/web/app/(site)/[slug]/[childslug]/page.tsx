@@ -49,21 +49,21 @@ export default async function Page({ params: { slug, childslug } }: Props) {
 
   const breadcrumb: BreadcrumbProps = {
     items: [
-      { slug: `/${slug}` ?? "", title: data?.parent?.title ?? "" },
-      { slug: `/${slug}/${childslug}` ?? "", title: data?.title ?? "" },
+      { slug: `/${slug}`, title: data?.parent?.title ?? "" },
+      { slug: `/${slug}/${childslug}`, title: data?.title ?? "" },
     ],
   }
 
   if (!data) return notFound()
 
   return (
-    <>
+    <div className="relative">
       {data.header && (
         <HeaderBlock header={data.header} breadcrumb={breadcrumb} />
       )}
       <section className="flex flex-col gap-page">
         <PageBuilder pageBuilder={data.pageBuilder} />
       </section>
-    </>
+    </div>
   )
 }

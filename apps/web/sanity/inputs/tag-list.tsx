@@ -1,3 +1,5 @@
+"use client"
+
 import { useCallback, useEffect, useState } from "react"
 import { Box, Card, Checkbox, Flex, Stack, Text } from "@sanity/ui"
 import {
