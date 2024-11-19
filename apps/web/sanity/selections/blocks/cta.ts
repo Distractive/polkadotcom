@@ -10,6 +10,7 @@ export const ctaSelection = {
   heading: q.string(),
   useWhiteText: q.boolean().nullable(),
   isCentered: q.boolean().nullable(),
+  twoThirdsText: q.boolean().nullable(),
   image: sanityImage("image", {
     withAsset: ["base", "dimensions"],
   }).nullable(),

@@ -34,11 +34,15 @@ export function CTA({ cta }: Props) {
             />
           </div>
         )}
-        <div className="flex rounded-2xl p-6 md:p-gutter">
+
+        <div className="flex rounded-2xl border border-grey-300 p-8 md:p-gutter">
+
+
           <div
             className={cn(
               "flex flex-col gap-4",
-              cta.useWhiteText ? "text-white" : "text-black"
+              cta.useWhiteText ? "text-white" : "text-black",
+              cta.twoThirdsText ? "md:w-2/3" : ""
             )}
           >
             <Heading
@@ -75,7 +79,8 @@ export function CTA({ cta }: Props) {
                 },
               }}
             />
-            {/* BUTTON BLOCK (ENABLES ROW WRAPPING FOR BUTTONS) */}
+
+            {/* BUTTON BLOCK (ENABLES ROW FOR BUTTONS) */}
             <div className="flex flex-col gap-3 pt-3 md:flex-row">
               <PortableText
                 value={cta.content}

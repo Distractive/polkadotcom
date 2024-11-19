@@ -22,13 +22,18 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "isCentered",
+      title: "Center the box?",
+      type: "boolean",
+    }),
+    defineField({
       name: "useWhiteText",
       title: "Use white text?",
       type: "boolean",
     }),
     defineField({
-      name: "isCentered",
-      title: "Center the box?",
+      name: "twoThirdsText",
+      title: "Reduce text to 2/3rds width to make room for background graphic?",
       type: "boolean",
     }),
     defineField({
