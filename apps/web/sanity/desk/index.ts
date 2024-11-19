@@ -6,6 +6,7 @@ import type {
 import { blogStructure } from "./blog"
 import { caseStudiesStructure } from "./case-studies"
 import { footerStructure } from "./footer"
+import { glossaryStructure } from "./glossary"
 import { homeStructure } from "./home"
 import { hygieneStructure } from "./hygiene"
 import { parentChild } from "./landing"
@@ -39,6 +40,8 @@ export const deskStructure = (
       navigationStructure(S),
       S.divider(),
       footerStructure(S),
+      S.divider(),
+      glossaryStructure(S),
       S.divider(),
       notFoundStructure(S),
       S.divider(),

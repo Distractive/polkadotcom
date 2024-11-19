@@ -41,7 +41,7 @@ export default async function RootLayout({
   const navigation = await getNavigation()
 
   const headersList = headers()
-  const hostname = headersList.get("host")
+  const hostname = (await headersList).get("host")
   const isProduction = hostname === "polkadot.com"
 
   return (
@@ -181,7 +181,7 @@ export default async function RootLayout({
         </main>
         <FooterLayout footer={footer} />
         {env.VERCEL_ENV === "development" && <TailwindIndicator />}
-        {draftMode().isEnabled && <VisualEditing />}
+        {(await draftMode()).isEnabled && <VisualEditing />}
         {env.VERCEL_ENV === "production" && <Analytics />}
 
         <noscript>

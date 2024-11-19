@@ -1,6 +1,14 @@
 import { type SchemaTypeDefinition } from "sanity"
 
-import { author, hygiene, landing, page, post, tag } from "./schemas/documents"
+import {
+  author,
+  glossaryEntry,
+  hygiene,
+  landing,
+  page,
+  post,
+  tag,
+} from "./schemas/documents"
 import { redirectType } from "./schemas/documents/redirects"
 import {
   accordion,
@@ -58,13 +66,23 @@ import {
   blog,
   caseStudies,
   footer,
+  glossary,
   home,
   navigation,
   notfound,
   pressReleases,
 } from "./schemas/singletons"
 
-const documentTypes = [tag, author, post, landing, page, hygiene, redirectType]
+const documentTypes = [
+  tag,
+  author,
+  post,
+  landing,
+  page,
+  hygiene,
+  glossaryEntry,
+  redirectType,
+]
 const objectTypes = [
   youtube,
   meta,
@@ -125,6 +143,7 @@ const singletons = [
   home,
   blog,
   pressReleases,
+  glossary,
   caseStudies,
 ]
 

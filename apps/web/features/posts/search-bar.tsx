@@ -19,6 +19,7 @@ interface Props {
     | typeof BLOG_POSTTYPE
     | typeof PRESS_RELEASE_POSTTYPE
     | typeof CASE_STUDY_POSTTYPE
+    | "glossary"
 }
 
 export function SearchBar({ searches, postType }: Props) {
@@ -74,6 +75,24 @@ export function SearchBar({ searches, postType }: Props) {
     setFindings(finds)
   }, [searchable, blogList])
 
+  const handleGlossaryClick = (term: string) => {
+    const firstLetter = term.charAt(0).toUpperCase()
+    const element = document.getElementById(`section-${firstLetter}`)
+    if (element) {
+      const termElement = element.querySelector(`[data-term="${term}"]`)
+      if (termElement) {
+        termElement.scrollIntoView({ behavior: "auto" })
+        // Optional: add highlight effect
+        // termElement.classList.add("bg-pink")
+        // setTimeout(() => {
+        //   termElement.classList.remove("bg-pink")
+        // }, 2000)
+      }
+    }
+
+    setSearchable("")
+  }
+
   return (
     <SearchBarContent>
       <SearchBarInput
@@ -90,6 +109,23 @@ export function SearchBar({ searches, postType }: Props) {
       <SearchBarResults isOpen={searchable.length > 0}>
         {findings.length > 0 &&
           findings.map((finding) => {
+            if (postType === "glossary") {
+              return (
+                <SearchBarListItem
+                  key={searches[finding]?._id}
+                  href="#"
+                  onClick={() => {
+                    const title = searches[finding]?.title
+                    if (title) {
+                      handleGlossaryClick(title)
+                    }
+                  }}
+                >
+                  {searches[finding]?.title}
+                </SearchBarListItem>
+              )
+            }
+
             return (
               <SearchBarListItem
                 key={searches[finding]?._id}
@@ -105,7 +141,7 @@ export function SearchBar({ searches, postType }: Props) {
           })}
 
         {searchable.length > 0 && findings.length == 0 && (
-          <div className="flex h-28 w-full flex-col flex-wrap items-center justify-center text-blue ">
+          <div className="text-blue flex h-28 w-full flex-col flex-wrap items-center justify-center">
             <p className="text-center font-bold">No matches found</p>
             <p className="text-center">
               Please check spelling or try using more general terms
@@ -199,20 +235,32 @@ const SearchBarResults = ({
 const SearchBarListItem = ({
   href,
   children,
+  onClick,
 }: {
   href: string
   children: ReactNode
+  onClick?: () => void
 }) => {
+  if (onClick) {
+    return (
+      <button
+        onClick={onClick}
+        className="text-blue line-clamp-1 h-10 w-full overflow-hidden rounded-lg p-2 text-left leading-roomy hover:bg-grey-300"
+      >
+        {children}
+      </button>
+    )
+  }
+
   return (
     <Link
       href={href}
-      className="line-clamp-1 h-10 overflow-hidden rounded-lg p-2 leading-roomy text-blue hover:bg-grey-300 "
+      className="text-blue line-clamp-1 h-10 overflow-hidden rounded-lg p-2 leading-roomy hover:bg-grey-300"
     >
       {children}
     </Link>
   )
 }
-
 const SearchBarContent = ({ children }: { children: ReactNode }) => {
   return <div className="relative z-20">{children}</div>
 }

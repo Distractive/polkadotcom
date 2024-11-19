@@ -23,10 +23,10 @@
     @apply font-[700] underline hover:text-pink-500;
   }
 
-  .background-blur {
+  /* .background-blur {
     @apply bg-opacity-80 backdrop-blur-md;
     -webkit-backdrop-filter: blur(12px);
-  }
+  } */
 
   .heading-break {
     text-wrap: balance;
@@ -199,6 +199,7 @@ html {
   font-style: normal;
   font-weight: 400;
 }
+
 .hubspot input[type="submit"]:hover {
   background: #ff2670 !important;
 }

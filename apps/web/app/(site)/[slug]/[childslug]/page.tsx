@@ -44,7 +44,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params: { slug, childslug } }: Props) {
-  const isDraftMode = draftMode().isEnabled
+  const isDraftMode = (await draftMode()).isEnabled
   const data = await getPage(`${slug}/${childslug}`, isDraftMode)
 
   const breadcrumb: BreadcrumbProps = {
