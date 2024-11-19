@@ -21,7 +21,7 @@ export function CTA({ cta }: Props) {
         cta.isCentered ? "justify-center" : "items-start"
       )}
     >
-      <div className="relative w-full max-w-[42rem] overflow-hidden rounded-2xl border border-grey-300 ">
+      <div className="relative w-full max-w-[60rem] overflow-hidden rounded-2xl border border-grey-300 ">
         {cta.image && (
           <div className="absolute inset-0 -z-10  overflow-hidden rounded-2xl">
             <Image
@@ -36,8 +36,6 @@ export function CTA({ cta }: Props) {
         )}
 
         <div className="flex rounded-2xl border border-grey-300 p-8 md:p-gutter">
-
-
           <div
             className={cn(
               "flex flex-col gap-4",
