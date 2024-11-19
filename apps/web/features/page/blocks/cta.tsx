@@ -15,15 +15,15 @@ interface Props {
 
 export function CTA({ cta }: Props) {
   return (
-    <div className="grid-system max-width ">
-      <div
-        className={cn(
-          "background-blur relative col-span-full overflow-hidden rounded-2xl px-gutter lg:col-span-8 ",
-          cta.isCentered ? "lg:col-start-3" : "lg:col-start-1"
-        )}
-      >
+    <div
+      className={cn(
+        "max-width flex px-gutter",
+        cta.isCentered ? "justify-center" : "items-start"
+      )}
+    >
+      <div className="relative w-full max-w-[42rem] overflow-hidden rounded-2xl border border-grey-300 ">
         {cta.image && (
-          <div className="absolute inset-0 -z-10 mx-gutter overflow-hidden rounded-2xl">
+          <div className="absolute inset-0 -z-10  overflow-hidden rounded-2xl">
             <Image
               src={urlForImage(cta.image.asset)}
               alt={cta.altText || ""}
@@ -34,7 +34,7 @@ export function CTA({ cta }: Props) {
             />
           </div>
         )}
-        <div className="flex rounded-2xl border border-grey-300 p-6 md:p-gutter">
+        <div className="flex rounded-2xl p-6 md:p-gutter">
           <div
             className={cn(
               "flex flex-col gap-4",

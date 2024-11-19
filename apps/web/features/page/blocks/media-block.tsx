@@ -26,26 +26,26 @@ interface Props {
 export function MediaBlock({ mediaBlock, className }: Props) {
   const { _key, image, video, eyebrow, heading, body, links } = mediaBlock
 
-  if (mediaBlock.isFullWidthVideo) {
-    return (
-      <div className="max-width px-gutter 2xl:px-0">
-        {video && <VideoBlock video={video} className={cn("aspect-video")} />}
-      </div>
-    )
-  }
-
   return (
-    <div className={cn("grid-system max-width gap-card px-gutter", className)}>
+    <div
+      className={cn(
+        "w-full px-gutter",
+        mediaBlock.isFullWidthVideo
+          ? "mx-auto max-w-[80rem] 2xl:max-w-none 2xl:px-0"
+          : "max-width grid-system gap-card",
+        className
+      )}
+    >
       <Card
-        key={_key}
         className={cn(
-          "bg-lightGrey col-span-full rounded-none border-none md:!h-auto lg:col-span-8 lg:col-start-3",
-          className
+          "w-full rounded-none border-none",
+          !mediaBlock.isFullWidthVideo &&
+            "bg-lightGrey col-span-full md:!h-auto lg:col-span-8 lg:col-start-3"
         )}
       >
-        {video && <VideoBlock video={video} className={cn("aspect-video")} />}
+        {video && <VideoBlock video={video} className="aspect-video" />}
         {image && (
-          <CardHeader className={cn("relative z-10 aspect-video")}>
+          <CardHeader className="relative z-10 aspect-video">
             <img
               src={image.asset.url}
               alt=""
@@ -54,27 +54,30 @@ export function MediaBlock({ mediaBlock, className }: Props) {
             />
           </CardHeader>
         )}
-        <div className={cn("relative")}>
-          <CardContent className={cn("grid")}>
-            <div className="grid gap-copy py-card">
-              {eyebrow && (
-                <span className="text-base text-caps-sm font-bold uppercase">
-                  {eyebrow}
-                </span>
-              )}
-              {heading && (
-                <Heading variant="h2" size="h3">
-                  {heading}
-                </Heading>
-              )}
-              {body && (
-                <CardDescription className={cn("text-base text-caps-sm")}>
-                  {body}
-                </CardDescription>
-              )}
-            </div>
+
+        <div className="relative">
+          <CardContent className="grid">
+            {(eyebrow || heading || body) && (
+              <div className="grid gap-copy py-card">
+                {eyebrow && (
+                  <span className="text-base text-caps-sm font-bold uppercase">
+                    {eyebrow}
+                  </span>
+                )}
+                {heading && (
+                  <Heading variant="h2" size="h3">
+                    {heading}
+                  </Heading>
+                )}
+                {body && (
+                  <CardDescription className="text-base text-caps-sm">
+                    {body}
+                  </CardDescription>
+                )}
+              </div>
+            )}
             {links && (
-              <CardFooter className={cn("flex flex-wrap gap-4")}>
+              <CardFooter className="flex flex-wrap gap-4">
                 {links?.map((link, index) => (
                   <React.Fragment key={index}>
                     {link.label && (
