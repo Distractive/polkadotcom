@@ -70,32 +70,37 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
           <Heading variant="h1">{header.title}</Heading>
 
           {header.body && <p className="text-lg">{header.body}</p>}
-          <div
-            id="main-content"
-            className="mt-card flex w-full flex-wrap gap-4"
-          >
-            {header.links?.map((link, index) => (
-              <Button
-                asChild
-                key={index}
-                variant={
-                  link?.variant
-                    ? link.variant === "primary"
-                      ? "primary"
-                      : "secondary"
-                    : "primary"
-                }
-                size="lg"
-              >
-                <CustomUrl
-                  className="outline-none"
-                  value={{ internal: link?.internal, external: link?.external }}
+          {header.links && (
+            <div
+              id="main-content"
+              className="mt-card flex w-full flex-wrap gap-4"
+            >
+              {header.links?.map((link, index) => (
+                <Button
+                  asChild
+                  key={index}
+                  variant={
+                    link?.variant
+                      ? link.variant === "primary"
+                        ? "primary"
+                        : "secondary"
+                      : "primary"
+                  }
+                  size="lg"
                 >
-                  {link.label}
-                </CustomUrl>
-              </Button>
-            ))}
-          </div>
+                  <CustomUrl
+                    className="outline-none"
+                    value={{
+                      internal: link?.internal,
+                      external: link?.external,
+                    }}
+                  >
+                    {link.label}
+                  </CustomUrl>
+                </Button>
+              ))}
+            </div>
+          )}
           {header.video && (
             <VideoBlock video={header.video} className="mt-gutter w-full" />
           )}
@@ -109,6 +114,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
     <header
       className={cn(
         "grid-system max-width relative col-span-full mb-16 lg:mb-page",
+        className,
         header.image ? "pt-32" : "pt-0",
         // Hide margin if no image or title
         !header.image && !header.title && "!mb-[-4rem] md:!mb-[-6rem]"
@@ -146,29 +152,34 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         <Heading variant="h1">{header.title}</Heading>
 
         {header.body && <p className="text-lg">{header.body}</p>}
-        <div id="main-content" className="mt-card flex w-full flex-wrap gap-4">
-          {header.links?.map((link, index) => (
-            <Button
-              asChild
-              key={index}
-              variant={
-                link?.variant
-                  ? link.variant === "primary"
-                    ? "primary"
-                    : "secondary"
-                  : "primary"
-              }
-              size="lg"
-            >
-              <CustomUrl
-                className="outline-none"
-                value={{ internal: link?.internal, external: link?.external }}
+        {header.links && (
+          <div
+            id="main-content"
+            className="mt-card flex w-full flex-wrap gap-4"
+          >
+            {header.links?.map((link, index) => (
+              <Button
+                asChild
+                key={index}
+                variant={
+                  link?.variant
+                    ? link.variant === "primary"
+                      ? "primary"
+                      : "secondary"
+                    : "primary"
+                }
+                size="lg"
               >
-                {link.label}
-              </CustomUrl>
-            </Button>
-          ))}
-        </div>
+                <CustomUrl
+                  className="outline-none"
+                  value={{ internal: link?.internal, external: link?.external }}
+                >
+                  {link.label}
+                </CustomUrl>
+              </Button>
+            ))}
+          </div>
+        )}
         {header.video && (
           <VideoBlock video={header.video} className="mt-gutter w-full" />
         )}

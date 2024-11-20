@@ -26,11 +26,12 @@ const TimeUnit = ({ value, label }: TimeUnitProps) => (
   <div className="col-span-1 flex w-full flex-col items-center justify-center">
     <div
       className={cn(
-        "text-[3rem]",
-        "md:text-[6rem]",
-        "lg:text-[9rem]",
-        "xl:text-[14rem]",
-        "flex min-w-0  items-center rounded-lg font-bold tabular-nums text-black",
+        "text-[2rem]",
+        "sm:text-[3rem]",
+        "md:text-[5rem]",
+        "lg:text-[7rem]",
+        "xl:text-[11rem]",
+        "flex min-w-0  items-center rounded-lg tabular-nums text-black",
         ""
       )}
     >
@@ -75,14 +76,14 @@ export function CountdownTimer({ countdownTimer }: Props) {
   }, [countdownTimer.targetDate])
 
   return (
-    <div className="max-width ">
+    <div className="max-width pt-12">
       <div className={cn("flex flex-col gap-copy", "px-gutter")}>
         {countdownTimer.heading && (
           <Heading variant="h1">{countdownTimer.heading}</Heading>
         )}
       </div>
 
-      <div className="flex w-full flex-col items-center space-y-2  px-gutter">
+      <div className="flex w-full flex-col items-center space-y-2  px-gutter font-display">
         <div
           className={cn(
             "gap-8 md:gap-24",

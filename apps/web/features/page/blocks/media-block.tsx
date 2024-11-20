@@ -29,7 +29,7 @@ export function MediaBlock({ mediaBlock, className }: Props) {
   return (
     <div
       className={cn(
-        "w-full px-gutter",
+        " w-full px-gutter",
         mediaBlock.isFullWidthVideo
           ? "mx-auto max-w-[80rem] 2xl:max-w-none 2xl:px-0"
           : "max-width grid-system gap-card",
@@ -40,7 +40,7 @@ export function MediaBlock({ mediaBlock, className }: Props) {
         className={cn(
           "w-full rounded-none border-none",
           !mediaBlock.isFullWidthVideo &&
-            "bg-lightGrey col-span-full md:!h-auto lg:col-span-8 lg:col-start-3"
+            "col-span-full md:!h-auto lg:col-span-8 lg:col-start-3"
         )}
       >
         {video && <VideoBlock video={video} className="aspect-video" />}

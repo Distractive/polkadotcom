@@ -35,7 +35,7 @@ export function VideoBlock({ video, className }: Props) {
     <div
       className={cn(
         "max-width aspect-video overflow-hidden rounded-2xl",
-        "[&>div>iframe]:overflow-hidden [&>div>iframe]:rounded-2xl",
+        "[&>div>div]:!rounded-2xl [&>div>iframe]:!rounded-2xl [&_div]:!rounded-2xl",
         className
       )}
     >
@@ -53,7 +53,7 @@ export function VideoBlock({ video, className }: Props) {
               <div
                 className={cn(
                   "flex size-16 items-center justify-center rounded-2xl",
-                  "border border-grey-300 bg-white/90 ",
+                  "border border-grey-300 bg-white ",
                   "group transition-colors duration-200 ease-in-out"
                 )}
               >

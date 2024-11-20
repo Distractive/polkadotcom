@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import type { ReactNode } from "react"
 import Link from "next/link"
 import type { searchSelection } from "@/sanity/queries/search"
+import { cleanTerm } from "@/utils/glossary/glossaryUtils"
 import type { TypeFromSelection } from "groqd"
 
 import {
@@ -14,7 +15,9 @@ import {
 import { cn, Icon } from "@shared/ui"
 
 interface Props {
-  searches: ReadonlyArray<TypeFromSelection<typeof searchSelection>>
+  searches: ReadonlyArray<
+    TypeFromSelection<typeof searchSelection> & { cleanedTerm?: string }
+  >
   postType:
     | typeof BLOG_POSTTYPE
     | typeof PRESS_RELEASE_POSTTYPE
@@ -76,10 +79,12 @@ export function SearchBar({ searches, postType }: Props) {
   }, [searchable, blogList])
 
   const handleGlossaryClick = (term: string) => {
-    const firstLetter = term.charAt(0).toUpperCase()
+    const cleanedTerm = cleanTerm(false, term)
+
+    const firstLetter = cleanedTerm.charAt(0).toUpperCase()
     const element = document.getElementById(`section-${firstLetter}`)
     if (element) {
-      const termElement = element.querySelector(`[data-term="${term}"]`)
+      const termElement = element.querySelector(`[data-term="${cleanedTerm}"]`)
       if (termElement) {
         termElement.scrollIntoView({ behavior: "auto" })
         // Optional: add highlight effect
@@ -115,9 +120,9 @@ export function SearchBar({ searches, postType }: Props) {
                   key={searches[finding]?._id}
                   href="#"
                   onClick={() => {
-                    const title = searches[finding]?.title
-                    if (title) {
-                      handleGlossaryClick(title)
+                    const cleanedTerm = searches[finding]?.cleanedTerm
+                    if (cleanedTerm) {
+                      handleGlossaryClick(cleanedTerm)
                     }
                   }}
                 >

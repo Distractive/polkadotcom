@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import {
+  getAllGlossarySlugs,
   getGlossaryEntry,
   getGlossaryEntryMeta,
 } from "@/sanity/queries/glossary"
@@ -9,6 +10,14 @@ import { Heading } from "@shared/ui"
 import { BreadcrumbBlock } from "@/features/page/blocks/breadcrumb"
 import type { BreadcrumbItem } from "@/features/page/blocks/breadcrumb"
 import { Body } from "@/features/post/body"
+
+export async function generateStaticParams() {
+  const slugs = await getAllGlossarySlugs()
+
+  return slugs.map((slug) => ({
+    slug: slug,
+  }))
+}
 
 export async function generateMetadata({
   params,

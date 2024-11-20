@@ -1,9 +1,8 @@
 import { runQuery } from "@/sanity/lib/groqd-query"
-import { nullToUndefined, q, sanityImage, type Selection } from "groqd"
+import { q, sanityImage, type Selection } from "groqd"
 
 import { headerSelection } from "../selections/blocks/header"
 import { glossaryEntrySelection } from "../selections/glossary/glossary-entry"
-import { metaSelection } from "./post"
 
 export async function getGlossary() {
   const query = q("*")
@@ -14,7 +13,7 @@ export async function getGlossary() {
         .nullable(),
       entries: q("*")
         .filterByType("glossaryEntry")
-        .order("term asc")
+        .order("lower(term) asc")
         .grab({
           _id: q.string(),
           term: q.string(),
@@ -25,7 +24,7 @@ export async function getGlossary() {
     })
     .slice(0)
 
-  return await runQuery(query, {}, true)
+  return await runQuery(query, {}, false)
 }
 
 export async function getGlossaryEntry(slug: string) {
@@ -36,7 +35,7 @@ export async function getGlossaryEntry(slug: string) {
       ...glossaryEntrySelection,
     })
     .slice(0)
-  return await runQuery(query, { slug }, true)
+  return await runQuery(query, { slug }, false)
 }
 
 export async function getGlossaryEntryMeta(slug: string) {
@@ -56,6 +55,20 @@ export async function getGlossaryEntryMeta(slug: string) {
     })
     .slice(0)
     .nullable()
-  const result = await runQuery(metaQuery, { slug }, true)
+  const result = await runQuery(metaQuery, { slug }, false)
   return result
+}
+
+export async function getAllGlossarySlugs() {
+  const slugQuery = q("*")
+    .filterByType("glossaryEntry")
+    .filter("createFullPageEntry == true")
+    .grab({
+      slug: q("slug.current"),
+    })
+
+  const results = await runQuery(slugQuery, {}, false)
+  return results
+    .map((result: { slug?: unknown }) => result.slug)
+    .filter(Boolean)
 }
