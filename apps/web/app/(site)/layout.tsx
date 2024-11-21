@@ -14,6 +14,7 @@ import { cn } from "@shared/ui/lib/utils"
 
 import { env } from "@/env.mjs"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
+import { BannerWrapper } from "@/features/banner/wrapper"
 import FooterLayout from "@/features/footer/layout"
 import NavigationLayout from "@/features/navigation/layout"
 
@@ -174,11 +175,14 @@ export default async function RootLayout({
             Skip to main content
           </span>
         </a>
-        <NavigationLayout navigation={navigation} />
+        <BannerWrapper />
+        <div className="relative">
+          <NavigationLayout navigation={navigation} />
 
-        <main role="main" className="flex-grow overflow-x-hidden">
-          {children}
-        </main>
+          <main role="main" className="flex-grow overflow-x-hidden">
+            {children}
+          </main>
+        </div>
         <FooterLayout footer={footer} />
         {env.VERCEL_ENV === "development" && <TailwindIndicator />}
         {(await draftMode()).isEnabled && <VisualEditing />}

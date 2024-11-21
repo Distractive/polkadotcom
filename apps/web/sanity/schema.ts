@@ -63,6 +63,7 @@ import {
   youtube,
 } from "./schemas/objects"
 import {
+  banner,
   blog,
   caseStudies,
   footer,
@@ -145,6 +146,7 @@ const singletons = [
   pressReleases,
   glossary,
   caseStudies,
+  banner,
 ]
 
 export const schema: { types: SchemaTypeDefinition[] } = {

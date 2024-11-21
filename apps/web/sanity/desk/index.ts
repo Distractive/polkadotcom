@@ -3,6 +3,7 @@ import type {
   StructureResolverContext,
 } from "sanity/structure"
 
+import { bannerStructure } from "./banner"
 import { blogStructure } from "./blog"
 import { caseStudiesStructure } from "./case-studies"
 import { footerStructure } from "./footer"
@@ -44,6 +45,8 @@ export const deskStructure = (
       glossaryStructure(S),
       S.divider(),
       notFoundStructure(S),
+      S.divider(),
+      bannerStructure(S),
       S.divider(),
       redirectStructure(S),
     ])
