@@ -8,7 +8,8 @@ export async function BannerWrapper() {
   const bannerClosedCookie = cookieStore.get("banner-closed")
   const initialVisibility = !bannerClosedCookie
 
-  const banner = await getBanner()
+  // const banner = await getBanner()
 
-  return <Banner banner={banner} />
+  // return <Banner banner={banner} />
+  return null
 }
