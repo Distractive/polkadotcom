@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { draftMode } from "next/headers"
 import Script from "next/script"
 import { manrope, unbounded } from "@/styles/fonts"
+import { GoogleAnalytics } from "@next/third-parties/google"
 import { Analytics } from "@vercel/analytics/react"
 import { VisualEditing } from "next-sanity"
 
@@ -43,16 +44,13 @@ export default async function RootLayout({
 
   const headersList = headers()
   const hostname = (await headersList).get("host")
-  const isProduction = hostname === "polkadot.com"
 
   return (
     <html lang="en">
       <head>
-        {isProduction ? (
-          // Production script
+        {env.VERCEL_ENV === "production" ? (
           <Script src="https://cmp.osano.com/169unzUF2IaM42S5j/80a27ab0-b5e2-40d2-b909-d45519c89760/osano.js" />
         ) : (
-          // Staging script
           <Script src="https://cmp.osano.com/169unzUF2IaM42S5j/0f63db37-496b-4a14-a233-82bbdf3a4afd/osano.js" />
         )}
         <Script
@@ -80,8 +78,7 @@ export default async function RootLayout({
           data-domain="polkadot.com"
           defer
         />
-        {/* @ts-ignore */}
-        {/* <Script id="hotjar" strategy="afterInteractive">
+        <Script id="hotjar" strategy="afterInteractive">
           {`
             (function(h,o,t,j,a,r){
                 h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -92,7 +89,7 @@ export default async function RootLayout({
                 a.appendChild(r);
             })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
             `}
-        </Script> */}
+        </Script>
 
         <link
           rel="apple-touch-icon"
@@ -186,7 +183,12 @@ export default async function RootLayout({
         <FooterLayout footer={footer} />
         {env.VERCEL_ENV === "development" && <TailwindIndicator />}
         {(await draftMode()).isEnabled && <VisualEditing />}
-        {env.VERCEL_ENV === "production" && <Analytics />}
+        {env.VERCEL_ENV === "production" && (
+          <>
+            <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_ID} />
+            <Analytics />
+          </>
+        )}
 
         <noscript>
           <img

@@ -31,6 +31,8 @@ const cspSources = {
     "https://www.googletagmanager.com",
     "https://scripts.simpleanalyticscdn.com",
     "https://player.vimeo.com",
+    "www.google-analytics.com",
+    "analytics.google.com",
   ],
   "style-src": [
     "'self'",
@@ -74,6 +76,8 @@ const cspSources = {
     "https://consent.api.osano.com",
     "https://api.vercel.com",
     "https://vimeo.com",
+    "www.google-analytics.com",
+    "analytics.google.com",
   ],
   "font-src": [
     "'self'",
