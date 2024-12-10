@@ -18,9 +18,9 @@ export default async function NotFound() {
   }
 
   return (
-    <div className="relative col-span-full mb-24  md:mb-32">
+    <div className="relative col-span-full mb-24 min-h-[50vh] pt-12 ">
       <GlobalGradient />
-      <header className="max-width mb-page flex h-full w-full flex-col items-center  pt-page">
+      <header className="max-width mb-page flex h-full w-full flex-col items-center justify-center px-gutter pt-page">
         <div
           className={cn(
             "flex max-w-4xl flex-col items-center justify-center gap-copy lg:pt-24"
@@ -32,7 +32,9 @@ export default async function NotFound() {
             {header.heading}
           </Heading>
 
-          {header.body && <p className="mb-8 text-lg">{header.body}</p>}
+          {header.body && (
+            <p className="mb-8 text-center text-lg">{header.body}</p>
+          )}
 
           {header.links?.map((link, index) => (
             <Button
