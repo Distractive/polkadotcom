@@ -176,7 +176,7 @@ export default async function RootLayout({
         <div className="relative">
           <NavigationLayout navigation={navigation} />
 
-          <main role="main" className="flex-grow overflow-x-hidden">
+          <main role="main" className="flex-grow ">
             {children}
           </main>
         </div>

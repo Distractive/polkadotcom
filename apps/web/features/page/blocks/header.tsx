@@ -21,7 +21,10 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
   if (header.isAlternate) {
     return (
       <header
-        className={cn("max-width relative mb-page flex flex-col", className)}
+        className={cn(
+          "max-width relative mb-page flex flex-col overflow-x-hidden",
+          className
+        )}
       >
         <GlobalGradient />
         {/* Desktop and tablet image */}
