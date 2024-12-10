@@ -34,7 +34,7 @@ export default function CardTimelineBlock({
           {card.year}
         </h3>
       </CardHeader>
-      <CardContent className="group mr-gutter flex h-full flex-col justify-between gap-copy rounded-2xl p-card">
+      <CardContent className="group mr-gutter flex h-full flex-col justify-between gap-copy rounded-2xl ">
         <PortableText
           value={card.content}
           components={{

@@ -32,7 +32,7 @@ export function CardsTimelineBlock({ cards }: Props) {
         {cards.items.map((item, index) => (
           <CarouselItem
             key={item._key}
-            className="basis-5/6 !pl-0 md:basis-[45%] lg:basis-[30%]"
+            className="basis-5/6 !pl-0  md:basis-[45%] lg:basis-[30%]"
           >
             <CardTimelineBlock
               card={item}
