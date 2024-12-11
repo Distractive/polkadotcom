@@ -33,6 +33,8 @@ const cspSources = {
     "https://player.vimeo.com",
     "www.google-analytics.com",
     "analytics.google.com",
+    "https://ekndrsoc.ust.stape.io",
+    "https://*.stape.io",
   ],
   "style-src": [
     "'self'",
@@ -55,6 +57,8 @@ const cspSources = {
     "https://forms-na1.hsforms.com",
     "https://lh3.googleusercontent.com",
     "https://queue.simpleanalyticscdn.com",
+    "https://ekndrsoc.ust.stape.io",
+    "https://*.stape.io",
   ],
   "connect-src": [
     "'self'",
@@ -78,6 +82,8 @@ const cspSources = {
     "https://vimeo.com",
     "www.google-analytics.com",
     "analytics.google.com",
+    "ekndrsoc.ust.stape.io",
+    "https://*.stape.io",
   ],
   "font-src": [
     "'self'",
@@ -94,6 +100,8 @@ const cspSources = {
     "https://www.youtube.com",
     "https://*.hsforms.com",
     "https://player.vimeo.com",
+    "https://ekndrsoc.ust.stape.io",
+    "https://*.stape.io",
   ],
   "worker-src": ["'self'", "blob:", "https://cmp.osano.com"],
   "frame-ancestors": ["'self'", "https://polkadot.com"],
