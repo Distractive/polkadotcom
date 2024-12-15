@@ -13,7 +13,7 @@ export const cardSelection = {
     withAsset: ["base", "dimensions"],
   }).nullable(),
   eyebrow: nullToUndefined(q.string().optional()),
-  heading: q.string(),
+  heading: q.string().nullable(),
   useSmallHeading: q.boolean().nullable(),
   body: nullToUndefined(q.string().optional()),
   selectedTags: q.array(q.string()).nullable(),

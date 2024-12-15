@@ -7,14 +7,14 @@ import { newsletterButtonSelection } from "./newsletter-button"
 
 export const ctaSelection = {
   _key: q.string(),
-  heading: q.string(),
-  useWhiteText: q.boolean().nullable(),
-  isCentered: q.boolean().nullable(),
-  twoThirdsText: q.boolean().nullable(),
+  heading: q.string().nullable().optional(),
+  useWhiteText: q.boolean().nullable().optional(),
+  isCentered: q.boolean().nullable().optional(),
+  twoThirdsText: q.boolean().nullable().optional(),
   image: sanityImage("image", {
     withAsset: ["base", "dimensions"],
   }).nullable(),
-  altText: nullToUndefined(q.string().optional()),
+  altText: q.string().nullable().optional(),
   content: q("content")
     .filter()
     .select({
@@ -31,5 +31,6 @@ export const ctaSelection = {
         _type: ['"unsupported"', q.literal("unsupported")],
         unsupportedType: ["_type", q.string()],
       },
-    }),
+    })
+    .nullable(),
 } satisfies Selection

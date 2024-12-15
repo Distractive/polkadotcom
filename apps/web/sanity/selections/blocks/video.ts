@@ -4,6 +4,6 @@ import type { Selection } from "groqd"
 export const videoSelection = {
   placeholderImage: sanityImage("placeholderImage", {
     withAsset: ["base", "dimensions"],
-  }),
-  url: q.string(),
+  }).nullable(),
+  url: q.string().optional().nullable(),
 } satisfies Selection

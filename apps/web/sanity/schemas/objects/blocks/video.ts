@@ -9,13 +9,11 @@ export default defineType({
       name: "placeholderImage",
       title: "Placeholder Image",
       type: "image",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "url",
       title: "URL for Video",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
   ],
 })

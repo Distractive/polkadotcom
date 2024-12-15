@@ -7,8 +7,8 @@ export const cardLogoSelection = {
   _key: q.string(),
   image: sanityImage("image", {
     withAsset: ["base", "dimensions"],
-  }),
-  name: q.string(),
+  }).nullable(),
+  name: q.string().optional().nullable(),
   link: q("link")
     .grab$({
       ...customUrlSelection,

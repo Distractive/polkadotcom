@@ -9,7 +9,6 @@ export default defineType({
       name: "title",
       title: "title",
       type: "string",
-      validation: (rule) => rule.required(),
       description: "Title for purely CMS organization purposes",
     }),
     defineField({

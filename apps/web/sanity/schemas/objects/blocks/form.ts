@@ -10,13 +10,11 @@ export default defineType({
       name: "heading",
       title: "Heading",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "body",
       title: "Body",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "formType",
@@ -25,7 +23,6 @@ export default defineType({
       options: {
         list: HBSPT_LIST,
       },
-      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

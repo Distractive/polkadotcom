@@ -24,21 +24,23 @@ export function CardsSmallBlock({ cards }: Props) {
           "grid-system col-span-full w-full gap-gutter md:auto-rows-1fr"
         )}
       >
-        {cards.items.map((card, index) => {
-          // span the last two cards if there are 2 cards in a row
-          const shouldSpan =
-            cards.items.length % 3 === 2 && index >= cards.items.length - 2
-          return (
-            <CardSmallBlock
-              key={card._key}
-              card={card}
-              className={cn(
-                "col-span-full md:col-span-3 lg:col-span-6 xl:col-span-4",
-                shouldSpan && "xl:col-span-6"
-              )}
-            />
-          )
-        })}
+        {cards.items &&
+          cards.items.length > 0 &&
+          cards.items.map((card, index) => {
+            // span the last two cards if there are 2 cards in a row
+            const shouldSpan =
+              cards.items!.length % 3 === 2 && index >= cards.items!.length - 2
+            return (
+              <CardSmallBlock
+                key={card._key}
+                card={card}
+                className={cn(
+                  "col-span-full md:col-span-3 lg:col-span-6 xl:col-span-4",
+                  shouldSpan && "xl:col-span-6"
+                )}
+              />
+            )
+          })}
       </div>
       {cards.backgroundImage && (
         <img

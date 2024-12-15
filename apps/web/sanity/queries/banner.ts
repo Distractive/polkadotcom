@@ -4,8 +4,19 @@ import { q } from "groqd"
 import { bannerSelection } from "../selections/banner"
 
 export async function getBanner() {
-  const query = q('*[_type == "banner"][0]')
-    .grab({ ...bannerSelection })
+  const bannerQuery = q("*")
+    .filterByType("banner")
+    .grab$({
+      ...bannerSelection,
+    })
+    .slice(0)
     .nullable()
-  return await runQuery(query, {}, false)
+
+  try {
+    const result = await runQuery(bannerQuery, {}, false)
+    return result
+  } catch (error) {
+    console.error("Error fetching banner:", error)
+    return null
+  }
 }

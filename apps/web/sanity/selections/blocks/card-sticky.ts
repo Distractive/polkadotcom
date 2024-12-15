@@ -11,9 +11,9 @@ export const cardStickySelection = {
   icon: sanityImage("icon", {
     withAsset: ["base", "dimensions"],
   }).nullable(),
-  eyebrow: nullToUndefined(q.string().optional()),
-  heading: q.string(),
-  body: nullToUndefined(q.string().optional()),
+  eyebrow: q.string().optional().nullable(),
+  heading: q.string().optional().nullable(),
+  body: q.string().optional().nullable(),
   link: q("link")
     .grab$({
       ...customUrlSelection,

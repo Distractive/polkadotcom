@@ -5,7 +5,7 @@ import { customUrlSelection } from "../custom-url"
 
 export const cardTimelineSelection = {
   _key: q.string(),
-  year: q.string(),
+  year: q.string().optional().nullable(),
   content: q("content")
     .filter()
     .select({
@@ -19,5 +19,6 @@ export const cardTimelineSelection = {
         _type: ['"unsupported"', q.literal("unsupported")],
         unsupportedType: ["_type", q.string()],
       },
-    }),
+    })
+    .nullable(),
 } satisfies Selection

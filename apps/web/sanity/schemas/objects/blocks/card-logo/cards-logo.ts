@@ -29,12 +29,7 @@ export default defineType({
       type: "image",
       group: "heading",
     }),
-    defineField({
-      name: "link",
-      title: "Link",
-      type: "customUrl",
-      group: "heading",
-    }),
+
     defineField({
       name: "items",
       type: "array",

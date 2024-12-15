@@ -13,7 +13,7 @@ export const blogSelection = {
       slug: q.slug("slug"),
     })
     .nullable(),
-  heading: q.string(),
+  heading: q.string().nullable(),
   headerImage: sanityImage("headerImage", {
     withAsset: ["base", "dimensions"],
   }).nullable(),

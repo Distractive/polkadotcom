@@ -29,60 +29,62 @@ export function SideBySideBlock({ content }: Props) {
           )}
         </div>
         <div className="flex flex-col gap-copy">
-          <PortableText
-            value={content.content}
-            components={{
-              block: {
-                h3: ({ children }) => (
-                  <Heading variant="h3">{children}</Heading>
-                ),
-                normal: ({ children }) => (
-                  <p className="text-lg ">{children}</p>
-                ),
-                smallprint: ({ children }) => (
-                  <p className="text-sm ">{children}</p>
-                ),
-              },
-              list: {
-                bullet: ({ children }) => (
-                  <ul className="flex list-inside list-disc flex-col gap-copy ">
-                    {children}
-                  </ul>
-                ),
-              },
-              listItem: {
-                bullet: ({ children }) => <li>{children}</li>,
-              },
-              types: {
-                customUrl: ({ value }) => {
-                  return (
-                    <Button
-                      size="md"
-                      asChild
-                      className="my-2 mr-auto md:cursor-pointer"
-                      variant={
-                        value?.variant
-                          ? value.variant === "primary"
-                            ? "primary"
-                            : "secondary"
-                          : "primary"
-                      }
-                    >
-                      <CustomUrl
-                        className="outline-none"
-                        value={{
-                          internal: value?.internal,
-                          external: value?.external,
-                        }}
-                      >
-                        {value.label}
-                      </CustomUrl>
-                    </Button>
-                  )
+          {content.content && (
+            <PortableText
+              value={content.content}
+              components={{
+                block: {
+                  h3: ({ children }) => (
+                    <Heading variant="h3">{children}</Heading>
+                  ),
+                  normal: ({ children }) => (
+                    <p className="text-lg ">{children}</p>
+                  ),
+                  smallprint: ({ children }) => (
+                    <p className="text-sm ">{children}</p>
+                  ),
                 },
-              },
-            }}
-          />
+                list: {
+                  bullet: ({ children }) => (
+                    <ul className="flex list-inside list-disc flex-col gap-copy ">
+                      {children}
+                    </ul>
+                  ),
+                },
+                listItem: {
+                  bullet: ({ children }) => <li>{children}</li>,
+                },
+                types: {
+                  customUrl: ({ value }) => {
+                    return (
+                      <Button
+                        size="md"
+                        asChild
+                        className="my-2 mr-auto md:cursor-pointer"
+                        variant={
+                          value?.variant
+                            ? value.variant === "primary"
+                              ? "primary"
+                              : "secondary"
+                            : "primary"
+                        }
+                      >
+                        <CustomUrl
+                          className="outline-none"
+                          value={{
+                            internal: value?.internal,
+                            external: value?.external,
+                          }}
+                        >
+                          {value.label}
+                        </CustomUrl>
+                      </Button>
+                    )
+                  },
+                },
+              }}
+            />
+          )}
         </div>
       </div>
       {content.video && (

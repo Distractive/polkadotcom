@@ -36,6 +36,8 @@ export async function generateMetadata({
 export async function generateStaticParams() {
   const slugs = await getSlugs("landing")
 
+  if (!slugs) return []
+
   return slugs.map((item) => ({
     slug: item.slug,
   }))
@@ -44,7 +46,9 @@ export async function generateStaticParams() {
 export default async function Page({ params: { slug } }: Props) {
   const isDraftMode = draftMode().isEnabled
   const data = await getPage(slug, isDraftMode)
-  if (!data) return notFound()
+
+  if (!data?.slug) return notFound()
+
   return (
     <div className="relative">
       {data.header && <HeaderBlock header={data.header} />}

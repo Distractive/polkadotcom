@@ -42,12 +42,16 @@ export function VideoBlock({ video, className }: Props) {
       <div className="size-full">
         {isClient && (
           <ReactPlayer
-            url={video.url}
+            url={video.url || ""}
             width="100%"
             height="100%"
             controls={false}
             playing
-            light={urlForImage(video.placeholderImage.asset)}
+            light={
+              video.placeholderImage?.asset
+                ? urlForImage(video.placeholderImage.asset)
+                : false
+            }
             loop
             playIcon={
               <div

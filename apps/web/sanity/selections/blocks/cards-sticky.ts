@@ -5,9 +5,10 @@ import { cardStickySelection } from "./card-sticky"
 
 export const cardsStickySelection = {
   _key: q.string(),
-  heading: nullToUndefined(q.string().optional()),
-  body: nullToUndefined(q.string().optional()),
+  heading: q.string().optional().nullable(),
+  body: q.string().optional().nullable(),
   items: q("items")
     .filter()
-    .grab({ ...cardStickySelection }),
+    .grab({ ...cardStickySelection })
+    .nullable(),
 } satisfies Selection

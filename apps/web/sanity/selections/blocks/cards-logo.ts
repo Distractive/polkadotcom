@@ -5,9 +5,10 @@ import { cardLogoSelection } from "./card-logo"
 
 export const cardsLogoSelection = {
   _key: q.string(),
-  heading: nullToUndefined(q.string().optional()),
-  body: nullToUndefined(q.string().optional()),
+  heading: q.string().optional().nullable(),
+  body: q.string().optional().nullable(),
   items: q("items")
     .filter()
-    .grab({ ...cardLogoSelection }),
+    .grab({ ...cardLogoSelection })
+    .nullable(),
 } satisfies Selection

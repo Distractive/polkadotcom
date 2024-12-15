@@ -12,10 +12,10 @@ import {
 import { HubSpotForm } from "@/components/hubspot-form"
 
 interface ModalProps {
-  cta: string
-  modalHeading: string
-  formType: string
-  _key: string
+  cta?: string | null
+  modalHeading?: string | null
+  formType?: string | null
+  _key?: string | null
   variant?: "primary" | "secondary"
   size?: "sm" | "md" | "lg"
 }
@@ -50,7 +50,9 @@ export function ModalButton({ modal, buttonClassName }: Props) {
           >
             {modal.modalHeading}
           </DialogTitle>
-          <HubSpotForm type={modal.formType} id={modal._key} />
+          {modal.formType && modal._key && (
+            <HubSpotForm type={modal.formType} id={modal._key} />
+          )}
         </div>
       </DialogContent>
     </Dialog>

@@ -34,57 +34,60 @@ export default function CardTimelineBlock({
           {card.year}
         </h3>
       </CardHeader>
-      <CardContent className="group mr-gutter flex h-full flex-col justify-between gap-copy rounded-2xl ">
-        <PortableText
-          value={card.content}
-          components={{
-            list: {
-              bullet: ({ children }) => (
-                <ul className="list-inside list-disc">{children}</ul>
-              ),
-              number: ({ children }) => (
-                <ol className="list-inside list-decimal">{children}</ol>
-              ),
-            },
-            listItem: {
-              bullet: ({ children }) => <li>{children}</li>,
-              number: ({ children }) => <li>{children}</li>,
-            },
-            marks: {
-              link: ({ children, value }) => {
-                const rel = !value.href.startsWith("/")
-                  ? "noreferrer noopener"
-                  : undefined
-                return (
-                  <a href={value.href} rel={rel} className="link-styling">
-                    {children}
-                  </a>
-                )
+
+      <CardContent className="group mr-gutter flex h-full flex-col justify-between gap-copy rounded-2xl p-card">
+        {card.content && (
+          <PortableText
+            value={card.content}
+            components={{
+              list: {
+                bullet: ({ children }) => (
+                  <ul className="list-inside list-disc">{children}</ul>
+                ),
+                number: ({ children }) => (
+                  <ol className="list-inside list-decimal">{children}</ol>
+                ),
               },
-            },
-            types: {
-              customUrl: ({ value }) => {
-                return (
-                  <Button
-                    asChild
-                    variant={
-                      value?.variant
-                        ? value.variant === "primary"
-                          ? "primary"
-                          : "secondary"
-                        : "primary"
-                    }
-                    size="md"
-                  >
-                    <CustomUrl className="outline-none" value={value}>
-                      {value.label}
-                    </CustomUrl>
-                  </Button>
-                )
+              listItem: {
+                bullet: ({ children }) => <li>{children}</li>,
+                number: ({ children }) => <li>{children}</li>,
               },
-            },
-          }}
-        />
+              marks: {
+                link: ({ children, value }) => {
+                  const rel = !value.href.startsWith("/")
+                    ? "noreferrer noopener"
+                    : undefined
+                  return (
+                    <a href={value.href} rel={rel} className="link-styling">
+                      {children}
+                    </a>
+                  )
+                },
+              },
+              types: {
+                customUrl: ({ value }) => {
+                  return (
+                    <Button
+                      asChild
+                      variant={
+                        value?.variant
+                          ? value.variant === "primary"
+                            ? "primary"
+                            : "secondary"
+                          : "primary"
+                      }
+                      size="md"
+                    >
+                      <CustomUrl className="outline-none" value={value}>
+                        {value.label}
+                      </CustomUrl>
+                    </Button>
+                  )
+                },
+              },
+            }}
+          />
+        )}
       </CardContent>
     </Card>
   )

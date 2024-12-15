@@ -96,5 +96,6 @@ export const pageBuilderSelection = {
         _type: ['"unsupported"', q.literal("unsupported")],
         unsupportedType: ["_type", q.string()],
       },
-    }),
+    })
+    .nullable(),
 } satisfies Selection

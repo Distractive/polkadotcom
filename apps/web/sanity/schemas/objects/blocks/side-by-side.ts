@@ -9,7 +9,6 @@ export default defineType({
       name: "heading",
       title: "Heading",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "subheading",
@@ -25,7 +24,6 @@ export default defineType({
       title: "Image",
       name: "image",
       type: "image",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "altText",

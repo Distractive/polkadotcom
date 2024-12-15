@@ -23,73 +23,79 @@ export function ContentBlock({ content }: Props) {
           !content.fullWidth && "lg:col-span-8"
         )}
       >
-        <PortableText
-          value={content.content}
-          components={{
-            block: {
-              h2: ({ children }) => <Heading variant="h2">{children}</Heading>,
-              h3: ({ children }) => (
-                <Heading variant="h3" size="h2">
-                  {children}
-                </Heading>
-              ),
-              h4: ({ children }) => <Heading variant="h4">{children}</Heading>,
-            },
-            list: {
-              bullet: ({ children }) => (
-                <ul className="tmarker:text-black my-4 list-outside list-disc pl-8">
-                  {children}
-                </ul>
-              ),
-              number: ({ children }) => (
-                <ol className="my-4 list-outside list-decimal pl-8 text-grey-900 marker:text-black ">
-                  {children}
-                </ol>
-              ),
-            },
-            listItem: {
-              bullet: ({ children }) => <li>{children}</li>,
-              number: ({ children }) => <li>{children}</li>,
-            },
-            marks: {
-              link: ({ children, value }) => {
-                const rel = !value.href.startsWith("/")
-                  ? "noreferrer noopener"
-                  : undefined
-                return (
-                  <a href={value.href} rel={rel} className="link-styling">
+        {content.content && (
+          <PortableText
+            value={content.content}
+            components={{
+              block: {
+                h2: ({ children }) => (
+                  <Heading variant="h2">{children}</Heading>
+                ),
+                h3: ({ children }) => (
+                  <Heading variant="h3" size="h2">
                     {children}
-                  </a>
-                )
+                  </Heading>
+                ),
+                h4: ({ children }) => (
+                  <Heading variant="h4">{children}</Heading>
+                ),
               },
-            },
-            types: {
-              customUrl: ({ value }) => {
-                return (
-                  <Button
-                    variant={value.internal ? "primary" : "secondary"}
-                    size="md"
-                    className="mr-auto mt-copy"
-                    asChild
-                  >
-                    <CustomUrl
-                      className="outline-none"
-                      value={{
-                        internal: value?.internal,
-                        external: value?.external,
-                      }}
+              list: {
+                bullet: ({ children }) => (
+                  <ul className="tmarker:text-black my-4 list-outside list-disc pl-8">
+                    {children}
+                  </ul>
+                ),
+                number: ({ children }) => (
+                  <ol className="my-4 list-outside list-decimal pl-8 text-grey-900 marker:text-black ">
+                    {children}
+                  </ol>
+                ),
+              },
+              listItem: {
+                bullet: ({ children }) => <li>{children}</li>,
+                number: ({ children }) => <li>{children}</li>,
+              },
+              marks: {
+                link: ({ children, value }) => {
+                  const rel = !value.href.startsWith("/")
+                    ? "noreferrer noopener"
+                    : undefined
+                  return (
+                    <a href={value.href} rel={rel} className="link-styling">
+                      {children}
+                    </a>
+                  )
+                },
+              },
+              types: {
+                customUrl: ({ value }) => {
+                  return (
+                    <Button
+                      variant={value.internal ? "primary" : "secondary"}
+                      size="md"
+                      className="mr-auto mt-copy"
+                      asChild
                     >
-                      {value.label}
-                    </CustomUrl>
-                  </Button>
-                )
+                      <CustomUrl
+                        className="outline-none"
+                        value={{
+                          internal: value?.internal,
+                          external: value?.external,
+                        }}
+                      >
+                        {value.label}
+                      </CustomUrl>
+                    </Button>
+                  )
+                },
+                break: ({ value }: { value: BreakNode }) => {
+                  return <br className="my-4" />
+                },
               },
-              break: ({ value }: { value: BreakNode }) => {
-                return <br className="my-4" />
-              },
-            },
-          }}
-        />
+            }}
+          />
+        )}
       </div>
     </div>
   )

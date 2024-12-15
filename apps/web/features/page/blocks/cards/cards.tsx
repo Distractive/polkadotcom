@@ -36,17 +36,18 @@ export function CardsBlock({ cards }: Props) {
       </div>
       {cards.isCarousel ? (
         <Carousel className="px-gutter">
-          {cards.items.map((card) => (
-            <CarouselItem
-              key={card._key}
-              className={cn(
-                "basis-5/6 lg:basis-[40%]",
-                cards.useFourColumns ? "xl:basis-1/4" : "xl:basis-1/3"
-              )}
-            >
-              <CardBlock key={card._key} card={card} className="h-full" />
-            </CarouselItem>
-          ))}
+          {cards.items &&
+            cards.items.map((card) => (
+              <CarouselItem
+                key={card._key}
+                className={cn(
+                  "basis-5/6 lg:basis-[40%]",
+                  cards.useFourColumns ? "xl:basis-1/4" : "xl:basis-1/3"
+                )}
+              >
+                <CardBlock key={card._key} card={card} className="h-full" />
+              </CarouselItem>
+            ))}
         </Carousel>
       ) : (
         <>
@@ -56,14 +57,14 @@ export function CardsBlock({ cards }: Props) {
               !cards.hasTags && "md:auto-rows-1fr"
             )}
           >
-            {cards.hasTags ? (
+            {cards.hasTags && cards.items ? (
               <CardTags
                 tags={cards.tags}
                 cards={cards.items}
                 useFourColumns={cards.useFourColumns}
               />
             ) : (
-              cards.items.map((card) => {
+              cards.items?.map((card) => {
                 return (
                   <div
                     key={card._key}

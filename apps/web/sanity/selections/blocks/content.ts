@@ -22,6 +22,7 @@ export const contentSelection = {
         _type: ['"unsupported"', q.literal("unsupported")],
         unsupportedType: ["_type", q.string()],
       },
-    }),
-  fullWidth: nullToUndefined(q.boolean().optional()),
+    })
+    .nullable(),
+  fullWidth: q.boolean().optional().nullable(),
 } satisfies Selection

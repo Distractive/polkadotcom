@@ -65,7 +65,7 @@ export default function CardSmallBlock({ card, className }: Props) {
               </Heading>
             )}
             {body && <CardDescription className="">{body}</CardDescription>}
-            {link && link.variant && (
+            {link && link.variant && (link.external || link.internal) && (
               <Button
                 tabIndex={-1}
                 asChild

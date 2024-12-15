@@ -9,7 +9,6 @@ export default defineType({
       title: "Title",
       name: "title",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       title: "Body",
@@ -45,7 +44,7 @@ export default defineType({
           type: "accordion-item",
         }),
       ],
-      validation: (Rule) => Rule.required().min(2).max(12),
+      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

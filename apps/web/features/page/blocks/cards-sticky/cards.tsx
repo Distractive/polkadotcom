@@ -10,6 +10,8 @@ interface Props {
 }
 
 export function CardsStickyBlock({ cards }: Props) {
+  if (!cards) return null
+
   return (
     <div
       key={cards._key}
@@ -22,11 +24,14 @@ export function CardsStickyBlock({ cards }: Props) {
         </div>
       </div>
       <div className="flex flex-col gap-gutter lg:inline-flex lg:w-[60%] lg:align-top">
-        {cards.items.map((card) => (
-          <div key={card._key} className="z-10 lg:sticky lg:top-gutter">
-            <CardStickyBlock card={card} />
-          </div>
-        ))}
+        {cards?.items?.map(
+          (card) =>
+            card && (
+              <div key={card._key} className="z-10 lg:sticky lg:top-gutter">
+                <CardStickyBlock card={card} />
+              </div>
+            )
+        )}
       </div>
     </div>
   )

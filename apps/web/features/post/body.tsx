@@ -125,7 +125,9 @@ export function Body({ body }: Props) {
                       </div>
                     )}
                     <div className="flex flex-col justify-center">
-                      <p className="font-default">{value.text}</p>
+                      {value.text && (
+                        <p className="font-default">{value.text}</p>
+                      )}
                       {value.author && (
                         <footer className="mt-4">
                           <cite className="font-default font-bold not-italic">

@@ -85,7 +85,7 @@ export function MenuDesktop({
                 )}
               >
                 <img
-                  src={section.aside.image.asset.url}
+                  src={section.aside.image.asset.url || ""}
                   alt=""
                   className="w-full"
                 />

@@ -14,6 +14,8 @@ import { Body } from "@/features/post/body"
 export async function generateStaticParams() {
   const slugs = await getAllGlossarySlugs()
 
+  if (!slugs?.length) return []
+
   return slugs.map((slug) => ({
     slug: slug,
   }))

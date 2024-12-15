@@ -25,7 +25,7 @@ interface Props {
 }
 
 export function PageBuilder({ pageBuilder }: Props) {
-  return pageBuilder.map((item) => {
+  return pageBuilder?.map((item) => {
     switch (item._type) {
       case "faqs":
         return <FAQBlock faqs={item} />

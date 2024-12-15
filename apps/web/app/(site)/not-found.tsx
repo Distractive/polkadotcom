@@ -12,9 +12,9 @@ export default async function NotFound() {
   const data = await getPageNotFound()
 
   const header: TypeFromSelection<typeof notfoundSelection> = {
-    heading: data.heading,
-    body: data.body,
-    links: data.links,
+    heading: data?.heading || "404",
+    body: data?.body || "Page not found",
+    links: data?.links || [],
   }
 
   return (

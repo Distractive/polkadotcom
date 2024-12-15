@@ -8,7 +8,6 @@ export default defineType({
       name: "pageBuilder",
       type: "array",
       description: "Add content to the page using different blocks",
-      validation: (Rule) => Rule.required().min(1),
       of: [
         defineArrayMember({
           name: "faqs",

@@ -15,7 +15,6 @@ export default defineType({
       title: "Heading",
       type: "string",
       group: "content",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "body",
@@ -23,7 +22,6 @@ export default defineType({
       type: "text",
       rows: 5,
       group: "content",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "content",

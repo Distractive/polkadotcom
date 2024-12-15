@@ -5,8 +5,9 @@ import { cardTimelineSelection } from "./card-timeline"
 
 export const cardsTimelineSelection = {
   _key: q.string(),
-  heading: q.string(),
+  heading: q.string().optional().nullable(),
   items: q("items")
     .filter()
-    .grab({ ...cardTimelineSelection }),
+    .grab({ ...cardTimelineSelection })
+    .nullable(),
 } satisfies Selection

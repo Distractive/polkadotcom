@@ -7,7 +7,7 @@ import { pageBuilderSelection } from "../selections/page-builder"
 export async function getSingletonMeta(
   type: "home" | "blog" | "press-releases" | "case-studies" | "glossary"
 ) {
-  const pageQuery = q("*")
+  const metaQuery = q("*")
     .filter(`_type == '${type}'`)
     .grab({
       meta: q("meta")
@@ -23,11 +23,17 @@ export async function getSingletonMeta(
     .slice(0)
     .nullable()
 
-  return await runQuery(pageQuery, {}, false)
+  try {
+    const result = await runQuery(metaQuery, {}, false)
+    return result
+  } catch (error) {
+    console.error("Error fetching meta:", error)
+    return null
+  }
 }
 
 export async function getPageMeta(slug: string) {
-  const pageQuery = q("*")
+  const metaQuery = q("*")
     .filter("_type == 'landing' || _type == 'page' || _type == 'hygiene'")
     .filter("slug.current == $slug")
     .grab({
@@ -51,13 +57,13 @@ export async function getPageMeta(slug: string) {
     .slice(0)
     .nullable()
 
-  return await runQuery(
-    pageQuery,
-    {
-      slug: slug,
-    },
-    false
-  )
+  try {
+    const result = await runQuery(metaQuery, { slug }, false)
+    return result
+  } catch (error) {
+    console.error("Error fetching page meta:", error)
+    return null
+  }
 }
 
 export async function getPage(slug: string, isDraftMode: boolean) {
@@ -82,7 +88,13 @@ export async function getPage(slug: string, isDraftMode: boolean) {
     .slice(0)
     .nullable()
 
-  return await runQuery(pageQuery, { slug }, isDraftMode)
+  try {
+    const result = await runQuery(pageQuery, { slug }, isDraftMode)
+    return result
+  } catch (error) {
+    console.error("Error fetching page:", error)
+    return null
+  }
 }
 
 export async function getSlugs(type: "landing" | "page" | "hygiene") {
@@ -97,5 +109,12 @@ export async function getSlugs(type: "landing" | "page" | "hygiene") {
         })
         .nullable(),
     })
-  return await runQuery(slugQuery, {}, false)
+
+  try {
+    const result = await runQuery(slugQuery, {}, false)
+    return result
+  } catch (error) {
+    console.error("Error fetching slugs:", error)
+    return null
+  }
 }

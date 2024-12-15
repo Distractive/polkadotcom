@@ -25,23 +25,25 @@ export function QuoteBlock({ quote, className }: Props) {
           quote.image ? "lg:col-start-4" : "lg:col-start-3"
         )}
       >
-        <PortableText
-          value={quote.title}
-          components={{
-            block: {
-              h3: ({ children }) => (
-                <Heading variant="h2" size="h3">
-                  {children}
-                </Heading>
-              ),
-            },
-            marks: {
-              highlight: ({ children }) => (
-                <strong className="font-medium text-pink">{children}</strong>
-              ),
-            },
-          }}
-        />
+        {quote.title && (
+          <PortableText
+            value={quote.title}
+            components={{
+              block: {
+                h3: ({ children }) => (
+                  <Heading variant="h2" size="h3">
+                    {children}
+                  </Heading>
+                ),
+              },
+              marks: {
+                highlight: ({ children }) => (
+                  <strong className="font-medium text-pink">{children}</strong>
+                ),
+              },
+            }}
+          />
+        )}
         {quote.body && (
           <p className={cn("text-lg leading-[150%] text-grey-500", className)}>
             {quote.body}

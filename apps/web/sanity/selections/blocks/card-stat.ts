@@ -1,11 +1,12 @@
 import { q } from "groqd"
 import type { Selection } from "groqd"
+
 import { customUrlSelection } from "../custom-url"
 
 export const cardStatSelection = {
   _key: q.string(),
-  heading: q.string(),
-  body: q.string(),
+  heading: q.string().optional().nullable(),
+  body: q.string().optional().nullable(),
   content: q("content")
     .filter()
     .select({
@@ -19,5 +20,6 @@ export const cardStatSelection = {
         _type: ['"unsupported"', q.literal("unsupported")],
         unsupportedType: ["_type", q.string()],
       },
-    }).nullable(),
+    })
+    .nullable(),
 } satisfies Selection

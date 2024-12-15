@@ -10,6 +10,8 @@ interface Props {
 }
 
 export function CardsStatBlock({ cards }: Props) {
+  if (!cards || !cards?.items?.length) return null
+
   return (
     <div
       key={cards._key}
@@ -25,7 +27,7 @@ export function CardsStatBlock({ cards }: Props) {
           <CardStatBlock
             key={card._key}
             card={card}
-            className="col-span-full md:col-span-3 lg:col-span-3"
+            className="col-span-full md:col-span-3 lg:col-span-4"
           />
         ))}
       </div>

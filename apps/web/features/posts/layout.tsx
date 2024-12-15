@@ -39,8 +39,7 @@ export default async function Layout({
   type,
   withHeader = true,
 }: LayoutProps) {
-  const isDraftMode = draftMode().isEnabled
-  const data = await getPosts(page, type, tagSlug, isDraftMode)
+  const data = await getPosts(page, type, tagSlug, false)
 
   const postType = (() => {
     switch (type) {
@@ -142,44 +141,48 @@ export default async function Layout({
           {header.body && <p className="text-lg">{header.body}</p>}
         </div>
       </header>
-      <div id="main-content" className="max-width col-span-full px-gutter">
-        <div className="grid-system col-span-full mb-card">
-          {tagSlug === "" && (
-            <search
-              role="search"
-              className="col-span-full mb-8 lg:col-span-8 lg:mb-0"
-            >
-              <SearchBar searches={searchData} postType={type} />
-            </search>
-          )}
-
-          <div
-            className={cn(
-              "col-span-full flex items-center lg:col-span-4 lg:justify-end",
-              tagSlug !== "" && "lg:col-span-full"
+      {data && (
+        <div id="main-content" className="max-width col-span-full px-gutter">
+          <div className="grid-system col-span-full mb-card">
+            {tagSlug === "" && (
+              <search
+                role="search"
+                className="col-span-full mb-8 lg:col-span-8 lg:mb-0"
+              >
+                {searchData && (
+                  <SearchBar searches={searchData} postType={type} />
+                )}
+              </search>
             )}
-          >
-            <span className="text-sm lg:px-gutter">
-              Page:{" "}
-              <span className="text-center font-bold">
-                {page} of {Math.ceil(data.totalCount / POSTS_PER_PAGE)}
+
+            <div
+              className={cn(
+                "col-span-full flex items-center lg:col-span-4 lg:justify-end",
+                tagSlug !== "" && "lg:col-span-full"
+              )}
+            >
+              <span className="text-sm lg:px-gutter">
+                Page:{" "}
+                <span className="text-center font-bold">
+                  {page} of {Math.ceil(data.totalCount / POSTS_PER_PAGE)}
+                </span>
               </span>
-            </span>
+            </div>
           </div>
+
+          <section className="col-span-full">
+            <Grid posts={data.posts} />
+          </section>
+
+          <PostPagination
+            total={data.totalCount}
+            limit={POSTS_PER_PAGE}
+            page={page}
+            type={type}
+            tagSlug={tagSlug != "" ? tagSlug : undefined}
+          />
         </div>
-
-        <section className="col-span-full">
-          <Grid posts={data.posts} />
-        </section>
-
-        <PostPagination
-          total={data.totalCount}
-          limit={POSTS_PER_PAGE}
-          page={page}
-          type={type}
-          tagSlug={tagSlug != "" ? tagSlug : undefined}
-        />
-      </div>
+      )}
     </>
   )
 }

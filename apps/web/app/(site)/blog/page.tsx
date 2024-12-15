@@ -8,6 +8,7 @@ export const dynamicParams = true
 
 export async function generateMetadata(): Promise<Metadata> {
   const meta = await getSingletonMeta("blog")
+
   if (!meta)
     return {
       title: "Polkadot 404",

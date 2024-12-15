@@ -37,6 +37,9 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   const childSlugs = await getSlugs("page")
+
+  if (!childSlugs?.length) return []
+
   return childSlugs.map((item) => ({
     slug: item.parent?.slug ?? "",
     childslug: item.slug.split("/")[1],

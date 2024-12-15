@@ -5,9 +5,10 @@ import { cardStatSelection } from "./card-stat"
 
 export const cardsStatSelection = {
   _key: q.string(),
-  heading: q.string(),
-  body: nullToUndefined(q.string().optional()),
+  heading: q.string().optional().nullable(),
+  body: q.string().optional().nullable(),
   items: q("items")
     .filter()
-    .grab({ ...cardStatSelection }),
+    .grab({ ...cardStatSelection })
+    .nullable(),
 } satisfies Selection

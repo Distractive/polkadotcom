@@ -44,6 +44,8 @@ const TimeUnit = ({ value, label }: TimeUnitProps) => (
 )
 
 export function CountdownTimer({ countdownTimer }: Props) {
+  if (!countdownTimer || !countdownTimer.targetDate) return null
+
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
@@ -54,8 +56,9 @@ export function CountdownTimer({ countdownTimer }: Props) {
   const countdown = { body: "" }
 
   useEffect(() => {
+    if (!countdownTimer.targetDate) return
     const calculateTimeLeft = () => {
-      const difference = +new Date(countdownTimer.targetDate) - +new Date()
+      const difference = +new Date(countdownTimer.targetDate!) - +new Date()
 
       if (difference > 0) {
         setTimeLeft({

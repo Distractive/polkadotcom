@@ -8,7 +8,6 @@ import { VisualEditing } from "next-sanity"
 
 import "@shared/ui/styles/global.css"
 
-import { headers } from "next/headers"
 import { getFooter } from "@/sanity/queries/footer"
 import { getNavigation } from "@/sanity/queries/navigation"
 import { cn } from "@shared/ui/lib/utils"
@@ -41,14 +40,12 @@ export default async function RootLayout({
 }>) {
   const footer = await getFooter()
   const navigation = await getNavigation()
-
-  const headersList = headers()
-  const hostname = (await headersList).get("host")
+  const isProduction = env.NODE_ENV === "production"
 
   return (
     <html lang="en">
       <head>
-        {env.VERCEL_ENV === "production" ? (
+        {isProduction ? (
           <Script src="https://cmp.osano.com/169unzUF2IaM42S5j/80a27ab0-b5e2-40d2-b909-d45519c89760/osano.js" />
         ) : (
           <Script src="https://cmp.osano.com/169unzUF2IaM42S5j/0f63db37-496b-4a14-a233-82bbdf3a4afd/osano.js" />
@@ -174,13 +171,13 @@ export default async function RootLayout({
         </a>
         {/* <BannerWrapper /> */}
         <div className="relative">
-          <NavigationLayout navigation={navigation} />
+          {navigation && <NavigationLayout navigation={navigation} />}
 
           <main role="main" className="flex-grow ">
             {children}
           </main>
         </div>
-        <FooterLayout footer={footer} />
+        {footer && <FooterLayout footer={footer} />}
         {env.VERCEL_ENV === "development" && <TailwindIndicator />}
         {(await draftMode()).isEnabled && <VisualEditing />}
         {env.VERCEL_ENV === "production" && (
@@ -192,7 +189,7 @@ export default async function RootLayout({
 
         <noscript>
           <img
-            src={`https://queue.simpleanalyticscdn.com/noscript.gif?hostname=${hostname}`}
+            src="https://queue.simpleanalyticscdn.com/noscript.gif?hostname=polkadot.com"
             alt=""
             width="0"
             height="0"

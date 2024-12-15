@@ -10,6 +10,8 @@ interface Props {
 }
 
 export default function CardLogoBlock({ card, className }: Props) {
+  if (!card) return null
+
   const { _key, name, image, link } = card
 
   return (
@@ -24,12 +26,14 @@ export default function CardLogoBlock({ card, className }: Props) {
     >
       <CustomUrl value={card.link} isWrapper>
         <div className="flex h-20 items-center justify-center px-card md:h-[7.5rem] lg:px-[1.45rem]">
-          <img
-            src={image.asset.url}
-            alt={name}
-            loading="lazy"
-            className="w-full"
-          />
+          {image && (
+            <img
+              src={image?.asset.url}
+              alt={name || "Logo"}
+              loading="lazy"
+              className="w-full"
+            />
+          )}
         </div>
       </CustomUrl>
     </Card>

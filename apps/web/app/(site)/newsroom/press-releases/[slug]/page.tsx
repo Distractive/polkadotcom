@@ -15,6 +15,13 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const meta = await getPostMeta(slug)
 
+  if (!meta) {
+    return {
+      title: "",
+      description: "",
+    }
+  }
+
   return {
     title: meta.meta_title || meta.title,
     description: meta.meta_description || meta.custom_excerpt,
@@ -24,6 +31,8 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   const slugs = await getSlugs(PRESS_RELEASE_POSTTYPE)
+
+  if (!slugs?.length) return []
 
   return slugs.map((item) => ({
     slug: item.slug,

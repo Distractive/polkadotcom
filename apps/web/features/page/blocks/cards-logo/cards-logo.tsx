@@ -10,6 +10,8 @@ interface Props {
 }
 
 export function CardsLogoBlock({ cards }: Props) {
+  if (!cards) return null
+
   return (
     <div
       key={cards._key}
@@ -20,13 +22,17 @@ export function CardsLogoBlock({ cards }: Props) {
         {cards.body && <p>{cards.body}</p>}
       </div>
       <div className={cn("grid-system col-span-full gap-gutter")}>
-        {cards.items.map((card) => (
-          <CardLogoBlock
-            key={card._key}
-            card={card}
-            className="col-span-3 md:col-span-2 lg:col-span-2"
-          />
-        ))}
+        {cards?.items?.length &&
+          cards.items.map(
+            (card) =>
+              card && (
+                <CardLogoBlock
+                  key={card._key}
+                  card={card}
+                  className="col-span-3 md:col-span-2 lg:col-span-2"
+                />
+              )
+          )}
       </div>
     </div>
   )

@@ -5,8 +5,8 @@ import { customUrlSelection } from "../custom-url"
 
 export const cardSmallSelection = {
   _key: q.string(),
-  heading: q.string(),
-  body: nullToUndefined(q.string().optional()),
+  heading: q.string().optional().nullable(),
+  body: q.string().optional().nullable(),
   link: q("link")
     .grab$({
       ...customUrlSelection,
@@ -15,5 +15,5 @@ export const cardSmallSelection = {
   icon: sanityImage("icon", {
     withAsset: ["base", "dimensions"],
   }).nullable(),
-  eyebrow: nullToUndefined(q.string().optional()),
+  eyebrow: q.string().optional().nullable(),
 } satisfies Selection

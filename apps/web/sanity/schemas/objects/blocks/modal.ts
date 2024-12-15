@@ -15,28 +15,24 @@ export default defineType({
       title: "Heading",
       type: "string",
       group: "cta",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "body",
       title: "Body",
       type: "string",
       group: "cta",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "cta",
       title: "Button label",
       type: "string",
       group: "cta",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "modalHeading",
       title: "Modal Heading",
       type: "string",
       group: "modal",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "formType",
@@ -46,7 +42,6 @@ export default defineType({
       options: {
         list: HBSPT_LIST,
       },
-      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

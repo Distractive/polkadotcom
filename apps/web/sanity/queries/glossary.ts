@@ -23,8 +23,14 @@ export async function getGlossary() {
         }),
     })
     .slice(0)
+    .nullable()
 
-  return await runQuery(query, {}, false)
+  try {
+    const result = await runQuery(query, {}, false)
+    return result
+  } catch (error) {
+    console.error("Error fetching glossary:", error)
+  }
 }
 
 export async function getGlossaryEntry(slug: string) {
@@ -35,7 +41,15 @@ export async function getGlossaryEntry(slug: string) {
       ...glossaryEntrySelection,
     })
     .slice(0)
-  return await runQuery(query, { slug }, false)
+    .nullable()
+
+  try {
+    const result = await runQuery(query, { slug }, false)
+    return result
+  } catch (error) {
+    console.error("Error fetching glossary entry:", error)
+    return null
+  }
 }
 
 export async function getGlossaryEntryMeta(slug: string) {
@@ -66,9 +80,16 @@ export async function getAllGlossarySlugs() {
     .grab({
       slug: q("slug.current"),
     })
+    .nullable()
 
-  const results = await runQuery(slugQuery, {}, false)
-  return results
-    .map((result: { slug?: unknown }) => result.slug)
-    .filter(Boolean)
+  try {
+    const results = await runQuery(slugQuery, {}, false)
+    if (results)
+      return results
+        .map((result: { slug?: unknown }) => result.slug)
+        .filter(Boolean)
+  } catch (error) {
+    console.error("Error fetching glossary slugs:", error)
+    return null
+  }
 }

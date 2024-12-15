@@ -38,7 +38,7 @@ export function MediaBlock({ mediaBlock, className }: Props) {
     >
       <Card
         className={cn(
-          "w-full rounded-2xl border-none",
+          "w-full rounded-none border-none",
           !mediaBlock.isFullWidthVideo &&
             "col-span-full md:!h-auto lg:col-span-8 lg:col-start-3"
         )}

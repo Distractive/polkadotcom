@@ -15,9 +15,9 @@ export const mediaBlockSelection = {
       ...videoSelection,
     })
     .nullable(),
-  eyebrow: nullToUndefined(q.string().optional()),
-  heading: nullToUndefined(q.string().optional()),
-  body: nullToUndefined(q.string().optional()),
+  eyebrow: q.string().optional().nullable(),
+  heading: q.string().optional().nullable(),
+  body: q.string().optional().nullable(),
   links: q("links")
     .filter()
     .select({

@@ -13,9 +13,9 @@ export default defineType({
     {
       name: "variant",
       title: "Variant",
-      description: "Choose the variant of the link",
+      description:
+        "Choose the variant of the link (choose the blank field from the dropdown to remove the link)",
       type: "string",
-      initialValue: "primary",
       options: {
         list: ["primary", "secondary"],
       },

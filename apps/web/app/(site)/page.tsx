@@ -31,7 +31,7 @@ export default async function Home() {
   return (
     <>
       <section className="col-span-full overflow-hidden">
-        <Root home={home.home} />
+        {home && <Root home={home.home} />}
       </section>
     </>
   )

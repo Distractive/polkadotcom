@@ -54,90 +54,98 @@ export function CTA({ cta }: Props) {
             >
               {cta.heading}
             </Heading>
-            <PortableText
-              value={cta.content}
-              components={{
-                block: {
-                  h3: ({ children }) => (
-                    <Heading variant="h3" className="w-full">
-                      {children}
-                    </Heading>
-                  ),
-                  normal: ({ children }) => (
-                    <p className="text-lg ">{children}</p>
-                  ),
-                  smallprint: ({ children }) => (
-                    <p className="text-sm ">{children}</p>
-                  ),
-                },
-                list: {
-                  bullet: ({ children }) => (
-                    <ul className="flex list-inside list-disc flex-col gap-copy ">
-                      {children}
-                    </ul>
-                  ),
-                },
-                listItem: {
-                  bullet: ({ children }) => <li>{children}</li>,
-                },
-              }}
-            />
-
-            {/* BUTTON BLOCK (ENABLES ROW FOR BUTTONS) */}
-            <div className="flex flex-col gap-3 pt-3 md:flex-row">
+            {cta.content && (
               <PortableText
                 value={cta.content}
                 components={{
                   block: {
-                    h3: ({ children }) => null,
-                    normal: ({ children }) => null,
-                    smallprint: ({ children }) => null,
+                    h3: ({ children }) => (
+                      <Heading variant="h3" className="w-full">
+                        {children}
+                      </Heading>
+                    ),
+                    normal: ({ children }) => (
+                      <p className="text-lg ">{children}</p>
+                    ),
+                    smallprint: ({ children }) => (
+                      <p className="text-sm ">{children}</p>
+                    ),
                   },
                   list: {
-                    bullet: ({ children }) => null,
+                    bullet: ({ children }) => (
+                      <ul className="flex list-inside list-disc flex-col gap-copy ">
+                        {children}
+                      </ul>
+                    ),
                   },
                   listItem: {
-                    bullet: ({ children }) => null,
+                    bullet: ({ children }) => <li>{children}</li>,
                   },
                   types: {
-                    customUrl: ({ value }) => {
-                      return (
-                        <span className="">
-                          <Button
-                            size="md"
-                            asChild
-                            className="no-wrap md:cursor-pointer"
-                            variant={
-                              value?.variant
-                                ? value.variant === "primary"
-                                  ? "primary"
-                                  : "secondary"
-                                : "primary"
-                            }
-                          >
-                            <CustomUrl
-                              className="outline-none"
-                              value={{
-                                internal: value?.internal,
-                                external: value?.external,
-                              }}
-                            >
-                              {value.label}
-                            </CustomUrl>
-                          </Button>
-                        </span>
-                      )
-                    },
-                    newsletterButton: ({ value }) => {
-                      return (
-                        <span className="">
-                          <NewsletterButton value={value} />
-                        </span>
-                      )
-                    },
+                    customUrl: () => null,
+                    newsletterButton: () => null,
                   },
                 }}
               />
+            )}
+
+            {/* Separate rich text for buttons, alows them to be placed on  a new row*/}
+            <div className="flex flex-col gap-3 pt-3 md:flex-row">
+              {cta.content && (
+                <PortableText
+                  value={cta.content}
+                  components={{
+                    block: {
+                      h3: () => null,
+                      normal: () => null,
+                      smallprint: () => null,
+                    },
+                    list: {
+                      bullet: () => null,
+                    },
+                    listItem: {
+                      bullet: () => null,
+                    },
+                    types: {
+                      customUrl: ({ value }) => {
+                        return (
+                          <span className="">
+                            <Button
+                              size="md"
+                              asChild
+                              className="no-wrap md:cursor-pointer"
+                              variant={
+                                value?.variant
+                                  ? value.variant === "primary"
+                                    ? "primary"
+                                    : "secondary"
+                                  : "primary"
+                              }
+                            >
+                              <CustomUrl
+                                className="outline-none"
+                                value={{
+                                  internal: value?.internal,
+                                  external: value?.external,
+                                }}
+                              >
+                                {value.label}
+                              </CustomUrl>
+                            </Button>
+                          </span>
+                        )
+                      },
+                      newsletterButton: ({ value }) => {
+                        return (
+                          <span className="">
+                            <NewsletterButton value={value} />
+                          </span>
+                        )
+                      },
+                    },
+                  }}
+                />
+              )}
             </div>
           </div>
         </div>

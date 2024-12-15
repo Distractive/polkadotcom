@@ -5,18 +5,18 @@ import { customUrlSelection } from "../custom-url"
 
 export const accordionSelection = {
   _key: q.string(),
-  title: q.string(),
+  title: q.string().optional().nullable(),
   body: q.string().optional().nullable(),
   image: sanityImage("image", {
     withAsset: ["base"],
   }).nullable(),
-  hasTitleOnSide: q.boolean(),
-  hasNumbers: q.boolean(),
+  hasTitleOnSide: q.boolean().nullable(),
+  hasNumbers: q.boolean().nullable(),
   items: q("items")
     .filter()
     .grab({
-      _key: q.string(),
-      heading: q.string(),
+      _key: q.string().optional().nullable(),
+      heading: q.string().optional().nullable(),
       content: q("content")
         .filter()
         .select({
@@ -34,6 +34,8 @@ export const accordionSelection = {
             _type: ['"unsupported"', q.literal("unsupported")],
             unsupportedType: ["_type", q.string()],
           },
-        }),
-    }),
+        })
+        .nullable(),
+    })
+    .nullable(),
 } satisfies Selection

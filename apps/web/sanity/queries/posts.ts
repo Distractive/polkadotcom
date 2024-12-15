@@ -70,16 +70,20 @@ export async function getPosts(
   }
 
   if (filteredSlug) {
-    params.filteredSlug = filteredSlug // Add filteredSlug only if it's defined
+    params.filteredSlug = filteredSlug
   }
 
-  const result = await runQuery(
-    paginate(postQuery, postSelection, page, POSTS_PER_PAGE),
-    params,
-    isDraftMode
-  )
-
-  return result
+  try {
+    const result = await runQuery(
+      paginate(postQuery, postSelection, page, POSTS_PER_PAGE),
+      params,
+      isDraftMode
+    )
+    return result
+  } catch (error) {
+    console.error("Error running query:", error)
+    return null
+  }
 }
 
 export type PostType = "blog" | "press-releases" | "case-studies"
@@ -90,9 +94,11 @@ export async function getPostHeading(postType: PostType) {
     .grab$({
       ...blogSelection,
     })
+    .nullable()
 
   try {
     const result = await runQuery(query, {}, false)
+    if (!result?.length) return []
     return result
   } catch (error) {
     console.error("Error running query:", error)
@@ -107,6 +113,13 @@ export async function getSlugs(postType: string) {
     .grab({
       slug: q.slug("slug"),
     })
+    .nullable()
 
-  return await runQuery(query, {}, false)
+  try {
+    const result = await runQuery(query, {}, false)
+    return result
+  } catch (error) {
+    console.error("Error fetching post slugs:", error)
+    return null
+  }
 }

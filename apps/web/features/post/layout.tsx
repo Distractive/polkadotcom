@@ -1,5 +1,7 @@
 import type { ReactNode } from "react"
 import { draftMode } from "next/headers"
+import Image from "next/image"
+import { notFound } from "next/navigation"
 import { getPost } from "@/sanity/queries/post"
 import {
   getPostHeading,
@@ -49,6 +51,10 @@ export default async function Layout({ slug, type }: LayoutProps) {
   //
   const [postsData] = await getPostHeading(headingType)
 
+  if (!post) {
+    return notFound()
+  }
+
   const breadcrumb: BreadcrumbProps = {
     items: (() => {
       switch (type) {
@@ -92,6 +98,10 @@ export default async function Layout({ slug, type }: LayoutProps) {
     })(),
   }
 
+  if (!post) {
+    return notFound()
+  }
+
   const {
     title,
     custom_excerpt,
@@ -114,7 +124,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
         </Heading>
         <PostExcerpt>{custom_excerpt}</PostExcerpt>
         <PostMetaData>
-          {tags && (
+          {tags && post_type && (
             <ul className="mb-6 flex flex-wrap gap-3">
               {tags.map((tag) => (
                 <li
@@ -139,27 +149,32 @@ export default async function Layout({ slug, type }: LayoutProps) {
           )}
 
           <PostPublish>
-            <img
-              className="h-6 w-6 rounded-full"
-              src={author.image.asset.url}
-              alt=""
-              loading="lazy"
-            />
-            <span>By {author.name}</span>
-            <span>•</span>
-            <span>
-              {published_date.toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </span>
+            {author && (
+              <>
+                <img
+                  className="h-6 w-6 rounded-full"
+                  src={author.image.asset.url}
+                  alt=""
+                  loading="lazy"
+                />
+                <span>By {author.name}</span>
+                <span>•</span>
+                <span>
+                  {published_date &&
+                    published_date.toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                </span>
+              </>
+            )}
           </PostPublish>
         </PostMetaData>
         {image && (
           <PostImage>
-            <img
-              src={image.asset.url}
+            <Image
+              src={image.asset.url || ""}
               width={image.asset.metadata.dimensions?.width}
               height={image.asset.metadata.dimensions?.height}
               alt=""
@@ -168,11 +183,11 @@ export default async function Layout({ slug, type }: LayoutProps) {
             />
           </PostImage>
         )}
-        <div className="mb-32">
-          <Body body={body} />
-        </div>
+        <div className="mb-32">{body && <Body body={body} />}</div>
       </article>
-      <MorePost posts={allPosts.posts} post_type={post_type} />
+      {post_type && allPosts && allPosts.posts.length > 0 && (
+        <MorePost posts={allPosts.posts} post_type={post_type} />
+      )}
     </>
   )
 }

@@ -19,7 +19,6 @@ export default defineType({
       name: "heading",
       title: "Heading",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "isCentered",

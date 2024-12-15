@@ -1,14 +1,13 @@
 import { nullToUndefined, q, sanityImage } from "groqd"
 import type { Selection } from "groqd"
-import { videoSelection } from "./video"
-
 
 import { customUrlSelection } from "../custom-url"
+import { videoSelection } from "./video"
 
 export const sideBySideSelection = {
   _key: q.string(),
-  heading: q.string(),
-  subheading: nullToUndefined(q.string().optional()),
+  heading: q.string().optional().nullable(),
+  subheading: q.string().optional().nullable(),
   image: sanityImage("image", {
     withAsset: ["base", "dimensions"],
   }).nullable(),
@@ -18,7 +17,7 @@ export const sideBySideSelection = {
     })
     .nullable(),
   altText: q.string().nullable().optional(),
-  isImageOnLeft: q.boolean(),
+  isImageOnLeft: q.boolean().optional().nullable(),
   content: q("content")
     .filter()
     .select({
@@ -32,5 +31,6 @@ export const sideBySideSelection = {
         _type: ['"unsupported"', q.literal("unsupported")],
         unsupportedType: ["_type", q.string()],
       },
-    }),
+    })
+    .nullable(),
 } satisfies Selection

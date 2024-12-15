@@ -14,5 +14,6 @@ export const cardsSelection = {
   tags: q.array(q.string()).nullable(),
   items: q("items")
     .filter()
-    .grab({ ...cardSelection }),
+    .grab({ ...cardSelection })
+    .nullable(),
 } satisfies Selection

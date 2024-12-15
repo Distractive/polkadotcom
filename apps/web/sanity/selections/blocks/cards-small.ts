@@ -5,11 +5,12 @@ import { cardSmallSelection } from "./card-small"
 
 export const cardsSmallSelection = {
   _key: q.string(),
-  heading: nullToUndefined(q.string().optional()),
-  body: nullToUndefined(q.string().optional()),
+  heading: q.string().optional().nullable(),
+  body: q.string().optional().nullable(),
   items: q("items")
     .filter()
-    .grab({ ...cardSmallSelection }),
+    .grab({ ...cardSmallSelection })
+    .nullable(),
   backgroundImage: sanityImage("backgroundImage", {
     withAsset: ["base", "dimensions"],
   }).nullable(),

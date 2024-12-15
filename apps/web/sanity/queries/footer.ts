@@ -4,12 +4,19 @@ import { q } from "groqd"
 import { footerSelection } from "../selections/footer/footer"
 
 export async function getFooter() {
-  const query = q("*")
+  const footerQuery = q("*")
     .filterByType("footer")
     .grab$({
       ...footerSelection,
     })
     .slice(0)
+    .nullable()
 
-  return await runQuery(query, {}, false)
+  try {
+    const result = await runQuery(footerQuery, {}, false)
+    return result
+  } catch (error) {
+    console.error("Error fetching footer:", error)
+    return null
+  }
 }
