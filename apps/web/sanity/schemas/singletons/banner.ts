@@ -21,6 +21,11 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "mobileText",
+      title: "Mobile Text",
+      type: "string",
+    }),
+    defineField({
       name: "icon",
       title: "Icon",
       type: "image",

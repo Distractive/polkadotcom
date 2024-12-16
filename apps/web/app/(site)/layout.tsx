@@ -14,7 +14,9 @@ import { cn } from "@shared/ui/lib/utils"
 
 import { env } from "@/env.mjs"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
-// import { BannerWrapper } from "@/features/banner/wrapper"
+
+import { BannerWrapper } from "@/features/banner/banner-wrapper"
+
 import FooterLayout from "@/features/footer/layout"
 import NavigationLayout from "@/features/navigation/layout"
 
@@ -41,6 +43,7 @@ export default async function RootLayout({
   const footer = await getFooter()
   const navigation = await getNavigation()
   const isProduction = env.NODE_ENV === "production"
+
 
   return (
     <html lang="en">
@@ -75,6 +78,7 @@ export default async function RootLayout({
           data-domain="polkadot.com"
           defer
         />
+
         <Script id="hotjar" strategy="afterInteractive">
           {`
             (function(h,o,t,j,a,r){
@@ -169,7 +173,8 @@ export default async function RootLayout({
             Skip to main content
           </span>
         </a>
-        {/* <BannerWrapper /> */}
+
+        <BannerWrapper type="desktop" />
         <div className="relative">
           {navigation && <NavigationLayout navigation={navigation} />}
 
@@ -178,6 +183,7 @@ export default async function RootLayout({
           </main>
         </div>
         {footer && <FooterLayout footer={footer} />}
+
         {env.VERCEL_ENV === "development" && <TailwindIndicator />}
         {(await draftMode()).isEnabled && <VisualEditing />}
         {env.VERCEL_ENV === "production" && (

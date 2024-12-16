@@ -59,7 +59,7 @@ export function MenuDesktop({
                   <CustomUrl
                     value={item.link}
                     onClick={handleCloseMenu}
-                    className="leading-none transition-colors duration-200 ease-in-out hover:text-pink focus:text-pink"
+                    className="leading-none transition-colors duration-500 ease-in-out hover:text-pink focus:text-pink"
                     tabIndex={0}
                   >
                     {item.link.label}
@@ -72,11 +72,7 @@ export function MenuDesktop({
             )}
           </ul>
           {section.aside && (
-            <CustomUrl
-              value={section.aside.link}
-              onClick={handleCloseMenu}
-              disableArrow
-            >
+            <CustomUrl value={section.aside.link} onClick={handleCloseMenu}>
               <aside
                 role="complementary"
                 className={cn(
@@ -89,7 +85,7 @@ export function MenuDesktop({
                   alt=""
                   className="w-full"
                 />
-                <p className="text-lg font-bold transition-colors duration-200 ease-in-out group-hover:text-pink">
+                <p className="text-lg font-bold transition-colors duration-500 ease-in-out group-hover:text-pink">
                   {section.aside.heading}
                 </p>
               </aside>

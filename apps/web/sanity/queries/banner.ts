@@ -3,7 +3,8 @@ import { q } from "groqd"
 
 import { bannerSelection } from "../selections/banner"
 
-export async function getBanner() {
+
+export async function getBanner(isDraftMode: boolean) {
   const bannerQuery = q("*")
     .filterByType("banner")
     .grab$({
@@ -13,7 +14,7 @@ export async function getBanner() {
     .nullable()
 
   try {
-    const result = await runQuery(bannerQuery, {}, false)
+    const result = await runQuery(bannerQuery, {}, isDraftMode)
     return result
   } catch (error) {
     console.error("Error fetching banner:", error)

@@ -72,12 +72,13 @@ export default function NavigationLayout({ navigation }: Props) {
         onMouseLeave={onLeave}
         onBlur={onLeave}
         className={cn(
-          "absolute left-0 right-0 top-4 z-[100]",
-          "flex flex-col gap-nav text-black lg:gap-2",
+          "fixed left-0 right-0 top-0 z-[100]",
+          "flex flex-col  text-black lg:gap-2",
           isOpen && isMobile && "bottom-0"
         )}
       >
         <SkipToContent />
+
         <Header
           menu={navigation.menu}
           isOpen={isOpen}

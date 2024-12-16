@@ -4,7 +4,7 @@ import Icons from "../../icons/icons.svg"
 import { cn } from "../../lib/utils"
 
 const IconStyles = {
-  base: cn("inline-flex size-6"),
+  base: cn("inline-flex size-6 fill-current transition-colors duration-200"), // Added transition here
   variants: {
     chevronLeft: "icon-chevron-left",
     chevronRight: "icon-chevron-right",
@@ -27,7 +27,7 @@ const iconVariants = cva(IconStyles.base, {
 })
 
 export type IconProps = React.HTMLAttributes<SVGElement> &
-  VariantProps<typeof iconVariants>
+  VariantProps<typeof iconVariants> // Removed fill prop since we're using currentColor
 
 const Icon: React.FC<IconProps> = ({ className, variant }) => {
   if (!variant) return
@@ -43,7 +43,6 @@ const Icon: React.FC<IconProps> = ({ className, variant }) => {
     >
       <use
         xlinkHref={`${typeof Icons == "object" ? Icons.src : Icons}#${IconStyles.variants[variant]}`}
-        className={cn(iconVariants({ className }))}
       />
     </svg>
   )

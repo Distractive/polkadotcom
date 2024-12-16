@@ -6,9 +6,10 @@ import { customUrlSelection } from "./custom-url"
 
 export const bannerSelection = {
   isBannerOn: q.boolean().nullable(),
-  eyebrow: q.string().nullable(),
-  header: q.string().nullable(),
-  altText: q.string().nullable(),
+  eyebrow: q.string().optional().nullable(),
+  header: q.string().optional().nullable(),
+  altText: q.string().optional().nullable(),
+  mobileText: q.string().optional().nullable(),
   link: q("link")
     .grab$({
       ...customUrlSelection,
