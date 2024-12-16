@@ -169,7 +169,7 @@ export default async function RootLayout({
       >
         <noscript>
           <img
-            src={`https://queue.simpleanalyticscdn.com/noscript.gif?hostname=${hostname}`}
+            src={`https://queue.simpleanalyticscdn.com/noscript.gif?hostname=polkadot.com`}
             alt=""
             width="0"
             height="0"
