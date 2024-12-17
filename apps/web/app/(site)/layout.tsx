@@ -50,7 +50,7 @@ export default async function RootLayout({
         ) : (
           <Script src="https://cmp.osano.com/169unzUF2IaM42S5j/0f63db37-496b-4a14-a233-82bbdf3a4afd/osano.js" />
         )}
-
+        {/* GTM */}
         <Script id="gtm-script" strategy="afterInteractive">
           {`
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new
