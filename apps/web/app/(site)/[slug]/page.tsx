@@ -3,6 +3,7 @@ import { draftMode } from "next/headers"
 import { notFound } from "next/navigation"
 import { getPage, getPageMeta, getSlugs } from "@/sanity/queries/page"
 
+import GlobalGradient from "@/features/gradients/global-gradient"
 import { HeaderBlock } from "@/features/page/blocks/header"
 import { PageBuilder } from "@/features/page/page-builder"
 
@@ -50,7 +51,9 @@ export default async function Page({ params: { slug } }: Props) {
   if (!data?.slug) return notFound()
 
   return (
-    <div className="relative">
+    // hide overflow on mobile for gradient, remove it on large devices to avoid messing up stacking context and breaking sticky cards component
+    <div className="relative overflow-x-hidden lg:overflow-x-visible">
+      <GlobalGradient />
       {data.header && <HeaderBlock header={data.header} />}
 
       <section className="flex flex-col gap-page">

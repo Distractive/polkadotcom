@@ -26,7 +26,6 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
           className
         )}
       >
-        <GlobalGradient />
         {/* Desktop and tablet image */}
         {header.image && (
           <div className="relative hidden h-[400px] w-full md:block">
@@ -123,8 +122,6 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         !header.image && !header.title && "!mb-[-4rem] md:!mb-[-6rem]"
       )}
     >
-      <GlobalGradient />
-
       {!header.image && <div className="pt-4"></div>}
 
       {header.image && (
