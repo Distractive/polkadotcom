@@ -22,7 +22,7 @@
   "dependencies": {
     "@bsmnt/scrollytelling": "^0.3.3",
     "@codemirror/theme-one-dark": "^6.1.2",
-    "@next/third-parties": "^15.0.3",
+    "@next/third-parties": "^14.2.3",
     "@portabletext/react": "^3.0.18",
     "@radix-ui/react-slot": "^1.0.2",
     "@react-three/drei": "^9.106.0",
