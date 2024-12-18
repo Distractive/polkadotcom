@@ -116,7 +116,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
   return (
     <header
       className={cn(
-        "grid-system max-width relative col-span-full mb-16 lg:mb-page",
+        "grid-system max-width relative col-span-full mb-16 overflow-x-hidden lg:mb-page",
         className,
         header.image ? "pt-32" : "pt-0",
         // Hide margin if no image or title
