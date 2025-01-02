@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { draftMode } from "next/headers"
 import Script from "next/script"
 import { manrope, unbounded } from "@/styles/fonts"
-import { GoogleAnalytics } from "@next/third-parties/google"
 import { Analytics } from "@vercel/analytics/react"
 import { VisualEditing } from "next-sanity"
 
