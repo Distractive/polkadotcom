@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { draftMode } from "next/headers"
 import Script from "next/script"
 import { manrope, unbounded } from "@/styles/fonts"
-import { GoogleAnalytics } from "@next/third-parties/google"
 import { Analytics } from "@vercel/analytics/react"
 import { VisualEditing } from "next-sanity"
 
@@ -14,9 +13,7 @@ import { cn } from "@shared/ui/lib/utils"
 
 import { env } from "@/env.mjs"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
-
 import { BannerWrapper } from "@/features/banner/banner-wrapper"
-
 import FooterLayout from "@/features/footer/layout"
 import NavigationLayout from "@/features/navigation/layout"
 
@@ -44,7 +41,6 @@ export default async function RootLayout({
   const navigation = await getNavigation()
   const isProduction = env.NODE_ENV === "production"
 
-
   return (
     <html lang="en">
       <head>
@@ -53,6 +49,13 @@ export default async function RootLayout({
         ) : (
           <Script src="https://cmp.osano.com/169unzUF2IaM42S5j/0f63db37-496b-4a14-a233-82bbdf3a4afd/osano.js" />
         )}
+
+        <Script id="gtm-script" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://ekndrsoc.ust.stape.io/4ekndrsoc.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','1l=aWQ9R1RNLU1HOUhRNlBN&sort=desc');
+          `}
+        </Script>
+
         <Script
           id="simple-analytics"
           src="https://scripts.simpleanalyticscdn.com/latest.js"
@@ -159,6 +162,22 @@ export default async function RootLayout({
           "flex min-h-screen flex-col bg-white font-default antialiased"
         )}
       >
+        <noscript>
+          <img
+            src={`https://queue.simpleanalyticscdn.com/noscript.gif?hostname=polkadot.com`}
+            alt=""
+            width="0"
+            height="0"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+
+          <iframe
+            src="https://ekndrsoc.ust.stape.io/ns.html?id=GTM-MG9HQ6PM"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
         <a
           href="#main-content"
           className={cn(
@@ -186,22 +205,7 @@ export default async function RootLayout({
 
         {env.VERCEL_ENV === "development" && <TailwindIndicator />}
         {(await draftMode()).isEnabled && <VisualEditing />}
-        {env.VERCEL_ENV === "production" && (
-          <>
-            <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_ID} />
-            <Analytics />
-          </>
-        )}
-
-        <noscript>
-          <img
-            src="https://queue.simpleanalyticscdn.com/noscript.gif?hostname=polkadot.com"
-            alt=""
-            width="0"
-            height="0"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </noscript>
+        {env.VERCEL_ENV === "production" && <Analytics />}
       </body>
     </html>
   )
