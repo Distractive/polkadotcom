@@ -52,12 +52,8 @@ export default async function RootLayout({
 
         <Script id="gtm-script" strategy="afterInteractive">
           {`
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new
-    Date().getTime(),event:'gtm.js'});var
-    f=d.getElementsByTagName(s)
-    [0],j=d.createElement(s);j.async=true;j.src="https://ekndrsoc.ust.stape.io/4ekndrsoc.js?"+i;f.parentNode.insertBefore(j,f);})
-    (window,document,'script','dataLayer','1l=aWQ9R1RNLUtORFNQOVpD&sort=desc');
-  `}
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://ekndrsoc.ust.stape.io/4ekndrsoc.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','1l=aWQ9R1RNLU1HOUhRNlBN&sort=desc');
+          `}
         </Script>
 
         <Script
@@ -176,11 +172,11 @@ export default async function RootLayout({
           />
 
           <iframe
-            src="https://ekndrsoc.ust.stape.io/ns.html?id=GTM-KNDSP9ZC"
+            src="https://ekndrsoc.ust.stape.io/ns.html?id=GTM-MG9HQ6PM"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
-          />
+          ></iframe>
         </noscript>
         <a
           href="#main-content"
