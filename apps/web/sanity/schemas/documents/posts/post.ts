@@ -102,7 +102,49 @@ export default defineType({
             { title: "Heading 6", value: "h6" },
             { title: "Quote", value: "blockquote" },
           ],
+          marks: {
+            decorators: [
+              { title: "Strong", value: "strong" },
+              { title: "Emphasis", value: "em" },
+              { title: "Code", value: "code" },
+              { title: "Underline", value: "underline" },
+              { title: "Strike", value: "strike-through" },
+            ],
+            annotations: [
+              {
+                name: "link",
+                type: "object",
+                title: "Link",
+                fields: [
+                  {
+                    name: "href",
+                    type: "url",
+                    title:
+                      "URL. (Use relative links for internal linking, eg '/about' instead of 'https://polkadot.com/about' so internal links don't open in a new tab.)",
+                    validation: (Rule) =>
+                      Rule.uri({
+                        allowRelative: true,
+                        scheme: ["http", "https", "mailto"],
+                      }),
+                  },
+                  {
+                    title: "Nofollow?",
+                    name: "noFollow",
+                    type: "boolean",
+                    initialValue: false,
+                  },
+                  {
+                    title: "Canonical?",
+                    name: "canonical",
+                    type: "boolean",
+                    initialValue: false,
+                  },
+                ],
+              },
+            ],
+          },
         }),
+
         defineArrayMember({
           type: "image",
           fields: [

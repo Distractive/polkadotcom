@@ -12,5 +12,6 @@ export const customUrlSelection = {
       slug: q.slug("slug"),
     })
     .nullable(),
-  external: q.string().optional().nullable(),
+  external: q.string().optional().nullable(),  
+  nofollow: q.boolean().optional().nullable(),
 } satisfies Selection
