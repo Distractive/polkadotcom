@@ -18,7 +18,10 @@ export default defineType({
       of: [
         {
           type: "block",
-          styles: [{ title: "Normal", value: "normal" }],
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "Large", value: "large" },
+          ],
           marks: {
             decorators: [{ title: "Strong", value: "strong" }],
           },
