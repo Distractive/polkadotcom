@@ -15,6 +15,9 @@ export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {
   const meta = await getPageMeta(slug)
+  const data = await getPage(slug, false)
+
+  console.log("data in meta", data)
   if (!meta)
     return {
       title: "Polkadot 404",
@@ -23,12 +26,19 @@ export async function generateMetadata({
 
   return {
     title:
-      meta.meta?.meta_title || (meta.header && meta.header.title) || "Polkadot",
+      data?.title ||
+      meta.meta?.meta_title ||
+      (meta.header && meta.header.title) ||
+      "Polkadot",
     description:
       meta.meta?.meta_description ||
       (meta.header && meta.header.body) ||
       "Polkadot empowers blockchain networks to work together under the protection of shared security.",
     openGraph: {
+      title:
+        meta.meta?.meta_title ||
+        (meta.header && meta.header.title) ||
+        "Polkadot",
       images: [meta.meta?.meta_image?.asset.url || ""],
     },
   }

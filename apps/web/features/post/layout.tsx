@@ -54,6 +54,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
   if (!post) {
     return notFound()
   }
+  console.log("post", postsData)
 
   const breadcrumb: BreadcrumbProps = {
     items: (() => {
@@ -78,6 +79,17 @@ export default async function Layout({ slug, type }: LayoutProps) {
             {
               slug: "/case-studies",
               title: "Case Studies",
+            },
+          ]
+        case "Blog":
+          return [
+            {
+              slug: "/community",
+              title: "Community",
+            },
+            {
+              slug: "/blog",
+              title: "Blog",
             },
           ]
         default:

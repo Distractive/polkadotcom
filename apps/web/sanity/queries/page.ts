@@ -75,12 +75,14 @@ export async function getPage(slug: string, isDraftMode: boolean) {
       header: q("header")
         .grab({ ...headerSelection })
         .nullable(),
+      breadcrumb: q.string().nullable().optional(),
       slug: q.slug("slug"),
       parent: q("parent")
         .deref()
         .grab({
           title: q.string(),
           slug: q.slug("slug"),
+          breadcrumb: q.string().nullable().optional(),
         })
         .nullable(),
       ...pageBuilderSelection,

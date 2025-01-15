@@ -16,6 +16,9 @@ export async function generateMetadata({
   params: { slug, childslug },
 }: Props): Promise<Metadata> {
   const meta = await getPageMeta(`${slug}/${childslug}`)
+  const data = await getPage(`${slug}/${childslug}`, false)
+
+  console.log("data in meta", meta)
 
   if (!meta)
     return {
@@ -24,13 +27,16 @@ export async function generateMetadata({
     }
 
   return {
-    title:
-      meta.meta?.meta_title || (meta.header && meta.header.title) || "Polkadot",
+    title: data?.title || (meta.header && meta.header.title) || "Polkadot",
     description:
       meta.meta?.meta_description ||
       (meta.header && meta.header.body) ||
       "Polkadot empowers blockchain networks to work together under the protection of shared security.",
     openGraph: {
+      title:
+        meta.meta?.meta_title ||
+        (meta.header && meta.header.title) ||
+        "Polkadot",
       images: [meta.meta?.meta_image?.asset.url || ""],
     },
   }
@@ -53,8 +59,14 @@ export default async function Page({ params: { slug, childslug } }: Props) {
 
   const breadcrumb: BreadcrumbProps = {
     items: [
-      { slug: `/${slug}`, title: data?.parent?.title ?? "" },
-      { slug: `/${slug}/${childslug}`, title: data?.title ?? "" },
+      {
+        slug: `/${slug}`,
+        title: data?.parent?.breadcrumb || data?.parent?.title || "",
+      },
+      {
+        slug: `/${slug}/${childslug}`,
+        title: data?.breadcrumb || data?.title || "",
+      },
     ],
   }
 

@@ -33,11 +33,15 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "breadcrumb",
+      type: "string",
+      group: "config",
+    }),
+    defineField({
       name: "meta",
       type: "meta",
       group: "meta",
     }),
-
     defineField({
       name: "header",
       title: "Header",
