@@ -74,12 +74,12 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
                 <li
                   key={index}
                   onMouseEnter={() => handleCurrentHeading(item.heading)}
-                  className="relative flex h-full cursor-pointer items-center justify-center transition-colors duration-200 ease-in-out lg:hover:text-pink"
+                  className="relative flex h-full cursor-pointer items-center justify-center transition-colors duration-100 ease-in-out lg:hover:text-pink"
                 >
                   <CustomUrl
                     value={item.link}
                     onClick={handleItemSelect}
-                    className="transition-colors duration-200 ease-in-out hover:text-pink focus:text-pink peer-focus:text-pink"
+                    className="duration-100 ease-in-out hover:text-pink focus:text-pink peer-focus:text-pink"
                   >
                     {item.heading}
                   </CustomUrl>

@@ -38,7 +38,7 @@ export default function Menu({ menu, modal }: Props) {
             {item.link ? (
               <CustomUrl
                 value={item.link}
-                className="flex underline decoration-grey-400 underline-offset-8 transition duration-500 ease-out hover:decoration-black"
+                className="flex underline decoration-grey-400 underline-offset-8 transition duration-200 ease-out hover:decoration-black"
               >
                 {item.link.label}
               </CustomUrl>
@@ -53,7 +53,7 @@ export default function Menu({ menu, modal }: Props) {
               <li key={item.link.label}>
                 <CustomUrl
                   value={item.link}
-                  className="flex gap-2 text-left font-default font-light underline decoration-black/0 underline-offset-8 transition duration-500 ease-out hover:decoration-black"
+                  className="flex gap-2 text-left font-default font-light underline decoration-black/0 underline-offset-8 transition duration-200 ease-out hover:decoration-black"
                 >
                   {item.link.label}
                 </CustomUrl>

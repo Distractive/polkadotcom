@@ -47,22 +47,23 @@ export function MenuDesktop({
               : "pointer-events-none invisible"
           )}
         >
-          <ul className="grid grid-cols-2">
+          <ul className="grid h-full grid-cols-2">
             {section.items.map((item, index) => {
               return (
                 <li
                   key={index}
                   className={cn(
-                    "flex min-w-[21rem] p-nav shadow-internal-border"
+                    "flex h-full min-w-[21rem] shadow-internal-border"
                   )}
                 >
                   <CustomUrl
                     value={item.link}
                     onClick={handleCloseMenu}
-                    className="leading-none transition-colors duration-500 ease-in-out hover:text-pink focus:text-pink"
+                    className="leading-none flex h-full w-full p-nav transition-colors duration-200 ease-in-out hover:text-pink focus:text-pink"
                     tabIndex={0}
                   >
-                    {item.link.label}
+                    {" "}
+                    {item.link.label}{" "}
                   </CustomUrl>
                 </li>
               )
@@ -85,7 +86,7 @@ export function MenuDesktop({
                   alt=""
                   className="w-full"
                 />
-                <p className="text-lg font-bold transition-colors duration-500 ease-in-out group-hover:text-pink">
+                <p className="text-lg font-bold transition-colors duration-200 ease-in-out group-hover:text-pink">
                   {section.aside.heading}
                 </p>
               </aside>

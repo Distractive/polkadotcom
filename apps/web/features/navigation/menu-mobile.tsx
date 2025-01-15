@@ -76,12 +76,15 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                         key={linkIndex}
                         onClick={() => setIsOpen(false)}
                         className={cn(
-                          "flex w-full  p-nav text-left shadow-internal-border",
+                          "flex h-full w-full text-left shadow-internal-border",
                           lastLink && "border-b border-grey-200",
                           lastSection && lastLink && "border-none"
                         )}
                       >
-                        <CustomUrl value={item.link}>
+                        <CustomUrl
+                          value={item.link}
+                          className="h-full w-full  p-nav"
+                        >
                           {item.link.label}
                         </CustomUrl>
                       </span>
