@@ -3,6 +3,11 @@ import Link from "next/link"
 import { type customUrlSelection } from "@/sanity/selections/custom-url"
 import { type TypeFromSelection } from "groqd"
 
+import {
+  BLOG_POSTTYPE,
+  CASE_STUDY_POSTTYPE,
+  PRESS_RELEASE_POSTTYPE,
+} from "@/constants/global"
 import { cn, Icon } from "@shared/ui"
 
 interface Props {
@@ -24,9 +29,26 @@ export function CustomUrl({
   disableArrow,
   isWrapper = false,
   isNested,
-
   onClick,
 }: Props) {
+  let slug = value?.external || value?.internal?.slug
+  if (value?.internal && value?.internal._type === "post") {
+    const parentSlug = (() => {
+      switch (value?.internal?.post_type) {
+        case BLOG_POSTTYPE:
+          return "/blog"
+        case PRESS_RELEASE_POSTTYPE:
+          return "/newsroom/press-releases"
+        case CASE_STUDY_POSTTYPE:
+          return "/case-studies"
+        default:
+          return ""
+      }
+    })()
+
+    slug = `${parentSlug}/${slug}`
+  }
+
   // isNested is for buttons inside of cards and prevents hydration errors due to nested <a> tags
   if (isNested) {
     return value ? (
@@ -56,7 +78,7 @@ export function CustomUrl({
   return value ? (
     <Link
       tabIndex={tabIndex}
-      href={value.external || `/${value.internal?.slug}` || ""}
+      href={slug || ""}
       target={value.external ? "_blank" : "_self"}
       className={className}
       prefetch={false}

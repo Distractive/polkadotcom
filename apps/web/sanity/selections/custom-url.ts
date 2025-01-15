@@ -6,7 +6,11 @@ export const customUrlSelection = {
   variant: q.string().optional().nullable(),
   internal: q("internal")
     .deref()
-    .grab$({ slug: q.slug("slug") })
+    .grab$({
+      _type: q.string().nullable().optional(),
+      post_type: q.string().nullable().optional(),
+      slug: q.slug("slug"),
+    })
     .nullable(),
-  external: nullToUndefined(q.string().optional().nullable()),
+  external: q.string().optional().nullable(),
 } satisfies Selection
