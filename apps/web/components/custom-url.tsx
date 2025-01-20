@@ -78,7 +78,7 @@ export function CustomUrl({
   return value ? (
     <Link
       tabIndex={tabIndex}
-      href={slug || ""}
+      href={value?.external || `/${slug}` || ""}
       target={value.external ? "_blank" : "_self"}
       className={className}
       prefetch={false}
