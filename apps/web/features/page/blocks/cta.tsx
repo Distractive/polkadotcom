@@ -108,7 +108,6 @@ export function CTA({ cta }: Props) {
                     },
                     types: {
                       customUrl: ({ value }) => {
-                        console.log("value", value)
                         return (
                           <span className="">
                             <Button

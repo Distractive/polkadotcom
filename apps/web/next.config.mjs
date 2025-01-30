@@ -95,6 +95,7 @@ const cspSources = {
   "frame-src": [
     "'self'",
     "https://*.hsforms.net",
+    "http://js.hsforms.net/",
     "https://app.spline.design",
     "https://*.hotjar.com",
     "https://www.youtube.com",

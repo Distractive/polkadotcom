@@ -13,4 +13,8 @@ export const HBSPT_LIST = [
     title: "Developer Newsletter",
     value: "d48f3940-0c86-4493-978b-31c5c7047b8e",
   },
+  {
+    title: "Polkadot Relaunch",
+    value: "f55fcd36-99ca-410b-8cb8-0268f84c7d15",
+  },
 ]

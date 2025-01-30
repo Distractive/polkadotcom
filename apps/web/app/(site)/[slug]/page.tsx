@@ -17,7 +17,6 @@ export async function generateMetadata({
   const meta = await getPageMeta(slug)
   const data = await getPage(slug, false)
 
-  console.log("data in meta", data)
   if (!meta)
     return {
       title: "Polkadot 404",

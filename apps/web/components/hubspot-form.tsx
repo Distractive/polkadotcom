@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 
 interface Props {
   type: string
@@ -8,17 +8,23 @@ interface Props {
 }
 
 export function HubSpotForm({ type, id }: Props) {
+  console.log("HubSpotForm form mounting", type, id)
+  const formInitialized = useRef(false)
+
   useEffect(() => {
     const createForm = () => {
-      if (document.querySelector(`#hbspt-${id}`) && window.hbspt) {
+      if (
+        document.querySelector(`#hbspt-${id}`) &&
+        window.hbspt &&
+        !formInitialized.current
+      ) {
+        formInitialized.current = true
         window.hbspt.forms.create({
           region: "na1",
           portalId: "7592558",
           target: `#hbspt-${id}`,
           formId: type,
         })
-      } else {
-        setTimeout(createForm, 1)
       }
     }
 
