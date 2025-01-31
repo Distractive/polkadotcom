@@ -19,7 +19,7 @@ export function ContentBlock({ content }: Props) {
     <div className={cn("grid-system max-width px-gutter")}>
       <div
         className={cn(
-          "col-span-full col-start-1 flex flex-col gap-copy justify-self-center  text-grey-900",
+          "col-span-full col-start-1 flex flex-col gap-copy justify-self-center text-grey-900",
           !content.fullWidth && "lg:col-span-8",
           content.isCentered && "text-center lg:col-start-3",
           content.isCentered && content.fullWidth && "lg:col-start-1"
