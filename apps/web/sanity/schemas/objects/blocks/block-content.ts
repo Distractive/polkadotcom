@@ -49,6 +49,12 @@ export default defineType({
       type: "boolean",
       initialValue: false,
     }),
+    defineField({
+      name: "isCentered",
+      title: "Center the content?",
+      type: "boolean",
+      initialValue: false,
+    }),
   ],
   preview: {
     select: {

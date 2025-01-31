@@ -11,7 +11,6 @@ const PreviewAction = (S: StructureBuilder) =>
         documentId: string
         document: { slug: { current: string } }
       }) => {
-        console.log("slug", props.document.slug?.current)
         const slug = props.document.slug?.current
         window.location.href = `https://polkadot-preview.vercel.app/admin/presentation?preview=/${slug}`
         return null

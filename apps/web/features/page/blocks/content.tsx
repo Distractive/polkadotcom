@@ -16,11 +16,13 @@ interface BreakNode {
 
 export function ContentBlock({ content }: Props) {
   return (
-    <div className="grid-system max-width px-gutter">
+    <div className={cn("grid-system max-width px-gutter")}>
       <div
         className={cn(
-          "col-span-full col-start-1 flex flex-col gap-copy text-grey-900",
-          !content.fullWidth && "lg:col-span-8"
+          "col-span-full col-start-1 flex flex-col gap-copy justify-self-center  text-grey-900",
+          !content.fullWidth && "lg:col-span-8",
+          content.isCentered && "text-center lg:col-start-3",
+          content.isCentered && content.fullWidth && "lg:col-start-1"
         )}
       >
         {content.content && (
@@ -42,7 +44,7 @@ export function ContentBlock({ content }: Props) {
               },
               list: {
                 bullet: ({ children }) => (
-                  <ul className="tmarker:text-black my-4 list-outside list-disc pl-8">
+                  <ul className="my-4 list-outside list-disc pl-8 marker:text-black">
                     {children}
                   </ul>
                 ),

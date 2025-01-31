@@ -25,4 +25,5 @@ export const contentSelection = {
     })
     .nullable(),
   fullWidth: q.boolean().optional().nullable(),
+  isCentered: q.boolean().optional().nullable(),
 } satisfies Selection
