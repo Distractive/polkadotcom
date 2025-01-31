@@ -42,21 +42,43 @@ const getHeadingElement = (variant: string | null | undefined) => {
   return null
 }
 
+const generateAnchorLinkId = (header: string | Array<string>) => {
+  if (Array.isArray(header)) header = header.join(" ") // check for portable text array
+  if (typeof header !== "string") return ""
+
+  return header
+    .toLowerCase()
+    .replace(/[’'''"″""]/g, "")
+    .replace(/[^a-z0-9]/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "")
+}
+
 export type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> &
   VariantProps<typeof headingVariants>
 
 const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ className, variant = "h1", size, decoration, weight, ...props }, ref) => {
+  (
+    { className, variant = "h1", size, decoration, weight, children, ...props },
+    ref
+  ) => {
     const Element = getHeadingElement(variant) as JSX.Element["type"]
 
+    const anchorLink = generateAnchorLinkId(children as string)
+
     return (
-      <Element
-        className={cn(
-          headingVariants({ variant, size, decoration, weight, className })
-        )}
-        ref={ref}
-        {...props}
-      />
+      <div className="relative col-span-full w-full">
+        <div id={anchorLink} className="anchor-link absolute bottom-40"></div>
+        <Element
+          className={cn(
+            headingVariants({ variant, size, decoration, weight, className })
+          )}
+          ref={ref}
+          {...props}
+        >
+          {children}
+        </Element>
+      </div>
     )
   }
 )
