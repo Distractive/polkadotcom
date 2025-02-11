@@ -1,10 +1,7 @@
-import Image from "next/image"
-import statsGradient from "@/public/gradients/stats-yellow.png"
 import { type statsSelection } from "@/sanity/selections/home/stats"
 import { type TypeFromSelection } from "groqd"
 
 import { Card, CardDescription, CardHeader, cn, Heading } from "@shared/ui"
-import { StatsGradient } from "@/features/gradients/stats-yellow"
 
 interface Props {
   stats: TypeFromSelection<typeof statsSelection>["stats"]

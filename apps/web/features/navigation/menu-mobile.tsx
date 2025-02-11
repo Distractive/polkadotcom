@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
 import { type navigationMenuSelection } from "@/sanity/selections/navigation/navigation-menu"
 import { stegaClean } from "@sanity/client/stega"
 import { type TypeFromSelection } from "groqd"

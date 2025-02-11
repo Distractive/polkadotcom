@@ -9,11 +9,6 @@ interface Props {
   content: TypeFromSelection<typeof contentSelection>
 }
 
-interface BreakNode {
-  _type: "break"
-  style: "break"
-}
-
 export function ContentBlock({ content }: Props) {
   return (
     <div className={cn("grid-system max-width px-gutter")}>
@@ -91,7 +86,7 @@ export function ContentBlock({ content }: Props) {
                     </Button>
                   )
                 },
-                break: ({ value }: { value: BreakNode }) => {
+                break: () => {
                   return <br className="my-4" />
                 },
               },

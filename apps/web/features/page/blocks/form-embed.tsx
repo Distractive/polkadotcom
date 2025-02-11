@@ -1,17 +1,19 @@
-"use client"
+"use client";
 
-import { type formSelection } from "@/sanity/selections/blocks/form"
-import { type TypeFromSelection } from "groqd"
+import { type formSelection } from "@/sanity/selections/blocks/form";
+import { type TypeFromSelection } from "groqd";
 
-import { Heading } from "@shared/ui"
-import { HubSpotForm } from "@/components/hubspot-form"
+import { HubSpotForm } from "@/components/hubspot-form";
+import { Heading } from "@shared/ui";
 
 interface Props {
   form: TypeFromSelection<typeof formSelection>
 }
 
 export function EmbedFormBlock({ form }: Props) {
-  if (!form) return null
+  if (!form) {
+    return null
+  }
 
   return (
     <div className="max-width flex flex-col gap-gutter px-gutter md:flex-row">

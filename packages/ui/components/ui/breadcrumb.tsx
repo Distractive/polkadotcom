@@ -1,5 +1,5 @@
 import * as React from "react"
-import Link, { LinkProps } from "next/link"
+import Link, { type LinkProps } from "next/link"
 
 import { cn } from "../../lib/utils"
 
@@ -41,7 +41,7 @@ BreadcrumbItem.displayName = "BreadcrumbItem"
 const BreadcrumbLink = React.forwardRef<
   HTMLAnchorElement,
   React.ComponentPropsWithoutRef<"a"> & LinkProps & { href: string }
->(({ className, href, as, ...props }, ref) => {
+>(({ className, href, ...props }, ref) => {
   return (
     <Link href={href} passHref legacyBehavior ref={ref}>
       <a
@@ -55,7 +55,6 @@ const BreadcrumbLink = React.forwardRef<
 BreadcrumbLink.displayName = "BreadcrumbLink"
 
 const BreadcrumbSeparator = ({
-  children,
   className,
   ...props
 }: React.ComponentProps<"li">) => (
@@ -72,8 +71,8 @@ BreadcrumbSeparator.displayName = "BreadcrumbSeparator"
 
 export {
   Breadcrumb,
-  BreadcrumbList,
   BreadcrumbItem,
   BreadcrumbLink,
+  BreadcrumbList,
   BreadcrumbSeparator,
 }

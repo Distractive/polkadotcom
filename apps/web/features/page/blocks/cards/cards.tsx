@@ -1,6 +1,5 @@
 "use client"
 
-import { use } from "react"
 import type { cardsSelection } from "@/sanity/selections/blocks/cards"
 import type { TypeFromSelection } from "groqd"
 

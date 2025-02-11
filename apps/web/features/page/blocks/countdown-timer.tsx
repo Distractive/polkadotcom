@@ -1,8 +1,8 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
-import { countdownTimerSelection } from "@/sanity/selections/blocks/countdown-timer"
-import { TypeFromSelection } from "groqd"
+import { useEffect, useState } from "react"
+import type { countdownTimerSelection } from "@/sanity/selections/blocks/countdown-timer"
+import type { TypeFromSelection } from "groqd"
 
 import { cn, Heading } from "@shared/ui"
 
@@ -44,7 +44,9 @@ const TimeUnit = ({ value, label }: TimeUnitProps) => (
 )
 
 export function CountdownTimer({ countdownTimer }: Props) {
-  if (!countdownTimer || !countdownTimer.targetDate) return null
+  if (!countdownTimer || !countdownTimer.targetDate) {
+    return null
+  }
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
@@ -53,10 +55,11 @@ export function CountdownTimer({ countdownTimer }: Props) {
     seconds: 0,
   })
 
-  const countdown = { body: "" }
-
   useEffect(() => {
-    if (!countdownTimer.targetDate) return
+    if (!countdownTimer.targetDate) {
+      return
+    }
+
     const calculateTimeLeft = () => {
       const difference = +new Date(countdownTimer.targetDate!) - +new Date()
 

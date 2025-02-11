@@ -28,7 +28,6 @@ export function PostPagination({ total, page, limit, type, tagSlug }: Props) {
   paginationArray = generatePagination(page, pages)
 
   return (
-    // <Pagination className="w-full border-t border-t-grey-200 pt-1">
     <Pagination className="relative w-full pt-1 after:absolute after:-top-[3px] after:z-0 after:h-[2px] after:w-full after:bg-grey-200">
       <PaginationContent className="w-full">
         <PaginationItem className="justify-start">

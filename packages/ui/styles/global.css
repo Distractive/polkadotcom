@@ -23,11 +23,6 @@
     @apply font-[700] underline hover:text-pink-500;
   }
 
-  /* .background-blur {
-    @apply bg-opacity-80 backdrop-blur-md;
-    -webkit-backdrop-filter: blur(12px);
-  } */
-
   .heading-break {
     text-wrap: balance;
     hyphens: auto;

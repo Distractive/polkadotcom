@@ -1,8 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react"
-// import ReactPlayer from "react-player"
-
 import dynamic from "next/dynamic"
 import { urlForImage } from "@/sanity/lib/image"
 import { type videoSelection } from "@/sanity/selections/blocks/video"

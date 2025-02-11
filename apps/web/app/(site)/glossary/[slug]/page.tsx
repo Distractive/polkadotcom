@@ -7,8 +7,8 @@ import {
 } from "@/sanity/queries/glossary"
 
 import { Heading } from "@shared/ui"
-import { BreadcrumbBlock } from "@/features/page/blocks/breadcrumb"
 import type { BreadcrumbItem } from "@/features/page/blocks/breadcrumb"
+import { BreadcrumbBlock } from "@/features/page/blocks/breadcrumb"
 import { Body } from "@/features/post/body"
 
 export async function generateStaticParams() {
@@ -46,7 +46,6 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  // const isDraftMode = draftMode().isEnabled
   const data = await getGlossaryEntry(params.slug)
   if (!data) return notFound()
 

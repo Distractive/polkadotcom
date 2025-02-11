@@ -8,7 +8,6 @@ import {
   getPosts,
   type postSelection,
 } from "@/sanity/queries/posts"
-import generateBreadcrumbs from "@/utils/breadcrumbs/generateBreadcrumbs"
 import { type TypeFromSelection } from "groqd"
 
 import {
@@ -19,8 +18,8 @@ import {
 import { CarouselItem, cn, Heading } from "@shared/ui"
 
 import { Carousel } from "../../components/carousel"
-import { BreadcrumbBlock } from "../page/blocks/breadcrumb"
 import type { BreadcrumbProps } from "../page/blocks/breadcrumb"
+import { BreadcrumbBlock } from "../page/blocks/breadcrumb"
 import { Body } from "./body"
 import BlogCard from "./card"
 
@@ -48,7 +47,6 @@ export default async function Layout({ slug, type }: LayoutProps) {
     }
   })()
 
-  //
   const [postsData] = await getPostHeading(headingType)
 
   if (!post) {

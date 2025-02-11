@@ -24,7 +24,7 @@ export default function Menu({ menu, modal }: Props) {
         </div>
       </div>
 
-      {menu.map((item, index) => (
+      {menu.map((item) => (
         <div
           key={item.heading || item.link?.label}
           className="order-2 col-span-1 font-default text-black"
@@ -49,7 +49,7 @@ export default function Menu({ menu, modal }: Props) {
             )}
           </Heading>
           <ul className="flex flex-col gap-2 py-6">
-            {item.items.map((item, index) => (
+            {item.items.map((item) => (
               <li key={item.link.label}>
                 <CustomUrl
                   value={item.link}

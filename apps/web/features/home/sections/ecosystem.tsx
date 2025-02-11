@@ -1,8 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import ecosystemGradientBlue from "@/public/gradients/ecosystem-blue.png"
-import ecosystemGradientPink from "@/public/gradients/ecosystem-pink.png"
 import { urlForImage } from "@/sanity/lib/image"
 import { type ecosystemSelection } from "@/sanity/selections/home/ecosystem"
 import { type TypeFromSelection } from "groqd"

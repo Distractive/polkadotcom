@@ -1,8 +1,6 @@
-import { draftMode } from "next/headers"
 import { getPostHeading, getPosts } from "@/sanity/queries/posts"
 import { getSearchData } from "@/sanity/queries/search"
 import type { headerSelection } from "@/sanity/selections/blocks/header"
-import generateBreadcrumbs from "@/utils/breadcrumbs/generateBreadcrumbs"
 import type { TypeFromSelection } from "groqd"
 
 import {
@@ -17,7 +15,6 @@ import {
   BreadcrumbBlock,
   type BreadcrumbProps,
 } from "../page/blocks/breadcrumb"
-import { HeaderBlock } from "../page/blocks/header"
 import { Grid } from "./grid"
 import { PostPagination } from "./pagination"
 import { ScrollToView } from "./scroll-to-view"
@@ -33,12 +30,7 @@ interface LayoutProps {
   withHeader?: boolean
 }
 
-export default async function Layout({
-  page,
-  tagSlug,
-  type,
-  withHeader = true,
-}: LayoutProps) {
+export default async function Layout({ page, tagSlug, type }: LayoutProps) {
   const data = await getPosts(page, type, tagSlug, false)
 
   const postType = (() => {
@@ -55,11 +47,6 @@ export default async function Layout({
   const [postsData] = await getPostHeading(postType)
 
   const searchData = await getSearchData(type)
-
-  const slugPath =
-    type === "Blog"
-      ? `/${postsData?.slug}`
-      : `/${postsData?.parent?.slug}/${postsData?.slug}`
 
   // Hard code press release breadcrumb due to URL structure of parent pages
   const breadcrumb: BreadcrumbProps = {
@@ -118,9 +105,6 @@ export default async function Layout({
   return (
     <>
       <ScrollToView page={Number(page)} />
-      {/* {withHeader && tagSlug === "" && (
-        <HeaderBlock header={header} breadcrumb={breadcrumb} />
-      )} */}
       <header className="max-width mb-page mt-page flex flex-col">
         <div
           className={cn(

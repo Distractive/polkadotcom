@@ -1,9 +1,8 @@
-import { Key } from "react"
-import Image from "next/image"
+import { type Key } from "react"
 import { urlForImage } from "@/sanity/lib/image"
 import { PortableText } from "@portabletext/react"
 
-import { cn, Heading } from "@shared/ui"
+import { Heading } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
 
 interface Props {

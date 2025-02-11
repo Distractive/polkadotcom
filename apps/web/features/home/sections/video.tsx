@@ -1,5 +1,3 @@
-import Image from "next/image"
-import videoGrid from "@/public/gradients/video-grid.png"
 import { type videoSelection } from "@/sanity/selections/home/video"
 import { type TypeFromSelection } from "groqd"
 

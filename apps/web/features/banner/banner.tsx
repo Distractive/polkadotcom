@@ -1,11 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { cookies } from "next/headers"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import type { bannerSelection } from "@/sanity/selections/banner"
-import { is } from "@react-three/fiber/dist/declarations/src/core/utils"
 import type { TypeFromSelection } from "groqd"
 
 import {

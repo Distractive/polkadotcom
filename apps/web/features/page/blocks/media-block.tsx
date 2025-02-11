@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react"
 import { type mediaBlockSelection } from "@/sanity/selections/blocks/media-block"
@@ -24,7 +24,7 @@ interface Props {
 }
 
 export function MediaBlock({ mediaBlock, className }: Props) {
-  const { _key, image, video, eyebrow, heading, body, links } = mediaBlock
+  const { image, video, eyebrow, heading, body, links } = mediaBlock
 
   return (
     <div

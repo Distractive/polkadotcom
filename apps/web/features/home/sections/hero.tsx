@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { type heroSelection } from "@/sanity/selections/home/hero"
-import Spline from "@splinetool/react-spline"
+import { type heroSelection } from "@/sanity/selections/home/hero";
+import Spline from "@splinetool/react-spline";
 import { type TypeFromSelection } from "groqd"
 
 import { Button, cn, Heading } from "@shared/ui"
@@ -18,7 +18,6 @@ export function Hero({ hero }: Props) {
       className="md:pt-30 relative -mt-[2rem] mb-8 flex flex-col overflow-visible md:mt-0 md:pt-16 xl:mb-32"
     >
       <div className="absolute inset-0 -z-10 bg-[image:linear-gradient(to_bottom_right,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom_right,#07FFFF_0%,#7916F3_100%)] bg-[length:101%_100%] bg-no-repeat "></div>
-      {/* <div className="home-hero-background absolute inset-0 -z-20"></div> */}
 
       <article
         id="hero.wrapper"
@@ -88,7 +87,6 @@ export function Hero({ hero }: Props) {
           </div>
         </div>
       </article>
-      {/* <div className="pt-32"></div> */}
     </div>
   )
 }

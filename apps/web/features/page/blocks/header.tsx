@@ -5,7 +5,6 @@ import type { TypeFromSelection } from "groqd"
 
 import { Button, cn, Heading } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
-import GlobalGradient from "@/features/gradients/global-gradient"
 
 import { BreadcrumbBlock, type BreadcrumbProps } from "./breadcrumb"
 import { VideoBlock } from "./video"

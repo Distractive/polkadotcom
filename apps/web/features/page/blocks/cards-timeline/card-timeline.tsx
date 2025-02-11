@@ -2,7 +2,7 @@ import type { cardTimelineSelection } from "@/sanity/selections/blocks/card-time
 import type { TypeFromSelection } from "groqd"
 import { PortableText } from "next-sanity"
 
-import { Button, Card, CardContent, CardHeader, cn, Heading } from "@shared/ui"
+import { Button, Card, CardContent, CardHeader, cn } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
 
 interface Props {

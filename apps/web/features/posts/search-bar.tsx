@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useEffect, useMemo, useRef, useState } from "react"
 import type { ReactNode } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import Link from "next/link"
 import type { searchSelection } from "@/sanity/queries/search"
 import { cleanTerm } from "@/utils/glossary/glossaryUtils"
@@ -9,7 +9,7 @@ import type { TypeFromSelection } from "groqd"
 
 import {
   BLOG_POSTTYPE,
-  CASE_STUDY_POSTTYPE,
+  type CASE_STUDY_POSTTYPE,
   type PRESS_RELEASE_POSTTYPE,
 } from "@/constants/global"
 import { cn, Icon } from "@shared/ui"
@@ -87,11 +87,6 @@ export function SearchBar({ searches, postType }: Props) {
       const termElement = element.querySelector(`[data-term="${cleanedTerm}"]`)
       if (termElement) {
         termElement.scrollIntoView({ behavior: "auto" })
-        // Optional: add highlight effect
-        // termElement.classList.add("bg-pink")
-        // setTimeout(() => {
-        //   termElement.classList.remove("bg-pink")
-        // }, 2000)
       }
     }
 

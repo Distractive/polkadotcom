@@ -3,7 +3,7 @@
 import { type modalSelection } from "@/sanity/selections/blocks/modal"
 import { type TypeFromSelection } from "groqd"
 
-import { cn, Heading } from "@shared/ui"
+import { Heading } from "@shared/ui"
 
 import { ModalButton } from "./modal-button"
 

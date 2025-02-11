@@ -17,7 +17,7 @@ interface Props {
 
 export default function BlogCard({ post, className }: Props) {
   const { slug, image, body, tags, title, post_type, custom_excerpt } = post
-  // Becuase not all blog posts have a custom excerpt imported
+  // Because not all blog posts have a custom excerpt imported
   // we have to loop round the content to find the first text block to show
   const excerpt =
     body && custom_excerpt
