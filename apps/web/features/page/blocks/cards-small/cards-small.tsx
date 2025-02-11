@@ -27,7 +27,7 @@ export function CardsSmallBlock({ cards }: Props) {
         {cards.items &&
           cards.items.length > 0 &&
           cards.items.map((card, index) => {
-            // span the last two cards if there are 2 cards in a row
+            // Span the last two cards if there are 2 cards in a row
             const shouldSpan =
               cards.items!.length % 3 === 2 && index >= cards.items!.length - 2
             return (

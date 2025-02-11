@@ -14,7 +14,9 @@ import { Body } from "@/features/post/body"
 export async function generateStaticParams() {
   const slugs = await getAllGlossarySlugs()
 
-  if (!slugs?.length) return []
+  if (!slugs?.length) {
+    return []
+  }
 
   return slugs.map((slug) => ({
     slug: slug,
@@ -28,11 +30,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const meta = await getGlossaryEntryMeta(params.slug)
 
-  if (!meta)
+  if (!meta) {
     return {
       title: "Glossary Not Found | Polkadot",
       description: "The glossary page you're looking for could not be found.",
     }
+  }
 
   return {
     title: meta.meta?.meta_title || "",
@@ -47,7 +50,9 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const data = await getGlossaryEntry(params.slug)
-  if (!data) return notFound()
+  if (!data) {
+    return notFound()
+  }
 
   const breadcrumbItems: BreadcrumbItem[] = [
     { slug: "/glossary", title: "Glossary" },

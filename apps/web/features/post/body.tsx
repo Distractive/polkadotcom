@@ -16,7 +16,10 @@ export function Body({ body }: Props) {
       components={{
         marks: {
           link: ({ children, value }) => {
-            if (!value || !value.href) return children
+            if (!value || !value.href) {
+              return children
+            }
+
             const isExternal = value.href.startsWith("http")
             const noReferrer = value.noFollow
             const canonical = value.canonical

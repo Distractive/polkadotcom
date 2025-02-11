@@ -23,16 +23,6 @@ async function fetchDataFromSanity() {
   `
   try {
     const data = await sanityClient.fetch(query)
-    // console.log(`Total documents fetched: ${data.length}`)
-    // // Log all documents
-    // console.log("Fetched documents:")
-    // data.forEach((doc, index) => {
-    //   console.log(`Document ${index + 1}:`, {
-    //     _type: doc._type,
-    //     slug: doc.slug?.current,
-    //     _updatedAt: doc._updatedAt,
-    //   })
-    // })
     return data
   } catch (error) {
     console.error("Sanity query error:", error)
@@ -54,7 +44,9 @@ export default {
 
     // Add Sanity pages to result
     sanityData.forEach((doc) => {
-      if (!doc.slug || !doc.slug.current) return
+      if (!doc.slug || !doc.slug.current) {
+        return
+      }
 
       let path
       switch (doc._type) {

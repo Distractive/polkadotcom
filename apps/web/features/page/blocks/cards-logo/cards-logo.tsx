@@ -10,7 +10,9 @@ interface Props {
 }
 
 export function CardsLogoBlock({ cards }: Props) {
-  if (!cards) return null
+  if (!cards) {
+    return null
+  }
 
   return (
     <div

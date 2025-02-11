@@ -23,9 +23,7 @@ export async function generateMetadata({
   }
 }
 
-/**
- * Only generate the first page statically
- */
+// Only generate the first page statically
 export async function generateStaticParams() {
   return [{ page: "1" }]
 }

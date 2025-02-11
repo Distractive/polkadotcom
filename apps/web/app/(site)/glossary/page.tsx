@@ -17,11 +17,12 @@ export const dynamicParams = true
 export async function generateMetadata(): Promise<Metadata> {
   const meta = await getSingletonMeta("glossary")
 
-  if (!meta)
+  if (!meta) {
     return {
       title: "Glossary Not Found | Polkadot",
       description: "The glossary page you're looking for could not be found.",
     }
+  }
 
   return {
     title: meta?.meta?.meta_title || "Polkadot Glossary",
@@ -40,7 +41,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Page() {
   const data = await getGlossary()
-  if (!data) return notFound()
+  if (!data) {
+    return notFound()
+  }
 
   const groupedEntries = groupEntriesByLetter(data.entries)
 

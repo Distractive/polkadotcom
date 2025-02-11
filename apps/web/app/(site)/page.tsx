@@ -7,11 +7,13 @@ import { Root } from "@/features/home/root"
 
 export async function generateMetadata(): Promise<Metadata> {
   const meta = await getSingletonMeta("home")
-  if (!meta)
+
+  if (!meta) {
     return {
       title: "Polkadot 404",
       description: "Page not found",
     }
+  }
 
   return {
     title: meta.meta?.meta_title || "Polkadot",

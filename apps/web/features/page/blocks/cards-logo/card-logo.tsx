@@ -1,8 +1,8 @@
-import type { cardLogoSelection } from "@/sanity/selections/blocks/card-logo"
-import type { TypeFromSelection } from "groqd"
+import type { cardLogoSelection } from "@/sanity/selections/blocks/card-logo";
+import type { TypeFromSelection } from "groqd";
 
-import { Card, cn } from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+import { CustomUrl } from "@/components/custom-url";
+import { Card, cn } from "@shared/ui";
 
 interface Props {
   card: TypeFromSelection<typeof cardLogoSelection>
@@ -10,7 +10,9 @@ interface Props {
 }
 
 export default function CardLogoBlock({ card, className }: Props) {
-  if (!card) return null
+  if (!card) {
+    return null
+  }
 
   const { _key, name, image, link } = card
 

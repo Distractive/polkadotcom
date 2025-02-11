@@ -20,7 +20,7 @@ interface Props {
 }
 
 export function AccordionBlock({ accordion }: Props) {
-  // typeguards to ensure that the accordion object is not null or undefined
+  // Typeguards to ensure that the accordion object is not null or undefined
   if (!accordion || !accordion.items?.length) {
     return null
   }

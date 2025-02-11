@@ -9,11 +9,12 @@ export const dynamicParams = true
 export async function generateMetadata(): Promise<Metadata> {
   const meta = await getSingletonMeta("blog")
 
-  if (!meta)
+  if (!meta) {
     return {
       title: "Polkadot 404",
       description: "Page not found",
     }
+  }
 
   return {
     title: "Polkadot Blog",

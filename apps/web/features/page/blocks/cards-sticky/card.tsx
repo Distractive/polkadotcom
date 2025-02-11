@@ -21,7 +21,9 @@ interface Props {
 }
 
 export default function CardStickyBlock({ card, className }: Props) {
-  if (!card) return null
+  if (!card) {
+    return null
+  }
 
   const { image, icon, eyebrow, heading, body, link } = card
 

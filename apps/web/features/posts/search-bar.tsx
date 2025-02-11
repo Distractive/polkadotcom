@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import type { ReactNode } from "react"
 import { useEffect, useMemo, useRef, useState } from "react"
@@ -36,7 +36,7 @@ export function SearchBar({ searches, postType }: Props) {
         let title = search.title
         const specialCharactersPattern = /[^A-Za-z0-9\s]/g
 
-        // replace special characters with an empty string
+        // Replace special characters with an empty string
         title = title.replace(specialCharactersPattern, "")
         title = title.toLowerCase()
         return title
@@ -45,7 +45,7 @@ export function SearchBar({ searches, postType }: Props) {
   )
 
   useEffect(() => {
-    // ignoring empty searches
+    // Ignoring empty searches
     if (searchable.trim().split(" ").join("").length <= 0) {
       setFindings([])
       return
@@ -194,7 +194,9 @@ const SearchBarInput = ({
               inputRef.current.value = ""
               inputRef.current.focus()
             }
-            if (onClick) onClick()
+            if (onClick) {
+              onClick()
+            }
           }}
           className="group absolute right-4 top-4 outline-none"
         >

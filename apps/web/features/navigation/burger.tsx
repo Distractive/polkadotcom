@@ -33,7 +33,9 @@ export function Burger({ isOpen, setIsOpen }: Props) {
   }, [])
 
   useEffect(() => {
-    if (!timeline.current) return
+    if (!timeline.current) {
+      return
+    }
 
     if (isOpen) {
       timeline.current

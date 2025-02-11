@@ -18,11 +18,12 @@ export async function generateMetadata({
   const meta = await getPageMeta(`${slug}/${childslug}`)
   const data = await getPage(`${slug}/${childslug}`, false)
 
-  if (!meta)
+  if (!meta) {
     return {
       title: "Polkadot 404",
       description: "Page not found",
     }
+  }
 
   return {
     title: data?.title || (meta.header && meta.header.title) || "Polkadot",
@@ -43,7 +44,9 @@ export async function generateMetadata({
 export async function generateStaticParams() {
   const childSlugs = await getSlugs("page")
 
-  if (!childSlugs?.length) return []
+  if (!childSlugs?.length) {
+    return []
+  }
 
   return childSlugs.map((item) => ({
     slug: item.parent?.slug ?? "",
@@ -52,7 +55,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params: { slug, childslug } }: Props) {
-  const isDraftMode = (await draftMode()).isEnabled
+  const isDraftMode = draftMode().isEnabled
   const data = await getPage(`${slug}/${childslug}`, isDraftMode)
 
   const breadcrumb: BreadcrumbProps = {
@@ -68,10 +71,12 @@ export default async function Page({ params: { slug, childslug } }: Props) {
     ],
   }
 
-  if (!data) return notFound()
+  if (!data) {
+    return notFound()
+  }
 
   return (
-    // hide overflow on mobile for gradient, remove it on large devices to avoid messing up stacking context and breaking sticky cards component
+    // Hide overflow on mobile for gradient, remove it on large devices to avoid messing up stacking context and breaking sticky cards component
     <div className="relative overflow-x-hidden lg:overflow-x-visible">
       <GlobalGradient />
       {data.header && (

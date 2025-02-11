@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { useCallback, useEffect, useState } from "react"
-import type { navigationSelection } from "@/sanity/selections/navigation/navigation"
-import type { TypeFromSelection } from "groqd"
+import type { navigationSelection } from "@/sanity/selections/navigation/navigation";
+import type { TypeFromSelection } from "groqd";
+import { useCallback, useEffect, useState } from "react";
 
-import { useBreakpoint } from "@/hooks/use-breakpoint"
-import { useHideOnScroll } from "@/hooks/use-hide-on-scroll"
-import { cn } from "@shared/ui"
+import { useBreakpoint } from "@/hooks/use-breakpoint";
+import { useHideOnScroll } from "@/hooks/use-hide-on-scroll";
+import { cn } from "@shared/ui";
 
-import { Header } from "./header"
-import { MenuDesktop } from "./menu-desktop"
-import { MenuMobile } from "./menu-mobile"
-import { Overlay } from "./overlay"
-import SkipToContent from "./skip-to-content"
+import { Header } from "./header";
+import { MenuDesktop } from "./menu-desktop";
+import { MenuMobile } from "./menu-mobile";
+import { Overlay } from "./overlay";
+import SkipToContent from "./skip-to-content";
 
 interface Props {
   navigation: TypeFromSelection<typeof navigationSelection>
@@ -54,7 +54,9 @@ export default function NavigationLayout({ navigation }: Props) {
   }, [handleKeydown])
 
   const onLeave = () => {
-    if (isMobile) return
+    if (isMobile) {
+      return
+    }
     if (ref.current) {
       if (ref.current.matches(":focus-within")) {
         return

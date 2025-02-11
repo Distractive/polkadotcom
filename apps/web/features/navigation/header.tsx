@@ -31,11 +31,15 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
   function onSubmenuToggleClick(event: React.MouseEvent<HTMLButtonElement>) {
     // Get the button clicked.
     const element = event.target
-    if (!(element instanceof HTMLButtonElement)) return
+    if (!(element instanceof HTMLButtonElement)) {
+      return
+    }
     // Get the element we want to give focus to.
     const targetId = element.getAttribute("aria-controls") ?? ""
     const modal = document.getElementById(targetId)
-    if (!(modal instanceof HTMLElement)) return
+    if (!(modal instanceof HTMLElement)) {
+      return
+    }
     // Find the first element that can receive interaction.
     const firstFocusableElement = getFocusableElements(modal)[0]
     // Focus it.

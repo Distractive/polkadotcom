@@ -10,6 +10,7 @@ interface Props {
 }
 
 export const dynamicParams = true
+
 export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {
@@ -32,7 +33,9 @@ export async function generateMetadata({
 export async function generateStaticParams() {
   const slugs = await getSlugs(PRESS_RELEASE_POSTTYPE)
 
-  if (!slugs?.length) return []
+  if (!slugs?.length) {
+    return []
+  }
 
   return slugs.map((item) => ({
     slug: item.slug,

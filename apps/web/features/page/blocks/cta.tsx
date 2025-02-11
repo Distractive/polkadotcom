@@ -89,7 +89,7 @@ export function CTA({ cta }: Props) {
               />
             )}
 
-            {/* Separate rich text for buttons, alows them to be placed on  a new row*/}
+            {/* Separate rich text for buttons, allows them to be placed on  a new row*/}
             <div className="flex flex-col gap-3 pt-3 md:flex-row">
               {cta.content && (
                 <PortableText

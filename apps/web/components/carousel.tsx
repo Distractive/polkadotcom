@@ -43,7 +43,9 @@ export function Carousel({
   }, [disableCarouselControls])
 
   useEffect(() => {
-    if (!api) return
+    if (!api) {
+      return
+    }
 
     setCount(api.scrollSnapList().length)
     api.on("select", () => setCurrent(api.selectedScrollSnap()))

@@ -10,7 +10,9 @@ interface Props {
 }
 
 export function CardsStatBlock({ cards }: Props) {
-  if (!cards || !cards?.items?.length) return null
+  if (!cards || !cards?.items?.length) {
+    return null
+  }
 
   return (
     <div
