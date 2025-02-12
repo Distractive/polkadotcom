@@ -29,13 +29,13 @@ export default defineConfig({
     timeout: 5000,
   },
   /* Run tests in files in parallel */
-  fullyParallel: false,
+  fullyParallel: CI ? true : false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!CI,
   /* Retry on CI only */
   retries: CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: 1,
+  workers: CI ? 4 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: CI ? "github" : "html",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */

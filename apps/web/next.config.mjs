@@ -1,6 +1,6 @@
-import { createClient } from "@sanity/client"
+import { createClient } from "@sanity/client";
 
-import { env } from "./env.mjs"
+import { env } from "./env.mjs";
 
 const isTest = process.env.NODE_ENV === 'test'
 
@@ -141,6 +141,11 @@ const nextConfig = {
     taint: true,
   },
   async redirects() {
+    if (isTest) {
+      return []
+    }
+
+    
     const redirects = await client.fetch(
       `*[_type == "redirects"]{
         "source":source,
