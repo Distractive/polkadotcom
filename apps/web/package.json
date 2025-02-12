@@ -17,7 +17,11 @@
     "export": "next build && next export",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "postbuild": "next-sitemap --config next-sitemap.config.mjs"
+    "postbuild": "next-sitemap --config next-sitemap.config.mjs",
+    "preplaywright:test": "echo '\\033[33mPlease check if playwright dependencies are installed. If not, run `pnpm exec playwright install chromium --with-deps`\\033[0m'",
+    "playwright:test": "NODE_ENV=test playwright test",
+    "playwright:open": "playwright open",
+    "playwright:trace": "playwright show-trace"
   },
   "dependencies": {
     "@bsmnt/scrollytelling": "^0.3.3",
@@ -56,6 +60,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.5.0",
+    "@playwright/test": "^1.50.1",
     "@shared/eslint-config": "workspace:*",
     "@shared/tailwind-config": "workspace:*",
     "@shared/ts-config": "workspace:*",
