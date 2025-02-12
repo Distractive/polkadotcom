@@ -2,13 +2,15 @@ import { createClient } from "@sanity/client"
 
 import { env } from "./env.mjs"
 
+const isTest = process.env.NODE_ENV === 'test'
+
 // Initialize Sanity client
-const client = createClient({
+const client = !isTest ? createClient({
   apiVersion: env.NEXT_PUBLIC_SANITY_API_VERSION,
   dataset: env.NEXT_PUBLIC_SANITY_DATASET,
   projectId: env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   useCdn: false,
-})
+}) : undefined;
 
 // CSP sources
 const cspSources = {

@@ -30,9 +30,9 @@
     }
   },
   "engines": {
-    "node": ">=18.16.0"
+    "node": ">=22.x"
   },
-  "packageManager": "pnpm@9.0.6",
+  "packageManager": "pnpm@10.3.0",
   "dependencies": {
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",

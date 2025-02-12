@@ -27,4 +27,5 @@ export const env = createEnv({
     VERCEL_ENV: process.env.VERCEL_ENV,
     BUILD_FLAG: process.env.BUILD_FLAG,
   },
+  skipValidation: !!process.env.SKIP_ENV_VALIDATION,
 })
