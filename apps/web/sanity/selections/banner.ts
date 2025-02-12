@@ -1,6 +1,5 @@
-import { is } from "@react-three/fiber/dist/declarations/src/core/utils"
-import { q, sanityImage } from "groqd"
 import type { Selection } from "groqd"
+import { q, sanityImage } from "groqd"
 
 import { customUrlSelection } from "./custom-url"
 

@@ -8,7 +8,6 @@ import { visionTool } from "@sanity/vision"
 import { groqdPlaygroundTool } from "groqd-playground"
 import {
   defineConfig,
-  definePlugin,
   type ConfigContext,
   type CurrentUser,
 } from "sanity"
