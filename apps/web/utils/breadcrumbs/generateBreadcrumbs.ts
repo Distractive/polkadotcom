@@ -3,16 +3,18 @@ import type { TypeFromSelection } from "groqd"
 
 import { BreadcrumbProps } from "@/features/page/blocks/breadcrumb"
 
-type PostData = TypeFromSelection<typeof blogSelection>
+export type PostData = TypeFromSelection<typeof blogSelection>
 
 export default function generateBreadcrumbs(
   type: string,
-  postsData: PostData | undefined
+  post: PostData | undefined
 ): BreadcrumbProps {
-  let breadcrumb
+  const slug = post?.slug ? `/${post.slug}` : ""
+  const parentSlug = post?.parent?.slug ? `/${post.parent.slug}` : ""
+  const parentTitle = post?.parent?.header?.title ?? ""
 
   if (type === "Press Release") {
-    breadcrumb = {
+    return {
       items: [
         {
           slug: "/community/newsroom",
@@ -24,12 +26,14 @@ export default function generateBreadcrumbs(
         },
       ],
     }
-  } else if (type === "Case Study") {
-    breadcrumb = {
+  }
+
+  if (type === "Case Study") {
+    return {
       items: [
         {
-          slug: `/${postsData?.parent?.slug}` ?? "",
-          title: postsData?.parent?.header?.title,
+          slug: parentSlug,
+          title: parentTitle,
         },
         {
           slug: "/case-studies",
@@ -37,20 +41,18 @@ export default function generateBreadcrumbs(
         },
       ],
     }
-  } else {
-    breadcrumb = {
-      items: [
-        {
-          slug: `/${postsData?.parent?.slug}` ?? "",
-          title: postsData?.parent?.header?.title,
-        },
-        {
-          slug: `/${postsData?.parent?.slug}/${postsData?.slug}` ?? "",
-          title: postsData?.heading,
-        },
-      ],
-    }
   }
 
-  return breadcrumb
+  return {
+    items: [
+      {
+        slug: parentSlug,
+        title: parentTitle,
+      },
+      {
+        slug: slug && parentSlug ? `${parentSlug}${slug}` : "",
+        title: post?.heading ?? "",
+      },
+    ],
+  }
 }

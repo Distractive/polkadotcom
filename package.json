@@ -12,6 +12,9 @@
     "dev:turbo": "turbo run dev:turbo --parallel",
     "lint": "turbo run lint",
     "lint:fix": "turbo lint -- --fix && manypkg fix",
+    "test": "SKIP_ENV_VALIDATION=true vitest",
+    "test:ui": "SKIP_ENV_VALIDATION=true vitest --ui",
+    "test:run": "SKIP_ENV_VALIDATION=true vitest run",
     "manypkg:fix": "manypkg fix",
     "postinstall": "manypkg check",
     "typecheck": "turbo typecheck",
@@ -40,10 +43,12 @@
     "@manypkg/cli": "^0.21.3",
     "@shared/eslint-config": "workspace:*",
     "@turbo/gen": "^1.13.0",
+    "@vitest/ui": "^3.0.5",
     "husky": "^9.0.11",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.13",
-    "turbo": "^1.13.0"
+    "turbo": "^1.13.0",
+    "vitest": "^3.0.5"
   },
   "manypkg": {
     "ignoredRules": [
