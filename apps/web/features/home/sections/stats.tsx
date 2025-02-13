@@ -9,7 +9,7 @@ interface Props {
 
 export function Stats({ stats }: Props) {
   return (
-    <div id="stats-pile" className="grid-pile relative  ">
+    <div id="stats-pile" className="grid-pile relative  " data-testid="stats-pile">
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(225deg,rgba(240,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(225deg,#E4FF07_0%,#07FFFF_100%)]"></div>
 
       <article

@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import dynamic from "next/dynamic"
-import { urlForImage } from "@/sanity/lib/image"
-import { type videoSelection } from "@/sanity/selections/blocks/video"
-import { type TypeFromSelection } from "groqd"
+import { urlForImage } from "@/sanity/lib/image";
+import { type videoSelection } from "@/sanity/selections/blocks/video";
+import { type TypeFromSelection } from "groqd";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
-import { cn, Icon } from "@shared/ui"
+import { cn, Icon } from "@shared/ui";
 
 interface WrapperProps {
   children: React.ReactNode
@@ -36,6 +36,7 @@ export function VideoBlock({ video, className }: Props) {
         "[&>div>div]:!rounded-2xl [&>div>iframe]:!rounded-2xl [&_div]:!rounded-2xl",
         className
       )}
+      data-testid="video-block"
     >
       <div className="size-full">
         {isClient && (

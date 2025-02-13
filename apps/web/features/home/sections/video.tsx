@@ -1,8 +1,7 @@
-import { type videoSelection } from "@/sanity/selections/home/video"
-import { type TypeFromSelection } from "groqd"
-
-import { cn, Heading } from "@shared/ui"
-import { VideoBlock } from "@/features/page/blocks/video"
+import { VideoBlock } from "@/features/page/blocks/video";
+import { type videoSelection } from "@/sanity/selections/home/video";
+import { cn, Heading } from "@shared/ui";
+import { type TypeFromSelection } from "groqd";
 
 interface Props {
   video: TypeFromSelection<typeof videoSelection>["video"]
@@ -12,6 +11,7 @@ export function Video({ video }: Props) {
   return (
     <div
       id="video-pile"
+      data-testid="video-pile"
       className="grid-pile -mt-header-top pt-48 md:pb-8 md:pt-64 lg:pt-24"
     >
       <article

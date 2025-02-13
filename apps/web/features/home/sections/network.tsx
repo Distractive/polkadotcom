@@ -1,6 +1,5 @@
-import { type networkSelection } from "@/sanity/selections/home/network"
-import { type TypeFromSelection } from "groqd"
-
+import { CustomUrl } from "@/components/custom-url";
+import { type networkSelection } from "@/sanity/selections/home/network";
 import {
   Card,
   CardDescription,
@@ -9,8 +8,8 @@ import {
   cn,
   Heading,
   Icon,
-} from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+} from "@shared/ui";
+import { type TypeFromSelection } from "groqd";
 
 interface Props {
   network: TypeFromSelection<typeof networkSelection>["network"]
@@ -20,6 +19,7 @@ export function Network({ network }: Props) {
   return (
     <div
       id="network-pile"
+      data-testid="network-pile"
       className="grid-pile relative py-[6rem] md:py-[10rem]"
     >
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(315deg,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_top,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(315deg,#E4FF07_0%,#07FFFF_100%)]"></div>

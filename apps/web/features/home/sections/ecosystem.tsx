@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { urlForImage } from "@/sanity/lib/image"
-import { type ecosystemSelection } from "@/sanity/selections/home/ecosystem"
-import { type TypeFromSelection } from "groqd"
+import { urlForImage } from "@/sanity/lib/image";
+import { type ecosystemSelection } from "@/sanity/selections/home/ecosystem";
+import { type TypeFromSelection } from "groqd";
+import Image from "next/image";
 
-import { Button, Card, CardContent, cn, Heading } from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+import { CustomUrl } from "@/components/custom-url";
+import { Button, Card, CardContent, cn, Heading } from "@shared/ui";
 
 interface Props {
   ecosystem: TypeFromSelection<typeof ecosystemSelection>["ecosystem"]
@@ -14,7 +14,11 @@ interface Props {
 
 export function Ecosystem({ ecosystem }: Props) {
   return (
-    <div id="ecosystem-pile" className="grid-pile pt-20 md:pt-[6rem]">
+    <div
+      id="ecosystem-pile"
+      data-testid="ecosystem-pile"
+      className="grid-pile pt-20 md:pt-[6rem]"
+    >
       <article
         id="ecosystem.wrapper"
         className="grid-system relative col-span-full h-auto w-lvw items-center justify-center overflow-hidden"

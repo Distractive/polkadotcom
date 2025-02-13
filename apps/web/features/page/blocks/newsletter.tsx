@@ -12,7 +12,7 @@ export const polkadotNewsletter = {
 
 export function Newsletter() {
   return (
-    <div className="py-16  ">
+    <div className="py-16  " data-testid="newsletter">
       <FormModalBlock modal={polkadotNewsletter} />
     </div>
   )

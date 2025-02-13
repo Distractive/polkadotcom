@@ -3,6 +3,7 @@ import { createClient } from "@sanity/client";
 import { env } from "./env.mjs";
 
 const isTest = process.env.NODE_ENV === 'test'
+const isDevelopment = process.env.NODE_ENV === 'development'
 
 // Initialize Sanity client
 const client = !isTest ? createClient({
@@ -127,7 +128,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn.sanity.io",
         port: "",
-        pathname: "/images/qf32zgfm/production/**",
+        pathname: `/images/qf32zgfm/${isTest || isDevelopment ? 'dev' : 'production'}/**`,
       },
       {
         protocol: "https",
@@ -145,7 +146,6 @@ const nextConfig = {
       return []
     }
 
-    
     const redirects = await client.fetch(
       `*[_type == "redirects"]{
         "source":source,

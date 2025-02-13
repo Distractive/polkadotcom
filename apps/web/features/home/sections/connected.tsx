@@ -1,9 +1,11 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { type connectedSelection } from "@/sanity/selections/home/connected"
-import { type TypeFromSelection } from "groqd"
+import { type connectedSelection } from "@/sanity/selections/home/connected";
+import { type TypeFromSelection } from "groqd";
+import Image from "next/image";
 
+import { Carousel } from "@/components/carousel";
+import { CustomUrl } from "@/components/custom-url";
 import {
   Card,
   CardContent,
@@ -12,9 +14,7 @@ import {
   CarouselItem,
   cn,
   Heading,
-} from "@shared/ui"
-import { Carousel } from "@/components/carousel"
-import { CustomUrl } from "@/components/custom-url"
+} from "@shared/ui";
 
 interface Props {
   connected: TypeFromSelection<typeof connectedSelection>["connected"]
@@ -24,6 +24,7 @@ export function Connected({ connected }: Props) {
   return (
     <div
       id="connected-pile"
+      data-testid="connected-pile"
       className="grid-pile relative bg-[image:linear-gradient(to_bottom_left,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom_left,rgba(121,22,243,1)_0%,rgba(7,255,255,1)_100%)] bg-[length:101%_100%] bg-no-repeat py-[4rem] md:py-[6rem]"
     >
       <article

@@ -1,6 +1,5 @@
-import { type buildSelection } from "@/sanity/selections/home/build"
-import { type TypeFromSelection } from "groqd"
-
+import { CustomUrl } from "@/components/custom-url";
+import { type buildSelection } from "@/sanity/selections/home/build";
 import {
   Card,
   CardDescription,
@@ -9,8 +8,8 @@ import {
   cn,
   Heading,
   Icon,
-} from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+} from "@shared/ui";
+import { type TypeFromSelection } from "groqd";
 
 interface Props {
   build: TypeFromSelection<typeof buildSelection>["build"]
@@ -20,6 +19,7 @@ export function Build({ build }: Props) {
   return (
     <div
       id="building-pile"
+      data-testid="building-pile"
       className="grid-pile relative bg-[image:linear-gradient(to_top_left,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_top,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_top_left,rgba(121,22,243,1)_0%,rgba(7,255,255,1)_100%)] bg-[length:101%_100%] bg-no-repeat py-[4rem] md:py-[10rem]"
     >
       <article

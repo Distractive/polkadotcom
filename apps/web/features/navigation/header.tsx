@@ -49,7 +49,10 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
   }
 
   return (
-    <div className="max-width z-40 mt-4 items-start justify-start ">
+    <div
+      className="max-width z-40 mt-4 items-start justify-start "
+      data-testid="navbar"
+    >
       <div className="relative flex h-nav-height flex-shrink-0 items-start justify-between px-gutter">
         <div
           className={cn(
