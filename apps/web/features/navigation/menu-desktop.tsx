@@ -73,7 +73,11 @@ export function MenuDesktop({
             )}
           </ul>
           {section.aside && (
-            <CustomUrl value={section.aside.link} onClick={handleCloseMenu}>
+            <CustomUrl
+              value={section.aside.link}
+              onClick={handleCloseMenu}
+              disableArrow={true}
+            >
               <aside
                 role="complementary"
                 className={cn(
