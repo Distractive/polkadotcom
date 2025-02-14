@@ -52,6 +52,7 @@ export function Ecosystem({ ecosystem }: Props) {
           <div className="grid-system col-span-12 gap-card !gap-x-card px-gutter md:px-0">
             {ecosystem.items.map((item, index) => (
               <Card
+                data-testid={`ecosystem-content-${item._key}`}
                 key={index}
                 className={cn(
                   "eco-card aspect-video place-content-end overflow-hidden rounded-2xl md:aspect-auto md:!h-[22.5rem]",

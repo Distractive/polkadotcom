@@ -11,7 +11,6 @@ export function Video({ video }: Props) {
   return (
     <div
       id="video-pile"
-      data-testid="video-pile"
       className="grid-pile -mt-header-top pt-48 md:pb-8 md:pt-64 lg:pt-24"
     >
       <article
@@ -20,6 +19,7 @@ export function Video({ video }: Props) {
       >
         <div
           id="video.content"
+          data-testid="video-pile-content"
           className={cn(
             "max-width relative z-10 col-span-12 !max-w-[80rem] px-gutter ",
             "md:w-full lg:col-span-8 lg:col-start-3"

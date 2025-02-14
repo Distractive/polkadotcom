@@ -1,5 +1,15 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "@playwright/test"
+
 test("Homepage", async ({ page }) => {
+  const ecosystemIds = [
+    "3b6847866f76",
+    "878be89f9898d0ab5e266e4fc49614c2",
+    "b006a029787b991dcdea6a3338249e84",
+    "1041062bfe436968c080cdeee5496b1b",
+    "3479ce3e3534297a92fd5f2a5ec98880",
+    "ed5a6361d98e64e2029dae1052a67228",
+  ]
+
   await test.step("go to homepage", async () => {
     await page.goto("/")
   })
@@ -41,6 +51,15 @@ test("Homepage", async ({ page }) => {
     expect(
       cookieBanner.getByRole("button", { name: "Reject All" })
     ).toBeVisible()
+  })
+
+  await test.step("cookies banner screenshot", async () => {
+    // @Note: wait to avoid blur effect
+    await page.waitForTimeout(6000)
+    const cookieBanner = page.getByRole("dialog", {
+      name: "Cookie Consent Banner",
+    })
+    expect(await cookieBanner.screenshot()).toMatchSnapshot("cookies.png")
 
     await cookieBanner
       .getByRole("button", { name: "Close this dialog" })
@@ -68,13 +87,24 @@ test("Homepage", async ({ page }) => {
     ).toBeVisible()
   })
 
+  await test.step("hero section screenshot", async () => {
+    // @Note: only landing frame because of animation
+    const heroLandingFrame = page.getByTestId("hero-landing-frame")
+    expect(await heroLandingFrame.screenshot()).toMatchSnapshot("hero.png")
+  })
+
   await test.step("assert 'video' section is displayed properly", async () => {
-    const videoSection = page.getByTestId("video-pile")
+    const videoSection = page.getByTestId("video-pile-content")
 
     await expect(
       videoSection.getByRole("heading", { name: "A future led by you" })
     ).toBeVisible()
     await expect(videoSection.getByTestId("video-block")).toBeVisible()
+  })
+
+  await test.step("video section screenshot", async () => {
+    const videoSection = page.getByTestId("video-pile-content")
+    expect(await videoSection.screenshot()).toMatchSnapshot("video.png")
   })
 
   await test.step("assert 'network' section displayed properly", async () => {
@@ -105,6 +135,11 @@ test("Homepage", async ({ page }) => {
     )
   })
 
+  await test.step("network section screenshot", async () => {
+    const networkSection = page.getByTestId("network-pile-content")
+    expect(await networkSection.screenshot()).toMatchSnapshot("network.png")
+  })
+
   await test.step("assert 'stats' section is displayed properly", async () => {
     const statsSection = page.getByTestId("stats-pile")
 
@@ -128,42 +163,9 @@ test("Homepage", async ({ page }) => {
     ).toHaveText("600+ projectsin the Polkadot ecosystem")
   })
 
-  await test.step("assert 'ecosystem' section is displayed properly", async () => {
-    const ecosystemSection = page.getByTestId("ecosystem-pile")
-
-    await expect(
-      ecosystemSection.getByRole("heading", {
-        name: "Home to the bold and visionary",
-      })
-    ).toBeVisible()
-    await expect(
-      ecosystemSection.getByText("Polkadot combines unbeatable")
-    ).toHaveText(
-      "Polkadot combines unbeatable technology and a strong community to bring inspiring projects to life."
-    )
-    await expect(
-      ecosystemSection.getByRole("link", { name: "NFL Rivals Digital" })
-    ).toBeVisible()
-    await expect(
-      ecosystemSection.getByRole("link", { name: "Hydration Omnipool DEX for" })
-    ).toBeVisible()
-    await expect(
-      ecosystemSection.getByRole("link", { name: "Acurast Provide compute &" })
-    ).toBeVisible()
-    await expect(
-      ecosystemSection.getByRole("link", {
-        name: "ChatDKG Launchpad for trusted",
-      })
-    ).toBeVisible()
-    await expect(
-      ecosystemSection.getByRole("link", { name: "Exiled Racers Racing and" })
-    ).toBeVisible()
-    await expect(
-      ecosystemSection.getByRole("link", { name: "Energy Web X Enterprise" })
-    ).toBeVisible()
-    await expect(
-      ecosystemSection.getByRole("link", { name: "Explore Dapps" })
-    ).toBeVisible()
+  await test.step("stats section screenshot", async () => {
+    const statsSection = page.getByTestId("stats-pile")
+    expect(await statsSection.screenshot()).toMatchSnapshot("stats.png")
   })
 
   await test.step("assert 'building' section is displayed properly", async () => {
@@ -188,6 +190,11 @@ test("Homepage", async ({ page }) => {
     await expect(
       ecosystemSection.getByText("Explore funding", { exact: true })
     ).toBeVisible()
+  })
+
+  await test.step("building section screenshot", async () => {
+    const ecosystemSection = page.getByTestId("building-pile")
+    expect(await ecosystemSection.screenshot()).toMatchSnapshot("building.png")
   })
 
   await test.step("assert 'connected' section is displayed properly", async () => {
@@ -248,6 +255,11 @@ test("Homepage", async ({ page }) => {
     ).toBeVisible()
   })
 
+  await test.step("connected section screenshot", async () => {
+    const connectedSection = page.getByTestId("connected-pile")
+    expect(await connectedSection.screenshot()).toMatchSnapshot("connected.png")
+  })
+
   await test.step("assert 'newsletter' block is displayed properly", async () => {
     const newsletterWrapper = page.getByTestId("newsletter")
 
@@ -262,5 +274,59 @@ test("Homepage", async ({ page }) => {
     await expect(
       newsletterWrapper.getByRole("button", { name: "Subscribe" })
     ).toBeVisible()
+  })
+
+  await test.step("newsletter section screenshot", async () => {
+    const newsletterWrapper = page.getByTestId("newsletter")
+    expect(await newsletterWrapper.screenshot()).toMatchSnapshot(
+      "newsletter.png"
+    )
+  })
+
+  await test.step("assert 'ecosystem' section is displayed properly", async () => {
+    const ecosystemSection = page.getByTestId("ecosystem-pile")
+
+    await expect(
+      ecosystemSection.getByRole("heading", {
+        name: "Home to the bold and visionary",
+      })
+    ).toBeVisible()
+    await expect(
+      ecosystemSection.getByText("Polkadot combines unbeatable")
+    ).toHaveText(
+      "Polkadot combines unbeatable technology and a strong community to bring inspiring projects to life."
+    )
+    await expect(
+      ecosystemSection.getByRole("link", { name: "NFL Rivals Digital" })
+    ).toBeVisible()
+    await expect(
+      ecosystemSection.getByRole("link", { name: "Hydration Omnipool DEX for" })
+    ).toBeVisible()
+    await expect(
+      ecosystemSection.getByRole("link", { name: "Acurast Provide compute &" })
+    ).toBeVisible()
+    await expect(
+      ecosystemSection.getByRole("link", {
+        name: "ChatDKG Launchpad for trusted",
+      })
+    ).toBeVisible()
+    await expect(
+      ecosystemSection.getByRole("link", { name: "Exiled Racers Racing and" })
+    ).toBeVisible()
+    await expect(
+      ecosystemSection.getByRole("link", { name: "Energy Web X Enterprise" })
+    ).toBeVisible()
+    await expect(
+      ecosystemSection.getByRole("link", { name: "Explore Dapps" })
+    ).toBeVisible()
+  })
+
+  await test.step("ecosystem section screenshot", async () => {
+    for (const id of ecosystemIds) {
+      const ecosystemImage = page.getByTestId(`ecosystem-content-${id}`)
+      expect(await ecosystemImage.screenshot()).toMatchSnapshot(
+        `ecosystem-${id}.png`
+      )
+    }
   })
 })

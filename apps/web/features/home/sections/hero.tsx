@@ -35,7 +35,9 @@ export function Hero({ hero }: Props) {
               "-mt-[8rem] sm:-mt-[5rem] md:mt-0"
             )}
           >
-            <div className="sm:max-w-xl md:max-w-2xl lg:max-w-2xl xl:max-w-6xl  ">
+            <div className="sm:max-w-xl md:max-w-2xl lg:max-w-2xl xl:max-w-6xl  "
+            data-testid="hero-landing-frame"
+            >
               <Heading
                 variant="h1"
                 className="pb-card leading-[1] md:!text-[3.813rem] "

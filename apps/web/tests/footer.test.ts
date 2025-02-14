@@ -5,6 +5,21 @@ test("Footer", async ({ page }) => {
     await page.goto("/")
   })
 
+  await test.step("close cookies banner", async () => {
+    const cookieBanner = page.getByRole("dialog", {
+      name: "Cookie Consent Banner",
+    })
+    await cookieBanner.waitFor({state: 'visible', timeout: 2000});
+    await cookieBanner
+      .getByRole("button", { name: "Close this dialog" })
+      .click()
+    await expect(cookieBanner).toBeHidden()
+  })
+
+  await test.step("footer screenshot", async () => {
+    const footerContainer = page.getByTestId("footer")
+    expect(await footerContainer.screenshot()).toMatchSnapshot("footer.png")
+  })
   await test.step("assert footer is properly displayed", async () => {
     const footerContainer = page.getByTestId("footer")
 

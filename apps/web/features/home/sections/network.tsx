@@ -30,6 +30,7 @@ export function Network({ network }: Props) {
       >
         <div
           id="network.content"
+          data-testid="network-pile-content"
           className={cn(
             "max-width col-span-full flex flex-col items-center justify-center",
             "md:col-span-full md:col-start-1 md:w-full",
