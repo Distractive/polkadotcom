@@ -30,7 +30,7 @@ export function Stats({ stats }: Props) {
             variant="h2"
             className={cn(
               "px-gutter  leading-[1.1] lg:pl-gutter lg:pr-gutter",
-              "col-span-full md:col-span-3  md:text-[3.25rem] lg:col-start-2 xl:col-start-2 xl:text-[3.813rem]",
+              "col-span-full md:col-span-3 md:col-start-1  md:text-[3.25rem] lg:col-start-2 xl:col-start-2 xl:text-[3.813rem]",
               "!hyphens-none !break-normal"
             )}
             size="display"

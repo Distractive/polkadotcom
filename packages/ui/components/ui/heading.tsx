@@ -67,8 +67,9 @@ const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
     const anchorLink = generateAnchorLinkId(children as string)
 
     return (
-      <div className="relative col-span-full w-full">
-        <div id={anchorLink} className="anchor-link absolute bottom-40"></div>
+      <>
+        <div id={anchorLink} className="anchor-link -translate-y-24"></div>
+
         <Element
           className={cn(
             headingVariants({ variant, size, decoration, weight, className })
@@ -78,7 +79,7 @@ const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
         >
           {children}
         </Element>
-      </div>
+      </>
     )
   }
 )
