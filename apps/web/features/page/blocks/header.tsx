@@ -1,12 +1,15 @@
 import Image from "next/image"
 import { urlForImage } from "@/sanity/lib/image"
 import { type headerSelection } from "@/sanity/selections/blocks/header"
+import { newsletterButtonSelection } from "@/sanity/selections/blocks/newsletter-button"
+import { customUrlSelection } from "@/sanity/selections/custom-url"
 import type { TypeFromSelection } from "groqd"
 
 import { Button, cn, Heading } from "@shared/ui"
 import { CustomUrl } from "@/components/custom-url"
 
 import { BreadcrumbBlock, type BreadcrumbProps } from "./breadcrumb"
+import { NewsletterButton } from "./newsletter-button"
 import { VideoBlock } from "./video"
 
 interface Props {
@@ -16,6 +19,55 @@ interface Props {
 }
 
 export function HeaderBlock({ header, breadcrumb, className }: Props) {
+  const renderNewsletterButton = (
+    link: TypeFromSelection<typeof newsletterButtonSelection>
+  ) => {
+    const variant =
+      link.variant === "primary" || link.variant === "secondary"
+        ? link.variant
+        : undefined
+
+    return (
+      <NewsletterButton
+        key={link._key}
+        value={{
+          label: link.label,
+          modalHeading: link.modalHeading,
+          formType: link.formType,
+          variant: variant,
+          _key: link._key,
+          size: "lg",
+        }}
+      />
+    )
+  }
+
+  const renderCustomUrl = (
+    link: TypeFromSelection<typeof customUrlSelection>
+  ) => {
+    const variant =
+      link?.variant === "primary" ||
+      link?.variant === "secondary" ||
+      link?.variant === "tertiary" ||
+      link?.variant === "disabled"
+        ? link.variant
+        : "primary"
+
+    return (
+      <Button variant={variant} size="lg">
+        <CustomUrl
+          className="outline-none"
+          value={{
+            internal: link.internal,
+            external: link.external,
+          }}
+        >
+          {link.label}
+        </CustomUrl>
+      </Button>
+    )
+  }
+
   // Alternate Header
   if (header.isAlternate) {
     return (
@@ -55,7 +107,6 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
             />
           </div>
         )}
-
         <div
           className={cn(
             "flex max-w-4xl flex-col justify-center gap-copy lg:pt-16",
@@ -76,30 +127,11 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
               id="main-content"
               className="mt-card flex w-full flex-wrap gap-4"
             >
-              {header.links?.map((link, index) => (
-                <Button
-                  asChild
-                  key={index}
-                  variant={
-                    link?.variant
-                      ? link.variant === "primary"
-                        ? "primary"
-                        : "secondary"
-                      : "primary"
-                  }
-                  size="lg"
-                >
-                  <CustomUrl
-                    className="outline-none"
-                    value={{
-                      internal: link?.internal,
-                      external: link?.external,
-                    }}
-                  >
-                    {link.label}
-                  </CustomUrl>
-                </Button>
-              ))}
+              {header.links?.map((link, index) =>
+                link._type === "newsletterButton"
+                  ? renderNewsletterButton(link)
+                  : renderCustomUrl(link)
+              )}{" "}
             </div>
           )}
           {header.video && (
@@ -156,27 +188,11 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
             id="main-content"
             className="mt-card flex w-full flex-wrap gap-4"
           >
-            {header.links?.map((link, index) => (
-              <Button
-                asChild
-                key={index}
-                variant={
-                  link?.variant
-                    ? link.variant === "primary"
-                      ? "primary"
-                      : "secondary"
-                    : "primary"
-                }
-                size="lg"
-              >
-                <CustomUrl
-                  className="outline-none"
-                  value={{ internal: link?.internal, external: link?.external }}
-                >
-                  {link.label}
-                </CustomUrl>
-              </Button>
-            ))}
+            {header.links?.map((link) =>
+              link._type === "newsletterButton"
+                ? renderNewsletterButton(link)
+                : renderCustomUrl(link)
+            )}
           </div>
         )}
         {header.video && (

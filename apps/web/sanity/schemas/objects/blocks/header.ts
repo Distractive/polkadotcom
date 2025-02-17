@@ -49,6 +49,9 @@ export default defineType({
         defineArrayMember({
           type: "customUrl",
         }),
+        defineArrayMember({
+          type: "newsletterButton",
+        }),
       ],
     }),
     defineField({

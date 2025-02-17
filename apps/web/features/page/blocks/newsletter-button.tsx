@@ -11,6 +11,7 @@ interface NewsletterSignupProps {
     formType: string
     variant?: "primary" | "secondary"
     _key: string
+    size?: "sm" | "md" | "lg"
   }
   className?: string
 }
@@ -32,7 +33,7 @@ export function NewsletterButton({ value, className }: NewsletterSignupProps) {
     formType: value.formType,
     _key: value._key,
     variant: value.variant as "primary" | "secondary",
-    size: "md",
+    size: value.size || "md",
   }
 
   return (
