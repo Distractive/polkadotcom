@@ -1,21 +1,21 @@
-import logo from "@/public/polkadot-logo.png"
-import type { footerSelection } from "@/sanity/selections/footer/footer"
-import type { TypeFromSelection } from "groqd"
-import Image from "next/image"
+import logo from '@/public/polkadot-logo.png';
+import type { footerSelection } from '@/sanity/selections/footer/footer';
+import type { TypeFromSelection } from 'groqd';
+import Image from 'next/image';
 
-import Menu from "./menu"
-import SocialLinks from "./social-links"
+import Menu from './menu';
+import SocialLinks from './social-links';
 
 interface Props {
-  footer: TypeFromSelection<typeof footerSelection>
+  footer: TypeFromSelection<typeof footerSelection>;
 }
 
 const modalData = {
-  cta: "Subscribe",
-  modalHeading: "Polkadot’s latest news, straight from the source.",
-  formType: "a5ecd657-6aae-4da0-bf08-f3b994919f0b",
-  _key: "0e433bc64886",
-}
+  cta: 'Subscribe',
+  modalHeading: 'Polkadot’s latest news, straight from the source.',
+  formType: 'a5ecd657-6aae-4da0-bf08-f3b994919f0b',
+  _key: '0e433bc64886',
+};
 
 export default function FooterLayout({ footer }: Props) {
   return (
@@ -36,7 +36,7 @@ export default function FooterLayout({ footer }: Props) {
                   src={logo}
                   alt="Polkadot logo"
                   width={360}
-                  style={{ height: "auto" }}
+                  style={{ height: 'auto' }}
                   role="img"
                   priority
                 />
@@ -52,5 +52,5 @@ export default function FooterLayout({ footer }: Props) {
         </div>
       </footer>
     </div>
-  )
+  );
 }

@@ -1,114 +1,114 @@
-import type { ReactNode } from "react"
-import { draftMode } from "next/headers"
-import Image from "next/image"
-import { notFound } from "next/navigation"
-import { getPost } from "@/sanity/queries/post"
+import { getPost } from '@/sanity/queries/post';
 import {
   getPostHeading,
   getPosts,
   type postSelection,
-} from "@/sanity/queries/posts"
-import { type TypeFromSelection } from "groqd"
+} from '@/sanity/queries/posts';
+import type { TypeFromSelection } from 'groqd';
+import { draftMode } from 'next/headers';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import type { ReactNode } from 'react';
 
 import {
   BLOG_POSTTYPE,
   CASE_STUDY_POSTTYPE,
   PRESS_RELEASE_POSTTYPE,
-} from "@/constants/global"
-import { CarouselItem, cn, Heading } from "@shared/ui"
+} from '@/constants/global';
+import { CarouselItem, Heading, cn } from '@shared/ui';
 
-import { Carousel } from "../../components/carousel"
-import type { BreadcrumbProps } from "../page/blocks/breadcrumb"
-import { BreadcrumbBlock } from "../page/blocks/breadcrumb"
-import { Body } from "./body"
-import BlogCard from "./card"
+import { Carousel } from '../../components/carousel';
+import type { BreadcrumbProps } from '../page/blocks/breadcrumb';
+import { BreadcrumbBlock } from '../page/blocks/breadcrumb';
+import { Body } from './body';
+import BlogCard from './card';
 
 interface LayoutProps {
-  slug: string
+  slug: string;
   type:
     | typeof BLOG_POSTTYPE
     | typeof PRESS_RELEASE_POSTTYPE
-    | typeof CASE_STUDY_POSTTYPE
+    | typeof CASE_STUDY_POSTTYPE;
 }
 
 export default async function Layout({ slug, type }: LayoutProps) {
-  const isDraftMode = draftMode().isEnabled
-  const post = await getPost(slug, isDraftMode)
+  const isDraftMode = draftMode().isEnabled;
+  const post = await getPost(slug, isDraftMode);
 
-  const allPosts = await getPosts(1, type, "", false, slug)
+  const allPosts = await getPosts(1, type, '', false, slug);
   const headingType = (() => {
     switch (type) {
       case BLOG_POSTTYPE:
-        return "blog"
+        return 'blog';
       case PRESS_RELEASE_POSTTYPE:
-        return "press-releases"
+        return 'press-releases';
       case CASE_STUDY_POSTTYPE:
-        return "case-studies"
+        return 'case-studies';
     }
-  })()
+  })();
 
-  const [postsData] = await getPostHeading(headingType)
+  const [postsData] = await getPostHeading(headingType);
 
   if (!post) {
-    return notFound()
+    return notFound();
   }
 
   const breadcrumb: BreadcrumbProps = {
     items: (() => {
       switch (type) {
-        case "Press Release":
+        case 'Press Release':
           return [
             {
-              slug: "/community/newsroom",
-              title: "Newsroom",
+              slug: '/community/newsroom',
+              title: 'Newsroom',
             },
             {
-              slug: "/newsroom/press-releases",
-              title: "Press Releases",
+              slug: '/newsroom/press-releases',
+              title: 'Press Releases',
             },
-          ]
-        case "Case Study":
+          ];
+        case 'Case Study':
           return [
             {
-              slug: "/platform",
-              title: "Platform",
+              slug: '/platform',
+              title: 'Platform',
             },
             {
-              slug: "/case-studies",
-              title: "Case Studies",
+              slug: '/case-studies',
+              title: 'Case Studies',
             },
-          ]
-        case "Blog":
+          ];
+        case 'Blog':
           return [
             {
-              slug: "/community",
-              title: "Community",
+              slug: '/community',
+              title: 'Community',
             },
             {
-              slug: "/blog",
-              title: "Blog",
+              slug: '/blog',
+              title: 'Blog',
             },
-          ]
+          ];
         default:
           return [
             {
-              slug: postsData?.parent?.slug ? `/${postsData.parent.slug}` : "",
+              slug: postsData?.parent?.slug ? `/${postsData.parent.slug}` : '',
               title: postsData?.parent?.header?.title,
             },
             {
               slug:
                 postsData?.parent?.slug && postsData?.slug
                   ? `/${postsData.parent.slug}/${postsData.slug}`
-                  : "",
+                  : '',
               title: postsData?.heading,
             },
-          ]
+          ];
       }
     })(),
-  }
+  };
 
   if (!post) {
-    return notFound()
+    return notFound();
   }
 
   const {
@@ -120,7 +120,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
     body,
     tags,
     post_type,
-  } = post
+  } = post;
 
   return (
     <>
@@ -128,7 +128,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
         <div className="mb-6">
           <BreadcrumbBlock items={breadcrumb.items} />
         </div>
-        <Heading variant={"h1"} className="mb-6">
+        <Heading variant={'h1'} className="mb-6">
           {title}
         </Heading>
         <PostExcerpt>{custom_excerpt}</PostExcerpt>
@@ -147,7 +147,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
                         [BLOG_POSTTYPE]: `/blog/tag/${tag.slug}`,
                         [PRESS_RELEASE_POSTTYPE]: `/newsroom/press-releases/tag/${tag.slug}`,
                         [CASE_STUDY_POSTTYPE]: `/case-studies/tag/${tag.slug}`,
-                      }[post_type] || "/"
+                      }[post_type] || '/'
                     }
                   >
                     {tag.name}
@@ -169,12 +169,11 @@ export default async function Layout({ slug, type }: LayoutProps) {
                 <span>By {author.name}</span>
                 <span>•</span>
                 <span>
-                  {published_date &&
-                    published_date.toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
+                  {published_date?.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
                 </span>
               </>
             )}
@@ -183,7 +182,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
         {image && (
           <PostImage>
             <Image
-              src={image.asset.url || ""}
+              src={image.asset.url || ''}
               width={image.asset.metadata.dimensions?.width}
               height={image.asset.metadata.dimensions?.height}
               alt=""
@@ -198,7 +197,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
         <MorePost posts={allPosts.posts} post_type={post_type} />
       )}
     </>
-  )
+  );
 }
 
 const PostPublish = ({ children }: { children: ReactNode }) => {
@@ -209,45 +208,45 @@ const PostPublish = ({ children }: { children: ReactNode }) => {
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
 const PostExcerpt = ({ children }: { children: ReactNode }) => {
-  return <p className="mb-6 text-lg">{children}</p>
-}
+  return <p className="mb-6 text-lg">{children}</p>;
+};
 
 const PostMetaData = ({ children }: { children: ReactNode }) => {
-  return <div className="grid w-full ">{children}</div>
-}
+  return <div className="grid w-full ">{children}</div>;
+};
 
 const PostImage = ({ children }: { children: ReactNode }) => {
   return (
     <div className="aspect-2 m-0 mb-12 block w-full rounded-2xl object-cover object-center">
       {children}
     </div>
-  )
-}
+  );
+};
 
 const MorePost = ({
   posts,
   post_type,
 }: {
-  posts: Array<TypeFromSelection<typeof postSelection>>
-  post_type: string
+  posts: Array<TypeFromSelection<typeof postSelection>>;
+  post_type: string;
 }) => {
   const headingLabel = (() => {
     switch (post_type) {
       case BLOG_POSTTYPE:
-        return "From the blog"
+        return 'From the blog';
       case PRESS_RELEASE_POSTTYPE:
-        return "More from newsroom"
+        return 'More from newsroom';
       case CASE_STUDY_POSTTYPE:
-        return "More case studies"
+        return 'More case studies';
     }
-  })()
+  })();
   return (
     <div className="max-width col-span-full  px-gutter">
-      <div className={cn("col-span-full mb-12")}>
+      <div className={cn('col-span-full mb-12')}>
         <div className="flex flex-col gap-copy lg:w-5/6">
           <Heading variant="h2">{headingLabel}</Heading>
         </div>
@@ -261,9 +260,9 @@ const MorePost = ({
             >
               <BlogCard key={String(post._id)} post={post} className="h-full" />
             </CarouselItem>
-          )
+          );
         })}
       </Carousel>
     </div>
-  )
-}
+  );
+};

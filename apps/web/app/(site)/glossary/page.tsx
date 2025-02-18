@@ -1,53 +1,56 @@
-import { type Metadata } from "next"
-import Link from "next/link"
-import { notFound } from "next/navigation"
-import { getGlossary } from "@/sanity/queries/glossary"
-import { getSingletonMeta } from "@/sanity/queries/page"
-import { cleanTerm, groupEntriesByLetter } from "@/utils/glossary/glossaryUtils"
+import { getGlossary } from '@/sanity/queries/glossary';
+import { getSingletonMeta } from '@/sanity/queries/page';
+import {
+  cleanTerm,
+  groupEntriesByLetter,
+} from '@/utils/glossary/glossaryUtils';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-import { Heading } from "@shared/ui"
-import { HeaderBlock } from "@/features/page/blocks/header"
-import { Body } from "@/features/post/body"
-import { SearchBar } from "@/features/posts/search-bar"
+import { HeaderBlock } from '@/features/page/blocks/header';
+import { Body } from '@/features/post/body';
+import { SearchBar } from '@/features/posts/search-bar';
+import { Heading } from '@shared/ui';
 
-import AlphabetNav from "./alphabet-nav"
+import AlphabetNav from './alphabet-nav';
 
-export const dynamicParams = true
+export const dynamicParams = true;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const meta = await getSingletonMeta("glossary")
+  const meta = await getSingletonMeta('glossary');
 
   if (!meta) {
     return {
-      title: "Glossary Not Found | Polkadot",
+      title: 'Glossary Not Found | Polkadot',
       description: "The glossary page you're looking for could not be found.",
-    }
+    };
   }
 
   return {
-    title: meta?.meta?.meta_title || "Polkadot Glossary",
+    title: meta?.meta?.meta_title || 'Polkadot Glossary',
     description:
       meta?.meta?.meta_description ||
       "Explore key terms and concepts in the Polkadot ecosystem. A comprehensive glossary explaining the terminology used in blockchain interoperability, shared security, and Polkadot's innovative technology.",
     openGraph: {
-      images: [meta?.meta?.meta_image?.asset.path || ""],
-      title: meta?.meta?.meta_title || "Polkadot Glossary",
+      images: [meta?.meta?.meta_image?.asset.path || ''],
+      title: meta?.meta?.meta_title || 'Polkadot Glossary',
       description:
         meta?.meta?.meta_description ||
         "Explore key terms and concepts in the Polkadot ecosystem. A comprehensive glossary explaining the terminology used in blockchain interoperability, shared security, and Polkadot's innovative technology.",
     },
-  }
+  };
 }
 
 export default async function Page() {
-  const data = await getGlossary()
+  const data = await getGlossary();
   if (!data) {
-    return notFound()
+    return notFound();
   }
 
-  const groupedEntries = groupEntriesByLetter(data.entries)
+  const groupedEntries = groupEntriesByLetter(data.entries);
 
-  const availableLetters = Object.keys(groupedEntries).sort()
+  const availableLetters = Object.keys(groupedEntries).sort();
 
   return (
     <div className="max-width grid-system col-span-full">
@@ -90,7 +93,7 @@ export default async function Page() {
                   {entry.createFullPageEntry ? (
                     <div className="">
                       <Link
-                        href={`/glossary/${entry.slug?.current || ""}`}
+                        href={`/glossary/${entry.slug?.current || ''}`}
                         className="group outline-none"
                       >
                         <div className="flex flex-row gap-2">
@@ -118,7 +121,7 @@ export default async function Page() {
                 <Body body={entry.shortEntry} />
                 {entry.createFullPageEntry && (
                   <Link
-                    href={`/glossary/${entry.slug?.current || ""}`}
+                    href={`/glossary/${entry.slug?.current || ''}`}
                     className="inline-block text-pink-500 hover:cursor-pointer hover:underline"
                   >
                     Read more &nbsp;→
@@ -130,5 +133,5 @@ export default async function Page() {
         ))}
       </div>
     </div>
-  )
+  );
 }

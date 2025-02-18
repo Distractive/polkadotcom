@@ -1,43 +1,42 @@
-import React from "react"
-import { Preview } from "@storybook/react"
+import type { Preview } from '@storybook/react';
 
-import { cn } from "@shared/ui"
+import { cn } from '@shared/ui';
 
-import { manrope, unbounded } from "../styles/fonts"
+import { manrope, unbounded } from '../styles/fonts';
 
-import "./styles.css"
-import "@shared/ui/styles/global.css"
+import './styles.css';
+import '@shared/ui/styles/global.css';
 
 const customViewports = {
   small_mobile: {
-    name: "small_mobile",
+    name: 'small_mobile',
     styles: {
-      width: "359px",
-      height: "640px",
+      width: '359px',
+      height: '640px',
     },
   },
   mobile: {
-    name: "mobile",
+    name: 'mobile',
     styles: {
-      width: "390px",
-      height: "640px",
+      width: '390px',
+      height: '640px',
     },
   },
   tablet: {
-    name: "tablet",
+    name: 'tablet',
     styles: {
-      width: "768px",
-      height: "640px",
+      width: '768px',
+      height: '640px',
     },
   },
   desktop: {
-    name: "desktop",
+    name: 'desktop',
     styles: {
-      width: "1440px",
-      height: "1024px",
+      width: '1440px',
+      height: '1024px',
     },
   },
-}
+};
 
 const preview: Preview = {
   decorators: [
@@ -46,7 +45,7 @@ const preview: Preview = {
         className={cn(
           unbounded.variable,
           manrope.variable,
-          "font-default antialiased"
+          'font-default antialiased',
         )}
       >
         <Story />
@@ -58,7 +57,7 @@ const preview: Preview = {
     ),
   ],
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
+    actions: { argTypesRegex: '^on[A-Z].*' },
     viewport: { viewports: customViewports },
     controls: {
       matchers: {
@@ -67,6 +66,6 @@ const preview: Preview = {
       },
     },
   },
-}
+};
 
-export default preview
+export default preview;

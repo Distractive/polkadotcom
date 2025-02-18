@@ -1,26 +1,26 @@
-"use client";
+'use client';
 
-import { type cardsTimelineSelection } from "@/sanity/selections/blocks/cards-timeline";
-import type { TypeFromSelection } from "groqd";
+import type { cardsTimelineSelection } from '@/sanity/selections/blocks/cards-timeline';
+import type { TypeFromSelection } from 'groqd';
 
-import { Carousel } from "@/components/carousel";
-import { useBreakpoint } from "@/hooks/use-breakpoint";
-import { CarouselItem, Heading } from "@shared/ui";
+import { Carousel } from '@/components/carousel';
+import { useBreakpoint } from '@/hooks/use-breakpoint';
+import { CarouselItem, Heading } from '@shared/ui';
 
-import CardTimelineBlock from "./card-timeline";
+import CardTimelineBlock from './card-timeline';
 
 interface Props {
-  cards: TypeFromSelection<typeof cardsTimelineSelection>
+  cards: TypeFromSelection<typeof cardsTimelineSelection>;
 }
 
 export function CardsTimelineBlock({ cards }: Props) {
-  const isMobile = useBreakpoint("--screen-lg")
+  const isMobile = useBreakpoint('--screen-lg');
 
   if (!cards || !cards?.items?.length) {
-    return null
+    return null;
   }
 
-  const isCarousel = cards.items.length > 3
+  const isCarousel = cards.items.length > 3;
 
   return (
     <div className="grid-system max-width py-gutter pl-gutter">
@@ -48,5 +48,5 @@ export function CardsTimelineBlock({ cards }: Props) {
         ))}
       </Carousel>
     </div>
-  )
+  );
 }

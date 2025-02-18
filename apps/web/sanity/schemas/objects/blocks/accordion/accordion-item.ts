@@ -1,38 +1,38 @@
-import { defineField, defineType } from "sanity"
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: "accordion-item",
-  title: "Accordion Item",
-  type: "object",
+  name: 'accordion-item',
+  title: 'Accordion Item',
+  type: 'object',
   fields: [
     defineField({
-      name: "heading",
-      title: "Heading",
-      type: "string",
+      name: 'heading',
+      title: 'Heading',
+      type: 'string',
     }),
     defineField({
-      name: "content",
-      title: "Content",
-      type: "array",
+      name: 'content',
+      title: 'Content',
+      type: 'array',
       of: [
         {
-          type: "block",
+          type: 'block',
           styles: [
-            { title: "Normal", value: "normal" },
-            { title: "H4", value: "h4" },
+            { title: 'Normal', value: 'normal' },
+            { title: 'H4', value: 'h4' },
           ],
           marks: {
-            decorators: [{ title: "Strong", value: "strong" }],
+            decorators: [{ title: 'Strong', value: 'strong' }],
           },
         },
         {
-          type: "break",
-          initialValue: { style: "lineBreak" },
+          type: 'break',
+          initialValue: { style: 'lineBreak' },
         },
         {
-          type: "customUrl",
+          type: 'customUrl',
         },
       ],
     }),
   ],
-})
+});

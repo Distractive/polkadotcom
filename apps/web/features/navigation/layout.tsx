@@ -1,82 +1,81 @@
-"use client";
+'use client';
 
-import type { navigationSelection } from "@/sanity/selections/navigation/navigation";
-import type { TypeFromSelection } from "groqd";
-import { useCallback, useEffect, useState } from "react";
+import type { navigationSelection } from '@/sanity/selections/navigation/navigation';
+import type { TypeFromSelection } from 'groqd';
+import { useCallback, useEffect, useState } from 'react';
 
-import { useBreakpoint } from "@/hooks/use-breakpoint";
-import { useHideOnScroll } from "@/hooks/use-hide-on-scroll";
-import { cn } from "@shared/ui";
+import { useBreakpoint } from '@/hooks/use-breakpoint';
+import { useHideOnScroll } from '@/hooks/use-hide-on-scroll';
+import { cn } from '@shared/ui';
 
-import { Header } from "./header";
-import { MenuDesktop } from "./menu-desktop";
-import { MenuMobile } from "./menu-mobile";
-import { Overlay } from "./overlay";
-import SkipToContent from "./skip-to-content";
+import { Header } from './header';
+import { MenuDesktop } from './menu-desktop';
+import { MenuMobile } from './menu-mobile';
+import { Overlay } from './overlay';
+import SkipToContent from './skip-to-content';
 
 interface Props {
-  navigation: TypeFromSelection<typeof navigationSelection>
+  navigation: TypeFromSelection<typeof navigationSelection>;
 }
 
 export default function NavigationLayout({ navigation }: Props) {
-  const [isOpen, setIsOpen] = useState(false)
-  const [hovered, setHovered] = useState<string>("")
-  const isMobile = useBreakpoint("--screen-lg")
-  const { ref } = useHideOnScroll()
+  const [isOpen, setIsOpen] = useState(false);
+  const [hovered, setHovered] = useState<string>('');
+  const isMobile = useBreakpoint('--screen-lg');
+  const { ref } = useHideOnScroll();
 
   const handleKeydown = useCallback(
     (event: KeyboardEvent) => {
-      if (event.key === "Escape" && isOpen) {
-        setIsOpen(false)
-        setHovered("")
+      if (event.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+        setHovered('');
       }
     },
-    [isOpen]
-  )
+    [isOpen],
+  );
 
   useEffect(() => {
     if (isOpen && isMobile) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = ""
+      document.body.style.overflow = '';
     }
 
     return () => {
-      document.body.style.overflow = ""
-    }
-  }, [isOpen, isMobile])
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, isMobile]);
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeydown)
+    window.addEventListener('keydown', handleKeydown);
     return () => {
-      window.removeEventListener("keydown", handleKeydown)
-    }
-  }, [handleKeydown])
+      window.removeEventListener('keydown', handleKeydown);
+    };
+  }, [handleKeydown]);
 
   const onLeave = () => {
     if (isMobile) {
-      return
+      return;
     }
     if (ref.current) {
-      if (ref.current.matches(":focus-within")) {
-        return
-      } else {
-        setIsOpen(false)
+      if (ref.current.matches(':focus-within')) {
+        return;
       }
+
+      setIsOpen(false);
     }
-  }
+  };
 
   return (
     <>
       <nav
-        role="navigation"
         ref={ref}
         onMouseLeave={onLeave}
         onBlur={onLeave}
         className={cn(
-          "fixed left-0 right-0 top-0 z-[100]",
-          "flex flex-col  text-black lg:gap-2",
-          isOpen && isMobile && "bottom-0"
+          'fixed left-0 right-0 top-0 z-[100]',
+          'flex flex-col  text-black lg:gap-2',
+          isOpen && isMobile && 'bottom-0',
         )}
       >
         <SkipToContent />
@@ -106,5 +105,5 @@ export default function NavigationLayout({ navigation }: Props) {
 
       <Overlay isVisible={isOpen && isMobile} />
     </>
-  )
+  );
 }

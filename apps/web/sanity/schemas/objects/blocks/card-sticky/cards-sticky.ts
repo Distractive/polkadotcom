@@ -1,48 +1,48 @@
-import { defineArrayMember, defineField, defineType } from "sanity"
+import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: "cardsSticky",
-  title: "Cards Sticky",
-  type: "object",
+  name: 'cardsSticky',
+  title: 'Cards Sticky',
+  type: 'object',
   description:
-    "Create a list of cards that stack up on scroll, sticking to the top of the viewport.",
+    'Create a list of cards that stack up on scroll, sticking to the top of the viewport.',
   groups: [
-    { title: "Config", name: "config" },
-    { title: "Heading", name: "heading" },
-    { title: "Content", name: "contents" },
+    { title: 'Config', name: 'config' },
+    { title: 'Heading', name: 'heading' },
+    { title: 'Content', name: 'contents' },
   ],
   fields: [
     defineField({
-      title: "Heading",
-      name: "heading",
-      type: "string",
-      group: "heading",
+      title: 'Heading',
+      name: 'heading',
+      type: 'string',
+      group: 'heading',
     }),
     defineField({
-      title: "Body",
-      name: "body",
-      type: "text",
+      title: 'Body',
+      name: 'body',
+      type: 'text',
       rows: 3,
-      group: "heading",
+      group: 'heading',
     }),
     defineField({
-      name: "items",
-      type: "array",
+      name: 'items',
+      type: 'array',
       of: [
         defineArrayMember({
-          type: "cardSticky",
+          type: 'cardSticky',
         }),
       ],
-      group: "contents",
+      group: 'contents',
     }),
   ],
   preview: {
     select: {
-      title: "heading",
+      title: 'heading',
     },
     prepare: ({ title }) => ({
       title,
-      subtitle: "- Sticky cards block",
+      subtitle: '- Sticky cards block',
     }),
   },
-})
+});

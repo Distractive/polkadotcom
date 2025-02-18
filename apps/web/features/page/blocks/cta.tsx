@@ -1,24 +1,24 @@
-import Image from "next/image"
-import { urlForImage } from "@/sanity/lib/image"
-import { type ctaSelection } from "@/sanity/selections/blocks/cta"
-import { type TypeFromSelection } from "groqd"
-import { PortableText } from "next-sanity"
+import { urlForImage } from '@/sanity/lib/image';
+import type { ctaSelection } from '@/sanity/selections/blocks/cta';
+import type { TypeFromSelection } from 'groqd';
+import { PortableText } from 'next-sanity';
+import Image from 'next/image';
 
-import { Button, cn, Heading } from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+import { CustomUrl } from '@/components/custom-url';
+import { Button, Heading, cn } from '@shared/ui';
 
-import { NewsletterButton } from "./newsletter-button"
+import { NewsletterButton } from './newsletter-button';
 
 interface Props {
-  cta: TypeFromSelection<typeof ctaSelection>
+  cta: TypeFromSelection<typeof ctaSelection>;
 }
 
 export function CTA({ cta }: Props) {
   return (
     <div
       className={cn(
-        "max-width flex px-gutter",
-        cta.isCentered ? "justify-center" : "items-start"
+        'max-width flex px-gutter',
+        cta.isCentered ? 'justify-center' : 'items-start',
       )}
     >
       <div className="relative w-full max-w-[60rem] overflow-hidden rounded-2xl ">
@@ -26,7 +26,7 @@ export function CTA({ cta }: Props) {
           <div className="absolute inset-0 -z-10  overflow-hidden rounded-2xl">
             <Image
               src={urlForImage(cta.image.asset)}
-              alt={cta.altText || ""}
+              alt={cta.altText || ''}
               layout="fill"
               objectFit="cover"
               quality={90}
@@ -37,20 +37,20 @@ export function CTA({ cta }: Props) {
 
         <div
           className={cn(
-            "flex rounded-2xl p-8 md:p-gutter",
-            !cta.image && "border border-grey-300"
+            'flex rounded-2xl p-8 md:p-gutter',
+            !cta.image && 'border border-grey-300',
           )}
         >
           <div
             className={cn(
-              "flex flex-col gap-4",
-              cta.useWhiteText ? "text-white" : "text-black",
-              cta.twoThirdsText ? "md:w-2/3" : ""
+              'flex flex-col gap-4',
+              cta.useWhiteText ? 'text-white' : 'text-black',
+              cta.twoThirdsText ? 'md:w-2/3' : '',
             )}
           >
             <Heading
               variant="h2"
-              className={cta.useWhiteText ? "text-white" : "text-black"}
+              className={cta.useWhiteText ? 'text-white' : 'text-black'}
             >
               {cta.heading}
             </Heading>
@@ -116,10 +116,10 @@ export function CTA({ cta }: Props) {
                               className="no-wrap md:cursor-pointer"
                               variant={
                                 value?.variant
-                                  ? value.variant === "primary"
-                                    ? "primary"
-                                    : "secondary"
-                                  : "primary"
+                                  ? value.variant === 'primary'
+                                    ? 'primary'
+                                    : 'secondary'
+                                  : 'primary'
                               }
                             >
                               <CustomUrl
@@ -133,14 +133,14 @@ export function CTA({ cta }: Props) {
                               </CustomUrl>
                             </Button>
                           </span>
-                        )
+                        );
                       },
                       newsletterButton: ({ value }) => {
                         return (
                           <span className="">
                             <NewsletterButton value={value} />
                           </span>
-                        )
+                        );
                       },
                     },
                   }}
@@ -151,5 +151,5 @@ export function CTA({ cta }: Props) {
         </div>
       </div>
     </div>
-  )
+  );
 }

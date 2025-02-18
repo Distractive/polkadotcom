@@ -1,30 +1,30 @@
-import { HighlightDecorator } from "@/sanity/components/highlight-decorator"
-import { HighlightIcon } from "@/sanity/components/highlight-icon"
-import { defineField, defineType } from "sanity"
+import { HighlightDecorator } from '@/sanity/components/highlight-decorator';
+import { HighlightIcon } from '@/sanity/components/highlight-icon';
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: "quote",
-  title: "Quote",
-  type: "object",
+  name: 'quote',
+  title: 'Quote',
+  type: 'object',
   fields: [
     defineField({
-      name: "image",
-      title: "Image",
-      type: "image",
+      name: 'image',
+      title: 'Image',
+      type: 'image',
     }),
     defineField({
-      name: "title",
-      title: "Title",
-      type: "array",
+      name: 'title',
+      title: 'Title',
+      type: 'array',
       of: [
         {
-          type: "block",
-          styles: [{ title: "H3", value: "h3" }],
+          type: 'block',
+          styles: [{ title: 'H3', value: 'h3' }],
           marks: {
             decorators: [
               {
-                title: "Highlight",
-                value: "highlight",
+                title: 'Highlight',
+                value: 'highlight',
                 icon: HighlightIcon,
                 component: HighlightDecorator,
               },
@@ -36,29 +36,32 @@ export default defineType({
       ],
     }),
     defineField({
-      name: "body",
-      title: "Body",
-      type: "text",
+      name: 'body',
+      title: 'Body',
+      type: 'text',
       rows: 5,
     }),
   ],
   preview: {
     select: {
-      blocks: "title",
+      blocks: 'title',
     },
     prepare(value) {
       const block = (value.blocks || []).find(
-        (block: any) => block._type === "block"
-      )
+        // biome-ignore lint/suspicious/noExplicitAny: <TODO: Fix>
+        (block: any) => block._type === 'block',
+      );
       return {
         title: block
           ? block.children
-              .filter((child: any) => child._type === "span")
+              // biome-ignore lint/suspicious/noExplicitAny: <TODO: Fix>
+              .filter((child: any) => child._type === 'span')
+              // biome-ignore lint/suspicious/noExplicitAny: <TODO: Fix>
               .map((span: any) => span.text)
-              .join("")
-          : "No title",
-        subtitle: "- Quote block",
-      }
+              .join('')
+          : 'No title',
+        subtitle: '- Quote block',
+      };
     },
   },
-})
+});

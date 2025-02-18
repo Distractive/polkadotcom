@@ -1,6 +1,6 @@
 interface Props {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 export const HighlightDecorator = (props: Props) => (
-  <span style={{ color: "#E6007A" }}>{props.children}</span>
-)
+  <span style={{ color: '#E6007A' }}>{props.children}</span>
+);

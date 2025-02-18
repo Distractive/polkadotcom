@@ -1,8 +1,9 @@
-import Image from "next/image"
-import { urlForImage } from "@/sanity/lib/image"
-import type { cardSelection } from "@/sanity/selections/blocks/card"
-import type { TypeFromSelection } from "groqd"
+import { urlForImage } from '@/sanity/lib/image';
+import type { cardSelection } from '@/sanity/selections/blocks/card';
+import type { TypeFromSelection } from 'groqd';
+import Image from 'next/image';
 
+import { CustomUrl } from '@/components/custom-url';
 import {
   Button,
   Card,
@@ -10,14 +11,13 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  cn,
   Heading,
-} from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+  cn,
+} from '@shared/ui';
 
 interface Props {
-  card: TypeFromSelection<typeof cardSelection>
-  className?: string
+  card: TypeFromSelection<typeof cardSelection>;
+  className?: string;
 }
 
 export default function CardBlock({ card, className }: Props) {
@@ -32,18 +32,18 @@ export default function CardBlock({ card, className }: Props) {
     link,
     useAsBackgroundImage,
     useSmallHeading,
-  } = card
+  } = card;
 
   return (
     <Card
       key={_key}
       className={cn(
-        "relative",
+        'relative',
         link &&
-          "group focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
-        className
+          'group focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0',
+        className,
       )}
-      data-tags={selectedTags?.join(",")}
+      data-tags={selectedTags?.join(',')}
     >
       {headerImage && useAsBackgroundImage && (
         <div className="absolute inset-0 overflow-hidden">
@@ -78,14 +78,14 @@ export default function CardBlock({ card, className }: Props) {
         )}
         <div
           className={cn(
-            "relative flex flex-grow flex-col",
-            useAsBackgroundImage && "bg-gradient-to-t from-black/60 to-black/0"
+            'relative flex flex-grow flex-col',
+            useAsBackgroundImage && 'bg-gradient-to-t from-black/60 to-black/0',
           )}
         >
           <CardContent
             className={cn(
-              "flex flex-grow flex-col gap-card p-card",
-              headerImage && icon && "pt-0"
+              'flex flex-grow flex-col gap-card p-card',
+              headerImage && icon && 'pt-0',
             )}
           >
             {icon && (
@@ -96,8 +96,8 @@ export default function CardBlock({ card, className }: Props) {
                 width={icon.asset.metadata.dimensions?.width}
                 height={icon.asset.metadata.dimensions?.height}
                 className={cn(
-                  headerImage && icon && "relative z-10 -mt-[2.25rem]",
-                  "mr-auto h-[4.5rem] w-auto rounded-2xl"
+                  headerImage && icon && 'relative z-10 -mt-[2.25rem]',
+                  'mr-auto h-[4.5rem] w-auto rounded-2xl',
                 )}
               />
             )}
@@ -116,8 +116,8 @@ export default function CardBlock({ card, className }: Props) {
             <div className="flex flex-grow flex-col gap-card">
               <div
                 className={cn(
-                  "grid gap-copy",
-                  useAsBackgroundImage && "text-white"
+                  'grid gap-copy',
+                  useAsBackgroundImage && 'text-white',
                 )}
               >
                 {eyebrow && (
@@ -128,11 +128,11 @@ export default function CardBlock({ card, className }: Props) {
                 {heading && (
                   <Heading
                     variant="h3"
-                    size={useSmallHeading ? "h5" : "h3"}
-                    weight={useSmallHeading ? "bold" : "normal"}
+                    size={useSmallHeading ? 'h5' : 'h3'}
+                    weight={useSmallHeading ? 'bold' : 'normal'}
                     className={cn(
-                      "transition-colors duration-200 ease-in-out",
-                      useAsBackgroundImage && "text-white"
+                      'transition-colors duration-200 ease-in-out',
+                      useAsBackgroundImage && 'text-white',
                     )}
                   >
                     {heading}
@@ -140,7 +140,7 @@ export default function CardBlock({ card, className }: Props) {
                 )}
                 {body && <CardDescription>{body}</CardDescription>}
               </div>
-              {link && link.variant && (
+              {link?.variant && (
                 <CardFooter className="mt-auto">
                   <Button
                     tabIndex={-1}
@@ -149,10 +149,10 @@ export default function CardBlock({ card, className }: Props) {
                     className="group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0"
                     variant={
                       link.variant
-                        ? link.variant === "primary"
-                          ? "primary"
-                          : "secondary"
-                        : "primary"
+                        ? link.variant === 'primary'
+                          ? 'primary'
+                          : 'secondary'
+                        : 'primary'
                     }
                   >
                     <CustomUrl className="outline-none" value={link} isNested>
@@ -166,5 +166,5 @@ export default function CardBlock({ card, className }: Props) {
         </div>
       </CustomUrl>
     </Card>
-  )
+  );
 }

@@ -1,28 +1,28 @@
-import type { cardStatSelection } from "@/sanity/selections/blocks/card-stat"
-import type { TypeFromSelection } from "groqd"
-import { PortableText } from "next-sanity"
+import type { cardStatSelection } from '@/sanity/selections/blocks/card-stat';
+import type { TypeFromSelection } from 'groqd';
+import { PortableText } from 'next-sanity';
 
 import {
   Button,
   Card,
   CardDescription,
   CardHeader,
-  cn,
   Heading,
   Icon,
-} from "@shared/ui"
+  cn,
+} from '@shared/ui';
 
 interface Props {
-  card: TypeFromSelection<typeof cardStatSelection>
-  className?: string
+  card: TypeFromSelection<typeof cardStatSelection>;
+  className?: string;
 }
 
 export default function CardStatBlock({ card, className }: Props) {
-  const { _key, heading, body, content } = card
+  const { _key, heading, body, content } = card;
 
   return (
     <>
-      <Card key={_key} className={cn(" bg-white  p-gutter", className)}>
+      <Card key={_key} className={cn(' bg-white  p-gutter', className)}>
         <CardHeader className="grid gap-copy">
           <Heading variant="h3" size="h2">
             {heading}
@@ -48,9 +48,9 @@ export default function CardStatBlock({ card, className }: Props) {
                 },
                 marks: {
                   link: ({ children, value }) => {
-                    const rel = !value.href.startsWith("/")
-                      ? "noreferrer noopener"
-                      : undefined
+                    const rel = !value.href.startsWith('/')
+                      ? 'noreferrer noopener'
+                      : undefined;
                     return (
                       <>
                         <a href={value.href} rel={rel} className="font-bold">
@@ -58,15 +58,15 @@ export default function CardStatBlock({ card, className }: Props) {
                           <Icon
                             variant="arrowRightUp"
                             className={cn(
-                              "ml-1 w-4 fill-current lg:w-5",
+                              'ml-1 w-4 fill-current lg:w-5',
                               value.variant &&
-                                value.variant === "primary" &&
-                                "fill-white"
+                                value.variant === 'primary' &&
+                                'fill-white',
                             )}
                           />
                         </a>
                       </>
-                    )
+                    );
                   },
                 },
 
@@ -74,12 +74,12 @@ export default function CardStatBlock({ card, className }: Props) {
                   customUrl: ({ value }) => {
                     return (
                       <Button
-                        variant={value.internal ? "primary" : "secondary"}
+                        variant={value.internal ? 'primary' : 'secondary'}
                         size="md"
                       >
                         {value.label}
                       </Button>
-                    )
+                    );
                   },
                 },
               }}
@@ -88,5 +88,5 @@ export default function CardStatBlock({ card, className }: Props) {
         )}
       </Card>
     </>
-  )
+  );
 }

@@ -1,8 +1,8 @@
-import type { faqsSelection } from "@/sanity/selections/blocks/faqs"
-import { PortableText } from "@portabletext/react"
-import { stegaClean } from "@sanity/client/stega"
-import { cn } from "@shared/ui/lib/utils"
-import type { TypeFromSelection } from "groqd"
+import type { faqsSelection } from '@/sanity/selections/blocks/faqs';
+import { PortableText } from '@portabletext/react';
+import { stegaClean } from '@sanity/client/stega';
+import { cn } from '@shared/ui/lib/utils';
+import type { TypeFromSelection } from 'groqd';
 
 import {
   Accordion,
@@ -11,12 +11,12 @@ import {
   AccordionTrigger,
   Button,
   Heading,
-} from "@shared/ui"
+} from '@shared/ui';
 
 interface Props {
   faqs: TypeFromSelection<typeof faqsSelection> & {
-    _type: "faqs"
-  }
+    _type: 'faqs';
+  };
 }
 
 export function FAQBlock({ faqs }: Props) {
@@ -38,7 +38,7 @@ export function FAQBlock({ faqs }: Props) {
         >
           {faqs.items.map((faq) => {
             if (!faq?._key || !faq?.question) {
-              return null
+              return null;
             }
 
             return (
@@ -46,11 +46,11 @@ export function FAQBlock({ faqs }: Props) {
                 <AccordionTrigger
                   aria-label={`Open answer to '${stegaClean(faq.question)}'`}
                   className={cn(
-                    "flex flex-1 items-center justify-between py-4",
-                    "text-left font-default text-base font-bold",
-                    "border-b border-grey-300",
-                    "hover:border-pink hover:text-pink",
-                    "data-[state=open]:border-pink data-[state=open]:text-pink"
+                    'flex flex-1 items-center justify-between py-4',
+                    'text-left font-default text-base font-bold',
+                    'border-b border-grey-300',
+                    'hover:border-pink hover:text-pink',
+                    'data-[state=open]:border-pink data-[state=open]:text-pink',
                   )}
                 >
                   {faq.question}
@@ -85,9 +85,9 @@ export function FAQBlock({ faqs }: Props) {
                         },
                         marks: {
                           link: ({ children, value }) => {
-                            const rel = !value.href.startsWith("/")
-                              ? "noreferrer noopener"
-                              : undefined
+                            const rel = !value.href.startsWith('/')
+                              ? 'noreferrer noopener'
+                              : undefined;
                             return (
                               <a
                                 href={value.href}
@@ -96,13 +96,13 @@ export function FAQBlock({ faqs }: Props) {
                               >
                                 {children}
                               </a>
-                            )
+                            );
                           },
                         },
                         types: {
                           customUrl: ({ value }) => (
                             <Button
-                              variant={value.internal ? "primary" : "secondary"}
+                              variant={value.internal ? 'primary' : 'secondary'}
                               size="sm"
                               asChild
                               className="mt-gutter"
@@ -116,10 +116,10 @@ export function FAQBlock({ faqs }: Props) {
                   )}
                 </AccordionContent>
               </AccordionItem>
-            )
+            );
           })}
         </Accordion>
       ) : null}
     </div>
-  )
+  );
 }

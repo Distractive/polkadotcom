@@ -1,38 +1,38 @@
-import { defineField, defineType } from "sanity"
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: "connectedCard",
-  title: "Connected Card",
-  type: "object",
+  name: 'connectedCard',
+  title: 'Connected Card',
+  type: 'object',
   fields: [
     defineField({
-      name: "headerImage",
-      title: "Header Image",
-      type: "image",
+      name: 'headerImage',
+      title: 'Header Image',
+      type: 'image',
     }),
     defineField({
-      name: "eyebrow",
-      title: "Eyebrow",
-      type: "string",
+      name: 'eyebrow',
+      title: 'Eyebrow',
+      type: 'string',
     }),
     defineField({
-      name: "heading",
-      title: "Heading",
-      type: "string",
+      name: 'heading',
+      title: 'Heading',
+      type: 'string',
       validation: (Rule) => Rule.required(),
     }),
 
     defineField({
-      name: "body",
-      title: "Body",
-      type: "text",
+      name: 'body',
+      title: 'Body',
+      type: 'text',
       rows: 5,
     }),
 
     defineField({
-      name: "link",
-      title: "Link",
-      type: "customUrl",
+      name: 'link',
+      title: 'Link',
+      type: 'customUrl',
     }),
   ],
-})
+});

@@ -15,14 +15,6 @@ We can use other branches naming where needed i.e. /chore if the branch is for m
 
 This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes the following packages/apps:
 
-### Apps and Packages
-
-- `web`: [Next.js 14](https://nextjs.org) app inc storybook
-- `ui`: React component library for generic UI components
-- `eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `ts-config`: `tsconfig.json`s used throughout the monorepo
-- `tailwind-config`: `tsconfig.json`s used throughout the monorepo
-
 #### ui package
 
 This is where all UI components should be created and allow us to build more complicated components using composition.
@@ -44,14 +36,6 @@ Storybook was added as it's own app package so we can host it on Vercel and use 
 This is a nextjs app, the site will be using SSG so this needs to be considered throughout any layout and page construction.
 
 All page features should be contained in the /features folder and any components that are to be reused should be in the /components folder and composed of ui components in the ui package.
-
-### Utilities
-
-This turborepo has some additional tools already setup:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
 
 ### Build
 

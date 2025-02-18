@@ -1,41 +1,40 @@
-import * as React from "react"
+import * as React from 'react';
 
-import { cn } from "../../lib/utils"
-import { Icon } from "./icon"
+import { cn } from '../../lib/utils';
+import { Icon } from './icon';
 
-const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
+const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
   <nav
-    role="navigation"
     aria-label="pagination"
-    className={cn("mx-auto flex justify-center ", className)}
+    className={cn('mx-auto flex justify-center ', className)}
     {...props}
   />
-)
-Pagination.displayName = "Pagination"
+);
+Pagination.displayName = 'Pagination';
 
 const PaginationContent = React.forwardRef<
   HTMLUListElement,
-  React.ComponentProps<"ul">
+  React.ComponentProps<'ul'>
 >(({ className, ...props }, ref) => (
   <ul
     ref={ref}
-    className={cn("flex flex-row items-center justify-center", className)}
+    className={cn('flex flex-row items-center justify-center', className)}
     {...props}
   />
-))
-PaginationContent.displayName = "PaginationContent"
+));
+PaginationContent.displayName = 'PaginationContent';
 
 const PaginationItem = React.forwardRef<
   HTMLLIElement,
-  React.ComponentProps<"li">
+  React.ComponentProps<'li'>
 >(({ className, ...props }, ref) => (
-  <li ref={ref} className={cn("flex", className)} {...props} />
-))
-PaginationItem.displayName = "PaginationItem"
+  <li ref={ref} className={cn('flex', className)} {...props} />
+));
+PaginationItem.displayName = 'PaginationItem';
 
 type PaginationLinkProps = {
-  isActive?: boolean
-} & React.ComponentProps<"a">
+  isActive?: boolean;
+} & React.ComponentProps<'a'>;
 
 const PaginationLink = ({
   className,
@@ -43,19 +42,19 @@ const PaginationLink = ({
   ...props
 }: PaginationLinkProps) => (
   <a
-    aria-current={isActive ? "page" : undefined}
+    aria-current={isActive ? 'page' : undefined}
     role="button"
     className={cn(
-      "transition-all duration-200 hover:text-pink",
+      'transition-all duration-200 hover:text-pink',
       isActive
-        ? "text-pink after:bg-pink"
-        : "text-black hover:after:bg-grey-300",
-      className
+        ? 'text-pink after:bg-pink'
+        : 'text-black hover:after:bg-grey-300',
+      className,
     )}
     {...props}
   />
-)
-PaginationLink.displayName = "PaginationLink"
+);
+PaginationLink.displayName = 'PaginationLink';
 
 const PaginationPrevious = ({
   className,
@@ -64,16 +63,16 @@ const PaginationPrevious = ({
   <PaginationLink
     aria-label="Go to previous page"
     className={cn(
-      "gap-1 pl-2.5",
-      "transition-all duration-200 hover:fill-pink",
-      className
+      'gap-1 pl-2.5',
+      'transition-all duration-200 hover:fill-pink',
+      className,
     )}
     {...props}
   >
-    <Icon variant={"chevronLeft"} />
+    <Icon variant={'chevronLeft'} />
   </PaginationLink>
-)
-PaginationPrevious.displayName = "PaginationPrevious"
+);
+PaginationPrevious.displayName = 'PaginationPrevious';
 
 const PaginationNext = ({
   className,
@@ -82,34 +81,34 @@ const PaginationNext = ({
   <PaginationLink
     aria-label="Go to next page"
     className={cn(
-      "gap-1 pr-2.5",
-      "transition-all duration-200 hover:fill-pink",
-      className
+      'gap-1 pr-2.5',
+      'transition-all duration-200 hover:fill-pink',
+      className,
     )}
     {...props}
   >
-    <Icon variant={"chevronRight"} />
+    <Icon variant={'chevronRight'} />
   </PaginationLink>
-)
-PaginationNext.displayName = "PaginationNext"
+);
+PaginationNext.displayName = 'PaginationNext';
 
 const PaginationEllipsis = ({
   className,
   ...props
-}: React.ComponentProps<"span">) => (
+}: React.ComponentProps<'span'>) => (
   <span
     aria-hidden
     className={cn(
-      "relative flex w-2 select-none items-center justify-center",
-      className
+      'relative flex w-2 select-none items-center justify-center',
+      className,
     )}
     {...props}
   >
     ...
     <span className="sr-only">More pages</span>
   </span>
-)
-PaginationEllipsis.displayName = "PaginationEllipsis"
+);
+PaginationEllipsis.displayName = 'PaginationEllipsis';
 
 export {
   Pagination,
@@ -119,4 +118,4 @@ export {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-}
+};

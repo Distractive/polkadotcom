@@ -1,17 +1,17 @@
-import { type navigationMenuSelection } from "@/sanity/selections/navigation/navigation-menu"
-import { stegaClean } from "@sanity/client/stega"
-import { type TypeFromSelection } from "groqd"
+import type { navigationMenuSelection } from '@/sanity/selections/navigation/navigation-menu';
+import { stegaClean } from '@sanity/client/stega';
+import type { TypeFromSelection } from 'groqd';
 
-import { useToggleAnimation } from "@/hooks/use-toggle-animation"
-import { cn } from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+import { CustomUrl } from '@/components/custom-url';
+import { useToggleAnimation } from '@/hooks/use-toggle-animation';
+import { cn } from '@shared/ui';
 
 interface Props {
-  menu: ReadonlyArray<TypeFromSelection<typeof navigationMenuSelection>>
-  hovered: string
-  setHovered: React.Dispatch<React.SetStateAction<string>>
-  isOpen: boolean
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  menu: ReadonlyArray<TypeFromSelection<typeof navigationMenuSelection>>;
+  hovered: string;
+  setHovered: React.Dispatch<React.SetStateAction<string>>;
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export function MenuDesktop({
@@ -21,12 +21,12 @@ export function MenuDesktop({
   setIsOpen,
   setHovered,
 }: Props) {
-  const { ref } = useToggleAnimation({ isVisible: isOpen })
+  const { ref } = useToggleAnimation({ isVisible: isOpen });
 
   const handleCloseMenu = () => {
-    setHovered("")
-    setIsOpen(false)
-  }
+    setHovered('');
+    setIsOpen(false);
+  };
 
   return (
     <div
@@ -36,24 +36,24 @@ export function MenuDesktop({
     >
       {menu.map((section, index) => (
         <div
-          key={index}
+          key={section.heading}
           onMouseLeave={handleCloseMenu}
           id={`${stegaClean(section.heading)}`}
           className={cn(
-            "mb-auto mr-auto flex items-start overflow-hidden",
-            "rounded-2xl border border-grey-300 bg-white",
+            'mb-auto mr-auto flex items-start overflow-hidden',
+            'rounded-2xl border border-grey-300 bg-white',
             section.heading === hovered
-              ? "pointer-events-auto visible"
-              : "pointer-events-none invisible"
+              ? 'pointer-events-auto visible'
+              : 'pointer-events-none invisible',
           )}
         >
           <ul className="grid h-full grid-cols-2">
             {section.items.map((item, index) => {
               return (
                 <li
-                  key={index}
+                  key={item.link.label}
                   className={cn(
-                    "flex h-full min-w-[21rem] shadow-internal-border"
+                    'flex h-full min-w-[21rem] shadow-internal-border',
                   )}
                 >
                   <CustomUrl
@@ -62,14 +62,14 @@ export function MenuDesktop({
                     className="leading-none flex h-full w-full p-nav transition-colors duration-200 ease-in-out hover:text-pink focus:text-pink"
                     tabIndex={0}
                   >
-                    {" "}
-                    {item.link.label}{" "}
+                    {' '}
+                    {item.link.label}{' '}
                   </CustomUrl>
                 </li>
-              )
+              );
             })}
             {section.items.length % 2 !== 0 && (
-              <li className="min-w-[21rem] shadow-internal-border"></li>
+              <li className="min-w-[21rem] shadow-internal-border" />
             )}
           </ul>
           {section.aside && (
@@ -79,14 +79,13 @@ export function MenuDesktop({
               disableArrow={true}
             >
               <aside
-                role="complementary"
                 className={cn(
-                  "group grid h-full max-w-[21rem] gap-copy p-nav",
-                  "cursor-pointer border-l border-grey-300"
+                  'group grid h-full max-w-[21rem] gap-copy p-nav',
+                  'cursor-pointer border-l border-grey-300',
                 )}
               >
                 <img
-                  src={section.aside.image.asset.url || ""}
+                  src={section.aside.image.asset.url || ''}
                   alt=""
                   className="w-full"
                 />
@@ -99,5 +98,5 @@ export function MenuDesktop({
         </div>
       ))}
     </div>
-  )
+  );
 }

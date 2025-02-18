@@ -1,19 +1,19 @@
-import { defineField, defineType } from "sanity"
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: "video",
-  title: "Video",
-  type: "object",
+  name: 'video',
+  title: 'Video',
+  type: 'object',
   fields: [
     defineField({
-      name: "placeholderImage",
-      title: "Placeholder Image",
-      type: "image",
+      name: 'placeholderImage',
+      title: 'Placeholder Image',
+      type: 'image',
     }),
     defineField({
-      name: "url",
-      title: "URL for Video",
-      type: "string",
+      name: 'url',
+      title: 'URL for Video',
+      type: 'string',
     }),
   ],
-})
+});

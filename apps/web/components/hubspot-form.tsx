@@ -1,15 +1,15 @@
-"use client"
+'use client';
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef } from 'react';
 
 interface Props {
-  type: string
-  id: string
+  type: string;
+  id: string;
 }
 
 export function HubSpotForm({ type, id }: Props) {
-  console.log("HubSpotForm form mounting", type, id)
-  const formInitialized = useRef(false)
+  console.log('HubSpotForm form mounting', type, id);
+  const formInitialized = useRef(false);
 
   useEffect(() => {
     const createForm = () => {
@@ -18,24 +18,25 @@ export function HubSpotForm({ type, id }: Props) {
         window.hbspt &&
         !formInitialized.current
       ) {
-        formInitialized.current = true
+        formInitialized.current = true;
         window.hbspt.forms.create({
-          region: "na1",
-          portalId: "7592558",
+          region: 'na1',
+          portalId: '7592558',
           target: `#hbspt-${id}`,
           formId: type,
-        })
+        });
       }
-    }
+    };
 
     if (type && id) {
-      createForm()
+      createForm();
     }
-  }, [type, id])
+  }, [type, id]);
 
   return (
     <div className="w-full">
+      {/* biome-ignore lint/style/useSelfClosingElements: <Not possible> */}
       <div id={`hbspt-${id}`} className="hubspot w-full"></div>
     </div>
-  )
+  );
 }

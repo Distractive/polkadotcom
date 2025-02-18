@@ -1,43 +1,43 @@
-"use client"
+'use client';
 
+import { HubSpotForm } from '@/components/hubspot-form';
 import {
   ButtonStyles,
-  cn,
   Dialog,
   DialogContent,
   DialogTitle,
   DialogTrigger,
   HeadingStyles,
-} from "@shared/ui"
-import { HubSpotForm } from "@/components/hubspot-form"
+  cn,
+} from '@shared/ui';
 
 interface ModalProps {
-  cta?: string | null
-  modalHeading?: string | null
-  formType?: string | null
-  _key?: string | null
-  variant?: "primary" | "secondary"
-  size?: "sm" | "md" | "lg"
+  cta?: string | null;
+  modalHeading?: string | null;
+  formType?: string | null;
+  _key?: string | null;
+  variant?: 'primary' | 'secondary';
+  size?: 'sm' | 'md' | 'lg';
 }
 
 interface Props {
-  modal: ModalProps
-  buttonClassName?: string
+  modal: ModalProps;
+  buttonClassName?: string;
 }
 
 export function ModalButton({ modal, buttonClassName }: Props) {
   return (
     <Dialog>
-      <DialogTrigger className={cn("group", buttonClassName)}>
+      <DialogTrigger className={cn('group', buttonClassName)}>
         <span
           className={cn(
             ButtonStyles.base,
-            modal.variant === "secondary"
+            modal.variant === 'secondary'
               ? // Account for 1px border on secondary buttons
-                [ButtonStyles.variants.secondary, "!py-[15px]"]
+                [ButtonStyles.variants.secondary, '!py-[15px]']
               : ButtonStyles.variants.primary,
-            ButtonStyles.sizes[modal.size || "md"],
-            "text-left group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0"
+            ButtonStyles.sizes[modal.size || 'md'],
+            'text-left group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0',
           )}
         >
           {modal.cta}
@@ -56,5 +56,5 @@ export function ModalButton({ modal, buttonClassName }: Props) {
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

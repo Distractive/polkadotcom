@@ -1,50 +1,51 @@
-"use client"
+'use client';
 
-import { useCallback, useEffect, useState } from "react"
-import { Box, Card, Checkbox, Flex, Stack, Text } from "@sanity/ui"
+import { Box, Card, Checkbox, Flex, Stack, Text } from '@sanity/ui';
+import { useCallback, useEffect, useState } from 'react';
 import {
+  type ArrayOfPrimitivesInputProps,
   set,
   unset,
   useFormValue,
-  type ArrayOfPrimitivesInputProps,
-} from "sanity"
+} from 'sanity';
 
 /**
 This is a custom input for getting tags from the parent
 */
 export function TagsList(props: ArrayOfPrimitivesInputProps) {
-  const parent = useFormValue(["pageBuilder.pageBuilder"]) as any[]
-  const regex = /pageBuilder\.pageBuilder\[_key=="([^"]+)"\]/
-  const match = props.id.match(regex)
-  const parentId = match ? match[1] : ""
+  // biome-ignore lint/suspicious/noExplicitAny: <TODO: Fix>
+  const parent = useFormValue(['pageBuilder.pageBuilder']) as any[];
+  const regex = /pageBuilder\.pageBuilder\[_key=="([^"]+)"\]/;
+  const match = props.id.match(regex);
+  const parentId = match ? match[1] : '';
   const tags = parent.find(
-    (item) => item._type === "cards" && item._key === parentId
-  ).tags
-  const { value = [], onChange } = props
+    (item) => item._type === 'cards' && item._key === parentId,
+  ).tags;
+  const { value = [], onChange } = props;
   const [selectedOptions, setSelectedOptions] = useState<string[]>(
-    value as string[]
-  )
+    value as string[],
+  );
 
   useEffect(() => {
-    const tagsSet = new Set(tags)
-    const values = value as string[]
-    const filteredOptions = values.filter((item) => tagsSet.has(item))
+    const tagsSet = new Set(tags);
+    const values = value as string[];
+    const filteredOptions = values.filter((item) => tagsSet.has(item));
 
-    onChange(filteredOptions ? set(filteredOptions) : unset())
-  }, [tags, value, onChange])
+    onChange(filteredOptions ? set(filteredOptions) : unset());
+  }, [tags, value, onChange]);
 
   const handleToggle = useCallback(
     (option: string) => {
       const updatedOptions = selectedOptions.includes(option)
         ? selectedOptions.filter((item) => item !== option)
-        : [...selectedOptions, option]
+        : [...selectedOptions, option];
 
-      setSelectedOptions(updatedOptions)
+      setSelectedOptions(updatedOptions);
 
-      onChange(updatedOptions ? set(updatedOptions) : unset())
+      onChange(updatedOptions ? set(updatedOptions) : unset());
     },
-    [selectedOptions, onChange]
-  )
+    [selectedOptions, onChange],
+  );
 
   return !tags ? (
     <Flex height="fill" direction="column" justify="center" align="center">
@@ -66,5 +67,5 @@ export function TagsList(props: ArrayOfPrimitivesInputProps) {
         ))}
       </Card>
     </Stack>
-  )
+  );
 }

@@ -1,26 +1,26 @@
-import { q } from "groqd"
-import type { Selection } from "groqd"
+import { q } from 'groqd';
+import type { Selection } from 'groqd';
 
-import { customUrlSelection } from "../custom-url"
-import { navigationAsideSelection } from "./navigation-aside"
+import { customUrlSelection } from '../custom-url';
+import { navigationAsideSelection } from './navigation-aside';
 
 export const navigationMenuSelection = {
   heading: q.string(),
-  link: q("link")
+  link: q('link')
     .grab$({
       ...customUrlSelection,
     })
     .nullable(),
-  aside: q("aside")
+  aside: q('aside')
     .grab({
       ...navigationAsideSelection,
     })
     .nullable(),
-  items: q("items")
+  items: q('items')
     .filter()
     .grab({
-      link: q("link").grab$({
+      link: q('link').grab$({
         ...customUrlSelection,
       }),
     }),
-} satisfies Selection
+} satisfies Selection;

@@ -1,106 +1,107 @@
-import { getPostHeading, getPosts } from "@/sanity/queries/posts"
-import { getSearchData } from "@/sanity/queries/search"
-import type { headerSelection } from "@/sanity/selections/blocks/header"
-import type { TypeFromSelection } from "groqd"
+import { getPostHeading, getPosts } from '@/sanity/queries/posts';
+import { getSearchData } from '@/sanity/queries/search';
+import type { headerSelection } from '@/sanity/selections/blocks/header';
+import type { TypeFromSelection } from 'groqd';
 
 import {
   BLOG_POSTTYPE,
   CASE_STUDY_POSTTYPE,
   POSTS_PER_PAGE,
   PRESS_RELEASE_POSTTYPE,
-} from "@/constants/global"
-import { cn, Heading } from "@shared/ui"
+} from '@/constants/global';
+import { Heading, cn } from '@shared/ui';
 
 import {
   BreadcrumbBlock,
   type BreadcrumbProps,
-} from "../page/blocks/breadcrumb"
-import { Grid } from "./grid"
-import { PostPagination } from "./pagination"
-import { ScrollToView } from "./scroll-to-view"
-import { SearchBar } from "./search-bar"
+} from '../page/blocks/breadcrumb';
+import { Grid } from './grid';
+import { PostPagination } from './pagination';
+import { ScrollToView } from './scroll-to-view';
+import { SearchBar } from './search-bar';
 
 interface LayoutProps {
-  page: number
+  page: number;
   type:
     | typeof BLOG_POSTTYPE
     | typeof PRESS_RELEASE_POSTTYPE
-    | typeof CASE_STUDY_POSTTYPE
-  tagSlug: string
-  withHeader?: boolean
+    | typeof CASE_STUDY_POSTTYPE;
+  tagSlug: string;
+  withHeader?: boolean;
 }
 
 export default async function Layout({ page, tagSlug, type }: LayoutProps) {
-  const data = await getPosts(page, type, tagSlug, false)
+  const data = await getPosts(page, type, tagSlug, false);
 
   const postType = (() => {
     switch (type) {
       case BLOG_POSTTYPE:
-        return "blog"
+        return 'blog';
       case CASE_STUDY_POSTTYPE:
-        return "case-studies"
+        return 'case-studies';
       case PRESS_RELEASE_POSTTYPE:
-        return "press-releases"
+        return 'press-releases';
     }
-  })()
+  })();
 
-  const [postsData] = await getPostHeading(postType)
+  const [postsData] = await getPostHeading(postType);
 
-  const searchData = await getSearchData(type)
+  const searchData = await getSearchData(type);
 
   // Hard code press release breadcrumb due to URL structure of parent pages
   const breadcrumb: BreadcrumbProps = {
     items: (() => {
       switch (type) {
-        case "Press Release":
+        case 'Press Release':
           return [
             {
-              slug: "/community/newsroom",
-              title: "Newsroom",
+              slug: '/community/newsroom',
+              title: 'Newsroom',
             },
             {
-              slug: "/newsroom/press-releases",
-              title: "Press Releases",
+              slug: '/newsroom/press-releases',
+              title: 'Press Releases',
             },
-          ]
-        case "Case Study":
+          ];
+        case 'Case Study':
           return [
             {
-              slug: "/platform",
-              title: "Platform",
+              slug: '/platform',
+              title: 'Platform',
             },
             {
-              slug: "/case-studies",
-              title: "Case Studies",
+              slug: '/case-studies',
+              title: 'Case Studies',
             },
-          ]
+          ];
         default:
           return [
             {
-              slug: postsData?.parent?.slug ? `/${postsData.parent.slug}` : "",
+              slug: postsData?.parent?.slug ? `/${postsData.parent.slug}` : '',
               title: postsData?.parent?.header?.title,
             },
             {
               slug:
                 postsData?.parent?.slug && postsData?.slug
                   ? `/${postsData.parent.slug}/${postsData.slug}`
-                  : "",
+                  : '',
               title: postsData?.heading,
             },
-          ]
+          ];
       }
     })(),
-  }
+  };
 
   const header: TypeFromSelection<typeof headerSelection> = {
     image: postsData?.headerImage || null,
+    // biome-ignore lint/suspicious/noExplicitAny: <TODO: Fix>
     isAlternate: (postsData as any).isAlternate,
-    title: postsData?.heading || "",
-    body: postsData?.body || "",
+    title: postsData?.heading || '',
+    body: postsData?.body || '',
     video: null,
     links: null,
     mobileImage: null,
-  }
+  };
 
   return (
     <>
@@ -108,10 +109,10 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
       <header className="max-width mb-page mt-page flex flex-col">
         <div
           className={cn(
-            "flex max-w-4xl flex-col justify-center gap-copy lg:pt-16",
+            'flex max-w-4xl flex-col justify-center gap-copy lg:pt-16',
             header.image
-              ? "px-gutter pt-card"
-              : "mt-gutter px-gutter pt-header-top"
+              ? 'px-gutter pt-card'
+              : 'mt-gutter px-gutter pt-header-top',
           )}
         >
           {breadcrumb && <BreadcrumbBlock items={breadcrumb.items} />}
@@ -119,7 +120,7 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
           <Heading variant="h1">
             {header.title}
             {tagSlug &&
-              " - " + tagSlug?.charAt(0).toUpperCase() + tagSlug.slice(1)}
+              ` - ${tagSlug?.charAt(0).toUpperCase()}${tagSlug.slice(1)}`}
           </Heading>
 
           {header.body && <p className="text-lg">{header.body}</p>}
@@ -128,11 +129,8 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
       {data && (
         <div id="main-content" className="max-width col-span-full px-gutter">
           <div className="grid-system col-span-full mb-card">
-            {tagSlug === "" && (
-              <search
-                role="search"
-                className="col-span-full mb-8 lg:col-span-8 lg:mb-0"
-              >
+            {tagSlug === '' && (
+              <search className="col-span-full mb-8 lg:col-span-8 lg:mb-0">
                 {searchData && (
                   <SearchBar searches={searchData} postType={type} />
                 )}
@@ -141,12 +139,12 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
 
             <div
               className={cn(
-                "col-span-full flex items-center lg:col-span-4 lg:justify-end",
-                tagSlug !== "" && "lg:col-span-full"
+                'col-span-full flex items-center lg:col-span-4 lg:justify-end',
+                tagSlug !== '' && 'lg:col-span-full',
               )}
             >
               <span className="text-sm lg:px-gutter">
-                Page:{" "}
+                Page:{' '}
                 <span className="text-center font-bold">
                   {page} of {Math.ceil(data.totalCount / POSTS_PER_PAGE)}
                 </span>
@@ -163,10 +161,10 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
             limit={POSTS_PER_PAGE}
             page={page}
             type={type}
-            tagSlug={tagSlug != "" ? tagSlug : undefined}
+            tagSlug={tagSlug !== '' ? tagSlug : undefined}
           />
         </div>
       )}
     </>
-  )
+  );
 }

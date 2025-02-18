@@ -1,4 +1,5 @@
-declare module "*.svg" {
-  const content: any
-  export default content
+declare module '*.svg' {
+  // biome-ignore lint/suspicious/noExplicitAny: <TODO: Fix>
+  const content: any;
+  export default content;
 }

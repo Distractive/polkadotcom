@@ -1,24 +1,24 @@
-"use client"
+'use client';
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react';
 
 import {
+  type CarouselApi,
   CarouselContainer,
   CarouselContent,
   CarouselNext,
   CarouselPrevious,
-  cn,
   Progress,
-  type CarouselApi,
-} from "@shared/ui"
+  cn,
+} from '@shared/ui';
 
 interface Props {
-  children: React.ReactNode
-  loop?: boolean
-  contentClassName?: string
-  navClassName?: string
-  disableCarouselControls?: boolean
-  className?: string
+  children: React.ReactNode;
+  loop?: boolean;
+  contentClassName?: string;
+  navClassName?: string;
+  disableCarouselControls?: boolean;
+  className?: string;
 }
 
 export function Carousel({
@@ -29,47 +29,47 @@ export function Carousel({
   disableCarouselControls,
   className,
 }: Props) {
-  const [api, setApi] = useState<CarouselApi>()
-  const [current, setCurrent] = useState(0)
-  const [count, setCount] = useState(0)
-  const [isDraggable, setIsDraggable] = useState(false)
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+  const [isDraggable, setIsDraggable] = useState(false);
 
   useEffect(() => {
     if (disableCarouselControls) {
-      setIsDraggable(disableCarouselControls)
+      setIsDraggable(disableCarouselControls);
     } else {
-      setIsDraggable(false)
+      setIsDraggable(false);
     }
-  }, [disableCarouselControls])
+  }, [disableCarouselControls]);
 
   useEffect(() => {
     if (!api) {
-      return
+      return;
     }
 
-    setCount(api.scrollSnapList().length)
-    api.on("select", () => setCurrent(api.selectedScrollSnap()))
-  }, [api])
+    setCount(api.scrollSnapList().length);
+    api.on('select', () => setCurrent(api.selectedScrollSnap()));
+  }, [api]);
 
   return (
     <CarouselContainer
       setApi={setApi}
       opts={{
-        align: "start",
+        align: 'start',
         loop,
         active: !isDraggable,
         watchDrag: !isDraggable,
         duration: 40,
       }}
       className={cn(
-        "col-span-full flex flex-col gap-gutter overflow-hidden",
-        className
+        'col-span-full flex flex-col gap-gutter overflow-hidden',
+        className,
       )}
     >
       <CarouselContent className={contentClassName}>{children}</CarouselContent>
 
       {!disableCarouselControls && (
-        <div className={cn("flex items-center justify-between", navClassName)}>
+        <div className={cn('flex items-center justify-between', navClassName)}>
           <Progress count={count} current={current} />
           <div className="flex gap-2">
             <CarouselPrevious />
@@ -78,5 +78,5 @@ export function Carousel({
         </div>
       )}
     </CarouselContainer>
-  )
+  );
 }

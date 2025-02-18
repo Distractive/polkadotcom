@@ -1,18 +1,18 @@
-import type { footerMenuSelection } from "@/sanity/selections/footer/footer-menu"
-import type { TypeFromSelection } from "groqd"
+import type { footerMenuSelection } from '@/sanity/selections/footer/footer-menu';
+import type { TypeFromSelection } from 'groqd';
 
-import { Heading } from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
-import { ModalButton } from "@/features/page/blocks/modal-button"
+import { CustomUrl } from '@/components/custom-url';
+import { ModalButton } from '@/features/page/blocks/modal-button';
+import { Heading } from '@shared/ui';
 
 interface Props {
-  menu: ReadonlyArray<TypeFromSelection<typeof footerMenuSelection>>
+  menu: ReadonlyArray<TypeFromSelection<typeof footerMenuSelection>>;
   modal: {
-    cta: string
-    modalHeading: string
-    formType: string
-    _key: string
-  }
+    cta: string;
+    modalHeading: string;
+    formType: string;
+    _key: string;
+  };
 }
 
 export default function Menu({ menu, modal }: Props) {
@@ -63,5 +63,5 @@ export default function Menu({ menu, modal }: Props) {
         </div>
       ))}
     </div>
-  )
+  );
 }

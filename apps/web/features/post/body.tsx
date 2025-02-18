@@ -1,12 +1,13 @@
-import { type Key } from "react"
-import { urlForImage } from "@/sanity/lib/image"
-import { PortableText } from "@portabletext/react"
+import { urlForImage } from '@/sanity/lib/image';
+import { PortableText } from '@portabletext/react';
+import type { Key } from 'react';
 
-import { Heading } from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+import { CustomUrl } from '@/components/custom-url';
+import { Heading } from '@shared/ui';
 
 interface Props {
-  body: any
+  // biome-ignore lint/suspicious/noExplicitAny: <TODO: Fix type>
+  body: any;
 }
 
 export function Body({ body }: Props) {
@@ -17,22 +18,22 @@ export function Body({ body }: Props) {
         marks: {
           link: ({ children, value }) => {
             if (!value || !value.href) {
-              return children
+              return children;
             }
 
-            const isExternal = value.href.startsWith("http")
-            const noReferrer = value.noFollow
-            const canonical = value.canonical
+            const isExternal = value.href.startsWith('http');
+            const noReferrer = value.noFollow;
+            const canonical = value.canonical;
             return (
               <a
                 className="inline-flex font-default font-bold text-grey-900 underline  underline-offset-2 transition-colors duration-200 ease-in-out hover:text-pink"
                 href={value.href}
-                target={isExternal ? "_blank noopener" : "_self"}
-                rel={`${canonical ? "canonical" : ""} ${noReferrer ? "noreferrer" : ""}`}
+                target={isExternal ? '_blank noopener' : '_self'}
+                rel={`${canonical ? 'canonical' : ''} ${noReferrer ? 'noreferrer' : ''}`}
               >
                 {children}
               </a>
-            )
+            );
           },
         },
         block: {
@@ -42,22 +43,22 @@ export function Body({ body }: Props) {
             </p>
           ),
           h1: ({ children }) => (
-            <Heading variant={"h1"} className="mb-4 mt-12">
+            <Heading variant={'h1'} className="mb-4 mt-12">
               {children}
             </Heading>
           ),
           h2: ({ children }) => (
-            <Heading variant={"h2"} className="mb-4 mt-16">
+            <Heading variant={'h2'} className="mb-4 mt-16">
               {children}
             </Heading>
           ),
           h3: ({ children }) => (
-            <Heading variant={"h3"} className="mb-4 mt-16">
+            <Heading variant={'h3'} className="mb-4 mt-16">
               {children}
             </Heading>
           ),
           h4: ({ children }) => (
-            <Heading variant={"h4"} className="mb-4 mt-16">
+            <Heading variant={'h4'} className="mb-4 mt-16">
               {children}
             </Heading>
           ),
@@ -92,14 +93,14 @@ export function Body({ body }: Props) {
                   {value.caption}
                 </figcaption>
               </figure>
-            )
+            );
           },
           code: ({ value }) => {
             return (
               <pre className="overflow-x-auto p-4">
                 <code>{value.code}</code>
               </pre>
-            )
+            );
           },
           youtube: ({ value }) => {
             return (
@@ -110,7 +111,7 @@ export function Body({ body }: Props) {
                 src={value.url}
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               />
-            )
+            );
           },
           custom_quote: ({ value }) => {
             return (
@@ -144,13 +145,13 @@ export function Body({ body }: Props) {
                   </div>
                 </blockquote>
               </div>
-            )
+            );
           },
           summary: ({ value }) => {
-            const callouts = value.callouts || []
+            const callouts = value.callouts || [];
 
             const linkTitle =
-              value.titleLink.internal || value.titleLink.external
+              value.titleLink.internal || value.titleLink.external;
 
             return (
               <div className="mx-auto mb-10 text-lg">
@@ -172,7 +173,9 @@ export function Body({ body }: Props) {
                       </Heading>
                       {value.links && value.links.length > 0 && (
                         <ul className="list-disc pl-5">
+                          {/* biome-ignore lint/suspicious/noExplicitAny: <TODO: Fix> */}
                           {value.links.map((link: any, index: Key) => (
+                            // biome-ignore lint/suspicious/noArrayIndexKey: <TODO: Fix>
                             <li key={index}>
                               <CustomUrl
                                 className="inline-flex gap-2 text-left  underline decoration-black/0 underline-offset-4 transition duration-500 ease-out hover:decoration-black"
@@ -188,7 +191,9 @@ export function Body({ body }: Props) {
 
                     {/* Second and Third Columns: Callouts */}
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:col-span-2">
+                      {/* biome-ignore lint/suspicious/noExplicitAny: <TODO: Fix> */}
                       {callouts.map((callout: any, index: Key) => (
+                        // biome-ignore lint/suspicious/noArrayIndexKey: <TODO: Fix>
                         <div key={index} className="font-default">
                           <PortableText
                             value={callout.text}
@@ -201,19 +206,19 @@ export function Body({ body }: Props) {
                                 ),
                                 link: ({ children, value }) => {
                                   const isExternal =
-                                    value.href.startsWith("http")
+                                    value.href.startsWith('http');
                                   return (
                                     <a
                                       className="inline-flex font-bold underline underline-offset-2 transition-colors duration-500 ease-in-out hover:text-pink"
                                       href={value.href}
-                                      target={isExternal ? "_blank" : "_self"}
+                                      target={isExternal ? '_blank' : '_self'}
                                       rel={
-                                        isExternal ? "noopener noreferrer" : ""
+                                        isExternal ? 'noopener noreferrer' : ''
                                       }
                                     >
                                       {children}
                                     </a>
-                                  )
+                                  );
                                 },
                               },
                             }}
@@ -224,10 +229,10 @@ export function Body({ body }: Props) {
                   </div>
                 </div>
               </div>
-            )
+            );
           },
         },
       }}
     />
-  )
+  );
 }

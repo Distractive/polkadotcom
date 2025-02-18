@@ -1,17 +1,17 @@
-import { defineField, defineType } from "sanity"
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: "break",
-  type: "object",
-  title: "Break",
+  name: 'break',
+  type: 'object',
+  title: 'Break',
   fields: [
     defineField({
-      name: "style",
-      type: "string",
-      title: "Break style",
+      name: 'style',
+      type: 'string',
+      title: 'Break style',
       options: {
-        list: [{ title: "Line break", value: "lineBreak" }],
+        list: [{ title: 'Line break', value: 'lineBreak' }],
       },
     }),
   ],
-})
+});

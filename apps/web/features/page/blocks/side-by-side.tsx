@@ -1,16 +1,16 @@
-import Image from "next/image"
-import { urlForImage } from "@/sanity/lib/image"
-import { type sideBySideSelection } from "@/sanity/selections/blocks/side-by-side"
-import { type TypeFromSelection } from "groqd"
-import { PortableText } from "next-sanity"
+import { urlForImage } from '@/sanity/lib/image';
+import type { sideBySideSelection } from '@/sanity/selections/blocks/side-by-side';
+import type { TypeFromSelection } from 'groqd';
+import { PortableText } from 'next-sanity';
+import Image from 'next/image';
 
-import { Button, cn, Heading } from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+import { CustomUrl } from '@/components/custom-url';
+import { Button, Heading, cn } from '@shared/ui';
 
-import { VideoBlock } from "./video"
+import { VideoBlock } from './video';
 
 interface Props {
-  content: TypeFromSelection<typeof sideBySideSelection>
+  content: TypeFromSelection<typeof sideBySideSelection>;
 }
 
 export function SideBySideBlock({ content }: Props) {
@@ -18,8 +18,8 @@ export function SideBySideBlock({ content }: Props) {
     <div className="grid-system max-width gap-y-gutter px-gutter lg:gap-y-0">
       <div
         className={cn(
-          "order-2 col-span-full grid h-fit gap-copy lg:col-span-5",
-          content.isImageOnLeft ? "lg:pl-gutter" : "lg:order-1 lg:pr-gutter"
+          'order-2 col-span-full grid h-fit gap-copy lg:col-span-5',
+          content.isImageOnLeft ? 'lg:pl-gutter' : 'lg:order-1 lg:pr-gutter',
         )}
       >
         <div className="flex flex-col gap-copy">
@@ -63,10 +63,10 @@ export function SideBySideBlock({ content }: Props) {
                         className="my-2 mr-auto md:cursor-pointer"
                         variant={
                           value?.variant
-                            ? value.variant === "primary"
-                              ? "primary"
-                              : "secondary"
-                            : "primary"
+                            ? value.variant === 'primary'
+                              ? 'primary'
+                              : 'secondary'
+                            : 'primary'
                         }
                       >
                         <CustomUrl
@@ -79,7 +79,7 @@ export function SideBySideBlock({ content }: Props) {
                           {value.label}
                         </CustomUrl>
                       </Button>
-                    )
+                    );
                   },
                 },
               }}
@@ -88,29 +88,27 @@ export function SideBySideBlock({ content }: Props) {
         </div>
       </div>
       {content.video && (
-        <>
-          <div
-            className={cn(
-              "order-1 col-span-full h-auto lg:col-span-7 lg:my-auto",
-              content.isImageOnLeft ? "" : "lg:order-2"
-            )}
-          >
-            <VideoBlock video={content.video} />
-          </div>
-        </>
+        <div
+          className={cn(
+            'order-1 col-span-full h-auto lg:col-span-7 lg:my-auto',
+            content.isImageOnLeft ? '' : 'lg:order-2',
+          )}
+        >
+          <VideoBlock video={content.video} />
+        </div>
       )}
       {content.image && !content?.video && (
         <Image
           src={urlForImage(content.image.asset)}
-          alt={content?.altText || ""}
+          alt={content?.altText || ''}
           className={cn(
-            "order-1 col-span-full h-auto rounded-3xl lg:col-span-7 lg:my-auto",
-            content.isImageOnLeft ? "" : "lg:order-2"
+            'order-1 col-span-full h-auto rounded-3xl lg:col-span-7 lg:my-auto',
+            content.isImageOnLeft ? '' : 'lg:order-2',
           )}
           width={content.image.asset.metadata.dimensions?.width}
           height={content.image.asset.metadata.dimensions?.height}
         />
       )}
     </div>
-  )
+  );
 }

@@ -1,17 +1,17 @@
-import type { cardsStickySelection } from "@/sanity/selections/blocks/cards-sticky"
-import type { TypeFromSelection } from "groqd"
+import type { cardsStickySelection } from '@/sanity/selections/blocks/cards-sticky';
+import type { TypeFromSelection } from 'groqd';
 
-import { Heading } from "@shared/ui"
+import { Heading } from '@shared/ui';
 
-import CardStickyBlock from "./card"
+import CardStickyBlock from './card';
 
 interface Props {
-  cards: TypeFromSelection<typeof cardsStickySelection>
+  cards: TypeFromSelection<typeof cardsStickySelection>;
 }
 
 export function CardsStickyBlock({ cards }: Props) {
   if (!cards) {
-    return null
+    return null;
   }
 
   return (
@@ -32,9 +32,9 @@ export function CardsStickyBlock({ cards }: Props) {
               <div key={card._key} className="z-10 lg:sticky lg:top-gutter">
                 <CardStickyBlock card={card} />
               </div>
-            )
+            ),
         )}
       </div>
     </div>
-  )
+  );
 }

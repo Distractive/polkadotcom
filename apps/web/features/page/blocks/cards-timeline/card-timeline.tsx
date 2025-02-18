@@ -1,14 +1,14 @@
-import type { cardTimelineSelection } from "@/sanity/selections/blocks/card-timeline"
-import type { TypeFromSelection } from "groqd"
-import { PortableText } from "next-sanity"
+import type { cardTimelineSelection } from '@/sanity/selections/blocks/card-timeline';
+import type { TypeFromSelection } from 'groqd';
+import { PortableText } from 'next-sanity';
 
-import { Button, Card, CardContent, CardHeader, cn } from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+import { CustomUrl } from '@/components/custom-url';
+import { Button, Card, CardContent, CardHeader, cn } from '@shared/ui';
 
 interface Props {
-  card: TypeFromSelection<typeof cardTimelineSelection>
-  hasLine?: boolean
-  className?: string
+  card: TypeFromSelection<typeof cardTimelineSelection>;
+  hasLine?: boolean;
+  className?: string;
 }
 
 export default function CardTimelineBlock({
@@ -19,17 +19,17 @@ export default function CardTimelineBlock({
   return (
     <Card
       className={cn(
-        " flex flex-col rounded-none border-0 pt-4 md:pt-6",
-        className
+        ' flex flex-col rounded-none border-0 pt-4 md:pt-6',
+        className,
       )}
     >
       <CardHeader
         className={cn(
-          "grid gap-2 border-t border-grey-300 pb-4 font-display",
-          !hasLine && "border-0"
+          'grid gap-2 border-t border-grey-300 pb-4 font-display',
+          !hasLine && 'border-0',
         )}
       >
-        <span className="inline-block size-6 -translate-y-1/2 rounded-full bg-pink"></span>
+        <span className="inline-block size-6 -translate-y-1/2 rounded-full bg-pink" />
         <h3 className="mr-gutter text-lg leading-[1.8rem] md:text-2xl">
           {card.year}
         </h3>
@@ -62,14 +62,14 @@ export default function CardTimelineBlock({
               },
               marks: {
                 link: ({ children, value }) => {
-                  const rel = !value.href.startsWith("/")
-                    ? "noreferrer noopener"
-                    : undefined
+                  const rel = !value.href.startsWith('/')
+                    ? 'noreferrer noopener'
+                    : undefined;
                   return (
                     <a href={value.href} rel={rel} className="link-styling">
                       {children}
                     </a>
-                  )
+                  );
                 },
               },
               types: {
@@ -80,10 +80,10 @@ export default function CardTimelineBlock({
                         asChild
                         variant={
                           value?.variant
-                            ? value.variant === "primary"
-                              ? "primary"
-                              : "secondary"
-                            : "primary"
+                            ? value.variant === 'primary'
+                              ? 'primary'
+                              : 'secondary'
+                            : 'primary'
                         }
                         size="md"
                       >
@@ -92,7 +92,7 @@ export default function CardTimelineBlock({
                         </CustomUrl>
                       </Button>
                     </div>
-                  )
+                  );
                 },
               },
             }}
@@ -100,5 +100,5 @@ export default function CardTimelineBlock({
         )}
       </CardContent>
     </Card>
-  )
+  );
 }

@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
-import React from "react"
-import { type mediaBlockSelection } from "@/sanity/selections/blocks/media-block"
-import type { TypeFromSelection } from "groqd"
+import type { mediaBlockSelection } from '@/sanity/selections/blocks/media-block';
+import type { TypeFromSelection } from 'groqd';
+import React from 'react';
 
+import { CustomUrl } from '@/components/custom-url';
 import {
   Button,
   Card,
@@ -11,36 +12,35 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  cn,
   Heading,
-} from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+  cn,
+} from '@shared/ui';
 
-import { VideoBlock } from "./video"
+import { VideoBlock } from './video';
 
 interface Props {
-  mediaBlock: TypeFromSelection<typeof mediaBlockSelection>
-  className?: string
+  mediaBlock: TypeFromSelection<typeof mediaBlockSelection>;
+  className?: string;
 }
 
 export function MediaBlock({ mediaBlock, className }: Props) {
-  const { image, video, eyebrow, heading, body, links } = mediaBlock
+  const { image, video, eyebrow, heading, body, links } = mediaBlock;
 
   return (
     <div
       className={cn(
-        " w-full px-gutter",
+        ' w-full px-gutter',
         mediaBlock.isFullWidthVideo
-          ? "mx-auto max-w-[80rem] 2xl:max-w-none 2xl:px-0"
-          : "max-width grid-system gap-card",
-        className
+          ? 'mx-auto max-w-[80rem] 2xl:max-w-none 2xl:px-0'
+          : 'max-width grid-system gap-card',
+        className,
       )}
     >
       <Card
         className={cn(
-          "w-full rounded-none border-none",
+          'w-full rounded-none border-none',
           !mediaBlock.isFullWidthVideo &&
-            "col-span-full md:!h-auto lg:col-span-8 lg:col-start-3"
+            'col-span-full md:!h-auto lg:col-span-8 lg:col-start-3',
         )}
       >
         {video && <VideoBlock video={video} className="aspect-video" />}
@@ -79,17 +79,17 @@ export function MediaBlock({ mediaBlock, className }: Props) {
             {links && (
               <CardFooter className="flex flex-wrap gap-4">
                 {links?.map((link, index) => (
-                  <React.Fragment key={index}>
+                  <React.Fragment key={link.label}>
                     {link.label && (
                       <Button
                         asChild
                         size="md"
                         variant={
                           link.variant
-                            ? link.variant === "primary"
-                              ? "primary"
-                              : "secondary"
-                            : "primary"
+                            ? link.variant === 'primary'
+                              ? 'primary'
+                              : 'secondary'
+                            : 'primary'
                         }
                       >
                         <CustomUrl
@@ -111,5 +111,5 @@ export function MediaBlock({ mediaBlock, className }: Props) {
         </div>
       </Card>
     </div>
-  )
+  );
 }

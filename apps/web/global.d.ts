@@ -1,4 +1,5 @@
 // global.d.ts
 interface Window {
-  hbspt: any
+  // biome-ignore lint/suspicious/noExplicitAny: <Allowed>
+  hbspt: any;
 }

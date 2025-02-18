@@ -1,17 +1,17 @@
-import type { cardsStatSelection } from "@/sanity/selections/blocks/cards-stat"
-import type { TypeFromSelection } from "groqd"
+import type { cardsStatSelection } from '@/sanity/selections/blocks/cards-stat';
+import type { TypeFromSelection } from 'groqd';
 
-import { cn, Heading } from "@shared/ui"
+import { Heading, cn } from '@shared/ui';
 
-import CardStatBlock from "./card-stat"
+import CardStatBlock from './card-stat';
 
 interface Props {
-  cards: TypeFromSelection<typeof cardsStatSelection>
+  cards: TypeFromSelection<typeof cardsStatSelection>;
 }
 
 export function CardsStatBlock({ cards }: Props) {
   if (!cards || !cards?.items?.length) {
-    return null
+    return null;
   }
 
   return (
@@ -23,7 +23,7 @@ export function CardsStatBlock({ cards }: Props) {
         <Heading variant="h2">{cards.heading}</Heading>
       </div>
       <div
-        className={cn("grid-system col-span-full gap-gutter md:auto-rows-1fr")}
+        className={cn('grid-system col-span-full gap-gutter md:auto-rows-1fr')}
       >
         {cards.items.map((card) => (
           <CardStatBlock
@@ -39,5 +39,5 @@ export function CardsStatBlock({ cards }: Props) {
         </div>
       )}
     </div>
-  )
+  );
 }

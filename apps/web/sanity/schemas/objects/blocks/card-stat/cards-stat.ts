@@ -1,47 +1,47 @@
-import { defineArrayMember, defineField, defineType } from "sanity"
+import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: "cardsStat",
-  title: "Cards Statistic",
-  type: "object",
-  description: "Create a list of statistic cards",
+  name: 'cardsStat',
+  title: 'Cards Statistic',
+  type: 'object',
+  description: 'Create a list of statistic cards',
   groups: [
-    { title: "Config", name: "config" },
-    { title: "Heading", name: "heading" },
-    { title: "Content", name: "contents" },
+    { title: 'Config', name: 'config' },
+    { title: 'Heading', name: 'heading' },
+    { title: 'Content', name: 'contents' },
   ],
   fields: [
     defineField({
-      title: "Heading",
-      name: "heading",
-      type: "string",
-      group: "heading",
+      title: 'Heading',
+      name: 'heading',
+      type: 'string',
+      group: 'heading',
     }),
     defineField({
-      title: "Body",
-      name: "body",
-      type: "text",
+      title: 'Body',
+      name: 'body',
+      type: 'text',
       rows: 3,
-      group: "heading",
+      group: 'heading',
     }),
     defineField({
-      name: "items",
-      type: "array",
+      name: 'items',
+      type: 'array',
       of: [
         defineArrayMember({
-          type: "cardStat",
+          type: 'cardStat',
         }),
       ],
-      group: "contents",
+      group: 'contents',
     }),
   ],
   preview: {
     select: {
-      title: "heading",
+      title: 'heading',
     },
     prepare: ({ title }) => ({
       title,
-      subtitle: "- Stats Cards block",
+      subtitle: '- Stats Cards block',
     }),
   },
-})
+});

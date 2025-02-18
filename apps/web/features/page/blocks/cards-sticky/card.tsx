@@ -1,8 +1,9 @@
-import Image from "next/image"
-import { urlForImage } from "@/sanity/lib/image"
-import type { cardStickySelection } from "@/sanity/selections/blocks/card-sticky"
-import type { TypeFromSelection } from "groqd"
+import { urlForImage } from '@/sanity/lib/image';
+import type { cardStickySelection } from '@/sanity/selections/blocks/card-sticky';
+import type { TypeFromSelection } from 'groqd';
+import Image from 'next/image';
 
+import { CustomUrl } from '@/components/custom-url';
 import {
   Button,
   Card,
@@ -10,25 +11,24 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  cn,
   Heading,
-} from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+  cn,
+} from '@shared/ui';
 
 interface Props {
-  card: TypeFromSelection<typeof cardStickySelection>
-  className?: string
+  card: TypeFromSelection<typeof cardStickySelection>;
+  className?: string;
 }
 
 export default function CardStickyBlock({ card, className }: Props) {
   if (!card) {
-    return null
+    return null;
   }
 
-  const { image, icon, eyebrow, heading, body, link } = card
+  const { image, icon, eyebrow, heading, body, link } = card;
 
   return (
-    <Card className={cn("h-full", className)}>
+    <Card className={cn('h-full', className)}>
       <CustomUrl value={link} isWrapper className="inline-block size-full">
         <div className="flex flex-col lg:h-full lg:flex-row">
           {image && (
@@ -57,8 +57,8 @@ export default function CardStickyBlock({ card, className }: Props) {
           )}
           <div
             className={cn(
-              "flex flex-col gap-card p-card",
-              !icon && "basis-1/2 justify-end"
+              'flex flex-col gap-card p-card',
+              !icon && 'basis-1/2 justify-end',
             )}
           >
             <CardContent className="flex flex-col gap-copy">
@@ -71,9 +71,9 @@ export default function CardStickyBlock({ card, className }: Props) {
                 <Heading
                   variant="h3"
                   className={cn(
-                    "transition-colors duration-200 ease-in-out",
+                    'transition-colors duration-200 ease-in-out',
                     link &&
-                      "group-focus-within:text-pink md:group-hover:text-pink"
+                      'group-focus-within:text-pink md:group-hover:text-pink',
                   )}
                 >
                   {heading}
@@ -81,16 +81,16 @@ export default function CardStickyBlock({ card, className }: Props) {
               )}
               {body && <CardDescription>{body}</CardDescription>}
             </CardContent>
-            {link && link.variant && (
+            {link?.variant && (
               <CardFooter>
                 <Button
                   asChild
                   size="md"
                   className="group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0"
                   variant={
-                    !link.variant || link.variant === "primary"
-                      ? "primary"
-                      : "secondary"
+                    !link.variant || link.variant === 'primary'
+                      ? 'primary'
+                      : 'secondary'
                   }
                 >
                   <CustomUrl
@@ -108,5 +108,5 @@ export default function CardStickyBlock({ card, className }: Props) {
         </div>
       </CustomUrl>
     </Card>
-  )
+  );
 }

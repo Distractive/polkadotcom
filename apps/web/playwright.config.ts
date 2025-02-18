@@ -1,9 +1,8 @@
-import { defineConfig } from "@playwright/test";
-import { config } from "dotenv";
+import { defineConfig } from '@playwright/test';
+import { config } from 'dotenv';
 
-config({ path: ".env.local" })
+config({ path: '.env.local' });
 
-// eslint-disable-next-line turbo/no-undeclared-env-vars
 const { CI } = process.env;
 
 /**
@@ -18,7 +17,7 @@ const { CI } = process.env;
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: "./tests",
+  testDir: './tests',
   /* Maximum time one test can run for. */
   timeout: 5 * 60 * 1000,
   expect: {
@@ -29,7 +28,7 @@ export default defineConfig({
     timeout: 5000,
   },
   /* Run tests in files in parallel */
-  fullyParallel: CI ? true : false,
+  fullyParallel: !!CI,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!CI,
   /* Retry on CI only */
@@ -37,29 +36,28 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: CI ? 4 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: CI ? "github" : "html",
+  reporter: CI ? 'github' : 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    headless: !!CI,
 
-    headless: CI ? true : false,
-    
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 5000,
 
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: "http://127.0.0.1:3000",
+    baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "on",
+    trace: 'on',
 
     /* Collect screenshots when retrying the failed test. */
     screenshot: {
-      mode: "on",
+      mode: 'on',
       fullPage: true,
     },
 
     /* Collect videos when retrying the failed test. */
-    video: { mode: "retain-on-failure" },
+    video: { mode: 'retain-on-failure' },
   },
 
   /* Configure projects for major browsers */
@@ -102,14 +100,14 @@ export default defineConfig({
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  outputDir: "test-results/",
+  outputDir: 'test-results/',
 
   /* Run your local dev server before starting the tests */
   webServer: CI
     ? undefined
     : {
-        command: "pnpm dev",
-        url: "http://127.0.0.1:3000",
+        command: 'pnpm dev',
+        url: 'http://127.0.0.1:3000',
         reuseExistingServer: !CI,
       },
-})
+});

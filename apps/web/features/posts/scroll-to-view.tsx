@@ -1,20 +1,20 @@
-"use client"
+'use client';
 
-import { useLayoutEffect } from "react"
+import { useLayoutEffect } from 'react';
 
 interface Props {
-  page: number
+  page: number;
 }
 
 export function ScrollToView({ page }: Props) {
   useLayoutEffect(() => {
     if (page > 1) {
-      const targetElement = document.getElementById("main-content")
+      const targetElement = document.getElementById('main-content');
       if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" })
+        targetElement.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  }, [page])
+  }, [page]);
 
-  return null
+  return null;
 }

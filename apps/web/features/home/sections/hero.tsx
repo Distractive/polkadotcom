@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { type heroSelection } from "@/sanity/selections/home/hero";
-import Spline from "@splinetool/react-spline";
-import { type TypeFromSelection } from "groqd";
+import type { heroSelection } from '@/sanity/selections/home/hero';
+import Spline from '@splinetool/react-spline';
+import type { TypeFromSelection } from 'groqd';
 
-import { CustomUrl } from "@/components/custom-url";
-import { Button, cn, Heading } from "@shared/ui";
+import { CustomUrl } from '@/components/custom-url';
+import { Button, Heading, cn } from '@shared/ui';
 
 interface Props {
-  hero: TypeFromSelection<typeof heroSelection>["hero"]
+  hero: TypeFromSelection<typeof heroSelection>['hero'];
 }
 
 export function Hero({ hero }: Props) {
@@ -18,12 +18,13 @@ export function Hero({ hero }: Props) {
       data-testid="hero-pile"
       className="md:pt-30 relative -mt-[2rem] mb-8 flex flex-col overflow-visible md:mt-0 md:pt-16 xl:mb-32"
     >
+      {/* biome-ignore lint/style/useSelfClosingElements: <Not possible> */}
       <div className="absolute inset-0 -z-10 bg-[image:linear-gradient(to_bottom_right,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom_right,#07FFFF_0%,#7916F3_100%)] bg-[length:101%_100%] bg-no-repeat "></div>
 
       <article
         id="hero.wrapper"
         className={cn(
-          "grid-system max-width relative   !overflow-visible lg:px-gutter"
+          'grid-system max-width relative   !overflow-visible lg:px-gutter',
         )}
       >
         <div className="max-width col-span-12 flex flex-col !overflow-visible  lg:flex-row">
@@ -31,12 +32,13 @@ export function Hero({ hero }: Props) {
           <div
             id="network.content"
             className={cn(
-              "relative  order-2  flex flex-col justify-center px-gutter lg:order-1 lg:col-span-2 lg:px-0",
-              "-mt-[8rem] sm:-mt-[5rem] md:mt-0"
+              'relative  order-2  flex flex-col justify-center px-gutter lg:order-1 lg:col-span-2 lg:px-0',
+              '-mt-[8rem] sm:-mt-[5rem] md:mt-0',
             )}
           >
-            <div className="sm:max-w-xl md:max-w-2xl lg:max-w-2xl xl:max-w-6xl  "
-            data-testid="hero-landing-frame"
+            <div
+              className="sm:max-w-xl md:max-w-2xl lg:max-w-2xl xl:max-w-6xl  "
+              data-testid="hero-landing-frame"
             >
               <Heading
                 variant="h1"
@@ -45,7 +47,7 @@ export function Hero({ hero }: Props) {
                 {hero.title}
               </Heading>
               <div className="flex w-full">
-                {" "}
+                {' '}
                 <p className="text-lg xl:text-2xl">{hero.copy}</p>
               </div>
 
@@ -56,13 +58,13 @@ export function Hero({ hero }: Props) {
                 {hero.links?.map((link, index) => (
                   <Button
                     asChild
-                    key={index}
+                    key={link.label}
                     variant={
                       link?.variant
-                        ? link.variant === "primary"
-                          ? "primary"
-                          : "secondary"
-                        : "primary"
+                        ? link.variant === 'primary'
+                          ? 'primary'
+                          : 'secondary'
+                        : 'primary'
                     }
                     size="lg"
                     className="flex-1 whitespace-nowrap"
@@ -91,5 +93,5 @@ export function Hero({ hero }: Props) {
         </div>
       </article>
     </div>
-  )
+  );
 }

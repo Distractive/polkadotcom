@@ -1,26 +1,26 @@
-import type { Metadata } from "next"
-import { draftMode } from "next/headers"
-import Script from "next/script"
-import { manrope, unbounded } from "@/styles/fonts"
-import { Analytics } from "@vercel/analytics/react"
-import { VisualEditing } from "next-sanity"
+import { manrope, unbounded } from '@/styles/fonts';
+import { Analytics } from '@vercel/analytics/react';
+import type { Metadata } from 'next';
+import { VisualEditing } from 'next-sanity';
+import { draftMode } from 'next/headers';
+import Script from 'next/script';
 
-import "@shared/ui/styles/global.css"
+import '@shared/ui/styles/global.css';
 
-import { getFooter } from "@/sanity/queries/footer"
-import { getNavigation } from "@/sanity/queries/navigation"
-import { cn } from "@shared/ui/lib/utils"
+import { getFooter } from '@/sanity/queries/footer';
+import { getNavigation } from '@/sanity/queries/navigation';
+import { cn } from '@shared/ui/lib/utils';
 
-import { env } from "@/env.mjs"
-import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { BannerWrapper } from "@/features/banner/banner-wrapper"
-import FooterLayout from "@/features/footer/layout"
-import NavigationLayout from "@/features/navigation/layout"
+import { TailwindIndicator } from '@/components/tailwind-indicator';
+import { env } from '@/env.mjs';
+import { BannerWrapper } from '@/features/banner/banner-wrapper';
+import FooterLayout from '@/features/footer/layout';
+import NavigationLayout from '@/features/navigation/layout';
 
 export const metadata: Metadata = {
-  title: "Polkadot: Web3 Interoperability | Decentralized Blockchain",
+  title: 'Polkadot: Web3 Interoperability | Decentralized Blockchain',
   description:
-    "Polkadot empowers blockchain networks to work together under the protection of shared security.",
+    'Polkadot empowers blockchain networks to work together under the protection of shared security.',
   robots: {
     index: true,
     follow: true,
@@ -30,16 +30,16 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
-}
+};
 
 export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
-  const footer = await getFooter()
-  const navigation = await getNavigation()
-  const isProduction = env.NODE_ENV === "production"
+  const footer = await getFooter();
+  const navigation = await getNavigation();
+  const isProduction = env.NODE_ENV === 'production';
 
   return (
     <html lang="en">
@@ -159,12 +159,12 @@ export default async function RootLayout({
         className={cn(
           unbounded.variable,
           manrope.variable,
-          "flex min-h-screen flex-col bg-white font-default antialiased"
+          'flex min-h-screen flex-col bg-white font-default antialiased',
         )}
       >
         <noscript>
           <img
-            src={`https://queue.simpleanalyticscdn.com/noscript.gif?hostname=polkadot.com`}
+            src="https://queue.simpleanalyticscdn.com/noscript.gif?hostname=polkadot.com"
             alt=""
             width="0"
             height="0"
@@ -172,23 +172,21 @@ export default async function RootLayout({
           />
 
           <iframe
+            title="GTM-MG9HQ6PM"
             src="https://ekndrsoc.ust.stape.io/ns.html?id=GTM-MG9HQ6PM"
             height="0"
             width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          ></iframe>
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
         </noscript>
         <a
           href="#main-content"
           className={cn(
-            "group absolute -left-[9999px] -top-[9999px] z-[999] w-screen border-b border-b-grey-400 bg-grey-100 p-4 opacity-100 outline-none",
-            "focus:left-0 focus:top-0 focus:opacity-100"
+            'group absolute -left-[9999px] -top-[9999px] z-[999] w-screen border-b border-b-grey-400 bg-grey-100 p-4 opacity-100 outline-none',
+            'focus:left-0 focus:top-0 focus:opacity-100',
           )}
         >
-          <span
-            tabIndex={0}
-            className="bg-blue inline-block rounded-lg px-10 py-4 font-display text-xs uppercase tracking-wide text-white group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#1351d8]"
-          >
+          <span className="bg-blue inline-block rounded-lg px-10 py-4 font-display text-xs uppercase tracking-wide text-white group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#1351d8]">
             Skip to main content
           </span>
         </a>
@@ -197,16 +195,14 @@ export default async function RootLayout({
         <div className="relative">
           {navigation && <NavigationLayout navigation={navigation} />}
 
-          <main role="main" className="flex-grow ">
-            {children}
-          </main>
+          <main className="flex-grow ">{children}</main>
         </div>
         {footer && <FooterLayout footer={footer} />}
 
-        {env.VERCEL_ENV === "development" && <TailwindIndicator />}
+        {env.VERCEL_ENV === 'development' && <TailwindIndicator />}
         {(await draftMode()).isEnabled && <VisualEditing />}
-        {env.VERCEL_ENV === "production" && <Analytics />}
+        {env.VERCEL_ENV === 'production' && <Analytics />}
       </body>
     </html>
-  )
+  );
 }

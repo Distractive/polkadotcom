@@ -1,23 +1,23 @@
-import { defineField, defineType } from "sanity"
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: "buttonBlock",
-  title: "ButtonBlock",
-  type: "object",
+  name: 'buttonBlock',
+  title: 'ButtonBlock',
+  type: 'object',
   fields: [
     defineField({
-      name: "link",
-      title: "Link",
-      type: "customUrl",
+      name: 'link',
+      title: 'Link',
+      type: 'customUrl',
     }),
   ],
   preview: {
     select: {
-      title: "link.label",
+      title: 'link.label',
     },
     prepare: ({ title }) => ({
       title,
-      subtitle: "- Standalone Button block",
+      subtitle: '- Standalone Button block',
     }),
   },
-})
+});

@@ -1,34 +1,34 @@
-import { blogSelection } from "@/sanity/selections/blog/blog"
-import type { TypeFromSelection } from "groqd"
+import type { blogSelection } from '@/sanity/selections/blog/blog';
+import type { TypeFromSelection } from 'groqd';
 
-import { BreadcrumbProps } from "@/features/page/blocks/breadcrumb"
+import type { BreadcrumbProps } from '@/features/page/blocks/breadcrumb';
 
-export type PostData = TypeFromSelection<typeof blogSelection>
+export type PostData = TypeFromSelection<typeof blogSelection>;
 
 export default function generateBreadcrumbs(
   type: string,
-  post: PostData | undefined
+  post: PostData | undefined,
 ): BreadcrumbProps {
-  const slug = post?.slug ? `/${post.slug}` : ""
-  const parentSlug = post?.parent?.slug ? `/${post.parent.slug}` : ""
-  const parentTitle = post?.parent?.header?.title ?? ""
+  const slug = post?.slug ? `/${post.slug}` : '';
+  const parentSlug = post?.parent?.slug ? `/${post.parent.slug}` : '';
+  const parentTitle = post?.parent?.header?.title ?? '';
 
-  if (type === "Press Release") {
+  if (type === 'Press Release') {
     return {
       items: [
         {
-          slug: "/community/newsroom",
-          title: "Newsroom",
+          slug: '/community/newsroom',
+          title: 'Newsroom',
         },
         {
-          slug: "/newsroom/press-releases",
-          title: "Press Releases",
+          slug: '/newsroom/press-releases',
+          title: 'Press Releases',
         },
       ],
-    }
+    };
   }
 
-  if (type === "Case Study") {
+  if (type === 'Case Study') {
     return {
       items: [
         {
@@ -36,11 +36,11 @@ export default function generateBreadcrumbs(
           title: parentTitle,
         },
         {
-          slug: "/case-studies",
-          title: "Case Studies",
+          slug: '/case-studies',
+          title: 'Case Studies',
         },
       ],
-    }
+    };
   }
 
   return {
@@ -50,9 +50,9 @@ export default function generateBreadcrumbs(
         title: parentTitle,
       },
       {
-        slug: slug && parentSlug ? `${parentSlug}${slug}` : "",
-        title: post?.heading ?? "",
+        slug: slug && parentSlug ? `${parentSlug}${slug}` : '',
+        title: post?.heading ?? '',
       },
     ],
-  }
+  };
 }

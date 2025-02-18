@@ -1,68 +1,68 @@
-import { defineField, defineType } from "sanity"
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: "blockContent",
-  title: "Block Content",
-  type: "object",
+  name: 'blockContent',
+  title: 'Block Content',
+  type: 'object',
   fields: [
     defineField({
-      name: "title",
-      title: "title",
-      type: "string",
-      description: "Title for purely CMS organization purposes",
+      name: 'title',
+      title: 'title',
+      type: 'string',
+      description: 'Title for purely CMS organization purposes',
     }),
     defineField({
-      name: "content",
-      title: "Content",
-      type: "array",
+      name: 'content',
+      title: 'Content',
+      type: 'array',
       of: [
         {
-          type: "block",
+          type: 'block',
           styles: [
-            { title: "Normal", value: "normal" },
-            { title: "H2", value: "h2" },
-            { title: "H3", value: "h3" },
-            { title: "H4", value: "h4" },
+            { title: 'Normal', value: 'normal' },
+            { title: 'H2', value: 'h2' },
+            { title: 'H3', value: 'h3' },
+            { title: 'H4', value: 'h4' },
           ],
           marks: {
             decorators: [
-              { title: "Strong", value: "strong" },
-              { title: "Emphasis", value: "em" },
-              { title: "Code", value: "code" },
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+              { title: 'Code', value: 'code' },
             ],
           },
         },
         {
-          type: "break",
-          initialValue: { style: "lineBreak" },
+          type: 'break',
+          initialValue: { style: 'lineBreak' },
         },
         {
-          type: "customUrl",
+          type: 'customUrl',
         },
       ],
     }),
     defineField({
-      name: "fullWidth",
-      title: "Full width?",
+      name: 'fullWidth',
+      title: 'Full width?',
       description:
-        "If false the content will be approximately 2/3 of the screen width on desktop. On mobile it will revert to full width.",
-      type: "boolean",
+        'If false the content will be approximately 2/3 of the screen width on desktop. On mobile it will revert to full width.',
+      type: 'boolean',
       initialValue: false,
     }),
     defineField({
-      name: "isCentered",
-      title: "Center the content?",
-      type: "boolean",
+      name: 'isCentered',
+      title: 'Center the content?',
+      type: 'boolean',
       initialValue: false,
     }),
   ],
   preview: {
     select: {
-      title: "title",
+      title: 'title',
     },
     prepare: ({ title }) => ({
       title,
-      subtitle: "- Content block",
+      subtitle: '- Content block',
     }),
   },
-})
+});

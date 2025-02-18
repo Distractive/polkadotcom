@@ -1,10 +1,10 @@
-import { VideoBlock } from "@/features/page/blocks/video";
-import { type videoSelection } from "@/sanity/selections/home/video";
-import { cn, Heading } from "@shared/ui";
-import { type TypeFromSelection } from "groqd";
+import { VideoBlock } from '@/features/page/blocks/video';
+import type { videoSelection } from '@/sanity/selections/home/video';
+import { Heading, cn } from '@shared/ui';
+import type { TypeFromSelection } from 'groqd';
 
 interface Props {
-  video: TypeFromSelection<typeof videoSelection>["video"]
+  video: TypeFromSelection<typeof videoSelection>['video'];
 }
 
 export function Video({ video }: Props) {
@@ -21,8 +21,8 @@ export function Video({ video }: Props) {
           id="video.content"
           data-testid="video-pile-content"
           className={cn(
-            "max-width relative z-10 col-span-12 !max-w-[80rem] px-gutter ",
-            "md:w-full lg:col-span-8 lg:col-start-3"
+            'max-width relative z-10 col-span-12 !max-w-[80rem] px-gutter ',
+            'md:w-full lg:col-span-8 lg:col-start-3',
           )}
         >
           <Heading
@@ -39,5 +39,5 @@ export function Video({ video }: Props) {
         </div>
       </article>
     </div>
-  )
+  );
 }

@@ -1,17 +1,17 @@
-import type { cardsLogoSelection } from "@/sanity/selections/blocks/cards-logo"
-import type { TypeFromSelection } from "groqd"
+import type { cardsLogoSelection } from '@/sanity/selections/blocks/cards-logo';
+import type { TypeFromSelection } from 'groqd';
 
-import { cn, Heading } from "@shared/ui"
+import { Heading, cn } from '@shared/ui';
 
-import CardLogoBlock from "./card-logo"
+import CardLogoBlock from './card-logo';
 
 interface Props {
-  cards: TypeFromSelection<typeof cardsLogoSelection>
+  cards: TypeFromSelection<typeof cardsLogoSelection>;
 }
 
 export function CardsLogoBlock({ cards }: Props) {
   if (!cards) {
-    return null
+    return null;
   }
 
   return (
@@ -23,7 +23,7 @@ export function CardsLogoBlock({ cards }: Props) {
         <Heading variant="h2">{cards.heading}</Heading>
         {cards.body && <p>{cards.body}</p>}
       </div>
-      <div className={cn("grid-system col-span-full gap-gutter")}>
+      <div className={cn('grid-system col-span-full gap-gutter')}>
         {cards?.items?.length &&
           cards.items.map(
             (card) =>
@@ -33,9 +33,9 @@ export function CardsLogoBlock({ cards }: Props) {
                   card={card}
                   className="col-span-3 md:col-span-2 lg:col-span-2"
                 />
-              )
+              ),
           )}
       </div>
     </div>
-  )
+  );
 }

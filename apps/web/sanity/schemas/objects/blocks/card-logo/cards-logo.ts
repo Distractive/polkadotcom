@@ -1,53 +1,53 @@
-import { defineArrayMember, defineField, defineType } from "sanity"
+import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: "cardsLogo",
-  title: "Cards Logo",
-  type: "object",
-  description: "Create a list of cards containing logos",
+  name: 'cardsLogo',
+  title: 'Cards Logo',
+  type: 'object',
+  description: 'Create a list of cards containing logos',
   groups: [
-    { title: "Heading", name: "heading" },
-    { title: "Content", name: "content" },
+    { title: 'Heading', name: 'heading' },
+    { title: 'Content', name: 'content' },
   ],
   fields: [
     defineField({
-      title: "Heading",
-      name: "heading",
-      type: "string",
-      group: "heading",
+      title: 'Heading',
+      name: 'heading',
+      type: 'string',
+      group: 'heading',
     }),
     defineField({
-      title: "Body",
-      name: "body",
-      type: "text",
+      title: 'Body',
+      name: 'body',
+      type: 'text',
       rows: 3,
-      group: "heading",
+      group: 'heading',
     }),
     defineField({
-      name: "image",
-      title: "Image",
-      type: "image",
-      group: "heading",
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      group: 'heading',
     }),
 
     defineField({
-      name: "items",
-      type: "array",
+      name: 'items',
+      type: 'array',
       of: [
         defineArrayMember({
-          type: "cardLogo",
+          type: 'cardLogo',
         }),
       ],
-      group: "content",
+      group: 'content',
     }),
   ],
   preview: {
     select: {
-      title: "heading",
+      title: 'heading',
     },
     prepare: ({ title }) => ({
       title,
-      subtitle: "-Logo Cards block",
+      subtitle: '-Logo Cards block',
     }),
   },
-})
+});

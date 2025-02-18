@@ -1,7 +1,7 @@
-import type { accordionSelection } from "@/sanity/selections/blocks/accordion"
-import { PortableText } from "@portabletext/react"
-import { stegaClean } from "@sanity/client/stega"
-import type { TypeFromSelection } from "groqd"
+import type { accordionSelection } from '@/sanity/selections/blocks/accordion';
+import { PortableText } from '@portabletext/react';
+import { stegaClean } from '@sanity/client/stega';
+import type { TypeFromSelection } from 'groqd';
 
 import {
   Accordion,
@@ -9,28 +9,28 @@ import {
   AccordionItem,
   AccordionTrigger,
   Button,
-  cn,
   Heading,
-} from "@shared/ui"
+  cn,
+} from '@shared/ui';
 
 interface Props {
   accordion: TypeFromSelection<typeof accordionSelection> & {
-    _type: "accordion"
-  }
+    _type: 'accordion';
+  };
 }
 
 export function AccordionBlock({ accordion }: Props) {
   // Typeguards to ensure that the accordion object is not null or undefined
   if (!accordion || !accordion.items?.length) {
-    return null
+    return null;
   }
 
   const validItems = accordion.items.filter(
-    (item) => item?._key && item?.heading
-  )
+    (item) => item?._key && item?.heading,
+  );
 
   if (!validItems.length) {
-    return null
+    return null;
   }
 
   return (
@@ -48,7 +48,7 @@ export function AccordionBlock({ accordion }: Props) {
         <div className="grid-system col-span-full items-center justify-center pb-gutter">
           {accordion.image?.asset?.url && (
             <img
-              alt={accordion.title || "Accordion image"}
+              alt={accordion.title || 'Accordion image'}
               className="col-span-full aspect-video w-full rounded-2xl lg:col-span-6"
               src={accordion.image.asset.url}
             />
@@ -68,9 +68,9 @@ export function AccordionBlock({ accordion }: Props) {
         collapsible
         defaultValue={validItems[0]?._key || undefined}
         className={cn(
-          "col-span-full lg:col-span-8 lg:col-start-3",
+          'col-span-full lg:col-span-8 lg:col-start-3',
           accordion.hasTitleOnSide &&
-            "lg:col-start-0 col-span-full lg:col-span-7 lg:col-start-6"
+            'lg:col-start-0 col-span-full lg:col-span-7 lg:col-start-6',
         )}
       >
         {validItems.map(
@@ -82,18 +82,18 @@ export function AccordionBlock({ accordion }: Props) {
                 value={item._key}
                 className={cn(
                   index !== validItems.length - 1 &&
-                    "data-[state=open]:border-b data-[state=open]:border-grey-300"
+                    'data-[state=open]:border-b data-[state=open]:border-grey-300',
                 )}
               >
                 <AccordionTrigger
                   aria-label={`Open '${stegaClean(item.heading)}' content`}
                   className={cn(
-                    "flex flex-1 items-center justify-between p-gutter py-4",
-                    "border border-grey-300 font-display font-medium hover:text-pink data-[state=open]:text-pink",
+                    'flex flex-1 items-center justify-between p-gutter py-4',
+                    'border border-grey-300 font-display font-medium hover:text-pink data-[state=open]:text-pink',
                     index === validItems.length - 1 &&
-                      "rounded-b-2xl data-[state=open]:rounded-b-none",
-                    index === 0 && "rounded-t-2xl",
-                    index !== 0 && "border-b border-t-0"
+                      'rounded-b-2xl data-[state=open]:rounded-b-none',
+                    index === 0 && 'rounded-t-2xl',
+                    index !== 0 && 'border-b border-t-0',
                   )}
                 >
                   <div className="flex flex-row items-center gap-4">
@@ -110,8 +110,8 @@ export function AccordionBlock({ accordion }: Props) {
                 </AccordionTrigger>
                 <AccordionContent
                   className={cn(
-                    index === validItems.length - 1 && "rounded-b-2xl border-b",
-                    "border-x border-grey-300 bg-grey-50 px-gutter py-gutter"
+                    index === validItems.length - 1 && 'rounded-b-2xl border-b',
+                    'border-x border-grey-300 bg-grey-50 px-gutter py-gutter',
                   )}
                 >
                   {item.content && (
@@ -146,17 +146,17 @@ export function AccordionBlock({ accordion }: Props) {
                         },
                         types: {
                           break: ({ value }) => {
-                            const { style } = value
-                            if (style === "lineBreak") {
+                            const { style } = value;
+                            if (style === 'lineBreak') {
                               return (
                                 <hr className="my-gutter border-grey-300" />
-                              )
+                              );
                             }
-                            return null
+                            return null;
                           },
                           customUrl: ({ value }) => (
                             <Button
-                              variant={value.internal ? "primary" : "secondary"}
+                              variant={value.internal ? 'primary' : 'secondary'}
                               size="sm"
                               asChild
                               className="mt-gutter"
@@ -170,9 +170,9 @@ export function AccordionBlock({ accordion }: Props) {
                   )}
                 </AccordionContent>
               </AccordionItem>
-            )
+            ),
         )}
       </Accordion>
     </div>
-  )
+  );
 }

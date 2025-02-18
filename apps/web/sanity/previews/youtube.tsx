@@ -1,14 +1,14 @@
-import type { PreviewProps } from "sanity"
+import type { PreviewProps } from 'sanity';
 
 type CastPreviewProps = PreviewProps & {
-  url: string
-  title: string
-}
+  url: string;
+  title: string;
+};
 
 export const YouTubePreview = (props: PreviewProps) => {
-  const { url, title } = props as CastPreviewProps
-  if (!url || url === "") {
-    return <div>Missing YouTube URL</div>
+  const { url, title } = props as CastPreviewProps;
+  if (!url || url === '') {
+    return <div>Missing YouTube URL</div>;
   }
   return (
     <iframe
@@ -19,5 +19,5 @@ export const YouTubePreview = (props: PreviewProps) => {
       frameBorder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
     />
-  )
-}
+  );
+};

@@ -1,32 +1,28 @@
-"use client"
+'use client';
 
-import { deskStructure } from "@/sanity/desk"
-import * as resolve from "@/sanity/plugins/resolve"
-import { schema } from "@/sanity/schema"
-import { codeInput } from "@sanity/code-input"
-import { visionTool } from "@sanity/vision"
-import { groqdPlaygroundTool } from "groqd-playground"
-import {
-  defineConfig,
-  type ConfigContext,
-  type CurrentUser,
-} from "sanity"
-import { media } from "sanity-plugin-media"
-import { vercelDeployTool } from "sanity-plugin-vercel-deploy"
-import { presentationTool } from "sanity/presentation"
-import { structureTool } from "sanity/structure"
+import { deskStructure } from '@/sanity/desk';
+import * as resolve from '@/sanity/plugins/resolve';
+import { schema } from '@/sanity/schema';
+import { codeInput } from '@sanity/code-input';
+import { visionTool } from '@sanity/vision';
+import { groqdPlaygroundTool } from 'groqd-playground';
+import { type ConfigContext, type CurrentUser, defineConfig } from 'sanity';
+import { media } from 'sanity-plugin-media';
+import { vercelDeployTool } from 'sanity-plugin-vercel-deploy';
+import { presentationTool } from 'sanity/presentation';
+import { structureTool } from 'sanity/structure';
 
-import { env } from "@/env.mjs"
+import { env } from '@/env.mjs';
 
 // Helper function to check user roles
 const userHasRole = (user: CurrentUser | null, role: string): boolean => {
-  return user?.roles?.some((r) => r.name === role) ?? false
-}
+  return user?.roles?.some((r) => r.name === role) ?? false;
+};
 
 export default defineConfig({
-  basePath: "/admin",
-  name: "default",
-  title: "polkadot",
+  basePath: '/admin',
+  name: 'default',
+  title: 'polkadot',
   projectId: env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   dataset: env.NEXT_PUBLIC_SANITY_DATASET,
   // schema,
@@ -34,21 +30,21 @@ export default defineConfig({
     ...schema,
     templates: (prev) => {
       const landingChild = {
-        id: "landing-child",
-        title: "Landing: Pages",
-        schemaType: "page",
-        parameters: [{ name: `parentId`, title: `Parent ID`, type: `string` }],
+        id: 'landing-child',
+        title: 'Landing: Pages',
+        schemaType: 'page',
+        parameters: [{ name: 'parentId', title: 'Parent ID', type: 'string' }],
         // This value will be passed-in from desk structure
         value: ({ parentId }: { parentId: string }) => ({
-          parent: { _type: "reference", _ref: parentId },
+          parent: { _type: 'reference', _ref: parentId },
         }),
-      }
+      };
 
-      return [...prev, landingChild]
+      return [...prev, landingChild];
     },
   },
   plugins:
-    process.env.NODE_ENV === "development"
+    process.env.NODE_ENV === 'development'
       ? [
           structureTool({
             structure: deskStructure,
@@ -60,7 +56,7 @@ export default defineConfig({
             resolve,
             previewUrl: {
               draftMode: {
-                enable: "/api/draft",
+                enable: '/api/draft',
               },
             },
           }),
@@ -76,7 +72,7 @@ export default defineConfig({
             resolve,
             previewUrl: {
               draftMode: {
-                enable: "/api/draft",
+                enable: '/api/draft',
               },
             },
           }),
@@ -85,12 +81,12 @@ export default defineConfig({
         ],
   // Show or hide vercelDeployTool based on user role
   tools: (prevTools, context: ConfigContext) => {
-    const { currentUser } = context
+    const { currentUser } = context;
 
-    if (!userHasRole(currentUser, "administrator")) {
-      return prevTools.filter((tool) => tool.name !== "vercel-deploy")
+    if (!userHasRole(currentUser, 'administrator')) {
+      return prevTools.filter((tool) => tool.name !== 'vercel-deploy');
     }
 
-    return prevTools
+    return prevTools;
   },
-})
+});

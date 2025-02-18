@@ -1,8 +1,8 @@
-import type { Selection } from "groqd"
-import { q, sanityImage } from "groqd"
+import type { Selection } from 'groqd';
+import { q, sanityImage } from 'groqd';
 
-import { customUrlSelection } from "../custom-url"
-import { newsletterButtonSelection } from "./newsletter-button"
+import { customUrlSelection } from '../custom-url';
+import { newsletterButtonSelection } from './newsletter-button';
 
 export const ctaSelection = {
   _key: q.string(),
@@ -10,16 +10,16 @@ export const ctaSelection = {
   useWhiteText: q.boolean().nullable().optional(),
   isCentered: q.boolean().nullable().optional(),
   twoThirdsText: q.boolean().nullable().optional(),
-  image: sanityImage("image", {
-    withAsset: ["base", "dimensions"],
+  image: sanityImage('image', {
+    withAsset: ['base', 'dimensions'],
   }).nullable(),
   altText: q.string().nullable().optional(),
-  content: q("content")
+  content: q('content')
     .filter()
     .select({
-      '_type == "block"': ["{...}", q.contentBlock()],
+      '_type == "block"': ['{...}', q.contentBlock()],
       '_type == "customUrl"': {
-        _type: q.literal("customUrl"),
+        _type: q.literal('customUrl'),
         ...customUrlSelection,
       },
       '_type == "newsletterButton"': {
@@ -27,9 +27,9 @@ export const ctaSelection = {
       },
       default: {
         _key: q.string(),
-        _type: ['"unsupported"', q.literal("unsupported")],
-        unsupportedType: ["_type", q.string()],
+        _type: ['"unsupported"', q.literal('unsupported')],
+        unsupportedType: ['_type', q.string()],
       },
     })
     .nullable(),
-} satisfies Selection
+} satisfies Selection;

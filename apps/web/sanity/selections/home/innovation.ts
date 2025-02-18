@@ -1,9 +1,9 @@
-import { q, sanityImage } from "groqd"
-import type { Selection } from "groqd"
+import { q, sanityImage } from 'groqd';
+import type { Selection } from 'groqd';
 
 export const innovationSelection = {
-  innovation: q("innovation").grab({
+  innovation: q('innovation').grab({
     title: q.string(),
-    images: sanityImage("images", { isList: true, withAsset: ["base"] }),
+    images: sanityImage('images', { isList: true, withAsset: ['base'] }),
   }),
-} satisfies Selection
+} satisfies Selection;

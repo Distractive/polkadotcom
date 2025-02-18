@@ -1,4 +1,4 @@
-import { type SchemaTypeDefinition } from "sanity"
+import type { SchemaTypeDefinition } from 'sanity';
 
 import {
   author,
@@ -8,8 +8,8 @@ import {
   page,
   post,
   tag,
-} from "./schemas/documents"
-import { redirectType } from "./schemas/documents/redirects"
+} from './schemas/documents';
+import { redirectType } from './schemas/documents/redirects';
 import {
   accordion,
   accordionItem,
@@ -18,16 +18,16 @@ import {
   buttonBlock,
   card,
   cardLogo,
+  cardSmall,
+  cardStat,
+  cardSticky,
+  cardTimeline,
   cards,
   cardsLogo,
-  cardSmall,
   cardsSmall,
   cardsStat,
   cardsSticky,
-  cardStat,
-  cardSticky,
   cardsTimeline,
-  cardTimeline,
   connectedCard,
   countdownTimer,
   cta,
@@ -61,7 +61,7 @@ import {
   summary,
   video,
   youtube,
-} from "./schemas/objects"
+} from './schemas/objects';
 import {
   banner,
   blog,
@@ -72,7 +72,7 @@ import {
   navigation,
   notfound,
   pressReleases,
-} from "./schemas/singletons"
+} from './schemas/singletons';
 
 const documentTypes = [
   tag,
@@ -83,7 +83,7 @@ const documentTypes = [
   hygiene,
   glossaryEntry,
   redirectType,
-]
+];
 const objectTypes = [
   youtube,
   meta,
@@ -135,7 +135,7 @@ const objectTypes = [
   homeBuild,
   summary,
   newsletterButton,
-]
+];
 
 const singletons = [
   footer,
@@ -147,8 +147,8 @@ const singletons = [
   glossary,
   caseStudies,
   banner,
-]
+];
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [...documentTypes, ...objectTypes, ...singletons],
-}
+};

@@ -1,29 +1,29 @@
-import type { cardLogoSelection } from "@/sanity/selections/blocks/card-logo";
-import type { TypeFromSelection } from "groqd";
+import type { cardLogoSelection } from '@/sanity/selections/blocks/card-logo';
+import type { TypeFromSelection } from 'groqd';
 
-import { CustomUrl } from "@/components/custom-url";
-import { Card, cn } from "@shared/ui";
+import { CustomUrl } from '@/components/custom-url';
+import { Card, cn } from '@shared/ui';
 
 interface Props {
-  card: TypeFromSelection<typeof cardLogoSelection>
-  className?: string
+  card: TypeFromSelection<typeof cardLogoSelection>;
+  className?: string;
 }
 
 export default function CardLogoBlock({ card, className }: Props) {
   if (!card) {
-    return null
+    return null;
   }
 
-  const { _key, name, image, link } = card
+  const { _key, name, image, link } = card;
 
   return (
     <Card
       key={_key}
       className={cn(
-        "border-0 bg-grey-100",
+        'border-0 bg-grey-100',
         link &&
-          "md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
-        className
+          'md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0',
+        className,
       )}
     >
       <CustomUrl value={card.link} isWrapper>
@@ -31,7 +31,7 @@ export default function CardLogoBlock({ card, className }: Props) {
           {image && (
             <img
               src={image?.asset.url}
-              alt={name || "Logo"}
+              alt={name || 'Logo'}
               loading="lazy"
               className="w-full"
             />
@@ -39,5 +39,5 @@ export default function CardLogoBlock({ card, className }: Props) {
         </div>
       </CustomUrl>
     </Card>
-  )
+  );
 }

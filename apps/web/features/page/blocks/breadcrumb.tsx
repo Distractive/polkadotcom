@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react';
 
 import {
   Breadcrumb,
@@ -7,16 +7,16 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
   cn,
-} from "@shared/ui"
+} from '@shared/ui';
 
-export type BreadcrumbItem = {
-  slug: string
-  title?: string | null
-}
+export type BreadcrumbItemType = {
+  slug: string;
+  title?: string | null;
+};
 
 export type BreadcrumbProps = {
-  items: BreadcrumbItem[]
-}
+  items: BreadcrumbItemType[];
+};
 
 export function BreadcrumbBlock({ items }: BreadcrumbProps) {
   return (
@@ -24,13 +24,13 @@ export function BreadcrumbBlock({ items }: BreadcrumbProps) {
       <BreadcrumbList>
         {items.map((item, index) => {
           return (
-            <React.Fragment key={index}>
-              <BreadcrumbItem key={index}>
+            <React.Fragment key={item.title}>
+              <BreadcrumbItem key={item.title}>
                 <BreadcrumbLink
                   href={item.slug}
                   className={cn(
-                    "transition-all duration-200 ease-out hover:text-black hover:underline hover:underline-offset-4",
-                    index == items.length - 1 ? "text-pink" : ""
+                    'transition-all duration-200 ease-out hover:text-black hover:underline hover:underline-offset-4',
+                    index === items.length - 1 ? 'text-pink' : '',
                   )}
                 >
                   {item.title}
@@ -38,9 +38,9 @@ export function BreadcrumbBlock({ items }: BreadcrumbProps) {
               </BreadcrumbItem>
               {index < items.length - 1 && <BreadcrumbSeparator />}
             </React.Fragment>
-          )
+          );
         })}
       </BreadcrumbList>
     </Breadcrumb>
-  )
+  );
 }

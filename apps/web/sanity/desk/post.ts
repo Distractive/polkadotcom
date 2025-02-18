@@ -1,54 +1,54 @@
-import { DocumentsIcon, TagsIcon, UsersIcon } from "@sanity/icons"
-import type { StructureBuilder } from "sanity/structure"
+import { DocumentsIcon, TagsIcon, UsersIcon } from '@sanity/icons';
+import type { StructureBuilder } from 'sanity/structure';
 
 import {
   BLOG_POSTTYPE,
   CASE_STUDY_POSTTYPE,
   PRESS_RELEASE_POSTTYPE,
-} from "@/constants/global"
+} from '@/constants/global';
 
 export const postStructure = (S: StructureBuilder) =>
   S.listItem()
-    .title("Post Management")
+    .title('Post Management')
     .icon(DocumentsIcon)
     .child(
       S.list()
-        .title("Post Management")
+        .title('Post Management')
         .items([
           S.listItem()
-            .title("Tags")
+            .title('Tags')
             .icon(TagsIcon)
-            .child(S.documentTypeList("tag").title("Tags")),
+            .child(S.documentTypeList('tag').title('Tags')),
           S.listItem()
-            .title("Authors")
+            .title('Authors')
             .icon(UsersIcon)
-            .child(S.documentTypeList("author").title("Authors")),
+            .child(S.documentTypeList('author').title('Authors')),
           S.listItem()
-            .title("Blog Posts")
+            .title('Blog Posts')
             .icon(DocumentsIcon)
             .child(
-              S.documentTypeList("post")
-                .title("Blog Posts")
+              S.documentTypeList('post')
+                .title('Blog Posts')
                 .filter('_type == "post" && post_type == $postType')
-                .params({ postType: BLOG_POSTTYPE })
+                .params({ postType: BLOG_POSTTYPE }),
             ),
           S.listItem()
-            .title("Press Releases")
+            .title('Press Releases')
             .icon(DocumentsIcon)
             .child(
-              S.documentTypeList("post")
-                .title("Press Releases")
+              S.documentTypeList('post')
+                .title('Press Releases')
                 .filter('_type == "post" && post_type == $postType')
-                .params({ postType: PRESS_RELEASE_POSTTYPE })
+                .params({ postType: PRESS_RELEASE_POSTTYPE }),
             ),
           S.listItem()
-            .title("Case Studies")
+            .title('Case Studies')
             .icon(DocumentsIcon)
             .child(
-              S.documentTypeList("post")
-                .title("Case Studies")
+              S.documentTypeList('post')
+                .title('Case Studies')
                 .filter('_type == "post" && post_type == $postType')
-                .params({ postType: CASE_STUDY_POSTTYPE })
+                .params({ postType: CASE_STUDY_POSTTYPE }),
             ),
-        ])
-    )
+        ]),
+    );

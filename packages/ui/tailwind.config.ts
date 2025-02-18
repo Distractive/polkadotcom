@@ -1,10 +1,10 @@
-import type { Config } from "tailwindcss"
+import type { Config } from 'tailwindcss';
 
-import sharedConfig from "../tailwind-config"
+import sharedConfig from '../tailwind-config';
 
 const config = {
   ...sharedConfig,
-  content: ["./*.{ts,tsx}"],
-} satisfies Config
+  content: ['./*.{ts,tsx}'],
+} satisfies Config;
 
-export default config
+export default config;

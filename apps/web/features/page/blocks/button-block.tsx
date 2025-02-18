@@ -1,14 +1,14 @@
-"use client"
+'use client';
 
-import { type buttonBlockSelection } from "@/sanity/selections/blocks/button-block"
-import { type TypeFromSelection } from "groqd"
+import type { buttonBlockSelection } from '@/sanity/selections/blocks/button-block';
+import type { TypeFromSelection } from 'groqd';
 
-import { Button } from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
-import { DecorativeLine } from "@/components/decorative-line"
+import { CustomUrl } from '@/components/custom-url';
+import { DecorativeLine } from '@/components/decorative-line';
+import { Button } from '@shared/ui';
 
 interface Props {
-  buttonBlock: TypeFromSelection<typeof buttonBlockSelection>
+  buttonBlock: TypeFromSelection<typeof buttonBlockSelection>;
 }
 
 export function ButtonBlock({ buttonBlock }: Props) {
@@ -21,10 +21,10 @@ export function ButtonBlock({ buttonBlock }: Props) {
           className="w-full md:group-hover:after:translate-x-0"
           variant={
             buttonBlock.link?.variant
-              ? buttonBlock.link.variant === "primary"
-                ? "primary"
-                : "secondary"
-              : "primary"
+              ? buttonBlock.link.variant === 'primary'
+                ? 'primary'
+                : 'secondary'
+              : 'primary'
           }
         >
           <CustomUrl className="outline-none" value={buttonBlock.link}>
@@ -33,5 +33,5 @@ export function ButtonBlock({ buttonBlock }: Props) {
         </Button>
       </DecorativeLine>
     </div>
-  )
+  );
 }

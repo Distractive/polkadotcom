@@ -1,97 +1,97 @@
-"use client"
+'use client';
 
-import type { ReactNode } from "react"
-import { useEffect, useMemo, useRef, useState } from "react"
-import Link from "next/link"
-import type { searchSelection } from "@/sanity/queries/search"
-import { cleanTerm } from "@/utils/glossary/glossaryUtils"
-import type { TypeFromSelection } from "groqd"
+import type { searchSelection } from '@/sanity/queries/search';
+import { cleanTerm } from '@/utils/glossary/glossaryUtils';
+import type { TypeFromSelection } from 'groqd';
+import Link from 'next/link';
+import type { ReactNode } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import {
   BLOG_POSTTYPE,
   type CASE_STUDY_POSTTYPE,
   type PRESS_RELEASE_POSTTYPE,
-} from "@/constants/global"
-import { cn, Icon } from "@shared/ui"
+} from '@/constants/global';
+import { Icon, cn } from '@shared/ui';
 
 interface Props {
   searches: ReadonlyArray<
     TypeFromSelection<typeof searchSelection> & { cleanedTerm?: string }
-  >
+  >;
   postType:
     | typeof BLOG_POSTTYPE
     | typeof PRESS_RELEASE_POSTTYPE
     | typeof CASE_STUDY_POSTTYPE
-    | "glossary"
+    | 'glossary';
 }
 
 export function SearchBar({ searches, postType }: Props) {
-  const MAX_RESULTS = 30
-  const [searchable, setSearchable] = useState<string>("")
-  const [findings, setFindings] = useState<Array<number>>([])
+  const MAX_RESULTS = 30;
+  const [searchable, setSearchable] = useState<string>('');
+  const [findings, setFindings] = useState<Array<number>>([]);
 
   const blogList = useMemo(
     () =>
       searches.map((search) => {
-        let title = search.title
-        const specialCharactersPattern = /[^A-Za-z0-9\s]/g
+        let title = search.title;
+        const specialCharactersPattern = /[^A-Za-z0-9\s]/g;
 
         // Replace special characters with an empty string
-        title = title.replace(specialCharactersPattern, "")
-        title = title.toLowerCase()
-        return title
+        title = title.replace(specialCharactersPattern, '');
+        title = title.toLowerCase();
+        return title;
       }),
-    [searches]
-  )
+    [searches],
+  );
 
   useEffect(() => {
     // Ignoring empty searches
-    if (searchable.trim().split(" ").join("").length <= 0) {
-      setFindings([])
-      return
+    if (searchable.trim().split(' ').join('').length <= 0) {
+      setFindings([]);
+      return;
     }
 
-    let results: Array<{ index: number; score: number }> = []
+    let results: Array<{ index: number; score: number }> = [];
     blogList.map((title, index) => {
-      let score = 0
+      let score = 0;
       searchable
         .trim()
-        .split(" ")
+        .split(' ')
         .map((searchTerm) => {
-          if (title.indexOf(searchTerm) != -1) {
-            score++
+          if (title.indexOf(searchTerm) !== -1) {
+            score++;
           }
-        })
+        });
 
-      results.push({ index: index, score: score })
-    })
+      results.push({ index: index, score: score });
+    });
 
-    results = results.sort((a, b) => b.score - a.score)
+    results = results.sort((a, b) => b.score - a.score);
 
     const finds: Array<number> = results
       .filter((result) => {
-        return result.score > 0
+        return result.score > 0;
       })
       .map((finding) => finding.index)
-      .slice(0, MAX_RESULTS)
+      .slice(0, MAX_RESULTS);
 
-    setFindings(finds)
-  }, [searchable, blogList])
+    setFindings(finds);
+  }, [searchable, blogList]);
 
   const handleGlossaryClick = (term: string) => {
-    const cleanedTerm = cleanTerm(false, term)
+    const cleanedTerm = cleanTerm(false, term);
 
-    const firstLetter = cleanedTerm.charAt(0).toUpperCase()
-    const element = document.getElementById(`section-${firstLetter}`)
+    const firstLetter = cleanedTerm.charAt(0).toUpperCase();
+    const element = document.getElementById(`section-${firstLetter}`);
     if (element) {
-      const termElement = element.querySelector(`[data-term="${cleanedTerm}"]`)
+      const termElement = element.querySelector(`[data-term="${cleanedTerm}"]`);
       if (termElement) {
-        termElement.scrollIntoView({ behavior: "auto" })
+        termElement.scrollIntoView({ behavior: 'auto' });
       }
     }
 
-    setSearchable("")
-  }
+    setSearchable('');
+  };
 
   return (
     <SearchBarContent>
@@ -99,48 +99,48 @@ export function SearchBar({ searches, postType }: Props) {
         aria-label="Enter your search"
         hasDrawerResultsOpen={searchable.length > 0}
         onClick={() => {
-          setSearchable("")
+          setSearchable('');
         }}
         onChange={(value) => {
-          setSearchable(value.toLowerCase())
+          setSearchable(value.toLowerCase());
         }}
       />
 
       <SearchBarResults isOpen={searchable.length > 0}>
         {findings.length > 0 &&
           findings.map((finding) => {
-            if (postType === "glossary") {
+            if (postType === 'glossary') {
               return (
                 <SearchBarListItem
                   key={searches[finding]?._id}
                   href="#"
                   onClick={() => {
-                    const cleanedTerm = searches[finding]?.cleanedTerm
+                    const cleanedTerm = searches[finding]?.cleanedTerm;
                     if (cleanedTerm) {
-                      handleGlossaryClick(cleanedTerm)
+                      handleGlossaryClick(cleanedTerm);
                     }
                   }}
                 >
                   {searches[finding]?.title}
                 </SearchBarListItem>
-              )
+              );
             }
 
             return (
               <SearchBarListItem
                 key={searches[finding]?._id}
                 href={
-                  postType == BLOG_POSTTYPE
+                  postType === BLOG_POSTTYPE
                     ? `/blog/${searches[finding]?.slug}`
                     : `/newsroom/press-releases/${searches[finding]?.slug}`
                 }
               >
                 {searches[finding]?.title}
               </SearchBarListItem>
-            )
+            );
           })}
 
-        {searchable.length > 0 && findings.length == 0 && (
+        {searchable.length > 0 && findings.length === 0 && (
           <div className="text-blue flex h-28 w-full flex-col flex-wrap items-center justify-center">
             <p className="text-center font-bold">No matches found</p>
             <p className="text-center">
@@ -150,13 +150,13 @@ export function SearchBar({ searches, postType }: Props) {
         )}
       </SearchBarResults>
     </SearchBarContent>
-  )
+  );
 }
 
 interface SearchBarInputProps {
-  onChange: (value: string) => void
-  onClick?: () => void
-  hasDrawerResultsOpen: boolean
+  onChange: (value: string) => void;
+  onClick?: () => void;
+  hasDrawerResultsOpen: boolean;
 }
 
 const SearchBarInput = ({
@@ -164,16 +164,16 @@ const SearchBarInput = ({
   onClick,
   hasDrawerResultsOpen,
 }: SearchBarInputProps) => {
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null);
   return (
     <div
       className={cn(
-        "peer col-span-full flex items-center gap-1 self-stretch bg-grey-100 p-4 ring-1 ring-inset ring-grey-300 focus-within:ring-grey-500 hover:ring-grey-500",
-        "transition-all duration-300",
-        hasDrawerResultsOpen ? "rounded-tl-2xl rounded-tr-2xl" : "rounded-2xl"
+        'peer col-span-full flex items-center gap-1 self-stretch bg-grey-100 p-4 ring-1 ring-inset ring-grey-300 focus-within:ring-grey-500 hover:ring-grey-500',
+        'transition-all duration-300',
+        hasDrawerResultsOpen ? 'rounded-tl-2xl rounded-tr-2xl' : 'rounded-2xl',
       )}
     >
-      <Icon variant={"magnify"} className="size-6" />
+      <Icon variant={'magnify'} className="size-6" />
       <input
         aria-label="Enter your search"
         ref={inputRef}
@@ -181,77 +181,78 @@ const SearchBarInput = ({
         placeholder="Enter your search"
         type="text"
         onChange={(e) => {
-          onChange(e.target.value)
+          onChange(e.target.value);
         }}
       />
       {hasDrawerResultsOpen && (
         <button
-          role="button"
+          type="button"
           aria-label="Clear search field"
           tabIndex={0}
           onClick={() => {
             if (inputRef.current) {
-              inputRef.current.value = ""
-              inputRef.current.focus()
+              inputRef.current.value = '';
+              inputRef.current.focus();
             }
             if (onClick) {
-              onClick()
+              onClick();
             }
           }}
           className="group absolute right-4 top-4 outline-none"
         >
           <Icon
-            variant={"close"}
+            variant={'close'}
             className="size-6 cursor-pointer group-hover:fill-pink group-focus:fill-pink"
           />
         </button>
       )}
     </div>
-  )
-}
+  );
+};
 
 const SearchBarResults = ({
   children,
   isOpen,
 }: {
-  children: React.ReactNode
-  isOpen: boolean
+  children: React.ReactNode;
+  isOpen: boolean;
 }) => {
   return (
     <div
       className={cn(
         isOpen
-          ? "pointer-events-auto top-14 max-h-64 opacity-100"
-          : "pointer-events-none top-10 h-0 opacity-80",
-        "transition-all duration-300",
-        "absolute",
-        " w-full flex-col items-start justify-center overflow-auto rounded-bl-2xl rounded-br-2xl",
-        "border border-t-0 border-grey-300 bg-grey-100 px-4 py-2 peer-focus-within:border-grey-500 peer-hover:border-grey-500"
+          ? 'pointer-events-auto top-14 max-h-64 opacity-100'
+          : 'pointer-events-none top-10 h-0 opacity-80',
+        'transition-all duration-300',
+        'absolute',
+        ' w-full flex-col items-start justify-center overflow-auto rounded-bl-2xl rounded-br-2xl',
+        'border border-t-0 border-grey-300 bg-grey-100 px-4 py-2 peer-focus-within:border-grey-500 peer-hover:border-grey-500',
       )}
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
 const SearchBarListItem = ({
   href,
   children,
   onClick,
 }: {
-  href: string
-  children: ReactNode
-  onClick?: () => void
+  href: string;
+  children: ReactNode;
+  onClick?: () => void;
 }) => {
   if (onClick) {
     return (
       <button
+        type="button"
         onClick={onClick}
         className="text-blue line-clamp-1 h-10 w-full overflow-hidden rounded-lg p-2 text-left leading-roomy hover:bg-grey-300"
       >
         {children}
       </button>
-    )
+    );
   }
 
   return (
@@ -261,8 +262,8 @@ const SearchBarListItem = ({
     >
       {children}
     </Link>
-  )
-}
+  );
+};
 const SearchBarContent = ({ children }: { children: ReactNode }) => {
-  return <div className="relative z-20">{children}</div>
-}
+  return <div className="relative z-20">{children}</div>;
+};

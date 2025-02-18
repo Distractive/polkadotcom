@@ -1,16 +1,16 @@
-import { makeSafeQueryRunner } from "groqd"
+import { makeSafeQueryRunner } from 'groqd';
 
-import { sanityFetch } from "./fetch"
+import { sanityFetch } from './fetch';
 
 export const runQuery = makeSafeQueryRunner(
   (
     query: string,
     params: Record<string, number | string> = {},
-    preview = true
+    preview = true,
   ) =>
     sanityFetch({
       query,
       params,
-      perspective: preview ? "previewDrafts" : "published",
-    })
-)
+      perspective: preview ? 'previewDrafts' : 'published',
+    }),
+);

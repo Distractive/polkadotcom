@@ -1,40 +1,40 @@
-import type { cardSmallSelection } from "@/sanity/selections/blocks/card-small"
-import type { TypeFromSelection } from "groqd"
+import type { cardSmallSelection } from '@/sanity/selections/blocks/card-small';
+import type { TypeFromSelection } from 'groqd';
 
+import { CustomUrl } from '@/components/custom-url';
 import {
   Button,
   Card,
   CardContent,
   CardDescription,
   CardFooter,
-  cn,
   Heading,
   Icon,
-} from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+  cn,
+} from '@shared/ui';
 
 interface Props {
-  card: TypeFromSelection<typeof cardSmallSelection>
-  className?: string
+  card: TypeFromSelection<typeof cardSmallSelection>;
+  className?: string;
 }
 
 export default function CardSmallBlock({ card, className }: Props) {
-  const { _key, heading, body, link, icon, eyebrow } = card
+  const { _key, heading, body, link, icon, eyebrow } = card;
 
   return (
     <Card
       key={_key}
       className={cn(
         link &&
-          "focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
-        className
+          'focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0',
+        className,
       )}
     >
       <CustomUrl value={link} isWrapper>
         <div
           className={cn(
-            "flex h-full gap-6 p-6 lg:gap-card lg:p-card",
-            icon ? "items-center" : "items-start"
+            'flex h-full gap-6 p-6 lg:gap-card lg:p-card',
+            icon ? 'items-center' : 'items-start',
           )}
         >
           {icon && (
@@ -42,7 +42,7 @@ export default function CardSmallBlock({ card, className }: Props) {
               src={icon.asset.url}
               alt=""
               loading="lazy"
-              className={cn("size-14 rounded-2xl object-cover object-center")}
+              className={cn('size-14 rounded-2xl object-cover object-center')}
             />
           )}
           <CardContent className="grid gap-copy">
@@ -56,25 +56,25 @@ export default function CardSmallBlock({ card, className }: Props) {
                 variant="h3"
                 size="h4"
                 className={cn(
-                  "transition-colors duration-200 ease-in-out",
+                  'transition-colors duration-200 ease-in-out',
                   link &&
-                    "group-focus-within:text-pink md:group-hover:text-pink"
+                    'group-focus-within:text-pink md:group-hover:text-pink',
                 )}
               >
                 {heading}
               </Heading>
             )}
             {body && <CardDescription className="">{body}</CardDescription>}
-            {link && link.variant && (link.external || link.internal) && (
+            {link?.variant && (link.external || link.internal) && (
               <Button
                 tabIndex={-1}
                 asChild
                 variant={
                   link.variant
-                    ? link.variant === "primary"
-                      ? "primary"
-                      : "secondary"
-                    : "primary"
+                    ? link.variant === 'primary'
+                      ? 'primary'
+                      : 'secondary'
+                    : 'primary'
                 }
                 size="md"
                 className="mt-copy group-focus-within:after:translate-x-0 md:mr-auto md:group-hover:after:translate-x-0"
@@ -87,11 +87,11 @@ export default function CardSmallBlock({ card, className }: Props) {
           </CardContent>
           {link && !link.variant && (
             <CardFooter className="ml-auto place-self-center">
-              <Icon variant={link.internal ? "arrowRight" : "arrowRightUp"} />
+              <Icon variant={link.internal ? 'arrowRight' : 'arrowRightUp'} />
             </CardFooter>
           )}
         </div>
       </CustomUrl>
     </Card>
-  )
+  );
 }

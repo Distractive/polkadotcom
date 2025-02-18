@@ -1,30 +1,29 @@
-"use client";
+'use client';
 
-import { type connectedSelection } from "@/sanity/selections/home/connected";
-import { type TypeFromSelection } from "groqd";
-import Image from "next/image";
+import type { connectedSelection } from '@/sanity/selections/home/connected';
+import type { TypeFromSelection } from 'groqd';
+import Image from 'next/image';
 
-import { Carousel } from "@/components/carousel";
-import { CustomUrl } from "@/components/custom-url";
+import { Carousel } from '@/components/carousel';
+import { CustomUrl } from '@/components/custom-url';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CarouselItem,
-  cn,
   Heading,
-} from "@shared/ui";
+  cn,
+} from '@shared/ui';
 
 interface Props {
-  connected: TypeFromSelection<typeof connectedSelection>["connected"]
+  connected: TypeFromSelection<typeof connectedSelection>['connected'];
 }
 
 export function Connected({ connected }: Props) {
   return (
     <div
       id="connected-pile"
-      data-testid="connected-pile"
       className="grid-pile relative bg-[image:linear-gradient(to_bottom_left,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom_left,rgba(121,22,243,1)_0%,rgba(7,255,255,1)_100%)] bg-[length:101%_100%] bg-no-repeat py-[4rem] md:py-[6rem]"
     >
       <article
@@ -34,6 +33,7 @@ export function Connected({ connected }: Props) {
         <div
           id="connected.content"
           className="grid-system relative z-10 col-span-12 mt-header-top !w-[100vw] md:mt-0"
+          data-testid="connected-pile"
         >
           <div className="col-span-6 px-gutter pb-gutter lg:col-span-4 lg:col-start-2 xl:col-start-3">
             <Heading
@@ -62,24 +62,24 @@ export function Connected({ connected }: Props) {
                     key={card._key}
                     className={cn(
                       card.link &&
-                        "md:cursor-pointer md:hover:bg-white md:hover:shadow-card"
+                        'md:cursor-pointer md:hover:bg-white md:hover:shadow-card',
                     )}
                   >
                     <CustomUrl value={card.link} isWrapper>
-                      <CardHeader className={cn("relative z-10 aspect-video")}>
+                      <CardHeader className={cn('relative z-10 aspect-video')}>
                         {card.headerImage && (
                           <Image
                             src={card.headerImage?.asset.url}
                             alt=""
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            className={cn("object-cover object-center")}
+                            className={cn('object-cover object-center')}
                           />
                         )}
                       </CardHeader>
 
-                      <div className={cn("relative")}>
-                        <CardContent className={cn("grid gap-card p-card")}>
+                      <div className={cn('relative')}>
+                        <CardContent className={cn('grid gap-card p-card')}>
                           <div className="grid gap-copy">
                             {card.eyebrow && (
                               <span className="text-caps-sm  uppercase">
@@ -90,8 +90,8 @@ export function Connected({ connected }: Props) {
                               <Heading
                                 variant="h3"
                                 className={cn(
-                                  "text-base leading-[1.2] transition-colors duration-200 ease-in-out md:text-2xl",
-                                  card.link && "md:group-hover:text-pink"
+                                  'text-base leading-[1.2] transition-colors duration-200 ease-in-out md:text-2xl',
+                                  card.link && 'md:group-hover:text-pink',
                                 )}
                               >
                                 {card.heading}
@@ -114,5 +114,5 @@ export function Connected({ connected }: Props) {
         </div>
       </article>
     </div>
-  )
+  );
 }

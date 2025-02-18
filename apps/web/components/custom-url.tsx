@@ -1,24 +1,24 @@
-import { Suspense } from "react"
-import Link from "next/link"
-import { type customUrlSelection } from "@/sanity/selections/custom-url"
-import { type TypeFromSelection } from "groqd"
+import type { customUrlSelection } from '@/sanity/selections/custom-url';
+import type { TypeFromSelection } from 'groqd';
+import Link from 'next/link';
+import { Suspense } from 'react';
 
 import {
   BLOG_POSTTYPE,
   CASE_STUDY_POSTTYPE,
   PRESS_RELEASE_POSTTYPE,
-} from "@/constants/global"
-import { cn, Icon } from "@shared/ui"
+} from '@/constants/global';
+import { Icon, cn } from '@shared/ui';
 
 interface Props {
-  value?: TypeFromSelection<typeof customUrlSelection> | null
-  children: React.ReactNode
-  className?: string
-  isWrapper?: boolean
-  tabIndex?: number
-  isNested?: boolean
-  disableArrow?: boolean
-  onClick?: () => void
+  value?: TypeFromSelection<typeof customUrlSelection> | null;
+  children: React.ReactNode;
+  className?: string;
+  isWrapper?: boolean;
+  tabIndex?: number;
+  isNested?: boolean;
+  disableArrow?: boolean;
+  onClick?: () => void;
 }
 
 export function CustomUrl({
@@ -31,22 +31,22 @@ export function CustomUrl({
   isNested,
   onClick,
 }: Props) {
-  let slug = value?.external || value?.internal?.slug
-  if (value?.internal && value?.internal._type === "post") {
+  let slug = value?.external || value?.internal?.slug;
+  if (value?.internal && value?.internal._type === 'post') {
     const parentSlug = (() => {
       switch (value?.internal?.post_type) {
         case BLOG_POSTTYPE:
-          return "/blog"
+          return '/blog';
         case PRESS_RELEASE_POSTTYPE:
-          return "/newsroom/press-releases"
+          return '/newsroom/press-releases';
         case CASE_STUDY_POSTTYPE:
-          return "/case-studies"
+          return '/case-studies';
         default:
-          return ""
+          return '';
       }
-    })()
+    })();
 
-    slug = `${parentSlug}/${slug}`
+    slug = `${parentSlug}/${slug}`;
   }
 
   // isNested is for buttons inside of cards and prevents hydration errors due to nested <a> tags
@@ -62,8 +62,8 @@ export function CustomUrl({
               <Icon
                 variant="arrowRightUp"
                 className={cn(
-                  "size-4 shrink-0 fill-current",
-                  value.variant === "primary" && "fill-white"
+                  'size-4 shrink-0 fill-current',
+                  value.variant === 'primary' && 'fill-white',
                 )}
               />
             )}
@@ -72,14 +72,14 @@ export function CustomUrl({
       )
     ) : (
       children
-    )
+    );
   }
 
   return value ? (
     <Link
       tabIndex={tabIndex}
-      href={value?.external || `/${slug}` || ""}
-      target={value.external ? "_blank" : "_self"}
+      href={value?.external || `/${slug}` || ''}
+      target={value.external ? '_blank' : '_self'}
       className={className}
       prefetch={false}
       onClick={onClick}
@@ -93,8 +93,8 @@ export function CustomUrl({
             <Icon
               variant="arrowRightUp"
               className={cn(
-                "size-4 shrink-0 fill-current ",
-                value.variant && value.variant === "primary" && "fill-white"
+                'size-4 shrink-0 fill-current ',
+                value.variant && value.variant === 'primary' && 'fill-white',
               )}
             />
           )}
@@ -103,5 +103,5 @@ export function CustomUrl({
     </Link>
   ) : (
     children
-  )
+  );
 }

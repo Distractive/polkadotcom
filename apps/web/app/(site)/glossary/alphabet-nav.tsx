@@ -1,16 +1,16 @@
-import Link from "next/link"
+import Link from 'next/link';
 
 export default function AlphabetNav({
   availableLetters,
 }: {
-  availableLetters: string[]
+  availableLetters: string[];
 }) {
-  const alphabet = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+  const alphabet = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
   return (
     <div className="mb-12 flex flex-wrap gap-7 text-lg md:gap-4">
       {alphabet.map((letter) => {
-        const isAvailable = availableLetters.includes(letter)
+        const isAvailable = availableLetters.includes(letter);
 
         return isAvailable ? (
           <Link
@@ -24,8 +24,8 @@ export default function AlphabetNav({
           <span key={letter} className="cursor-default text-grey-400">
             {letter}
           </span>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

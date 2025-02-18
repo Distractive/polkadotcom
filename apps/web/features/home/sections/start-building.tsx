@@ -1,18 +1,18 @@
-import { CustomUrl } from "@/components/custom-url";
-import { type buildSelection } from "@/sanity/selections/home/build";
+import { CustomUrl } from '@/components/custom-url';
+import type { buildSelection } from '@/sanity/selections/home/build';
 import {
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
-  cn,
   Heading,
   Icon,
-} from "@shared/ui";
-import { type TypeFromSelection } from "groqd";
+  cn,
+} from '@shared/ui';
+import type { TypeFromSelection } from 'groqd';
 
 interface Props {
-  build: TypeFromSelection<typeof buildSelection>["build"]
+  build: TypeFromSelection<typeof buildSelection>['build'];
 }
 
 export function Build({ build }: Props) {
@@ -29,11 +29,11 @@ export function Build({ build }: Props) {
         <div
           id="build.content"
           className={cn(
-            "max-width col-span-full flex flex-col items-center justify-center ",
-            "md:col-span-full md:col-start-1 md:w-full",
-            "lg:col-span-full lg:col-start-1",
-            "xl:col-span-10 xl:col-start-2",
-            "mt-header-top md:mt-0"
+            'max-width col-span-full flex flex-col items-center justify-center ',
+            'md:col-span-full md:col-start-1 md:w-full',
+            'lg:col-span-full lg:col-start-1',
+            'xl:col-span-10 xl:col-start-2',
+            'mt-header-top md:mt-0',
           )}
         >
           <div className="col-span-full px-gutter pb-[2rem] lg:col-span-8 lg:col-start-3 lg:w-4/6 ">
@@ -53,27 +53,27 @@ export function Build({ build }: Props) {
           <div className="grid-system relative col-span-full gap-card px-card lg:px-gutter">
             {build.items.map((item, index) => (
               <Card
-                key={index}
+                key={item._key}
                 className={cn(
-                  "build-card  col-span-6 flex items-start justify-between !bg-white md:col-span-4 md:col-start-2 lg:col-span-4",
+                  'build-card  col-span-6 flex items-start justify-between !bg-white md:col-span-4 md:col-start-2 lg:col-span-4',
                   item.link &&
-                    "focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card",
-                  "!h-auto"
+                    'focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card',
+                  '!h-auto',
                 )}
               >
                 <CustomUrl value={item.link} isWrapper className="size-full">
                   <div
-                    className={cn("flex h-full items-center gap-card p-card")}
+                    className={cn('flex h-full items-center gap-card p-card')}
                   >
                     <CardHeader className="grid h-full items-center">
                       {item.heading && (
                         <Heading
                           variant="h3"
                           className={cn(
-                            "text-balance text-xl leading-normal transition-colors duration-200 ease-in-out md:text-2xl",
+                            'text-balance text-xl leading-normal transition-colors duration-200 ease-in-out md:text-2xl',
                             item.link &&
-                              "group-focus-within:text-pink md:group-hover:text-pink",
-                            "!hyphens-none !break-normal"
+                              'group-focus-within:text-pink md:group-hover:text-pink',
+                            '!hyphens-none !break-normal',
                           )}
                         >
                           {item.heading}
@@ -100,5 +100,5 @@ export function Build({ build }: Props) {
         </div>
       </article>
     </div>
-  )
+  );
 }

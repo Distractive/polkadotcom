@@ -1,10 +1,10 @@
-import Image from "next/image"
-import logo from "@/public/polkadot-logo.png"
+import logo from '@/public/polkadot-logo.png';
+import Image from 'next/image';
 
 interface Props {
-  ariaLabel?: string
-  className?: string
-  width?: number
+  ariaLabel?: string;
+  className?: string;
+  width?: number;
 }
 
 export function Logo({ ariaLabel, width }: Props) {
@@ -13,10 +13,10 @@ export function Logo({ ariaLabel, width }: Props) {
       src={logo}
       alt="Polkadot logo"
       width={width || 180}
-      style={{ height: "auto" }}
+      style={{ height: 'auto' }}
       role="img"
       aria-label={ariaLabel}
       priority
     />
-  )
+  );
 }

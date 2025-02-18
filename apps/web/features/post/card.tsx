@@ -1,22 +1,22 @@
-import Image from "next/image"
-import Link from "next/link"
-import type { postSelection } from "@/sanity/queries/posts"
-import type { TypeFromSelection } from "groqd"
+import type { postSelection } from '@/sanity/queries/posts';
+import type { TypeFromSelection } from 'groqd';
+import Image from 'next/image';
+import Link from 'next/link';
 
 import {
   BLOG_POSTTYPE,
   CASE_STUDY_POSTTYPE,
   PRESS_RELEASE_POSTTYPE,
-} from "@/constants/global"
-import { Card, CardContent, CardDescription, CardHeader, cn } from "@shared/ui"
+} from '@/constants/global';
+import { Card, CardContent, CardDescription, CardHeader, cn } from '@shared/ui';
 
 interface Props {
-  post: TypeFromSelection<typeof postSelection>
-  className?: string
+  post: TypeFromSelection<typeof postSelection>;
+  className?: string;
 }
 
 export default function BlogCard({ post, className }: Props) {
-  const { slug, image, body, tags, title, post_type, custom_excerpt } = post
+  const { slug, image, body, tags, title, post_type, custom_excerpt } = post;
   // Because not all blog posts have a custom excerpt imported
   // we have to loop round the content to find the first text block to show
   const excerpt =
@@ -24,24 +24,24 @@ export default function BlogCard({ post, className }: Props) {
       ? custom_excerpt
       : body
           .find((item) =>
-            item.children?.some((child) => child._type === "span")
+            item.children?.some((child) => child._type === 'span'),
           )
-          ?.children.filter((child) => child._type === "span")
+          ?.children.filter((child) => child._type === 'span')
           .map((span) => span.text)
-          .join("")
+          .join('');
 
   return (
     <Card
       key={slug}
       className={cn(
-        "group relative h-full overflow-hidden rounded-2xl border border-grey-400 bg-white  transition-shadow duration-200 ease-in-out focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
+        'group relative h-full overflow-hidden rounded-2xl border border-grey-400 bg-white  transition-shadow duration-200 ease-in-out focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0',
         slug &&
-          "focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0",
-        className
+          'focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0',
+        className,
       )}
     >
       {image && (
-        <CardHeader className={cn("relative z-10 aspect-video")}>
+        <CardHeader className={cn('relative z-10 aspect-video')}>
           <Image
             src={image.asset.url}
             alt=""
@@ -68,7 +68,7 @@ export default function BlogCard({ post, className }: Props) {
                       [BLOG_POSTTYPE]: `/blog/tag/${tag.slug}`,
                       [PRESS_RELEASE_POSTTYPE]: `/newsroom/press-releases/tag/${tag.slug}`,
                       [CASE_STUDY_POSTTYPE]: `/case-studies/tag/${tag.slug}`,
-                    }[post_type] || "/"
+                    }[post_type] || '/'
                   }
                 >
                   {tag.name}
@@ -81,8 +81,8 @@ export default function BlogCard({ post, className }: Props) {
         {title && (
           <h2
             className={cn(
-              "mb-1 text-lg font-bold transition-colors duration-200 ease-in-out",
-              "group-focus-within:text-pink md:group-hover:text-pink"
+              'mb-1 text-lg font-bold transition-colors duration-200 ease-in-out',
+              'group-focus-within:text-pink md:group-hover:text-pink',
             )}
           >
             <Link
@@ -92,7 +92,7 @@ export default function BlogCard({ post, className }: Props) {
                   [BLOG_POSTTYPE]: `/blog/${post.slug}`,
                   [PRESS_RELEASE_POSTTYPE]: `/newsroom/press-releases/${post.slug}`,
                   [CASE_STUDY_POSTTYPE]: `/case-studies/${post.slug}`,
-                }[post_type] || "/"
+                }[post_type] || '/'
               }
               className="outline-none after:absolute after:inset-0 after:z-10 after:cursor-pointer"
             >
@@ -107,5 +107,5 @@ export default function BlogCard({ post, className }: Props) {
         )}
       </CardContent>
     </Card>
-  )
+  );
 }

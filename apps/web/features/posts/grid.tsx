@@ -1,10 +1,10 @@
-import type { postSelection } from "@/sanity/queries/posts"
-import type { TypeFromSelection } from "groqd"
+import type { postSelection } from '@/sanity/queries/posts';
+import type { TypeFromSelection } from 'groqd';
 
-import BlogCard from "../post/card"
+import BlogCard from '../post/card';
 
 interface Props {
-  posts: ReadonlyArray<TypeFromSelection<typeof postSelection>>
+  posts: ReadonlyArray<TypeFromSelection<typeof postSelection>>;
 }
 
 export function Grid({ posts }: Props) {
@@ -18,8 +18,8 @@ export function Grid({ posts }: Props) {
           >
             <BlogCard post={post} />
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

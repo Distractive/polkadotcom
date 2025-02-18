@@ -1,32 +1,32 @@
 import type {
   StructureBuilder,
   StructureResolverContext,
-} from "sanity/structure"
+} from 'sanity/structure';
 
-import { bannerStructure } from "./banner"
-import { blogStructure } from "./blog"
-import { caseStudiesStructure } from "./case-studies"
-import { footerStructure } from "./footer"
-import { glossaryStructure } from "./glossary"
-import { homeStructure } from "./home"
-import { hygieneStructure } from "./hygiene"
-import { parentChild } from "./landing"
-import { navigationStructure } from "./navigation"
-import { notFoundStructure } from "./notfound"
-import { postStructure } from "./post"
-import { pressReleasesStructure } from "./press-releases"
-import { redirectStructure } from "./redirect"
+import { bannerStructure } from './banner';
+import { blogStructure } from './blog';
+import { caseStudiesStructure } from './case-studies';
+import { footerStructure } from './footer';
+import { glossaryStructure } from './glossary';
+import { homeStructure } from './home';
+import { hygieneStructure } from './hygiene';
+import { parentChild } from './landing';
+import { navigationStructure } from './navigation';
+import { notFoundStructure } from './notfound';
+import { postStructure } from './post';
+import { pressReleasesStructure } from './press-releases';
+import { redirectStructure } from './redirect';
 
 export const deskStructure = (
   S: StructureBuilder,
-  context: StructureResolverContext
+  context: StructureResolverContext,
 ) =>
   S.list()
-    .title("Content")
+    .title('Content')
     .items([
       postStructure(S),
       S.divider(),
-      parentChild("landing", S, context.documentStore),
+      parentChild('landing', S, context.documentStore),
       S.divider(),
       hygieneStructure(S),
       S.divider(),
@@ -49,4 +49,4 @@ export const deskStructure = (
       bannerStructure(S),
       S.divider(),
       redirectStructure(S),
-    ])
+    ]);

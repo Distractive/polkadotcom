@@ -1,24 +1,24 @@
-import { defineField, defineType } from "sanity"
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: "aside",
-  title: "Aside",
-  type: "object",
+  name: 'aside',
+  title: 'Aside',
+  type: 'object',
   fields: [
     defineField({
-      name: "heading",
-      title: "Heading",
-      type: "string",
+      name: 'heading',
+      title: 'Heading',
+      type: 'string',
     }),
     defineField({
-      name: "image",
-      title: "Image",
-      type: "image",
+      name: 'image',
+      title: 'Image',
+      type: 'image',
     }),
     defineField({
-      name: "link",
-      title: "Link",
-      type: "customUrl",
+      name: 'link',
+      title: 'Link',
+      type: 'customUrl',
     }),
   ],
-})
+});

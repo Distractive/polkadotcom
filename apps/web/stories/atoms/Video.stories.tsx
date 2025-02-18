@@ -1,29 +1,29 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { VideoBlock } from "@/features/page/blocks/video"
+import { VideoBlock } from '@/features/page/blocks/video';
 
 const meta = {
-  title: "Atoms/Video",
+  title: 'Atoms/Video',
   component: VideoBlock,
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
-} satisfies Meta<typeof VideoBlock>
+} satisfies Meta<typeof VideoBlock>;
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
     video: {
-      url: "https://www.youtube-nocookie.com/embed/mq3SFJPti4o",
+      url: 'https://www.youtube-nocookie.com/embed/mq3SFJPti4o',
       placeholderImage: {
         //@ts-ignore
         asset: {
-          url: "https://polkadot.network/static/staking-yt-thumb-82711cb4001f01beeace618f4ce69e58.jpg",
+          url: 'https://polkadot.network/static/staking-yt-thumb-82711cb4001f01beeace618f4ce69e58.jpg',
         },
       },
     },
   },
-}
+};

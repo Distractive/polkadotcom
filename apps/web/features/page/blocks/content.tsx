@@ -1,23 +1,23 @@
-import type { contentSelection } from "@/sanity/selections/blocks/content"
-import { PortableText } from "@portabletext/react"
-import type { TypeFromSelection } from "groqd"
+import type { contentSelection } from '@/sanity/selections/blocks/content';
+import { PortableText } from '@portabletext/react';
+import type { TypeFromSelection } from 'groqd';
 
-import { Button, cn, Heading } from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+import { CustomUrl } from '@/components/custom-url';
+import { Button, Heading, cn } from '@shared/ui';
 
 interface Props {
-  content: TypeFromSelection<typeof contentSelection>
+  content: TypeFromSelection<typeof contentSelection>;
 }
 
 export function ContentBlock({ content }: Props) {
   return (
-    <div className={cn("grid-system max-width px-gutter")}>
+    <div className={cn('grid-system max-width px-gutter')}>
       <div
         className={cn(
-          "col-span-full col-start-1 flex flex-col gap-copy justify-self-center text-grey-900",
-          !content.fullWidth && "lg:col-span-8",
-          content.isCentered && "text-center lg:col-start-3",
-          content.isCentered && content.fullWidth && "lg:col-start-1"
+          'col-span-full col-start-1 flex flex-col gap-copy justify-self-center text-grey-900',
+          !content.fullWidth && 'lg:col-span-8',
+          content.isCentered && 'text-center lg:col-start-3',
+          content.isCentered && content.fullWidth && 'lg:col-start-1',
         )}
       >
         {content.content && (
@@ -55,21 +55,21 @@ export function ContentBlock({ content }: Props) {
               },
               marks: {
                 link: ({ children, value }) => {
-                  const rel = !value.href.startsWith("/")
-                    ? "noreferrer noopener"
-                    : undefined
+                  const rel = !value.href.startsWith('/')
+                    ? 'noreferrer noopener'
+                    : undefined;
                   return (
                     <a href={value.href} rel={rel} className="link-styling">
                       {children}
                     </a>
-                  )
+                  );
                 },
               },
               types: {
                 customUrl: ({ value }) => {
                   return (
                     <Button
-                      variant={value.internal ? "primary" : "secondary"}
+                      variant={value.internal ? 'primary' : 'secondary'}
                       size="md"
                       className="mr-auto mt-copy"
                       asChild
@@ -84,10 +84,10 @@ export function ContentBlock({ content }: Props) {
                         {value.label}
                       </CustomUrl>
                     </Button>
-                  )
+                  );
                 },
                 break: () => {
-                  return <br className="my-4" />
+                  return <br className="my-4" />;
                 },
               },
             }}
@@ -95,5 +95,5 @@ export function ContentBlock({ content }: Props) {
         )}
       </div>
     </div>
-  )
+  );
 }

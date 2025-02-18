@@ -1,18 +1,18 @@
-import { type homeSelection } from "@/sanity/selections/home/root"
-import { type TypeFromSelection } from "groqd"
+import type { homeSelection } from '@/sanity/selections/home/root';
+import type { TypeFromSelection } from 'groqd';
 
-import { Connected } from "@/features/home/sections/connected"
-import { Ecosystem } from "@/features/home/sections/ecosystem"
-import { Hero } from "@/features/home/sections/hero"
-import { Network } from "@/features/home/sections/network"
-import { Build } from "@/features/home/sections/start-building"
-import { Stats } from "@/features/home/sections/stats"
-import { Video } from "@/features/home/sections/video"
+import { Connected } from '@/features/home/sections/connected';
+import { Ecosystem } from '@/features/home/sections/ecosystem';
+import { Hero } from '@/features/home/sections/hero';
+import { Network } from '@/features/home/sections/network';
+import { Build } from '@/features/home/sections/start-building';
+import { Stats } from '@/features/home/sections/stats';
+import { Video } from '@/features/home/sections/video';
 
-import { Newsletter } from "../page/blocks/newsletter"
+import { Newsletter } from '../page/blocks/newsletter';
 
 interface Props {
-  home: TypeFromSelection<typeof homeSelection>["home"]
+  home: TypeFromSelection<typeof homeSelection>['home'];
 }
 
 export function Root({ home }: Props) {
@@ -27,5 +27,5 @@ export function Root({ home }: Props) {
       <Connected connected={home.connected} />
       <Newsletter />
     </div>
-  )
+  );
 }

@@ -1,31 +1,31 @@
-import Image from "next/image"
-import { urlForImage } from "@/sanity/lib/image"
-import { type headerSelection } from "@/sanity/selections/blocks/header"
-import { newsletterButtonSelection } from "@/sanity/selections/blocks/newsletter-button"
-import { customUrlSelection } from "@/sanity/selections/custom-url"
-import type { TypeFromSelection } from "groqd"
+import { urlForImage } from '@/sanity/lib/image';
+import type { headerSelection } from '@/sanity/selections/blocks/header';
+import type { newsletterButtonSelection } from '@/sanity/selections/blocks/newsletter-button';
+import type { customUrlSelection } from '@/sanity/selections/custom-url';
+import type { TypeFromSelection } from 'groqd';
+import Image from 'next/image';
 
-import { Button, cn, Heading } from "@shared/ui"
-import { CustomUrl } from "@/components/custom-url"
+import { CustomUrl } from '@/components/custom-url';
+import { Button, Heading, cn } from '@shared/ui';
 
-import { BreadcrumbBlock, type BreadcrumbProps } from "./breadcrumb"
-import { NewsletterButton } from "./newsletter-button"
-import { VideoBlock } from "./video"
+import { BreadcrumbBlock, type BreadcrumbProps } from './breadcrumb';
+import { NewsletterButton } from './newsletter-button';
+import { VideoBlock } from './video';
 
 interface Props {
-  header: TypeFromSelection<typeof headerSelection>
-  breadcrumb?: BreadcrumbProps
-  className?: string
+  header: TypeFromSelection<typeof headerSelection>;
+  breadcrumb?: BreadcrumbProps;
+  className?: string;
 }
 
 export function HeaderBlock({ header, breadcrumb, className }: Props) {
   const renderNewsletterButton = (
-    link: TypeFromSelection<typeof newsletterButtonSelection>
+    link: TypeFromSelection<typeof newsletterButtonSelection>,
   ) => {
     const variant =
-      link.variant === "primary" || link.variant === "secondary"
+      link.variant === 'primary' || link.variant === 'secondary'
         ? link.variant
-        : undefined
+        : undefined;
 
     return (
       <NewsletterButton
@@ -36,22 +36,22 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
           formType: link.formType,
           variant: variant,
           _key: link._key,
-          size: "lg",
+          size: 'lg',
         }}
       />
-    )
-  }
+    );
+  };
 
   const renderCustomUrl = (
-    link: TypeFromSelection<typeof customUrlSelection>
+    link: TypeFromSelection<typeof customUrlSelection>,
   ) => {
     const variant =
-      link?.variant === "primary" ||
-      link?.variant === "secondary" ||
-      link?.variant === "tertiary" ||
-      link?.variant === "disabled"
+      link?.variant === 'primary' ||
+      link?.variant === 'secondary' ||
+      link?.variant === 'tertiary' ||
+      link?.variant === 'disabled'
         ? link.variant
-        : "primary"
+        : 'primary';
 
     return (
       <Button variant={variant} size="lg">
@@ -65,16 +65,16 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
           {link.label}
         </CustomUrl>
       </Button>
-    )
-  }
+    );
+  };
 
   // Alternate Header
   if (header.isAlternate) {
     return (
       <header
         className={cn(
-          "max-width relative mb-page flex flex-col overflow-x-hidden",
-          className
+          'max-width relative mb-page flex flex-col overflow-x-hidden',
+          className,
         )}
       >
         {/* Desktop and tablet image */}
@@ -83,7 +83,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
             <div className="absolute inset-0 hidden md:block">
               <Image
                 src={urlForImage(header.image.asset)}
-                alt={header?.altText || ""}
+                alt={header?.altText || ''}
                 className="hidden h-[400px] w-full rounded-b-2xl object-cover md:block"
                 width={header.image.asset.metadata.dimensions?.width}
                 height={header.image.asset.metadata.dimensions?.height}
@@ -98,7 +98,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
           <div className=" ">
             <Image
               src={urlForImage(header.mobileImage.asset)}
-              alt={header?.altText || ""}
+              alt={header?.altText || ''}
               className="w-full object-cover md:hidden"
               width={header.mobileImage.asset.metadata.dimensions?.width}
               height={header.mobileImage.asset.metadata.dimensions?.height}
@@ -109,10 +109,10 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         )}
         <div
           className={cn(
-            "flex max-w-4xl flex-col justify-center gap-copy lg:pt-16",
+            'flex max-w-4xl flex-col justify-center gap-copy lg:pt-16',
             header.image
-              ? "px-gutter pt-card"
-              : "mt-gutter px-gutter pt-header-top"
+              ? 'px-gutter pt-card'
+              : 'mt-gutter px-gutter pt-header-top',
           )}
         >
           {breadcrumb && !header.hideBreadcrumbs && (
@@ -128,10 +128,10 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
               className="mt-card flex w-full flex-wrap gap-4"
             >
               {header.links?.map((link, index) =>
-                link._type === "newsletterButton"
+                link._type === 'newsletterButton'
                   ? renderNewsletterButton(link)
-                  : renderCustomUrl(link)
-              )}{" "}
+                  : renderCustomUrl(link),
+              )}{' '}
             </div>
           )}
           {header.video && (
@@ -139,27 +139,28 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
           )}
         </div>
       </header>
-    )
+    );
   }
 
   // Original side-by-side header
   return (
     <header
       className={cn(
-        "grid-system max-width relative col-span-full mb-16 overflow-x-hidden lg:mb-page",
+        'grid-system max-width relative col-span-full mb-16 overflow-x-hidden lg:mb-page',
         className,
-        header.image ? "pt-32" : "pt-0",
+        header.image ? 'pt-32' : 'pt-0',
         // Hide margin if no image or title
-        !header.image && !header.title && "!mb-[-4rem] md:!mb-[-6rem]"
+        !header.image && !header.title && '!mb-[-4rem] md:!mb-[-6rem]',
       )}
     >
+      {/* biome-ignore lint/style/useSelfClosingElements: <Not possible> */}
       {!header.image && <div className="pt-4"></div>}
 
       {header.image && (
         <div className="col-span-full w-full px-gutter lg:order-2 lg:col-span-7 lg:col-start-6">
           <Image
             src={urlForImage(header.image.asset)}
-            alt={header?.altText || ""}
+            alt={header?.altText || ''}
             width={header.image.asset.metadata.dimensions?.width}
             height={header.image.asset.metadata.dimensions?.height}
             priority
@@ -170,10 +171,10 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
       )}
       <div
         className={cn(
-          "col-span-full flex flex-col items-start justify-center gap-copy",
+          'col-span-full flex flex-col items-start justify-center gap-copy',
           header.image
-            ? "px-gutter pt-card lg:order-1 lg:col-span-5 lg:col-start-1 "
-            : "mt-gutter px-gutter pt-header-top lg:col-span-8 lg:col-start-3"
+            ? 'px-gutter pt-card lg:order-1 lg:col-span-5 lg:col-start-1 '
+            : 'mt-gutter px-gutter pt-header-top lg:col-span-8 lg:col-start-3',
         )}
       >
         {breadcrumb && !header.hideBreadcrumbs && (
@@ -189,9 +190,9 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
             className="mt-card flex w-full flex-wrap gap-4"
           >
             {header.links?.map((link) =>
-              link._type === "newsletterButton"
+              link._type === 'newsletterButton'
                 ? renderNewsletterButton(link)
-                : renderCustomUrl(link)
+                : renderCustomUrl(link),
             )}
           </div>
         )}
@@ -200,5 +201,5 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         )}
       </div>
     </header>
-  )
+  );
 }

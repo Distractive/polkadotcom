@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { urlForImage } from "@/sanity/lib/image";
-import { type ecosystemSelection } from "@/sanity/selections/home/ecosystem";
-import { type TypeFromSelection } from "groqd";
-import Image from "next/image";
+import { urlForImage } from '@/sanity/lib/image';
+import type { ecosystemSelection } from '@/sanity/selections/home/ecosystem';
+import type { TypeFromSelection } from 'groqd';
+import Image from 'next/image';
 
-import { CustomUrl } from "@/components/custom-url";
-import { Button, Card, CardContent, cn, Heading } from "@shared/ui";
+import { CustomUrl } from '@/components/custom-url';
+import { Button, Card, CardContent, Heading, cn } from '@shared/ui';
 
 interface Props {
-  ecosystem: TypeFromSelection<typeof ecosystemSelection>["ecosystem"]
+  ecosystem: TypeFromSelection<typeof ecosystemSelection>['ecosystem'];
 }
 
 export function Ecosystem({ ecosystem }: Props) {
@@ -26,10 +26,10 @@ export function Ecosystem({ ecosystem }: Props) {
         <div
           id="ecosystem.content"
           className={cn(
-            "max-width col-span-full flex flex-col items-center justify-center",
-            "lg:col-span-12 lg:col-start-1",
-            "xl:col-span-10 xl:col-start-2",
-            "mt-header-top"
+            'max-width col-span-full flex flex-col items-center justify-center',
+            'lg:col-span-12 lg:col-start-1',
+            'xl:col-span-10 xl:col-start-2',
+            'mt-header-top',
           )}
         >
           <div className="col-span-12 px-gutter md:w-3/4 lg:w-4/6 lg:px-0">
@@ -53,13 +53,13 @@ export function Ecosystem({ ecosystem }: Props) {
             {ecosystem.items.map((item, index) => (
               <Card
                 data-testid={`ecosystem-content-${item._key}`}
-                key={index}
+                key={item._key}
                 className={cn(
-                  "eco-card aspect-video place-content-end overflow-hidden rounded-2xl md:aspect-auto md:!h-[22.5rem]",
-                  "col-span-full col-start-1 md:col-span-4 md:col-start-2 lg:col-span-8 lg:col-start-3",
-                  (index == 2 || index == 5) && "lg:col-start-7",
-                  (index == 1 || index == 2 || index == 4 || index == 5) &&
-                    "relative lg:col-span-4"
+                  'eco-card aspect-video place-content-end overflow-hidden rounded-2xl md:aspect-auto md:!h-[22.5rem]',
+                  'col-span-full col-start-1 md:col-span-4 md:col-start-2 lg:col-span-8 lg:col-start-3',
+                  (index === 2 || index === 5) && 'lg:col-start-7',
+                  (index === 1 || index === 2 || index === 4 || index === 5) &&
+                    'relative lg:col-span-4',
                 )}
                 data-index={index}
               >
@@ -76,7 +76,7 @@ export function Ecosystem({ ecosystem }: Props) {
                     <Heading
                       variant="h3"
                       className={cn(
-                        "text-balance text-white transition-colors duration-200 ease-in-out"
+                        'text-balance text-white transition-colors duration-200 ease-in-out',
                       )}
                     >
                       {item.heading}
@@ -100,5 +100,5 @@ export function Ecosystem({ ecosystem }: Props) {
         </div>
       </article>
     </div>
-  )
+  );
 }
