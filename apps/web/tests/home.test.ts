@@ -16,7 +16,9 @@ test('Homepage', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Polkadot');
+    await expect(page).toHaveTitle(
+      'Polkadot | The secure, powerful core of Web3',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText("Defy what's possible");
   });
@@ -179,8 +181,8 @@ test('Homepage', async ({ page }) => {
       '448,293average MAA across Polkadot ecosystem in 2024 to date',
     );
     await expect(
-      statsSection.getByText('1000+ referendacreated by the'),
-    ).toHaveText('1000+ referendacreated by the DAO since 2023');
+      statsSection.getByText('1360+ referendacreated by the'),
+    ).toHaveText('1360+ referendacreated by the DAO since 2023');
     await expect(
       statsSection.getByText('+ projectsin the Polkadot ecosystem'),
     ).toHaveText('600+ projectsin the Polkadot ecosystem');
@@ -243,47 +245,71 @@ test('Homepage', async ({ page }) => {
       }),
     ).toBeVisible();
     await connectedSection.getByRole('button', { name: 'Next slide' }).click();
+    await page.waitForTimeout(1000);
     await expect(
       connectedSection.getByRole('link', { name: 'Programs What is a crypto' }),
     ).toBeVisible();
     await connectedSection.getByRole('button', { name: 'Next slide' }).click();
-    await expect(
-      connectedSection.getByRole('link', { name: "Polkadot's 50+ parachains" }),
-    ).toBeVisible();
-    await connectedSection.getByRole('button', { name: 'Next slide' }).click();
+    await page.waitForTimeout(1000);
     await expect(
       connectedSection.getByRole('link', {
-        name: 'Ecosystem The Tie launches',
+        name: 'network insights Polkadot',
       }),
     ).toBeVisible();
     await connectedSection.getByRole('button', { name: 'Next slide' }).click();
+    await page.waitForTimeout(1000);
+    await expect(
+      connectedSection.getByRole('link', {
+        name: 'ecosystem Uplifting new',
+      }),
+    ).toBeVisible();
+    await connectedSection.getByRole('button', { name: 'Next slide' }).click();
+    await page.waitForTimeout(1000);
+    await expect(
+      connectedSection.getByRole('link', {
+        name: 'COMMUNITY Polkadot is the',
+      }),
+    ).toBeVisible();
+    await connectedSection.getByRole('button', { name: 'Next slide' }).click();
+    await page.waitForTimeout(1000);
+    await expect(
+      connectedSection.getByRole('link', {
+        name: 'technology Polkadot',
+      }),
+    ).toBeVisible();
+    await connectedSection.getByRole('button', { name: 'Next slide' }).click();
+    await page.waitForTimeout(1000);
+    await expect(
+      connectedSection.getByRole('link', {
+        name: 'Video The Gray Paper interview',
+      }),
+    ).toBeVisible();
+    await connectedSection.getByRole('button', { name: 'Next slide' }).click();
+    await page.waitForTimeout(1000);
+    await expect(
+      connectedSection.getByRole('link', {
+        name: 'Programs What is a crypto',
+      }),
+    ).toBeVisible();
+    await connectedSection.getByRole('button', { name: 'Next slide' }).click();
+    await page.waitForTimeout(1000);
     await expect(
       connectedSection.getByRole('link', {
         name: 'GRANTS & FUNDING The ultimate',
       }),
     ).toBeVisible();
     await connectedSection.getByRole('button', { name: 'Next slide' }).click();
+    await page.waitForTimeout(1000);
     await expect(
       connectedSection.getByRole('link', {
         name: 'AI Unleashing the Potential',
       }),
     ).toBeVisible();
     await connectedSection.getByRole('button', { name: 'Next slide' }).click();
+    await page.waitForTimeout(1000);
     await expect(
       connectedSection.getByRole('link', {
         name: 'Defi Polkadot DAO allocates',
-      }),
-    ).toBeVisible();
-    await connectedSection.getByRole('button', { name: 'Next slide' }).click();
-    await expect(
-      connectedSection.getByRole('link', {
-        name: 'technology Polkadot introduces Asynchronous Backing, paving the way for',
-      }),
-    ).toBeVisible();
-    await connectedSection.getByRole('button', { name: 'Next slide' }).click();
-    await expect(
-      connectedSection.getByRole('link', {
-        name: 'Technology Empowering Next-',
       }),
     ).toBeVisible();
   });

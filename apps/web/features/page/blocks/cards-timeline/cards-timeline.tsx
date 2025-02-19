@@ -23,7 +23,10 @@ export function CardsTimelineBlock({ cards }: Props) {
   const isCarousel = cards.items.length > 3;
 
   return (
-    <div className="grid-system max-width py-gutter pl-gutter">
+    <div
+      className="grid-system max-width py-gutter pl-gutter"
+      data-testid="timeline"
+    >
       <Heading variant="h2" className="col-span-12 pb-gutter pr-gutter">
         {cards.heading}
       </Heading>

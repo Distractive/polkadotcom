@@ -15,7 +15,10 @@ interface Props {
 
 export function SideBySideBlock({ content }: Props) {
   return (
-    <div className="grid-system max-width gap-y-gutter px-gutter lg:gap-y-0">
+    <div
+      className="grid-system max-width gap-y-gutter px-gutter lg:gap-y-0"
+      data-testid={`side-by-side-${content._key}`}
+    >
       <div
         className={cn(
           'order-2 col-span-full grid h-fit gap-copy lg:col-span-5',

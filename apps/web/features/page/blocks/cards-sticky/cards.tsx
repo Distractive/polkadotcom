@@ -17,6 +17,7 @@ export function CardsStickyBlock({ cards }: Props) {
   return (
     <div
       key={cards._key}
+      data-testid="cards-sticky-block"
       className="max-width relative flex flex-col gap-gutter p-gutter lg:flex-row"
     >
       <div className="flex-col gap-copy lg:w-[40%] lg:pr-gutter lg:align-top">

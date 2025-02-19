@@ -21,6 +21,7 @@ export function CardsBlock({ cards }: Props) {
         'grid-system max-width relative',
         !cards.isCarousel && 'px-gutter',
       )}
+      data-testid={`cards-block-${cards._key}`}
     >
       <div className="col-span-full pb-section lg:col-span-8">
         <div

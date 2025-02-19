@@ -108,6 +108,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
           </div>
         )}
         <div
+          data-testid="header"
           className={cn(
             'flex max-w-4xl flex-col justify-center gap-copy lg:pt-16',
             header.image

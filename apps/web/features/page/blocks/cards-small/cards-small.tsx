@@ -12,6 +12,7 @@ interface Props {
 export function CardsSmallBlock({ cards }: Props) {
   return (
     <div
+      data-testid="cards-small-block"
       key={cards._key}
       className="grid-system max-width relative gap-y-section px-gutter"
     >
