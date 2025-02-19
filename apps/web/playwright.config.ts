@@ -3,7 +3,7 @@ import { config } from 'dotenv';
 
 config({ path: '.env.local' });
 
-const { CI } = process.env;
+const { CI, VERCEL_URL } = process.env;
 
 /**
  * Read environment variables from file.
@@ -40,12 +40,11 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     headless: !!CI,
-
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 5000,
 
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'http://127.0.0.1:3000',
+    baseURL: CI ? VERCEL_URL : 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
@@ -108,6 +107,6 @@ export default defineConfig({
     : {
         command: 'pnpm dev',
         url: 'http://127.0.0.1:3000',
-        reuseExistingServer: !CI,
+        reuseExistingServer: true,
       },
 });

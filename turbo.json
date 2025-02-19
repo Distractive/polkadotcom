@@ -24,6 +24,7 @@
     },
     "lint": {},
     "typecheck": {},
+    "playwright:test": {},
     "dev": {
       "cache": false,
       "persistent": true
