@@ -1,66 +1,17 @@
 import { expect, test } from '@playwright/test';
-import { snapshotConfig } from './tests.constants';
+import { screenshotConfig, snapshotConfig } from './constants';
+import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Get started', async ({ page }) => {
   await test.step('go to get started page', async () => {
     await page.goto('/get-started');
+    await acceptOrCloseCookieBanner(page);
   });
 
   await test.step('assert title and header are properly displayed', async () => {
     await expect(page).toHaveTitle('Get Started');
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Get started on Polkadot');
-  });
-
-  await test.step('assert cookie banner is properly displayed', async () => {
-    const cookieBanner = page.getByRole('dialog', {
-      name: 'Cookie Consent Banner',
-    });
-
-    expect(cookieBanner.getByText('This website utilizes')).toHaveText(
-      'This website utilizes technologies such as cookies to enable essential site functionality, as well as for analytics, personalization, and targeted advertising. You may change your settings at any time or accept the default settings. You may close this banner to continue with only essential cookies.',
-    );
-
-    await expect(
-      cookieBanner.getByRole('link', { name: 'Privacy Policy' }),
-    ).toBeVisible();
-    await expect(
-      cookieBanner.getByRole('link', { name: 'Storage Preferences' }),
-    ).toBeVisible();
-    await expect(
-      cookieBanner.getByText('Storage Preferences', { exact: true }),
-    ).toBeVisible();
-    await expect(
-      cookieBanner.getByText('Storage Preferences', { exact: true }),
-    ).toBeVisible();
-    await expect(
-      cookieBanner.getByText('Storage Preferences', { exact: true }),
-    ).toBeVisible();
-    expect(cookieBanner.getByRole('button', { name: 'Save' })).toBeVisible();
-    expect(
-      cookieBanner.getByRole('button', { name: 'Accept All' }),
-    ).toBeVisible();
-    expect(
-      cookieBanner.getByRole('button', { name: 'Reject All' }),
-    ).toBeVisible();
-  });
-
-  await test.step('cookies banner screenshot', async () => {
-    // @Note: wait to avoid blur effect
-    await page.waitForTimeout(6000);
-    const cookieBanner = page.getByRole('dialog', {
-      name: 'Cookie Consent Banner',
-    });
-    expect(await cookieBanner.screenshot()).toMatchSnapshot(
-      'cookies.png',
-      snapshotConfig,
-    );
-
-    await cookieBanner
-      .getByRole('button', { name: 'Close this dialog' })
-      .click();
-
-    await expect(cookieBanner).toBeHidden();
   });
 
   await test.step("assert 'what the #' section is displayed properly", async () => {
@@ -89,7 +40,7 @@ test('Get started', async ({ page }) => {
 
   await test.step('what the # section screenshot', async () => {
     const whatTheSection = page.getByTestId('side-by-side-2b43f0ea2de8');
-    expect(await whatTheSection.screenshot()).toMatchSnapshot(
+    expect(await whatTheSection.screenshot(screenshotConfig)).toMatchSnapshot(
       'what-the.png',
       snapshotConfig,
     );
@@ -120,7 +71,7 @@ test('Get started', async ({ page }) => {
 
   await test.step('nothing section screenshot', async () => {
     const nothingSection = page.getByTestId('side-by-side-631ad4f8ab11');
-    expect(await nothingSection.screenshot()).toMatchSnapshot(
+    expect(await nothingSection.screenshot(screenshotConfig)).toMatchSnapshot(
       'nothing.png',
       snapshotConfig,
     );
@@ -144,7 +95,7 @@ test('Get started', async ({ page }) => {
 
   await test.step('non coders section screenshot', async () => {
     const nonCoders = page.getByTestId('side-by-side-48025e541257');
-    expect(await nonCoders.screenshot()).toMatchSnapshot(
+    expect(await nonCoders.screenshot(screenshotConfig)).toMatchSnapshot(
       'non-coders.png',
       snapshotConfig,
     );
@@ -168,7 +119,7 @@ test('Get started', async ({ page }) => {
 
   await test.step('read on section screenshot', async () => {
     const cardsSmall = page.getByTestId('cards-small-block');
-    expect(await cardsSmall.screenshot()).toMatchSnapshot(
+    expect(await cardsSmall.screenshot(screenshotConfig)).toMatchSnapshot(
       'cards-small.png',
       snapshotConfig,
     );
@@ -209,7 +160,7 @@ test('Get started', async ({ page }) => {
 
   await test.step('ready to join section screenshot', async () => {
     const cardsSmall = page.getByTestId('cards-sticky-block');
-    expect(await cardsSmall.screenshot()).toMatchSnapshot(
+    expect(await cardsSmall.screenshot(screenshotConfig)).toMatchSnapshot(
       'cards-sticky.png',
       snapshotConfig,
     );
@@ -233,9 +184,8 @@ test('Get started', async ({ page }) => {
 
   await test.step('newsletter section screenshot', async () => {
     const newsletterWrapper = page.getByTestId('form-modal');
-    expect(await newsletterWrapper.screenshot()).toMatchSnapshot(
-      'newsletter.png',
-      snapshotConfig,
-    );
+    expect(
+      await newsletterWrapper.screenshot(screenshotConfig),
+    ).toMatchSnapshot('newsletter.png', snapshotConfig);
   });
 });

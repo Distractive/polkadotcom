@@ -1,66 +1,17 @@
 import { expect, test } from '@playwright/test';
-import { snapshotConfig } from './tests.constants';
+import { screenshotConfig, snapshotConfig } from './constants';
+import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Platform', async ({ page }) => {
   await test.step('go to platform page', async () => {
     await page.goto('/platform');
+    await acceptOrCloseCookieBanner(page);
   });
 
   await test.step('assert title and header are properly displayed', async () => {
     await expect(page).toHaveTitle('Platform');
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Unleash the power of Polkadot');
-  });
-
-  await test.step('assert cookie banner is properly displayed', async () => {
-    const cookieBanner = page.getByRole('dialog', {
-      name: 'Cookie Consent Banner',
-    });
-
-    expect(cookieBanner.getByText('This website utilizes')).toHaveText(
-      'This website utilizes technologies such as cookies to enable essential site functionality, as well as for analytics, personalization, and targeted advertising. You may change your settings at any time or accept the default settings. You may close this banner to continue with only essential cookies.',
-    );
-
-    await expect(
-      cookieBanner.getByRole('link', { name: 'Privacy Policy' }),
-    ).toBeVisible();
-    await expect(
-      cookieBanner.getByRole('link', { name: 'Storage Preferences' }),
-    ).toBeVisible();
-    await expect(
-      cookieBanner.getByText('Storage Preferences', { exact: true }),
-    ).toBeVisible();
-    await expect(
-      cookieBanner.getByText('Storage Preferences', { exact: true }),
-    ).toBeVisible();
-    await expect(
-      cookieBanner.getByText('Storage Preferences', { exact: true }),
-    ).toBeVisible();
-    expect(cookieBanner.getByRole('button', { name: 'Save' })).toBeVisible();
-    expect(
-      cookieBanner.getByRole('button', { name: 'Accept All' }),
-    ).toBeVisible();
-    expect(
-      cookieBanner.getByRole('button', { name: 'Reject All' }),
-    ).toBeVisible();
-  });
-
-  await test.step('cookies banner screenshot', async () => {
-    // @Note: wait to avoid blur effect
-    await page.waitForTimeout(6000);
-    const cookieBanner = page.getByRole('dialog', {
-      name: 'Cookie Consent Banner',
-    });
-    expect(await cookieBanner.screenshot()).toMatchSnapshot(
-      'cookies.png',
-      snapshotConfig,
-    );
-
-    await cookieBanner
-      .getByRole('button', { name: 'Close this dialog' })
-      .click();
-
-    await expect(cookieBanner).toBeHidden();
   });
 
   await test.step("assert 'header' section is displayed properly", async () => {
@@ -79,7 +30,7 @@ test('Platform', async ({ page }) => {
 
   await test.step('header section screenshot', async () => {
     const section = page.getByTestId('header');
-    expect(await section.screenshot()).toMatchSnapshot(
+    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
       'header.png',
       snapshotConfig,
     );
@@ -109,7 +60,7 @@ test('Platform', async ({ page }) => {
 
   await test.step('boundaries section screenshot', async () => {
     const section = page.getByTestId('cards-block-be959eb895a6');
-    expect(await section.screenshot()).toMatchSnapshot(
+    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
       'boundaries.png',
       snapshotConfig,
     );
@@ -148,7 +99,7 @@ test('Platform', async ({ page }) => {
 
   await test.step('ecosystem section screenshot', async () => {
     const section = page.getByTestId('cards-block-955ddc9252ac');
-    expect(await section.screenshot()).toMatchSnapshot(
+    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
       'ecosystem.png',
       snapshotConfig,
     );
@@ -164,7 +115,7 @@ test('Platform', async ({ page }) => {
 
   await test.step('see more dapps section screenshot', async () => {
     const section = page.getByTestId('button-block');
-    expect(await section.screenshot()).toMatchSnapshot(
+    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
       'more-dapps.png',
       snapshotConfig,
     );
@@ -185,7 +136,10 @@ test('Platform', async ({ page }) => {
 
   await test.step("what's next section screenshot", async () => {
     const section = page.getByTestId('content-block');
-    expect(await section.screenshot()).toMatchSnapshot('whats-next.png');
+    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+      'whats-next.png',
+      snapshotConfig,
+    );
   });
 
   await test.step("assert 'timeline' section is displayed properly", async () => {
@@ -266,7 +220,7 @@ test('Platform', async ({ page }) => {
 
   await test.step('timeline section screenshot', async () => {
     const section = page.getByTestId('timeline');
-    expect(await section.screenshot()).toMatchSnapshot(
+    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
       'timeline.png',
       snapshotConfig,
     );

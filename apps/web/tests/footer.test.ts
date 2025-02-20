@@ -1,28 +1,22 @@
 import { expect, test } from '@playwright/test';
-import { snapshotConfig } from './tests.constants';
+import { snapshotConfig } from './constants';
+import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Footer', async ({ page }) => {
   await test.step('go to homepage', async () => {
     await page.goto('/');
-  });
-
-  await test.step('close cookies banner', async () => {
-    const cookieBanner = page.getByRole('dialog', {
-      name: 'Cookie Consent Banner',
-    });
-    await cookieBanner.waitFor({ state: 'visible', timeout: 2000 });
-    await cookieBanner
-      .getByRole('button', { name: 'Close this dialog' })
-      .click();
-    await expect(cookieBanner).toBeHidden();
+    await acceptOrCloseCookieBanner(page);
   });
 
   await test.step('footer screenshot', async () => {
     const footerContainer = page.getByTestId('footer');
-    expect(await footerContainer.screenshot()).toMatchSnapshot(
-      'footer.png',
-      snapshotConfig,
-    );
+    expect(
+      await footerContainer.screenshot({
+        animations: 'disabled',
+        timeout: 10_000,
+        mask: [page.getByTestId('dots-animation')],
+      }),
+    ).toMatchSnapshot('footer.png', snapshotConfig);
   });
   await test.step('assert footer is properly displayed', async () => {
     const footerContainer = page.getByTestId('footer');

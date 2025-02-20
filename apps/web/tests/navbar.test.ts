@@ -1,28 +1,22 @@
 import { expect, test } from '@playwright/test';
-import { snapshotConfig } from './tests.constants';
+import { snapshotConfig } from './constants';
+import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Navbar', async ({ page }) => {
   await test.step('go to homepage', async () => {
     await page.goto('/');
-  });
-
-  await test.step('close cookies banner', async () => {
-    const cookieBanner = page.getByRole('dialog', {
-      name: 'Cookie Consent Banner',
-    });
-    await cookieBanner.waitFor({ state: 'visible', timeout: 2000 });
-    await cookieBanner
-      .getByRole('button', { name: 'Close this dialog' })
-      .click();
-    await expect(cookieBanner).toBeHidden();
+    await acceptOrCloseCookieBanner(page);
   });
 
   await test.step('navbar screenshot', async () => {
     const navbar = page.getByTestId('navbar');
-    expect(await navbar.screenshot()).toMatchSnapshot(
-      'navbar.png',
-      snapshotConfig,
-    );
+    expect(
+      await navbar.screenshot({
+        animations: 'disabled',
+        timeout: 10_000,
+        mask: [page.getByTestId('dots-animation')],
+      }),
+    ).toMatchSnapshot('navbar.png', snapshotConfig);
   });
 
   await test.step('assert navbar is properly displayed', async () => {

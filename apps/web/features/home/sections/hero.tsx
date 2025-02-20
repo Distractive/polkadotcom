@@ -36,10 +36,7 @@ export function Hero({ hero }: Props) {
               '-mt-[8rem] sm:-mt-[5rem] md:mt-0',
             )}
           >
-            <div
-              className="sm:max-w-xl md:max-w-2xl lg:max-w-2xl xl:max-w-6xl  "
-              data-testid="hero-landing-frame"
-            >
+            <div className="sm:max-w-xl md:max-w-2xl lg:max-w-2xl xl:max-w-6xl  ">
               <Heading
                 variant="h1"
                 className="pb-card leading-[1] md:!text-[3.813rem] "
@@ -85,7 +82,10 @@ export function Hero({ hero }: Props) {
           </div>
           {/* ANIMATION */}
 
-          <div className="bg-transparent relative  order-1   min-h-[36rem] w-full scale-75 overflow-visible  md:min-w-[36rem] md:scale-100 lg:order-2 lg:mb-0 lg:min-h-[48rem] xl:translate-x-[5%] 2xl:translate-x-[10%]">
+          <div
+            className="bg-transparent relative  order-1   min-h-[36rem] w-full scale-75 overflow-visible  md:min-w-[36rem] md:scale-100 lg:order-2 lg:mb-0 lg:min-h-[48rem] xl:translate-x-[5%] 2xl:translate-x-[10%]"
+            data-testid="dots-animation"
+          >
             <div className="bg-transparent absolute inset-0 w-full origin-center  !overflow-visible lg:pl-10 lg:pr-16">
               <Spline scene="/scene3.splinecode" />
             </div>

@@ -25,6 +25,7 @@ export function Connected({ connected }: Props) {
     <div
       id="connected-pile"
       className="grid-pile relative bg-[image:linear-gradient(to_bottom_left,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom_left,rgba(121,22,243,1)_0%,rgba(7,255,255,1)_100%)] bg-[length:101%_100%] bg-no-repeat py-[4rem] md:py-[6rem]"
+      data-testid="connected-pile"
     >
       <article
         id="connected.wrapper"
@@ -33,7 +34,6 @@ export function Connected({ connected }: Props) {
         <div
           id="connected.content"
           className="grid-system relative z-10 col-span-12 mt-header-top !w-[100vw] md:mt-0"
-          data-testid="connected-pile"
         >
           <div className="col-span-6 px-gutter pb-gutter lg:col-span-4 lg:col-start-2 xl:col-start-3">
             <Heading

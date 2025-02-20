@@ -1,4 +1,4 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 import { config } from 'dotenv';
 
 config({ path: '.env.local' });
@@ -18,6 +18,7 @@ const { CI, VERCEL_URL } = process.env;
  */
 export default defineConfig({
   testDir: './tests',
+  snapshotPathTemplate: '{testDir}/__screenshots__/{testFilePath}/{arg}{ext}',
   /* Maximum time one test can run for. */
   timeout: 5 * 60 * 1000,
   expect: {
@@ -40,6 +41,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     headless: !!CI,
+
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 5000,
 
@@ -55,17 +57,20 @@ export default defineConfig({
       fullPage: true,
     },
 
+    viewport: { width: 1920, height: 1080 },
+
+    deviceScaleFactor: 1,
+
     /* Collect videos when retrying the failed test. */
     video: { mode: 'retain-on-failure' },
   },
 
   /* Configure projects for major browsers */
   projects: [
-    {},
-    // {
-    //   name: 'chromium',
-    //   use: { ...devices['Desktop Chrome'] },
-    // },
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'], channel: 'chromium' },
+    },
 
     // {
     //   name: 'firefox',

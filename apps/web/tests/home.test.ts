@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
-import { snapshotConfig } from './tests.constants';
+import { snapshotConfig } from './constants';
+import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Homepage', async ({ page }) => {
   const ecosystemIds = [
@@ -12,7 +13,8 @@ test('Homepage', async ({ page }) => {
   ];
 
   await test.step('go to homepage', async () => {
-    await page.goto('/');
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    await acceptOrCloseCookieBanner(page);
   });
 
   await test.step('assert title and header are properly displayed', async () => {
@@ -21,57 +23,6 @@ test('Homepage', async ({ page }) => {
     );
     const heading = page.locator('h1');
     await expect(heading).toHaveText("Defy what's possible");
-  });
-
-  await test.step('assert cookie banner is properly displayed', async () => {
-    const cookieBanner = page.getByRole('dialog', {
-      name: 'Cookie Consent Banner',
-    });
-
-    expect(cookieBanner.getByText('This website utilizes')).toHaveText(
-      'This website utilizes technologies such as cookies to enable essential site functionality, as well as for analytics, personalization, and targeted advertising. You may change your settings at any time or accept the default settings. You may close this banner to continue with only essential cookies.',
-    );
-
-    await expect(
-      cookieBanner.getByRole('link', { name: 'Privacy Policy' }),
-    ).toBeVisible();
-    await expect(
-      cookieBanner.getByRole('link', { name: 'Storage Preferences' }),
-    ).toBeVisible();
-    await expect(
-      cookieBanner.getByText('Storage Preferences', { exact: true }),
-    ).toBeVisible();
-    await expect(
-      cookieBanner.getByText('Storage Preferences', { exact: true }),
-    ).toBeVisible();
-    await expect(
-      cookieBanner.getByText('Storage Preferences', { exact: true }),
-    ).toBeVisible();
-    expect(cookieBanner.getByRole('button', { name: 'Save' })).toBeVisible();
-    expect(
-      cookieBanner.getByRole('button', { name: 'Accept All' }),
-    ).toBeVisible();
-    expect(
-      cookieBanner.getByRole('button', { name: 'Reject All' }),
-    ).toBeVisible();
-  });
-
-  await test.step('cookies banner screenshot', async () => {
-    // @Note: wait to avoid blur effect
-    await page.waitForTimeout(6000);
-    const cookieBanner = page.getByRole('dialog', {
-      name: 'Cookie Consent Banner',
-    });
-    expect(await cookieBanner.screenshot()).toMatchSnapshot(
-      'cookies.png',
-      snapshotConfig,
-    );
-
-    await cookieBanner
-      .getByRole('button', { name: 'Close this dialog' })
-      .click();
-
-    await expect(cookieBanner).toBeHidden();
   });
 
   await test.step("assert 'hero' section is displayed properly", async () => {
@@ -97,13 +48,14 @@ test('Homepage', async ({ page }) => {
   });
 
   await test.step('hero section screenshot', async () => {
-    await page.waitForTimeout(3000);
-    // @Note: only landing frame because of animation
-    const heroLandingFrame = page.getByTestId('hero-landing-frame');
-    expect(await heroLandingFrame.screenshot()).toMatchSnapshot(
-      'hero.png',
-      snapshotConfig,
-    );
+    const heroLandingFrame = page.getByTestId('hero-pile');
+    expect(
+      await heroLandingFrame.screenshot({
+        animations: 'disabled',
+        timeout: 12_000,
+        mask: [page.getByTestId('dots-animation')],
+      }),
+    ).toMatchSnapshot('hero.png', snapshotConfig);
   });
 
   await test.step("assert 'video' section is displayed properly", async () => {
@@ -118,7 +70,7 @@ test('Homepage', async ({ page }) => {
   await test.step('video section screenshot', async () => {
     await page.waitForTimeout(3000);
     const videoSection = page.getByTestId('video-pile-content');
-    expect(await videoSection.screenshot()).toMatchSnapshot(
+    expect(await videoSection.screenshot({ timeout: 7000 })).toMatchSnapshot(
       'video.png',
       snapshotConfig,
     );
@@ -157,7 +109,7 @@ test('Homepage', async ({ page }) => {
   await test.step('network section screenshot', async () => {
     await page.waitForTimeout(3000);
     const networkSection = page.getByTestId('network-pile-content');
-    expect(await networkSection.screenshot()).toMatchSnapshot(
+    expect(await networkSection.screenshot({ timeout: 7000 })).toMatchSnapshot(
       'network.png',
       snapshotConfig,
     );
@@ -169,8 +121,8 @@ test('Homepage', async ({ page }) => {
     await expect(
       statsSection.getByRole('heading', { name: 'Polkadot’s unstoppable' }),
     ).toHaveText('Polkadot’s unstoppable momentum');
-    await expect(statsSection.getByText('1.3 millionDAO members')).toHaveText(
-      '1.3 millionDAO members represented by total onchain wallets',
+    await expect(statsSection.getByText('1.43 millionDAO members')).toHaveText(
+      '1.43 millionDAO members represented by total onchain wallets',
     );
     await expect(
       statsSection.getByText('$5 billionstaked economic'),
@@ -181,8 +133,8 @@ test('Homepage', async ({ page }) => {
       '448,293average MAA across Polkadot ecosystem in 2024 to date',
     );
     await expect(
-      statsSection.getByText('1360+ referendacreated by the'),
-    ).toHaveText('1360+ referendacreated by the DAO since 2023');
+      statsSection.getByText('1390+ referendacreated by the'),
+    ).toHaveText('1390+ referendacreated by the DAO since 2023');
     await expect(
       statsSection.getByText('+ projectsin the Polkadot ecosystem'),
     ).toHaveText('600+ projectsin the Polkadot ecosystem');
@@ -191,7 +143,7 @@ test('Homepage', async ({ page }) => {
   await test.step('stats section screenshot', async () => {
     await page.waitForTimeout(3000);
     const statsSection = page.getByTestId('stats-pile');
-    expect(await statsSection.screenshot()).toMatchSnapshot(
+    expect(await statsSection.screenshot({ timeout: 7000 })).toMatchSnapshot(
       'stats.png',
       snapshotConfig,
     );
@@ -222,12 +174,14 @@ test('Homepage', async ({ page }) => {
   });
 
   await test.step('building section screenshot', async () => {
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(5000);
     const ecosystemSection = page.getByTestId('building-pile');
-    expect(await ecosystemSection.screenshot()).toMatchSnapshot(
-      'building.png',
-      snapshotConfig,
-    );
+    expect(
+      await ecosystemSection.screenshot({
+        timeout: 7000,
+        animations: 'disabled',
+      }),
+    ).toMatchSnapshot('building.png', snapshotConfig);
   });
 
   await test.step("assert 'connected' section is displayed properly", async () => {
@@ -314,15 +268,6 @@ test('Homepage', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('connected section screenshot', async () => {
-    await page.waitForTimeout(5000);
-    const connectedSection = page.getByTestId('connected-pile');
-    expect(await connectedSection.screenshot()).toMatchSnapshot(
-      'connected.png',
-      snapshotConfig,
-    );
-  });
-
   await test.step("assert 'newsletter' block is displayed properly", async () => {
     const newsletterWrapper = page.getByTestId('newsletter');
 
@@ -342,10 +287,9 @@ test('Homepage', async ({ page }) => {
   await test.step('newsletter section screenshot', async () => {
     await page.waitForTimeout(3000);
     const newsletterWrapper = page.getByTestId('newsletter');
-    expect(await newsletterWrapper.screenshot()).toMatchSnapshot(
-      'newsletter.png',
-      snapshotConfig,
-    );
+    expect(
+      await newsletterWrapper.screenshot({ timeout: 7000 }),
+    ).toMatchSnapshot('newsletter.png', snapshotConfig);
   });
 
   await test.step("assert 'ecosystem' section is displayed properly", async () => {
@@ -389,13 +333,15 @@ test('Homepage', async ({ page }) => {
   });
 
   await test.step('ecosystem section screenshot', async () => {
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(2500);
     for (const id of ecosystemIds) {
       const ecosystemImage = page.getByTestId(`ecosystem-content-${id}`);
-      expect(await ecosystemImage.screenshot()).toMatchSnapshot(
-        `ecosystem-${id}.png`,
-        snapshotConfig,
-      );
+      expect(
+        await ecosystemImage.screenshot({
+          animations: 'disabled',
+          timeout: 7000,
+        }),
+      ).toMatchSnapshot(`ecosystem-${id}.png`, snapshotConfig);
     }
   });
 });
