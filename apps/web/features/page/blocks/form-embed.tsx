@@ -16,7 +16,10 @@ export function EmbedFormBlock({ form }: Props) {
   }
 
   return (
-    <div className="max-width flex flex-col gap-gutter px-gutter md:flex-row">
+    <div
+      className="max-width flex flex-col gap-gutter px-gutter md:flex-row"
+      data-testid="embed-form-block"
+    >
       <div className="flex flex-col gap-copy md:basis-[45%]">
         <Heading variant="h2">{form.heading}</Heading>
         <p>{form.body}</p>

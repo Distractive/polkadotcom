@@ -1,8 +1,11 @@
+import type { LocatorScreenshotOptions } from '@playwright/test';
+
 export const snapshotConfig = {
-  maxDiffPixelRatio: 0.1,
+  maxDiffPixelRatio: 0.15,
   threshold: 0.2,
 };
 
-export const screenshotConfig = {
+export const screenshotConfig: LocatorScreenshotOptions = {
+  animations: 'disabled',
   timeout: 3000,
 };

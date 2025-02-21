@@ -21,7 +21,10 @@ export function CTA({ cta }: Props) {
         cta.isCentered ? 'justify-center' : 'items-start',
       )}
     >
-      <div className="relative w-full max-w-[60rem] overflow-hidden rounded-2xl ">
+      <div
+        className="relative w-full max-w-[60rem] overflow-hidden rounded-2xl "
+        data-testid="cta-box"
+      >
         {cta.image && (
           <div className="absolute inset-0 -z-10  overflow-hidden rounded-2xl">
             <Image

@@ -18,6 +18,7 @@ export function CardsStatBlock({ cards }: Props) {
     <div
       key={cards._key}
       className="grid-system max-width gap-y-section px-gutter"
+      data-testid="cards-stat"
     >
       <div className="col-span-full lg:col-span-8">
         <Heading variant="h2">{cards.heading}</Heading>

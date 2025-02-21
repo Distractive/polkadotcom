@@ -8,8 +8,9 @@ test('Footer', async ({ page }) => {
     await acceptOrCloseCookieBanner(page);
   });
 
-  await test.step('footer screenshot', async () => {
+  await test.step('"footer" screenshot', async () => {
     const footerContainer = page.getByTestId('footer');
+    await page.waitForTimeout(2000);
     expect(
       await footerContainer.screenshot({
         animations: 'disabled',
@@ -18,7 +19,7 @@ test('Footer', async ({ page }) => {
       }),
     ).toMatchSnapshot('footer.png', snapshotConfig);
   });
-  await test.step('assert footer is properly displayed', async () => {
+  await test.step('assert "footer" is properly displayed', async () => {
     const footerContainer = page.getByTestId('footer');
 
     await test.step('Get started', async () => {

@@ -26,5 +26,5 @@ export async function acceptOrCloseCookieBanner(page: Page) {
     await acceptButton.click({ timeout: 10000 });
   }
 
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(2000);
 }

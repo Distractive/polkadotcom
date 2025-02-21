@@ -14,29 +14,28 @@ test('Platform', async ({ page }) => {
     await expect(heading).toHaveText('Unleash the power of Polkadot');
   });
 
-  await test.step("assert 'header' section is displayed properly", async () => {
-    const headerSection = page.getByTestId('header');
+  await test.step('assert "header" section is displayed properly', async () => {
+    const section = page.getByTestId('header');
 
-    await expect(
-      headerSection.getByText('Innovate without constraints'),
-    ).toHaveText(
+    await expect(section.getByText('Innovate without constraints')).toHaveText(
       'Innovate without constraints using Polkadot’s powerful, secure, and flexible multi-chain platform',
     );
 
     await expect(
-      headerSection.getByRole('link', { name: 'Start building' }),
+      section.getByRole('link', { name: 'Start building' }),
     ).toBeVisible();
   });
 
-  await test.step('header section screenshot', async () => {
+  await test.step('"header" section screenshot', async () => {
     const section = page.getByTestId('header');
+    await page.waitForTimeout(2000);
     expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
       'header.png',
       snapshotConfig,
     );
   });
 
-  await test.step("assert 'boundaries' section is displayed properly", async () => {
+  await test.step('assert "boundaries" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-be959eb895a6');
 
     await expect(
@@ -58,15 +57,16 @@ test('Platform', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('boundaries section screenshot', async () => {
+  await test.step('"boundaries" section screenshot', async () => {
     const section = page.getByTestId('cards-block-be959eb895a6');
+    await page.waitForTimeout(2000);
     expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
       'boundaries.png',
       snapshotConfig,
     );
   });
 
-  await test.step("assert 'ecosystem' section is displayed properly", async () => {
+  await test.step('assert "ecosystem" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-955ddc9252ac');
 
     await expect(
@@ -88,7 +88,7 @@ test('Platform', async ({ page }) => {
     ).toBeVisible();
     await section.getByRole('button', { name: 'Next slide' }).click();
     await section.getByRole('button', { name: 'Next slide' }).click();
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(2000);
     await expect(
       section.getByRole('link', { name: 'StellaSwap' }),
     ).toBeVisible();
@@ -97,15 +97,16 @@ test('Platform', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('ecosystem section screenshot', async () => {
+  await test.step('"ecosystem" section screenshot', async () => {
     const section = page.getByTestId('cards-block-955ddc9252ac');
+    await page.waitForTimeout(2000);
     expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
       'ecosystem.png',
       snapshotConfig,
     );
   });
 
-  await test.step("assert 'see more dapps' section is displayed properly", async () => {
+  await test.step('assert "see more dapps" section is displayed properly', async () => {
     const section = page.getByTestId('button-block');
 
     await expect(
@@ -115,13 +116,14 @@ test('Platform', async ({ page }) => {
 
   await test.step('see more dapps section screenshot', async () => {
     const section = page.getByTestId('button-block');
+    await page.waitForTimeout(2000);
     expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
       'more-dapps.png',
       snapshotConfig,
     );
   });
 
-  await test.step("assert 'what's next' section is displayed properly", async () => {
+  await test.step('assert "what\'s next" section is displayed properly', async () => {
     const section = page.getByTestId('content-block');
 
     await expect(
@@ -136,13 +138,14 @@ test('Platform', async ({ page }) => {
 
   await test.step("what's next section screenshot", async () => {
     const section = page.getByTestId('content-block');
+    await page.waitForTimeout(2000);
     expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
       'whats-next.png',
       snapshotConfig,
     );
   });
 
-  await test.step("assert 'timeline' section is displayed properly", async () => {
+  await test.step('assert "timeline" section is displayed properly', async () => {
     const section = page.getByTestId('timeline');
 
     await expect(
@@ -188,7 +191,7 @@ test('Platform', async ({ page }) => {
 
     await section.getByRole('button', { name: 'Next slide' }).click();
     await section.getByRole('button', { name: 'Next slide' }).click();
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(2000);
 
     await expect(
       section.getByRole('heading', {
@@ -218,8 +221,9 @@ test('Platform', async ({ page }) => {
     );
   });
 
-  await test.step('timeline section screenshot', async () => {
+  await test.step('"timeline" section screenshot', async () => {
     const section = page.getByTestId('timeline');
+    await page.waitForTimeout(2000);
     expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
       'timeline.png',
       snapshotConfig,

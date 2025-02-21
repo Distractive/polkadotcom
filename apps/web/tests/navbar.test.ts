@@ -10,6 +10,7 @@ test('Navbar', async ({ page }) => {
 
   await test.step('navbar screenshot', async () => {
     const navbar = page.getByTestId('navbar');
+    await page.waitForTimeout(2000);
     expect(
       await navbar.screenshot({
         animations: 'disabled',
