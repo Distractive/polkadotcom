@@ -21,8 +21,9 @@ export function SideBySideBlock({ content }: Props) {
     >
       <div
         className={cn(
-          'order-2 col-span-full grid h-fit gap-copy lg:col-span-5',
+          'order-2 col-span-full h-full flex flex-col gap-copy lg:col-span-5',
           content.isImageOnLeft ? 'lg:pl-gutter' : 'lg:order-1 lg:pr-gutter',
+          content.isTextVerticallyCentered ? 'justify-center' : 'justify-start',
         )}
       >
         <div className="flex flex-col gap-copy">

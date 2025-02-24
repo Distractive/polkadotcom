@@ -18,6 +18,7 @@ export const sideBySideSelection = {
     .nullable(),
   altText: q.string().nullable().optional(),
   isImageOnLeft: q.boolean().optional().nullable(),
+  isTextVerticallyCentered: q.boolean().optional().nullable(),
   content: q('content')
     .filter()
     .select({

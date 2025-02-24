@@ -39,6 +39,12 @@ export default defineType({
         'Show the image on the left side of the content, on desktop only',
     }),
     defineField({
+      name: 'isTextVerticallyCentered',
+      title: 'Vertically center the text?',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
       name: 'content',
       title: 'Content',
       type: 'array',
