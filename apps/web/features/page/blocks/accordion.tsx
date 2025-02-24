@@ -34,7 +34,7 @@ export function AccordionBlock({ accordion }: Props) {
   }
 
   return (
-    <div className="grid-system max-width px-gutter">
+    <div className="grid-system max-width px-gutter" data-testid="accordion">
       {accordion.hasTitleOnSide ? (
         <div className="col-span-full pb-gutter lg:col-span-4">
           <div className="flex flex-col gap-copy">

@@ -146,6 +146,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
   // Original side-by-side header
   return (
     <header
+      data-testid="side-by-side-header"
       className={cn(
         'grid-system max-width relative col-span-full mb-16 overflow-x-hidden lg:mb-page',
         className,

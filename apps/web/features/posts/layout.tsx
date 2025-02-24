@@ -106,7 +106,10 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
   return (
     <>
       <ScrollToView page={Number(page)} />
-      <header className="max-width mb-page mt-page flex flex-col">
+      <header
+        className="max-width mb-page mt-page flex flex-col"
+        data-testid="platform-header"
+      >
         <div
           className={cn(
             'flex max-w-4xl flex-col justify-center gap-copy lg:pt-16',
@@ -127,7 +130,11 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
         </div>
       </header>
       {data && (
-        <div id="main-content" className="max-width col-span-full px-gutter">
+        <div
+          id="main-content"
+          className="max-width col-span-full px-gutter"
+          data-testid="main-content"
+        >
           <div className="grid-system col-span-full mb-card">
             {tagSlug === '' && (
               <search className="col-span-full mb-8 lg:col-span-8 lg:mb-0">

@@ -20,7 +20,7 @@ export type BreadcrumbProps = {
 
 export function BreadcrumbBlock({ items }: BreadcrumbProps) {
   return (
-    <Breadcrumb>
+    <Breadcrumb data-testid="breadcrumb">
       <BreadcrumbList>
         {items.map((item, index) => {
           return (

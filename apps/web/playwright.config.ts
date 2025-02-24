@@ -40,9 +40,6 @@ export default defineConfig({
   reporter: CI ? 'github' : 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    launchOptions: {
-      args: ['--hide-scrollbars'],
-    },
     headless: !!CI,
 
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
@@ -60,8 +57,6 @@ export default defineConfig({
       fullPage: true,
     },
 
-    viewport: { width: 1920, height: 1080 },
-
     deviceScaleFactor: 1,
 
     /* Collect videos when retrying the failed test. */
@@ -72,7 +67,14 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'], channel: 'chromium' },
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: 'chromium',
+        viewport: { width: 1280, height: 720 },
+        launchOptions: {
+          args: ['--hide-scrollbars'],
+        },
+      },
     },
 
     // {

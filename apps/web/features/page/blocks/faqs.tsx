@@ -21,7 +21,10 @@ interface Props {
 
 export function FAQBlock({ faqs }: Props) {
   return (
-    <div className="grid-system max-width gap-gutter px-gutter ">
+    <div
+      className="grid-system max-width gap-gutter px-gutter "
+      data-testid="faqs"
+    >
       {faqs.title && (
         <Heading
           variant="h2"

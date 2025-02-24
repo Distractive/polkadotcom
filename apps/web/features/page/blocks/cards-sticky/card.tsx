@@ -30,7 +30,10 @@ export default function CardStickyBlock({ card, className }: Props) {
   return (
     <Card className={cn('h-full', className)}>
       <CustomUrl value={link} isWrapper className="inline-block size-full">
-        <div className="flex flex-col lg:h-full lg:flex-row">
+        <div
+          className="flex flex-col lg:h-full lg:flex-row"
+          data-testid="sticky-card"
+        >
           {image && (
             <CardHeader className="relative aspect-[4/3] md:aspect-[5/3] lg:aspect-auto lg:h-full lg:min-h-[20rem] lg:basis-1/2">
               <Image
