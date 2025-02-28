@@ -8,13 +8,33 @@ export default defineType({
   groups: [
     { title: 'Heading', name: 'heading', icon: SearchIcon },
     { title: 'Content', name: 'content', icon: DocumentIcon },
+    { title: 'Metric', name: 'metric', icon: DocumentIcon },
   ],
   fields: [
+    defineField({
+      name: 'useLiveMetric',
+      title: 'Use Live Metric',
+      type: 'boolean',
+      initialValue: false,
+      group: 'metric',
+    }),
+    defineField({
+      name: 'metric',
+      title: 'Select Metric',
+      type: 'string',
+      group: 'metric',
+      options: {
+        list: [{ title: '30-Day Fees (USD)', value: 'total_fees_usd_30d' }],
+        layout: 'dropdown',
+      },
+      hidden: ({ parent }) => !parent?.useLiveMetric,
+    }),
     defineField({
       name: 'heading',
       title: 'Heading',
       type: 'string',
       group: 'content',
+      hidden: ({ parent }) => parent?.useLiveMetric,
     }),
     defineField({
       name: 'body',

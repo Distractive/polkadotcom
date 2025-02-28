@@ -11,82 +11,93 @@ import {
   Icon,
   cn,
 } from '@shared/ui';
+import { getTotalFeesUSD30d } from '@/app/api/stats/parity/metrics/get-total-fees-usd-30d';
 
 interface Props {
   card: TypeFromSelection<typeof cardStatSelection>;
   className?: string;
 }
 
-export default function CardStatBlock({ card, className }: Props) {
-  const { _key, heading, body, content } = card;
+export default async function CardStatBlock({ card, className }: Props) {
+  const { _key, heading, body, content, useLiveMetric, metric } = card;
+
+  let metricValue = null;
+
+  if (useLiveMetric) {
+    const cleanMetric = metric?.replace(
+      /[\u200B-\u200F\u2028-\u202F\u2060-\u206F\uFEFF]/g,
+      '',
+    );
+
+    switch (cleanMetric?.trim()) {
+      case 'total_fees_usd_30d':
+        console.log('in the switch');
+        metricValue = await getTotalFeesUSD30d();
+        break;
+      default:
+        metricValue = 'Metric not available';
+    }
+  }
 
   return (
-    <>
-      <Card key={_key} className={cn(' bg-white  p-gutter', className)}>
-        <CardHeader className="grid gap-copy">
-          <Heading variant="h3" size="h2">
-            {heading}
-          </Heading>
-          <CardDescription>{body}</CardDescription>
-        </CardHeader>
-        {content && (
-          <div className="pt-card md:pt-gutter">
-            <PortableText
-              value={content}
-              components={{
-                list: {
-                  bullet: ({ children }) => (
-                    <ul className="list-inside list-disc">{children}</ul>
-                  ),
-                  number: ({ children }) => (
-                    <ol className="list-inside list-decimal">{children}</ol>
-                  ),
-                },
-                listItem: {
-                  bullet: ({ children }) => <li>{children}</li>,
-                  number: ({ children }) => <li>{children}</li>,
-                },
-                marks: {
-                  link: ({ children, value }) => {
-                    const rel = !value.href.startsWith('/')
-                      ? 'noreferrer noopener'
-                      : undefined;
-                    return (
-                      <>
-                        <a href={value.href} rel={rel} className="font-bold">
-                          {children}
-                          <Icon
-                            variant="arrowRightUp"
-                            className={cn(
-                              'ml-1 w-4 fill-current lg:w-5',
-                              value.variant &&
-                                value.variant === 'primary' &&
-                                'fill-white',
-                            )}
-                          />
-                        </a>
-                      </>
-                    );
-                  },
-                },
+    <Card key={_key} className={cn('bg-white p-gutter', className)}>
+      <CardHeader className="grid gap-copy">
+        <Heading variant="h3" size="h2">
+          {useLiveMetric ? metricValue : heading}
+        </Heading>
+        <CardDescription>{body}</CardDescription>
+      </CardHeader>
 
-                types: {
-                  customUrl: ({ value }) => {
-                    return (
-                      <Button
-                        variant={value.internal ? 'primary' : 'secondary'}
-                        size="md"
-                      >
-                        {value.label}
-                      </Button>
-                    );
-                  },
+      {content && (
+        <div className="pt-card md:pt-gutter">
+          <PortableText
+            value={content}
+            components={{
+              list: {
+                bullet: ({ children }) => (
+                  <ul className="list-inside list-disc">{children}</ul>
+                ),
+                number: ({ children }) => (
+                  <ol className="list-inside list-decimal">{children}</ol>
+                ),
+              },
+              listItem: {
+                bullet: ({ children }) => <li>{children}</li>,
+                number: ({ children }) => <li>{children}</li>,
+              },
+              marks: {
+                link: ({ children, value }) => {
+                  const rel = !value.href.startsWith('/')
+                    ? 'noreferrer noopener'
+                    : undefined;
+                  return (
+                    <a href={value.href} rel={rel} className="font-bold">
+                      {children}
+                      <Icon
+                        variant="arrowRightUp"
+                        className={cn(
+                          'ml-1 w-4 fill-current lg:w-5',
+                          value.variant === 'primary' && 'fill-white',
+                        )}
+                      />
+                    </a>
+                  );
                 },
-              }}
-            />
-          </div>
-        )}
-      </Card>
-    </>
+              },
+              types: {
+                customUrl: ({ value }) => (
+                  <Button
+                    variant={value.internal ? 'primary' : 'secondary'}
+                    size="md"
+                  >
+                    {value.label}
+                  </Button>
+                ),
+              },
+            }}
+          />
+        </div>
+      )}
+    </Card>
   );
 }
