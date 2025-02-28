@@ -2,6 +2,7 @@ import type { statsSelection } from '@/sanity/selections/home/stats';
 import type { TypeFromSelection } from 'groqd';
 
 import { Card, CardDescription, CardHeader, Heading, cn } from '@shared/ui';
+import { Metric } from '@/features/metrics/metric';
 
 interface Props {
   stats: TypeFromSelection<typeof statsSelection>['stats'];
@@ -70,6 +71,20 @@ export function Stats({ stats }: Props) {
                 </CardHeader>
               </Card>
             ))}
+            {/* Test for live metrics */}
+            <Card
+              className={cn(
+                'stats-card  bg-white p-card',
+                'col-span-full col-start-1 md:col-span-2 lg:col-span-6',
+              )}
+            >
+              <CardHeader className="grid w-5/6 gap-copy lg:w-full">
+                <Heading variant="h3" className="!hyphens-none !break-normal">
+                  <Metric metric="totalFeesUSD30d" />
+                </Heading>
+                <CardDescription>Total Fees</CardDescription>
+              </CardHeader>
+            </Card>
           </div>
         </div>
       </article>
