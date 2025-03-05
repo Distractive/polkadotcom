@@ -24,7 +24,11 @@ export default defineType({
       type: 'string',
       group: 'metric',
       options: {
-        list: [{ title: '30-Day Fees (USD)', value: 'total_fees_usd_30d' }],
+        list: [
+          { title: '30-Day Fees (USD)', value: 'total_fees_usd_30d' },
+          { title: 'Active Validators', value: 'active_validators' },
+          { title: 'Nominators', value: 'nominators' },
+        ],
         layout: 'dropdown',
       },
       hidden: ({ parent }) => !parent?.useLiveMetric,
@@ -34,7 +38,6 @@ export default defineType({
       title: 'Heading',
       type: 'string',
       group: 'content',
-      hidden: ({ parent }) => parent?.useLiveMetric,
     }),
     defineField({
       name: 'body',

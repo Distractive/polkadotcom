@@ -11,7 +11,10 @@ import {
   Icon,
   cn,
 } from '@shared/ui';
+
 import { getTotalFeesUSD30d } from '@/app/api/stats/parity/metrics/get-total-fees-usd-30d';
+import { getActiveValidators } from '@/app/api/stats/parity/metrics/get-active-validators';
+import { getNominators } from '@/app/api/stats/parity/metrics/get-nominators';
 
 interface Props {
   card: TypeFromSelection<typeof cardStatSelection>;
@@ -31,8 +34,13 @@ export default async function CardStatBlock({ card, className }: Props) {
 
     switch (cleanMetric?.trim()) {
       case 'total_fees_usd_30d':
-        console.log('in the switch');
         metricValue = await getTotalFeesUSD30d();
+        break;
+      case 'active_validators':
+        metricValue = await getActiveValidators();
+        break;
+      case 'nominators':
+        metricValue = await getNominators();
         break;
       default:
         metricValue = 'Metric not available';

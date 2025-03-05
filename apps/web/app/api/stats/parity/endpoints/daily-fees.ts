@@ -1,7 +1,7 @@
 import { fetchParityData } from '../fetch-parity-data';
 import type { ParityQueryParams } from '../fetch-parity-data';
 
-export type DailyFeesResponse = {
+export type DailyFeesMetricsResponse = {
   date: string;
   relay_chain: 'polkadot' | 'kusama' | 'solo';
   chain: string;
@@ -12,7 +12,7 @@ export type DailyFeesResponse = {
 
 export const getDailyFeesMetrics = async (
   params: ParityQueryParams['queryParams'],
-): Promise<DailyFeesResponse> => {
+): Promise<DailyFeesMetricsResponse> => {
   return fetchParityData({
     endpoint: 'daily_fees',
     queryParams: params,

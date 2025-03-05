@@ -1,12 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export interface ParityQueryParams {
-  endpoint:
-    | 'daily_summary'
-    | 'daily_fees'
-    | 'daily_staking_rewards'
-    | 'daily_tps'
-    | 'daily_uptime';
+  endpoint: string;
   queryParams: {
     relay_chain?: 'polkadot' | 'kusama' | 'solo';
     chain?: string;
@@ -24,6 +19,7 @@ export const fetchParityData = async ({
   defaultDate.setDate(defaultDate.getDate() - 3);
   const formattedDefaultDate = defaultDate.toISOString().split('T')[0];
 
+  console.log('Query Params', queryParams);
   const paramsWithDefaults = {
     relay_chain: queryParams.relay_chain || 'polkadot',
     chain: queryParams.chain || 'ecosystem',
@@ -32,6 +28,8 @@ export const fetchParityData = async ({
   };
 
   const queryString = new URLSearchParams(paramsWithDefaults).toString();
+
+  console.log('Query String', queryString);
 
   const url = `https://shiny.data.paritytech.io/api/${endpoint}?${queryString}`;
 
