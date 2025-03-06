@@ -1,21 +1,19 @@
 import { fetchParityData } from '../fetch-parity-data';
 import type { ParityQueryParams } from '../fetch-parity-data';
 
-export type StakingMetricsResponse = {
-  block_number: number;
+export type TreasuryAssetsMetricsResponse = {
+  balance: number;
+  balance_usd: number;
   chain: string;
   month: string;
-  percentage_staked: number;
   relay_chain: string;
-  total_dot_issuance: number;
-  total_dot_staked: number;
 }[];
 
-export const getStakingMetrics = async (
+export const getTreasuryAssetsMetrics = async (
   params: ParityQueryParams['queryParams'],
-): Promise<StakingMetricsResponse> => {
+): Promise<TreasuryAssetsMetricsResponse> => {
   return fetchParityData({
-    endpoint: 'monthly_percent_staked',
+    endpoint: 'monthly_treasury_assets',
     queryParams: params,
   });
 };

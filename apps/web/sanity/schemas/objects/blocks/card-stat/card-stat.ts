@@ -28,6 +28,12 @@ export default defineType({
           { title: '30-Day Fees (USD)', value: 'total_fees_usd_30d' },
           { title: 'Active Validators', value: 'active_validators' },
           { title: 'Nominators', value: 'nominators' },
+          {
+            title: 'Percent DOT Supply Staked',
+            value: 'percent_dot_supply_staked',
+          },
+          { title: 'Total DOT Staked', value: 'dot_staked' },
+          { title: 'Treasury Balance (USD)', value: 'treasury_balance_usd' },
         ],
         layout: 'dropdown',
       },

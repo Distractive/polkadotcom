@@ -15,6 +15,9 @@ import {
 import { getTotalFeesUSD30d } from '@/app/api/stats/parity/metrics/get-total-fees-usd-30d';
 import { getActiveValidators } from '@/app/api/stats/parity/metrics/get-active-validators';
 import { getNominators } from '@/app/api/stats/parity/metrics/get-nominators';
+import { getPercentStaked } from '@/app/api/stats/parity/metrics/get-percent-staked';
+import { getTotalDOTStaked } from '@/app/api/stats/parity/metrics/get-total-dot-staked';
+import { getTreasuryBalanceUSD } from '@/app/api/stats/parity/metrics/get-treasury-balance-usd';
 
 interface Props {
   card: TypeFromSelection<typeof cardStatSelection>;
@@ -41,6 +44,15 @@ export default async function CardStatBlock({ card, className }: Props) {
         break;
       case 'nominators':
         metricValue = await getNominators();
+        break;
+      case 'percent_dot_supply_staked':
+        metricValue = await getPercentStaked();
+        break;
+      case 'dot_staked':
+        metricValue = await getTotalDOTStaked();
+        break;
+      case 'treasury_balance_usd':
+        metricValue = await getTreasuryBalanceUSD();
         break;
       default:
         metricValue = 'Metric not available';
