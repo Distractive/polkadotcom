@@ -6,8 +6,8 @@ import { customUrlSelection } from '../custom-url';
 export const cardStatSelection = {
   _key: q.string(),
   useLiveMetric: q.boolean().nullable(),
-  metric: q.string().optional().nullable(),
-  heading: q.string().optional().nullable(),
+  liveMetric: q.string().optional().nullable(),
+  value: q.string().optional().nullable(),
   body: q.string().optional().nullable(),
   content: q('content')
     .filter()

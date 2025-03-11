@@ -14,11 +14,12 @@ export const fetchParityData = async ({
   endpoint,
   queryParams,
 }: ParityQueryParams) => {
-  // API takes 2 days to show data
+  // API takes at least 2 days to show data
   const defaultDate = new Date();
   defaultDate.setDate(defaultDate.getDate() - 3);
   const formattedDefaultDate = defaultDate.toISOString().split('T')[0];
 
+  // console.log('running...');
   console.log('Query Params', queryParams);
   const paramsWithDefaults = {
     relay_chain: queryParams.relay_chain || 'polkadot',

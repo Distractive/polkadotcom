@@ -19,29 +19,33 @@ export default defineType({
       group: 'metric',
     }),
     defineField({
-      name: 'metric',
-      title: 'Select Metric',
+      name: 'liveMetric',
+      title: 'Select Live Metric',
       type: 'string',
       group: 'metric',
       options: {
         list: [
-          { title: '30-Day Fees (USD)', value: 'total_fees_usd_30d' },
-          { title: 'Active Validators', value: 'active_validators' },
-          { title: 'Nominators', value: 'nominators' },
+          { title: '30-Day Fees (USD)', value: 'totalFeesUSD30d' },
+          { title: 'Active Validators', value: 'activeValidators' },
+          { title: 'Total Nominators', value: 'totalNominators' },
           {
             title: 'Percent DOT Supply Staked',
-            value: 'percent_dot_supply_staked',
+            value: 'percentDOTSupplyStaked',
           },
-          { title: 'Total DOT Staked', value: 'dot_staked' },
-          { title: 'Treasury Balance (USD)', value: 'treasury_balance_usd' },
+          { title: 'Total DOT Staked', value: 'totalDOTStaked' },
+          { title: 'Treasury Balance (USD)', value: 'treasuryBalanceUSD' },
+          { title: 'Total Referendums', value: 'totalReferendums' },
+          { title: 'Total Stablecoin (USD)', value: 'totalStablecoinsUSD' },
         ],
         layout: 'dropdown',
       },
       hidden: ({ parent }) => !parent?.useLiveMetric,
     }),
     defineField({
-      name: 'heading',
-      title: 'Heading',
+      name: 'value',
+      description:
+        'When using a live metric, you can use this field to set a fallback value in case the API call fails.',
+      title: 'Value',
       type: 'string',
       group: 'content',
     }),
@@ -68,4 +72,9 @@ export default defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'body',
+    },
+  },
 });

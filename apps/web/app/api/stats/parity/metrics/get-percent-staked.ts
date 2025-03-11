@@ -2,7 +2,7 @@ import { getStakingMetrics } from '../endpoints/staking';
 
 import { getLastDayOfPreviousMonth } from '../../utils/get-last-day-previous-month';
 
-export const getPercentStaked = async () => {
+export const getPercentDOTSupplyStaked = async () => {
   const date = getLastDayOfPreviousMonth();
 
   const response = await getStakingMetrics({
