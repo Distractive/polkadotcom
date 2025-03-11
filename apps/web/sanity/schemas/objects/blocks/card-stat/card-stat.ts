@@ -36,6 +36,7 @@ export default defineType({
           { title: 'Treasury Balance (USD)', value: 'treasuryBalanceUSD' },
           { title: 'Total Referendums', value: 'totalReferendums' },
           { title: 'Total Stablecoin (USD)', value: 'totalStablecoinsUSD' },
+          { title: 'Unique Accounts', value: 'uniqueAccounts' },
         ],
         layout: 'dropdown',
       },

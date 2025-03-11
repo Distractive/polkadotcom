@@ -1,6 +1,7 @@
 import { fetchParityData } from '../fetch-parity-data';
+import type { ParityQueryParams } from '../fetch-parity-data';
 
-export type ParityDailySummaryResponse = {
+export type ParityDailySummaryMetricsResponse = {
   date: string;
   relay_chain: string;
   chain: string;
@@ -34,17 +35,10 @@ export type ParityDailySummaryResponse = {
 }[];
 
 export const getDailySummaryMetrics = async (
-  chain: string,
-  startDate: string,
-  endDate: string,
-) => {
+  params: ParityQueryParams['queryParams'],
+): Promise<ParityDailySummaryMetricsResponse> => {
   return fetchParityData({
     endpoint: 'daily_summary',
-    queryParams: {
-      relay_chain: 'polkadot',
-      chain,
-      start_date: startDate,
-      end_date: endDate,
-    },
+    queryParams: params,
   });
 };

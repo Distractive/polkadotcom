@@ -12,9 +12,6 @@ export const getTotalStablecoinsUSD = async () => {
     chain: 'polkadot_asset_hub',
   });
 
-  console.log('usdcResponse', usdcResponse);
-  console.log('usdtResponse', usdtResponse);
-
   const total =
     usdcResponse[0] && usdtResponse[0]
       ? `$${(usdcResponse[0].sum_of_usdc + usdtResponse[0].sum_of_usdt).toLocaleString()}`

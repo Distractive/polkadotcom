@@ -6,6 +6,7 @@ import { getPercentDOTSupplyStaked } from '@/app/api/stats/parity/metrics/get-pe
 import { getTotalDOTStaked } from '@/app/api/stats/parity/metrics/get-total-dot-staked';
 import { getTreasuryBalanceUSD } from '@/app/api/stats/parity/metrics/get-treasury-balance-usd';
 import { getTotalStablecoinsUSD } from '@/app/api/stats/parity/metrics/get-total-stablecoins';
+import { getUniqueAccounts } from '@/app/api/stats/parity/metrics/get-unique-accounts';
 
 export const metricFetchers = {
   totalFeesUSD30d: getTotalFeesUSD30d,
@@ -16,6 +17,7 @@ export const metricFetchers = {
   totalDOTStaked: getTotalDOTStaked,
   treasuryBalanceUSD: getTreasuryBalanceUSD,
   totalStablecoinsUSD: getTotalStablecoinsUSD,
+  uniqueAccounts: getUniqueAccounts,
 };
 
 interface MetricProps {
