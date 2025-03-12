@@ -14,13 +14,11 @@ export const fetchParityData = async ({
   endpoint,
   queryParams,
 }: ParityQueryParams) => {
-  // API takes at least 2 days to show data
+  // API takes 2-3 days to show data
   const defaultDate = new Date();
   defaultDate.setDate(defaultDate.getDate() - 3);
   const formattedDefaultDate = defaultDate.toISOString().split('T')[0];
 
-  // console.log('running...');
-  console.log('Query Params', queryParams);
   const paramsWithDefaults = {
     relay_chain: queryParams.relay_chain || 'polkadot',
     chain: queryParams.chain || 'ecosystem',
@@ -29,8 +27,6 @@ export const fetchParityData = async ({
   };
 
   const queryString = new URLSearchParams(paramsWithDefaults).toString();
-
-  console.log('Query String', queryString);
 
   const url = `https://shiny.data.paritytech.io/api/${endpoint}?${queryString}`;
 

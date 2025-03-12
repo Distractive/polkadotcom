@@ -7,6 +7,7 @@ import { getTotalDOTStaked } from '@/app/api/stats/parity/metrics/get-total-dot-
 import { getTreasuryBalanceUSD } from '@/app/api/stats/parity/metrics/get-treasury-balance-usd';
 import { getTotalStablecoinsUSD } from '@/app/api/stats/parity/metrics/get-total-stablecoins';
 import { getUniqueAccounts } from '@/app/api/stats/parity/metrics/get-unique-accounts';
+import { getPolkadotUptime30d } from '@/app/api/stats/parity/metrics/get-30d-polkadot-uptime';
 
 export const metricFetchers = {
   totalFeesUSD30d: getTotalFeesUSD30d,
@@ -18,6 +19,7 @@ export const metricFetchers = {
   treasuryBalanceUSD: getTreasuryBalanceUSD,
   totalStablecoinsUSD: getTotalStablecoinsUSD,
   uniqueAccounts: getUniqueAccounts,
+  polkadotUptime30d: getPolkadotUptime30d,
 };
 
 interface MetricProps {
@@ -27,13 +29,19 @@ interface MetricProps {
 
 export const LiveMetric = async ({ metric, fallbackMetric }: MetricProps) => {
   try {
-    if (!metric) return <>{fallbackMetric}</>;
+    if (!metric) {
+      return <>{fallbackMetric}</>;
+    }
 
     const value = await metricFetchers[metric]();
+
+    if (!value) {
+      return <>{fallbackMetric}</>;
+    }
 
     return <>{value}</>;
   } catch (error) {
     console.error(`Metric fetchfailed for ${metric}:`, error);
-    return <>{fallbackMetric || 'Error loading metric'}</>;
+    return <>{fallbackMetric ?? 'Error loading metric'}</>;
   }
 };

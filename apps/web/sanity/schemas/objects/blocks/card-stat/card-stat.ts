@@ -25,18 +25,19 @@ export default defineType({
       group: 'metric',
       options: {
         list: [
-          { title: '30-Day Fees (USD)', value: 'totalFeesUSD30d' },
           { title: 'Active Validators', value: 'activeValidators' },
-          { title: 'Total Nominators', value: 'totalNominators' },
           {
             title: 'Percent DOT Supply Staked',
             value: 'percentDOTSupplyStaked',
           },
           { title: 'Total DOT Staked', value: 'totalDOTStaked' },
-          { title: 'Treasury Balance (USD)', value: 'treasuryBalanceUSD' },
+          { title: 'Total Fees (30-Day, USD)', value: 'totalFeesUSD30d' },
+          { title: 'Total Nominators', value: 'totalNominators' },
           { title: 'Total Referendums', value: 'totalReferendums' },
           { title: 'Total Stablecoin (USD)', value: 'totalStablecoinsUSD' },
+          { title: 'Treasury Balance (USD)', value: 'treasuryBalanceUSD' },
           { title: 'Unique Accounts', value: 'uniqueAccounts' },
+          { title: 'Uptime (30-Day)', value: 'polkadotUptime30d' },
         ],
         layout: 'dropdown',
       },
