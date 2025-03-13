@@ -12,7 +12,7 @@ export const getTreasuryBalanceUSD = async () => {
     end_date: getLastDayOfPreviousMonth(),
   });
 
-  const nominators = `$${response[0]?.balance_usd.toLocaleString()}`;
+  const nominators = response[0]?.balance_usd;
 
   return nominators;
 };

@@ -6,10 +6,9 @@ export const getTotalStakers = async () => {
     chain: 'polkadot',
   });
 
-  const totalStakers = (
+  const totalStakers =
     (response[0]?.number_of_nominators ?? 0) +
-    (response[0]?.number_of_pool_members ?? 0)
-  ).toLocaleString();
+    (response[0]?.number_of_pool_members ?? 0);
 
   return totalStakers;
 };

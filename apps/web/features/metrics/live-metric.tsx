@@ -29,21 +29,40 @@ export const metricFetchers = {
 interface MetricProps {
   metric?: keyof typeof metricFetchers;
   fallbackMetric?: string | null;
+  addDollarSign?: boolean | null;
+  displayInMillions?: boolean | null;
 }
 
-export const LiveMetric = async ({ metric, fallbackMetric }: MetricProps) => {
+export const formatToMillions = (number: number): string => {
+  return `${(number / 1000000).toFixed(1)} million`;
+};
+
+export const LiveMetric = async ({
+  metric,
+  fallbackMetric,
+  addDollarSign,
+  displayInMillions,
+}: MetricProps) => {
   try {
     if (!metric) {
       return <>{fallbackMetric}</>;
     }
 
-    const value = await metricFetchers[metric]();
+    let value = await metricFetchers[metric]();
 
     if (!value) {
       return <>{fallbackMetric}</>;
     }
 
-    return <>{value}</>;
+    if (displayInMillions && Number(value) > 1000000) {
+      value = formatToMillions(Number(value));
+    }
+
+    if (addDollarSign) {
+      value = `$${value.toLocaleString()}`;
+    }
+
+    return <>{value.toLocaleString()}</>;
   } catch (error) {
     console.error(`Metric fetchfailed for ${metric}:`, error);
     return <>{fallbackMetric ?? 'Error loading metric'}</>;

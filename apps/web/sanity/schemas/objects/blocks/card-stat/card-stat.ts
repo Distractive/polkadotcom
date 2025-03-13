@@ -52,6 +52,20 @@ export default defineType({
       hidden: ({ parent }) => !parent?.useLiveMetric,
     }),
     defineField({
+      name: 'addDollarSign',
+      title: 'Add a dollar sign?',
+      type: 'boolean',
+      hidden: ({ parent }) => !parent?.useLiveMetric,
+    }),
+    defineField({
+      name: 'displayInMillions',
+      description:
+        'If the result is greater than 1 million, this option will truncate the value (e.g. 12,345,678 becomes 12.3 million).',
+      title: 'Display in millions?',
+      type: 'boolean',
+      hidden: ({ parent }) => !parent?.useLiveMetric,
+    }),
+    defineField({
       name: 'heading',
       description:
         'For static metrics, use this field for the metric number/percent/value. When using a live metric, you can use this field to set a fallback value in case the API call fails.',

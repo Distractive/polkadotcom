@@ -12,13 +12,7 @@ export const getTotalDOTStaked = async () => {
     end_date: getLastDayOfPreviousMonth(),
   });
 
-  const totalDOTStaked = `$${response[0]?.total_dot_staked.toLocaleString(
-    undefined,
-    {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    },
-  )}`;
+  const totalDOTStaked = `${response[0]?.total_dot_staked}`;
 
   return totalDOTStaked;
 };

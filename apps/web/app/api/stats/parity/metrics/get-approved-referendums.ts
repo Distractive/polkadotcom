@@ -14,5 +14,5 @@ export const getApprovedReferendums = async () => {
     response.filter((referendum) => referendum.outcome === 'Approved').length +
     787;
 
-  return approvedReferendums.toLocaleString();
+  return approvedReferendums;
 };

@@ -11,8 +11,7 @@ export const getTotalReferendums = async () => {
     start_date: date.toISOString().split('T')[0],
   });
 
-  const totalReferendum =
-    response[response.length - 1]?.referendum_index.toLocaleString();
+  const totalReferendum = response[response.length - 1]?.referendum_index;
 
   return totalReferendum;
 };

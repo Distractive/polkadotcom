@@ -12,10 +12,10 @@ export const getTotalStablecoinsUSD = async () => {
     chain: 'polkadot_asset_hub',
   });
 
-  const total =
-    usdcResponse[0] && usdtResponse[0]
-      ? `$${(usdcResponse[0].sum_of_usdc + usdtResponse[0].sum_of_usdt).toLocaleString()}`
-      : null;
+  if (!usdcResponse[0] || !usdtResponse[0]) {
+    return;
+  }
+  const total = usdcResponse[0].sum_of_usdc + usdtResponse[0].sum_of_usdt;
 
   return total;
 };

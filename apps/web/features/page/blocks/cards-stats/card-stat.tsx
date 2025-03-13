@@ -23,7 +23,16 @@ interface Props {
 }
 
 export default async function CardStatBlock({ card, className }: Props) {
-  const { _key, heading, body, content, useLiveMetric, liveMetric } = card;
+  const {
+    _key,
+    heading,
+    body,
+    content,
+    useLiveMetric,
+    liveMetric,
+    addDollarSign,
+    displayInMillions,
+  } = card;
 
   const cleanMetric = liveMetric?.replace(
     /[\u200B-\u200F\u2028-\u202F\u2060-\u206F\uFEFF]/g,
@@ -35,7 +44,12 @@ export default async function CardStatBlock({ card, className }: Props) {
       <CardHeader className="grid gap-copy">
         <Heading variant="h3" size="h2">
           {useLiveMetric && liveMetric !== null && liveMetric !== undefined ? (
-            <LiveMetric metric={cleanMetric} fallbackMetric={heading} />
+            <LiveMetric
+              metric={cleanMetric}
+              fallbackMetric={heading}
+              addDollarSign={addDollarSign}
+              displayInMillions={displayInMillions}
+            />
           ) : (
             heading
           )}

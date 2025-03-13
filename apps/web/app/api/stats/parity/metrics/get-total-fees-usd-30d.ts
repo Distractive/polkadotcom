@@ -6,5 +6,5 @@ export const getTotalFeesUSD30d = async () => {
   const truncatedValue =
     Math.trunc((response[0]?.total_fees_usd_30d as number) * 100) / 100;
 
-  return `$${truncatedValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  return `${truncatedValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 };

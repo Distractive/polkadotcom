@@ -12,7 +12,7 @@ export const getNominators = async () => {
     end_date: getLastDayOfPreviousMonth(),
   });
 
-  const nominators = response[0]?.number_of_nominators.toLocaleString();
+  const nominators = response[0]?.number_of_nominators;
 
   return nominators;
 };
