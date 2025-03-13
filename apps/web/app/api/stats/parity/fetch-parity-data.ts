@@ -16,7 +16,7 @@ export const fetchParityData = async ({
 }: ParityQueryParams) => {
   // API takes 2-3 days to show data
   const defaultDate = new Date();
-  defaultDate.setDate(defaultDate.getDate() - 3);
+  defaultDate.setDate(defaultDate.getDate() - 4);
   const formattedDefaultDate = defaultDate.toISOString().split('T')[0];
 
   const paramsWithDefaults = {

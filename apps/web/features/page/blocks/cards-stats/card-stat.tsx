@@ -23,24 +23,21 @@ interface Props {
 }
 
 export default async function CardStatBlock({ card, className }: Props) {
-  const { _key, value, body, content, useLiveMetric, liveMetric } = card;
+  const { _key, heading, body, content, useLiveMetric, liveMetric } = card;
 
   const cleanMetric = liveMetric?.replace(
     /[\u200B-\u200F\u2028-\u202F\u2060-\u206F\uFEFF]/g,
     '',
   ) as keyof typeof metricFetchers;
 
-  console.log('clean metric', cleanMetric);
-  console.log('fallback value', value);
-
   return (
     <Card key={_key} className={cn('bg-white p-gutter', className)}>
       <CardHeader className="grid gap-copy">
         <Heading variant="h3" size="h2">
           {useLiveMetric && liveMetric !== null && liveMetric !== undefined ? (
-            <LiveMetric metric={cleanMetric} fallbackMetric={value} />
+            <LiveMetric metric={cleanMetric} fallbackMetric={heading} />
           ) : (
-            value
+            heading
           )}
         </Heading>
         <CardDescription>{body}</CardDescription>

@@ -44,10 +44,10 @@ export default defineType({
       hidden: ({ parent }) => !parent?.useLiveMetric,
     }),
     defineField({
-      name: 'value',
+      name: 'heading',
       description:
         'When using a live metric, you can use this field to set a fallback value in case the API call fails.',
-      title: 'Value',
+      title: 'Heading',
       type: 'string',
       group: 'content',
     }),
