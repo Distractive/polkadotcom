@@ -35,6 +35,10 @@ export default defineType({
           { title: 'Total Nominators', value: 'totalNominators' },
           { title: 'Total Referendums', value: 'totalReferendums' },
           { title: 'Total Stablecoin (USD)', value: 'totalStablecoinsUSD' },
+          {
+            title: 'Total Stakers (Nominators + Pool Members)',
+            value: 'totalStakers',
+          },
           { title: 'Treasury Balance (USD)', value: 'treasuryBalanceUSD' },
           { title: 'Unique Accounts', value: 'uniqueAccounts' },
           { title: 'Uptime (30-Day)', value: 'polkadotUptime30d' },
@@ -46,7 +50,7 @@ export default defineType({
     defineField({
       name: 'heading',
       description:
-        'When using a live metric, you can use this field to set a fallback value in case the API call fails.',
+        'For static metrics, use this field for the metric number/percent/value. When using a live metric, you can use this field to set a fallback value in case the API call fails.',
       title: 'Heading',
       type: 'string',
       group: 'content',

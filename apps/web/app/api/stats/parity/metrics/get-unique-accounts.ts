@@ -12,7 +12,5 @@ export const getUniqueAccounts = async () => {
     end_date: getLastDayOfPreviousMonth(),
   });
 
-  console.log('accounts response', response);
-
   return response[0]?.number_of_unique_addresses.toLocaleString();
 };

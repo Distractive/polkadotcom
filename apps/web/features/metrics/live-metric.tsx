@@ -8,6 +8,7 @@ import { getTreasuryBalanceUSD } from '@/app/api/stats/parity/metrics/get-treasu
 import { getTotalStablecoinsUSD } from '@/app/api/stats/parity/metrics/get-total-stablecoins';
 import { getUniqueAccounts } from '@/app/api/stats/parity/metrics/get-unique-accounts';
 import { getPolkadotUptime30d } from '@/app/api/stats/parity/metrics/get-30d-polkadot-uptime';
+import { getTotalStakers } from '@/app/api/stats/parity/metrics/get-total-stakers';
 
 export const metricFetchers = {
   totalFeesUSD30d: getTotalFeesUSD30d,
@@ -20,6 +21,7 @@ export const metricFetchers = {
   totalStablecoinsUSD: getTotalStablecoinsUSD,
   uniqueAccounts: getUniqueAccounts,
   polkadotUptime30d: getPolkadotUptime30d,
+  totalStakers: getTotalStakers,
 };
 
 interface MetricProps {
