@@ -1,7 +1,7 @@
 import { getDailyOpenGovReferendaResults } from '../endpoints/open-gov-referenda';
 
 export const getTotalReferendums = async () => {
-  // set date two weeks in the past to make sure we get at least one open referendum
+  // set date two weeks in the past to make sure we get at least one open referendum to pull the latest index number from.
   const date = new Date();
   date.setDate(date.getDate() - 14);
 

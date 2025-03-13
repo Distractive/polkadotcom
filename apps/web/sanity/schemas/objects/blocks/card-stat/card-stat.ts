@@ -30,6 +30,10 @@ export default defineType({
             title: 'Percent DOT Supply Staked',
             value: 'percentDOTSupplyStaked',
           },
+          {
+            title: 'Approved Referendums',
+            value: 'approvedReferendums',
+          },
           { title: 'Total DOT Staked', value: 'totalDOTStaked' },
           { title: 'Total Fees (30-Day, USD)', value: 'totalFeesUSD30d' },
           { title: 'Total Nominators', value: 'totalNominators' },

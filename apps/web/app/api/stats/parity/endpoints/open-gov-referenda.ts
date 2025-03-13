@@ -10,7 +10,7 @@ export type OpenGovReferendaResultResponse = {
   ayes: number;
   nays: number;
   support: number;
-  outcome: 'Approved' | 'Rejected';
+  outcome: string;
   submitted_block: number;
   end_block: number;
   start_date: string;

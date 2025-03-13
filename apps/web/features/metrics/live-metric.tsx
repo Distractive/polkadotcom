@@ -9,6 +9,7 @@ import { getTotalStablecoinsUSD } from '@/app/api/stats/parity/metrics/get-total
 import { getUniqueAccounts } from '@/app/api/stats/parity/metrics/get-unique-accounts';
 import { getPolkadotUptime30d } from '@/app/api/stats/parity/metrics/get-30d-polkadot-uptime';
 import { getTotalStakers } from '@/app/api/stats/parity/metrics/get-total-stakers';
+import { getApprovedReferendums } from '@/app/api/stats/parity/metrics/get-approved-referendums';
 
 export const metricFetchers = {
   totalFeesUSD30d: getTotalFeesUSD30d,
@@ -22,6 +23,7 @@ export const metricFetchers = {
   uniqueAccounts: getUniqueAccounts,
   polkadotUptime30d: getPolkadotUptime30d,
   totalStakers: getTotalStakers,
+  approvedReferendums: getApprovedReferendums,
 };
 
 interface MetricProps {

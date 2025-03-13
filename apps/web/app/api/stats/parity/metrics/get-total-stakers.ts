@@ -6,8 +6,6 @@ export const getTotalStakers = async () => {
     chain: 'polkadot',
   });
 
-  console.log('staker response:', response);
-
   const totalStakers = (
     (response[0]?.number_of_nominators ?? 0) +
     (response[0]?.number_of_pool_members ?? 0)
