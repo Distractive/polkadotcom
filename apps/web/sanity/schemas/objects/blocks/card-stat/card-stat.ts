@@ -27,12 +27,16 @@ export default defineType({
         list: [
           { title: 'Active Validators', value: 'activeValidators' },
           {
-            title: 'Percent DOT Supply Staked',
-            value: 'percentDOTSupplyStaked',
-          },
-          {
             title: 'Approved Referendums',
             value: 'approvedReferendums',
+          },
+          {
+            title: 'Average Monthly Governance Voters',
+            value: 'averageMonthlyGovernanceVoters',
+          },
+          {
+            title: 'Percent DOT Supply Staked',
+            value: 'percentDOTSupplyStaked',
           },
           { title: 'Total DOT Staked', value: 'totalDOTStaked' },
           { title: 'Total Fees (30-Day, USD)', value: 'totalFeesUSD30d' },

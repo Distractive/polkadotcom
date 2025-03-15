@@ -10,6 +10,7 @@ import { getUniqueAccounts } from '@/app/api/stats/parity/metrics/get-unique-acc
 import { getPolkadotUptime30d } from '@/app/api/stats/parity/metrics/get-30d-polkadot-uptime';
 import { getTotalStakers } from '@/app/api/stats/parity/metrics/get-total-stakers';
 import { getApprovedReferendums } from '@/app/api/stats/parity/metrics/get-approved-referendums';
+import { getAverageMonthlyGovernanceVoters } from '@/app/api/stats/parity/metrics/get-avg-monthly-governance-voters';
 
 export const metricFetchers = {
   totalFeesUSD30d: getTotalFeesUSD30d,
@@ -24,6 +25,7 @@ export const metricFetchers = {
   polkadotUptime30d: getPolkadotUptime30d,
   totalStakers: getTotalStakers,
   approvedReferendums: getApprovedReferendums,
+  averageMonthlyGovernanceVoters: getAverageMonthlyGovernanceVoters,
 };
 
 interface MetricProps {
@@ -58,11 +60,15 @@ export const LiveMetric = async ({
       value = formatToMillions(Number(value));
     }
 
-    if (addDollarSign) {
-      value = `$${value.toLocaleString()}`;
-    }
-
-    return <>{value.toLocaleString()}</>;
+    return (
+      <>
+        {addDollarSign ? '$' : ''}
+        {value.toLocaleString(undefined, {
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 2,
+        })}
+      </>
+    );
   } catch (error) {
     console.error(`Metric fetchfailed for ${metric}:`, error);
     return <>{fallbackMetric ?? 'Error loading metric'}</>;
