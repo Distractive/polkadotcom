@@ -27,6 +27,7 @@ export const Primary: Story = {
           heading: 'Card Stat heading',
           body: 'Stat',
           content: null,
+          useLiveMetric: false,
         },
         {
           _key: '2',
@@ -34,6 +35,7 @@ export const Primary: Story = {
           heading: 'Card Stat heading',
           body: 'Stat',
           content: null,
+          useLiveMetric: false,
         },
         {
           _key: '3',
@@ -41,6 +43,7 @@ export const Primary: Story = {
           heading: 'Card Stat heading',
           body: 'Stat',
           content: null,
+          useLiveMetric: false,
         },
       ],
     },

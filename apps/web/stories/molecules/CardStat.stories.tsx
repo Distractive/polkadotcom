@@ -18,6 +18,7 @@ export const Primary: Story = {
       heading: '1.3 million',
       body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       content: null,
+      useLiveMetric: false,
     },
   },
 };
@@ -56,6 +57,7 @@ export const PrimaryWithSource: Story = {
           ],
         },
       ],
+      useLiveMetric: false,
     },
   },
 };

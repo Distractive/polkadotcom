@@ -19,6 +19,10 @@ export const fetchParityData = async ({
   defaultDate.setDate(defaultDate.getDate() - 4);
   const formattedDefaultDate = defaultDate.toISOString().split('T')[0];
 
+  console.log(
+    `[${new Date().toISOString()}] Attempting to fetch ${endpoint} - Cache status unknown`,
+  );
+
   const paramsWithDefaults = {
     relay_chain: queryParams.relay_chain || 'polkadot',
     chain: queryParams.chain || 'ecosystem',
@@ -34,6 +38,10 @@ export const fetchParityData = async ({
     const response = await fetch(url, {
       next: { revalidate: 86400 },
     });
+    console.log(
+      `[${new Date().toISOString()}] Completed fetch for ${endpoint} - Response status: ${response.status}`,
+    );
+
     if (!response.ok)
       throw new Error(`API responded with status: ${response.status}`);
     const res = await response.json();
