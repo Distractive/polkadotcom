@@ -39,8 +39,6 @@ export default async function CardStatBlock({ card, className }: Props) {
     '',
   ) as keyof typeof metricFetchers;
 
-  console.log('CARD:', card);
-
   return (
     <Card key={_key} className={cn('bg-white p-gutter', className)}>
       <CardHeader className="grid gap-copy">

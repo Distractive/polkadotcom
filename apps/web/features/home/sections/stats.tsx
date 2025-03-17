@@ -55,8 +55,6 @@ export function Stats({ stats }: Props) {
             )}
           >
             {stats.items.map((item, index) => {
-              console.log('ITEM', item);
-
               return (
                 <CardStatBlock
                   key={item._key}
