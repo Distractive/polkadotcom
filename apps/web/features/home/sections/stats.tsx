@@ -3,7 +3,6 @@ import type { TypeFromSelection } from 'groqd';
 
 import { Heading, cn } from '@shared/ui';
 
-// import { LiveMetric } from '@/features/metrics/live-metric';
 import CardStatBlock from '@/features/page/blocks/cards-stats/card-stat';
 
 interface Props {
@@ -69,26 +68,6 @@ export function Stats({ stats }: Props) {
                 />
               );
             })}
-
-            {/* {stats.items.map((item, index) => (
-              <Card
-                key={item._key}
-                className={cn(
-                  'stats-card  bg-white p-card',
-                  'col-span-full col-start-1 md:col-span-2 lg:col-span-6',
-                  // nudge down second column
-                  index % 2 !== 0 && 'lg:translate-y-24',
-                )}
-                data-index={index}
-              >
-                <CardHeader className="grid w-5/6 gap-copy lg:w-full">
-                  <Heading variant="h3" className="!hyphens-none !break-normal">
-                    {item.heading}
-                  </Heading>
-                  <CardDescription>{item.body}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))} */}
           </div>
         </div>
       </article>

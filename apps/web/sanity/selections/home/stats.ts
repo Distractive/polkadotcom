@@ -1,8 +1,8 @@
 import { q } from 'groqd';
 import type { Selection } from 'groqd';
 
-import { customUrlSelection } from '../custom-url';
 import { cardStatSelection } from '../blocks/card-stat';
+import { customUrlSelection } from '../custom-url';
 
 export const statsSelection = {
   stats: q('stats').grab({

@@ -1,16 +1,16 @@
-import { getTotalFeesUSD30d } from '@/app/api/stats/parity/metrics/get-total-fees-usd-30d';
 import { getActiveValidators } from '@/app/api/stats/parity/metrics/get-active-validators';
-import { getTotalReferendums } from '@/app/api/stats/parity/metrics/get-total-referendums';
-import { getNominators } from '@/app/api/stats/parity/metrics/get-nominators';
-import { getPercentDOTSupplyStaked } from '@/app/api/stats/parity/metrics/get-percent-staked';
-import { getTotalDOTStaked } from '@/app/api/stats/parity/metrics/get-total-dot-staked';
-import { getTreasuryBalanceUSD } from '@/app/api/stats/parity/metrics/get-treasury-balance-usd';
-import { getTotalStablecoinsUSD } from '@/app/api/stats/parity/metrics/get-total-stablecoins';
-import { getUniqueAccounts } from '@/app/api/stats/parity/metrics/get-unique-accounts';
-import { getPolkadotUptime30d } from '@/app/api/stats/parity/metrics/get-30d-polkadot-uptime';
-import { getTotalStakers } from '@/app/api/stats/parity/metrics/get-total-stakers';
 import { getApprovedReferendums } from '@/app/api/stats/parity/metrics/get-approved-referendums';
 import { getAverageMonthlyGovernanceVoters } from '@/app/api/stats/parity/metrics/get-avg-monthly-governance-voters';
+import { getNominators } from '@/app/api/stats/parity/metrics/get-nominators';
+import { getPercentDOTSupplyStaked } from '@/app/api/stats/parity/metrics/get-percent-staked';
+import { getPolkadotUptime30d } from '@/app/api/stats/parity/metrics/get-30d-polkadot-uptime';
+import { getTotalDOTStaked } from '@/app/api/stats/parity/metrics/get-total-dot-staked';
+import { getTotalFeesUSD30d } from '@/app/api/stats/parity/metrics/get-total-fees-usd-30d';
+import { getTotalReferendums } from '@/app/api/stats/parity/metrics/get-total-referendums';
+import { getTotalStablecoinsUSD } from '@/app/api/stats/parity/metrics/get-total-stablecoins';
+import { getTotalStakers } from '@/app/api/stats/parity/metrics/get-total-stakers';
+import { getTreasuryBalanceUSD } from '@/app/api/stats/parity/metrics/get-treasury-balance-usd';
+import { getUniqueAccounts } from '@/app/api/stats/parity/metrics/get-unique-accounts';
 
 export const metricFetchers = {
   totalFeesUSD30d: getTotalFeesUSD30d,
