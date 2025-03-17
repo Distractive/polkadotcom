@@ -1,9 +1,9 @@
+import { getPolkadotUptime30d } from '@/app/api/stats/parity/metrics/get-30d-polkadot-uptime';
 import { getActiveValidators } from '@/app/api/stats/parity/metrics/get-active-validators';
 import { getApprovedReferendums } from '@/app/api/stats/parity/metrics/get-approved-referendums';
 import { getAverageMonthlyGovernanceVoters } from '@/app/api/stats/parity/metrics/get-avg-monthly-governance-voters';
 import { getNominators } from '@/app/api/stats/parity/metrics/get-nominators';
 import { getPercentDOTSupplyStaked } from '@/app/api/stats/parity/metrics/get-percent-staked';
-import { getPolkadotUptime30d } from '@/app/api/stats/parity/metrics/get-30d-polkadot-uptime';
 import { getTotalDOTStaked } from '@/app/api/stats/parity/metrics/get-total-dot-staked';
 import { getTotalFeesUSD30d } from '@/app/api/stats/parity/metrics/get-total-fees-usd-30d';
 import { getTotalReferendums } from '@/app/api/stats/parity/metrics/get-total-referendums';
