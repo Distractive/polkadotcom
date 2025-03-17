@@ -1,8 +1,10 @@
 import type { statsSelection } from '@/sanity/selections/home/stats';
 import type { TypeFromSelection } from 'groqd';
 
-import { Card, CardDescription, CardHeader, Heading, cn } from '@shared/ui';
-import { LiveMetric } from '@/features/metrics/live-metric';
+import { Heading, cn } from '@shared/ui';
+
+// import { LiveMetric } from '@/features/metrics/live-metric';
+import CardStatBlock from '@/features/page/blocks/cards-stats/card-stat';
 
 interface Props {
   stats: TypeFromSelection<typeof statsSelection>['stats'];
@@ -28,7 +30,7 @@ export function Stats({ stats }: Props) {
             'max-width grid-system col-span-full sm:w-dvw',
             'md:col-span-full md:col-start-1 md:w-full',
             'lg:col-span-full lg:col-start-1',
-            'xl:col-span-10 xl:col-start-2',
+            'xl:col-span-12 xl:col-start-1',
             'mt-header-top',
           )}
         >
@@ -36,7 +38,7 @@ export function Stats({ stats }: Props) {
             variant="h2"
             className={cn(
               'px-gutter  leading-[1.1] lg:pl-gutter lg:pr-gutter',
-              'col-span-full md:col-span-3 md:col-start-1  md:text-[3.25rem] lg:col-start-2 xl:col-start-2 xl:text-[3.813rem]',
+              'col-span-full md:col-span-3 md:col-start-1  md:text-[3.25rem] lg:col-start-1 xl:col-start-2 xl:text-[3.813rem]',
               '!hyphens-none !break-normal',
             )}
             size="display"
@@ -48,11 +50,29 @@ export function Stats({ stats }: Props) {
           <div
             className={cn(
               'grid-system relative col-span-full mt-10 gap-card px-gutter lg:mt-0',
-              'lg:col-span-8 lg:col-start-7',
-              'xl:col-span-8 xl:col-start-7',
+              'lg:col-span-8 lg:col-start-6',
+              'xl:col-span-9 xl:col-start-7',
             )}
           >
-            {stats.items.map((item, index) => (
+            {stats.items.map((item, index) => {
+              console.log('ITEM', item);
+
+              return (
+                <CardStatBlock
+                  key={item._key}
+                  card={item}
+                  className={cn(
+                    'stats-card',
+                    'col-span-full col-start-1 md:col-span-2 lg:col-span-6 p-card lg:p-8',
+                    // nudge down second column
+                    index % 2 !== 0 && 'lg:translate-y-24',
+                  )}
+                  data-index={index}
+                />
+              );
+            })}
+
+            {/* {stats.items.map((item, index) => (
               <Card
                 key={item._key}
                 className={cn(
@@ -70,21 +90,7 @@ export function Stats({ stats }: Props) {
                   <CardDescription>{item.body}</CardDescription>
                 </CardHeader>
               </Card>
-            ))}
-            {/* Test for live metrics */}
-            <Card
-              className={cn(
-                'stats-card  bg-white p-card',
-                'col-span-full col-start-1 md:col-span-2 lg:col-span-6',
-              )}
-            >
-              <CardHeader className="grid w-5/6 gap-copy lg:w-full">
-                <Heading variant="h3" className="!hyphens-none !break-normal">
-                  <LiveMetric metric="totalFeesUSD30d" />
-                </Heading>
-                <CardDescription>Total Fees</CardDescription>
-              </CardHeader>
-            </Card>
+            ))} */}
           </div>
         </div>
       </article>
