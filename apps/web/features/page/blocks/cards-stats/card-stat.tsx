@@ -33,8 +33,8 @@ export default async function CardStatBlock({ card, className }: Props) {
 
   return (
     <Card key={_key} className={cn('bg-white p-gutter', className)}>
-      <CardHeader className="grid gap-copy">
-        <Heading variant="h3" size="h2">
+      <CardHeader className="grid">
+        <Heading variant="h3" size="h2" className="pb-1">
           {useLiveMetric && liveMetric !== null && liveMetric !== undefined ? (
             <LiveMetric
               metric={cleanMetric}
@@ -46,15 +46,9 @@ export default async function CardStatBlock({ card, className }: Props) {
             heading
           )}
         </Heading>
-        <div className="font-bold text-black text-xl font-unbounded">
-          <Heading variant="h3" size="h4" className="font-light">
-            {body}
-          </Heading>
-        </div>
-
-        {/* <div className="font-bold text-black text-xl font-unbounded">
-          <CardDescription>{body}</CardDescription>
-        </div> */}
+        <Heading variant="h3" size="h4" className="font-light">
+          {body}
+        </Heading>
       </CardHeader>
 
       {content && (
