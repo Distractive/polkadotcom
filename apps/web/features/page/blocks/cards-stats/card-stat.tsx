@@ -2,15 +2,7 @@ import type { cardStatSelection } from '@/sanity/selections/blocks/card-stat';
 import type { TypeFromSelection } from 'groqd';
 import { PortableText } from 'next-sanity';
 
-import {
-  Button,
-  Card,
-  CardDescription,
-  CardHeader,
-  Heading,
-  Icon,
-  cn,
-} from '@shared/ui';
+import { Button, Card, CardHeader, Heading, Icon, cn } from '@shared/ui';
 
 import {
   LiveMetric,
@@ -54,11 +46,19 @@ export default async function CardStatBlock({ card, className }: Props) {
             heading
           )}
         </Heading>
-        <CardDescription>{body}</CardDescription>
+        <div className="font-bold text-black text-xl font-unbounded">
+          <Heading variant="h3" size="h4" className="font-light">
+            {body}
+          </Heading>
+        </div>
+
+        {/* <div className="font-bold text-black text-xl font-unbounded">
+          <CardDescription>{body}</CardDescription>
+        </div> */}
       </CardHeader>
 
       {content && (
-        <div className="pt-card md:pt-gutter">
+        <div className="pt-4  md:pt-5">
           <PortableText
             value={content}
             components={{
@@ -80,7 +80,7 @@ export default async function CardStatBlock({ card, className }: Props) {
                     ? 'noreferrer noopener'
                     : undefined;
                   return (
-                    <a href={value.href} rel={rel} className="font-bold">
+                    <a href={value.href} rel={rel} className="font-normal">
                       {children}
                       <Icon
                         variant="arrowRightUp"
