@@ -60,7 +60,7 @@ export function Stats({ stats }: Props) {
                   card={item}
                   className={cn(
                     'stats-card',
-                    'col-span-full col-start-1 md:col-span-2 lg:col-span-6 p-card lg:p-8',
+                    'col-span-full col-start-1 md:col-span-3 lg:col-span-6 p-card lg:p-8',
                     // nudge down second column
                     index % 2 !== 0 && 'lg:translate-y-24',
                   )}
