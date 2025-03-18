@@ -25,6 +25,8 @@
       ".turbo",
       ".vercel",
       ".next",
+      "_next",
+      "out",
       ".vscode",
       "playwright-report",
       "test-results",

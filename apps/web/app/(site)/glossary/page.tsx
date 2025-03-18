@@ -66,7 +66,6 @@ export default async function Page() {
               cleanedTerm: cleanTerm(false, entry.term),
               slug: entry.term,
             }))}
-            postType="glossary"
           />
         </div>
 

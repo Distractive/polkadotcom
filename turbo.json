@@ -25,6 +25,7 @@
     "lint": {},
     "typecheck": {},
     "playwright:test": {},
+    "algolia:migrate": {},
     "dev": {
       "cache": false,
       "persistent": true

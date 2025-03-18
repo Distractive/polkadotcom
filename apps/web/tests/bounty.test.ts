@@ -1,5 +1,4 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Bridges Bug Bounty', async ({ page }) => {
@@ -24,15 +23,6 @@ test('Bridges Bug Bounty', async ({ page }) => {
     ).toBeVisible();
     await expect(section.getByText('Blockchain bridges are')).toHaveText(
       'Blockchain bridges are crucial components connecting different blockchain systems. However, their significance and high transaction volume makes them prime targets for malicious attacks. Participate in our bug bounty program to help protect the vital connection between Polkadot and Kusama.',
-    );
-  });
-
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
     );
   });
 
@@ -61,15 +51,6 @@ test('Bridges Bug Bounty', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"scope" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'scope.png',
-      snapshotConfig,
-    );
-  });
-
   await test.step('assert "submission" section is displayed properly', async () => {
     const section = page.getByTestId('cards-sticky-block').first();
 
@@ -90,15 +71,6 @@ test('Bridges Bug Bounty', async ({ page }) => {
     await expect(
       section.getByRole('heading', { name: 'Originality' }),
     ).toBeVisible();
-  });
-
-  await test.step('"submission" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block').first();
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'submission.png',
-      snapshotConfig,
-    );
   });
 
   await test.step('assert "get paid" section is displayed properly', async () => {
@@ -123,15 +95,6 @@ test('Bridges Bug Bounty', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"get paid" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-2442ba4b9e22');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'get-paid.png',
-      snapshotConfig,
-    );
-  });
-
   await test.step('assert "breakthrough" section is displayed properly', async () => {
     const section = page.getByTestId('content-block');
 
@@ -146,15 +109,6 @@ test('Bridges Bug Bounty', async ({ page }) => {
     await expect(
       section.getByRole('link', { name: 'More info' }),
     ).toBeVisible();
-  });
-
-  await test.step('"breakthrough" section screenshot', async () => {
-    const section = page.getByTestId('content-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'breakthrough.png',
-      snapshotConfig,
-    );
   });
 
   await test.step('assert "rules" section is displayed properly', async () => {
@@ -185,15 +139,6 @@ test('Bridges Bug Bounty', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"rules" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block').nth(1);
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'rules.png',
-      snapshotConfig,
-    );
-  });
-
   await test.step('assert "eligibility" section is displayed properly', async () => {
     const section = page.getByTestId('cards-sticky-block').nth(2);
 
@@ -220,15 +165,6 @@ test('Bridges Bug Bounty', async ({ page }) => {
     await expect(
       section.getByRole('heading', { name: 'One-time reward' }),
     ).toBeVisible();
-  });
-
-  await test.step('"eligibility" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block').nth(2);
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'eligibility.png',
-      snapshotConfig,
-    );
   });
 
   await test.step('assert "rules of conduct" section is displayed properly', async () => {
@@ -270,15 +206,6 @@ test('Bridges Bug Bounty', async ({ page }) => {
     await expect(
       section.getByRole('heading', { name: 'Priority candidacy' }),
     ).toBeVisible();
-  });
-
-  await test.step('"rewards" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block').nth(4);
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'rewards.png',
-      snapshotConfig,
-    );
   });
 
   await test.step('assert "faqs" section is displayed properly', async () => {

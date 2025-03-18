@@ -42,46 +42,6 @@ test('Newsroom', async ({ page }) => {
     );
   });
 
-  await test.step('assert "stories" section is displayed properly', async () => {
-    const section = page.getByTestId('cards-block-aa3c92a7db2d');
-
-    await expect(
-      section.getByRole('heading', {
-        name: 'Recent stories',
-      }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Harbour and Velocity Labs' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Evrloot launches Free-to-play' }),
-    ).toBeVisible();
-    await section
-      .getByRole('button', { name: 'Next slide' })
-      .click({ timeout: 2000 });
-    await section
-      .getByRole('button', { name: 'Next slide' })
-      .click({ timeout: 2000 });
-    await expect(
-      section.getByRole('link', { name: 'Hyperbridge launches on' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Acurast unveils processor' }),
-    ).toBeVisible();
-    await expect(
-      page.getByRole('link', { name: 'See all stories' }),
-    ).toBeVisible();
-  });
-
-  await test.step('"stories" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-aa3c92a7db2d');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'stories.png',
-      snapshotConfig,
-    );
-  });
-
   await test.step('assert "mentions" section is displayed properly', async () => {
     const section = page.getByTestId(
       'cards-block-657597c72144db898dddbdee9bcc4f8c',

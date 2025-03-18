@@ -21,7 +21,8 @@
     "build-storybook": "storybook build",
     "postbuild": "next-sitemap --config next-sitemap.config.mjs",
     "preplaywright:test": "echo '\\033[33mPlease check if playwright dependencies are installed. If not, run `pnpm exec playwright install chromium --with-deps`\\033[0m'",
-    "playwright:test": "NODE_ENV=test playwright test"
+    "playwright:test": "NODE_ENV=test playwright test",
+    "algolia:migrate": "bun scripts/algolia-migrate.ts"
   },
   "dependencies": {
     "@next/third-parties": "^14.2.3",
@@ -35,6 +36,7 @@
     "@splinetool/react-spline": "^4.0.0",
     "@t3-oss/env-nextjs": "^0.9.2",
     "@vercel/analytics": "^1.3.1",
+    "algoliasearch": "^5.20.3",
     "groqd": "^0.15.11",
     "groqd-playground": "^0.0.19",
     "gsap": "file:gsap-bonus.tgz",
@@ -43,6 +45,7 @@
     "next-sitemap": "^4.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-instantsearch": "^7.15.3",
     "react-player": "^2.16.0",
     "sanity": "^3.46.1",
     "sanity-plugin-media": "^2.3.2",

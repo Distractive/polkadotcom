@@ -15,6 +15,7 @@
     "playwright:test": "turbo playwright:test",
     "playwright:open": "playwright open",
     "playwright:trace": "playwright show-trace",
+    "algolia:migrate": "turbo algolia:migrate",
     "manypkg:fix": "manypkg fix",
     "postinstall": "manypkg check",
     "typecheck": "turbo typecheck",
