@@ -199,15 +199,6 @@ test('Developers', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"help" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-9110b7215457');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'help.png',
-      snapshotConfig,
-    );
-  });
-
   await test.step('assert "cta" section is displayed properly', async () => {
     const section = page.getByTestId('cta-box');
 

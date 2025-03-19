@@ -19,7 +19,7 @@ const searchClient = getSearchClient();
 function HitComponent({ hit }: { hit: any }) {
   return (
     <Link
-      href={`/${hit.slug}`}
+      href={`${hit.slug}`}
       className="text-blue line-clamp-1 h-10 overflow-hidden rounded-lg p-2 leading-roomy hover:bg-grey-300"
     >
       {hit.title}

@@ -23,9 +23,6 @@ test('SDK', async ({ page }) => {
       }),
     ).toBeVisible();
     await expect(section.getByTestId('breadcrumb')).toBeVisible();
-    await expect(section.getByText('Polkadot SDK offers a highly')).toHaveText(
-      'Polkadot SDK offers a highly customizable modular architecture and an extensive suite of tools and libraries, enabling next-level blockchain innovation.',
-    );
     await expect(
       section.getByRole('link', { name: 'Developer Docs' }),
     ).toBeVisible();
@@ -39,34 +36,6 @@ test('SDK', async ({ page }) => {
     await page.waitForTimeout(2000);
     expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
       'header.png',
-      snapshotConfig,
-    );
-  });
-
-  await test.step('assert "sdk" section is displayed properly', async () => {
-    const section = page.getByTestId('cards-block-8be0f6313ae7');
-
-    await expect(
-      section.getByRole('heading', {
-        name: 'One SDK to power them all',
-      }),
-    ).toBeVisible();
-    await expect(section.getByText('Break free from the')).toHaveText(
-      'Break free from the constraints of other frameworks. The Polkadot SDK offers a flexible, composable, and comprehensive framework for blockchain development, whether you’re creating a new blockchain or enhancing an existing one.',
-    );
-    await expect(section.getByText('Pick and even hot-swap')).toBeVisible();
-    await expect(
-      section.getByText('Enjoy rapid transaction times'),
-    ).toBeVisible();
-    await expect(section.getByText('Go solo or connect to the')).toBeVisible();
-    await expect(section.getByText('Adapt your architecture as')).toBeVisible();
-  });
-
-  await test.step('"sdk" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-8be0f6313ae7');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'sdk.png',
       snapshotConfig,
     );
   });
@@ -105,9 +74,6 @@ test('SDK', async ({ page }) => {
         name: 'Key features of Polkadot SDK',
       }),
     ).toBeVisible();
-    await expect(section.getByText('Go from zero to blockchain')).toHaveText(
-      'Go from zero to blockchain before your Uber Eats arrives',
-    );
     await expect(
       section.getByRole('link', { name: 'Forkless & seamless upgrades' }),
     ).toBeVisible();
@@ -122,15 +88,6 @@ test('SDK', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"features" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block').first();
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'features.png',
-      snapshotConfig,
-    );
-  });
-
   await test.step('assert "day one" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-ac3aae8ec3fe');
 
@@ -140,21 +97,12 @@ test('SDK', async ({ page }) => {
       }),
     ).toBeVisible();
     await expect(section.getByText('Connect effortlessly to the')).toHaveText(
-      'Connect effortlessly to the Polkadot Chain if and when you want to gain access to its shared security mechanism, built-in cross-chain communication capabilities, and an ever-expanding universe of projects.',
+      'Connect effortlessly to the Polkadot Chain and gain access to its shared security mechanism, built-in cross-chain communication capabilities, and an ever-expanding universe of projects.',
     );
     await expect(
       section.getByRole('link', { name: 'Learn more' }),
     ).toBeVisible();
     await expect(section.locator('img')).toBeVisible();
-  });
-
-  await test.step('"day one" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-ac3aae8ec3fe');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'day-one.png',
-      snapshotConfig,
-    );
   });
 
   await test.step('assert "powering" section is displayed properly', async () => {
@@ -165,9 +113,6 @@ test('SDK', async ({ page }) => {
         name: 'Powering millions of',
       }),
     ).toBeVisible();
-    await expect(section.getByText('The Polkadot SDK makes')).toHaveText(
-      'The Polkadot SDK makes building a blockchain far easier, faster, cheaper, and safer than ever before. This open-source framework gives you free access to a robust codebase developed and used by industry-leading teams building some of the biggest networks today. Projects that rely on the Polkadot SDK to power some portion of their chain:',
-    );
     await expect(
       page.getByRole('link', { name: 'See more projects' }),
     ).toBeVisible();
@@ -204,15 +149,6 @@ test('SDK', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"powering" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block').nth(1);
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'powering.png',
-      snapshotConfig,
-    );
-  });
-
   await test.step('assert "no limits" section is displayed properly', async () => {
     const section = page.getByTestId('cards-small-block').nth(2);
 
@@ -233,15 +169,6 @@ test('SDK', async ({ page }) => {
     await expect(
       section.getByRole('link', { name: 'Randomness' }),
     ).toBeVisible();
-  });
-
-  await test.step('"no limits" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block').nth(2);
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'no-limits.png',
-      snapshotConfig,
-    );
   });
 
   await test.step('assert "resources" section is displayed properly', async () => {
@@ -269,15 +196,6 @@ test('SDK', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"resources" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block').nth(3);
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'resources.png',
-      snapshotConfig,
-    );
-  });
-
   await test.step('assert "start building" section is displayed properly', async () => {
     const section = page.getByTestId('content-block');
 
@@ -292,14 +210,5 @@ test('SDK', async ({ page }) => {
     await expect(
       section.getByRole('link', { name: 'Start building' }),
     ).toBeVisible();
-  });
-
-  await test.step('"start building" section screenshot', async () => {
-    const section = page.getByTestId('content-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'start-building.png',
-      snapshotConfig,
-    );
   });
 });

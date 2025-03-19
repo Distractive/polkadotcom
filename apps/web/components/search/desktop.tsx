@@ -50,7 +50,7 @@ export function DesktopSearch() {
                   className={`p-4 ${hit.__position === 1 ? 'border-0' : 'border-t border-grey-200'}`}
                 >
                   <Link
-                    href={`/${hit.slug}`}
+                    href={`${hit.slug}`}
                     onClick={() => setIsSearchOpen(false)}
                   >
                     <div className="grid grid-cols-10 text-l font-bold hover:bg-grey-100 p-2">

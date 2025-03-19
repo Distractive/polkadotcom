@@ -67,6 +67,12 @@ interface AlgoliaRecord {
   custom_excerpt?: string;
 }
 
+const postTypeMap = {
+  Blog: '/blog/',
+  'Press Release': '/newsroom/press-releases/',
+  'Case Study': '/case-studies/',
+};
+
 function getEnvVar(key: string): string {
   const value = process.env[key];
 
@@ -182,9 +188,9 @@ function getDocSlug(doc: SanityDoc): string {
     doc.post_type === 'Press Release' ||
     doc.post_type === 'Case Study'
   ) {
-    return `blog/${baseSlug}`;
+    return `${postTypeMap[doc.post_type]}${baseSlug}`;
   }
-  return baseSlug;
+  return `/${baseSlug}`;
 }
 
 function initializeAlgoliaDoc(doc: SanityDoc): AlgoliaRecord {
@@ -254,9 +260,21 @@ async function migrate(indexName: string) {
     let records: AlgoliaRecord[] = docs.flatMap(mapSanityToAlgolia);
 
     if (indexName === 'blog') {
-      records = records.filter((record) => record.slug.includes('blog'));
+      records = records.filter(
+        (record) =>
+          record.slug.includes('blog') ||
+          record.slug.includes('case-studies') ||
+          record.slug.includes('newsroom'),
+      );
     } else {
-      records = records.filter((record) => !record.slug.includes('blog'));
+      records = records.filter(
+        (record) =>
+          !(
+            record.slug.includes('blog') ||
+            record.slug.includes('case-studies') ||
+            record.slug.includes('newsroom')
+          ),
+      );
     }
 
     await algoliaClient.clearObjects({ indexName });
