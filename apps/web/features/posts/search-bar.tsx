@@ -7,36 +7,25 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import {
-  BLOG_POSTTYPE,
-  type CASE_STUDY_POSTTYPE,
-  type PRESS_RELEASE_POSTTYPE,
-} from '@/constants/global';
 import { Icon, cn } from '@shared/ui';
 
 interface Props {
   searches: ReadonlyArray<
     TypeFromSelection<typeof searchSelection> & { cleanedTerm?: string }
   >;
-  postType:
-    | typeof BLOG_POSTTYPE
-    | typeof PRESS_RELEASE_POSTTYPE
-    | typeof CASE_STUDY_POSTTYPE
-    | 'glossary';
 }
 
-export function SearchBar({ searches, postType }: Props) {
+export function SearchBar({ searches }: Props) {
   const MAX_RESULTS = 30;
   const [searchable, setSearchable] = useState<string>('');
   const [findings, setFindings] = useState<Array<number>>([]);
 
-  const blogList = useMemo(
+  const matchesList = useMemo(
     () =>
       searches.map((search) => {
         let title = search.title;
         const specialCharactersPattern = /[^A-Za-z0-9\s]/g;
 
-        // Replace special characters with an empty string
         title = title.replace(specialCharactersPattern, '');
         title = title.toLowerCase();
         return title;
@@ -45,14 +34,13 @@ export function SearchBar({ searches, postType }: Props) {
   );
 
   useEffect(() => {
-    // Ignoring empty searches
     if (searchable.trim().split(' ').join('').length <= 0) {
       setFindings([]);
       return;
     }
 
     let results: Array<{ index: number; score: number }> = [];
-    blogList.map((title, index) => {
+    matchesList.map((title, index) => {
       let score = 0;
       searchable
         .trim()
@@ -76,7 +64,7 @@ export function SearchBar({ searches, postType }: Props) {
       .slice(0, MAX_RESULTS);
 
     setFindings(finds);
-  }, [searchable, blogList]);
+  }, [searchable, matchesList]);
 
   const handleGlossaryClick = (term: string) => {
     const cleanedTerm = cleanTerm(false, term);
@@ -105,35 +93,19 @@ export function SearchBar({ searches, postType }: Props) {
           setSearchable(value.toLowerCase());
         }}
       />
-
       <SearchBarResults isOpen={searchable.length > 0}>
         {findings.length > 0 &&
           findings.map((finding) => {
-            if (postType === 'glossary') {
-              return (
-                <SearchBarListItem
-                  key={searches[finding]?._id}
-                  href="#"
-                  onClick={() => {
-                    const cleanedTerm = searches[finding]?.cleanedTerm;
-                    if (cleanedTerm) {
-                      handleGlossaryClick(cleanedTerm);
-                    }
-                  }}
-                >
-                  {searches[finding]?.title}
-                </SearchBarListItem>
-              );
-            }
-
             return (
               <SearchBarListItem
                 key={searches[finding]?._id}
-                href={
-                  postType === BLOG_POSTTYPE
-                    ? `/blog/${searches[finding]?.slug}`
-                    : `/newsroom/press-releases/${searches[finding]?.slug}`
-                }
+                href="#"
+                onClick={() => {
+                  const cleanedTerm = searches[finding]?.cleanedTerm;
+                  if (cleanedTerm) {
+                    handleGlossaryClick(cleanedTerm);
+                  }
+                }}
               >
                 {searches[finding]?.title}
               </SearchBarListItem>

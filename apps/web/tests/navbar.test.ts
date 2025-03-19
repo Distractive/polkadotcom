@@ -9,6 +9,7 @@ test('Navbar', async ({ page }) => {
   });
 
   await test.step('navbar screenshot', async () => {
+    await page.waitForTimeout(10000);
     const navbar = page.getByTestId('navbar');
     await page.waitForTimeout(2000);
     expect(

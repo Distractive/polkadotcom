@@ -40,9 +40,7 @@ test('Case Studies', async ({ page }) => {
   await test.step('assert "cases" section is displayed properly', async () => {
     const section = page.getByTestId('main-content');
 
-    await expect(
-      section.getByRole('textbox', { name: 'Enter your search' }),
-    ).toBeVisible();
+    await expect(section.getByTestId('blog-search')).toBeVisible();
     await expect(section.getByText('Page: 1 of')).toBeVisible();
     await expect(
       section.getByRole('link', { name: 'Energy Web drives the clean' }),

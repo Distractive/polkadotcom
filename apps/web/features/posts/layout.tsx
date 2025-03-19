@@ -1,5 +1,4 @@
 import { getPostHeading, getPosts } from '@/sanity/queries/posts';
-import { getSearchData } from '@/sanity/queries/search';
 import type { headerSelection } from '@/sanity/selections/blocks/header';
 import type { TypeFromSelection } from 'groqd';
 
@@ -15,10 +14,10 @@ import {
   BreadcrumbBlock,
   type BreadcrumbProps,
 } from '../page/blocks/breadcrumb';
+import { Search } from './blog-search';
 import { Grid } from './grid';
 import { PostPagination } from './pagination';
 import { ScrollToView } from './scroll-to-view';
-import { SearchBar } from './search-bar';
 
 interface LayoutProps {
   page: number;
@@ -45,8 +44,6 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
   })();
 
   const [postsData] = await getPostHeading(postType);
-
-  const searchData = await getSearchData(type);
 
   // Hard code press release breadcrumb due to URL structure of parent pages
   const breadcrumb: BreadcrumbProps = {
@@ -138,9 +135,7 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
           <div className="grid-system col-span-full mb-card">
             {tagSlug === '' && (
               <search className="col-span-full mb-8 lg:col-span-8 lg:mb-0">
-                {searchData && (
-                  <SearchBar searches={searchData} postType={type} />
-                )}
+                <Search />
               </search>
             )}
 

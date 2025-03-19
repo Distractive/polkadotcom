@@ -41,7 +41,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
   }, [isOpen]);
 
   return (
-    <div className="z-40 mt-4 flex w-full items-end justify-end">
+    <div className="z-30 mt-4 flex w-full items-end justify-end">
       <div
         id="page-menu"
         ref={ref}

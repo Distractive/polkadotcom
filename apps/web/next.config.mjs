@@ -39,6 +39,8 @@ const cspSources = {
     'https://vimeo.com',
     'wss://*.hotjar.com',
     'www.google-analytics.com',
+    'https://*-dsn.algolia.net',
+    'https://*.algolianet.com/',
   ],
   'default-src': ["'self'"],
   'font-src': [

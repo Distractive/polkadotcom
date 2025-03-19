@@ -28,7 +28,9 @@ test('Grants', async ({ page }) => {
     await expect(section.getByText('Polkadot offers extensive')).toHaveText(
       'Polkadot offers extensive funding opportunities for the visionaries ready to build the internet of tomorrow.',
     );
-    await expect(section.getByRole('link', { name: 'Discover' })).toBeVisible();
+    await expect(
+      section.getByRole('link', { name: 'EXPLORE FUNDING' }),
+    ).toBeVisible();
     await expect(
       section.getByRole('img', { name: 'Two people shaking hands' }),
     ).toBeVisible();
