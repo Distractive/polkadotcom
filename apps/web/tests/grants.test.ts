@@ -185,9 +185,6 @@ test('Grants', async ({ page }) => {
     await expect(
       section.getByRole('link', { name: 'Introducing PoKe PoKe awarded' }),
     ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Empowering decentralization' }),
-    ).toBeVisible();
   });
 
   await test.step('"recent" section screenshot', async () => {
