@@ -110,3 +110,8 @@ You can find this in your Vercel Project under Settings → Git → "Deploy Hook
 ### Vercel Token
 This is a token from your Vercel Account (not project).
 You can find this from your Vercel Account dropdown under Settings → "Tokens"
+e
+
+## License
+
+This project is licensed under the Apache License 2.0 – see the [LICENSE](./LICENSE) file for details.
