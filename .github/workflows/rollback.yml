@@ -59,13 +59,13 @@ jobs:
 
       - name: Upload files to temp folder
         run: |
-          aws s3 sync website/apps/web/out/ $${{ steps.rollback.outputs.rollback }} \
+          aws s3 sync website/apps/web/out/ ${{ steps.rollback.outputs.rollback }} \
             --cache-control "public, max-age=300, must-revalidate" \
             --only-show-errors
 
       - name: Atomic switch
         run: |
-          aws s3 sync $${{ steps.rollback.outputs.rollback }} s3://${{ vars.DEPLOYMENT_BUCKET }}/ \
+          aws s3 sync ${{ steps.rollback.outputs.rollback }} s3://${{ vars.DEPLOYMENT_BUCKET }}/ \
             --delete \
             --exact-timestamps \
             --only-show-errors
@@ -73,7 +73,7 @@ jobs:
       - name: Cleanup rollback temp folder
         continue-on-error: true
         run: |
-          aws s3 rm $${{ steps.rollback.outputs.rollback }} --recursive \
+          aws s3 rm ${{ steps.rollback.outputs.rollback }} --recursive \
             --only-show-errors
 
       - name: Invalidate CloudFront
