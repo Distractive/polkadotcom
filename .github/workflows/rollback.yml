@@ -18,6 +18,8 @@ jobs:
     permissions:
       id-token: write
       contents: read
+    env:
+      ROLLBACK_PATH: s3://${{ vars.DEPLOYMENT_BUCKET }}/_rollback
     environment:
       name: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
 
@@ -53,13 +55,13 @@ jobs:
 
       - name: Upload files to temp folder
         run: |
-          aws s3 sync website/apps/web/out/ s3://${{ vars.DEPLOYMENT_BUCKET }}/_rollback \
+          aws s3 sync website/apps/web/out/ $ROLLBACK_PATH \
             --cache-control "public, max-age=300, must-revalidate" \
             --only-show-errors
 
       - name: Atomic switch
         run: |
-          aws s3 sync s3://${{ vars.DEPLOYMENT_BUCKET }}/_rollback s3://${{ vars.DEPLOYMENT_BUCKET }}/ \
+          aws s3 sync $ROLLBACK_PATH s3://${{ vars.DEPLOYMENT_BUCKET }}/ \
             --delete \
             --exact-timestamps \
             --only-show-errors
@@ -67,7 +69,7 @@ jobs:
       - name: Cleanup rollback temp folder
         continue-on-error: true
         run: |
-          aws s3 rm s3://${{ vars.DEPLOYMENT_BUCKET }}/_rollback --recursive \
+          aws s3 rm $ROLLBACK_PATH --recursive \
             --only-show-errors
 
       - name: Invalidate CloudFront

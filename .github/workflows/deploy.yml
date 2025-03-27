@@ -18,6 +18,7 @@ jobs:
       contents: read
     env:
       SKIP_ENV_VALIDATION: true
+      TEMP_BUILD_PATH: s3://${{ vars.DEPLOYMENT_BUCKET }}/_tmp
     environment:
       name: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
     steps:
@@ -67,19 +68,19 @@ jobs:
 
       - name: Upload build to temp folder
         run: |
-          aws s3 sync apps/web/out/ s3://${{ vars.DEPLOYMENT_BUCKET }}/_new \
+          aws s3 sync apps/web/out/ $TEMP_BUILD_PATH \
             --cache-control "public, max-age=300, must-revalidate" \
             --only-show-errors
 
       - name: Atomic switch
         run: |
-          aws s3 sync s3://${{ vars.DEPLOYMENT_BUCKET }}/_new s3://${{ vars.DEPLOYMENT_BUCKET }}/ \
+          aws s3 sync $TEMP_BUILD_PATH s3://${{ vars.DEPLOYMENT_BUCKET }}/ \
             --delete \
             --exact-timestamps \
             --only-show-errors
 
       - name: Cleanup temp upload folder
-        run: aws s3 rm s3://${{ vars.DEPLOYMENT_BUCKET }}/_new --recursive \
+        run: aws s3 rm $TEMP_BUILD_PATH --recursive \
             --only-show-errors
 
       - name: Invalidate CloudFront for Website
