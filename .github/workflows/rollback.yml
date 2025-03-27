@@ -51,9 +51,24 @@ jobs:
       - name: Unzip
         run: unzip website.zip -d website
 
-      - name: Upload to S3 (rollback)
+      - name: Upload files to temp folder
         run: |
-          aws s3 sync website/apps/web/out/ s3://${{ vars.DEPLOYMENT_BUCKET }}/ --delete --cache-control "max-age=0, no-cache, no-store, must-revalidate"
+          aws s3 sync website/apps/web/out/ s3://${{ vars.DEPLOYMENT_BUCKET }}/_rollback \
+            --cache-control "public, max-age=300, must-revalidate" \
+            --only-show-errors
+
+      - name: Atomic switch
+        run: |
+          aws s3 sync s3://${{ vars.DEPLOYMENT_BUCKET }}/_rollback s3://${{ vars.DEPLOYMENT_BUCKET }}/ \
+            --delete \
+            --exact-timestamps \
+            --only-show-errors
+
+      - name: Cleanup rollback temp folder
+        continue-on-error: true
+        run: |
+          aws s3 rm s3://${{ vars.DEPLOYMENT_BUCKET }}/_rollback --recursive \
+            --only-show-errors
 
       - name: Invalidate CloudFront
         run: |

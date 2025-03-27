@@ -65,8 +65,22 @@ jobs:
           role-to-assume: ${{ vars.AWS_ROLE }}
           aws-region: ${{ vars.AWS_REGION }}
 
-      - name: Upload to S3
-        run: aws s3 sync apps/web/out/ s3://${{ vars.DEPLOYMENT_BUCKET }} --delete --cache-control "max-age=0, no-cache, no-store, must-revalidate"
+      - name: Upload build to temp folder
+        run: |
+          aws s3 sync apps/web/out/ s3://${{ vars.DEPLOYMENT_BUCKET }}/_new \
+            --cache-control "public, max-age=300, must-revalidate" \
+            --only-show-errors
+
+      - name: Atomic switch
+        run: |
+          aws s3 sync s3://${{ vars.DEPLOYMENT_BUCKET }}/_new s3://${{ vars.DEPLOYMENT_BUCKET }}/ \
+            --delete \
+            --exact-timestamps \
+            --only-show-errors
+
+      - name: Cleanup temp upload folder
+        run: aws s3 rm s3://${{ vars.DEPLOYMENT_BUCKET }}/_new --recursive \
+            --only-show-errors
 
       - name: Invalidate CloudFront for Website
         run: |
@@ -84,4 +98,5 @@ jobs:
         run: zip -r ${{ steps.filename.outputs.filename }} apps/web/out/
 
       - name: Upload to S3
-        run: aws s3 cp ${{ steps.filename.outputs.filename }} s3://${{ vars.DEPLOYMENT_BUCKET_BACKUP }}/
+        run: aws s3 cp ${{ steps.filename.outputs.filename }} s3://${{ vars.DEPLOYMENT_BUCKET_BACKUP }}/ \
+          --only-show-errors
