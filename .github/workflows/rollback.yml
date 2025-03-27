@@ -54,7 +54,7 @@ jobs:
       - name: Getting rollback file path
         id: rollback
         run: |
-          tmp_path=s3://${{ vars.DEPLOYMENT_BUCKET }}/_rollback
+          rollback=s3://${{ vars.DEPLOYMENT_BUCKET }}/_rollback
           echo "rollback=$rollback" >> $GITHUB_OUTPUT
 
       - name: Upload files to temp folder
