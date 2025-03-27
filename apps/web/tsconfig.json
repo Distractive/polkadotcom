@@ -1,0 +1,20 @@
+{
+  "extends": "@shared/ts-config/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "declaration": false,
+    "declarationMap": false
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "sanity.cli.ts",
+    "../../packages/ui/components/ui/progress.tsx"
+  ],
+  "exclude": ["node_modules"]
+}

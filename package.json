@@ -1,0 +1,66 @@
+{
+  "name": "turborepo-nextjs",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "build": "turbo run build",
+    "build:static": "turbo run build:static",
+    "run:static": "turbo run run:static",
+    "dev": "turbo run dev --parallel",
+    "dev:turbo": "turbo run dev:turbo --parallel",
+    "static": "turbo run static",
+    "start": "next start",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "test": "SKIP_ENV_VALIDATION=true vitest",
+    "test:ui": "SKIP_ENV_VALIDATION=true vitest --ui",
+    "test:run": "SKIP_ENV_VALIDATION=true vitest run",
+    "playwright:test": "turbo playwright:test",
+    "playwright:open": "playwright open",
+    "playwright:trace": "playwright show-trace",
+    "algolia:migrate": "turbo algolia:migrate",
+    "manypkg:fix": "manypkg fix",
+    "postinstall": "manypkg check",
+    "typecheck": "turbo typecheck",
+    "prepare": "husky"
+  },
+  "pnpm": {
+    "overrides": {
+      "@opentelemetry/api": "1.4.1",
+      "@opentelemetry/core": "1.13.0",
+      "@opentelemetry/exporter-trace-otlp-grpc": "0.39.1",
+      "@opentelemetry/resources": "1.13.0",
+      "@opentelemetry/sdk-trace-base": "1.13.0",
+      "@opentelemetry/sdk-trace-node": "1.13.0",
+      "@opentelemetry/semantic-conventions": "1.13.0",
+      "cross-spawn": "7.0.6",
+      "elliptic": "6.6.1",
+      "axios": "1.8.2",
+      "esbuild": "0.25.1",
+      "@octokit/request": "9.2.2",
+      "@octokit/plugin-paginate-rest": "11.4.3"
+    }
+  },
+  "engines": {
+    "node": ">=22.x"
+  },
+  "packageManager": "pnpm@10.6.2",
+  "manypkg": {
+    "ignoredRules": ["INTERNAL_MISMATCH"]
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
+    "@manypkg/cli": "^0.23.0",
+    "@turbo/gen": "^1.13.4",
+    "@vercel/sdk": "^1.4.0",
+    "@vitest/ui": "^3.0.8",
+    "dotenv": "^16.4.7",
+    "husky": "^9.1.7",
+    "turbo": "^1.13.4",
+    "vitest": "^3.0.8"
+  }
+}

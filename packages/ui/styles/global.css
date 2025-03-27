@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .grid-system {
+    @apply grid w-full grid-cols-6 lg:grid-cols-12;
+  }
+
+  .grid-pile {
+    @apply grid;
+  }
+
+  .grid-pile > * {
+    grid-area: 1 / 1;
+  }
+
+  .max-width {
+    @apply mx-auto w-full max-w-[100rem];
+  }
+
+  .link-styling {
+    @apply font-[700] underline hover:text-pink-500;
+  }
+
+  .heading-break {
+    text-wrap: balance;
+    hyphens: auto;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+@layer base {
+  body {
+    @apply text-grey-800;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-black;
+  }
+}
+
+:root {
+  --spacing-page: 6rem;
+  --spacing-section: 2rem;
+  --spacing-gutter: 1.5rem;
+  --spacing-card: 2rem;
+  --spacing-copy: 0.5rem;
+  --spacing-nav: 1rem;
+
+  /* The nav component is fixed. Spacing to prevent initial header overlap */
+  --spacing-nav-height: 3.5rem;
+  --spacing-header-top: calc(var(--spacing-nav-height) + var(--spacing-gutter));
+
+  /* Keep the screen vars below in sync with tailwind.config.ts */
+  --screen-sm: 22.5rem;
+  --screen-md: 45.5rem;
+  --screen-lg: 64rem;
+  --screen-xl: 90rem;
+  --screen-2xl: 120rem;
+}
+
+/* Keep the media queries synced with the screen vars above and those in tailwind.config.ts */
+
+/* Medium (Tablet) */
+@media (min-width: 45.5rem) {
+  :root {
+    --spacing-gutter: 2rem;
+  }
+}
+
+/* Large (Desktop) */
+@media (min-width: 64rem) {
+  :root {
+    --spacing-page: 7.5rem;
+    --spacing-section: 4rem;
+    --spacing-gutter: 3rem;
+    --spacing-nav: 1.5rem;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hubspot */
+
+.hubspot {
+  font-size: 0.875rem;
+}
+
+@media (min-width: 45.5rem) {
+  .hubspot {
+    font-size: 1rem !important;
+  }
+}
+
+.hubspot form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+@media (min-width: 45.5rem) {
+  .hubspot form {
+    gap: 1rem;
+  }
+}
+
+.hubspot .hs-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-copy);
+}
+
+.hubspot .hs-error-msg {
+  color: red;
+}
+
+.hubspot input[type="text"],
+.hubspot input[type="email"],
+.hubspot select,
+.hubspot textarea {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid #d5d4d8;
+  background: #e7e7ec;
+  padding: 0 1rem;
+}
+
+.hubspot input[type="text"],
+.hubspot input[type="email"],
+.hubspot select {
+  height: 3rem;
+}
+
+@media (min-width: 45.5rem) {
+  .hubspot input[type="text"],
+  .hubspot input[type="email"],
+  .hubspot select {
+    height: 3.5rem;
+  }
+}
+
+.hubspot textarea {
+  padding: 1rem;
+}
+
+.hubspot input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.hubspot .hs-form-booleancheckbox-display {
+  display: flex;
+  align-items: center;
+}
+
+.hubspot a {
+  text-decoration: underline;
+}
+
+.hubspot input[type="submit"] {
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  background: black !important;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: white;
+  font-family: var(--font-unbounded), system-ui, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.hubspot input[type="submit"]:hover {
+  background: #ff2670 !important;
+}
+
+.hubspot p {
+  text-align: left !important;
+}
+
+.hubspot h1 {
+  text-align: left !important;
+  font-weight: bold;
+  margin: 0;
+}

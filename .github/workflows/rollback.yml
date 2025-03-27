@@ -1,0 +1,62 @@
+name: Rollback
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_hash:
+        description: "Commit hash"
+        required: true
+        type: string
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    environment:
+      name: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Getting backup_path
+        id: backup_path
+        run: |
+          backup_path="s3://${{ vars.DEPLOYMENT_BUCKET_BACKUP }}/${{ github.event.inputs.commit_hash }}.zip"
+          echo "backup_path=$backup_path" >> $GITHUB_OUTPUT
+
+      - name: Check if ZIP file exists in S3
+        run: |
+          if aws s3 ls "${{ steps.backup_path.outputs.backup_path }}" > /dev/null; then
+            echo "Found ${{ steps.backup_path.outputs.backup_path }} in backup bucket."
+          else
+            echo "No backup found for path '${{ steps.backup_path.outputs.backup_path }}'."
+            exit 1
+          fi
+
+      - name: Download ZIP from S3
+        run: |
+          echo "Downloading ${{ steps.backup_path.outputs.backup_path }}..."
+          aws s3 cp ${{ steps.backup_path.outputs.backup_path }} website.zip
+
+      - name: Unzip
+        run: unzip website.zip -d website
+
+      - name: Upload to S3 (rollback)
+        run: |
+          aws s3 sync website/apps/web/out/ s3://${{ vars.DEPLOYMENT_BUCKET }}/ --delete --cache-control "max-age=0, no-cache, no-store, must-revalidate"
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ vars.DISTRIBUTION_ID }} \
+            --paths "/*"

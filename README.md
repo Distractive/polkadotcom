@@ -1,0 +1,112 @@
+# Polkadot Website
+
+## Workflow
+
+We use [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow):
+
+1. We work on feature branches named `feat/<short-title-of-feature>` (or bugfix branches named `fix/<bug-name>`).
+2. When the feature is done, we merge it into `develop` with a PR.
+3. When `develop` is stable, we merge it into `staging`.
+4. We merge into `main` only when we are ready to release a new version.
+
+We can use other branches naming where needed i.e. /chore if the branch is for maintenance or configuration.
+
+## Structure
+
+This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes the following packages/apps:
+
+#### ui package
+
+This is where all UI components should be created and allow us to build more complicated components using composition.
+
+The current components in the package are based on components from [shadcn/ui](https://ui.shadcn.com/) - the advantages of this are
+
+- they are already designed and tested
+- they are already responsive
+- they are already accessible
+
+This shouldn't be just a lift and shift, but use them as a base to build upon but not deviate from how they are constructed.
+
+### storybook
+
+Storybook was added as it's own app package so we can host it on Vercel and use it as a testing tool for the components we build. This caused issues with Next components so was moved back into the web app. On vercel there is a project that runs seperatly to view storybook components.
+
+### web
+
+This is a nextjs app, the site will be using SSG so this needs to be considered throughout any layout and page construction.
+
+All page features should be contained in the /features folder and any components that are to be reused should be in the /components folder and composed of ui components in the ui package.
+
+### Build
+
+To build all apps and packages, run the following command:
+
+```
+pnpm run build
+```
+
+### Environment variables
+Environment variables are coming from Vercel
+```
+pnpm i -g vercel
+```
+
+Then navigate to /apps/web and run
+```
+vercel link
+```
+
+Choose Stink Studios and the project is called polkadot-web
+Then run
+
+```
+vercel env pull .env.local
+```
+
+### Develop
+
+To develop all apps and packages, run the following command:
+
+```
+pnpm run dev:turbo
+```
+
+To add new packages to specific apps, run the following command:
+
+```
+pnpm add <package-name> --filter <app-name>
+```
+
+## Static Site Generation vs Dynamic
+
+We currently SSG for the following routes
+
+- [slug] & [childslug] - this is for the content pages
+- /blog/[slug] & /newsroom/press-release/[slug] - this is for the blog and newsroom pages
+- /blog & /newsroom/press-release - this is for the blog and newsroom index pages - going beyond this seems overkill to render statically as the index page will always be the most hit. All other pages will be served on demand. We redirect to each page/1 as this is ssg.
+
+## Deploy to vercel
+
+Instead of using a webhook to trigger a build on publish, delete etc we are using a package to deploy within Sanity.  This allows the editing and publishing of multiple documents without triggering a build each time.
+
+The is an option in the Sanity dashboard called ```deploy``` which will trigger a build on Vercel and deploy the site. Multiple targets can be added.
+
+### Title
+A name for your deployment to help you organize your deployments.
+Typically, this should be the environment you are deploying to, like Production or Staging
+
+### Vercel Project Name
+This is the slugified project name listed in your Vercel account.
+You can find this in your Vercel Project under Settings → General → "Project Name"
+
+### Vercel Team Name (optional)
+If your project is part of a Vercel Team you must provide this value.
+You can find this in your Vercel Team, under Settings → General → "Team Name"
+
+### Deploy Hook URL
+This is the Vercel Deploy hook you want to trigger builds with.
+You can find this in your Vercel Project under Settings → Git → "Deploy Hooks"
+
+### Vercel Token
+This is a token from your Vercel Account (not project).
+You can find this from your Vercel Account dropdown under Settings → "Tokens"

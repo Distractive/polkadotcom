@@ -1,0 +1,87 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - main
+      - staging
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      SKIP_ENV_VALIDATION: true
+    environment:
+      name: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --ignore-scripts --frozen-lockfile
+
+      - name: Algolia migrate
+        env:
+          ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_ADMIN_API_KEY }}
+          SANITY_API_READ_TOKEN: ${{ secrets.SANITY_API_READ_TOKEN }}
+          NEXT_PUBLIC_ALGOLIA_APP_ID: ${{ vars.NEXT_PUBLIC_ALGOLIA_APP_ID }}
+          NEXT_PUBLIC_ALGOLIA_SEARCH_KEY: ${{ vars.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY }}
+          NEXT_PUBLIC_SANITY_API_VERSION: ${{ vars.NEXT_PUBLIC_SANITY_API_VERSION }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ vars.NEXT_PUBLIC_SANITY_DATASET }}
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+        run: pnpm algolia:migrate
+
+      - name: Build
+        env:
+          BUILD_FLAG: true
+          NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
+          NEXT_PUBLIC_SANITY_API_VERSION: ${{ vars.NEXT_PUBLIC_SANITY_API_VERSION }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ vars.NEXT_PUBLIC_SANITY_DATASET }}
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          SANITY_API_READ_TOKEN: ${{ secrets.SANITY_API_READ_TOKEN }}
+          NEXT_PUBLIC_ALGOLIA_APP_ID: ${{ vars.NEXT_PUBLIC_ALGOLIA_APP_ID }}
+          NEXT_PUBLIC_ALGOLIA_SEARCH_KEY: ${{ vars.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY }}
+          NEXT_PUBLIC_DEPLOYMENT: ${{ vars.NEXT_PUBLIC_DEPLOYMENT }}
+        run: pnpm build:static
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Upload to S3
+        run: aws s3 sync apps/web/out/ s3://${{ vars.DEPLOYMENT_BUCKET }} --delete --cache-control "max-age=0, no-cache, no-store, must-revalidate"
+
+      - name: Invalidate CloudFront for Website
+        run: |
+          aws cloudfront create-invalidation \
+          --distribution-id ${{ vars.DISTRIBUTION_ID }} \
+          --paths "/*"
+
+      - name: Getting filename
+        id: filename
+        run: |
+          filename=$(git log -1 --format=%H).zip
+          echo "filename=$filename" >> $GITHUB_OUTPUT
+
+      - name: Zip build folder
+        run: zip -r ${{ steps.filename.outputs.filename }} apps/web/out/
+
+      - name: Upload to S3
+        run: aws s3 cp ${{ steps.filename.outputs.filename }} s3://${{ vars.DEPLOYMENT_BUCKET_BACKUP }}/
