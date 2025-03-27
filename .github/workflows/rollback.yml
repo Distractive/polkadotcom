@@ -31,15 +31,14 @@ jobs:
       - name: Getting backup_path
         id: backup_path
         run: |
-          backup_path="s3://${{ vars.DEPLOYMENT_BUCKET_BACKUP }}/${{ github.event.inputs.commit_hash }}.zip"
-          echo "backup_path=$backup_path" >> $GITHUB_OUTPUT
+          echo "backup_path=s3://${{ vars.DEPLOYMENT_BUCKET_BACKUP }}/${{ github.event.inputs.commit_hash }}.zip" >> $GITHUB_OUTPUT
 
       - name: Check if ZIP file exists in S3
         run: |
           if aws s3 ls "${{ steps.backup_path.outputs.backup_path }}" > /dev/null; then
-            echo "Found ${{ steps.backup_path.outputs.backup_path }} in backup bucket."
+            echo "Found backup: ${{ steps.backup_path.outputs.backup_path }}"
           else
-            echo "No backup found for path '${{ steps.backup_path.outputs.backup_path }}'."
+            echo "No backup found at '${{ steps.backup_path.outputs.backup_path }}'"
             exit 1
           fi
 
@@ -53,13 +52,11 @@ jobs:
 
       - name: Getting rollback file path
         id: rollback
-        run: |
-          rollback=s3://${{ vars.DEPLOYMENT_BUCKET }}/_rollback
-          echo "rollback=$rollback" >> $GITHUB_OUTPUT
+        run: echo "rollback=s3://${{ vars.DEPLOYMENT_BUCKET }}/_rollback" >> $GITHUB_OUTPUT
 
       - name: Upload files to temp folder
         run: |
-          aws s3 sync website/apps/web/out/ ${{ steps.rollback.outputs.rollback }} \
+          aws s3 sync website/ ${{ steps.rollback.outputs.rollback }} \
             --cache-control "public, max-age=300, must-revalidate" \
             --only-show-errors
 
