@@ -11,7 +11,7 @@ export const env = createEnv({
     VERCEL_ENV: z.string().min(1),
     BUILD_FLAG: z.string().min(1),
     NEXT_PUBLIC_BUILD_TYPE: z.string().min(1).optional().default('dynamic'),
-    ALGOLIA_ADMIN_API_KEY: z.string(),
+    ALGOLIA_ADMIN_API_KEY: z.string().optional(),
   },
   client: {
     NEXT_PUBLIC_SANITY_PROJECT_ID: z.string().min(1),
