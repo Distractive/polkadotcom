@@ -1,6 +1,6 @@
 # Polkadot GitHub ReadMe
 
-Welcome to the Polkadot website repo! This website serves as a crucial gateway for users, developers, and community members to learn about and engage with Polkadot's technology and vision. The site's purpose is to provide accurate, up-to-date information about Polkadot while maintaining the highest standards of performance, accessibility, and user experience. This site is run by the [Distractive marketing team](https://www.distractive.xyz/), but we welcome open-source contributions from the community that help us achieve these goals.
+Welcome to the Polkadot.com website repo! This website serves as a crucial gateway for users, developers, and community members to learn about and engage with Polkadot's technology and vision. The site's purpose is to provide accurate, up-to-date information about Polkadot while maintaining the highest standards of performance, accessibility, and user experience. This site is run by the [Distractive marketing team](https://www.distractive.xyz/), but we welcome open-source contributions from the community that help us achieve these goals.
 
 ## Table of Contents
 * [Tech Stack](#tech-stack)
@@ -83,6 +83,6 @@ Contributors must maintain professional conduct, focusing on technical merit and
 ## License
 This project is licensed under the Apache License 2.0 – see the [LICENSE](./LICENSE) file for details.
 
-## Contact Section
+## Contact Us
 To contact the maintainers of this repo, send an email to digital [at] distractive [dot] xyz.
 
