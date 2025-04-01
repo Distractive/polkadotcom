@@ -7,7 +7,7 @@ export const env = createEnv({
     NEXT_PUBLIC_SANITY_DATASET: z.string().min(1),
     NEXT_PUBLIC_SANITY_API_VERSION: z.string().min(1),
     NEXT_PUBLIC_GA_ID: z.string().min(1),
-    SANITY_API_READ_TOKEN: z.string().min(1),
+    SANITY_API_READ_TOKEN: z.string().min(1).optional(),
     VERCEL_ENV: z.string().min(1),
     BUILD_FLAG: z.string().min(1),
     NEXT_PUBLIC_BUILD_TYPE: z.string().min(1).optional().default('dynamic'),
