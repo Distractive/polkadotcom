@@ -84,6 +84,7 @@ jobs:
         working-directory: apps/web
         env:
           VERCEL_URL: ${{ steps.vercel_preview_url.outputs.url }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
         run: npx playwright test ${{ matrix.test }}
 
       - name: Getting artifacts name
@@ -102,4 +103,3 @@ jobs:
           path: |
             apps/web/test-results
           retention-days: 2
-
