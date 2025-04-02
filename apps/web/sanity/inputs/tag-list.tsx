@@ -1,7 +1,7 @@
 'use client';
 
 import { Box, Card, Checkbox, Flex, Stack, Text } from '@sanity/ui';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useRef } from 'react';
 import {
   type ArrayOfPrimitivesInputProps,
   set,
@@ -9,29 +9,39 @@ import {
   useFormValue,
 } from 'sanity';
 
-/**
-This is a custom input for getting tags from the parent
-*/
 export function TagsList(props: ArrayOfPrimitivesInputProps) {
   // biome-ignore lint/suspicious/noExplicitAny: <TODO: Fix>
-  const parent = useFormValue(['pageBuilder.pageBuilder']) as any[];
+  const parent = useFormValue(['pageBuilder.pageBuilder']) as any[] | undefined;
   const regex = /pageBuilder\.pageBuilder\[_key=="([^"]+)"\]/;
   const match = props.id.match(regex);
   const parentId = match ? match[1] : '';
-  const tags = parent.find(
+
+  const foundItem = parent?.find(
     (item) => item._type === 'cards' && item._key === parentId,
-  ).tags;
+  );
+  const tags = foundItem?.tags || [];
+
   const { value = [], onChange } = props;
   const [selectedOptions, setSelectedOptions] = useState<string[]>(
     value as string[],
   );
 
+  const isUpdatingRef = useRef(false);
+
   useEffect(() => {
+    if (isUpdatingRef.current) return;
+
     const tagsSet = new Set(tags);
     const values = value as string[];
     const filteredOptions = values.filter((item) => tagsSet.has(item));
 
-    onChange(filteredOptions ? set(filteredOptions) : unset());
+    if (JSON.stringify(filteredOptions) !== JSON.stringify(values)) {
+      isUpdatingRef.current = true;
+      onChange(filteredOptions.length ? set(filteredOptions) : unset());
+      isUpdatingRef.current = false;
+
+      setSelectedOptions(filteredOptions);
+    }
   }, [tags, value, onChange]);
 
   const handleToggle = useCallback(
@@ -41,17 +51,21 @@ export function TagsList(props: ArrayOfPrimitivesInputProps) {
         : [...selectedOptions, option];
 
       setSelectedOptions(updatedOptions);
-
-      onChange(updatedOptions ? set(updatedOptions) : unset());
+      onChange(updatedOptions.length ? set(updatedOptions) : unset());
     },
     [selectedOptions, onChange],
   );
 
-  return !tags ? (
-    <Flex height="fill" direction="column" justify="center" align="center">
-      <Text>No tags created</Text>
-    </Flex>
-  ) : (
+  // Show a message if no tags are available
+  if (!tags.length) {
+    return (
+      <Flex height="fill" direction="column" justify="center" align="center">
+        <Text>No tags created</Text>
+      </Flex>
+    );
+  }
+
+  return (
     <Stack space={2}>
       <Card padding={3} border>
         {tags.map((option: string) => (
