@@ -12,14 +12,6 @@ env:
   SKIP_ENV_VALIDATION: true
 
 jobs:
-  echo:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Echo
-        run: |
-          echo "github.event.deployment_status.state: ${{ github.event.deployment_status.state }}"
-          echo "github.event.deployment_status.target_url: ${{ github.event.deployment_status.target_url }}"
-          echo "github.event.deployment.environment: ${{ github.event.deployment.environment }}"
   variables:
     runs-on: ubuntu-latest
     if: github.event.deployment_status.state == 'success' && github.event.deployment.environment != 'Production'
