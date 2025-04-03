@@ -1,9 +1,7 @@
 name: playwright
 
 on:
-  repository_dispatch:
-    types:
-      - 'vercel.deployment.success'
+  deployment_status:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -14,9 +12,17 @@ env:
   SKIP_ENV_VALIDATION: true
 
 jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: |
+          echo "github.event.deployment_status.state: ${{ github.event.deployment_status.state }}"
+          echo "github.event.deployment_status.target_url: ${{ github.event.deployment_status.target_url }}"
+          echo "github.event.deployment.environment: ${{ github.event.deployment.environment }}"
   variables:
     runs-on: ubuntu-latest
-    if: github.event_name == 'repository_dispatch'
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment != 'Production'
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
@@ -59,7 +65,7 @@ jobs:
       - name: 🧪 Run Playwright tests
         working-directory: apps/web
         env:
-          VERCEL_URL: ${{ github.event.client_payload.url }}
+          VERCEL_URL: ${{ github.event.deployment_status.target_url }}
           VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
         run: npx playwright test ${{ matrix.test }}
 
