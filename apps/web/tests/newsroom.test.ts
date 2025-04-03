@@ -42,28 +42,32 @@ test('Newsroom', async ({ page }) => {
     );
   });
 
-  await test.step('assert "mentions" section is displayed properly', async () => {
-    const section = page.getByTestId(
-      'cards-block-657597c72144db898dddbdee9bcc4f8c',
-    );
+  await test.step('assert "Recent stories" section is displayed properly', async () => {
+    const section = page.getByTestId('cards-block-aa3c92a7db2d');
 
     await expect(
       section.getByRole('heading', {
-        name: 'Recent mentions',
+        name: 'Recent stories',
       }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Polkadot ecosystem thriving' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: '21shares registers Polkadot' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Mandala Chain, powered by' }),
+      section.getByRole('link', {
+        name: 'Copper and Velocity Labs partner to expand Polkadot custody',
+      }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'Polkadot ecosystem transactions triple since January 2024 Read more',
+        name: 'Harbour and Velocity Labs launch instant stablecoin payment between EU banks and Polkadot',
+      }),
+    ).toBeVisible();
+    await expect(
+      section.getByRole('link', {
+        name: "Evrloot launches Free-to-play RPG campaign on Polkadot's Moonbeam Chain",
+      }),
+    ).toBeVisible();
+    await expect(
+      section.getByRole('link', {
+        name: 'Polkadot is the Official Global Training Partner of Inter Miami CF',
       }),
     ).toBeVisible();
   });

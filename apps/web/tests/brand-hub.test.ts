@@ -156,7 +156,7 @@ test('Brand Hub', async ({ page }) => {
       section.getByRole('link', { name: 'Event booth Get your booth' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Polkadot deck Get inspired' }),
+      section.getByRole('link', { name: 'Polkadot decks Get inspired' }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', { name: 'Asset library Dive in and' }),

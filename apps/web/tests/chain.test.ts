@@ -190,7 +190,7 @@ test('Chain', async ({ page }) => {
       }),
     ).toBeVisible();
     await expect(section.getByText('Say goodbye to the era of')).toHaveText(
-      'Say goodbye to the era of siloed networks. Polkadot pioneered the standard for inter-blockchain communication, uniting independent parachains via secure messaging with XCM and reliable bridges to external blockchains.',
+      'Say goodbye to the era of siloed networks. Polkadot pioneered the standard for inter-blockchain communication, uniting independent rollups via secure messaging with XCM and reliable bridges to external blockchains.',
     );
     await expect(
       section.getByRole('link', { name: 'Explore XCM' }),
