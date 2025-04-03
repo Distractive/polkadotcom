@@ -56,7 +56,6 @@ export function TagsList(props: ArrayOfPrimitivesInputProps) {
     [selectedOptions, onChange],
   );
 
-  // Show a message if no tags are available
   if (!tags.length) {
     return (
       <Flex height="fill" direction="column" justify="center" align="center">
