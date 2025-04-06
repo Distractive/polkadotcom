@@ -8,6 +8,7 @@ import { useBreakpoint } from '@/hooks/use-breakpoint';
 import { CarouselItem, Heading } from '@shared/ui';
 
 import CardTimelineBlock from './card-timeline';
+import { PortableText } from '@portabletext/react';
 
 interface Props {
   cards: TypeFromSelection<typeof cardsTimelineSelection>;
@@ -27,9 +28,26 @@ export function CardsTimelineBlock({ cards }: Props) {
       className="grid-system max-width py-gutter pl-gutter"
       data-testid="timeline"
     >
-      <Heading variant="h2" className="col-span-12 pb-gutter pr-gutter">
+      <Heading variant="h2" className="col-span-12 pb-3 pr-gutter">
         {cards.heading}
       </Heading>
+      <div className="flex flex-col gap-copy col-span-8 pb-8 pr-gutter">
+        {cards.content && (
+          <PortableText
+            value={cards.content}
+            components={{
+              block: {
+                normal: ({ children }) => (
+                  <p className="text-lg ">{children}</p>
+                ),
+                smallprint: ({ children }) => (
+                  <p className="text-sm ">{children}</p>
+                ),
+              },
+            }}
+          />
+        )}
+      </div>
 
       <Carousel
         disableCarouselControls={!isMobile && !isCarousel}
