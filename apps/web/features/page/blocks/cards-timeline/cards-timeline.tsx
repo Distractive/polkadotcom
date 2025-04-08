@@ -6,6 +6,7 @@ import type { TypeFromSelection } from 'groqd';
 import { Carousel } from '@/components/carousel';
 import { useBreakpoint } from '@/hooks/use-breakpoint';
 import { PortableText } from '@portabletext/react';
+import { CarouselItem, Heading } from '@shared/ui';
 import CardTimelineBlock from './card-timeline';
 
 interface Props {
