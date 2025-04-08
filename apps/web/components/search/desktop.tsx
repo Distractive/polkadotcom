@@ -1,6 +1,6 @@
 'use client';
 
-import { queryHook } from '@/services/algolia';
+import { useQueryHook } from '@/hooks/use-search-query';
 import { Icon } from '@shared/ui';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
@@ -16,6 +16,7 @@ import { useOnSearchClose } from './useOnSearchClose';
 export function DesktopSearch() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { results } = useInstantSearch();
+  const queryHook = useQueryHook();
 
   const containerRef = useRef<HTMLDivElement>(null);
 

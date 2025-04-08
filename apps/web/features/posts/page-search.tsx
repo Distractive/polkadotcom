@@ -1,6 +1,7 @@
 'use client';
 
-import { getSearchClient, queryHook } from '@/services/algolia';
+import { useQueryHook } from '@/hooks/use-search-query';
+import { getSearchClient } from '@/services/algolia';
 import { Icon, cn } from '@shared/ui';
 import Link from 'next/link';
 import {
@@ -41,6 +42,7 @@ function NoResults() {
 
 function Wrapper() {
   const { query } = useSearchBox();
+  const queryHook = useQueryHook();
 
   return (
     <>

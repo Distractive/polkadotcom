@@ -1,6 +1,6 @@
 'use client';
 
-import { queryHook } from '@/services/algolia';
+import { useQueryHook } from '@/hooks/use-search-query';
 import { Icon } from '@shared/ui';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -9,6 +9,7 @@ import { CustomSnippet } from './custom-snippet';
 
 export function MobileSearch() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const queryHook = useQueryHook();
 
   if (!isSearchOpen) {
     return (

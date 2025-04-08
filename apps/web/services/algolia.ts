@@ -44,18 +44,3 @@ export function getSearchClient(): SearchClient {
     },
   };
 }
-
-function sanitizeString(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#x27;')
-    .replace(/\//g, '&#x2F;')
-    .trim();
-}
-
-export function queryHook(query: string, search: (value: string) => void) {
-  return setTimeout(() => search(sanitizeString(query)), 1500);
-}
