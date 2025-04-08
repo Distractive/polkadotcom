@@ -1,5 +1,6 @@
 'use client';
 
+import { useQueryHook } from '@/hooks/use-search-query';
 import { Icon } from '@shared/ui';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -8,6 +9,7 @@ import { CustomSnippet } from './custom-snippet';
 
 export function MobileSearch() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const queryHook = useQueryHook();
 
   if (!isSearchOpen) {
     return (
@@ -29,6 +31,7 @@ export function MobileSearch() {
       <div className="relative z-[10000]">
         <div className="flex justify-between items-center bg-white m-2 p-2 rounded-xl">
           <SearchBox
+            queryHook={queryHook}
             placeholder="Search..."
             className="w-full"
             classNames={{
