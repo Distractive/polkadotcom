@@ -1,6 +1,6 @@
 'use client';
 
-import { getSearchClient } from '@/services/algolia';
+import { getSearchClient, queryHook } from '@/services/algolia';
 import { Icon, cn } from '@shared/ui';
 import Link from 'next/link';
 import {
@@ -53,6 +53,7 @@ function Wrapper() {
       >
         <Icon variant="magnify" className="size-6" />
         <SearchBox
+          queryHook={queryHook}
           placeholder="Enter your search"
           classNames={{
             root: 'w-full',

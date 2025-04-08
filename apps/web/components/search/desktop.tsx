@@ -1,5 +1,6 @@
 'use client';
 
+import { queryHook } from '@/services/algolia';
 import { Icon } from '@shared/ui';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
@@ -33,6 +34,7 @@ export function DesktopSearch() {
       {isSearchOpen ? (
         <>
           <SearchBox
+            queryHook={queryHook}
             placeholder="Search..."
             classNames={{
               form: 'w-full flex justify-between',

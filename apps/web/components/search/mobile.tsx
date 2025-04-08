@@ -1,5 +1,6 @@
 'use client';
 
+import { queryHook } from '@/services/algolia';
 import { Icon } from '@shared/ui';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -29,6 +30,7 @@ export function MobileSearch() {
       <div className="relative z-[10000]">
         <div className="flex justify-between items-center bg-white m-2 p-2 rounded-xl">
           <SearchBox
+            queryHook={queryHook}
             placeholder="Search..."
             className="w-full"
             classNames={{
