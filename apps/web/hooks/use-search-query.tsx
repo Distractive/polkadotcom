@@ -16,6 +16,6 @@ export function useQueryHook() {
           .replace(/\//g, '&#x2F;')
           .trim(),
       );
-    }, 800);
+    }, 500);
   }, []);
 }
