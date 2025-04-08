@@ -1,7 +1,7 @@
 'use client';
 
 import { Box, Card, Checkbox, Flex, Stack, Text } from '@sanity/ui';
-import { useCallback, useEffect, useState, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   type ArrayOfPrimitivesInputProps,
   set,
@@ -29,7 +29,9 @@ export function TagsList(props: ArrayOfPrimitivesInputProps) {
   const isUpdatingRef = useRef(false);
 
   useEffect(() => {
-    if (isUpdatingRef.current) return;
+    if (isUpdatingRef.current) {
+      return;
+    }
 
     const tagsSet = new Set(tags);
     const values = value as string[];
