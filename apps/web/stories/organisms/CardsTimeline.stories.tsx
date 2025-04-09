@@ -17,6 +17,20 @@ export const CarouselTimeline: Story = {
       //@ts-ignore
       _key: 'parent',
       heading: 'Our story',
+      content: [
+        {
+          _key: 'parent-content',
+          _type: 'block',
+          children: [
+            {
+              _key: 'parent-content-span',
+              _type: 'span',
+              marks: [],
+              text: 'Timeline description or introduction text here.',
+            },
+          ],
+        },
+      ],
       items: [
         {
           _key: '1',
@@ -173,6 +187,20 @@ export const CardTimeline: Story = {
       //@ts-ignore
       _key: 'parent',
       heading: 'Our story',
+      content: [
+        {
+          _key: 'parent-content',
+          _type: 'block',
+          children: [
+            {
+              _key: 'parent-content-span',
+              _type: 'span',
+              marks: [],
+              text: 'Timeline description or introduction text here.',
+            },
+          ],
+        },
+      ],
       items: [
         {
           _key: '1',
