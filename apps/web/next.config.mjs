@@ -129,7 +129,7 @@ const cspSources = {
     'https://www.redditstatic.com',
     'http://cdn.ad360.media',
     'https://cdn.ad360.media',
-    'https://vercel.live*',
+    'https://vercel.live/_next-live/feedback/feedback.js',
   ],
   'style-src': [
     "'self'",
