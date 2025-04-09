@@ -67,6 +67,7 @@ const cspSources = {
     'https://ekndrsoc.ust.stape.io',
     'https://player.vimeo.com',
     'https://www.youtube.com',
+    'https://vercel.live/',
   ],
   'img-src': [
     "'self'",
