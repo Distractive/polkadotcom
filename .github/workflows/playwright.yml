@@ -14,10 +14,10 @@ jobs:
       - name: Setup environment URL
         id: setup-url
         run: |
-          if [[ "${{ github.event.deployment.environment }}" == "staging" ]]; then
+          if [[ "${{ github.event.deployment.environment }}" == "develop" ]]; then
             echo "Using hardcoded develop URL"
             echo "url=https://polkadotcom-git-develop-distractive-for-polkadot.vercel.app" >> $GITHUB_OUTPUT
-          elif [[ "${{ github.event.deployment.environment }}" == "production" ]]; then
+          elif [[ "${{ github.event.deployment.environment }}" == "staging" ]]; then
             echo "Using hardcoded staging URL"
             echo "url=https://polkadotcom-git-staging-distractive-for-polkadot.vercel.app" >> $GITHUB_OUTPUT
           else
