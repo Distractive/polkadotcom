@@ -12,6 +12,16 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+    }),
+    defineField({
+      name: 'altText',
+      title: 'Alt Text',
+      type: 'string',
+    }),
+    defineField({
       name: 'content',
       title: 'Content',
       type: 'array',

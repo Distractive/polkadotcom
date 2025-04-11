@@ -48,6 +48,23 @@ jobs:
           node-version-file: ".nvmrc"
           cache: 'pnpm'
 
+      - name: Setup environment URL
+        id: setup-url
+        run: |
+          if [[ "${{ github.event.deployment.environment }}" == "develop" ]]; then
+            echo "Using develop URL"
+            echo "url=https://polkadotcom-git-develop-distractive-for-polkadot.vercel.app" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event.deployment.environment }}" == "staging" ]]; then
+            echo "Using staging URL"
+            echo "url=https://polkadotcom-git-staging-distractive-for-polkadot.vercel.app" >> $GITHUB_OUTPUT
+          else
+            echo "Using GitHub deployment_status.target_url"
+            echo "url=${{ github.event.deployment_status.target_url }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Print VERCEL_URL
+        run: echo "VERCEL_URL=${{ steps.setup-url.outputs.url }}"
+
       - name: Install dependencies
         run: pnpm install --ignore-scripts --frozen-lockfile
 
@@ -57,7 +74,7 @@ jobs:
       - name: 🧪 Run Playwright tests
         working-directory: apps/web
         env:
-          VERCEL_URL: ${{ github.event.deployment_status.target_url }}
+          VERCEL_URL: ${{ steps.setup-url.outputs.url }}
           VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
         run: npx playwright test ${{ matrix.test }}
 
