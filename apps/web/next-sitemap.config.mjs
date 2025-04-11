@@ -34,6 +34,11 @@ export default {
   siteUrl: baseUrl,
   generateRobotsTxt: true,
   generateIndexSitemap: false,
+  exclude: [
+    '/blog/tag/*/page/*',
+    '/case-studies/tag/*/page/*',
+    '/press-releases/tag/*/page/*',
+  ],
   additionalPaths: async (config) => {
     const result = [];
 
@@ -78,6 +83,8 @@ export default {
         lastmod: new Date(doc._updatedAt).toISOString(),
       });
     });
+
+    console.log('site map result', result);
 
     return result;
   },
