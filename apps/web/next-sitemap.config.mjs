@@ -84,8 +84,6 @@ export default {
       });
     });
 
-    console.log('site map result', result);
-
     return result;
   },
   transform: async (config, path) => {
