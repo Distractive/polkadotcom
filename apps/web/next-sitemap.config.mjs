@@ -34,6 +34,11 @@ export default {
   siteUrl: baseUrl,
   generateRobotsTxt: true,
   generateIndexSitemap: false,
+  exclude: [
+    '/blog/tag/*/page/*',
+    '/case-studies/tag/*/page/*',
+    '/newsroom/press-releases/tag/*/page/*',
+  ],
   additionalPaths: async (config) => {
     const result = [];
 

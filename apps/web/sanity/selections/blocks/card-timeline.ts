@@ -1,4 +1,4 @@
-import { q } from 'groqd';
+import { q, sanityImage } from 'groqd';
 import type { Selection } from 'groqd';
 
 import { customUrlSelection } from '../custom-url';
@@ -6,6 +6,10 @@ import { customUrlSelection } from '../custom-url';
 export const cardTimelineSelection = {
   _key: q.string(),
   year: q.string().optional().nullable(),
+  image: sanityImage('image', {
+    withAsset: ['base', 'dimensions'],
+  }).nullable(),
+  altText: q.string().optional().nullable(),
   content: q('content')
     .filter()
     .select({
