@@ -37,7 +37,7 @@ export default {
   exclude: [
     '/blog/tag/*/page/*',
     '/case-studies/tag/*/page/*',
-    '/press-releases/tag/*/page/*',
+    '/newsroom/press-releases/tag/*/page/*',
   ],
   additionalPaths: async (config) => {
     const result = [];
