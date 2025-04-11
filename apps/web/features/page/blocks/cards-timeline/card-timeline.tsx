@@ -4,8 +4,8 @@ import type { TypeFromSelection } from 'groqd';
 import Image from 'next/image';
 
 import { CustomUrl } from '@/components/custom-url';
-import { Button, Card, CardContent, CardHeader, cn } from '@shared/ui';
 import { urlForImage } from '@/sanity/lib/image';
+import { Button, Card, CardContent, CardHeader, cn } from '@shared/ui';
 
 interface Props {
   card: TypeFromSelection<typeof cardTimelineSelection>;
