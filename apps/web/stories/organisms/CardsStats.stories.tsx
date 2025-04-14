@@ -24,12 +24,15 @@ export const Primary: Story = {
       items: [
         {
           _key: '1',
+          useLiveMetric: false,
+          //@ts-ignore
           heading: 'Card Stat heading',
           body: 'Stat',
           content: null,
         },
         {
           _key: '2',
+          useLiveMetric: false,
           //@ts-ignore
           heading: 'Card Stat heading',
           body: 'Stat',
@@ -37,6 +40,7 @@ export const Primary: Story = {
         },
         {
           _key: '3',
+          useLiveMetric: false,
           //@ts-ignore
           heading: 'Card Stat heading',
           body: 'Stat',
