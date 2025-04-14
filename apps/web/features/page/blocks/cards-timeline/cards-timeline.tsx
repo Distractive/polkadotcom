@@ -23,10 +23,7 @@ export function CardsTimelineBlock({ cards }: Props) {
   const isCarousel = cards.items.length > 3;
 
   return (
-    <div
-      className="grid-system max-width py-gutter pl-gutter"
-      data-testid="timeline"
-    >
+    <div className="grid-system max-width  px-gutter" data-testid="timeline">
       <Heading variant="h2" className="col-span-12 pb-3 pr-gutter">
         {cards.heading}
       </Heading>
@@ -52,7 +49,7 @@ export function CardsTimelineBlock({ cards }: Props) {
         disableCarouselControls={!isMobile && !isCarousel}
         loop={false}
         contentClassName="ml-0"
-        navClassName="pr-gutter"
+        navClassName=""
       >
         {cards.items.filter(Boolean).map((item, index) => (
           <CarouselItem
