@@ -8,10 +8,71 @@ export default defineType({
   groups: [
     { title: 'Heading', name: 'heading', icon: SearchIcon },
     { title: 'Content', name: 'content', icon: DocumentIcon },
+    { title: 'Metric', name: 'metric', icon: DocumentIcon },
   ],
   fields: [
     defineField({
+      name: 'useLiveMetric',
+      title: 'Use Live Metric',
+      type: 'boolean',
+      initialValue: false,
+      group: 'metric',
+    }),
+    defineField({
+      name: 'liveMetric',
+      title: 'Select Live Metric',
+      type: 'string',
+      group: 'metric',
+      options: {
+        list: [
+          { title: 'Active Validators', value: 'activeValidators' },
+          {
+            title: 'Approved Referendums',
+            value: 'approvedReferendums',
+          },
+          {
+            title: 'Average Monthly Governance Voters',
+            value: 'averageMonthlyGovernanceVoters',
+          },
+          {
+            title: 'Percent DOT Supply Staked',
+            value: 'percentDOTSupplyStaked',
+          },
+          { title: 'Total DOT Staked', value: 'totalDOTStaked' },
+          { title: 'Total Fees (30-Day, USD)', value: 'totalFeesUSD30d' },
+          { title: 'Total Nominators', value: 'totalNominators' },
+          { title: 'Total Referendums', value: 'totalReferendums' },
+          { title: 'Total Stablecoin (USD)', value: 'totalStablecoinsUSD' },
+          {
+            title: 'Total Stakers (Nominators + Pool Members)',
+            value: 'totalStakers',
+          },
+          { title: 'Treasury Balance (USD)', value: 'treasuryBalanceUSD' },
+          { title: 'Unique Accounts', value: 'uniqueAccounts' },
+          { title: 'Uptime (30-Day)', value: 'polkadotUptime30d' },
+        ],
+        layout: 'dropdown',
+      },
+      hidden: ({ parent }) => !parent?.useLiveMetric,
+    }),
+    defineField({
+      name: 'addDollarSign',
+      title: 'Add a dollar sign?',
+      type: 'boolean',
+      hidden: ({ parent }) => !parent?.useLiveMetric,
+    }),
+    defineField({
+      name: 'displayInMillions',
+      description:
+        'If the result is greater than 1 million, this option will truncate the value (e.g. 12,345,678 becomes 12.3 million).',
+      title: 'Display in millions?',
+      type: 'boolean',
+      hidden: ({ parent }) => !parent?.useLiveMetric,
+    }),
+    defineField({
       name: 'heading',
+      description:
+        'For static metrics, use this field for the metric number/percent/value. When using a live metric, you can use this field to set a fallback value in case the API call fails.',
       title: 'Heading',
       type: 'string',
       group: 'content',
@@ -39,4 +100,9 @@ export default defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'body',
+    },
+  },
 });
