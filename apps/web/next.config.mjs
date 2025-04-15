@@ -23,6 +23,7 @@ const cspSources = {
     'ekndrsoc.ust.stape.io',
     'https://*.api.sanity.io',
     'wss://qf32zgfm.api.sanity.io',
+    'https://qf32zgfm.api.sanity.io/',
     'https://*.hotjar.com',
     'https://*.hotjar.io',
     'https://*.hsforms.com',
