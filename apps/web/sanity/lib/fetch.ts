@@ -11,7 +11,7 @@ export async function sanityFetch<QueryResponse>({
   query,
   params = DEFAULT_PARAMS,
   perspective,
-  stega = perspective === 'previewDrafts',
+  stega = perspective === 'drafts',
 }: {
   query: string;
   params?: QueryParams;
@@ -21,10 +21,10 @@ export async function sanityFetch<QueryResponse>({
   // if the build flag is set to true then don't use sanity cdn
   // this is for when triggering builds only so we get fresh content
   const useCdn = env.BUILD_FLAG !== 'true';
-  if (perspective === 'previewDrafts') {
+  if (perspective === 'drafts') {
     return client.fetch<QueryResponse>(query, params, {
       stega,
-      perspective: 'previewDrafts',
+      perspective: 'drafts',
       token,
       useCdn: false,
       next: { revalidate: 0 },

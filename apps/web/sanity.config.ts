@@ -56,7 +56,7 @@ export default defineConfig({
           presentationTool({
             resolve,
             previewUrl: {
-              draftMode: {
+              previewMode: {
                 enable: '/api/draft',
               },
             },
@@ -72,7 +72,7 @@ export default defineConfig({
           presentationTool({
             resolve,
             previewUrl: {
-              draftMode: {
+              previewMode: {
                 enable: '/api/draft',
               },
             },

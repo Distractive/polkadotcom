@@ -11,6 +11,6 @@ export const runQuery = makeSafeQueryRunner(
     sanityFetch({
       query,
       params,
-      perspective: preview ? 'previewDrafts' : 'published',
+      perspective: preview ? 'drafts' : 'published',
     }),
 );
