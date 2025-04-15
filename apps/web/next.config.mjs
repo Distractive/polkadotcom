@@ -23,7 +23,7 @@ const cspSources = {
     'ekndrsoc.ust.stape.io',
     'https://*.api.sanity.io',
     'wss://qf32zgfm.api.sanity.io',
-    'https://qf32zgfm.api.sanity.io/',
+    'https://qf32zgfm.api.sanity.io',
     'https://*.hotjar.com',
     'https://*.hotjar.io',
     'https://*.hsforms.com',
@@ -115,6 +115,7 @@ const cspSources = {
     'https://static.ads-twitter.com/uwt.js',
     'https://www.googletagmanager.com',
     'https://www.youtube.com',
+    
   ],
   'style-src': [
     "'self'",
