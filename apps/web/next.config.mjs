@@ -185,28 +185,7 @@ const nextConfig = {
     );
 
     return redirects;
-  },
-  // async headers() {
-  //   return [
-  //     {
-  //       source: '/(.*)',
-  //       // headers: [
-  //       //   {
-  //       //     key: 'Content-Security-Policy',
-  //       //     value: generateCSP(cspSources),
-  //       //   },
-  //       //   {
-  //       //     key: 'X-Content-Type-Options',
-  //       //     value: 'nosniff',
-  //       //   },
-  //       //   {
-  //       //     key: 'Cross-Origin-Opener-Policy',
-  //       //     value: 'same-origin',
-  //       //   },
-  //       // ],
-  //     },
-  //   ];
-  // },
+  }
 };
 
 export default nextConfig;

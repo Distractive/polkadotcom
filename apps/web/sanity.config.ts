@@ -47,11 +47,11 @@ export default defineConfig({
   plugins:
     process.env.NODE_ENV === 'development'
       ? [
-          structureTool({
-            structure: deskStructure,
-          }),
-          visionTool({ defaultApiVersion: env.NEXT_PUBLIC_SANITY_API_VERSION }),
-          groqdPlaygroundTool(),
+          // structureTool({
+          //   structure: deskStructure,
+          // }),
+          // visionTool({ defaultApiVersion: env.NEXT_PUBLIC_SANITY_API_VERSION }),
+          // groqdPlaygroundTool(),
           codeInput(),
           presentationTool({
             resolve,
@@ -61,13 +61,13 @@ export default defineConfig({
               },
             },
           }),
-          media(),
-          vercelDeployTool(),
+          // media(),
+          // vercelDeployTool(),
         ]
       : [
-          structureTool({
-            structure: deskStructure,
-          }),
+          // structureTool({
+          //   structure: deskStructure,
+          // }),
           codeInput(),
           presentationTool({
             resolve,
@@ -77,8 +77,8 @@ export default defineConfig({
               },
             },
           }),
-          media(),
-          vercelDeployTool(),
+          // media(),
+          // vercelDeployTool(),
         ],
   // Show or hide vercelDeployTool based on user role
   tools: (prevTools, context: ConfigContext) => {
