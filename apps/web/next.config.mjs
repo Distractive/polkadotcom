@@ -50,7 +50,7 @@ const cspSources = {
     'https://fonts.gstatic.com',
   ],
   'form-action': ["'self'", 'https://*.hsforms.com', 'https://*.hsforms.net'],
-  'frame-ancestors': ["'self'", 'https://polkadot.com'],
+  'frame-ancestors': ["'self'", 'https://polkadot.com', 'https://polkadotcom-*-distractive-for-polkadot.vercel.app'],
   'frame-src': [
     "'self'",
     'http://js.hsforms.net/',
@@ -62,6 +62,7 @@ const cspSources = {
     'https://ekndrsoc.ust.stape.io',
     'https://player.vimeo.com',
     'https://www.youtube.com',
+    'https://polkadotcom-*-distractive-for-polkadot.vercel.app'
   ],
   'img-src': [
     "'self'",
