@@ -2,7 +2,7 @@ import { getActiveValidatorsMetrics } from '../endpoints/active-validators';
 
 import { getLastDayOfPreviousMonth } from '../../utils/get-last-day-previous-month';
 
-export const getNominators = async () => {
+export const getTotalNominators = async () => {
   const date = getLastDayOfPreviousMonth();
 
   const response = await getActiveValidatorsMetrics({

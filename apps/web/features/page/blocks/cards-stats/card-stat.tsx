@@ -4,17 +4,15 @@ import { PortableText } from 'next-sanity';
 
 import { Button, Card, CardHeader, Heading, Icon, cn } from '@shared/ui';
 
-import {
-  LiveMetric,
-  type metricFetchers,
-} from '@/features/metrics/live-metric';
+import { LiveMetric } from '@/features/metrics/live-metric';
+import type { metricFetchers } from '@/app/api/stats/parity/metrics/index';
 
 interface Props {
   card: TypeFromSelection<typeof cardStatSelection>;
   className?: string;
 }
 
-export default async function CardStatBlock({ card, className }: Props) {
+export default function CardStatBlock({ card, className }: Props) {
   const {
     _key,
     heading,

@@ -29,7 +29,7 @@ export const fetchParityData = async ({
   };
 
   const queryString = new URLSearchParams(paramsWithDefaults).toString();
-  const url = `https://shiny.data.paritytech.io/api/${endpoint}?${queryString}`;
+  const url = `http://163.172.132.42/api/${endpoint}?${queryString}`;
   const cacheKey = url;
 
   if (cache.has(cacheKey)) {
