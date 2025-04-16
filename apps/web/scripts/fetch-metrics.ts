@@ -8,12 +8,10 @@ async function fetchAllMetrics() {
   const metrics = {};
 
   try {
-    // Import the metricFetchers object
     const { metricFetchers } = await import(
-      '../app/api/stats/parity/metrics/index.js'
+      '../app/api/stats/parity/metrics/index.ts'
     );
 
-    // Fetch each metric
     for (const [key, fetchFn] of Object.entries(metricFetchers)) {
       try {
         console.log(`Fetching ${key}...`);
@@ -29,13 +27,12 @@ async function fetchAllMetrics() {
     console.error(error.stack);
   }
 
-  // Create the static metrics store file
   const outputDir = path.join(__dirname, '../app/api/stats');
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  const outputPath = path.join(outputDir, 'static-metrics-store.js');
+  const outputPath = path.join(outputDir, 'static-metrics-store.ts');
 
   const fileContent = `// Auto-generated metrics from build process
 // Generated on: ${new Date().toISOString()}

@@ -1,12 +1,6 @@
-// Auto-generated metrics from build process
-// Generated on: 2025-04-16T15:42:01.846Z
-// DO NOT EDIT MANUALLY
+export const isStaticExport = process.env.NEXT_PHASE === 'phase-export';
 
-// Flag to detect static export mode
-exports.isStaticExport = process.env.NEXT_PHASE === 'phase-export';
-
-// Pre-fetched metrics
-exports.staticMetricsStore = {
+export const staticMetricsStore = {
   "getActiveValidators": "600",
   "getApprovedReferendums": 875,
   "getAverageMonthlyGovernanceVoters": 17624,
