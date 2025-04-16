@@ -42,8 +42,8 @@ export default function Banner({
     return null;
   }
 
-  const desktopBanner = () => (
-    <div className="fixed bottom-4 left-4 right-6 z-40 hidden rounded-2xl bg-white sm:right-auto sm:block  md:block">
+  return (
+    <div className="fixed bottom-4 left-4 right-6 z-40 rounded-2xl bg-white sm:right-auto ">
       <div className="relative h-full w-full">
         <button
           type="button"
@@ -128,28 +128,4 @@ export default function Banner({
       </Card>
     </div>
   );
-
-  const mobileBanner = () => (
-    <div className="sticky top-0 z-40 hidden w-full  flex-row bg-white px-gutter py-2 text-xs text-grey-800 sm:flex md:hidden">
-      <CustomUrl
-        className="outline-none"
-        value={{
-          // @ts-ignore
-          internal: banner.link?.internal,
-          external: banner.link?.external,
-        }}
-      >
-        {banner.mobileText}
-      </CustomUrl>
-      <button
-        type="button"
-        className="absolute bottom-0 right-0 top-0 flex cursor-pointer items-center justify-center px-4"
-        onClick={handleClose}
-      >
-        <Icon variant="close" className="size-6" />
-      </button>
-    </div>
-  );
-
-  return type === 'desktop' ? desktopBanner() : mobileBanner();
 }

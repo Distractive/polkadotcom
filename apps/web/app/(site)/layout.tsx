@@ -49,6 +49,8 @@ export default async function RootLayout({
     isDraftModeEnabled = await draftMode().isEnabled;
   }
 
+  console.log('loading layout', isDraftModeEnabled);
+
   return (
     <html lang="en">
       <head>

@@ -8,16 +8,19 @@ interface BannerProps {
 }
 
 export async function BannerWrapper({ type }: BannerProps) {
+
   const isDraftMode = draftMode().isEnabled;
   const banner = await getBanner(isDraftMode);
-  const initialVisibility = false;
+
+  console.log('banner wrapper', banner)
 
   if (banner?.isBannerOn) {
+    console.log('rendering banner')
     return (
       <Banner
         type={type}
         banner={banner}
-        initialVisibility={initialVisibility}
+        initialVisibility={true}
       />
     );
   }
