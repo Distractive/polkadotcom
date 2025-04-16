@@ -18,11 +18,34 @@ export default defineType({
       group: 'heading',
     }),
     defineField({
-      title: 'Body',
-      name: 'body',
-      type: 'text',
-      rows: 3,
-      group: 'heading',
+      name: 'content',
+      title: 'Content',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'H2', value: 'h2' },
+            { title: 'H3', value: 'h3' },
+            { title: 'H4', value: 'h4' },
+          ],
+          marks: {
+            decorators: [
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+              { title: 'Code', value: 'code' },
+            ],
+          },
+        },
+        {
+          type: 'break',
+          initialValue: { style: 'lineBreak' },
+        },
+        {
+          type: 'customUrl',
+        },
+      ],
     }),
     defineField({
       name: 'items',
