@@ -1,5 +1,11 @@
+// Auto-generated metrics from build process
+// Generated on: 2025-04-16T16:38:25.075Z
+// DO NOT EDIT MANUALLY
+
+// Flag to detect static export mode
 export const isStaticExport = process.env.NEXT_PHASE === 'phase-export';
 
+// Pre-fetched metrics
 export const staticMetricsStore = {
   "getActiveValidators": "600",
   "getApprovedReferendums": 875,

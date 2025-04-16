@@ -34,15 +34,16 @@ async function fetchAllMetrics() {
 
   const outputPath = path.join(outputDir, 'static-metrics-store.ts');
 
+  // Updated to use ES module exports syntax instead of CommonJS
   const fileContent = `// Auto-generated metrics from build process
 // Generated on: ${new Date().toISOString()}
 // DO NOT EDIT MANUALLY
 
 // Flag to detect static export mode
-exports.isStaticExport = process.env.NEXT_PHASE === 'phase-export';
+export const isStaticExport = process.env.NEXT_PHASE === 'phase-export';
 
 // Pre-fetched metrics
-exports.staticMetricsStore = ${JSON.stringify(metrics, null, 2)};
+export const staticMetricsStore = ${JSON.stringify(metrics, null, 2)};
 `;
 
   fs.writeFileSync(outputPath, fileContent);
