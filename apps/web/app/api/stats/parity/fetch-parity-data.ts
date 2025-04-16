@@ -30,16 +30,7 @@ export const fetchParityData = async ({
 
   const queryString = new URLSearchParams(paramsWithDefaults).toString();
   const url = `http://163.172.132.42/api/${endpoint}?${queryString}`;
-  const cacheKey = url;
 
-  if (cache.has(cacheKey)) {
-    const { data, timestamp } = cache.get(cacheKey);
-    const ageInSeconds = (Date.now() - timestamp) / 1000;
-
-    if (ageInSeconds < 86400) {
-      return data;
-    }
-  }
 
   try {
     const response = await fetch(url, {
@@ -50,11 +41,6 @@ export const fetchParityData = async ({
       throw new Error(`API responded with status: ${response.status}`);
 
     const res = await response.json();
-
-    cache.set(cacheKey, {
-      data: res,
-      timestamp: Date.now(),
-    });
 
     return res;
   } catch (error) {
