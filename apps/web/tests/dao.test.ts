@@ -213,9 +213,6 @@ test('DAO', async ({ page }) => {
     await expect(
       section.getByRole('link', { name: 'Pioneering sports sponsorship' }),
     ).toBeVisible();
-    await section
-      .getByRole('button', { name: 'Next slide' })
-      .click({ timeout: 2000 });
     await expect(
       section.getByRole('link', { name: 'New Polkadot Ledger app' }),
     ).toBeVisible();
