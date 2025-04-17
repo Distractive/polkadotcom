@@ -1,6 +1,6 @@
 import type { cardStatSelection } from '@/sanity/selections/blocks/card-stat';
 import type { TypeFromSelection } from 'groqd';
-import { PortableText } from 'next-sanity';
+import { PortableText } from '@portabletext/react';
 
 import { Button, Card, CardHeader, Heading, Icon, cn } from '@shared/ui';
 

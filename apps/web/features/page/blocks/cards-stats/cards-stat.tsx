@@ -4,7 +4,7 @@ import type { TypeFromSelection } from 'groqd';
 import { Button, Heading, cn } from '@shared/ui';
 
 import CardStatBlock from './card-stat';
-import { PortableText } from 'next-sanity';
+import { PortableText } from '@portabletext/react';
 import { CustomUrl } from '@/components/custom-url';
 
 interface Props {
