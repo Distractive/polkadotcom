@@ -153,8 +153,6 @@ export default async function RootLayout({
         )}
       >
         <noscript>
-
-
           <iframe
             title="GTM-MG9HQ6PM"
             src="https://ekndrsoc.ust.stape.io/ns.html?id=GTM-MG9HQ6PM"
