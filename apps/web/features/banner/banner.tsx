@@ -3,8 +3,7 @@
 import type { bannerSelection } from '@/sanity/selections/banner';
 import type { TypeFromSelection } from 'groqd';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { CustomUrl } from '@/components/custom-url';
 import {
@@ -18,27 +17,28 @@ import {
 } from '@shared/ui';
 
 interface BannerProps {
-  type: 'desktop' | 'mobile';
-  initialVisibility: boolean;
   banner: TypeFromSelection<typeof bannerSelection>;
 }
 
-export default function Banner({
-  type,
-  banner,
-  initialVisibility,
-}: BannerProps) {
-  const [isVisible, setIsVisible] = useState(initialVisibility);
-  const pathname = usePathname();
-  const isSpammening = pathname === '/spammening';
+export default function Banner({ banner }: BannerProps) {
+  const [isBannerClosed, setIsBannerClosed] = useState(true);
 
-  const handleClose = () => {
-    setIsVisible(false);
-    document.cookie =
-      'polkadot_banner_closed=true; path=/; max-age=259200; samesite=strict; secure';
-  };
+  useEffect(() => {
+    function checkBannerCookie() {
+      return document.cookie
+        .split('; ')
+        .some(cookie => cookie.startsWith('polkadot_banner_closed=true'));
+    }
 
-  if (!banner?.isBannerOn || !isVisible || isSpammening) {
+    setIsBannerClosed(checkBannerCookie());
+  }, []);
+
+  function handleClose () {
+    document.cookie = 'polkadot_banner_closed=true';
+    setIsBannerClosed(true);
+  }
+
+  if (isBannerClosed) {
     return null;
   }
 

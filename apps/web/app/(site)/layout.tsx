@@ -49,8 +49,6 @@ export default async function RootLayout({
     isDraftModeEnabled = await draftMode().isEnabled;
   }
 
-  console.log('loading layout', isDraftModeEnabled);
-
   return (
     <html lang="en">
       <head>
@@ -200,7 +198,7 @@ export default async function RootLayout({
           </span>
         </a>
 
-        <BannerWrapper type="desktop" />
+        <BannerWrapper />
         <div className="relative">
           {navigation && <NavigationLayout navigation={navigation} />}
 
