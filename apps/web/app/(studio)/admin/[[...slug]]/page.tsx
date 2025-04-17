@@ -2,7 +2,7 @@ import config from '@/sanity.config';
 import { NextStudio } from 'next-sanity/studio';
 
 export const dynamic = 'force-static';
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export { metadata, viewport } from 'next-sanity/studio';
 
@@ -11,4 +11,8 @@ export default function StudioPage() {
     return '';
   }
   return <NextStudio config={config} />;
+}
+
+export async function generateStaticParams() {
+  return [{ slug: [''] }];
 }

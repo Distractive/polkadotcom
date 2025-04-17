@@ -3,7 +3,7 @@ import { config } from 'dotenv';
 
 config({ path: '.env.local' });
 
-const { CI, VERCEL_URL } = process.env;
+const { CI, VERCEL_URL, VERCEL_AUTOMATION_BYPASS_SECRET } = process.env;
 
 /**
  * Read environment variables from file.
@@ -61,6 +61,13 @@ export default defineConfig({
 
     /* Collect videos when retrying the failed test. */
     video: { mode: 'retain-on-failure' },
+
+    ...(VERCEL_AUTOMATION_BYPASS_SECRET && {
+      extraHTTPHeaders: {
+        'x-vercel-protection-bypass': VERCEL_AUTOMATION_BYPASS_SECRET,
+        'x-vercel-set-bypass-cookie': 'true',
+      },
+    }),
   },
 
   /* Configure projects for major browsers */

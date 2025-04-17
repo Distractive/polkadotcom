@@ -40,30 +40,41 @@ test('SDK', async ({ page }) => {
     );
   });
 
-  await test.step('assert "build" section is displayed properly', async () => {
-    const section = page.getByTestId('side-by-side-8b1eb2090cfe');
-
+  await test.step('assert "one sdk" section is displayed properly', async () => {
+    const section = page.getByTestId(
+      'cards-block-6d92a52206d811ef1def21761ac985c5',
+    );
     await expect(
       section.getByRole('heading', {
-        name: 'Built for versatility,',
+        name: 'One SDK to power them all',
       }),
     ).toBeVisible();
-    await expect(section.getByText('The Polkadot SDK takes the')).toHaveText(
-      'The Polkadot SDK takes the hard work out of blockchain development without the limits of other frameworks. Build specialized blockchains or use pre-built modules to add battle-tested functionality. Use only what makes sense for your project.',
-    );
     await expect(
-      section.getByRole('link', { name: 'Start building' }),
+      section.getByText(
+        'The Polkadot SDK offers a flexible, composable, and comprehensive framework for blockchain development, whether you’re creating a new blockchain or enhancing an existing one.',
+      ),
     ).toBeVisible();
-    await expect(section.locator('img')).toBeVisible();
-  });
 
-  await test.step('"build" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-8b1eb2090cfe');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'build.png',
-      snapshotConfig,
-    );
+    await expect(section.getByText('Fast')).toBeVisible();
+    await expect(
+      section.getByText(
+        'Enjoy rapid transaction times with configurable throughput: Adjust block times, transaction queues, and even transaction fees to fit your use case',
+      ),
+    ).toBeVisible();
+
+    await expect(section.getByText('Interoperable')).toBeVisible();
+    await expect(
+      section.getByText(
+        'Go solo or connect to the Polkadot Chain before your uber eats arrives, leveraging instant cross-chain transactions through a wildly decentralized validator set',
+      ),
+    ).toBeVisible();
+
+    await expect(section.getByText('Future-proof')).toBeVisible();
+    await expect(
+      section.getByText(
+        'Adapt your business logic continuously with forkless runtime upgrades. Be ready for whatever the future throws at you',
+      ),
+    ).toBeVisible();
   });
 
   await test.step('assert "features" section is displayed properly', async () => {
@@ -81,28 +92,17 @@ test('SDK', async ({ page }) => {
       section.getByRole('link', { name: 'Highly customizable runtime' }),
     ).toBeVisible();
     await expect(
+      section.getByRole('link', { name: 'Shared security' }),
+    ).toBeVisible();
+    await expect(
       section.getByRole('link', { name: 'Versatile & bespoke modules' }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', { name: 'Robust tooling & support' }),
     ).toBeVisible();
-  });
-
-  await test.step('assert "day one" section is displayed properly', async () => {
-    const section = page.getByTestId('side-by-side-ac3aae8ec3fe');
-
     await expect(
-      section.getByRole('heading', {
-        name: 'Polkadot-ready from day one',
-      }),
+      section.getByRole('link', { name: 'Onchain governance' }),
     ).toBeVisible();
-    await expect(section.getByText('Connect effortlessly to the')).toHaveText(
-      'Connect effortlessly to the Polkadot Chain and gain access to its shared security mechanism, built-in cross-chain communication capabilities, and an ever-expanding universe of projects.',
-    );
-    await expect(
-      section.getByRole('link', { name: 'Learn more' }),
-    ).toBeVisible();
-    await expect(section.locator('img')).toBeVisible();
   });
 
   await test.step('assert "powering" section is displayed properly', async () => {
@@ -146,6 +146,22 @@ test('SDK', async ({ page }) => {
     ).toBeVisible();
     await expect(
       section.getByRole('heading', { name: 'InvArch' }),
+    ).toBeVisible();
+  });
+
+  await test.step('assert "day one" section is displayed properly', async () => {
+    const section = page.getByTestId('side-by-side-ac3aae8ec3fe');
+
+    await expect(
+      section.getByRole('heading', {
+        name: 'Polkadot-ready from day one',
+      }),
+    ).toBeVisible();
+    await expect(section.getByText('Connect effortlessly to')).toHaveText(
+      'Connect effortlessly to Polkadot and gain access to its shared security mechanism, built-in cross-chain communication capabilities, and an ever-expanding universe of projects.',
+    );
+    await expect(
+      section.getByRole('link', { name: 'Learn more' }),
     ).toBeVisible();
   });
 
@@ -193,6 +209,12 @@ test('SDK', async ({ page }) => {
     ).toBeVisible();
     await expect(
       section.getByRole('link', { name: 'Tool index' }),
+    ).toBeVisible();
+    await expect(
+      section.getByRole('link', { name: 'Stack exchange' }),
+    ).toBeVisible();
+    await expect(
+      section.getByRole('link', { name: 'Substrate now part of Polkadot SDK' }),
     ).toBeVisible();
   });
 

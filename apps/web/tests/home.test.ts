@@ -114,39 +114,6 @@ test('Homepage', async ({ page }) => {
     );
   });
 
-  await test.step('assert "stats" section is displayed properly', async () => {
-    const section = page.getByTestId('stats-pile');
-
-    await expect(
-      section.getByRole('heading', { name: 'Polkadot’s unstoppable' }),
-    ).toHaveText('Polkadot’s unstoppable momentum');
-    await expect(section.getByText('1.43 millionDAO members')).toHaveText(
-      '1.43 millionDAO members represented by total onchain wallets',
-    );
-    await expect(section.getByText('$5 billionstaked economic')).toHaveText(
-      '$5 billionstaked economic security',
-    );
-    await expect(section.getByText('448,293average MAA across')).toHaveText(
-      '448,293average MAA across Polkadot ecosystem in 2024 to date',
-    );
-    await expect(section.getByText('1390+ referendacreated by the')).toHaveText(
-      '1390+ referendacreated by the DAO since 2023',
-    );
-    await expect(
-      section.getByText('+ projectsin the Polkadot ecosystem'),
-    ).toHaveText('600+ projectsin the Polkadot ecosystem');
-  });
-
-  await test.step('"stats" section screenshot', async () => {
-    await page.waitForTimeout(2000);
-    const section = page.getByTestId('stats-pile');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot({ timeout: 7000 })).toMatchSnapshot(
-      'stats.png',
-      snapshotConfig,
-    );
-  });
-
   await test.step('assert "building" section is displayed properly', async () => {
     const section = page.getByTestId('building-pile');
 

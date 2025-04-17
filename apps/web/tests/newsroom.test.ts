@@ -42,10 +42,34 @@ test('Newsroom', async ({ page }) => {
     );
   });
 
+  await test.step('assert "stories" section is displayed properly', async () => {
+    const section = page.getByTestId('cards-block-aa3c92a7db2d');
+
+    await expect(
+      section.getByRole('heading', {
+        name: 'Recent stories',
+      }),
+    ).toBeVisible();
+    await expect(
+      section.getByRole('link', { name: 'copper and velocity labs' }),
+    ).toBeVisible();
+    await expect(
+      section.getByRole('link', { name: 'harbour and velocity labs launch' }),
+    ).toBeVisible();
+    await expect(
+      section.getByRole('link', {
+        name: 'evrloot launches',
+      }),
+    ).toBeVisible();
+    await expect(
+      section.getByRole('link', {
+        name: 'polkadot is the official global',
+      }),
+    ).toBeVisible();
+  });
+
   await test.step('assert "mentions" section is displayed properly', async () => {
-    const section = page.getByTestId(
-      'cards-block-657597c72144db898dddbdee9bcc4f8c',
-    );
+    const section = page.getByTestId('cards-block-ca63eb6f3ee9');
 
     await expect(
       section.getByRole('heading', {
@@ -53,17 +77,19 @@ test('Newsroom', async ({ page }) => {
       }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Polkadot ecosystem thriving' }),
+      section.getByRole('link', { name: 'Nasdaq files to list Grayscale' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: '21shares registers Polkadot' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Mandala Chain, powered by' }),
+      section.getByRole('link', { name: 'What makes or breaks a blockchain' }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'Polkadot ecosystem transactions triple since January 2024 Read more',
+        name: 'polkadot to launch first blockchain',
+      }),
+    ).toBeVisible();
+    await expect(
+      section.getByRole('link', {
+        name: '21shares files for a spot polkadot etf',
       }),
     ).toBeVisible();
   });
@@ -79,16 +105,16 @@ test('Newsroom', async ({ page }) => {
       }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Documentary Blockchain gaming' }),
+      section.getByRole('link', { name: 'Blockchain  gaming: indie games' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Behind the Code The Gray' }),
+      section.getByRole('link', { name: 'The Gray Paper interview' }),
     ).toBeVisible();
     await section
       .getByRole('button', { name: 'Next slide' })
       .click({ timeout: 2000 });
     await expect(
-      section.getByRole('link', { name: 'Behind the Code The Gray' }),
+      section.getByRole('link', { name: 'Creating the Web3 future' }),
     ).toBeVisible();
   });
 
