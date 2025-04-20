@@ -16,4 +16,3 @@ export default function StudioPage() {
 export async function generateStaticParams() {
   return [{ slug: [''] }];
 }
-

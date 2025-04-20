@@ -1,11 +1,9 @@
-import type { cardsStatSelection } from '@/sanity/selections/blocks/cards-stat';
-import type { TypeFromSelection } from 'groqd';
-
-import { Button, Heading, cn } from '@shared/ui';
-
-import CardStatBlock from './card-stat';
-import { PortableText } from '@portabletext/react';
 import { CustomUrl } from '@/components/custom-url';
+import type { cardsStatSelection } from '@/sanity/selections/blocks/cards-stat';
+import { PortableText } from '@portabletext/react';
+import { Button, Heading, cn } from '@shared/ui';
+import type { TypeFromSelection } from 'groqd';
+import CardStatBlock from './card-stat';
 
 interface Props {
   cards: TypeFromSelection<typeof cardsStatSelection>;
@@ -26,7 +24,9 @@ export function CardsStatBlock({ cards }: Props) {
         <Heading variant="h2">{cards.heading}</Heading>
       </div>
       <div
-        className={cn('grid-system col-span-full gap-gutter md:auto-rows-1fr pb-12')}
+        className={cn(
+          'grid-system col-span-full gap-gutter md:auto-rows-1fr pb-12',
+        )}
       >
         {cards.items.map((card) => (
           <CardStatBlock

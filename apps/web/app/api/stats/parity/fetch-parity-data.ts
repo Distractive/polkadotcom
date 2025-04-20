@@ -31,7 +31,6 @@ export const fetchParityData = async ({
   const queryString = new URLSearchParams(paramsWithDefaults).toString();
   const url = `http://163.172.132.42/api/${endpoint}?${queryString}`;
 
-
   try {
     const response = await fetch(url, {
       next: { revalidate: 86400 },

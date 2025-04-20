@@ -13,20 +13,28 @@ interface MetricFetchers {
   [key: string]: MetricFetcher;
 }
 
+const linterFriendlyStringify = (obj: MetricsStore): string => {
+  let jsonString = JSON.stringify(obj, null, 2);
+  jsonString = jsonString.replace(/"([^"]+)":/g, '$1:');
+  jsonString = jsonString.replace(/: "([^"]*)"/g, ": '$1'");
+  jsonString = jsonString.replace(/\n}$/, ',\n}');
+  return jsonString;
+};
+
 async function fetchAllMetrics() {
   console.log('Fetching metrics for static build...');
   const metrics: MetricsStore = {};
 
   try {
-    const { metricFetchers } = await import(
+    const { metricFetchers } = (await import(
       '../app/api/stats/parity/metrics/index'
-    ) as { metricFetchers: MetricFetchers };
+    )) as { metricFetchers: MetricFetchers };
 
     for (const [key, fetchFn] of Object.entries(metricFetchers)) {
       try {
         metrics[key] = await fetchFn();
       } catch (error) {
-        if (error instanceof Error){
+        if (error instanceof Error) {
           console.error(`  ✗ Error fetching ${key}:`, error?.message);
         }
         metrics[key] = null;
@@ -37,7 +45,7 @@ async function fetchAllMetrics() {
     if (error instanceof Error) {
       console.error(error.stack);
     }
-    process.exit(1)
+    process.exit(1);
   }
 
   const outputDir = path.join(__dirname, '../app/api/stats');
@@ -47,11 +55,7 @@ async function fetchAllMetrics() {
 
   const outputPath = path.join(outputDir, 'static-metrics-store.ts');
 
-  const fileContent = `// Auto-generated metrics from build process
-  // Generated on: ${new Date().toISOString()}
-
-  export const staticMetricsStore = ${JSON.stringify(metrics, null, 2)};
-  `;
+  const fileContent = `// Auto-generated metrics from build process\n// Generated on: ${new Date().toISOString()}\n\nexport const staticMetricsStore = ${linterFriendlyStringify(metrics)};\n`;
 
   fs.writeFileSync(outputPath, fileContent);
   console.log(`Metrics saved to ${outputPath}`);

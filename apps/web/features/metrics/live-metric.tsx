@@ -1,5 +1,5 @@
-import { staticMetricsStore } from '@/app/api/stats/static-metrics-store';
 import type { metricFetchers } from '@/app/api/stats/parity/metrics/index';
+import { staticMetricsStore } from '@/app/api/stats/static-metrics-store';
 
 interface MetricProps {
   metric?: keyof typeof metricFetchers;

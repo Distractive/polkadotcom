@@ -1,11 +1,11 @@
+import { getPolkadotUptime30d } from './get-30d-polkadot-uptime';
 import { getActiveValidators } from './get-active-validators';
 import { getApprovedReferendums } from './get-approved-referendums';
 import { getAverageMonthlyGovernanceVoters } from './get-avg-monthly-governance-voters';
+import { getTotalNominators } from './get-nominators';
 import { getPercentDOTSupplyStaked } from './get-percent-staked';
-import { getPolkadotUptime30d } from './get-30d-polkadot-uptime';
 import { getTotalDOTStaked } from './get-total-dot-staked';
 import { getTotalFeesUSD30d } from './get-total-fees-usd-30d';
-import { getTotalNominators } from './get-nominators';
 import { getTotalReferendums } from './get-total-referendums';
 import { getTotalStablecoinsUSD } from './get-total-stablecoins';
 import { getTotalStakers } from './get-total-stakers';
@@ -25,7 +25,7 @@ export const metricFetchers = {
   getTotalStablecoinsUSD,
   getTotalStakers,
   getTreasuryBalanceUSD,
-  getUniqueAccounts
+  getUniqueAccounts,
 };
 
 export type MetricFetchers = typeof metricFetchers;

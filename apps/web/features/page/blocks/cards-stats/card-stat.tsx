@@ -1,11 +1,10 @@
+import type { metricFetchers } from '@/app/api/stats/parity/metrics/index';
 import type { cardStatSelection } from '@/sanity/selections/blocks/card-stat';
-import type { TypeFromSelection } from 'groqd';
 import { PortableText } from '@portabletext/react';
-
 import { Button, Card, CardHeader, Heading, Icon, cn } from '@shared/ui';
+import type { TypeFromSelection } from 'groqd';
 
 import { LiveMetric } from '@/features/metrics/live-metric';
-import type { metricFetchers } from '@/app/api/stats/parity/metrics/index';
 
 interface Props {
   card: TypeFromSelection<typeof cardStatSelection>;
