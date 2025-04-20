@@ -1,30 +1,43 @@
-// @ts-nocheck
-
 import fs from 'node:fs';
 import path from 'node:path';
 
+type MetricValue = string | number | null;
+
+interface MetricsStore {
+  [key: string]: MetricValue;
+}
+
+type MetricFetcher = () => Promise<MetricValue>;
+
+interface MetricFetchers {
+  [key: string]: MetricFetcher;
+}
+
 async function fetchAllMetrics() {
   console.log('Fetching metrics for static build...');
-  const metrics = {};
+  const metrics: MetricsStore = {};
 
   try {
     const { metricFetchers } = await import(
-      '../app/api/stats/parity/metrics/index.ts'
-    );
+      '../app/api/stats/parity/metrics/index'
+    ) as { metricFetchers: MetricFetchers };
 
     for (const [key, fetchFn] of Object.entries(metricFetchers)) {
       try {
-        console.log(`Fetching ${key}...`);
         metrics[key] = await fetchFn();
-        console.log(`  ✓ ${key}: ${metrics[key]}`);
       } catch (error) {
-        console.error(`  ✗ Error fetching ${key}:`, error.message);
+        if (error instanceof Error){
+          console.error(`  ✗ Error fetching ${key}:`, error?.message);
+        }
         metrics[key] = null;
       }
     }
   } catch (error) {
     console.error('Error importing metric functions:', error);
-    console.error(error.stack);
+    if (error instanceof Error) {
+      console.error(error.stack);
+    }
+    process.exit(1)
   }
 
   const outputDir = path.join(__dirname, '../app/api/stats');
@@ -34,17 +47,11 @@ async function fetchAllMetrics() {
 
   const outputPath = path.join(outputDir, 'static-metrics-store.ts');
 
-  // Updated to use ES module exports syntax instead of CommonJS
   const fileContent = `// Auto-generated metrics from build process
-// Generated on: ${new Date().toISOString()}
-// DO NOT EDIT MANUALLY
+  // Generated on: ${new Date().toISOString()}
 
-// Flag to detect static export mode
-export const isStaticExport = process.env.NEXT_PHASE === 'phase-export';
-
-// Pre-fetched metrics
-export const staticMetricsStore = ${JSON.stringify(metrics, null, 2)};
-`;
+  export const staticMetricsStore = ${JSON.stringify(metrics, null, 2)};
+  `;
 
   fs.writeFileSync(outputPath, fileContent);
   console.log(`Metrics saved to ${outputPath}`);
