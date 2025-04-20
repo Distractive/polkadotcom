@@ -11,6 +11,7 @@ export const getTotalReferendums = async () => {
     start_date: date.toISOString().split('T')[0],
   });
 
+  // pull in total referendums using the last referendum in the response
   const totalReferendum = response[response.length - 1]?.referendum_index;
 
   return totalReferendum;
