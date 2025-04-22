@@ -1,5 +1,6 @@
 'use client';
 
+import { useQueryHook } from '@/hooks/use-search-query';
 import { getSearchClient } from '@/services/algolia';
 import { Icon, cn } from '@shared/ui';
 import Link from 'next/link';
@@ -41,6 +42,7 @@ function NoResults() {
 
 function Wrapper() {
   const { query } = useSearchBox();
+  const queryHook = useQueryHook();
 
   return (
     <>
@@ -53,6 +55,7 @@ function Wrapper() {
       >
         <Icon variant="magnify" className="size-6" />
         <SearchBox
+          queryHook={queryHook}
           placeholder="Enter your search"
           classNames={{
             root: 'w-full',

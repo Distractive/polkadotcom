@@ -64,7 +64,7 @@ test('Contact', async ({ page }) => {
   });
 
   await test.step('assert "resources" section is displayed properly', async () => {
-    const section = page.getByTestId('content-block');
+    const section = page.getByTestId('cta-box');
 
     await expect(
       section.getByRole('heading', {
@@ -81,7 +81,7 @@ test('Contact', async ({ page }) => {
   });
 
   await test.step('"resources" section screenshot', async () => {
-    const section = page.getByTestId('content-block');
+    const section = page.getByTestId('cta-box');
     await page.waitForTimeout(2000);
     expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
       'resources.png',
