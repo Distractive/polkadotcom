@@ -51,11 +51,12 @@ jobs:
       - name: Setup environment URL
         id: setup-url
         run: |
-          echo "github.event.deployment.ref=${{ github.event.deployment.ref }}"
+          ref="${{ github.event.pull_request.head.ref }}"
+          echo "ref=$ref"
           url="${{ github.event.deployment_status.target_url }}"
-          if [[ "${{ github.event.deployment.ref }}" == "refs/heads/develop" ]]; then
+          if [[ "$ref" == "develop" ]]; then
             url="https://polkadotcom-git-develop-distractive-for-polkadot.vercel.app"
-          elif [[ "${{ github.event.deployment.ref }}" == "refs/heads/staging" ]]; then
+          elif [[ "$ref" == "staging" ]]; then
             url="https://polkadotcom-git-staging-distractive-for-polkadot.vercel.app"
           fi
           echo "url=$url" >> $GITHUB_OUTPUT
