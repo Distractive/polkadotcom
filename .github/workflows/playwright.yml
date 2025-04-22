@@ -27,7 +27,9 @@ jobs:
         id: url
         run: |
           echo "github.event.deployment.ref=${{ github.event.deployment.ref }}"
-          echo "current_branch=$(git branch --show-current)"
+          # Get branch name from ref
+          branch_name=$(git show-ref | grep ${{ github.event.deployment.ref }} | grep -v HEAD | sed 's/.*refs\/heads\///')
+          echo "current_branch=$branch_name"
 
 
         # ref="${{ github.event.pull_request.head.ref }}"
