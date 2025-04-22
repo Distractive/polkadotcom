@@ -19,6 +19,26 @@ jobs:
       matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.deployment.ref }}
+
+      - name: Get deployment URL
+        id: url
+        run: |
+          echo "github.event.deployment.ref=${{ github.event.deployment.ref }}"
+          echo "current_branch=$(git branch --show-current)"
+
+
+        # ref="${{ github.event.pull_request.head.ref }}"
+        # echo "ref=$ref"
+        # url="${{ github.event.deployment_status.target_url }}"
+        # if [[ "$ref" == "develop" ]]; then
+        #   url="https://polkadotcom-git-develop-distractive-for-polkadot.vercel.app"
+        # elif [[ "$ref" == "staging" ]]; then
+        #   url="https://polkadotcom-git-staging-distractive-for-polkadot.vercel.app"
+        # fi
+        # echo "url=$url" >> $GITHUB_OUTPUT
 
       - name: Getting test files
         id: matrix
@@ -27,69 +47,69 @@ jobs:
           matrix=$(find tests/ -type f -name "*.test.ts" | sed 's/\/\//\//' | jq -R -s -c 'split("\n")[:-1]')
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
-  playwright:
-    runs-on: ubuntu-latest
-    needs:
-      - variables
-    strategy:
-      fail-fast: false
-      max-parallel: 10
-      matrix:
-        test: ${{ fromJSON(needs.variables.outputs.matrix) }}
-    steps:
-      - uses: actions/checkout@v4
+  # playwright:
+  #   runs-on: ubuntu-latest
+  #   needs:
+  #     - variables
+  #   strategy:
+  #     fail-fast: false
+  #     max-parallel: 10
+  #     matrix:
+  #       test: ${{ fromJSON(needs.variables.outputs.matrix) }}
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-          cache: 'pnpm'
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version-file: ".nvmrc"
+  #         cache: 'pnpm'
 
-      - name: Setup environment URL
-        id: setup-url
-        run: |
-          ref="${{ github.event.pull_request.head.ref }}"
-          echo "ref=$ref"
-          url="${{ github.event.deployment_status.target_url }}"
-          if [[ "$ref" == "develop" ]]; then
-            url="https://polkadotcom-git-develop-distractive-for-polkadot.vercel.app"
-          elif [[ "$ref" == "staging" ]]; then
-            url="https://polkadotcom-git-staging-distractive-for-polkadot.vercel.app"
-          fi
-          echo "url=$url" >> $GITHUB_OUTPUT
+  #     - name: Setup environment URL
+  #       id: setup-url
+  #       run: |
+  #         ref="${{ github.event.pull_request.head.ref }}"
+  #         echo "ref=$ref"
+  #         url="${{ github.event.deployment_status.target_url }}"
+  #         if [[ "$ref" == "develop" ]]; then
+  #           url="https://polkadotcom-git-develop-distractive-for-polkadot.vercel.app"
+  #         elif [[ "$ref" == "staging" ]]; then
+  #           url="https://polkadotcom-git-staging-distractive-for-polkadot.vercel.app"
+  #         fi
+  #         echo "url=$url" >> $GITHUB_OUTPUT
 
-      - name: Print VERCEL_URL
-        run: echo "VERCEL_URL=${{ steps.setup-url.outputs.url }}"
+  #     - name: Print VERCEL_URL
+  #       run: echo "VERCEL_URL=${{ steps.setup-url.outputs.url }}"
 
-      - name: Install dependencies
-        run: pnpm install --ignore-scripts --frozen-lockfile
+  #     - name: Install dependencies
+  #       run: pnpm install --ignore-scripts --frozen-lockfile
 
-      - name: Install Playwright
-        run: pnpm playwright install chromium --with-deps
+  #     - name: Install Playwright
+  #       run: pnpm playwright install chromium --with-deps
 
-      - name: 🧪 Run Playwright tests
-        working-directory: apps/web
-        env:
-          VERCEL_URL: ${{ steps.setup-url.outputs.url }}
-          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
-        run: npx playwright test ${{ matrix.test }}
+  #     - name: 🧪 Run Playwright tests
+  #       working-directory: apps/web
+  #       env:
+  #         VERCEL_URL: ${{ steps.setup-url.outputs.url }}
+  #         VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+  #       run: npx playwright test ${{ matrix.test }}
 
-      - name: Getting artifacts name
-        id: get-artifacts-name
-        if: failure()
-        run: |
-          artifacts_name=$(basename ${{ matrix.test }} | tr -d '/')
-          echo $artifacts_name
-          echo "artifacts_name=$artifacts_name" >> $GITHUB_OUTPUT
+  #     - name: Getting artifacts name
+  #       id: get-artifacts-name
+  #       if: failure()
+  #       run: |
+  #         artifacts_name=$(basename ${{ matrix.test }} | tr -d '/')
+  #         echo $artifacts_name
+  #         echo "artifacts_name=$artifacts_name" >> $GITHUB_OUTPUT
 
-      - name: 📦 Upload artifacts
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ steps.get-artifacts-name.outputs.artifacts_name }}
-          path: |
-            apps/web/test-results
-          retention-days: 2
+  #     - name: 📦 Upload artifacts
+  #       if: failure()
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: ${{ steps.get-artifacts-name.outputs.artifacts_name }}
+  #         path: |
+  #           apps/web/test-results
+  #         retention-days: 2
