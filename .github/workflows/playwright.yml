@@ -51,6 +51,7 @@ jobs:
       - name: Setup environment URL
         id: setup-url
         run: |
+          echo "github.event.deployment.ref=${{ github.event.deployment.ref }}"
           url="${{ github.event.deployment_status.target_url }}"
           if [[ "${{ github.event.deployment.ref }}" == "refs/heads/develop" ]]; then
             url="https://polkadotcom-git-develop-distractive-for-polkadot.vercel.app"
