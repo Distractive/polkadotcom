@@ -51,16 +51,13 @@ jobs:
       - name: Setup environment URL
         id: setup-url
         run: |
-          if [[ "${{ github.event.deployment.environment }}" == "develop" ]]; then
-            echo "Using develop URL"
-            echo "url=https://polkadotcom-git-develop-distractive-for-polkadot.vercel.app" >> $GITHUB_OUTPUT
-          elif [[ "${{ github.event.deployment.environment }}" == "staging" ]]; then
-            echo "Using staging URL"
-            echo "url=https://polkadotcom-git-staging-distractive-for-polkadot.vercel.app" >> $GITHUB_OUTPUT
-          else
-            echo "Using GitHub deployment_status.target_url"
-            echo "url=${{ github.event.deployment_status.target_url }}" >> $GITHUB_OUTPUT
+          url="${{ github.event.deployment_status.target_url }}"
+          if [[ "${{ github.event.deployment.ref }}" == "refs/heads/develop" ]]; then
+            url="https://polkadotcom-git-develop-distractive-for-polkadot.vercel.app"
+          elif [[ "${{ github.event.deployment.ref }}" == "refs/heads/staging" ]]; then
+            url="https://polkadotcom-git-staging-distractive-for-polkadot.vercel.app"
           fi
+          echo "url=$url" >> $GITHUB_OUTPUT
 
       - name: Print VERCEL_URL
         run: echo "VERCEL_URL=${{ steps.setup-url.outputs.url }}"
