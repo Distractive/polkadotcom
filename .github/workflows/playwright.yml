@@ -26,10 +26,14 @@ jobs:
       - name: Get deployment URL
         id: url
         run: |
-          echo "github.event.deployment.ref=${{ github.event.deployment.ref }}"
-          # Get branch name from ref and clean up the output
           branch_name=$(git show-ref | grep ${{ github.event.deployment.ref }} | grep -v HEAD | sed 's/.*refs\/remotes\/origin\///' | sed 's/.*refs\/heads\///')
-          echo "current_branch=$branch_name"
+          url="${{ github.event.deployment_status.target_url }}"
+          if [[ "$branch_name" == "develop" ]]; then
+            url="https://polkadotcom-git-develop-distractive-for-polkadot.vercel.app"
+          elif [[ "$branch_name" == "staging" ]]; then
+            url="https://polkadotcom-git-staging-distractive-for-polkadot.vercel.app"
+          fi
+          echo "url=$url" >> $GITHUB_OUTPUT
 
 
         # ref="${{ github.event.pull_request.head.ref }}"
