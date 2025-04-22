@@ -34,6 +34,7 @@ jobs:
           elif [[ "$branch_name" == "staging" ]]; then
             url="https://polkadotcom-git-staging-distractive-for-polkadot.vercel.app"
           fi
+          echo "branch_name=$branch_name; url=$url"
           echo "url=$url" >> $GITHUB_OUTPUT
 
       - name: Getting test files
