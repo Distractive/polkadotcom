@@ -1,4 +1,4 @@
-// /** @type {import('next-sitemap').IConfig} */
+/** @type {import('next-sitemap').IConfig} */
 import { createClient } from 'next-sanity';
 
 const baseUrl = 'https://polkadot.com';
