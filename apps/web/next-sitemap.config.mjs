@@ -1,4 +1,4 @@
-/** @type {import('next-sitemap').IConfig} */
+// /** @type {import('next-sitemap').IConfig} */
 import { createClient } from 'next-sanity';
 
 const baseUrl = 'https://polkadot.com';
@@ -58,28 +58,28 @@ export default {
         case 'post':
           switch (doc.post_type) {
             case 'Case Study':
-              path = `/case-studies/${doc.slug.current}/`;
+              path = `/case-studies/${doc.slug.current}`;
               break;
             case 'Press Release':
-              path = `/newsroom/press-releases/${doc.slug.current}/`;
+              path = `/newsroom/press-releases/${doc.slug.current}`;
               break;
             default:
-              path = `/blog/${doc.slug.current}/`;
+              path = `/blog/${doc.slug.current}`;
               break;
           }
           break;
         case 'page':
-          path = `/${doc.slug.current}/`;
+          path = `/${doc.slug.current}`;
           break;
         case 'landing':
-          path = `/${doc.slug.current}/`;
+          path = `/${doc.slug.current}`;
           break;
         default:
           return;
       }
 
       result.push({
-        loc: path.endsWith('/') ? path : `${path}/`,
+        loc: path,
         lastmod: new Date(doc._updatedAt).toISOString(),
       });
     });
@@ -87,11 +87,10 @@ export default {
     return result;
   },
   transform: async (config, path) => {
-    const formattedPath = path.endsWith('/') ? path : `${path}/`;
-
     return {
-      loc: formattedPath,
+      loc: path,
       lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
     };
   },
 };
+
