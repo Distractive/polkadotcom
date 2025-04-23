@@ -14,7 +14,7 @@ env:
 jobs:
   variables:
     runs-on: ubuntu-latest
-    if: github.event.deployment_status.state == 'success' && github.actor == 'vercel[bot]' && github.event.deployment.environment != 'Production'
+    if: github.event.deployment_status.state == 'success' && github.actor == 'vercel[bot]' && github.event.deployment.environment != 'production'
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
       url: ${{ steps.url.outputs.url }}
