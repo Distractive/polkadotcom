@@ -14,7 +14,7 @@ env:
 jobs:
   variables:
     runs-on: ubuntu-latest
-    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment != 'Production'
+    if: github.event.deployment_status.state == 'success' && github.actor == 'vercel[bot]' && github.event.deployment.environment != 'Production'
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
       url: ${{ steps.url.outputs.url }}
@@ -27,7 +27,6 @@ jobs:
       - name: Get deployment URL
         id: url
         run: |
-          echo "github.actor=${{ github.actor }}"
           branch_name=$(git show-ref | grep ${{ github.event.deployment.ref }} | grep -v HEAD | sed 's/.*refs\/remotes\/origin\///' | sed 's/.*refs\/heads\///')
           url="${{ github.event.deployment_status.target_url }}"
           if [[ "$branch_name" == "develop" ]]; then
@@ -45,53 +44,53 @@ jobs:
           matrix=$(find tests/ -type f -name "*.test.ts" | sed 's/\/\//\//' | jq -R -s -c 'split("\n")[:-1]')
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
-  # playwright:
-  #   runs-on: ubuntu-latest
-  #   needs:
-  #     - variables
-  #   strategy:
-  #     fail-fast: false
-  #     max-parallel: 10
-  #     matrix:
-  #       test: ${{ fromJSON(needs.variables.outputs.matrix) }}
-  #   steps:
-  #     - uses: actions/checkout@v4
+  playwright:
+    runs-on: ubuntu-latest
+    needs:
+      - variables
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        test: ${{ fromJSON(needs.variables.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - name: Install pnpm
-  #       uses: pnpm/action-setup@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
-  #     - name: Setup Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version-file: ".nvmrc"
-  #         cache: 'pnpm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: 'pnpm'
 
-  #     - name: Install dependencies
-  #       run: pnpm install --ignore-scripts --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --ignore-scripts --frozen-lockfile
 
-  #     - name: Install Playwright
-  #       run: pnpm playwright install chromium --with-deps
+      - name: Install Playwright
+        run: pnpm playwright install chromium --with-deps
 
-  #     - name: 🧪 Run Playwright tests
-  #       working-directory: apps/web
-  #       env:
-  #         VERCEL_URL: ${{ needs.variables.outputs.url }}
-  #         VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
-  #       run: npx playwright test ${{ matrix.test }}
+      - name: 🧪 Run Playwright tests
+        working-directory: apps/web
+        env:
+          VERCEL_URL: ${{ needs.variables.outputs.url }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: npx playwright test ${{ matrix.test }}
 
-  #     - name: Getting artifacts name
-  #       id: get-artifacts-name
-  #       if: failure()
-  #       run: |
-  #         artifacts_name=$(basename ${{ matrix.test }} | tr -d '/')
-  #         echo $artifacts_name
-  #         echo "artifacts_name=$artifacts_name" >> $GITHUB_OUTPUT
+      - name: Getting artifacts name
+        id: get-artifacts-name
+        if: failure()
+        run: |
+          artifacts_name=$(basename ${{ matrix.test }} | tr -d '/')
+          echo $artifacts_name
+          echo "artifacts_name=$artifacts_name" >> $GITHUB_OUTPUT
 
-  #     - name: 📦 Upload artifacts
-  #       if: failure()
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: ${{ steps.get-artifacts-name.outputs.artifacts_name }}
-  #         path: |
-  #           apps/web/test-results
-  #         retention-days: 2
+      - name: 📦 Upload artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.get-artifacts-name.outputs.artifacts_name }}
+          path: |
+            apps/web/test-results
+          retention-days: 2
