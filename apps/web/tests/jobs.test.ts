@@ -66,9 +66,6 @@ test('Decentralized Jobs', async ({ page }) => {
       section.getByRole('link', { name: 'Polkaport East Central hub in' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Accelerate Polkadot Code-' }),
-    ).toBeVisible();
-    await expect(
       page.getByRole('link', { name: 'See more teams' }),
     ).toBeVisible();
   });

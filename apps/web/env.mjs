@@ -11,7 +11,8 @@ export const env = createEnv({
     VERCEL_ENV: z.string().min(1),
     BUILD_FLAG: z.string().min(1),
     NEXT_PUBLIC_BUILD_TYPE: z.string().min(1).optional().default('dynamic'),
-    ALGOLIA_ADMIN_API_KEY: z.string(),
+    ALGOLIA_ADMIN_API_KEY: z.string().optional(),
+    VERCEL_AUTOMATION_BYPASS_SECRET: z.string().optional(),
   },
   client: {
     NEXT_PUBLIC_SANITY_PROJECT_ID: z.string().min(1),
@@ -40,6 +41,8 @@ export const env = createEnv({
     NEXT_PUBLIC_ALGOLIA_APP_ID: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
     NEXT_PUBLIC_ALGOLIA_SEARCH_KEY: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY,
     NEXT_PUBLIC_DEPLOYMENT: process.env.NEXT_PUBLIC_DEPLOYMENT,
+    VERCEL_AUTOMATION_BYPASS_SECRET:
+      process.env.VERCEL_AUTOMATION_BYPASS_SECRET,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
 });
