@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "dev:turbo": "next dev --turbo",
-    "build": "BUILD_FLAG=true next build",
+    "build": "next build",
     "build:static": "rm -rf .next out && BUILD_FLAG=true NEXT_TELEMETRY_DISABLED=1 NEXT_DISABLE_VERCEL_ANALYTICS=1 NEXT_PUBLIC_BUILD_TYPE=static NODE_ENV=production next build",
     "run:static": "npx serve out",
     "static": "pnpm build:static && pnpm run:static",
