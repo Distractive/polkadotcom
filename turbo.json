@@ -24,7 +24,9 @@
     },
     "lint": {},
     "typecheck": {},
-    "playwright:test": {},
+    "playwright:test": {
+      "cache": false
+    },
     "build:static": {},
     "run:static": {},
     "static": {},
