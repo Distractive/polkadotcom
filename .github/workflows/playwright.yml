@@ -14,11 +14,28 @@ env:
 jobs:
   variables:
     runs-on: ubuntu-latest
-    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment != 'Production'
+    if: github.event.deployment_status.state == 'success' && github.actor == 'vercel[bot]' && github.event.deployment.environment != 'Production' && github.event.deployment.environment != 'production'
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
+      url: ${{ steps.url.outputs.url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.deployment.ref }}
+
+      - name: Get deployment URL
+        id: url
+        run: |
+          branch_name=$(git show-ref | grep ${{ github.event.deployment.ref }} | grep -v HEAD | sed 's/.*refs\/remotes\/origin\///' | sed 's/.*refs\/heads\///')
+          url="${{ github.event.deployment_status.target_url }}"
+          if [[ "$branch_name" == "develop" ]]; then
+            url="https://polkadotcom-git-develop-distractive-for-polkadot.vercel.app"
+          elif [[ "$branch_name" == "staging" ]]; then
+            url="https://polkadotcom-git-staging-distractive-for-polkadot.vercel.app"
+          fi
+          echo "branch_name=$branch_name; url=$url"
+          echo "url=$url" >> $GITHUB_OUTPUT
 
       - name: Getting test files
         id: matrix
@@ -48,23 +65,6 @@ jobs:
           node-version-file: ".nvmrc"
           cache: 'pnpm'
 
-      - name: Setup environment URL
-        id: setup-url
-        run: |
-          if [[ "${{ github.event.deployment.environment }}" == "develop" ]]; then
-            echo "Using develop URL"
-            echo "url=https://polkadotcom-git-develop-distractive-for-polkadot.vercel.app" >> $GITHUB_OUTPUT
-          elif [[ "${{ github.event.deployment.environment }}" == "staging" ]]; then
-            echo "Using staging URL"
-            echo "url=https://polkadotcom-git-staging-distractive-for-polkadot.vercel.app" >> $GITHUB_OUTPUT
-          else
-            echo "Using GitHub deployment_status.target_url"
-            echo "url=${{ github.event.deployment_status.target_url }}" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Print VERCEL_URL
-        run: echo "VERCEL_URL=${{ steps.setup-url.outputs.url }}"
-
       - name: Install dependencies
         run: pnpm install --ignore-scripts --frozen-lockfile
 
@@ -74,7 +74,7 @@ jobs:
       - name: 🧪 Run Playwright tests
         working-directory: apps/web
         env:
-          VERCEL_URL: ${{ steps.setup-url.outputs.url }}
+          VERCEL_URL: ${{ needs.variables.outputs.url }}
           VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
         run: npx playwright test ${{ matrix.test }}
 

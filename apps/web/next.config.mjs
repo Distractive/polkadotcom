@@ -136,7 +136,7 @@ const generateCSP = (sources) => {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: isStatic ? 'export' : 'standalone',
-  trailingSlash: isStatic,
+  trailingSlash: true,
   basePath: '',
   distDir: isStatic ? 'out' : '.next',
   assetPrefix: '',
