@@ -27,13 +27,13 @@ export default function Banner({ banner }: BannerProps) {
     function checkBannerCookie() {
       return document.cookie
         .split('; ')
-        .some(cookie => cookie.startsWith('polkadot_banner_closed=true'));
+        .some((cookie) => cookie.startsWith('polkadot_banner_closed=true'));
     }
 
     setIsBannerClosed(checkBannerCookie());
   }, []);
 
-  function handleClose () {
+  function handleClose() {
     document.cookie = 'polkadot_banner_closed=true';
     setIsBannerClosed(true);
   }
@@ -79,7 +79,7 @@ export default function Banner({ banner }: BannerProps) {
                 className={cn('size-14 rounded-2xl object-cover object-center')}
               />
             )}
-            <CardContent className="grid gap-copy">
+            <CardContent className="grid">
               {banner.eyebrow && (
                 <span className="text-caps-small text-xs font-bold uppercase md:text-base">
                   {banner.eyebrow}
