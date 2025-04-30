@@ -63,23 +63,6 @@ export default async function RootLayout({
           `}
         </Script>
 
-        <Script
-          id="simple-analytics"
-          src="https://scripts.simpleanalyticscdn.com/latest.js"
-          strategy="afterInteractive"
-          data-domain="polkadot.com"
-        />
-        <Script
-          id="simple-analytics"
-          src="https://scripts.simpleanalyticscdn.com/auto-events.js"
-          strategy="afterInteractive"
-          data-domain="polkadot.com"
-          data-collect="outbound,emails,downloads"
-          data-extensions="pdf,csv,docx,xlsx,zip,doc,xls"
-          data-use-title="true"
-          data-full-urls="false"
-          defer
-        />
         <Script src="https://js.hsforms.net/forms/embed/v2.js" />
         <Script
           id="plausible"
@@ -170,14 +153,6 @@ export default async function RootLayout({
         )}
       >
         <noscript>
-          <img
-            src="https://queue.simpleanalyticscdn.com/noscript.gif?hostname=polkadot.com"
-            alt=""
-            width="0"
-            height="0"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-
           <iframe
             title="GTM-MG9HQ6PM"
             src="https://ekndrsoc.ust.stape.io/ns.html?id=GTM-MG9HQ6PM"
