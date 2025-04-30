@@ -8,7 +8,6 @@ interface Props {
 }
 
 export function HubSpotForm({ type, id }: Props) {
-  console.log('HubSpotForm form mounting', type, id);
   const formInitialized = useRef(false);
 
   useEffect(() => {
@@ -28,8 +27,23 @@ export function HubSpotForm({ type, id }: Props) {
       }
     };
 
-    if (type && id) {
+    let retryCount = 0;
+    const maxRetries = 5;
+    const retryDelay = 500;
+
+    const attemptFormCreation = () => {
+      if (formInitialized.current) return;
+
       createForm();
+
+      if (!formInitialized.current && retryCount < maxRetries) {
+        retryCount++;
+        setTimeout(attemptFormCreation, retryDelay);
+      }
+    };
+
+    if (type && id) {
+      attemptFormCreation();
     }
   }, [type, id]);
 
