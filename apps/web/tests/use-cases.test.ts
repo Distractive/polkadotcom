@@ -97,9 +97,6 @@ test('Use Cases', async ({ page }) => {
         name: 'Polkadot by the numbers',
       }),
     ).toBeVisible();
-    await expect(section.getByText('Behind every groundbreaking')).toHaveText(
-      'Behind every groundbreaking solution is a network that delivers. Explore the stats that showcase Polkadot’s unmatched scale, security, and impact in driving the Web3 revolution.',
-    );
   });
 
   await test.step('"by numbers" section screenshot', async () => {

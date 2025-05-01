@@ -38,8 +38,14 @@ const cspSources = {
     'https://vimeo.com',
     'wss://*.hotjar.com',
     'www.google-analytics.com',
-    'https://*-dsn.algolia.net',
-    'https://*.algolianet.com/',
+    'https://*.algolia.net',
+    'https://*.algolianet.com',
+    'https://tracking-europe.ad360.media',
+    'https://*.ad360.media',
+    'https://*.reddit.com',
+    'https://alb.reddit.com',
+    'https://www.redditstatic.com',
+    'https://pixel-config.reddit.com',
   ],
   'default-src': ["'self'"],
   'font-src': [
@@ -61,6 +67,7 @@ const cspSources = {
     'https://ekndrsoc.ust.stape.io',
     'https://player.vimeo.com',
     'https://www.youtube.com',
+    'https://vercel.live/',
   ],
   'img-src': [
     "'self'",
@@ -88,6 +95,12 @@ const cspSources = {
     'https://stats.g.doubleclick.net/*',
     'https://t.co/*',
     'https://t.co/1/i/adsct',
+    'https://www.googleadservices.com',
+    'https://www.google-analytics.com',
+    'https://www.googletagmanager.com',
+    'https://*.reddit.com',
+    'https://alb.reddit.com',
+    'https://*.ad360.media',
   ],
   'object-src': ["'none'"],
   'script-src': [
@@ -114,6 +127,10 @@ const cspSources = {
     'https://static.ads-twitter.com/uwt.js',
     'https://www.googletagmanager.com',
     'https://www.youtube.com',
+    'https://www.redditstatic.com',
+    'http://cdn.ad360.media',
+    'https://cdn.ad360.media',
+    'https://vercel.live/',
   ],
   'style-src': [
     "'self'",
@@ -136,7 +153,7 @@ const generateCSP = (sources) => {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: isStatic ? 'export' : 'standalone',
-  trailingSlash: isStatic,
+  trailingSlash: true,
   basePath: '',
   distDir: isStatic ? 'out' : '.next',
   assetPrefix: '',
