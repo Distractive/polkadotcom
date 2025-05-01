@@ -80,7 +80,7 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
           return [
             {
               slug: '/community',
-              title: 'Community'
+              title: 'Community',
             },
             {
               slug: '/blog',
