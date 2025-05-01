@@ -39,7 +39,7 @@ export default function Banner({ banner }: BannerProps) {
   }
 
   if (isBannerClosed) {
-    return null;
+    return;
   }
 
   return (
