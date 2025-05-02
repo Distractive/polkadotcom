@@ -173,7 +173,7 @@ export default async function RootLayout({
           </span>
         </a>
 
-        <BannerWrapper type="desktop" />
+        <BannerWrapper />
         <div className="relative">
           {navigation && <NavigationLayout navigation={navigation} />}
 

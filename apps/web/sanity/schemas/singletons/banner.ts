@@ -14,16 +14,15 @@ export default defineType({
       name: 'eyebrow',
       title: 'Eyebrow',
       type: 'string',
+      description:
+        'Eyebrow text, recommended to be 28 characters or less. More than this will cause text wrapping on smaller mobile devices.',
     }),
     defineField({
       name: 'header',
       title: 'Header',
       type: 'string',
-    }),
-    defineField({
-      name: 'mobileText',
-      title: 'Mobile Text',
-      type: 'string',
+      description:
+        'Main text, recommended to be 24 characters or less. More than this will cause text wrapping on smaller mobile devices.',
     }),
     defineField({
       name: 'icon',
