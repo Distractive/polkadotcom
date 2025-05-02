@@ -1,6 +1,7 @@
-import { nullToUndefined, q } from 'groqd';
+import { q } from 'groqd';
 import type { Selection } from 'groqd';
 
+import { cardStatSelection } from '../blocks/card-stat';
 import { customUrlSelection } from '../custom-url';
 
 export const statsSelection = {
@@ -9,9 +10,7 @@ export const statsSelection = {
     items: q('items')
       .filter()
       .grab({
-        _key: q.string(),
-        heading: q.string(),
-        body: nullToUndefined(q.string().optional()),
+        ...cardStatSelection,
         link: q('link')
           .grab$({
             ...customUrlSelection,

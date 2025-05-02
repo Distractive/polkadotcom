@@ -1,7 +1,6 @@
 import type { customUrlSelection } from '@/sanity/selections/custom-url';
 import type { TypeFromSelection } from 'groqd';
 import Link from 'next/link';
-import { Suspense } from 'react';
 
 import {
   BLOG_POSTTYPE,
@@ -53,7 +52,7 @@ export function CustomUrl({
   if (isNested) {
     return value ? (
       isWrapper ? (
-        <Suspense fallback={null}>{children}</Suspense>
+        <div className={className}>{children}</div>
       ) : (
         <div className={className}>
           <span className="inline-flex items-center gap-2">
@@ -85,7 +84,7 @@ export function CustomUrl({
       onClick={onClick}
     >
       {isWrapper ? (
-        <Suspense fallback={null}>{children}</Suspense>
+        <div className="contents">{children}</div>
       ) : (
         <span className="inline-flex items-center gap-2">
           <span className="flex-1"> {children}</span>
