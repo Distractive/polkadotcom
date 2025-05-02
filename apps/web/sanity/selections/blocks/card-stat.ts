@@ -5,6 +5,10 @@ import { customUrlSelection } from '../custom-url';
 
 export const cardStatSelection = {
   _key: q.string(),
+  useLiveMetric: q.boolean().nullable(),
+  liveMetric: q.string().optional().nullable(),
+  addDollarSign: q.boolean().optional().nullable(),
+  displayInMillions: q.boolean().optional().nullable(),
   heading: q.string().optional().nullable(),
   body: q.string().optional().nullable(),
   content: q('content')
