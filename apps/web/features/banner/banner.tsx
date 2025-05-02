@@ -36,7 +36,7 @@ export default function Banner({ banner }: BannerProps) {
     await window.cookieStore.set({
       name: 'polkadot_banner_closed',
       value: 'true',
-      expires: Date.now() + (3 * 24 * 60 * 60 * 1000),
+      expires: Date.now() + 3 * 24 * 60 * 60 * 1000,
     });
     setIsBannerClosed(true);
   }
