@@ -51,7 +51,6 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
 
   const [postsData] = await getPostHeading(postType);
 
-  // Hard code press release breadcrumb due to URL structure of parent pages
   const breadcrumb: BreadcrumbProps = {
     items: (() => {
       switch (type) {
@@ -77,20 +76,19 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
               title: 'Case Studies',
             },
           ];
-        default:
+        case 'Blog':
           return [
             {
-              slug: postsData?.parent?.slug ? `/${postsData.parent.slug}` : '',
-              title: postsData?.parent?.header?.title,
+              slug: '/community',
+              title: 'Community',
             },
             {
-              slug:
-                postsData?.parent?.slug && postsData?.slug
-                  ? `/${postsData.parent.slug}/${postsData.slug}`
-                  : '',
-              title: postsData?.heading,
+              slug: '/blog',
+              title: 'Blog',
             },
           ];
+        default:
+          return [];
       }
     })(),
   };
