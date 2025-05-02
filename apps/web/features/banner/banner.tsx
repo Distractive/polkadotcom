@@ -24,17 +24,20 @@ export default function Banner({ banner }: BannerProps) {
   const [isBannerClosed, setIsBannerClosed] = useState(true);
 
   useEffect(() => {
-    function checkBannerCookie() {
-      return document.cookie
-        .split('; ')
-        .some((cookie) => cookie.startsWith('polkadot_banner_closed=true'));
+    async function checkBannerCookie() {
+      const cookie = await window.cookieStore.get('polkadot_banner_closed');
+      setIsBannerClosed(!!cookie);
     }
 
-    setIsBannerClosed(checkBannerCookie());
+    checkBannerCookie();
   }, []);
 
-  function handleClose() {
-    document.cookie = 'polkadot_banner_closed=true';
+  async function handleClose() {
+    await window.cookieStore.set({
+      name: 'polkadot_banner_closed',
+      value: 'true',
+      expires: Date.now() + (3 * 24 * 60 * 60 * 1000),
+    });
     setIsBannerClosed(true);
   }
 

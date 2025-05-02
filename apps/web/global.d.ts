@@ -2,4 +2,5 @@
 interface Window {
   // biome-ignore lint/suspicious/noExplicitAny: <Allowed>
   hbspt: any;
+  cookieStore: CookieStore;
 }
