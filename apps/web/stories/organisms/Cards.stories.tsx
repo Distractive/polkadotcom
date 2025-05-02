@@ -26,6 +26,7 @@ export const Primary: Story = {
       items: [
         {
           _key: '1',
+          useLiveMetric: false,
           //@ts-ignore
           headerImage: { asset: { url: '/image-placeholder.png' } },
           //@ts-ignore
@@ -42,6 +43,7 @@ export const Primary: Story = {
         },
         {
           _key: '2',
+          useLiveMetric: false,
           //@ts-ignore
           headerImage: { asset: { url: '/image-placeholder.png' } },
           //@ts-ignore
@@ -58,6 +60,7 @@ export const Primary: Story = {
         },
         {
           _key: '3',
+          useLiveMetric: false,
           //@ts-ignore
           headerImage: { asset: { url: '/image-placeholder.png' } },
           //@ts-ignore
@@ -121,6 +124,7 @@ export const SideBySideLayoutWithIconsAndNoBackgroundImage: Story = {
       items: [
         {
           _key: '1',
+          useLiveMetric: false,
           //@ts-ignore
           icon: { asset: { url: '/icon-placeholder.png' } },
           useAsBackgroundImage: false,
@@ -131,6 +135,7 @@ export const SideBySideLayoutWithIconsAndNoBackgroundImage: Story = {
         },
         {
           _key: '2',
+          useLiveMetric: false,
           //@ts-ignore
           icon: { asset: { url: '/icon-placeholder.png' } },
           useAsBackgroundImage: false,
@@ -141,6 +146,7 @@ export const SideBySideLayoutWithIconsAndNoBackgroundImage: Story = {
         },
         {
           _key: '3',
+          useLiveMetric: false,
           //@ts-ignore
           icon: { asset: { url: '/icon-placeholder.png' } },
           useAsBackgroundImage: false,
@@ -151,6 +157,7 @@ export const SideBySideLayoutWithIconsAndNoBackgroundImage: Story = {
         },
         {
           _key: '4',
+          useLiveMetric: false,
           //@ts-ignore
           icon: { asset: { url: '/icon-placeholder.png' } },
           useAsBackgroundImage: false,

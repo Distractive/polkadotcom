@@ -53,9 +53,6 @@ test('Stake', async ({ page }) => {
     await expect(section.getByText('~58.46%Total DOT Supply')).toBeVisible();
     await expect(section.getByText('%Historical Rewards Rate**')).toBeVisible();
     await expect(section.getByText('297active validators')).toBeVisible();
-    await expect(
-      section.getByText('* As of July 30, 2024 **The'),
-    ).toBeVisible();
   });
 
   await test.step('"metrics" section screenshot', async () => {
