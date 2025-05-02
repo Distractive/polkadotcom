@@ -131,9 +131,6 @@ test('Dapps', async ({ page }) => {
     const oku = section.getByRole('link', {
       name: "DeFi Oku (Uniswap) DeFi's",
     });
-    const polkadex = section.getByRole('link', {
-      name: 'DeFi Polkadex Non-custodial',
-    });
     const zenlink = section.getByRole('link', {
       name: 'DeFi Zenlink DEX composable',
     });
@@ -152,9 +149,6 @@ test('Dapps', async ({ page }) => {
     const beatport = section.getByRole('link', {
       name: 'Marketplaces Beatport.io',
     });
-    const bluez = section.getByRole('link', {
-      name: 'Marketplaces Bluez Community-',
-    });
     const destore = section.getByRole('link', {
       name: 'Marketplaces DeStore Craft,',
     });
@@ -163,9 +157,6 @@ test('Dapps', async ({ page }) => {
     });
     const moonbeans = section.getByRole('link', {
       name: 'Marketplaces Moonbeans Multi-',
-    });
-    const publicPressure = section.getByRole('link', {
-      name: 'Marketplaces Public Pressure',
     });
     const rarible = section.getByRole('link', {
       name: 'Marketplaces Rarible',
@@ -311,18 +302,15 @@ test('Dapps', async ({ page }) => {
     expect(interlay).toBeVisible();
     expect(moonwell).toBeVisible();
     expect(oku).toBeVisible();
-    expect(polkadex).toBeVisible();
     expect(zenlink).toBeVisible();
     expect(chronos).toBeVisible();
     expect(avatars).toBeVisible();
     expect(greatEscape).toBeVisible();
     expect(artZero).toBeVisible();
     expect(beatport).toBeVisible();
-    expect(bluez).toBeVisible();
     expect(destore).toBeVisible();
     expect(kodaDot).toBeVisible();
     expect(moonbeans).toBeVisible();
-    expect(publicPressure).toBeVisible();
     expect(rarible).toBeVisible();
     expect(singular).toBeVisible();
     expect(uniqueNetwork).toBeVisible();
@@ -383,18 +371,15 @@ test('Dapps', async ({ page }) => {
     expect(interlay).toBeHidden();
     expect(moonwell).toBeHidden();
     expect(oku).toBeHidden();
-    expect(polkadex).toBeHidden();
     expect(zenlink).toBeHidden();
     expect(chronos).toBeHidden();
     expect(avatars).toBeHidden();
     expect(greatEscape).toBeHidden();
     expect(artZero).toBeHidden();
     expect(beatport).toBeHidden();
-    expect(bluez).toBeHidden();
     expect(destore).toBeHidden();
     expect(kodaDot).toBeHidden();
     expect(moonbeans).toBeHidden();
-    expect(publicPressure).toBeHidden();
     expect(rarible).toBeHidden();
     expect(singular).toBeHidden();
     expect(uniqueNetwork).toBeHidden();
@@ -455,18 +440,15 @@ test('Dapps', async ({ page }) => {
     expect(interlay).toBeHidden();
     expect(moonwell).toBeHidden();
     expect(oku).toBeHidden();
-    expect(polkadex).toBeHidden();
     expect(zenlink).toBeHidden();
     expect(chronos).toBeHidden();
     expect(avatars).toBeHidden();
     expect(greatEscape).toBeHidden();
     expect(artZero).toBeHidden();
     expect(beatport).toBeHidden();
-    expect(bluez).toBeHidden();
     expect(destore).toBeHidden();
     expect(kodaDot).toBeHidden();
     expect(moonbeans).toBeHidden();
-    expect(publicPressure).toBeHidden();
     expect(rarible).toBeHidden();
     expect(singular).toBeHidden();
     expect(uniqueNetwork).toBeHidden();

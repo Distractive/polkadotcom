@@ -11,6 +11,7 @@ export const postSelection = {
   _id: q.string(),
   slug: q.slug('slug'),
   post_type: q.string(),
+  hide_post: q.boolean().optional().nullable(),
   image: sanityImage('featured_image', {
     withAsset: ['base', 'dimensions'],
   }).nullable(),
@@ -49,6 +50,7 @@ export async function getPosts(
     return q('').grab({
       posts: query
         .grab(selection)
+        .filter('hide_post != true')
         .order('published_date desc')
         .slice(startIndex, endIndex),
       totalCount: [`count(${query.query})`, q.number()],

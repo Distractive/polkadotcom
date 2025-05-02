@@ -3,8 +3,7 @@
 import type { bannerSelection } from '@/sanity/selections/banner';
 import type { TypeFromSelection } from 'groqd';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { CustomUrl } from '@/components/custom-url';
 import {
@@ -18,32 +17,36 @@ import {
 } from '@shared/ui';
 
 interface BannerProps {
-  type: 'desktop' | 'mobile';
-  initialVisibility: boolean;
   banner: TypeFromSelection<typeof bannerSelection>;
 }
 
-export default function Banner({
-  type,
-  banner,
-  initialVisibility,
-}: BannerProps) {
-  const [isVisible, setIsVisible] = useState(initialVisibility);
-  const pathname = usePathname();
-  const isSpammening = pathname === '/spammening';
+export default function Banner({ banner }: BannerProps) {
+  const [isBannerClosed, setIsBannerClosed] = useState(true);
 
-  const handleClose = () => {
-    setIsVisible(false);
-    document.cookie =
-      'polkadot_banner_closed=true; path=/; max-age=259200; samesite=strict; secure';
-  };
+  useEffect(() => {
+    async function checkBannerCookie() {
+      const cookie = await window.cookieStore.get('polkadot_banner_closed');
+      setIsBannerClosed(!!cookie);
+    }
 
-  if (!banner?.isBannerOn || !isVisible || isSpammening) {
+    checkBannerCookie();
+  }, []);
+
+  async function handleClose() {
+    await window.cookieStore.set({
+      name: 'polkadot_banner_closed',
+      value: 'true',
+      expires: Date.now() + 3 * 24 * 60 * 60 * 1000,
+    });
+    setIsBannerClosed(true);
+  }
+
+  if (isBannerClosed) {
     return null;
   }
 
-  const desktopBanner = () => (
-    <div className="fixed bottom-4 left-4 right-6 z-40 hidden rounded-2xl bg-white sm:right-auto sm:block  md:block">
+  return (
+    <div className="fixed bottom-4 left-4 right-6 z-40 rounded-2xl bg-white sm:right-auto ">
       <div className="relative h-full w-full">
         <button
           type="button"
@@ -79,7 +82,7 @@ export default function Banner({
                 className={cn('size-14 rounded-2xl object-cover object-center')}
               />
             )}
-            <CardContent className="grid gap-copy">
+            <CardContent className="grid">
               {banner.eyebrow && (
                 <span className="text-caps-small text-xs font-bold uppercase md:text-base">
                   {banner.eyebrow}
@@ -128,28 +131,4 @@ export default function Banner({
       </Card>
     </div>
   );
-
-  const mobileBanner = () => (
-    <div className="sticky top-0 z-40 hidden w-full  flex-row bg-white px-gutter py-2 text-xs text-grey-800 sm:flex md:hidden">
-      <CustomUrl
-        className="outline-none"
-        value={{
-          // @ts-ignore
-          internal: banner.link?.internal,
-          external: banner.link?.external,
-        }}
-      >
-        {banner.mobileText}
-      </CustomUrl>
-      <button
-        type="button"
-        className="absolute bottom-0 right-0 top-0 flex cursor-pointer items-center justify-center px-4"
-        onClick={handleClose}
-      >
-        <Icon variant="close" className="size-6" />
-      </button>
-    </div>
-  );
-
-  return type === 'desktop' ? desktopBanner() : mobileBanner();
 }

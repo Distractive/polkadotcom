@@ -19,17 +19,18 @@ export default defineType({
   ],
   fields: [
     defineField({
-      name: 'meta',
-      type: 'meta',
-      group: 'meta',
-    }),
-    defineField({
       name: 'post_type',
       title: 'Post Type',
       type: 'string',
       options: {
         list: [BLOG_POSTTYPE, PRESS_RELEASE_POSTTYPE, CASE_STUDY_POSTTYPE],
       },
+    }),
+    defineField({
+      name: 'hide_post',
+      title: 'Hide post from index pages?',
+      type: 'boolean',
+      initialValue: false,
     }),
     defineField({
       name: 'title',
@@ -54,6 +55,11 @@ export default defineType({
       type: 'reference',
       to: [{ type: 'author' }],
       group: 'config',
+    }),
+    defineField({
+      name: 'meta',
+      type: 'meta',
+      group: 'meta',
     }),
     defineField({
       name: 'tags',

@@ -17,7 +17,7 @@ export default defineType({
       type: 'array',
       of: [
         defineArrayMember({
-          type: 'statsCard',
+          type: 'cardStat',
         }),
       ],
     }),
