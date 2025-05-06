@@ -14,8 +14,7 @@ env:
 jobs:
   variables:
     runs-on: ubuntu-latest
-    environment:
-      name: 'staging'
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment != 'Production' && github.event.deployment.environment != 'production'
     outputs:
       branch_name: ${{ steps.get_branch.outputs.branch_name }}
       url: ${{ steps.url.outputs.url }}
@@ -48,8 +47,6 @@ jobs:
   check-amplify-deployment:
     needs: variables
     if: needs.variables.outputs.branch_name != 'main'
-    environment:
-      name: 'staging'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
