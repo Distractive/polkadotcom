@@ -1,9 +1,9 @@
+import { BASE_URL, BLOG_POSTTYPE } from '@/constants/global';
+import { env } from '@/env.mjs';
+import Layout from '@/features/post/layout';
 import { getPostMeta } from '@/sanity/queries/post';
 import { getSlugs } from '@/sanity/queries/posts';
 import type { Metadata } from 'next';
-
-import { BASE_URL, BLOG_POSTTYPE } from '@/constants/global';
-import Layout from '@/features/post/layout';
 
 interface Props {
   params: { slug: string };
@@ -15,7 +15,6 @@ export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {
   const meta = await getPostMeta(slug);
-
   if (!meta) {
     return {
       title: '',
@@ -38,8 +37,13 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const slugs = await getSlugs(BLOG_POSTTYPE);
+  const shouldStaticGen = env.NEXT_PUBLIC_BUILD_TYPE === 'static';
 
+  if (!shouldStaticGen) {
+    return [];
+  }
+
+  const slugs = await getSlugs(BLOG_POSTTYPE);
   if (!slugs?.length) {
     return [];
   }
