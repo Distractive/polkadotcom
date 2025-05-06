@@ -31,6 +31,9 @@ jobs:
   check-amplify-deployment:
     runs-on: ubuntu-latest
     needs: get-branch-name
+    permissions:
+      id-token: write
+      contents: read
     environment:
       name: ${{ needs.get-branch-name.outputs.branch_name == 'main' && 'production' || 'staging' }}
     steps:
