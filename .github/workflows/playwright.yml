@@ -12,10 +12,14 @@ env:
   SKIP_ENV_VALIDATION: true
 
 jobs:
-  get-branch-name:
+  variables:
     runs-on: ubuntu-latest
+    environment:
+      name: 'staging'
     outputs:
       branch_name: ${{ steps.get_branch.outputs.branch_name }}
+      url: ${{ steps.url.outputs.url }}
+      matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -28,18 +32,30 @@ jobs:
           echo "branch_name=$branch_name"
           echo "branch_name=$branch_name" >> $GITHUB_OUTPUT
 
+      - id: url
+        run: |
+          sanitized_branch=$(echo "${{ steps.get_branch.outputs.branch_name }}" | sed 's/\//-/g')
+          url="https://${sanitized_branch}.${{ vars.AMPLIFY_ID }}.amplifyapp.com"
+          echo "url=$url"
+          echo "url=$url" >> $GITHUB_OUTPUT
+
+      - id: matrix
+        working-directory: apps/web
+        run: |
+          matrix=$(find tests/ -type f -name "*.test.ts" | sed 's/\/\//\//' | jq -R -s -c 'split("\n")[:-1]')
+          echo "matrix=$matrix" >> $GITHUB_OUTPUT
+
   check-amplify-deployment:
-    if: needs.get-branch-name.outputs.branch_name != 'main'
+    needs: variables
+    if: needs.variables.outputs.branch_name != 'main'
     environment:
       name: 'staging'
     runs-on: ubuntu-latest
-    needs: get-branch-name
     permissions:
       id-token: write
       contents: read
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -52,41 +68,15 @@ jobs:
           ./scripts/check-amplify-deployment.sh \
             "${{ vars.AWS_REGION }}" \
             "${{ vars.AMPLIFY_ID }}" \
-            "${{ needs.get-branch-name.outputs.branch_name }}" \
+            "${{ needs.variables.outputs.branch_name }}" \
             "${{ github.sha }}"
-
-  variables:
-    runs-on: ubuntu-latest
-    environment:
-      name: 'staging'
-    needs: 
-      - get-branch-name
-      - check-amplify-deployment
-    outputs:
-      matrix: ${{ steps.matrix.outputs.matrix }}
-      url: ${{ steps.url.outputs.url }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Get deployment URL
-        id: url
-        run: |
-          branch_name="${{ needs.get-branch-name.outputs.branch_name }}"
-          sanitized_branch=$(echo "$branch_name" | sed 's/\//-/g')
-          url="https://${sanitized_branch}.${{ vars.AMPLIFY_ID }}.amplifyapp.com"
-          echo "Sanitized branch: $sanitized_branch"
-          echo "Amplify URL: $url"
-          echo "url=$url" >> $GITHUB_OUTPUT
-
-      - name: Getting test files
-        id: matrix
-        working-directory: apps/web
-        run: |
-          matrix=$(find tests/ -type f -name "*.test.ts" | sed 's/\/\//\//' | jq -R -s -c 'split("\n")[:-1]')
-          echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
   playwright:
     runs-on: ubuntu-latest
-    needs: variables
+    needs:
+      - variables
+      - check-amplify-deployment
+    if: always() && (needs.variables.result == 'success' && (needs.check-amplify-deployment.result == 'success' || needs.variables.outputs.branch_name == 'main'))
     strategy:
       fail-fast: false
       max-parallel: 10
