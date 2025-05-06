@@ -23,10 +23,9 @@ jobs:
         run: |
           ./scripts/check-amplify-deployment.sh \
             "${{ vars.AWS_REGION }}" \
-            "${{ vars.AMPLIFY_APP_ID }}" \
+            "${{ vars.AMPLIFY_ID }}" \
             "${{ github.ref_name }}" \
             "${{ github.sha }}"
-
 
   variables:
     runs-on: ubuntu-latest
