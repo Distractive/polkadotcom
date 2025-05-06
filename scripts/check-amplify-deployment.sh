@@ -20,8 +20,7 @@ for i in {1..60}; do
     --query "jobSummaries[?commitId=='${COMMIT_ID}'] | [0].status" \
     --output text | xargs)
 
-  echo "Raw deployment status: '$DEPLOYMENT_STATUS'"
-  echo "Attempt $i/60  →  status: ${DEPLOYMENT_STATUS:-<none>}"
+  echo "Attempt $i/60  →  status: '$DEPLOYMENT_STATUS'"
 
   if [[ "$DEPLOYMENT_STATUS" == *SUCCEED* ]]; then
     echo "Deployment succeeded."
