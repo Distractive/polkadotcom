@@ -17,7 +17,7 @@ for i in {1..60}; do
     --region  "$AWS_REGION" \
     --app-id  "$AMPLIFY_APP_ID" \
     --branch-name "$BRANCH_NAME" \
-    --query "jobSummaries[?commitId=='${COMMIT_ID}'].status | [0]" \
+    --query "jobSummaries[?commitId=='${COMMIT_ID}'] | [0].status" \
     --output text | xargs)
 
   echo "Raw deployment status: '$DEPLOYMENT_STATUS'"
