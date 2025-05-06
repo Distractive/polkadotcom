@@ -12,12 +12,6 @@ AMPLIFY_APP_ID="$2"
 BRANCH_NAME="$3"
 COMMIT_ID="$4"
 
-echo "All required parameters provided:"
-echo "- AWS region     : $AWS_REGION"
-echo "- Amplify app ID : $AMPLIFY_APP_ID"
-echo "- Branch name    : $BRANCH_NAME"
-echo "- Commit ID      : $COMMIT_ID"
-
 for i in {1..60}; do
   DEPLOYMENT_STATUS=$(aws amplify list-jobs \
     --region  "$AWS_REGION" \
