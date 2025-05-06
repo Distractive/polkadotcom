@@ -24,7 +24,7 @@ for i in {1..60}; do
 
   if [[ "$DEPLOYMENT_STATUS" == "SUCCEED" ]]; then
     echo "Deployment succeeded."
-    echo "AWS_AMPLIFY_DEPLOYMENT_STATUS=$DEPLOYMENT_STATUS" >> "$GITHUB_ENV"
+    echo "DEPLOYMENT_STATUS=$DEPLOYMENT_STATUS" >> "$GITHUB_ENV"
     exit 0
   fi
 
@@ -34,10 +34,10 @@ for i in {1..60}; do
   fi
 
   if [[ $i -lt 60 ]]; then
-    echo "Not finished yet, waiting 10 s..."
+    echo "Not finished yet, waiting 10 s ..."
     sleep 10
   else
-    echo "Timeout after ~10 min, exiting."
+    echo "Timeout after 10 min, exiting."
     exit 1
   fi
 done
