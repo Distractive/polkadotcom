@@ -12,11 +12,6 @@ AMPLIFY_APP_ID="$2"
 BRANCH_NAME="$3"
 COMMIT_ID="$4"
 
-echo "AWS_REGION=$AWS_REGION"
-echo "AMPLIFY_APP_ID=$AMPLIFY_APP_ID"
-echo "BRANCH_NAME=$BRANCH_NAME"
-echo "COMMIT_ID=$COMMIT_ID"
-
 for i in {1..60}; do
   DEPLOYMENT_STATUS=$(aws amplify list-jobs \
     --region "$AWS_REGION" \
@@ -28,13 +23,13 @@ for i in {1..60}; do
   echo "Raw deployment status: '$DEPLOYMENT_STATUS'"
   echo "Attempt $i/60  →  status: ${DEPLOYMENT_STATUS:-<none>}"
 
-  if [[ "$DEPLOYMENT_STATUS" == "SUCCEED" ]]; then
+  if [[ "$DEPLOYMENT_STATUS" == *SUCCEED* ]]; then
     echo "Deployment succeeded."
     echo "DEPLOYMENT_STATUS=$DEPLOYMENT_STATUS" >> "$GITHUB_ENV"
     exit 0
   fi
 
-  if [[ "$DEPLOYMENT_STATUS" == "FAILED" || "$DEPLOYMENT_STATUS" == "CANCELLED" ]]; then
+  if [[ "$DEPLOYMENT_STATUS" == *FAILED* || "$DEPLOYMENT_STATUS" == *CANCELLED* ]]; then
     echo "Deployment failed or was cancelled."
     exit 1
   fi
