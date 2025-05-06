@@ -14,11 +14,11 @@ COMMIT_ID="$4"
 
 for i in {1..90}; do
   DEPLOYMENT_STATUS=$(aws amplify list-jobs \
-    --region  "$AWS_REGION" \
-    --app-id  "$AMPLIFY_APP_ID" \
+    --region "$AWS_REGION" \
+    --app-id "$AMPLIFY_APP_ID" \
     --branch-name "$BRANCH_NAME" \
     --query "jobSummaries[?commitId=='${COMMIT_ID}'].status | [0]" \
-    --output text)
+    --output text | xargs)
 
   echo "Attempt $i/90  →  status: ${DEPLOYMENT_STATUS:-<none>}"
 
