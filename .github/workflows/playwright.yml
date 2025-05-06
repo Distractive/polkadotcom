@@ -12,23 +12,42 @@ env:
   SKIP_ENV_VALIDATION: true
 
 jobs:
+  get-branch-name:
+    runs-on: ubuntu-latest
+    outputs:
+      branch_name: ${{ steps.get_branch.outputs.branch_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.deployment.ref }}
+
+      - id: get_branch
+        run: |
+          branch_name=$(git show-ref | grep ${{ github.event.deployment.ref }} | grep -v HEAD | sed 's/.*refs\/remotes\/origin\///' | sed 's/.*refs\/heads\///')
+          echo "branch_name=$branch_name"
+          echo "branch_name=$branch_name" >> $GITHUB_OUTPUT
+
   check-amplify-deployment:
     runs-on: ubuntu-latest
+    needs: get-branch-name
     environment:
-      name: ${{ github.event.deployment.ref == 'main' && 'production' || 'staging' }}
+      name: ${{ needs.get-branch-name.outputs.branch_name == 'main' && 'production' || 'staging' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Wait for Amplify deployment to succeed
         run: |
           ./scripts/check-amplify-deployment.sh \
             "${{ vars.AWS_REGION }}" \
             "${{ vars.AMPLIFY_ID }}" \
-            "${{ github.event.deployment.ref }}" \
+            "${{ needs.get-branch-name.outputs.branch_name }}" \
             "${{ github.sha }}"
 
   variables:
     runs-on: ubuntu-latest
+    needs: get-branch-name
     if: github.event.deployment_status.state == 'success' && github.actor == 'vercel[bot]' && github.event.deployment.environment != 'Production' && github.event.deployment.environment != 'production'
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
@@ -42,7 +61,7 @@ jobs:
       - name: Get deployment URL
         id: url
         run: |
-          branch_name=$(git show-ref | grep ${{ github.event.deployment.ref }} | grep -v HEAD | sed 's/.*refs\/remotes\/origin\///' | sed 's/.*refs\/heads\///')
+          branch_name="${{ needs.get-branch-name.outputs.branch_name }}"
           url="${{ github.event.deployment_status.target_url }}"
           if [[ "$branch_name" == "develop" ]]; then
             url="https://polkadotcom-git-develop-distractive-for-polkadot.vercel.app"
