@@ -57,6 +57,8 @@ jobs:
 
   variables:
     runs-on: ubuntu-latest
+    environment:
+      name: 'staging'
     needs: 
       - get-branch-name
       - check-amplify-deployment
