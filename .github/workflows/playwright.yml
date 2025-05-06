@@ -18,8 +18,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check amplify deployment status
-        run: ./scripts/check-amplify-deployment.sh
+      - name: Wait for Amplify deployment to succeed
+        run: |
+          ./scripts/check-amplify-deployment.sh \
+            "${{ vars.AWS_REGION }}" \
+            "${{ vars.AMPLIFY_APP_ID }}" \
+            "${{ github.ref_name }}" \
+            "${{ github.sha }}"
+
 
   variables:
     runs-on: ubuntu-latest
