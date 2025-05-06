@@ -37,7 +37,6 @@ jobs:
         run: |
           sanitized_branch=$(echo "${{ steps.get_branch.outputs.branch_name }}" | sed 's/\//-/g')
           url="https://${sanitized_branch}.${{ vars.AMPLIFY_ID }}.amplifyapp.com"
-          echo "url=$url"
           echo "url=$url" >> $GITHUB_OUTPUT
 
       - id: matrix
