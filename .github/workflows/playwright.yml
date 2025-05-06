@@ -15,7 +15,7 @@ jobs:
   check-amplify-deployment:
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+      name: ${{ github.event.deployment.ref == 'main' && 'production' || 'staging' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,7 +24,7 @@ jobs:
           ./scripts/check-amplify-deployment.sh \
             "${{ vars.AWS_REGION }}" \
             "${{ vars.AMPLIFY_ID }}" \
-            "${{ github.ref_name }}" \
+            "${{ github.event.deployment.ref }}" \
             "${{ github.sha }}"
 
   variables:
