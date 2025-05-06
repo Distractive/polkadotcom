@@ -12,15 +12,15 @@ AMPLIFY_APP_ID="$2"
 BRANCH_NAME="$3"
 COMMIT_ID="$4"
 
-for i in {1..90}; do
+for i in {1..60}; do
   DEPLOYMENT_STATUS=$(aws amplify list-jobs \
-    --region "$AWS_REGION" \
-    --app-id "$AMPLIFY_APP_ID" \
+    --region  "$AWS_REGION" \
+    --app-id  "$AMPLIFY_APP_ID" \
     --branch-name "$BRANCH_NAME" \
     --query "jobSummaries[?commitId=='${COMMIT_ID}'].status | [0]" \
-    --output text | xargs)
+    --output text)
 
-  echo "Attempt $i/90  →  status: ${DEPLOYMENT_STATUS:-<none>}"
+  echo "Attempt $i/60  →  status: ${DEPLOYMENT_STATUS:-<none>}"
 
   if [[ "$DEPLOYMENT_STATUS" == "SUCCEED" ]]; then
     echo "Deployment succeeded."
@@ -33,11 +33,11 @@ for i in {1..90}; do
     exit 1
   fi
 
-  if [[ $i -lt 90 ]]; then
+  if [[ $i -lt 60 ]]; then
     echo "Not finished yet, waiting 10 s..."
     sleep 10
   else
-    echo "Timeout after ~15 min, exiting."
+    echo "Timeout after ~10 min, exiting."
     exit 1
   fi
 done
