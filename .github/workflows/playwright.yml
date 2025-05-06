@@ -56,8 +56,8 @@ jobs:
 
   variables:
     runs-on: ubuntu-latest
-    needs: get-branch-name
-    if: github.event.deployment_status.state == 'success' && github.actor == 'vercel[bot]' && github.event.deployment.environment != 'Production' && github.event.deployment.environment != 'production'
+    needs:
+      - check-amplify-deployment
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
       url: ${{ steps.url.outputs.url }}
@@ -67,13 +67,10 @@ jobs:
         id: url
         run: |
           branch_name="${{ needs.get-branch-name.outputs.branch_name }}"
-          url="${{ github.event.deployment_status.target_url }}"
-          if [[ "$branch_name" == "develop" ]]; then
-            url="https://polkadotcom-git-develop-distractive-for-polkadot.vercel.app"
-          elif [[ "$branch_name" == "staging" ]]; then
-            url="https://polkadotcom-git-staging-distractive-for-polkadot.vercel.app"
-          fi
-          echo "branch_name=$branch_name; url=$url"
+          sanitized_branch=$(echo "$branch_name" | sed 's/\//-/g')
+          url="https://${sanitized_branch}.${{ vars.AMPLIFY_ID }}.amplifyapp.com"
+          echo "Sanitized branch: $sanitized_branch"
+          echo "Amplify URL: $url"
           echo "url=$url" >> $GITHUB_OUTPUT
 
       - name: Getting test files
@@ -113,8 +110,7 @@ jobs:
       - name: 🧪 Run Playwright tests
         working-directory: apps/web
         env:
-          VERCEL_URL: ${{ needs.variables.outputs.url }}
-          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+          AMPLIFY_URL: ${{ needs.variables.outputs.url }}
         run: npx playwright test ${{ matrix.test }}
 
       - name: Getting artifacts name

@@ -3,7 +3,7 @@ import { config } from 'dotenv';
 
 config({ path: '.env.local' });
 
-const { CI, VERCEL_URL, VERCEL_AUTOMATION_BYPASS_SECRET } = process.env;
+const { CI, AMPLIFY_URL } = process.env;
 
 /**
  * Read environment variables from file.
@@ -46,7 +46,7 @@ export default defineConfig({
     actionTimeout: 5000,
 
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: CI ? VERCEL_URL : 'http://127.0.0.1:3000',
+    baseURL: CI ? AMPLIFY_URL : 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
@@ -61,13 +61,6 @@ export default defineConfig({
 
     /* Collect videos when retrying the failed test. */
     video: { mode: 'retain-on-failure' },
-
-    ...(VERCEL_AUTOMATION_BYPASS_SECRET && {
-      extraHTTPHeaders: {
-        'x-vercel-protection-bypass': VERCEL_AUTOMATION_BYPASS_SECRET,
-        'x-vercel-set-bypass-cookie': 'true',
-      },
-    }),
   },
 
   /* Configure projects for major browsers */
