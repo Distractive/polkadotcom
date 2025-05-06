@@ -30,6 +30,8 @@ jobs:
 
   check-amplify-deployment:
     if: needs.get-branch-name.outputs.branch_name != 'main'
+    environment:
+      name: 'staging'
     runs-on: ubuntu-latest
     needs: get-branch-name
     permissions:
