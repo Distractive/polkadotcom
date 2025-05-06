@@ -41,10 +41,12 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     // TODO: Replace with env variables (https://playwright.dev/docs/api/class-testoptions)
-    httpCredentials: {
-      username: 'test',
-      password: 'testtest',
-    },
+    ...(CI && {
+      httpCredentials: {
+        username: 'test',
+        password: 'testtest',
+      },
+    }),
 
     headless: !!CI,
 
