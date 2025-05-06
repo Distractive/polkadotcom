@@ -1,7 +1,7 @@
 name: playwright
 
 on:
-  deployment_status:
+  push:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -14,22 +14,24 @@ env:
 jobs:
   variables:
     runs-on: ubuntu-latest
-    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment != 'Production' && github.event.deployment.environment != 'production'
     outputs:
       branch_name: ${{ steps.get_branch.outputs.branch_name }}
       url: ${{ steps.url.outputs.url }}
       matrix: ${{ steps.matrix.outputs.matrix }}
+      is_primary_branch: ${{ steps.branch_check.outputs.is_primary_branch }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: ${{ github.event.deployment.ref }}
 
       - id: get_branch
+        run: echo "branch_name=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+
+      - id: branch_check
         run: |
-          branch_name=$(git show-ref | grep ${{ github.event.deployment.ref }} | grep -v HEAD | sed 's/.*refs\/remotes\/origin\///' | sed 's/.*refs\/heads\///')
-          echo "branch_name=$branch_name"
-          echo "branch_name=$branch_name" >> $GITHUB_OUTPUT
+          if [[ "${{ github.ref_name }}" == "main" || "${{ github.ref_name }}" == "staging" ]]; then
+            echo "is_primary_branch=true" >> $GITHUB_OUTPUT
+          else
+            echo "is_primary_branch=false" >> $GITHUB_OUTPUT
+          fi
 
       - id: url
         run: |
@@ -46,7 +48,7 @@ jobs:
 
   check-amplify-deployment:
     needs: variables
-    if: needs.variables.outputs.branch_name != 'main'
+    if: needs.variables.outputs.is_primary_branch == 'false'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -73,7 +75,7 @@ jobs:
     needs:
       - variables
       - check-amplify-deployment
-    if: always() && (needs.variables.result == 'success' && (needs.check-amplify-deployment.result == 'success' || needs.variables.outputs.branch_name == 'main'))
+    if: needs.variables.outputs.is_primary_branch == 'false'
     strategy:
       fail-fast: false
       max-parallel: 10
