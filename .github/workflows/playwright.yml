@@ -12,6 +12,15 @@ env:
   SKIP_ENV_VALIDATION: true
 
 jobs:
+  check-amplify-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check amplify deployment status
+        run: ./scripts/check-amplify-deployment.sh
+
   variables:
     runs-on: ubuntu-latest
     if: github.event.deployment_status.state == 'success' && github.actor == 'vercel[bot]' && github.event.deployment.environment != 'Production' && github.event.deployment.environment != 'production'
