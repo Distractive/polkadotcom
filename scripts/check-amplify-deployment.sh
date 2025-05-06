@@ -12,16 +12,20 @@ AMPLIFY_APP_ID="$2"
 BRANCH_NAME="$3"
 COMMIT_ID="$4"
 
+echo "AWS_REGION=$AWS_REGION"
+echo "AMPLIFY_APP_ID=$AMPLIFY_APP_ID"
+echo "BRANCH_NAME=$BRANCH_NAME"
+echo "COMMIT_ID=$COMMIT_ID"
+
 for i in {1..60}; do
   DEPLOYMENT_STATUS=$(aws amplify list-jobs \
-    --region  "$AWS_REGION" \
-    --app-id  "$AMPLIFY_APP_ID" \
+    --region "$AWS_REGION" \
+    --app-id "$AMPLIFY_APP_ID" \
     --branch-name "$BRANCH_NAME" \
     --query "jobSummaries[?commitId=='${COMMIT_ID}'] | [0].status" \
     --output text | xargs)
 
   echo "Raw deployment status: '$DEPLOYMENT_STATUS'"
-
   echo "Attempt $i/60  →  status: ${DEPLOYMENT_STATUS:-<none>}"
 
   if [[ "$DEPLOYMENT_STATUS" == "SUCCEED" ]]; then
