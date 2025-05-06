@@ -14,10 +14,11 @@ env:
 jobs:
   check-amplify-deployment:
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Wait for Amplify deployment to succeed
         run: |
           ./scripts/check-amplify-deployment.sh \

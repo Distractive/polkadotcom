@@ -13,7 +13,7 @@ BRANCH_NAME="$3"
 COMMIT_ID="$4"
 
 echo "All required parameters provided:"
-echo "- AWS region   : $AWS_REGION"
+echo "- AWS region     : $AWS_REGION"
 echo "- Amplify app ID : $AMPLIFY_APP_ID"
 echo "- Branch name    : $BRANCH_NAME"
 echo "- Commit ID      : $COMMIT_ID"
