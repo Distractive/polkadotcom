@@ -36,6 +36,7 @@ jobs:
           else
             echo "branch_name=${{ github.ref_name }}" >> $GITHUB_OUTPUT
             echo "commit_id=${{ github.sha }}" >> $GITHUB_OUTPUT
+          fi
 
       - id: url
         run: |
