@@ -1,0 +1,36 @@
+name: Mozilla Observatory Scan
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  observatory-scan:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    env:
+      DEPLOYMENT_URL: "https://polkadot.com"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Mozilla Observatory Scan and save to file
+        run: |
+          npx tsx ./scripts/observatory-scan.mts > observatory.md
+
+      - name: Upload scan results as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: observatory-scan-result
+          path: observatory.md
