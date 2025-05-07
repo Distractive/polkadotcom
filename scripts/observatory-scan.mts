@@ -65,7 +65,7 @@ export async function scan({ url }: { url: string }): Promise<ScanResult> {
     `https://observatory-api.mdn.mozilla.net/api/v2/scan?host=${hostname}`,
     {
       method: 'POST',
-    }
+    },
   );
 
   const json: MozillaScanResponse = await response.json();
