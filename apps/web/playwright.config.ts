@@ -40,7 +40,6 @@ export default defineConfig({
   reporter: CI ? 'github' : 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    // TODO: Replace with env variables (https://playwright.dev/docs/api/class-testoptions)
     ...(CI && {
       httpCredentials: {
         username: AMPLIFY_USERNAME || '',
