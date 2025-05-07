@@ -24,6 +24,7 @@ jobs:
       branch_name: ${{ steps.get_branch.outputs.branch_name }}
       url: ${{ steps.url.outputs.url }}
       matrix: ${{ steps.matrix.outputs.matrix }}
+      commit_id: ${{ steps.get_branch.outputs.commit_id }}
     steps:
       - uses: actions/checkout@v4
 
@@ -31,9 +32,10 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             echo "branch_name=${{ github.head_ref }}" >> $GITHUB_OUTPUT
+            echo "commit_id=${{ github.event.pull_request.head.sha }}" >> $GITHUB_OUTPUT
           else
             echo "branch_name=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-          fi
+            echo "commit_id=${{ github.sha }}" >> $GITHUB_OUTPUT
 
       - id: url
         run: |
@@ -69,7 +71,7 @@ jobs:
             "${{ vars.AWS_REGION }}" \
             "${{ vars.AMPLIFY_ID }}" \
             "${{ needs.variables.outputs.branch_name }}" \
-            "${{ github.sha }}"
+            "${{ needs.variables.outputs.commit_id }}"
 
   playwright:
     runs-on: ubuntu-latest
