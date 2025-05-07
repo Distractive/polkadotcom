@@ -1,0 +1,46 @@
+name: Dastardly Scan
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dastardly-scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+
+    steps:
+      - name: Run Dastardly scan
+        id: dastardly-scan
+        uses: PortSwigger/dastardly-github-action@main
+        with:
+          target-url: "https://polkadot.com"
+          output-filename: dastardly-report.xml
+
+      - name: Show Dastardly Report
+        if: always()
+        run: cat dastardly-report.xml
+
+      - name: Publish Test Report
+        if: always()
+        uses: mikepenz/action-junit-report@v4
+        with:
+          report_paths: dastardly-report.xml
+          require_tests: true
+
+      - name: Upload Dastardly Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dastardly-scan-result
+          path: dastardly-report.xml
