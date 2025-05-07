@@ -3,7 +3,7 @@ import { config } from 'dotenv';
 
 config({ path: '.env.local' });
 
-const { CI, AMPLIFY_URL } = process.env;
+const { CI, AMPLIFY_URL, AMPLIFY_USERNAME, AMPLIFY_PASSWORD } = process.env;
 
 /**
  * Read environment variables from file.
@@ -43,8 +43,8 @@ export default defineConfig({
     // TODO: Replace with env variables (https://playwright.dev/docs/api/class-testoptions)
     ...(CI && {
       httpCredentials: {
-        username: 'test',
-        password: 'testtest',
+        username: AMPLIFY_USERNAME || '',
+        password: AMPLIFY_PASSWORD || '',
       },
     }),
 

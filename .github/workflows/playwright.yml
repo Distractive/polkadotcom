@@ -103,6 +103,8 @@ jobs:
         working-directory: apps/web
         env:
           AMPLIFY_URL: ${{ needs.variables.outputs.url }}
+          AMPLIFY_USERNAME: ${{ secrets.AMPLIFY_USERNAME }}
+          AMPLIFY_PASSWORD: ${{ secrets.AMPLIFY_PASSWORD }}
         run: npx playwright test ${{ matrix.test }}
 
       - name: Getting artifacts name
