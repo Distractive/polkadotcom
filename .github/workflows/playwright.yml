@@ -29,10 +29,6 @@ jobs:
 
       - id: get_branch
         run: |
-          echo "event: ${{ github.event_name }}"
-          echo "head_ref: ${{ github.head_ref }}"
-          echo "ref_name: ${{ github.ref_name }}"
-
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             echo "branch_name=${{ github.head_ref }}" >> $GITHUB_OUTPUT
           else
