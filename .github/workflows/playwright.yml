@@ -24,20 +24,11 @@ jobs:
       branch_name: ${{ steps.get_branch.outputs.branch_name }}
       url: ${{ steps.url.outputs.url }}
       matrix: ${{ steps.matrix.outputs.matrix }}
-      is_primary_branch: ${{ steps.branch_check.outputs.is_primary_branch }}
     steps:
       - uses: actions/checkout@v4
 
       - id: get_branch
         run: echo "branch_name=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-
-      - id: branch_check
-        run: |
-          if [[ "${{ github.ref_name }}" == "main" || "${{ github.ref_name }}" == "staging" ]]; then
-            echo "is_primary_branch=true" >> $GITHUB_OUTPUT
-          else
-            echo "is_primary_branch=false" >> $GITHUB_OUTPUT
-          fi
 
       - id: url
         run: |
@@ -53,7 +44,6 @@ jobs:
 
   check-amplify-deployment:
     needs: variables
-    if: needs.variables.outputs.is_primary_branch == 'false'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -81,7 +71,6 @@ jobs:
     needs:
       - variables
       - check-amplify-deployment
-    if: needs.variables.outputs.is_primary_branch == 'false'
     strategy:
       fail-fast: false
       max-parallel: 10
