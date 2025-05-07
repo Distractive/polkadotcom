@@ -24,9 +24,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run Mozilla Observatory Scan and save to file
+      - name: Run Mozilla Observatory Scan
         run: |
-          npx tsx ./scripts/observatory-scan.mts > observatory.md
+          result=$(npx tsx ./scripts/observatory_scan.mts)
+          # Escape newlines and store in output
+          echo "result<<EOF" >> $GITHUB_OUTPUT
+          echo "$result" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Upload scan results as artifact
         uses: actions/upload-artifact@v4

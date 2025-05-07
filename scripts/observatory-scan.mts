@@ -1,5 +1,35 @@
 import { URL } from 'node:url';
 
+const { DEPLOYMENT_URL } = process.env;
+
+if (!DEPLOYMENT_URL) {
+  throw new Error('DEPLOYMENT_URL env variable is required');
+}
+
+console.log(await scan({ url: DEPLOYMENT_URL }));
+
+async function scan({ url }: { url: string }): Promise<string> {
+  await fetch(url).catch((error) => {
+    console.error('Error fetching deployment URL:', error);
+    process.exit(1);
+  });
+
+  const hostname = new URL(url).hostname;
+  const response = await fetch(
+    `https://observatory-api.mdn.mozilla.net/api/v2/scan?host=${hostname}`,
+    {
+      method: 'POST',
+    },
+  );
+  const json: MozillaScanResponse = await response.json();
+
+  if (json.error) {
+    throw new Error(`${json.error} ${json.message}`);
+  }
+
+  return observatoryResponseToMarkdown(json);
+}
+
 interface MozillaScanResponse {
   id: number;
   details_url: string;
@@ -15,7 +45,7 @@ interface MozillaScanResponse {
   message?: string;
 }
 
-function observatoryResponseToMarkdown(response: MozillaScanResponse): string {
+function observatoryResponseToMarkdown(response: MozillaScanResponse) {
   const {
     id,
     details_url,
@@ -30,68 +60,15 @@ function observatoryResponseToMarkdown(response: MozillaScanResponse): string {
   } = response;
 
   return `## Observatory Scan Results
-
-- **Scan ID**: ${id}
-- **Details**: [View full report](${details_url})
-- **Algorithm Version**: ${algorithm_version}
-- **Scanned At**: ${new Date(scanned_at).toLocaleString()}
-- **Status Code**: ${status_code}
-- **Grade**: ${grade}
-- **Score**: ${score} / 100
-
-### Test Summary
-- **Total Tests**: ${tests_quantity}
-- **Tests Passed**: ${tests_passed}
-- **Tests Failed**: ${tests_failed}`;
-}
-
-type ScanResult = {
-  markdown: string;
-  json: MozillaScanResponse;
-};
-
-export async function scan({ url }: { url: string }): Promise<ScanResult> {
-  if (!url) {
-    throw new Error('DEPLOYMENT_URL env variable is required');
-  }
-
-  await fetch(url).catch(console.error);
-
-  const hostname = new URL(url).hostname;
-
-  console.log('Running Observatory scan for:', hostname);
-
-  const response = await fetch(
-    `https://observatory-api.mdn.mozilla.net/api/v2/scan?host=${hostname}`,
-    {
-      method: 'POST',
-    },
-  );
-
-  const json: MozillaScanResponse = await response.json();
-
-  console.log('Observatory response:', json);
-
-  if (json.error) {
-    throw new Error(`${json.error} ${json.message}`);
-  }
-
-  const markdown = observatoryResponseToMarkdown(json);
-
-  console.log('Observatory scan complete.');
-
-  return { markdown, json };
-}
-
-if (require.main === module) {
-  const DEPLOYMENT_URL = process.env.DEPLOYMENT_URL;
-
-  scan({ url: DEPLOYMENT_URL! })
-    .then(({ markdown }) => {
-      console.log(markdown);
-    })
-    .catch((err) => {
-      console.error('Scan failed:', err.message || err);
-      process.exit(1);
-    });
+  - **Scan ID**: ${id}
+  - **Details**: [View full report](${details_url})
+  - **Algorithm Version**: ${algorithm_version}
+  - **Scanned At**: ${new Date(scanned_at).toLocaleString()}
+  - **Status Code**: ${status_code}
+  - **Grade**: ${grade}
+  - **Score**: ${score} / 100
+  ### Test Summary
+  - **Total Tests**: ${tests_quantity}
+  - **Tests Passed**: ${tests_passed}
+  - **Tests Failed**: ${tests_failed}`;
 }
