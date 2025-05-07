@@ -28,7 +28,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - id: get_branch
-        run: echo "branch_name=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "branch_name=${{ github.head_ref }}" >> $GITHUB_OUTPUT
+          else
+            echo "branch_name=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+          fi
 
       - id: url
         run: |
