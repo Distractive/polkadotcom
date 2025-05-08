@@ -1,8 +1,6 @@
 name: Mozilla Observatory Scan
 
 on:
-  # TODO: Remove push
-  push:
   schedule:
     - cron: '0 5 * * *'
   workflow_run:
