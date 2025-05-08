@@ -5,6 +5,12 @@ on:
   push:
   schedule:
     - cron: '0 5 * * *'
+  workflow_run:
+    workflows: ["Build and Deploy"]
+    types:
+      - completed
+    branches:
+      - main
   workflow_dispatch:
 
 concurrency:
@@ -28,7 +34,7 @@ jobs:
       - name: Install tsx
         run: npm install -g tsx
 
-      - name: Run Mozilla Observatory Scan and save to file
+      - name: Run Mozilla Observatory Scan
         if: always()
         run: |
           result=$(tsx ./scripts/observatory-scan.mts)
