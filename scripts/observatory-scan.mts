@@ -6,9 +6,17 @@ if (!DEPLOYMENT_URL) {
   throw new Error('DEPLOYMENT_URL env variable is required');
 }
 
-console.log(await scan({ url: DEPLOYMENT_URL }));
+const scanResult = await scan({ url: DEPLOYMENT_URL });
 
-async function scan({ url }: { url: string }): Promise<string> {
+console.log(scanResult.text); // Console print for logs
+console.log(`::set-output name=result::${escapeForOutput(scanResult.text)}`);
+console.log(
+  `::set-output name=slack_blocks::${escapeForOutput(scanResult.slackBlocks)}`,
+);
+
+async function scan({
+  url,
+}: { url: string }): Promise<{ text: string; slackBlocks: string }> {
   await fetch(url).catch((error) => {
     console.error('Error fetching deployment URL:', error);
     process.exit(1);
@@ -17,17 +25,19 @@ async function scan({ url }: { url: string }): Promise<string> {
   const hostname = new URL(url).hostname;
   const response = await fetch(
     `https://observatory-api.mdn.mozilla.net/api/v2/scan?host=${hostname}`,
-    {
-      method: 'POST',
-    },
+    { method: 'POST' },
   );
+
   const json: MozillaScanResponse = await response.json();
 
   if (json.error) {
     throw new Error(`${json.error} ${json.message}`);
   }
 
-  return observatoryResponseToText(json);
+  return {
+    text: observatoryResponseToText(json),
+    slackBlocks: observatoryResponseToSlackBlocks(json),
+  };
 }
 
 interface MozillaScanResponse {
@@ -45,7 +55,7 @@ interface MozillaScanResponse {
   message?: string;
 }
 
-function observatoryResponseToText(response: MozillaScanResponse) {
+function observatoryResponseToText(response: MozillaScanResponse): string {
   const {
     id,
     details_url,
@@ -76,4 +86,65 @@ function observatoryResponseToText(response: MozillaScanResponse) {
     `Tests Passed    : ${tests_passed}`,
     `Tests Failed    : ${tests_failed}`,
   ].join('\n');
+}
+
+function observatoryResponseToSlackBlocks(
+  response: MozillaScanResponse,
+): string {
+  const {
+    id,
+    details_url,
+    algorithm_version,
+    scanned_at,
+    grade,
+    score,
+    status_code,
+    tests_failed,
+    tests_passed,
+    tests_quantity,
+  } = response;
+
+  const blocks = [
+    {
+      type: 'header',
+      text: { type: 'plain_text', text: '🛡 Mozilla Observatory Scan' },
+    },
+    {
+      type: 'section',
+      text: {
+        type: 'mrkdwn',
+        text: `*Grade:* ${grade}  •  *Score:* ${score} / 100  •  *Status Code:* ${status_code}`,
+      },
+    },
+    {
+      type: 'section',
+      text: {
+        type: 'mrkdwn',
+        text: `*Scan Details:*\n• ID: ${id}\n• Algorithm Version: ${algorithm_version}\n• Scanned At: ${new Date(scanned_at).toLocaleString()}`,
+      },
+    },
+    {
+      type: 'section',
+      text: {
+        type: 'mrkdwn',
+        text: `*Test Summary:*\n• Total: ${tests_quantity}\n• Passed: ${tests_passed}\n• Failed: ${tests_failed}`,
+      },
+    },
+    {
+      type: 'section',
+      text: {
+        type: 'mrkdwn',
+        text: `<${details_url}|View full scan details>`,
+      },
+    },
+  ];
+
+  return JSON.stringify(blocks);
+}
+
+function escapeForOutput(input: string): string {
+  return input
+    .replaceAll('%', '%25')
+    .replaceAll('\n', '%0A')
+    .replaceAll('\r', '%0D');
 }

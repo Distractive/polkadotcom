@@ -24,6 +24,7 @@ jobs:
       DEPLOYMENT_URL: "https://polkadot.com"
     outputs:
       result: ${{ steps.scan.outputs.result }}
+      slack_blocks: ${{ steps.scan.outputs.slack_blocks }}
     steps:
       - uses: actions/checkout@v4
 
@@ -41,9 +42,6 @@ jobs:
         run: |
           result=$(tsx ./scripts/observatory-scan.mts)
           echo "$result" > observatory.txt
-          echo "result<<EOF" >> $GITHUB_OUTPUT
-          echo "$result" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Upload scan results as artifact
         if: always()
@@ -64,12 +62,5 @@ jobs:
           payload: |
             {
               "text": "Mozilla Observatory Scan completed",
-              "attachments": [
-                {
-                  "color": "#439FE0",
-                  "title": "Scan Results",
-                  "text": "```${{ needs.observatory-scan.outputs.result }}```",
-                  "mrkdwn_in": ["text"]
-                }
-              ]
+              "blocks": ${{ needs.observatory-scan.outputs.slack_blocks }}
             }
