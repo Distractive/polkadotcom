@@ -22,7 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DEPLOYMENT_URL: "https://polkadot.com"
-
+    outputs:
+      result: ${{ steps.scan.outputs.result }}
     steps:
       - uses: actions/checkout@v4
 
@@ -35,6 +36,7 @@ jobs:
         run: npm install -g tsx
 
       - name: Run Mozilla Observatory Scan
+        id: scan
         if: always()
         run: |
           result=$(tsx ./scripts/observatory-scan.mts)
@@ -49,3 +51,25 @@ jobs:
         with:
           name: observatory-scan-result
           path: observatory.md
+
+  notify:
+    needs: observatory-scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@b0fa283ad8fea605de13dc3f449259339835fc52
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: webhook-trigger
+          payload: |
+            {
+              "text": "Mozilla Observatory Scan completed",
+              "attachments": [
+                {
+                  "color": "#439FE0",
+                  "title": "Scan Results",
+                  "text": "${{ needs.observatory-scan.outputs.result }}",
+                  "mrkdwn_in": ["text"]
+                }
+              ]
+            }
