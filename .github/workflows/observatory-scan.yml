@@ -64,5 +64,5 @@ jobs:
           payload: |
             {
               "text": "Mozilla Observatory Scan completed",
-              "blocks": ${{ fromJson(needs.observatory-scan.outputs.slack_blocks) }}
+              "blocks": ${{ needs.observatory-scan.outputs.slack_blocks }}
             }

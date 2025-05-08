@@ -91,42 +91,45 @@ function observatoryResponseToText(response: MozillaScanResponse): string {
 function observatoryResponseToSlackBlocks(
   response: MozillaScanResponse,
 ): string {
-  const {
-    id,
-    details_url,
-    algorithm_version,
-    scanned_at,
-    grade,
-    score,
-    status_code,
-    tests_failed,
-    tests_passed,
-    tests_quantity,
-  } = response;
-
-  return [
-    '- type: "header"',
-    '  text:',
-    '    type: "plain_text"',
-    '    text: "🛡 Mozilla Observatory Scan"',
-    '- type: "section"',
-    '  text:',
-    '    type: "mrkdwn"',
-    `    text: "*Grade:* ${grade}  •  *Score:* ${score} / 100  •  *Status Code:* ${status_code}"`,
-    '- type: "section"',
-    '  text:',
-    '    type: "mrkdwn"',
-    `    text: "*Scan Details:*\\n• ID: ${id}\\n• Algorithm Version: ${algorithm_version}\\n• Scanned At: ${new Date(scanned_at).toLocaleString()}"`,
-    '- type: "section"',
-    '  text:',
-    '    type: "mrkdwn"',
-    `    text: "*Test Summary:*\\n• Total: ${tests_quantity}\\n• Passed: ${tests_passed}\\n• Failed: ${tests_failed}"`,
-    '- type: "section"',
-    '  text:',
-    '    type: "mrkdwn"',
-    `    text: "<${details_url}|View full scan details>"`,
-  ].join('\n');
+  return JSON.stringify([
+    {
+      type: 'header',
+      text: {
+        type: 'plain_text',
+        text: '🛡 Mozilla Observatory Scan',
+      },
+    },
+    {
+      type: 'section',
+      text: {
+        type: 'mrkdwn',
+        text: `*Grade:* ${response.grade}  •  *Score:* ${response.score}/100  •  *Status Code:* ${response.status_code}`,
+      },
+    },
+    {
+      type: 'section',
+      text: {
+        type: 'mrkdwn',
+        text: `*Scan Details:*\n• ID: ${response.id}\n• Algorithm Version: ${response.algorithm_version}\n• Scanned At: ${new Date(response.scanned_at).toLocaleString()}`,
+      },
+    },
+    {
+      type: 'section',
+      text: {
+        type: 'mrkdwn',
+        text: `*Test Summary:*\n• Total: ${response.tests_quantity}\n• Passed: ${response.tests_passed}\n• Failed: ${response.tests_failed}`,
+      },
+    },
+    {
+      type: 'section',
+      text: {
+        type: 'mrkdwn',
+        text: `<${response.details_url}|View full scan details>`,
+      },
+    },
+  ]);
 }
+
 
 function escapeForOutput(input: string): string {
   return input
