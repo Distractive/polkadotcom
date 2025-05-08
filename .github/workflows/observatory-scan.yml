@@ -40,7 +40,7 @@ jobs:
         if: always()
         run: |
           result=$(tsx ./scripts/observatory-scan.mts)
-          echo "$result" > observatory.md
+          echo "$result" > observatory.txt
           echo "result<<EOF" >> $GITHUB_OUTPUT
           echo "$result" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: observatory-scan-result
-          path: observatory.md
+          path: observatory.txt
 
   notify:
     needs: observatory-scan

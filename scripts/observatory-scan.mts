@@ -27,7 +27,7 @@ async function scan({ url }: { url: string }): Promise<string> {
     throw new Error(`${json.error} ${json.message}`);
   }
 
-  return observatoryResponseToMarkdown(json);
+  return observatoryResponseToText(json);
 }
 
 interface MozillaScanResponse {
@@ -45,7 +45,7 @@ interface MozillaScanResponse {
   message?: string;
 }
 
-function observatoryResponseToMarkdown(response: MozillaScanResponse) {
+function observatoryResponseToText(response: MozillaScanResponse) {
   const {
     id,
     details_url,
@@ -59,16 +59,22 @@ function observatoryResponseToMarkdown(response: MozillaScanResponse) {
     tests_quantity,
   } = response;
 
-  return `## Observatory Scan Results
-  - **Scan ID**: ${id}
-  - **Details**: [View full report](${details_url})
-  - **Algorithm Version**: ${algorithm_version}
-  - **Scanned At**: ${new Date(scanned_at).toLocaleString()}
-  - **Status Code**: ${status_code}
-  - **Grade**: ${grade}
-  - **Score**: ${score} / 100
-  ### Test Summary
-  - **Total Tests**: ${tests_quantity}
-  - **Tests Passed**: ${tests_passed}
-  - **Tests Failed**: ${tests_failed}`;
+  return [
+    'Mozilla Observatory Scan Results',
+    '--------------------------------',
+    `Scan ID         : ${id}`,
+    `Details         : ${details_url}`,
+    `Algorithm Ver.  : ${algorithm_version}`,
+    `Scanned At      : ${new Date(scanned_at).toLocaleString()}`,
+    `HTTP Status     : ${status_code}`,
+    `Grade           : ${grade}`,
+    `Score           : ${score} / 100`,
+    '',
+    'Test Summary',
+    '------------',
+    `Total Tests     : ${tests_quantity}`,
+    `Tests Passed    : ${tests_passed}`,
+    `Tests Failed    : ${tests_failed}`,
+  ].join('\n');
 }
+
