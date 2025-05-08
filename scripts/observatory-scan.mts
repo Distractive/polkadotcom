@@ -26,9 +26,9 @@ async function scan({ url }: { url: string }): Promise<string> {
   if (json.error) {
     throw new Error(`${json.error} ${json.message}`);
   }
-  
+
   emitGitHubAnnotations(json);
-  
+
   return observatoryResponseToMarkdown(json);
 }
 
