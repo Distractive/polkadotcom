@@ -68,7 +68,7 @@ jobs:
                 {
                   "color": "#439FE0",
                   "title": "Scan Results",
-                  "text": "${{ needs.observatory-scan.outputs.result }}",
+                  "text": "```${{ needs.observatory-scan.outputs.result }}```",
                   "mrkdwn_in": ["text"]
                 }
               ]
