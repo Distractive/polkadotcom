@@ -20,29 +20,25 @@ jobs:
 
     steps:
       - name: Run Dastardly scan
-      # TODO: Provide proper version
-        uses: PortSwigger/dastardly-github-action@main
+        uses: PortSwigger/dastardly-github-action@f72f38f8b4ac8ed59c69854cc77eb9d53e50e78b
         with:
           target-url: "https://polkadot.com"
           output-filename: dastardly-report.xml
 
       - name: Publish Test Report
         if: always()
-        uses: mikepenz/action-junit-report@v4
+        uses: mikepenz/action-junit-report@cf701569b05ccdd861a76b8607a66d76f6fd4857
         with:
           report_paths: dastardly-report.xml
           require_tests: true
           annotate_only: true
 
-      - name: Generate Summary
-        if: always()
+      - name: Dastardly Scan Summary
         run: |
-          echo "## Dastardly Scan Summary" >> $GITHUB_OUTPUT
-          echo "" >> $GITHUB_OUTPUT
-          echo "🔍 Target: [https://polkadot.com](https://polkadot.com)" >> $GITHUB_OUTPUT
-          echo "📄 Report: [Artifact - dastardly-report.xml](./dastardly-report.xml)" >> $GITHUB_OUTPUT
-          echo "" >> $GITHUB_OUTPUT
-          echo "_Detailed results are shown in the 'Test Report' tab and annotations._" >> $GITHUB_OUTPUT
+          echo "## Dastardly Scan Summary" >> $GITHUB_STEP_SUMMARY
+          issues=$(grep -c "<failure" dastardly-report.xml || true)
+          echo "- **Vulnerabilities found**: $issues" >> $GITHUB_STEP_SUMMARY
+          echo "(See the full Dastardly report for details.)" >> $GITHUB_STEP_SUMMARY
 
       - name: Upload Dastardly Report Artifact
         if: always()

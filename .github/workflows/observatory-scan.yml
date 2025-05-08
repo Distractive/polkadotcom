@@ -29,6 +29,7 @@ jobs:
         run: npm install -g tsx
 
       - name: Run Mozilla Observatory Scan and save to file
+        if: always()
         run: |
           result=$(tsx ./scripts/observatory-scan.mts)
           echo "$result" > observatory.md
@@ -37,6 +38,7 @@ jobs:
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Upload scan results as artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: observatory-scan-result
