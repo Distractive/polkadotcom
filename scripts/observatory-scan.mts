@@ -8,7 +8,7 @@ if (!DEPLOYMENT_URL) {
 
 const scanResult = await scan({ url: DEPLOYMENT_URL });
 
-console.log(scanResult.text); // Console print for logs
+console.log(scanResult.text);
 console.log(`::set-output name=result::${escapeForOutput(scanResult.text)}`);
 console.log(
   `::set-output name=slack_blocks::${escapeForOutput(scanResult.slackBlocks)}`,
