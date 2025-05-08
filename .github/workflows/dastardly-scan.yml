@@ -46,16 +46,20 @@ jobs:
         run: |
           echo "## Dastardly Scan Summary" >> $GITHUB_STEP_SUMMARY
           issues=$(grep -c "<failure" dastardly-report.xml || true)
-          echo "- **Vulnerabilities found**: $issues" >> $GITHUB_STEP_SUMMARY
+          echo "- **Issues found**: $issues" >> $GITHUB_STEP_SUMMARY
           echo "(See the full Dastardly report for details.)" >> $GITHUB_STEP_SUMMARY
 
       - name: Generate Slack JSON output
         id: slack
         run: |
           issues=$(grep -c "<failure" dastardly-report.xml || true)
-          summary="*Dastardly Scan Summary:*\n• Vulnerabilities found: $issues\n<https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View full scan logs>"
-          echo "text=Dastardly Scan completed" >> $GITHUB_OUTPUT
-          echo "slack_blocks=$(jq -nc --arg summary "$summary" '[{"type": "section", "text": {"type": "mrkdwn", "text": $summary}}]')" >> $GITHUB_OUTPUT
+          run_url="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          text="*Polkadot Website Dastardly Scan completed:*
+          • Issues found: $issues
+          <$run_url|View full scan logs>"
+
+                    echo "text=Dastardly Scan completed" >> $GITHUB_OUTPUT
+                    echo "slack_blocks=$(jq -cn --arg text "$text" '[{"type":"section","text":{"type":"mrkdwn","text":$text}}]')" >> $GITHUB_OUTPUT
 
       - name: Upload Dastardly Report Artifact
         if: always()

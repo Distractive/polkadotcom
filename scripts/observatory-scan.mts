@@ -130,7 +130,6 @@ function observatoryResponseToSlackBlocks(
   ]);
 }
 
-
 function escapeForOutput(input: string): string {
   return input
     .replaceAll('%', '%25')

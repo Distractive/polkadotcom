@@ -63,6 +63,6 @@ jobs:
           webhook-type: webhook-trigger
           payload: |
             {
-              "text": "Mozilla Observatory Scan completed",
+              "text": "Polkadot Website  Mozilla Observatory Scan completed",
               "blocks": ${{ needs.observatory-scan.outputs.slack_blocks }}
             }
