@@ -1,11 +1,10 @@
 name: Dastardly Scan
 
 on:
+  # TODO: Remove push
   push:
-    # branches:
-    #   - main
   schedule:
-    - cron: '0 5 * * 1'
+    - cron: '0 5 * * *'
   workflow_dispatch:
 
 concurrency:
@@ -21,6 +20,7 @@ jobs:
 
     steps:
       - name: Run Dastardly scan
+      # TODO: Provide proper version
         uses: PortSwigger/dastardly-github-action@main
         with:
           target-url: "https://polkadot.com"
@@ -31,6 +31,18 @@ jobs:
         uses: mikepenz/action-junit-report@v4
         with:
           report_paths: dastardly-report.xml
+          require_tests: true
+          annotate_only: true
+
+      - name: Generate Summary
+        if: always()
+        run: |
+          echo "## Dastardly Scan Summary" >> $GITHUB_OUTPUT
+          echo "" >> $GITHUB_OUTPUT
+          echo "🔍 Target: [https://polkadot.com](https://polkadot.com)" >> $GITHUB_OUTPUT
+          echo "📄 Report: [Artifact - dastardly-report.xml](./dastardly-report.xml)" >> $GITHUB_OUTPUT
+          echo "" >> $GITHUB_OUTPUT
+          echo "_Detailed results are shown in the 'Test Report' tab and annotations._" >> $GITHUB_OUTPUT
 
       - name: Upload Dastardly Report Artifact
         if: always()

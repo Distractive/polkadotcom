@@ -89,3 +89,5 @@ jobs:
 
       - name: Upload to S3
         run: aws s3 cp ${{ steps.filename.outputs.filename }} s3://${{ vars.DEPLOYMENT_BUCKET_BACKUP }}/
+
+# TODO: Trigger mozilla observatory and dastardly scans from here
