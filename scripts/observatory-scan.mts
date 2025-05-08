@@ -77,4 +77,3 @@ function observatoryResponseToText(response: MozillaScanResponse) {
     `Tests Failed    : ${tests_failed}`,
   ].join('\n');
 }
-
