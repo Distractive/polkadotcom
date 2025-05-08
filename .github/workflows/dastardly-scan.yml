@@ -54,7 +54,7 @@ jobs:
         run: |
           issues=$(grep -c "<failure" dastardly-report.xml || true)
           run_url="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          text="*Polkadot Website Dastardly Scan completed:*
+          header="*🕷️  Polkadot Website Dastardly Scan:*
           • Issues found: $issues
           <$run_url|View full scan logs>"
 

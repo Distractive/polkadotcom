@@ -96,7 +96,7 @@ function observatoryResponseToSlackBlocks(
       type: 'header',
       text: {
         type: 'plain_text',
-        text: '🛡 Mozilla Observatory Scan',
+        text: '🛡 Polkadot Website Mozilla Observatory Scan',
       },
     },
     {
