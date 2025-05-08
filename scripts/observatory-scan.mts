@@ -104,43 +104,30 @@ function observatoryResponseToSlackBlocks(
     tests_quantity,
   } = response;
 
-  const blocks = [
-    {
-      type: 'header',
-      text: { type: 'plain_text', text: '🛡 Mozilla Observatory Scan' },
-    },
-    {
-      type: 'section',
-      text: {
-        type: 'mrkdwn',
-        text: `*Grade:* ${grade}  •  *Score:* ${score} / 100  •  *Status Code:* ${status_code}`,
-      },
-    },
-    {
-      type: 'section',
-      text: {
-        type: 'mrkdwn',
-        text: `*Scan Details:*\n• ID: ${id}\n• Algorithm Version: ${algorithm_version}\n• Scanned At: ${new Date(scanned_at).toLocaleString()}`,
-      },
-    },
-    {
-      type: 'section',
-      text: {
-        type: 'mrkdwn',
-        text: `*Test Summary:*\n• Total: ${tests_quantity}\n• Passed: ${tests_passed}\n• Failed: ${tests_failed}`,
-      },
-    },
-    {
-      type: 'section',
-      text: {
-        type: 'mrkdwn',
-        text: `<${details_url}|View full scan details>`,
-      },
-    },
-  ];
-
-  return JSON.stringify(blocks);
+  return [
+    '- type: "header"',
+    '  text:',
+    '    type: "plain_text"',
+    '    text: "🛡 Mozilla Observatory Scan"',
+    '- type: "section"',
+    '  text:',
+    '    type: "mrkdwn"',
+    `    text: "*Grade:* ${grade}  •  *Score:* ${score} / 100  •  *Status Code:* ${status_code}"`,
+    '- type: "section"',
+    '  text:',
+    '    type: "mrkdwn"',
+    `    text: "*Scan Details:*\\n• ID: ${id}\\n• Algorithm Version: ${algorithm_version}\\n• Scanned At: ${new Date(scanned_at).toLocaleString()}"`,
+    '- type: "section"',
+    '  text:',
+    '    type: "mrkdwn"',
+    `    text: "*Test Summary:*\\n• Total: ${tests_quantity}\\n• Passed: ${tests_passed}\\n• Failed: ${tests_failed}"`,
+    '- type: "section"',
+    '  text:',
+    '    type: "mrkdwn"',
+    `    text: "<${details_url}|View full scan details>"`,
+  ].join('\n');
 }
+
 
 function escapeForOutput(input: string): string {
   return input
