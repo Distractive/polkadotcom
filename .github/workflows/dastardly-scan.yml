@@ -23,6 +23,9 @@ jobs:
     permissions:
       contents: read
       checks: write
+    outputs:
+      text: ${{ steps.slack.outputs.text }}
+      slack_blocks: ${{ steps.slack.outputs.slack_blocks }}
 
     steps:
       - name: Run Dastardly scan
@@ -46,9 +49,32 @@ jobs:
           echo "- **Vulnerabilities found**: $issues" >> $GITHUB_STEP_SUMMARY
           echo "(See the full Dastardly report for details.)" >> $GITHUB_STEP_SUMMARY
 
+      - name: Generate Slack JSON output
+        id: slack
+        run: |
+          issues=$(grep -c "<failure" dastardly-report.xml || true)
+          summary="*Dastardly Scan Summary:*\n• Vulnerabilities found: $issues\n<https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View full scan logs>"
+          echo "text=Dastardly Scan completed" >> $GITHUB_OUTPUT
+          echo "slack_blocks=$(jq -nc --arg summary "$summary" '[{"type": "section", "text": {"type": "mrkdwn", "text": $summary}}]')" >> $GITHUB_OUTPUT
+
       - name: Upload Dastardly Report Artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: dastardly-scan-result
           path: dastardly-report.xml
+
+  notify:
+    needs: dastardly-scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@b0fa283ad8fea605de13dc3f449259339835fc52
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: webhook-trigger
+          payload: |
+            {
+              "text": "${{ needs.dastardly-scan.outputs.text }}",
+              "blocks": ${{ needs.dastardly-scan.outputs.slack_blocks }}
+            }
