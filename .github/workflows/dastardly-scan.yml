@@ -33,14 +33,13 @@ jobs:
           target-url: "https://polkadot.com"
           output-filename: dastardly-report.xml
 
-      - name: Backup original report
-        run: cp dastardly-report.xml original-dastardly-report.xml
+      - name: Install xmlstarlet
+        run: sudo apt-get update -yqq && sudo apt-get install -yq xmlstarlet
 
-      - name: Remove CORS false positives from report
+      - name: Remove false positives
+        if: always()
         run: |
-          # Remove CORS findings pointing to .txt files
-          sed -i '/Cross-origin resource sharing.*index.txt/,+5d' dastardly-report.xml
-          sed -i '/Cross-origin resource sharing - arbitrary origin trusted.*index.txt/,+5d' dastardly-report.xml
+          xmlstarlet ed -L -d '//testcase[failure[contains(., "Cross-origin resource sharing") and contains(., ".txt")]]' dastardly-report.xml
 
       - name: Publish Test Report
         if: always()
@@ -52,12 +51,9 @@ jobs:
 
       - name: Dastardly Scan Summary
         run: |
-          original=$(grep -c "<failure" original-dastardly-report.xml || true)
-          filtered=$(grep -c "<failure" dastardly-report.xml || true)
-
           echo "## Dastardly Scan Summary" >> $GITHUB_STEP_SUMMARY
-          echo "- **Issues found (after filtering)**: $filtered" >> $GITHUB_STEP_SUMMARY
-          echo "- **False positives ignored**: $((original - filtered))" >> $GITHUB_STEP_SUMMARY
+          issues=$(grep -c "<failure" dastardly-report.xml || true)
+          echo "- **Issues found**: $issues" >> $GITHUB_STEP_SUMMARY
           echo "(See the full Dastardly report for details.)" >> $GITHUB_STEP_SUMMARY
 
       - name: Generate Slack JSON output
