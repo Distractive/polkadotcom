@@ -32,6 +32,14 @@ jobs:
           target-url: "https://polkadot.com"
           output-filename: dastardly-report.xml
 
+      - name: Install xmlstarlet
+        run: sudo apt-get update -yqq && sudo apt-get install -yq xmlstarlet
+
+      - name: Remove false positives
+        if: always()
+        run: |
+          xmlstarlet ed -L -d '//testsuite[contains(@name, ".txt") and @failures > 0 and .//failure[contains(., "Cross-origin resource sharing")]]' dastardly-report.xml
+
       - name: Publish Test Report
         if: always()
         uses: mikepenz/action-junit-report@cf701569b05ccdd861a76b8607a66d76f6fd4857
@@ -56,8 +64,8 @@ jobs:
           • Issues found: $issues
           <$run_url|View full scan logs>"
 
-                    echo "text=Dastardly Scan completed" >> $GITHUB_OUTPUT
-                    echo "slack_blocks=$(jq -cn --arg text "$text" '[{"type":"section","text":{"type":"mrkdwn","text":$text}}]')" >> $GITHUB_OUTPUT
+          echo "text=Dastardly Scan completed" >> $GITHUB_OUTPUT
+          echo "slack_blocks=$(jq -cn --arg text "$text" '[{"type":"section","text":{"type":"mrkdwn","text":$text}}]')" >> $GITHUB_OUTPUT
 
       - name: Upload Dastardly Report Artifact
         if: always()
