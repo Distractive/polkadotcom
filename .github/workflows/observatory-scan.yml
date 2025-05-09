@@ -1,0 +1,66 @@
+name: Mozilla Observatory Scan
+
+on:
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_run:
+    workflows: ["Build and Deploy"]
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  observatory-scan:
+    runs-on: ubuntu-latest
+    env:
+      DEPLOYMENT_URL: "https://polkadot.com"
+    outputs:
+      result: ${{ steps.scan.outputs.result }}
+      slack_blocks: ${{ steps.scan.outputs.slack_blocks }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: Install tsx
+        run: npm install -g tsx
+
+      - name: Run Mozilla Observatory Scan
+        id: scan
+        if: always()
+        run: |
+          result=$(tsx ./scripts/observatory-scan.mts)
+          echo "$result" > observatory.txt
+          echo "Scan result:"
+          echo "$result"
+
+      - name: Upload scan results as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: observatory-scan-result
+          path: observatory.txt
+
+  notify:
+    needs: observatory-scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@b0fa283ad8fea605de13dc3f449259339835fc52
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: webhook-trigger
+          payload: |
+            {
+              "text": "Polkadot Website Mozilla Observatory Scan completed",
+              "blocks": ${{ needs.observatory-scan.outputs.slack_blocks }}
+            }

@@ -1,0 +1,82 @@
+name: Dastardly Scan
+
+on:
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_run:
+    workflows: ["Build and Deploy"]
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dastardly-scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+    outputs:
+      text: ${{ steps.slack.outputs.text }}
+      slack_blocks: ${{ steps.slack.outputs.slack_blocks }}
+
+    steps:
+      - name: Run Dastardly scan
+        uses: PortSwigger/dastardly-github-action@f72f38f8b4ac8ed59c69854cc77eb9d53e50e78b
+        with:
+          target-url: "https://polkadot.com"
+          output-filename: dastardly-report.xml
+
+      - name: Publish Test Report
+        if: always()
+        uses: mikepenz/action-junit-report@cf701569b05ccdd861a76b8607a66d76f6fd4857
+        with:
+          report_paths: dastardly-report.xml
+          require_tests: true
+          annotate_only: true
+
+      - name: Dastardly Scan Summary
+        run: |
+          echo "## Dastardly Scan Summary" >> $GITHUB_STEP_SUMMARY
+          issues=$(grep -c "<failure" dastardly-report.xml || true)
+          echo "- **Issues found**: $issues" >> $GITHUB_STEP_SUMMARY
+          echo "(See the full Dastardly report for details.)" >> $GITHUB_STEP_SUMMARY
+
+      - name: Generate Slack JSON output
+        id: slack
+        run: |
+          issues=$(grep -c "<failure" dastardly-report.xml || true)
+          run_url="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          text="*Polkadot Website Dastardly Scan:*
+          • Issues found: $issues
+          <$run_url|View full scan logs>"
+
+                    echo "text=Dastardly Scan completed" >> $GITHUB_OUTPUT
+                    echo "slack_blocks=$(jq -cn --arg text "$text" '[{"type":"section","text":{"type":"mrkdwn","text":$text}}]')" >> $GITHUB_OUTPUT
+
+      - name: Upload Dastardly Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dastardly-scan-result
+          path: dastardly-report.xml
+
+  notify:
+    needs: dastardly-scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@b0fa283ad8fea605de13dc3f449259339835fc52
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: webhook-trigger
+          payload: |
+            {
+              "text": "${{ needs.dastardly-scan.outputs.text }}",
+              "blocks": ${{ needs.dastardly-scan.outputs.slack_blocks }}
+            }
