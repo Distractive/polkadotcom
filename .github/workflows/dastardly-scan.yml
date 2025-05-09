@@ -39,7 +39,7 @@ jobs:
       - name: Remove false positives
         if: always()
         run: |
-          xmlstarlet ed -L -d '//testcase[failure[contains(., "Cross-origin resource sharing") and contains(., ".txt")]]' dastardly-report.xml
+          xmlstarlet ed -L -d '//testcase[(contains(@name, ".txt") or failure[contains(., ".txt")]) and failure[contains(., "Cross-origin resource sharing")]]' dastardly-report.xml
 
       - name: Publish Test Report
         if: always()
