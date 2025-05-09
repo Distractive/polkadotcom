@@ -1,7 +1,6 @@
 name: Dastardly Scan
 
 on:
-  push:
   schedule:
     - cron: '0 5 * * *'
   workflow_run:
