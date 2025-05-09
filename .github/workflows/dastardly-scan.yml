@@ -1,6 +1,7 @@
 name: Dastardly Scan
 
 on:
+  push:
   schedule:
     - cron: '0 5 * * *'
   workflow_run:
@@ -32,6 +33,15 @@ jobs:
           target-url: "https://polkadot.com"
           output-filename: dastardly-report.xml
 
+      - name: Backup original report
+        run: cp dastardly-report.xml original-dastardly-report.xml
+
+      - name: Remove CORS false positives from report
+        run: |
+          # Remove CORS findings pointing to .txt files
+          sed -i '/Cross-origin resource sharing.*index.txt/,+5d' dastardly-report.xml
+          sed -i '/Cross-origin resource sharing - arbitrary origin trusted.*index.txt/,+5d' dastardly-report.xml
+
       - name: Publish Test Report
         if: always()
         uses: mikepenz/action-junit-report@cf701569b05ccdd861a76b8607a66d76f6fd4857
@@ -42,9 +52,12 @@ jobs:
 
       - name: Dastardly Scan Summary
         run: |
+          original=$(grep -c "<failure" original-dastardly-report.xml || true)
+          filtered=$(grep -c "<failure" dastardly-report.xml || true)
+
           echo "## Dastardly Scan Summary" >> $GITHUB_STEP_SUMMARY
-          issues=$(grep -c "<failure" dastardly-report.xml || true)
-          echo "- **Issues found**: $issues" >> $GITHUB_STEP_SUMMARY
+          echo "- **Issues found (after filtering)**: $filtered" >> $GITHUB_STEP_SUMMARY
+          echo "- **False positives ignored**: $((original - filtered))" >> $GITHUB_STEP_SUMMARY
           echo "(See the full Dastardly report for details.)" >> $GITHUB_STEP_SUMMARY
 
       - name: Generate Slack JSON output
@@ -56,8 +69,8 @@ jobs:
           • Issues found: $issues
           <$run_url|View full scan logs>"
 
-                    echo "text=Dastardly Scan completed" >> $GITHUB_OUTPUT
-                    echo "slack_blocks=$(jq -cn --arg text "$text" '[{"type":"section","text":{"type":"mrkdwn","text":$text}}]')" >> $GITHUB_OUTPUT
+          echo "text=Dastardly Scan completed" >> $GITHUB_OUTPUT
+          echo "slack_blocks=$(jq -cn --arg text "$text" '[{"type":"section","text":{"type":"mrkdwn","text":$text}}]')" >> $GITHUB_OUTPUT
 
       - name: Upload Dastardly Report Artifact
         if: always()
