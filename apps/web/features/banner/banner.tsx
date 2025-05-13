@@ -3,6 +3,7 @@
 import type { bannerSelection } from '@/sanity/selections/banner';
 import type { TypeFromSelection } from 'groqd';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import { CustomUrl } from '@/components/custom-url';
@@ -23,14 +24,22 @@ interface BannerProps {
 export default function Banner({ banner }: BannerProps) {
   const [isBannerClosed, setIsBannerClosed] = useState(true);
 
+  const pathname = usePathname();
+
   useEffect(() => {
-    async function checkBannerCookie() {
+    async function checkBannerCookieAndPathname() {
       const cookie = await window.cookieStore.get('polkadot_banner_closed');
       setIsBannerClosed(!!cookie);
+
+      const currentPageSlugWithSlashes = `/${banner?.link?.internal?.slug}/`;
+
+      if (currentPageSlugWithSlashes === pathname) {
+        setIsBannerClosed(true);
+      }
     }
 
-    checkBannerCookie();
-  }, []);
+    checkBannerCookieAndPathname();
+  }, [banner?.link?.internal?.slug, pathname]);
 
   async function handleClose() {
     await window.cookieStore.set({
