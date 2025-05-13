@@ -20,9 +20,9 @@ const ButtonStyles = {
   },
   variants: {
     primary:
-      'text-white after:from-pink after:via-pink after:to-black box-border',
+      'text-white after:from-pink after:via-pink after:to-black',
     secondary:
-      'text-black before:bg-white after:from-grey-200 after:via-grey-200 after-to:grey-200 border-[1px] border-grey-200 box-border',
+      'text-black before:bg-white after:from-grey-200 after:via-grey-200 after-to:grey-200 border-[1px] border-grey-200',
     tertiary:
       'text-black before:bg-white after:from-grey-200 after:via-grey-200 after:to-grey-200 border-[1px] border-grey-200 after:translate-x-[0%] after:w-[100%]',
     disabled:
