@@ -16,6 +16,7 @@ import { FormModalBlock } from '@/features/page/blocks/form-modal';
 import { MediaBlock } from '@/features/page/blocks/media-block';
 import { QuoteBlock } from '@/features/page/blocks/quote';
 import { SideBySideBlock } from '@/features/page/blocks/side-by-side';
+import NotFound  from '@/app/(site)/not-found'
 
 import { CountdownTimer } from './blocks/countdown-timer';
 import { CTA } from './blocks/cta';
@@ -61,6 +62,8 @@ export function PageBuilder({ pageBuilder }: Props) {
         return <CTA cta={item} />;
       case 'countdownTimer':
         return <CountdownTimer countdownTimer={item} />;
+      case 'notfound':
+        return <NotFound />;
       default:
         return <p>Unknown type: {item._type}</p>;
     }
