@@ -19,8 +19,7 @@ const ButtonStyles = {
     sm: 'rounded-md px-4 py-2 text-xs max-w-[15rem]',
   },
   variants: {
-    primary:
-      'text-white after:from-pink after:via-pink after:to-black',
+    primary: 'text-white after:from-pink after:via-pink after:to-black',
     secondary:
       'text-black before:bg-white after:from-grey-200 after:via-grey-200 after-to:grey-200 border-[1px] border-grey-200',
     tertiary:
