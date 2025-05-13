@@ -4,8 +4,30 @@ import { useQueryHook } from '@/hooks/use-search-query';
 import { Icon } from '@shared/ui';
 import Link from 'next/link';
 import { useState } from 'react';
-import { Highlight, Hits, SearchBox } from 'react-instantsearch';
+import {
+  Highlight,
+  Hits,
+  SearchBox,
+  useInstantSearch,
+  useSearchBox,
+} from 'react-instantsearch';
 import { CustomSnippet } from './custom-snippet';
+
+
+function NoResults() {
+  const { results } = useInstantSearch();
+  const { query } = useSearchBox();
+
+  if (query && results && results.hits.length === 0) {
+
+    return (
+      <div className={`p-4`}>
+        No results found for &quot;{query}&quot;
+        </div>
+    )
+  }
+  return null;
+}
 
 export function MobileSearch() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -51,6 +73,7 @@ export function MobileSearch() {
         </div>
 
         <div className="m-2 bg-white rounded-xl shadow-lg max-h-[80vh] overflow-scroll text-grey-700">
+          <NoResults />
           <Hits
             hitComponent={({ hit }) =>
               hit.slug && (
