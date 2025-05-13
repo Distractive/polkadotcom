@@ -6,7 +6,7 @@ import { cn } from '../../lib/utils';
 
 const ButtonStyles = {
   base: cn(
-    'inline-flex items-center justify-center gap-2 uppercase font-display relative overflow-hidden content-none outline-none ',
+    'inline-flex items-center justify-center gap-2 uppercase font-display relative overflow-hidden content-none outline-none box-border h-[50px]',
     'before:absolute before:inset-0 before:-z-20 before:bg-black',
     'after:absolute after:-inset-0 after:-z-10 after:bg-gradient-to-r',
     'after:w-[200%] after:transition-transform after:ease-in-out after:duration-300 after:translate-x-[-200%]',
@@ -19,9 +19,9 @@ const ButtonStyles = {
     sm: 'rounded-md px-4 py-2 text-xs max-w-[15rem]',
   },
   variants: {
-    primary: 'text-white after:from-pink after:via-pink after:to-black',
+    primary: 'text-white after:from-pink after:via-pink after:to-black box-border',
     secondary:
-      'text-black before:bg-white after:from-grey-200 after:via-grey-200 after-to:grey-200 border-[1px] border-grey-200',
+      'text-black before:bg-white after:from-grey-200 after:via-grey-200 after-to:grey-200 border-[1px] border-grey-200 box-border',
     tertiary:
       'text-black before:bg-white after:from-grey-200 after:via-grey-200 after:to-grey-200 border-[1px] border-grey-200 after:translate-x-[0%] after:w-[100%]',
     disabled:
