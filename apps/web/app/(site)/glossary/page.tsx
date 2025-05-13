@@ -28,7 +28,8 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   const metaTitle = meta.meta?.meta_title || 'Polkadot Glossary';
-  const metaDescription = meta.meta?.meta_description || 
+  const metaDescription =
+    meta.meta?.meta_description ||
     "Explore key terms and concepts in the Polkadot ecosystem. A comprehensive glossary explaining the terminology used in blockchain interoperability, shared security, and Polkadot's innovative technology.";
   const metaImage = meta.meta?.meta_image?.asset?.path || '';
 
@@ -74,7 +75,7 @@ export default async function Page() {
 
         {availableLetters.map((letter) => {
           const letterEntries = groupedEntries[letter] || [];
-          
+
           return (
             <section
               key={letter}
@@ -88,7 +89,7 @@ export default async function Page() {
               {letterEntries.map((entry) => {
                 const termCleaned = cleanTerm(false, entry.term || '');
                 const slug = entry.slug?.current || '';
-                
+
                 return (
                   <div
                     key={entry._id || `entry-${termCleaned}`}
@@ -123,7 +124,6 @@ export default async function Page() {
                     )}
 
                     {entry.shortEntry && <Body body={entry.shortEntry} />}
-
                   </div>
                 );
               })}
