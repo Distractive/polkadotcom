@@ -21,7 +21,7 @@ export function Stats({ stats }: Props) {
 
       <article
         id="stats.wrapper"
-        className="grid-pile grid-system relative col-span-12 h-auto items-center justify-center"
+        className="grid-pile grid-system relative col-span-12 h-auto items-center justify-center lg:h-full"
       >
         <div
           id="stats.content"
