@@ -2,8 +2,8 @@ import { q, sanityImage } from 'groqd';
 import type { Selection } from 'groqd';
 
 import { customUrlSelection } from '../custom-url';
-import { videoSelection } from './video';
 import { newsletterButtonSelection } from './newsletter-button';
+import { videoSelection } from './video';
 
 export const sideBySideSelection = {
   _key: q.string(),

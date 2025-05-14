@@ -7,8 +7,8 @@ import Image from 'next/image';
 import { CustomUrl } from '@/components/custom-url';
 import { Button, Heading, cn } from '@shared/ui';
 
-import { VideoBlock } from './video';
 import { NewsletterButton } from './newsletter-button';
+import { VideoBlock } from './video';
 
 interface Props {
   content: TypeFromSelection<typeof sideBySideSelection>;
