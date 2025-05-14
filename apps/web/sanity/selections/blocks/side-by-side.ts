@@ -3,6 +3,7 @@ import type { Selection } from 'groqd';
 
 import { customUrlSelection } from '../custom-url';
 import { videoSelection } from './video';
+import { newsletterButtonSelection } from './newsletter-button';
 
 export const sideBySideSelection = {
   _key: q.string(),
@@ -26,6 +27,9 @@ export const sideBySideSelection = {
       '_type == "customUrl"': {
         _type: q.literal('customUrl'),
         ...customUrlSelection,
+      },
+      '_type == "newsletterButton"': {
+        ...newsletterButtonSelection,
       },
       default: {
         _key: q.string(),

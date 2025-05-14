@@ -8,6 +8,7 @@ import { CustomUrl } from '@/components/custom-url';
 import { Button, Heading, cn } from '@shared/ui';
 
 import { VideoBlock } from './video';
+import { NewsletterButton } from './newsletter-button';
 
 interface Props {
   content: TypeFromSelection<typeof sideBySideSelection>;
@@ -59,12 +60,36 @@ export function SideBySideBlock({ content }: Props) {
                   bullet: ({ children }) => <li>{children}</li>,
                 },
                 types: {
+                  customUrl: ({ value }) => null,
+                  newsletterButton: ({ value }) => null,
+                },
+              }}
+            />
+          )}
+        </div>
+        <div className="flex gap-2 md:gap-4 items-start my-2 flex-wrap">
+          {content.content && (
+            <PortableText
+              value={content.content}
+              components={{
+                block: {
+                  h3: ({ children }) => null,
+                  normal: ({ children }) => null,
+                  smallprint: ({ children }) => null,
+                },
+                list: {
+                  bullet: ({ children }) => null,
+                },
+                listItem: {
+                  bullet: ({ children }) => null,
+                },
+                types: {
                   customUrl: ({ value }) => {
                     return (
                       <Button
                         size="md"
                         asChild
-                        className="my-2 mr-auto md:cursor-pointer"
+                        className="md:cursor-pointer whitespace-nowrap"
                         variant={
                           value?.variant
                             ? value.variant === 'primary'
@@ -83,6 +108,22 @@ export function SideBySideBlock({ content }: Props) {
                           {value.label}
                         </CustomUrl>
                       </Button>
+                    );
+                  },
+                  newsletterButton: ({ value }) => {
+                    return (
+                      <NewsletterButton
+                        key={value._key}
+                        value={{
+                          label: value.label,
+                          modalHeading: value.modalHeading,
+                          formType: value.formType,
+                          variant: value.variant,
+                          _key: value._key,
+                          size: 'md',
+                        }}
+                        className="whitespace-nowrap"
+                      />
                     );
                   },
                 },

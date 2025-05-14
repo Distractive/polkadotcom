@@ -67,6 +67,7 @@ export default defineType({
         {
           type: 'customUrl',
         },
+        { type: 'newsletterButton' },
       ],
     }),
   ],
