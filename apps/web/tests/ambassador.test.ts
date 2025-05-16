@@ -36,82 +36,54 @@ test('Ambassador Program', async ({ page }) => {
     );
   });
 
-  await test.step('assert "champion" section is displayed properly', async () => {
-    const section = page.getByTestId('cards-small-block').first();
+  await test.step('assert "growing movement" section is displayed properly', async () => {
+    const section = page.getByTestId('content-block').first();
 
     await expect(
       section.getByRole('heading', {
         name: 'A Growing Movement',
       }),
     ).toBeVisible();
-    await expect(section.getByText('In Q1 2025')).toHaveText(
-      "In Q1 2025, we successfully onboarded 160 ambassadors across 6 continents. Together, we're shaping the future of decentralised coordination — from governance education and grassroots local meetups, to collaborative content creation and community growth. We're currently building out the Fellowship framework in close collaboration with the community. Expect new roles, resources, and tools to support your journey in Polkadot.",
-    );
-    await expect(
-      section.getByRole('heading', { name: 'Share knowledge and expertis' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('heading', { name: 'Learn new skills' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('heading', { name: 'Connect with like-minded' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('heading', { name: 'Be the voice of the community' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('heading', { name: 'Receive funding for hosting' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('heading', { name: 'Attend Polkadot events' }),
-    ).toBeVisible();
-  });
 
-  await test.step('"champion" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block').first();
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'champion.png',
-      snapshotConfig,
+    await expect(section.getByText('In Q1 2025')).toHaveText(
+      "In Q1 2025, we successfully onboarded 160 ambassadors across 6 continents. Together, we're shaping the future of decentralised coordination — from governance education and grassroots local meetups, to collaborative content creation and community growth.",
     );
   });
 
   await test.step('assert "get involved" section is displayed properly', async () => {
-    const section = page.getByTestId('cards-small-block').nth(1);
+    const section = page.getByTestId('cards-small-block').first();
 
     await expect(
       section.getByRole('heading', {
         name: 'Ways to get involved',
       }),
     ).toBeVisible();
-    await expect(section.getByText('The Fellowship is open')).toHaveText(
-      ' The Fellowship is open to everyone willing to commit their time and unique skills — from curious newcomers to ecosystem veterans. As a Fellow, you’ll:',
-    );
+
     await expect(
-      section.getByRole('heading', { name: 'Speak at events' }),
+      section.getByRole('heading', { name: 'Share knowledge' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('heading', { name: 'Write blog posts' }),
+      section.getByRole('heading', { name: 'Grow the Community' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('heading', { name: 'Represent in your region' }),
+      section.getByRole('heading', { name: 'Champion the Network' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('heading', { name: 'Mentor and onboard' }),
+      section.getByRole('heading', { name: 'Bridge ecosystems' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('heading', { name: 'Identify partnerships' }),
+      section.getByRole('heading', { name: 'Advise. Support. Mentor' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('heading', { name: 'Participate in community' }),
+      section.getByRole('heading', { name: 'Find Your Niche' }),
     ).toBeVisible();
   });
 
-  await test.step('"get involver" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block').nth(1);
+  await test.step('"involved" section screenshot', async () => {
+    const section = page.getByTestId('cards-small-block').first();
     await page.waitForTimeout(2000);
     expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'get-involved.png',
+      'champion.png',
       snapshotConfig,
     );
   });
@@ -121,7 +93,7 @@ test('Ambassador Program', async ({ page }) => {
 
     await expect(
       section.getByRole('heading', {
-        name: 'Join the movement. Share your knowledge. Build the future.',
+        name: 'Start your Journey',
       }),
     ).toBeVisible();
     await expect(section.getByText('Want to co-create')).toHaveText(
