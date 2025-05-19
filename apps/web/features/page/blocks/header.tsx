@@ -45,6 +45,11 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
   const renderCustomUrl = (
     link: TypeFromSelection<typeof customUrlSelection>,
   ) => {
+
+    if(link.external === "https://discord.gg/polkadot"){
+      console.log(`Received discord link: ${JSON.stringify(link)}`)
+    }
+
     const variant =
       link?.variant === 'primary' ||
       link?.variant === 'secondary' ||
