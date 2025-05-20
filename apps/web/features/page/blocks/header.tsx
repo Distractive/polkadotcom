@@ -47,6 +47,12 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
   ) => {
     console.log('--------------------------------');
     console.log(`Received link: ${JSON.stringify(link)}`);
+    console.log(`env dataset: ${process.env.NEXT_PUBLIC_SANITY_DATASET}`);
+    console.log(`VERCEL_ENV: ${process.env.VERCEL_ENV}`);
+    console.log(`BUILD_FLAG: ${process.env.BUILD_FLAG}`);
+    console.log(`NEXT_PUBLIC_SANITY_API_VERSION: ${process.env.NEXT_PUBLIC_SANITY_API_VERSION}`);
+    console.log(`NEXT_PUBLIC_SANITY_PROJECT_ID: ${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}`);
+    console.log(`NEXT_PUBLIC_DEPLOYMENT: ${process.env.NEXT_PUBLIC_DEPLOYMENT}`);
     console.log('--------------------------------');
 
     const variant =
