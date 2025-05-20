@@ -45,9 +45,9 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
   const renderCustomUrl = (
     link: TypeFromSelection<typeof customUrlSelection>,
   ) => {
-
-    // TODO: Remove
-    console.log(`Received link: ${JSON.stringify(link)}`)
+    console.log('--------------------------------');
+    console.log(`Received link: ${JSON.stringify(link)}`);
+    console.log('--------------------------------');
 
     const variant =
       link?.variant === 'primary' ||
