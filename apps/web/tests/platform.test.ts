@@ -155,10 +155,10 @@ test('Platform', async ({ page }) => {
     ).toBeVisible();
 
     await expect(
-      section.getByRole('heading', { name: 'Polkadot Relay Chain live' }),
+      section.getByRole('heading', { name: 'Polkadot Chain live' }),
     ).toBeVisible();
-    await expect(section.getByText('May 2020The Polkadot Relay')).toHaveText(
-      'May 2020The Polkadot Relay Chain launched, coordinating the entire system, including parachains, after six months of in-the-wild testing on Kusama, Polkadot’s canary network.',
+    await expect(section.getByText('May 2020The Polkadot')).toHaveText(
+      'May 2020The Polkadot Chain (aka Relay Chain) launched, coordinating the entire system, including parachains, after six months of in-the-wild testing on Kusama, Polkadot’s canary network.',
     );
 
     await expect(
@@ -171,7 +171,7 @@ test('Platform', async ({ page }) => {
         .getByRole('link'),
     ).toBeVisible();
     await expect(section.getByText('December 2021 The milestone')).toHaveText(
-      'December 2021 The milestone launch of parachains and parachain slot auctions on Polkadot marked Polkadot 1.0’s completion.',
+      'December 2021 The milestone launch of parachains (now rollups) and parachain slot auctions on Polkadot marked Polkadot 1.0’s completion.',
     );
 
     await expect(
@@ -201,8 +201,8 @@ test('Platform', async ({ page }) => {
     await expect(
       section.getByRole('link', { name: 'More' }).nth(3),
     ).toBeVisible();
-    await expect(section.getByText('Early 2025 Major upgrades')).toHaveText(
-      'Early 2025 Major upgrades lead the way to Polkadot 2.0. Agile Coretime, Asynchronous Backing and elastic scaling provide unmatched scalability, cost, speed, and flexibility.',
+    await expect(section.getByText('Q2 2025 Major upgrades')).toHaveText(
+      'Q2 2025 Major upgrades lead the way to Polkadot 2.0. Agile Coretime, Asynchronous Backing and elastic scaling provide unmatched scalability, cost, speed, and flexibility.',
     );
 
     await expect(

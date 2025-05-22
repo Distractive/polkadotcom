@@ -27,17 +27,19 @@ export async function generateMetadata(): Promise<Metadata> {
     };
   }
 
+  const metaTitle = meta.meta?.meta_title || 'Polkadot Glossary';
+  const metaDescription =
+    meta.meta?.meta_description ||
+    "Explore key terms and concepts in the Polkadot ecosystem. A comprehensive glossary explaining the terminology used in blockchain interoperability, shared security, and Polkadot's innovative technology.";
+  const metaImage = meta.meta?.meta_image?.asset?.path || '';
+
   return {
-    title: meta?.meta?.meta_title || 'Polkadot Glossary',
-    description:
-      meta?.meta?.meta_description ||
-      "Explore key terms and concepts in the Polkadot ecosystem. A comprehensive glossary explaining the terminology used in blockchain interoperability, shared security, and Polkadot's innovative technology.",
+    title: metaTitle,
+    description: metaDescription,
     openGraph: {
-      images: [meta?.meta?.meta_image?.asset.path || ''],
-      title: meta?.meta?.meta_title || 'Polkadot Glossary',
-      description:
-        meta?.meta?.meta_description ||
-        "Explore key terms and concepts in the Polkadot ecosystem. A comprehensive glossary explaining the terminology used in blockchain interoperability, shared security, and Polkadot's innovative technology.",
+      images: metaImage ? [metaImage] : [],
+      title: metaTitle,
+      description: metaDescription,
     },
   };
 }
@@ -48,8 +50,8 @@ export default async function Page() {
     return notFound();
   }
 
-  const groupedEntries = groupEntriesByLetter(data.entries);
-
+  const entries = data.entries || [];
+  const groupedEntries = groupEntriesByLetter(entries);
   const availableLetters = Object.keys(groupedEntries).sort();
 
   return (
@@ -60,76 +62,74 @@ export default async function Page() {
       <div className="col-span-full px-gutter lg:col-span-8 lg:col-start-3">
         <div className="mb-6 max-w-[24rem]">
           <SearchBar
-            searches={data.entries.map((entry) => ({
-              _id: entry._id,
-              title: cleanTerm(true, entry.term),
-              cleanedTerm: cleanTerm(false, entry.term),
-              slug: entry.term,
+            searches={entries.map((entry) => ({
+              _id: entry._id || '',
+              title: cleanTerm(true, entry.term || ''),
+              cleanedTerm: cleanTerm(false, entry.term || ''),
+              slug: entry.term || '',
             }))}
           />
         </div>
 
         <AlphabetNav availableLetters={availableLetters} />
 
-        {availableLetters.map((letter) => (
-          <section
-            key={letter}
-            id={`section-${letter}`}
-            className="mb-16 scroll-mt-24 md:scroll-mt-10"
-          >
-            <Heading variant="h2" className="mb-8 text-5xl font-bold">
-              {letter}
-            </Heading>
+        {availableLetters.map((letter) => {
+          const letterEntries = groupedEntries[letter] || [];
 
-            {groupedEntries[letter]?.map((entry) => (
-              <div
-                key={entry._id}
-                className="mb-12 scroll-mt-24 md:scroll-mt-10"
-                data-term={cleanTerm(false, entry.term)}
-                id={cleanTerm(false, entry.term)}
-              >
-                <div>
-                  {entry.createFullPageEntry ? (
-                    <div className="">
-                      <Link
-                        href={`/glossary/${entry.slug?.current || ''}`}
-                        className="group outline-none"
-                      >
-                        <div className="flex flex-row gap-2">
-                          <Heading
-                            variant="h3"
-                            className="mb-2 group-hover:text-pink"
-                          >
-                            {entry.term}
-                          </Heading>
-                          <div className="text-lg font-bold text-black group-hover:text-pink">
-                            →
-                          </div>
-                        </div>
-                      </Link>
-                    </div>
-                  ) : (
-                    <div className="flex flex-row gap-2">
-                      <Heading variant="h3" className="mb-2">
-                        {entry.term}
-                      </Heading>
-                    </div>
-                  )}
-                </div>
+          return (
+            <section
+              key={letter}
+              id={`section-${letter}`}
+              className="mb-16 scroll-mt-24 md:scroll-mt-10"
+            >
+              <Heading variant="h2" className="mb-8 text-5xl font-bold">
+                {letter}
+              </Heading>
 
-                <Body body={entry.shortEntry} />
-                {entry.createFullPageEntry && (
-                  <Link
-                    href={`/glossary/${entry.slug?.current || ''}`}
-                    className="inline-block text-pink-500 hover:cursor-pointer hover:underline"
+              {letterEntries.map((entry) => {
+                const termCleaned = cleanTerm(false, entry.term || '');
+                const slug = entry.slug?.current || '';
+
+                return (
+                  <div
+                    key={entry._id || `entry-${termCleaned}`}
+                    className="mb-12 scroll-mt-24 md:scroll-mt-10"
+                    data-term={termCleaned}
                   >
-                    Read more &nbsp;→
-                  </Link>
-                )}
-              </div>
-            ))}
-          </section>
-        ))}
+                    {entry.createFullPageEntry && slug ? (
+                      <div>
+                        <Link
+                          href={`/glossary/${slug}`}
+                          className="group outline-none"
+                        >
+                          <div className="flex flex-row">
+                            <Heading
+                              variant="h3"
+                              className="mb-2 group-hover:text-pink"
+                            >
+                              {entry.term}
+                            </Heading>
+                            <div className="text-lg font-bold text-black group-hover:text-pink">
+                              &nbsp;→
+                            </div>
+                          </div>
+                        </Link>
+                      </div>
+                    ) : (
+                      <div className="flex flex-row">
+                        <Heading variant="h3" className="mb-2">
+                          {entry.term}
+                        </Heading>
+                      </div>
+                    )}
+
+                    {entry.shortEntry && <Body body={entry.shortEntry} />}
+                  </div>
+                );
+              })}
+            </section>
+          );
+        })}
       </div>
     </div>
   );
