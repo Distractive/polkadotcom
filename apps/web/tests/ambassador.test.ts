@@ -11,7 +11,7 @@ test('Ambassador Program', async ({ page }) => {
   await test.step('assert title and header are properly displayed', async () => {
     await expect(page).toHaveTitle('Ambassador Program');
     const heading = page.locator('h1');
-    await expect(heading).toHaveText('Become a Polkadot Ambassador');
+    await expect(heading).toHaveText('The Polkadot Ambassador Fellowship');
   });
 
   await test.step('assert "header" section is displayed properly', async () => {
