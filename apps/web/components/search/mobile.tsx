@@ -13,18 +13,14 @@ import {
 } from 'react-instantsearch';
 import { CustomSnippet } from './custom-snippet';
 
-
 function NoResults() {
   const { results } = useInstantSearch();
   const { query } = useSearchBox();
 
   if (query && results && results.hits.length === 0) {
-
     return (
-      <div className={`p-4`}>
-        No results found for &quot;{query}&quot;
-        </div>
-    )
+      <div className={'p-4'}>No results found for &quot;{query}&quot;</div>
+    );
   }
   return null;
 }

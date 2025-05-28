@@ -14,22 +14,17 @@ import {
 import { CustomSnippet } from './custom-snippet';
 import { useOnSearchClose } from './useOnSearchClose';
 
-
 function NoResults() {
   const { results } = useInstantSearch();
   const { query } = useSearchBox();
 
   if (query && results && results.hits.length === 0) {
-
     return (
-      <div className={`p-4`}>
-        No results found for &quot;{query}&quot;
-        </div>
-    )
+      <div className={'p-4'}>No results found for &quot;{query}&quot;</div>
+    );
   }
   return null;
 }
-
 
 export function DesktopSearch() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -62,7 +57,9 @@ export function DesktopSearch() {
             }}
           />
           <div
-            className={`m-5 absolute left-0 right-0 mt-8 bg-white shadow-lg max-h-[80vh] overflow-scroll text-grey-700 z-[999999] customRounded`}
+            className={
+              'm-5 absolute left-0 right-0 mt-8 bg-white shadow-lg max-h-[80vh] overflow-scroll text-grey-700 z-[999999] customRounded'
+            }
           >
             <NoResults />
             <Hits
