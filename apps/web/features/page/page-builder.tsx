@@ -1,6 +1,7 @@
 import type { pageBuilderSelection } from '@/sanity/selections/page-builder';
 import type { TypeFromSelection } from 'groqd';
 
+import NotFound from '@/app/(site)/not-found';
 import { AccordionBlock } from '@/features/page/blocks/accordion';
 import { ButtonBlock } from '@/features/page/blocks/button-block';
 import { CardsLogoBlock } from '@/features/page/blocks/cards-logo/cards-logo';
@@ -16,7 +17,6 @@ import { FormModalBlock } from '@/features/page/blocks/form-modal';
 import { MediaBlock } from '@/features/page/blocks/media-block';
 import { QuoteBlock } from '@/features/page/blocks/quote';
 import { SideBySideBlock } from '@/features/page/blocks/side-by-side';
-import NotFound  from '@/app/(site)/not-found'
 
 import { CountdownTimer } from './blocks/countdown-timer';
 import { CTA } from './blocks/cta';
