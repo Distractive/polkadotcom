@@ -3,7 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     },
     "declaration": false,
     "declarationMap": false
@@ -14,7 +16,10 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "sanity.cli.ts",
-    "../../packages/ui/components/ui/progress.tsx"
+    "../../packages/ui/components/ui/progress.tsx",
+    "out/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
