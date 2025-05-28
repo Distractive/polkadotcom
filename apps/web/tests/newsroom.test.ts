@@ -51,14 +51,14 @@ test('Newsroom', async ({ page }) => {
       }),
     ).toBeVisible();
     await expect(
+      section.getByRole('link', { name: 'mubert goes web' }),
+    ).toBeVisible();
+    await expect(
       section.getByRole('link', { name: 'copper and velocity labs' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'harbour and velocity labs launch' }),
-    ).toBeVisible();
-    await expect(
       section.getByRole('link', {
-        name: 'evrloot launches',
+        name: 'hyperbridge concludes iro',
       }),
     ).toBeVisible();
     await expect(
