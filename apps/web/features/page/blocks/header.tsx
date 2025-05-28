@@ -54,7 +54,12 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         : 'primary';
 
     return (
-      <Button variant={variant} size="lg">
+      <Button
+        variant={variant}
+        size="lg"
+        asChild
+        className="md:cursor-pointer whitespace-nowrap"
+      >
         <CustomUrl
           className="outline-none"
           value={{
