@@ -35,11 +35,11 @@ export function CustomUrl({
     const parentSlug = (() => {
       switch (value?.internal?.post_type) {
         case BLOG_POSTTYPE:
-          return '/blog';
+          return 'blog';
         case PRESS_RELEASE_POSTTYPE:
-          return '/newsroom/press-releases';
+          return 'newsroom/press-releases';
         case CASE_STUDY_POSTTYPE:
-          return '/case-studies';
+          return 'case-studies';
         default:
           return '';
       }
@@ -77,7 +77,7 @@ export function CustomUrl({
   return value ? (
     <Link
       tabIndex={tabIndex}
-      href={value?.external || `${slug}` || ''}
+      href={value?.external || `/${slug}` || ''}
       target={value.external ? '_blank' : '_self'}
       className={className}
       prefetch={false}
