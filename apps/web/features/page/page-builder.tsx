@@ -1,6 +1,7 @@
 import type { pageBuilderSelection } from '@/sanity/selections/page-builder';
 import type { TypeFromSelection } from 'groqd';
 
+import NotFound from '@/app/(site)/not-found';
 import { AccordionBlock } from '@/features/page/blocks/accordion';
 import { ButtonBlock } from '@/features/page/blocks/button-block';
 import { CardsLogoBlock } from '@/features/page/blocks/cards-logo/cards-logo';
@@ -61,6 +62,8 @@ export function PageBuilder({ pageBuilder }: Props) {
         return <CTA cta={item} />;
       case 'countdownTimer':
         return <CountdownTimer countdownTimer={item} />;
+      case 'notfound':
+        return <NotFound />;
       default:
         return <p>Unknown type: {item._type}</p>;
     }
