@@ -9,13 +9,25 @@ import {
   Hits,
   SearchBox,
   useInstantSearch,
+  useSearchBox,
 } from 'react-instantsearch';
 import { CustomSnippet } from './custom-snippet';
 import { useOnSearchClose } from './useOnSearchClose';
 
+function NoResults() {
+  const { results } = useInstantSearch();
+  const { query } = useSearchBox();
+
+  if (query && results && results.hits.length === 0) {
+    return (
+      <div className={'p-4'}>No results found for &quot;{query}&quot;</div>
+    );
+  }
+  return null;
+}
+
 export function DesktopSearch() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const { results } = useInstantSearch();
   const queryHook = useQueryHook();
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -45,8 +57,11 @@ export function DesktopSearch() {
             }}
           />
           <div
-            className={`m-5 absolute left-0 right-0 mt-8 bg-white shadow-lg max-h-[80vh] overflow-scroll text-grey-700 z-[999999] ${!results?.hits?.length && 'customHidden'} customRounded`}
+            className={
+              'm-5 absolute left-0 right-0 mt-8 bg-white shadow-lg max-h-[80vh] overflow-scroll text-grey-700 z-[999999] customRounded'
+            }
           >
+            <NoResults />
             <Hits
               hitComponent={({ hit }) =>
                 hit.slug && (
