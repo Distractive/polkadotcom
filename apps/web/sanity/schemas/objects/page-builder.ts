@@ -77,6 +77,10 @@ export default defineType({
           name: 'countdownTimer',
           type: 'countdownTimer',
         }),
+        defineArrayMember({
+          name: 'notfound',
+          type: 'notfound',
+        }),
       ],
     }),
   ],

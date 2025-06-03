@@ -18,6 +18,7 @@ import { mediaBlockSelection } from './blocks/media-block';
 import { modalSelection } from './blocks/modal';
 import { quoteSelection } from './blocks/quote';
 import { sideBySideSelection } from './blocks/side-by-side';
+import { notfoundSelection } from './notfound/notfound';
 
 export const pageBuilderSelection = {
   pageBuilder: q('pageBuilder.pageBuilder')
@@ -90,6 +91,10 @@ export const pageBuilderSelection = {
       '_type == "countdownTimer"': {
         _type: q.literal('countdownTimer'),
         ...countdownTimerSelection,
+      },
+      '_type == "notfound"': {
+        _type: q.literal('notfound'),
+        ...notfoundSelection,
       },
       default: {
         _key: q.string(),
