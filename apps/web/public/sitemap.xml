@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+
 <url><loc>https://polkadot.com/blog/</loc><lastmod>2025-05-20T08:52:10.729Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/page/1/</loc><lastmod>2025-05-20T08:52:10.729Z</lastmod></url>
 <url><loc>https://polkadot.com/blog/page/10/</loc><lastmod>2025-05-20T08:52:10.729Z</lastmod></url>
@@ -199,6 +200,7 @@
 <url><loc>https://polkadot.com/newsroom/press-releases/Polkadot-SDK-modular-blockchain-development-for-the-future/</loc><lastmod>2025-05-02T16:49:56.000Z</lastmod></url>
 <url><loc>https://polkadot.com/newsroom/press-releases/Polkadot-and-SP-Negocios-Partner/</loc><lastmod>2024-12-27T17:54:02.000Z</lastmod></url>
 <url><loc>https://polkadot.com/newsroom/press-releases/acurast-powers-xcBTC-making-Bitcoin-truly-cross-chain/</loc><lastmod>2025-05-01T16:58:03.000Z</lastmod></url>
+<url><loc>https://polkadot.com/newsroom/press-releases/acurast-vibe-code-deploy-ai-websites-polkadot-decentralized/</loc><lastmod>2025-05-23T18:31:01.000Z</lastmod></url>
 <url><loc>https://polkadot.com/newsroom/press-releases/agrotoken-polkadot/</loc><lastmod>2025-01-05T18:43:31.000Z</lastmod></url>
 <url><loc>https://polkadot.com/newsroom/press-releases/asynchronous-backing-launched/</loc><lastmod>2024-09-27T21:33:14.000Z</lastmod></url>
 <url><loc>https://polkadot.com/newsroom/press-releases/beatport-io-launches-with-digital-collectibles-series-nachts/</loc><lastmod>2025-01-06T13:53:08.000Z</lastmod></url>
@@ -216,8 +218,10 @@
 <url><loc>https://polkadot.com/newsroom/press-releases/interlay-launches-landmark-trustless-bitcoin-bridge-on-polkadot/</loc><lastmod>2025-01-03T20:08:56.000Z</lastmod></url>
 <url><loc>https://polkadot.com/newsroom/press-releases/mandala-chooses-astar-for-nft-drop-leveraging-a-myriad-of-features-only-available-on-polkadot/</loc><lastmod>2025-01-05T23:00:04.000Z</lastmod></url>
 <url><loc>https://polkadot.com/newsroom/press-releases/most-decentralized-compute-network-hits-50k-device/</loc><lastmod>2025-03-27T19:33:39.000Z</lastmod></url>
+<url><loc>https://polkadot.com/newsroom/press-releases/mubert-polkadot-rollup-creator-economy-web3/</loc><lastmod>2025-05-23T19:57:33.000Z</lastmod></url>
 <url><loc>https://polkadot.com/newsroom/press-releases/native-usdc-enters-polkadot-ecosystem-in-boost-for-defi-parachains/</loc><lastmod>2025-01-04T16:46:07.000Z</lastmod></url>
 <url><loc>https://polkadot.com/newsroom/press-releases/new-vodafone-deal-with-heathrow-and-aventus-puts-polkadot-at-center-of-aviation-efficiencies/</loc><lastmod>2025-01-04T23:41:10.000Z</lastmod></url>
+<url><loc>https://polkadot.com/newsroom/press-releases/nova-wallet-mercuryo-launch-first-polkadot-mastercard-debit-card/</loc><lastmod>2025-06-03T13:21:18.000Z</lastmod></url>
 <url><loc>https://polkadot.com/newsroom/press-releases/parity-collaborates-with-klaytn-to-boost-its-metaverse-growth/</loc><lastmod>2025-01-05T18:18:35.000Z</lastmod></url>
 <url><loc>https://polkadot.com/newsroom/press-releases/parity-joins-forces-with-aventus-to-bring-blockchain-to-businesses/</loc><lastmod>2024-09-27T20:59:16.000Z</lastmod></url>
 <url><loc>https://polkadot.com/newsroom/press-releases/parity-leadership-update/</loc><lastmod>2024-09-27T21:12:35.000Z</lastmod></url>

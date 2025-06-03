@@ -1,4 +1,5 @@
 // Auto-generated metrics from build process
+
 // Generated on: 2025-05-28T14:06:48.449Z
 
 export const staticMetricsStore = {
