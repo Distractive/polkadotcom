@@ -4,12 +4,92 @@
         <title>Polkadot - All Content</title>
         <link>https://polkadot.com</link>
         <description>Polkadot - The Platform for Web3</description>
-        <lastBuildDate>Fri, 16 May 2025 19:12:20 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 03 Jun 2025 13:42:38 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>All rights reserved 2025, Polkadot</copyright>
         <atom:link href="https://polkadot.com/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Nova Wallet Partners with Mercuryo to Launch First Polkadot Mastercard Debit Card]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/nova-wallet-mercuryo-launch-first-polkadot-mastercard-debit-card</link>
+            <guid>https://polkadot.com/newsroom/press-releases/nova-wallet-mercuryo-launch-first-polkadot-mastercard-debit-card</guid>
+            <pubDate>Tue, 03 Jun 2025 13:00:00 GMT</pubDate>
+            <description><![CDATA[Nova Wallet and Mercuryo launch the first Polkadot Mastercard debit card, enabling DOT holders to spend crypto for everyday purchases across Europe and beyond.]]></description>
+            <content:encoded><![CDATA[Nova Wallet and Mercuryo launch the first Polkadot Mastercard debit card, enabling DOT holders to spend crypto for everyday purchases across Europe and beyond.]]></content:encoded>
+            <category>Press Release</category>
+            <category>Ecosystem</category>
+            <category>Decentralized Finance</category>
+        </item>
+        <item>
+            <title><![CDATA[Polkadot's Web3 Philosophy: A legacy of digital freedom from Jobs to Wood]]></title>
+            <link>https://polkadot.com/blog/polkadot-web3-philosophy</link>
+            <guid>https://polkadot.com/blog/polkadot-web3-philosophy</guid>
+            <pubDate>Mon, 02 Jun 2025 14:48:00 GMT</pubDate>
+            <description><![CDATA[Web3 is the next evolution of personal technology and digital freedom. From Steve Jobs and personal computing to Gavin Wood's vision, explore how Web3 vs Web2 represents individual empowerment over corporate control.]]></description>
+            <content:encoded><![CDATA[Web3 is the next evolution of personal technology and digital freedom. From Steve Jobs and personal computing to Gavin Wood's vision, explore how Web3 vs Web2 represents individual empowerment over corporate control.]]></content:encoded>
+            <category>Blog</category>
+            <category>Reflection</category>
+            <category>Blockchain Basics</category>
+            <category>Learn Polkadot</category>
+        </item>
+        <item>
+            <title><![CDATA[Polkadot at Consensus 2025: Demos, DAO talk, and new audiences]]></title>
+            <link>https://polkadot.com/blog/consensus-2025-recap</link>
+            <guid>https://polkadot.com/blog/consensus-2025-recap</guid>
+            <pubDate>Fri, 30 May 2025 13:51:00 GMT</pubDate>
+            <description><![CDATA[Consensus 2025 leaned into real-world adoption with a crowd that cared about practical use cases and tangible outcomes. Polkadot showed up with demos, onboarding, and a message that kept things grounded.]]></description>
+            <content:encoded><![CDATA[Consensus 2025 leaned into real-world adoption with a crowd that cared about practical use cases and tangible outcomes. Polkadot showed up with demos, onboarding, and a message that kept things grounded.]]></content:encoded>
+            <category>Blog</category>
+            <category>Events</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[The gamer’s guide to blockchain: Ownership, influence, and what comes next]]></title>
+            <link>https://polkadot.com/blog/gamers-guide-to-blockchain</link>
+            <guid>https://polkadot.com/blog/gamers-guide-to-blockchain</guid>
+            <pubDate>Thu, 29 May 2025 16:04:00 GMT</pubDate>
+            <description><![CDATA[Web3 gaming is redefining ownership, player agency, and game design. Discover what’s changing and how Polkadot is helping build more immersive, community-first experiences.]]></description>
+            <content:encoded><![CDATA[Web3 gaming is redefining ownership, player agency, and game design. Discover what’s changing and how Polkadot is helping build more immersive, community-first experiences.]]></content:encoded>
+            <category>Blog</category>
+            <category>Gaming</category>
+            <category>Modular Technology</category>
+            <category>Blockchain Basics</category>
+        </item>
+        <item>
+            <title><![CDATA[How DePIN is bringing real infrastructure and real users to Web3]]></title>
+            <link>https://polkadot.com/blog/depin-web3-infrastructure</link>
+            <guid>https://polkadot.com/blog/depin-web3-infrastructure</guid>
+            <pubDate>Tue, 27 May 2025 17:07:00 GMT</pubDate>
+            <description><![CDATA[Decentralized Mic brought together leaders from Silencio, Acurast, and DePIN Hub to explore how decentralized infrastructure networks are creating real-world utility, rewarding users, and reviving Web3’s original values.]]></description>
+            <content:encoded><![CDATA[Decentralized Mic brought together leaders from Silencio, Acurast, and DePIN Hub to explore how decentralized infrastructure networks are creating real-world utility, rewarding users, and reviving Web3’s original values.]]></content:encoded>
+            <category>Blog</category>
+            <category>Decentralized Physical Infrastructure</category>
+            <category>Learn Polkadot</category>
+        </item>
+        <item>
+            <title><![CDATA[Mubert goes Web3: Launching a Polkadot-supported rollup to power the creator economy]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/mubert-polkadot-rollup-creator-economy-web3</link>
+            <guid>https://polkadot.com/newsroom/press-releases/mubert-polkadot-rollup-creator-economy-web3</guid>
+            <pubDate>Fri, 23 May 2025 12:00:54 GMT</pubDate>
+            <description><![CDATA[Mubert, the AI music platform, transforms into a decentralized platform for content ownership, monetization, and innovation, powered by Polkadot.]]></description>
+            <content:encoded><![CDATA[Mubert, the AI music platform, transforms into a decentralized platform for content ownership, monetization, and innovation, powered by Polkadot.]]></content:encoded>
+            <category>Press Release</category>
+            <category>Ecosystem</category>
+            <category>Artificial Intelligence</category>
+        </item>
+        <item>
+            <title><![CDATA[Acurast introduces Vibe Code and Deploy—AI-created websites and games hosted on a decentralized compute network]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/acurast-vibe-code-deploy-ai-websites-polkadot-decentralized</link>
+            <guid>https://polkadot.com/newsroom/press-releases/acurast-vibe-code-deploy-ai-websites-polkadot-decentralized</guid>
+            <pubDate>Fri, 23 May 2025 12:00:29 GMT</pubDate>
+            <description><![CDATA[Acurast launches 'vibe code and deploy' on Polkadot—create websites and games with a single AI prompt, instantly deployed on a decentralized network of 70,000+ smartphones across 130+ countries. ]]></description>
+            <content:encoded><![CDATA[Acurast launches 'vibe code and deploy' on Polkadot—create websites and games with a single AI prompt, instantly deployed on a decentralized network of 70,000+ smartphones across 130+ countries. ]]></content:encoded>
+            <category>Press Release</category>
+            <category>Ecosystem</category>
+            <category>Decentralized Physical Infrastructure</category>
+            <category>Artificial Intelligence</category>
+        </item>
         <item>
             <title><![CDATA[What is the Polkadot DAO? A beginner’s guide to decentralized governance]]></title>
             <link>https://polkadot.com/blog/polkadot-dao-explained</link>

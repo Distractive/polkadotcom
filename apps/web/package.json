@@ -23,7 +23,6 @@
     "export": "next build && next export",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "postbuild": "next-sitemap --config next-sitemap.config.mjs",
     "preplaywright:test": "echo '\\033[33mPlease check if playwright dependencies are installed. If not, run `pnpm exec playwright install chromium --with-deps`\\033[0m'",
     "playwright:test": "NODE_ENV=test playwright test",
     "algolia:migrate": "tsx scripts/algolia-migrate.ts"
