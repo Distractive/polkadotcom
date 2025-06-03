@@ -11,7 +11,7 @@
     "dev:turbo": "next dev --turbo",
     "build": "BUILD_FLAG=true next build",
     "fetch-metrics": "tsx scripts/fetch-metrics.ts",
-    "build:static": "pnpm fetch-metrics && rm -rf .next out && BUILD_FLAG=true NEXT_TELEMETRY_DISABLED=1 NEXT_DISABLE_VERCEL_ANALYTICS=1 NEXT_PUBLIC_BUILD_TYPE=static NODE_ENV=production next build && next-sitemap --config next-sitemap.config.mjs",
+    "build:static": "pnpm fetch-metrics && rm -rf .next out && BUILD_FLAG=true NEXT_TELEMETRY_DISABLED=1 NEXT_DISABLE_VERCEL_ANALYTICS=1 NEXT_PUBLIC_BUILD_TYPE=static NODE_ENV=production next build",
     "run:static": "npx serve out",
     "static": "pnpm build:static && pnpm run:static",
     "start": "next start",
@@ -23,6 +23,7 @@
     "export": "next build && next export",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "postbuild": "next-sitemap",
     "preplaywright:test": "echo '\\033[33mPlease check if playwright dependencies are installed. If not, run `pnpm exec playwright install chromium --with-deps`\\033[0m'",
     "playwright:test": "NODE_ENV=test playwright test",
     "algolia:migrate": "tsx scripts/algolia-migrate.ts"

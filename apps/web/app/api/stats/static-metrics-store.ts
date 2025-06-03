@@ -1,14 +1,14 @@
 // Auto-generated metrics from build process
-// Generated on: 2025-06-03T13:41:09.697Z
+// Generated on: 2025-06-03T16:08:49.903Z
 
 export const staticMetricsStore = {
   getActiveValidators: '600',
-  getApprovedReferendums: 904,
+  getApprovedReferendums: 905,
   getAverageMonthlyGovernanceVoters: 16955,
   getPercentDOTSupplyStaked: '54%',
   getPolkadotUptime30d: '100%',
   getTotalDOTStaked: '855816914.7304394',
-  getTotalFeesUSD30d: 400469.70050591434,
+  getTotalFeesUSD30d: 600704.5507588715,
   getTotalNominators: 31706,
   getTotalReferendums: 1586,
   getTotalStablecoinsUSD: 47660215.6650005,
