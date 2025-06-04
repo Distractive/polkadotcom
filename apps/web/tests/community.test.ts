@@ -21,7 +21,7 @@ test('Community', async ({ page }) => {
     );
 
     await expect(
-      section.getByRole('button', { name: 'Explore ecosystem' }),
+      section.getByRole('link', { name: 'Explore ecosystem' }),
     ).toBeVisible();
   });
 
