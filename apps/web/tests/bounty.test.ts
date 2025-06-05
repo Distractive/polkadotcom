@@ -10,7 +10,7 @@ test('Bridges Bug Bounty', async ({ page }) => {
   await test.step('assert title and header are properly displayed', async () => {
     await expect(page).toHaveTitle('Bridges Bug Bounty');
     const heading = page.locator('h1');
-    await expect(heading).toHaveText('Bridge bug bounty');
+    await expect(heading).toHaveText('Bridgs bug bounty');
   });
 
   await test.step('assert "header" section is displayed properly', async () => {
