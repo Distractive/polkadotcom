@@ -78,7 +78,6 @@ export default function BlogCard({ post, className }: Props) {
             ))}
           </ul>
         )}
-
         {title && (
           <h2
             className={cn(
