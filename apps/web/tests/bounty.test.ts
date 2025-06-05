@@ -10,7 +10,7 @@ test('Bridges Bug Bounty', async ({ page }) => {
   await test.step('assert title and header are properly displayed', async () => {
     await expect(page).toHaveTitle('Bridges Bug Bounty');
     const heading = page.locator('h1');
-    await expect(heading).toHaveText('Bridge bug bounty');
+    await expect(heading).toHaveText('Bridges bug bounty');
   });
 
   await test.step('assert "header" section is displayed properly', async () => {
@@ -18,7 +18,7 @@ test('Bridges Bug Bounty', async ({ page }) => {
 
     await expect(
       section.getByRole('heading', {
-        name: 'Bridge bug bounty',
+        name: 'Bridges bug bounty',
       }),
     ).toBeVisible();
     await expect(section.getByText('Blockchain bridges are')).toHaveText(
@@ -60,7 +60,7 @@ test('Bridges Bug Bounty', async ({ page }) => {
       }),
     ).toBeVisible();
     await expect(section.getByText('Ultimately, we’re after')).toHaveText(
-      'Ultimately, we’re after findings that have a real impact. Purely theoretical findings are sometimes entertaining to investigate, so feel free to send us any. However, it will only be eligible if there is a way to break our systems in practice. Here’s what we’re looking for:',
+      'Ultimately, we’re after findings that have a real impact. Purely theoretical findings are sometimes entertaining to investigate, so feel free to send us any. However, it will only be eligible if there is a way to break our systems in practice.',
     );
     await expect(
       section.getByRole('heading', { name: 'Proof-of-concept' }),
