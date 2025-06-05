@@ -17,4 +17,8 @@ export const HBSPT_LIST = [
     title: 'Polkadot Relaunch',
     value: 'f55fcd36-99ca-410b-8cb8-0268f84c7d15',
   },
+  {
+    title: 'Polkadot & Dev Newsletter',
+    value: 'e2c50b46-5b6d-4d7e-b8cf-728a4ecc8da3',
+  },
 ];
