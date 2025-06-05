@@ -18,7 +18,7 @@ test('Bridges Bug Bounty', async ({ page }) => {
 
     await expect(
       section.getByRole('heading', {
-        name: 'Bridge bug bounty',
+        name: 'Bridges bug bounty',
       }),
     ).toBeVisible();
     await expect(section.getByText('Blockchain bridges are')).toHaveText(
