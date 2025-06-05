@@ -49,10 +49,12 @@ test('Stake', async ({ page }) => {
         name: 'Staking metrics',
       }),
     ).toBeVisible();
-    await expect(section.getByText('36,967Total Nominators*')).toBeVisible();
-    await expect(section.getByText('~58.46%Total DOT Supply')).toBeVisible();
-    await expect(section.getByText('%Historical Rewards Rate**')).toBeVisible();
-    await expect(section.getByText('297active validators')).toBeVisible();
+    await expect(section.getByText('Total Nominators')).toBeVisible();
+    await expect(
+      section.getByText('Percent of DOT Supply Staked'),
+    ).toBeVisible();
+    await expect(section.getByText('Historical Rewards Rate*')).toBeVisible();
+    await expect(section.getByText('Active Validators')).toBeVisible();
   });
 
   await test.step('"metrics" section screenshot', async () => {

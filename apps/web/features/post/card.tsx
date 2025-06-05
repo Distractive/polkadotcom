@@ -18,7 +18,6 @@ interface Props {
 export default function BlogCard({ post, className }: Props) {
   const { slug, image, body, tags, title, post_type, custom_excerpt } = post;
 
-  console.log('post card', post);
   // Because not all blog posts have a custom excerpt imported
   // we have to loop round the content to find the first text block to show
   const excerpt =
@@ -79,7 +78,6 @@ export default function BlogCard({ post, className }: Props) {
             ))}
           </ul>
         )}
-
         {title && (
           <h2
             className={cn(

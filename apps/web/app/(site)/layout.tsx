@@ -142,6 +142,13 @@ export default async function RootLayout({
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#E6007A" />
 
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Polkadot - All Content"
+          href="/feed.xml"
+        />
+
         <meta name="msapplication-TileColor" content="#FFFFFF" />
         <meta name="theme-color" content="#fff" />
       </head>

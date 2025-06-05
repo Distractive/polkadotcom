@@ -6,7 +6,7 @@ import { cn } from '../../lib/utils';
 
 const ButtonStyles = {
   base: cn(
-    'inline-flex items-center justify-center gap-2 uppercase font-display relative overflow-hidden content-none outline-none ',
+    'inline-flex items-center justify-center gap-2 uppercase font-display relative overflow-hidden content-none outline-none box-border h-[50px]',
     'before:absolute before:inset-0 before:-z-20 before:bg-black',
     'after:absolute after:-inset-0 after:-z-10 after:bg-gradient-to-r',
     'after:w-[200%] after:transition-transform after:ease-in-out after:duration-300 after:translate-x-[-200%]',
@@ -14,7 +14,7 @@ const ButtonStyles = {
     'z-10',
   ),
   sizes: {
-    lg: 'rounded-xl px-[1.875rem] py-5 text-sm max-w-[24.375rem]',
+    lg: 'rounded-xl px-[1.875rem] py-8 text-sm max-w-[24.375rem]',
     md: 'rounded-lg px-8 py-4 text-xs max-w-[20rem]',
     sm: 'rounded-md px-4 py-2 text-xs max-w-[15rem]',
   },

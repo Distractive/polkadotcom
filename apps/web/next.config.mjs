@@ -46,6 +46,9 @@ const cspSources = {
     'https://alb.reddit.com',
     'https://www.redditstatic.com',
     'https://pixel-config.reddit.com',
+    'https://v1.slise.xyz/scripts',
+    'https://v1.slise.xyz/analytics/tpe',
+    'https://v1.slise.xyz/track',
   ],
   'default-src': ["'self'"],
   'font-src': [
@@ -131,6 +134,7 @@ const cspSources = {
     'http://cdn.ad360.media',
     'https://cdn.ad360.media',
     'https://vercel.live/',
+    'https://v1.slise.xyz/scripts/pix3l.js',
   ],
   'style-src': [
     "'self'",
