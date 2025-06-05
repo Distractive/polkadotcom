@@ -14,7 +14,7 @@ const ButtonStyles = {
     'z-10',
   ),
   sizes: {
-    lg: 'rounded-xl px-[1.875rem] py-5 text-sm max-w-[24.375rem]',
+    lg: 'rounded-xl px-[1.875rem] py-8 text-sm max-w-[24.375rem]',
     md: 'rounded-lg px-8 py-4 text-xs max-w-[20rem]',
     sm: 'rounded-md px-4 py-2 text-xs max-w-[15rem]',
   },
