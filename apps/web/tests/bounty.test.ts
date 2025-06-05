@@ -60,7 +60,7 @@ test('Bridges Bug Bounty', async ({ page }) => {
       }),
     ).toBeVisible();
     await expect(section.getByText('Ultimately, we’re after')).toHaveText(
-      'Ultimately, we’re after findings that have a real impact. Purely theoretical findings are sometimes entertaining to investigate, so feel free to send us any. However, it will only be eligible if there is a way to break our systems in practice. Here’s what we’re looking for:',
+      'Ultimately, we’re after findings that have a real impact. Purely theoretical findings are sometimes entertaining to investigate, so feel free to send us any. However, it will only be eligible if there is a way to break our systems in practice.',
     );
     await expect(
       section.getByRole('heading', { name: 'Proof-of-concept' }),
