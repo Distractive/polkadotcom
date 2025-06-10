@@ -15,7 +15,7 @@ export const postSelection = {
   image: sanityImage('featured_image', {
     withAsset: ['base', 'dimensions'],
   }).nullable(),
-  tags: q('tags')
+  tags: q('coalesce(tags, [])')
     .filter()
     .deref()
     .grab$({ name: q.string(), slug: q.slug('slug') }),
