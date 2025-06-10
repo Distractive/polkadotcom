@@ -14,7 +14,7 @@ import { Heading } from '@shared/ui';
 export async function generateStaticParams() {
   const slugs = await getAllGlossarySlugs();
 
-  if (!slugs?.length) return [];
+  if (!slugs?.length) return [{ slug: 'not-found' }];
 
   return slugs.map((slug) => ({
     slug: slug,
@@ -46,7 +46,10 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  // const isDraftMode = draftMode().isEnabled
+  if (process.env.NEXT_PUBLIC_BUILD_TYPE === 'static') {
+    return notFound();
+  }
+
   const data = await getGlossaryEntry(params.slug);
   if (!data) return notFound();
 

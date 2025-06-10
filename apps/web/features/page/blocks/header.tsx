@@ -54,7 +54,12 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         : 'primary';
 
     return (
-      <Button variant={variant} size="lg">
+      <Button
+        variant={variant}
+        size="lg"
+        asChild
+        className="md:cursor-pointer whitespace-nowrap"
+      >
         <CustomUrl
           className="outline-none"
           value={{
@@ -124,10 +129,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
 
           {header.body && <p className="text-lg">{header.body}</p>}
           {header.links && (
-            <div
-              id="main-content"
-              className="mt-card flex w-full flex-wrap gap-4"
-            >
+            <div id="main-content" className="mt-4 flex w-full flex-wrap gap-4">
               {header.links?.map((link, index) =>
                 link._type === 'newsletterButton'
                   ? renderNewsletterButton(link)
@@ -187,10 +189,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
 
         {header.body && <p className="text-lg">{header.body}</p>}
         {header.links && (
-          <div
-            id="main-content"
-            className="mt-card flex w-full flex-wrap gap-4"
-          >
+          <div id="main-content" className="mt-4 flex w-full flex-wrap gap-4">
             {header.links?.map((link) =>
               link._type === 'newsletterButton'
                 ? renderNewsletterButton(link)

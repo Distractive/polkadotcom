@@ -21,7 +21,11 @@ test('Developers', async ({ page }) => {
     );
 
     await expect(
-      section.getByRole('button', { name: 'Documentation' }),
+      section.getByRole('link', { name: 'Documentation' }),
+    ).toBeVisible();
+
+    await expect(
+      section.getByRole('link', { name: 'Ask other developers' }),
     ).toBeVisible();
   });
 
