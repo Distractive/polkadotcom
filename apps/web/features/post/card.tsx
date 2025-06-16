@@ -8,8 +8,8 @@ import {
   CASE_STUDY_POSTTYPE,
   PRESS_RELEASE_POSTTYPE,
 } from '@/constants/global';
-import { Card, CardContent, CardDescription, CardHeader, cn } from '@shared/ui';
 import { urlForImage } from '@/sanity/lib/image';
+import { Card, CardContent, CardDescription, CardHeader, cn } from '@shared/ui';
 
 interface Props {
   post: TypeFromSelection<typeof postSelection>;

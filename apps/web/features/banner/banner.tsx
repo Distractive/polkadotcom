@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import { CustomUrl } from '@/components/custom-url';
+import { urlForImage } from '@/sanity/lib/image';
 import {
   Button,
   Card,
@@ -16,7 +17,6 @@ import {
   Icon,
   cn,
 } from '@shared/ui';
-import { urlForImage } from '@/sanity/lib/image';
 
 interface BannerProps {
   banner: TypeFromSelection<typeof bannerSelection>;
@@ -84,7 +84,7 @@ export default function Banner({ banner }: BannerProps) {
           >
             {banner.icon && (
               <Image
-                src={urlForImage(banner.icon.asset)}                
+                src={urlForImage(banner.icon.asset)}
                 alt={banner.altText || ''}
                 loading="lazy"
                 width={100}

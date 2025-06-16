@@ -17,12 +17,12 @@ import {
 } from '@/constants/global';
 import { CarouselItem, Heading, cn } from '@shared/ui';
 
+import { urlForImage } from '@/sanity/lib/image';
 import { Carousel } from '../../components/carousel';
 import type { BreadcrumbProps } from '../page/blocks/breadcrumb';
 import { BreadcrumbBlock } from '../page/blocks/breadcrumb';
 import { Body } from './body';
 import BlogCard from './card';
-import { urlForImage } from '@/sanity/lib/image';
 
 interface LayoutProps {
   slug: string;
@@ -163,7 +163,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
               <>
                 <img
                   className="h-6 w-6 rounded-full"
-                  src={author.image.asset.url}
+                  src={urlForImage(author.image.asset)}
                   alt=""
                   loading="lazy"
                 />

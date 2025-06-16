@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 import { Carousel } from '@/components/carousel';
 import { CustomUrl } from '@/components/custom-url';
+import { urlForImage } from '@/sanity/lib/image';
 import {
   Card,
   CardContent,
@@ -15,7 +16,6 @@ import {
   Heading,
   cn,
 } from '@shared/ui';
-import { urlForImage } from '@/sanity/lib/image';
 
 interface Props {
   connected: TypeFromSelection<typeof connectedSelection>['connected'];

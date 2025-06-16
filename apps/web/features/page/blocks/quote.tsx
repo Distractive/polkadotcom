@@ -2,6 +2,7 @@ import type { quoteSelection } from '@/sanity/selections/blocks/quote';
 import { PortableText } from '@portabletext/react';
 import type { TypeFromSelection } from 'groqd';
 
+import { urlForImage } from '@/sanity/lib/image';
 import { Heading, cn } from '@shared/ui';
 
 interface Props {
@@ -17,7 +18,7 @@ export function QuoteBlock({ quote, className }: Props) {
     >
       {quote.image && (
         <img
-          src={quote.image.asset.url}
+          src={urlForImage(quote.image.asset)}
           alt=""
           className="col-span-2 w-full rounded-xl md:col-span-1 lg:col-span-2 lg:col-start-2"
         />

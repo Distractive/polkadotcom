@@ -3,6 +3,7 @@ import type { TypeFromSelection } from 'groqd';
 
 import { Heading, cn } from '@shared/ui';
 
+import { urlForImage } from '@/sanity/lib/image';
 import CardSmallBlock from './card-small';
 
 interface Props {
@@ -45,7 +46,7 @@ export function CardsSmallBlock({ cards }: Props) {
       </div>
       {cards.backgroundImage && (
         <img
-          src={cards.backgroundImage.asset.url}
+          src={urlForImage(cards.backgroundImage.asset)}
           alt=""
           loading="eager"
           className={cn(

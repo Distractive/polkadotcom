@@ -3,6 +3,7 @@ import { PortableText } from '@portabletext/react';
 import { stegaClean } from '@sanity/client/stega';
 import type { TypeFromSelection } from 'groqd';
 
+import { urlForImage } from '@/sanity/lib/image';
 import {
   Accordion,
   AccordionContent,
@@ -50,7 +51,7 @@ export function AccordionBlock({ accordion }: Props) {
             <img
               alt={accordion.title || 'Accordion image'}
               className="col-span-full aspect-video w-full rounded-2xl lg:col-span-6"
-              src={accordion.image.asset.url}
+              src={urlForImage(accordion.image.asset)}
             />
           )}
           <div className="col-span-full flex flex-col items-center justify-center pt-gutter lg:col-span-6 lg:pt-0">
