@@ -1,5 +1,5 @@
 // Auto-generated metrics from build process
-// Generated on: 2025-06-05T12:07:51.130Z
+// Generated on: 2025-06-05T19:40:39.836Z
 
 export const staticMetricsStore = {
   getActiveValidators: '600',

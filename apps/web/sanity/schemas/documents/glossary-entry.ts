@@ -108,7 +108,38 @@ export default defineType({
       ],
       group: 'content',
     }),
+    defineField({
+      name: 'relatedTerms',
+      title: 'Related Terms',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'glossaryEntry' }],
+        }),
+      ],
+      description: 'Select up to 3 related glossary terms',
+      group: 'content',
+      hidden: ({ document }) => !document?.createFullPageEntry,
+      validation: (rule) => rule.max(3),
+    }),
+    defineField({
+      name: 'relatedPosts',
+      title: 'Related Posts',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'post' }],
+        }),
+      ],
+      description: 'Select up to 3 related posts',
+      group: 'content',
+      hidden: ({ document }) => !document?.createFullPageEntry,
+      validation: (rule) => rule.max(3),
+    }),
   ],
+
   orderings: [
     {
       title: 'Term, A-Z',

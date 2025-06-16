@@ -8,6 +8,7 @@ import { notFound } from 'next/navigation';
 
 import { BreadcrumbBlock } from '@/features/page/blocks/breadcrumb';
 import type { BreadcrumbItemType } from '@/features/page/blocks/breadcrumb';
+import { CardsSmallBlock } from '@/features/page/blocks/cards-small/cards-small';
 import { Body } from '@/features/post/body';
 import { Heading } from '@shared/ui';
 
@@ -53,13 +54,40 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const data = await getGlossaryEntry(params.slug);
   if (!data) return notFound();
 
+  // Helper function to create slug from term name
+  const createSlugFromTerm = (term: string) => {
+    return term
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-]/g, '');
+  };
+
+  // Process related terms - use actual slug for full page entries, generate from term for others
+  const processedRelatedTerms =
+    data.relatedTerms?.map((term) => ({
+      ...term,
+      effectiveSlug:
+        term.createFullPageEntry && term.slug
+          ? term.slug
+          : createSlugFromTerm(term.term),
+      isFullPage: !!(term.createFullPageEntry && term.slug),
+    })) || [];
+
+  // All posts should have slugs, but filter just in case
+  const validRelatedPosts =
+    data.relatedPosts?.filter((post) => post.slug) || [];
+
   const breadcrumbItems: BreadcrumbItemType[] = [
     { slug: '/glossary', title: 'Glossary' },
     { slug: `/glossary/${params.slug}`, title: data.term },
   ];
 
+  const hasRelatedContent =
+    (data.relatedTerms && data.relatedTerms.length > 0) ||
+    (data.relatedPosts && data.relatedPosts.length > 0);
+
   return (
-    <div className="max-width grid-system col-span-full  pt-36">
+    <div className="max-width grid-system col-span-full pt-36">
       <div className="col-span-full px-gutter lg:col-span-8 lg:col-start-3">
         <div className="mb-1">
           <BreadcrumbBlock items={breadcrumbItems} />
@@ -68,6 +96,71 @@ export default async function Page({ params }: { params: { slug: string } }) {
         {data.term && <Heading className="!mb-4">{data.term}</Heading>}
 
         <Body body={data.fullEntry} />
+      </div>
+      <div className="col-span-full lg:col-span-8 lg:col-start-3">
+        {processedRelatedTerms.length > 0 && (
+          <CardsSmallBlock
+            cards={{
+              _key: 'related-terms',
+              heading: 'Related Terms',
+              body: null,
+              items: processedRelatedTerms.map((term) => ({
+                _key: term._id,
+                heading: term.term,
+                body: null,
+                link: {
+                  label: null,
+                  variant: null,
+                  internal: term.isFullPage
+                    ? {
+                        _type: 'glossaryEntry',
+                        post_type: null,
+                        slug: term.slug!,
+                      }
+                    : {
+                        _type: null,
+                        post_type: null,
+                        slug: `glossary#${term.effectiveSlug}`,
+                      },
+                  nofollow: null,
+                },
+                icon: null,
+                eyebrow: null,
+              })),
+              backgroundImage: null,
+            }}
+          />
+        )}
+
+        {/* Related Posts Section */}
+        {validRelatedPosts.length > 0 && (
+          <CardsSmallBlock
+            cards={{
+              _key: 'related-posts',
+              heading: 'Related Posts',
+              body: null,
+              items: validRelatedPosts.map((post) => ({
+                _key: post._id,
+                heading: post.title,
+                body: post.custom_excerpt,
+                link: {
+                  label: null,
+                  variant: null,
+                  internal: {
+                    _type: 'post',
+                    post_type: post.post_type,
+                    slug: post.slug,
+                  },
+                  external: null,
+                  nofollow: null,
+                },
+                icon: post.image,
+                eyebrow: post.post_type,
+              })),
+              backgroundImage: null,
+            }}
+          />
+        )}
         <div className="md:-mb-12 lg:-mb-24" />
       </div>
     </div>
