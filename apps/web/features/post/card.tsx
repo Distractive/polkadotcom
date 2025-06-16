@@ -9,6 +9,7 @@ import {
   PRESS_RELEASE_POSTTYPE,
 } from '@/constants/global';
 import { Card, CardContent, CardDescription, CardHeader, cn } from '@shared/ui';
+import { urlForImage } from '@/sanity/lib/image';
 
 interface Props {
   post: TypeFromSelection<typeof postSelection>;
@@ -44,7 +45,7 @@ export default function BlogCard({ post, className }: Props) {
       {image && (
         <CardHeader className={cn('relative z-10 aspect-video')}>
           <Image
-            src={image.asset.url}
+            src={urlForImage(image.asset)}
             alt=""
             className="absolute inset-0 h-full w-full object-cover object-center"
             width={image.asset.metadata.dimensions?.width}

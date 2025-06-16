@@ -22,6 +22,7 @@ import type { BreadcrumbProps } from '../page/blocks/breadcrumb';
 import { BreadcrumbBlock } from '../page/blocks/breadcrumb';
 import { Body } from './body';
 import BlogCard from './card';
+import { urlForImage } from '@/sanity/lib/image';
 
 interface LayoutProps {
   slug: string;
@@ -182,7 +183,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
         {image && (
           <PostImage>
             <Image
-              src={image.asset.url || ''}
+              src={urlForImage(image.asset)}
               width={image.asset.metadata.dimensions?.width}
               height={image.asset.metadata.dimensions?.height}
               alt=""
