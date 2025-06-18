@@ -17,6 +17,7 @@ export const glossaryEntrySelection = {
       term: q.string(),
       slug: ['slug.current', q.string().optional()],
       createFullPageEntry: q.boolean().nullable(),
+      shortEntry: q.array(q.contentBlock()),
     }),
   relatedPosts: q('relatedPosts')
     .filter()

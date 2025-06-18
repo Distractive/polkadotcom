@@ -11,6 +11,7 @@ import type { BreadcrumbItemType } from '@/features/page/blocks/breadcrumb';
 import { CardsSmallBlock } from '@/features/page/blocks/cards-small/cards-small';
 import { Body } from '@/features/post/body';
 import { Heading } from '@shared/ui';
+import { CardsBlock } from '@/features/page/blocks/cards/cards';
 
 export async function generateStaticParams() {
   const slugs = await getAllGlossarySlugs();
@@ -82,12 +83,25 @@ export default async function Page({ params }: { params: { slug: string } }) {
     { slug: `/glossary/${params.slug}`, title: data.term },
   ];
 
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  const extractPlainText = (blocks: any[]) => {
+    return (
+      blocks
+        ?.map(
+          (block) =>
+            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+            block.children?.map((child: any) => child.text).join('') || '',
+        )
+        .join(' ') || ''
+    );
+  };
+
   const hasRelatedContent =
     (data.relatedTerms && data.relatedTerms.length > 0) ||
     (data.relatedPosts && data.relatedPosts.length > 0);
 
   return (
-    <div className="max-width grid-system col-span-full pt-36">
+    <div className="grid-system max-width col-span-full pt-36">
       <div className="col-span-full px-gutter lg:col-span-8 lg:col-start-3">
         <div className="mb-1">
           <BreadcrumbBlock items={breadcrumbItems} />
@@ -97,7 +111,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
         <Body body={data.fullEntry} />
       </div>
-      <div className="col-span-full lg:col-span-8 lg:col-start-3">
+      <div className="col-span-full pt-section">
         {processedRelatedTerms.length > 0 && (
           <CardsSmallBlock
             cards={{
@@ -107,23 +121,19 @@ export default async function Page({ params }: { params: { slug: string } }) {
               items: processedRelatedTerms.map((term) => ({
                 _key: term._id,
                 heading: term.term,
-                body: null,
-                link: {
-                  label: null,
-                  variant: null,
-                  internal: term.isFullPage
-                    ? {
+                body: extractPlainText(term.shortEntry),
+                link: term.isFullPage
+                  ? {
+                      label: null,
+                      variant: null,
+                      internal: {
                         _type: 'glossaryEntry',
                         post_type: null,
                         slug: term.slug!,
-                      }
-                    : {
-                        _type: null,
-                        post_type: null,
-                        slug: `glossary#${term.effectiveSlug}`,
                       },
-                  nofollow: null,
-                },
+                      nofollow: null,
+                    }
+                  : null,
                 icon: null,
                 eyebrow: null,
               })),
@@ -132,17 +142,23 @@ export default async function Page({ params }: { params: { slug: string } }) {
           />
         )}
 
+        <div className="mb-24" />
+
         {/* Related Posts Section */}
         {validRelatedPosts.length > 0 && (
-          <CardsSmallBlock
+          <CardsBlock
             cards={{
               _key: 'related-posts',
               heading: 'Related Posts',
-              body: null,
+              body: '',
+              isCarousel: false,
+              hasTags: false,
+              useFourColumns: false,
+              tags: null,
               items: validRelatedPosts.map((post) => ({
                 _key: post._id,
                 heading: post.title,
-                body: post.custom_excerpt,
+                body: post.custom_excerpt || undefined,
                 link: {
                   label: null,
                   variant: null,
@@ -154,14 +170,18 @@ export default async function Page({ params }: { params: { slug: string } }) {
                   external: null,
                   nofollow: null,
                 },
-                icon: post.image,
-                eyebrow: post.post_type,
+                image: post.image,
+                icon: null,
+                headerImage: post.image,
+                useAsBackgroundImage: null,
+                useSmallHeading: true,
+                selectedTags: null,
+                eyebrow: post.post_type || undefined,
               })),
-              backgroundImage: null,
             }}
           />
         )}
-        <div className="md:-mb-12 lg:-mb-24" />
+        {/* <div className="md:-mb-12 lg:-mb-24" /> */}
       </div>
     </div>
   );
