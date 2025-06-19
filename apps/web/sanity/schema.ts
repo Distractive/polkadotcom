@@ -58,6 +58,7 @@ import {
   smallHomeCard,
   socialLink,
   statsCard,
+  storeButton,
   summary,
   video,
   youtube,
@@ -135,6 +136,7 @@ const objectTypes = [
   homeBuild,
   summary,
   newsletterButton,
+  storeButton,
 ];
 
 const singletons = [
