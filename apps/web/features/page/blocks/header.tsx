@@ -11,6 +11,7 @@ import { Button, Heading, cn } from '@shared/ui';
 import { BreadcrumbBlock, type BreadcrumbProps } from './breadcrumb';
 import { NewsletterButton } from './newsletter-button';
 import { VideoBlock } from './video';
+import { StoreButton } from './store-button';
 
 interface Props {
   header: TypeFromSelection<typeof headerSelection>;
@@ -137,7 +138,9 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
                 if (link._type === 'customUrl') {
                   return renderCustomUrl(link);
                 }
-                // Optionally handle other types, e.g. storeButton
+                // if (link._type === 'storeButton') {
+                //   return 'app store buton goes here';
+                // }
                 return null;
               })}
             </div>
@@ -202,7 +205,10 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
               if (link._type === 'customUrl') {
                 return renderCustomUrl(link);
               }
-              // Optionally handle other types, e.g. storeButton
+              if (link._type === 'storeButton') {
+                console.log('store:', link.store);
+                return <StoreButton store={link.store} href={link.href} />;
+              }
               return null;
             })}
           </div>
