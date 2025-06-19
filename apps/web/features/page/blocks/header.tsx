@@ -130,11 +130,16 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
           {header.body && <p className="text-lg">{header.body}</p>}
           {header.links && (
             <div id="main-content" className="mt-4 flex w-full flex-wrap gap-4">
-              {header.links?.map((link, index) =>
-                link._type === 'newsletterButton'
-                  ? renderNewsletterButton(link)
-                  : renderCustomUrl(link),
-              )}{' '}
+              {header.links.map((link, index) => {
+                if (link._type === 'newsletterButton') {
+                  return renderNewsletterButton(link);
+                }
+                if (link._type === 'customUrl') {
+                  return renderCustomUrl(link);
+                }
+                // Optionally handle other types, e.g. storeButton
+                return null;
+              })}
             </div>
           )}
           {header.video && (
@@ -190,11 +195,16 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         {header.body && <p className="text-lg">{header.body}</p>}
         {header.links && (
           <div id="main-content" className="mt-4 flex w-full flex-wrap gap-4">
-            {header.links?.map((link) =>
-              link._type === 'newsletterButton'
-                ? renderNewsletterButton(link)
-                : renderCustomUrl(link),
-            )}
+            {header.links.map((link, index) => {
+              if (link._type === 'newsletterButton') {
+                return renderNewsletterButton(link);
+              }
+              if (link._type === 'customUrl') {
+                return renderCustomUrl(link);
+              }
+              // Optionally handle other types, e.g. storeButton
+              return null;
+            })}
           </div>
         )}
         {header.video && (
