@@ -1,3 +1,5 @@
+import { stegaClean } from '@sanity/client/stega';
+
 interface StoreButtonProps {
   store?: string | null;
   href?: string | null;
@@ -9,13 +11,7 @@ export function StoreButton({ store, href, className }: StoreButtonProps) {
   console.log('store value:', JSON.stringify(store));
   console.log('store value:', JSON.stringify(store), 'length:', store?.length);
   if (!store || !href) return null;
-  // Remove zero-width and whitespace characters, and lowercase
-  let cleanedStore = store.replace(/\s+/g, '').toLowerCase();
-  cleanedStore = cleanedStore
-    .replace(/\u200B/g, '')
-    .replace(/\u200C/g, '')
-    .replace(/\u200D/g, '')
-    .replace(/\uFEFF/g, '');
+  const cleanedStore = stegaClean(store).replace(/\s+/g, '').toLowerCase();
   if (cleanedStore !== 'appstore' && cleanedStore !== 'playstore') return null;
 
   const config = {
