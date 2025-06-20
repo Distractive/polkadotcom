@@ -3,8 +3,8 @@ import { nullToUndefined, q, sanityImage } from 'groqd';
 
 import { customUrlSelection } from '../custom-url';
 import { newsletterButtonSelection } from './newsletter-button';
-import { videoSelection } from './video';
 import { storeButtonSelection } from './store-button';
+import { videoSelection } from './video';
 
 export const headerSelection = {
   image: sanityImage('image', {

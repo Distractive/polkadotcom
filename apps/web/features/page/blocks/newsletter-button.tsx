@@ -9,7 +9,7 @@ interface NewsletterSignupProps {
     label: string;
     modalHeading: string;
     formType: string;
-    variant?: 'primary' | 'secondary';
+    variant?: 'primary' | 'secondary' | 'tertiary' | 'disabled' | null;
     _key: string;
     size?: 'sm' | 'md' | 'lg';
   };
@@ -21,7 +21,7 @@ interface ModalProps {
   modalHeading: string;
   formType: string;
   _key: string;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'disabled' | null;
   size?: 'sm' | 'md' | 'lg';
   className?: string;
 }

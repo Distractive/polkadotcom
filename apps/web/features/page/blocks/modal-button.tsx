@@ -16,7 +16,7 @@ interface ModalProps {
   modalHeading?: string | null;
   formType?: string | null;
   _key?: string | null;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'disabled' | null;
   size?: 'sm' | 'md' | 'lg';
 }
 
