@@ -7,9 +7,6 @@ interface StoreButtonProps {
 }
 
 export function StoreButton({ store, href, className }: StoreButtonProps) {
-  console.log('in the store button: ', store);
-  console.log('store value:', JSON.stringify(store));
-  console.log('store value:', JSON.stringify(store), 'length:', store?.length);
   if (!store || !href) return null;
   const cleanedStore = stegaClean(store).replace(/\s+/g, '').toLowerCase();
   if (cleanedStore !== 'appstore' && cleanedStore !== 'playstore') return null;
@@ -25,9 +22,9 @@ export function StoreButton({ store, href, className }: StoreButtonProps) {
       alt: 'Get it on Google Play',
       aria: 'Get it on Google Play',
     },
-  } as const;
+  };
 
-  const { img, alt, aria } = config[cleanedStore as 'appstore' | 'playstore'];
+  const { img, alt, aria } = config[cleanedStore];
 
   return (
     <a

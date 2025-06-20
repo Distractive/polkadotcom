@@ -2,6 +2,7 @@ import { urlForImage } from '@/sanity/lib/image';
 import type { headerSelection } from '@/sanity/selections/blocks/header';
 import type { newsletterButtonSelection } from '@/sanity/selections/blocks/newsletter-button';
 import type { customUrlSelection } from '@/sanity/selections/custom-url';
+import type { storeButtonSelection } from '@/sanity/selections/blocks/store-button';
 import type { TypeFromSelection } from 'groqd';
 import Image from 'next/image';
 
@@ -12,6 +13,13 @@ import { BreadcrumbBlock, type BreadcrumbProps } from './breadcrumb';
 import { NewsletterButton } from './newsletter-button';
 import { VideoBlock } from './video';
 import { StoreButton } from './store-button';
+
+type HeaderLink =
+  | (TypeFromSelection<typeof newsletterButtonSelection> & {
+      _type: 'newsletterButton';
+    })
+  | (TypeFromSelection<typeof customUrlSelection> & { _type: 'customUrl' })
+  | (TypeFromSelection<typeof storeButtonSelection> & { _type: 'storeButton' });
 
 interface Props {
   header: TypeFromSelection<typeof headerSelection>;
@@ -74,6 +82,32 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
     );
   };
 
+  function renderLinks(links: HeaderLink[] | undefined) {
+    if (!links) return null;
+    return (
+      <div id="main-content" className="mt-4 flex w-full flex-wrap gap-4">
+        {links.map((link, index) => {
+          switch (link._type) {
+            case 'newsletterButton':
+              return renderNewsletterButton(link);
+            case 'customUrl':
+              return renderCustomUrl(link);
+            case 'storeButton':
+              return (
+                <StoreButton
+                  store={link.store}
+                  href={link.href}
+                  key={link._key || index}
+                />
+              );
+            default:
+              return null;
+          }
+        })}
+      </div>
+    );
+  }
+
   // Alternate Header
   if (header.isAlternate) {
     return (
@@ -129,22 +163,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
           <Heading variant="h1">{header.title}</Heading>
 
           {header.body && <p className="text-lg">{header.body}</p>}
-          {header.links && (
-            <div id="main-content" className="mt-4 flex w-full flex-wrap gap-4">
-              {header.links.map((link, index) => {
-                if (link._type === 'newsletterButton') {
-                  return renderNewsletterButton(link);
-                }
-                if (link._type === 'customUrl') {
-                  return renderCustomUrl(link);
-                }
-                // if (link._type === 'storeButton') {
-                //   return 'app store buton goes here';
-                // }
-                return null;
-              })}
-            </div>
-          )}
+          {renderLinks(header.links as HeaderLink[] | undefined)}
           {header.video && (
             <VideoBlock video={header.video} className="mt-gutter w-full" />
           )}
@@ -196,23 +215,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         <Heading variant="h1">{header.title}</Heading>
 
         {header.body && <p className="text-lg">{header.body}</p>}
-        {header.links && (
-          <div id="main-content" className="mt-4 flex w-full flex-wrap gap-4">
-            {header.links.map((link, index) => {
-              if (link._type === 'newsletterButton') {
-                return renderNewsletterButton(link);
-              }
-              if (link._type === 'customUrl') {
-                return renderCustomUrl(link);
-              }
-              if (link._type === 'storeButton') {
-                console.log('store:', link.store);
-                return <StoreButton store={link.store} href={link.href} />;
-              }
-              return null;
-            })}
-          </div>
-        )}
+        {renderLinks(header.links as HeaderLink[] | undefined)}
         {header.video && (
           <VideoBlock video={header.video} className="mt-gutter w-full" />
         )}
