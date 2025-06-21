@@ -71,7 +71,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
                 <StoreButton
                   store={link.store}
                   href={link.href}
-                  key={link._key || index}
+                  key={link._key}
                 />
               );
             default:
