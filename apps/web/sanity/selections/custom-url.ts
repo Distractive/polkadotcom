@@ -3,7 +3,6 @@ import { q } from 'groqd';
 
 export const customUrlSelection = {
   label: q.string().optional().nullable(),
-  _type: q.literal('customUrl'),
   variant: q
     .union([
       q.literal('primary'),

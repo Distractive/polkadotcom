@@ -16,7 +16,7 @@ import { VideoBlock } from './video';
 
 type HeaderLink =
   | TypeFromSelection<typeof newsletterButtonSelection>
-  | TypeFromSelection<typeof customUrlSelection>
+  | (TypeFromSelection<typeof customUrlSelection> & { _type: 'customUrl' })
   | TypeFromSelection<typeof storeButtonSelection>;
 
 interface Props {
@@ -57,7 +57,6 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
                   <CustomUrl
                     className="outline-none"
                     value={{
-                      _type: 'customUrl',
                       internal: link.internal,
                       external: link.external,
                     }}
@@ -71,7 +70,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
                 <StoreButton
                   store={link.store}
                   href={link.href}
-                  key={link._key}
+                  key={link._key || index}
                 />
               );
             default:
