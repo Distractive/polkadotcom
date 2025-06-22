@@ -9,9 +9,9 @@ import { notFound } from 'next/navigation';
 import { BreadcrumbBlock } from '@/features/page/blocks/breadcrumb';
 import type { BreadcrumbItemType } from '@/features/page/blocks/breadcrumb';
 import { CardsSmallBlock } from '@/features/page/blocks/cards-small/cards-small';
+import { CardsBlock } from '@/features/page/blocks/cards/cards';
 import { Body } from '@/features/post/body';
 import { Heading } from '@shared/ui';
-import { CardsBlock } from '@/features/page/blocks/cards/cards';
 
 export async function generateStaticParams() {
   const slugs = await getAllGlossarySlugs();
