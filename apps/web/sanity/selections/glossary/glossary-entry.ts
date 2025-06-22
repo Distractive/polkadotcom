@@ -18,7 +18,8 @@ export const glossaryEntrySelection = {
       slug: ['slug.current', q.string().optional()],
       createFullPageEntry: q.boolean().nullable(),
       shortEntry: q.array(q.contentBlock()),
-    }),
+    })
+    .nullable(),
   relatedPosts: q('relatedPosts')
     .filter()
     .deref()
@@ -32,5 +33,6 @@ export const glossaryEntrySelection = {
       image: sanityImage('featured_image', {
         withAsset: ['base', 'dimensions'],
       }).nullable(),
-    }),
+    })
+    .nullable(),
 } satisfies Selection;

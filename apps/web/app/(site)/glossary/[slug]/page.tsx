@@ -129,7 +129,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                       internal: {
                         _type: 'glossaryEntry',
                         post_type: null,
-                        slug: term.slug!,
+                        slug: `glossary/${term.slug}`,
                       },
                       nofollow: null,
                     }
