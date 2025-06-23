@@ -26,6 +26,7 @@ interface Props {
 }
 
 export function ModalButton({ modal, buttonClassName }: Props) {
+  console.log('modal size: ', modal.size);
   return (
     <Dialog>
       <DialogTrigger className={cn('group', buttonClassName)}>

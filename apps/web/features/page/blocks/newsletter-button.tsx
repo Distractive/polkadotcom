@@ -33,13 +33,8 @@ export function NewsletterButton({ value, className }: NewsletterSignupProps) {
     formType: value.formType,
     _key: value._key,
     variant: value.variant as 'primary' | 'secondary',
-    size: value.size || 'md',
+    size: value.size,
   };
 
-  return (
-    <ModalButton
-      modal={modalProps}
-      buttonClassName={cn('mr-auto', className)}
-    />
-  );
+  return <ModalButton modal={modalProps} buttonClassName={cn(className)} />;
 }
