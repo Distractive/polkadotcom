@@ -15,9 +15,11 @@ console.log(
 );
 console.log(`::set-output name=score::${scanResult.score}`);
 
-async function scan({
-  url,
-}: { url: string }): Promise<{ text: string; slackBlocks: string; score: number }> {
+async function scan({ url }: { url: string }): Promise<{
+  text: string;
+  slackBlocks: string;
+  score: number;
+}> {
   await fetch(url).catch((error) => {
     console.error('Error fetching deployment URL:', error);
     process.exit(1);
