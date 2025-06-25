@@ -5,10 +5,9 @@ import BlogCard from '../post/card';
 
 interface Props {
   posts: ReadonlyArray<TypeFromSelection<typeof postSelection>>;
-  useIcons?: boolean;
 }
 
-export function Grid({ posts, useIcons }: Props) {
+export function Grid({ posts }: Props) {
   return (
     <div className="grid-system col-span-full mb-gutter gap-y-card md:gap-card">
       {posts.map((post) => {
@@ -17,7 +16,7 @@ export function Grid({ posts, useIcons }: Props) {
             key={post._id}
             className="col-span-full md:col-span-3 lg:col-span-4"
           >
-            <BlogCard post={post} useIcons={useIcons} />
+            <BlogCard post={post} />
           </div>
         );
       })}

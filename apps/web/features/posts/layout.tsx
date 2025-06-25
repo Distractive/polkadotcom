@@ -165,7 +165,7 @@ export default async function Layout({
           </div>
 
           <section className="col-span-full">
-            <Grid posts={data.posts} useIcons={useIcons} />
+            <Grid posts={data.posts} />
           </section>
 
           <PostPagination
