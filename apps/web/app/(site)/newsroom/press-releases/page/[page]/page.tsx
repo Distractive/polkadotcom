@@ -60,7 +60,7 @@ export default async function Page({
       page={Number(page)}
       tagSlug=""
       type={PRESS_RELEASE_POSTTYPE}
-      imageStyle="icon"
+      useIcons
     />
   );
 }

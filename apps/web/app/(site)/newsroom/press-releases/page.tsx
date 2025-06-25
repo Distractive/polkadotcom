@@ -30,12 +30,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function PressRelease() {
-  return (
-    <Layout
-      page={1}
-      type={PRESS_RELEASE_POSTTYPE}
-      tagSlug=""
-      imageStyle="icon"
-    />
-  );
+  return <Layout page={1} type={PRESS_RELEASE_POSTTYPE} tagSlug="" useIcons />;
 }

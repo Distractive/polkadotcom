@@ -30,5 +30,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Blog() {
-  return <Layout page={1} type={BLOG_POSTTYPE} tagSlug="" imageStyle="image" />;
+  return <Layout page={1} type={BLOG_POSTTYPE} tagSlug="" />;
 }

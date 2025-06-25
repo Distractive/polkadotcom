@@ -26,7 +26,7 @@ interface LayoutProps {
     | typeof PRESS_RELEASE_POSTTYPE
     | typeof CASE_STUDY_POSTTYPE;
   tagSlug: string;
-  imageStyle: 'image' | 'icon';
+  useIcons?: boolean;
   withHeader?: boolean;
 }
 
@@ -40,7 +40,7 @@ export default async function Layout({
   page,
   tagSlug,
   type,
-  imageStyle,
+  useIcons,
 }: LayoutProps) {
   const data = await getPosts(page, type, tagSlug, false);
 
@@ -165,7 +165,7 @@ export default async function Layout({
           </div>
 
           <section className="col-span-full">
-            <Grid posts={data.posts} imageStyle={imageStyle} />
+            <Grid posts={data.posts} useIcons={useIcons} />
           </section>
 
           <PostPagination
