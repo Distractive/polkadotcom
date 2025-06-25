@@ -58,12 +58,7 @@ export default async function Page({
 }) {
   return (
     <>
-      <Layout
-        page={Number(page)}
-        tagSlug=""
-        type={CASE_STUDY_POSTTYPE}
-        imageStyle="image"
-      />
+      <Layout page={Number(page)} tagSlug="" type={CASE_STUDY_POSTTYPE} />
       <Newsletter />
     </>
   );
