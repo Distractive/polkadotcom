@@ -65,7 +65,6 @@ export default async function Tag({
       type={PRESS_RELEASE_POSTTYPE}
       tagSlug={slug}
       withHeader={false}
-      useIcons
     />
   );
 }

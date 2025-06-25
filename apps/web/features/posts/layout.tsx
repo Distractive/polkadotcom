@@ -26,7 +26,6 @@ interface LayoutProps {
     | typeof PRESS_RELEASE_POSTTYPE
     | typeof CASE_STUDY_POSTTYPE;
   tagSlug: string;
-  useIcons?: boolean;
   withHeader?: boolean;
 }
 
@@ -36,12 +35,7 @@ const SEARCH_INDEX_MAP = {
   [PRESS_RELEASE_POSTTYPE]: 'newsroom',
 };
 
-export default async function Layout({
-  page,
-  tagSlug,
-  type,
-  useIcons,
-}: LayoutProps) {
+export default async function Layout({ page, tagSlug, type }: LayoutProps) {
   const data = await getPosts(page, type, tagSlug, false);
 
   const postType = (() => {

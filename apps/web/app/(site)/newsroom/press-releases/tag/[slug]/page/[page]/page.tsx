@@ -88,7 +88,6 @@ export default async function Page({
       tagSlug={slug}
       type={PRESS_RELEASE_POSTTYPE}
       withHeader={false}
-      useIcons
     />
   );
 }
