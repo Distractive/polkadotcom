@@ -55,7 +55,12 @@ export default async function Page({
 }) {
   return (
     <>
-      <Layout page={Number(page)} tagSlug="" type={BLOG_POSTTYPE} />
+      <Layout
+        page={Number(page)}
+        tagSlug=""
+        type={BLOG_POSTTYPE}
+        imageStyle="image"
+      />
       <Newsletter />
     </>
   );

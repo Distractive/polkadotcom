@@ -26,6 +26,7 @@ interface LayoutProps {
     | typeof PRESS_RELEASE_POSTTYPE
     | typeof CASE_STUDY_POSTTYPE;
   tagSlug: string;
+  imageStyle: 'image' | 'icon';
   withHeader?: boolean;
 }
 
@@ -35,7 +36,12 @@ const SEARCH_INDEX_MAP = {
   [PRESS_RELEASE_POSTTYPE]: 'newsroom',
 };
 
-export default async function Layout({ page, tagSlug, type }: LayoutProps) {
+export default async function Layout({
+  page,
+  tagSlug,
+  type,
+  imageStyle,
+}: LayoutProps) {
   const data = await getPosts(page, type, tagSlug, false);
 
   const postType = (() => {
@@ -159,7 +165,7 @@ export default async function Layout({ page, tagSlug, type }: LayoutProps) {
           </div>
 
           <section className="col-span-full">
-            <Grid posts={data.posts} />
+            <Grid posts={data.posts} imageStyle={imageStyle} />
           </section>
 
           <PostPagination

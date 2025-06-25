@@ -29,5 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function CaseStudy() {
-  return <Layout page={1} type={CASE_STUDY_POSTTYPE} tagSlug="" />;
+  return (
+    <Layout page={1} type={CASE_STUDY_POSTTYPE} tagSlug="" imageStyle="image" />
+  );
 }

@@ -12,10 +12,11 @@ import { Card, CardContent, CardDescription, CardHeader, cn } from '@shared/ui';
 
 interface Props {
   post: TypeFromSelection<typeof postSelection>;
+  imageStyle?: 'image' | 'icon';
   className?: string;
 }
 
-export default function BlogCard({ post, className }: Props) {
+export default function BlogCard({ post, imageStyle, className }: Props) {
   const { slug, image, body, tags, title, post_type, custom_excerpt } = post;
 
   // Because not all blog posts have a custom excerpt imported
@@ -41,7 +42,7 @@ export default function BlogCard({ post, className }: Props) {
         className,
       )}
     >
-      {image && (
+      {image && imageStyle === 'image' && (
         <CardHeader className={cn('relative z-10 aspect-video')}>
           <Image
             src={image.asset.url}
@@ -54,6 +55,19 @@ export default function BlogCard({ post, className }: Props) {
         </CardHeader>
       )}
       <CardContent className="grid w-full p-card">
+        {image && imageStyle === 'icon' && (
+          <Image
+            src={image.asset.url}
+            alt=""
+            loading="lazy"
+            width={image.asset.metadata.dimensions?.width}
+            height={image.asset.metadata.dimensions?.height}
+            className={cn(
+              'relative z-10 ',
+              'mr-auto h-[4.5rem] w-auto rounded-2xl mb-6',
+            )}
+          />
+        )}
         {tags && (
           <ul className="mb-6 flex flex-wrap gap-3">
             {tags.map((tag) => (

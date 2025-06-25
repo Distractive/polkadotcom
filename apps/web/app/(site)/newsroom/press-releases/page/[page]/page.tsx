@@ -56,6 +56,11 @@ export default async function Page({
   params: { page: string };
 }) {
   return (
-    <Layout page={Number(page)} tagSlug="" type={PRESS_RELEASE_POSTTYPE} />
+    <Layout
+      page={Number(page)}
+      tagSlug=""
+      type={PRESS_RELEASE_POSTTYPE}
+      imageStyle="icon"
+    />
   );
 }
