@@ -3,6 +3,7 @@ import { nullToUndefined, q, sanityImage } from 'groqd';
 
 import { customUrlSelection } from '../custom-url';
 import { newsletterButtonSelection } from './newsletter-button';
+import { storeButtonSelection } from './store-button';
 import { videoSelection } from './video';
 
 export const headerSelection = {
@@ -25,6 +26,7 @@ export const headerSelection = {
         ...customUrlSelection,
       },
       '_type == "newsletterButton"': { ...newsletterButtonSelection },
+      '_type == "storeButton"': { ...storeButtonSelection },
     })
     .nullable(),
   video: q('video')
