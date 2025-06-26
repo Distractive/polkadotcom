@@ -24,6 +24,7 @@ jobs:
     outputs:
       text: ${{ steps.slack.outputs.text }}
       slack_blocks: ${{ steps.slack.outputs.slack_blocks }}
+      issues_count: ${{ steps.slack.outputs.issues_count }}
 
     steps:
       - name: Run Dastardly scan
@@ -67,6 +68,7 @@ jobs:
 
           echo "text=Dastardly Scan completed" >> $GITHUB_OUTPUT
           echo "slack_blocks=$(jq -cn --arg text "$text" '[{"type":"section","text":{"type":"mrkdwn","text":$text}}]')" >> $GITHUB_OUTPUT
+          echo "issues_count=$issues" >> $GITHUB_OUTPUT
 
       - name: Upload Dastardly Report Artifact
         if: always()
@@ -78,6 +80,7 @@ jobs:
   notify:
     needs: dastardly-scan
     runs-on: ubuntu-latest
+    if: ${{ needs.dastardly-scan.outputs.issues_count > 0 }}
     steps:
       - name: Send Slack notification
         uses: slackapi/slack-github-action@b0fa283ad8fea605de13dc3f449259339835fc52
