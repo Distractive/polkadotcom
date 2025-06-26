@@ -58,7 +58,7 @@ test('Newsroom', async ({ page }) => {
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'hyperbridge concludes iro',
+        name: 'mythical games launches',
       }),
     ).toBeVisible();
     await expect(
