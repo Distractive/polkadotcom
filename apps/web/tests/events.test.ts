@@ -39,6 +39,26 @@ test('Events', async ({ page }) => {
     );
   });
 
+  await test.step('assert "events" section is displayed properly', async () => {
+    const section = page.getByTestId('cards-block-19aadd126d30');
+
+    await expect(
+      section.getByRole('heading', {
+        name: 'Events',
+      }),
+    ).toBeVisible();
+    await expect(
+      section.getByRole('link', {
+        name: 'July 16-18, 2025 | Berlin Web3 Summit 2025',
+      }),
+    ).toBeVisible();
+    await expect(
+      section.getByRole('link', {
+        name: 'August 24 - September 13, 2025 | Bali PBA Bali',
+      }),
+    ).toBeVisible();
+  });
+
   await test.step('assert "past events" section is displayed properly', async () => {
     const section = page.getByTestId(
       'cards-block-e4dd0438ac1dd6c40d7125c21091e263',
@@ -50,19 +70,19 @@ test('Events', async ({ page }) => {
       }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'November 10–13, 2024 Devcon 7' }),
+      section.getByRole('link', {
+        name: 'June 23-26, 2025 | Brooklyn, NY The Blockspace Brooklyn',
+      }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'November 9–11, 2024 Sub0' }),
+      section.getByRole('link', {
+        name: 'June 18, 2025 | Berlin Telekom & Friends Vol. 2',
+      }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'October 8-10, 2024 Merge' }),
-    ).toBeVisible();
-    await section
-      .getByRole('button', { name: 'Next slide' })
-      .click({ timeout: 2000 });
-    await expect(
-      section.getByRole('link', { name: 'September 25-26, 2024' }),
+      section.getByRole('link', {
+        name: 'June 7-22, Berlin Berlin Blockchain Week 2025',
+      }),
     ).toBeVisible();
   });
 

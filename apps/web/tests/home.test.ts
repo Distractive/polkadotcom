@@ -4,12 +4,12 @@ import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Homepage', async ({ page }) => {
   const ecosystemIds = [
+    'c4910461f906',
     '3b6847866f76',
     '878be89f9898d0ab5e266e4fc49614c2',
     'b006a029787b991dcdea6a3338249e84',
     '1041062bfe436968c080cdeee5496b1b',
     '3479ce3e3534297a92fd5f2a5ec98880',
-    'ed5a6361d98e64e2029dae1052a67228',
   ];
 
   await test.step('go to homepage', async () => {
@@ -206,7 +206,7 @@ test('Homepage', async ({ page }) => {
       section.getByRole('link', { name: 'Exiled Racers Racing and' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Energy Web X Enterprise' }),
+      section.getByRole('link', { name: 'FIFA Rivals' }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', { name: 'Explore Dapps' }),

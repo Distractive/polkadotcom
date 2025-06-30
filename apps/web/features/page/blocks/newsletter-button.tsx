@@ -9,7 +9,7 @@ interface NewsletterSignupProps {
     label: string;
     modalHeading: string;
     formType: string;
-    variant?: 'primary' | 'secondary';
+    variant?: 'primary' | 'secondary' | 'tertiary' | 'disabled' | null;
     _key: string;
     size?: 'sm' | 'md' | 'lg';
   };
@@ -21,7 +21,7 @@ interface ModalProps {
   modalHeading: string;
   formType: string;
   _key: string;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'disabled' | null;
   size?: 'sm' | 'md' | 'lg';
   className?: string;
 }
@@ -33,13 +33,8 @@ export function NewsletterButton({ value, className }: NewsletterSignupProps) {
     formType: value.formType,
     _key: value._key,
     variant: value.variant as 'primary' | 'secondary',
-    size: value.size || 'md',
+    size: value.size,
   };
 
-  return (
-    <ModalButton
-      modal={modalProps}
-      buttonClassName={cn('mr-auto', className)}
-    />
-  );
+  return <ModalButton modal={modalProps} buttonClassName={cn(className)} />;
 }

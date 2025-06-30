@@ -7,5 +7,13 @@ export const newsletterButtonSelection = {
   label: q.string(),
   modalHeading: q.string(),
   formType: q.string(),
-  variant: q.string().nullable(),
+  variant: q
+    .union([
+      q.literal('primary'),
+      q.literal('secondary'),
+      q.literal('tertiary'),
+      q.literal('disabled'),
+    ])
+    .optional()
+    .nullable(),
 } satisfies Selection;

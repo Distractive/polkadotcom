@@ -3,7 +3,15 @@ import { q } from 'groqd';
 
 export const customUrlSelection = {
   label: q.string().optional().nullable(),
-  variant: q.string().optional().nullable(),
+  variant: q
+    .union([
+      q.literal('primary'),
+      q.literal('secondary'),
+      q.literal('tertiary'),
+      q.literal('disabled'),
+    ])
+    .optional()
+    .nullable(),
   internal: q('internal')
     .deref()
     .grab$({
