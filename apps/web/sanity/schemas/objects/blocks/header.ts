@@ -52,6 +52,9 @@ export default defineType({
         defineArrayMember({
           type: 'newsletterButton',
         }),
+        defineArrayMember({
+          type: 'storeButton',
+        }),
       ],
     }),
     defineField({
