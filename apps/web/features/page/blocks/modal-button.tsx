@@ -16,7 +16,7 @@ interface ModalProps {
   modalHeading?: string | null;
   formType?: string | null;
   _key?: string | null;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'disabled' | null;
   size?: 'sm' | 'md' | 'lg';
 }
 
@@ -26,6 +26,7 @@ interface Props {
 }
 
 export function ModalButton({ modal, buttonClassName }: Props) {
+  console.log('modal size: ', modal.size);
   return (
     <Dialog>
       <DialogTrigger className={cn('group', buttonClassName)}>
