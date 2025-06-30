@@ -2,7 +2,7 @@ name: Mozilla Observatory Scan
 
 on:
   schedule:
-    - cron: '0 5 * * *'
+    - cron: '0 5 * * 1-5'
   workflow_run:
     workflows: ["Build and Deploy"]
     types:
@@ -23,6 +23,7 @@ jobs:
     outputs:
       result: ${{ steps.scan.outputs.result }}
       slack_blocks: ${{ steps.scan.outputs.slack_blocks }}
+      score: ${{ steps.scan.outputs.score }}
     steps:
       - uses: actions/checkout@v4
 
@@ -53,6 +54,7 @@ jobs:
   notify:
     needs: observatory-scan
     runs-on: ubuntu-latest
+    if: needs.observatory-scan.outputs.score < 75
     steps:
       - name: Send Slack notification
         uses: slackapi/slack-github-action@b0fa283ad8fea605de13dc3f449259339835fc52
@@ -61,6 +63,6 @@ jobs:
           webhook-type: webhook-trigger
           payload: |
             {
-              "text": "Polkadot Website Mozilla Observatory Scan completed",
+              "text": "Polkadot Website Mozilla Observatory Scan: Score below 75",
               "blocks": ${{ needs.observatory-scan.outputs.slack_blocks }}
             }

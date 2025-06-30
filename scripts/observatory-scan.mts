@@ -13,10 +13,13 @@ console.log(`::set-output name=result::${escapeForOutput(scanResult.text)}`);
 console.log(
   `::set-output name=slack_blocks::${escapeForOutput(scanResult.slackBlocks)}`,
 );
+console.log(`::set-output name=score::${scanResult.score}`);
 
-async function scan({
-  url,
-}: { url: string }): Promise<{ text: string; slackBlocks: string }> {
+async function scan({ url }: { url: string }): Promise<{
+  text: string;
+  slackBlocks: string;
+  score: number;
+}> {
   await fetch(url).catch((error) => {
     console.error('Error fetching deployment URL:', error);
     process.exit(1);
@@ -37,6 +40,7 @@ async function scan({
   return {
     text: observatoryResponseToText(json),
     slackBlocks: observatoryResponseToSlackBlocks(json),
+    score: json.score,
   };
 }
 
