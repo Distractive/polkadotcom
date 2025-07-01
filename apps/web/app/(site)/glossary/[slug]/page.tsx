@@ -5,6 +5,7 @@ import {
 } from '@/sanity/queries/glossary';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { draftMode } from 'next/headers';
 
 import { BreadcrumbBlock } from '@/features/page/blocks/breadcrumb';
 import type { BreadcrumbItemType } from '@/features/page/blocks/breadcrumb';
@@ -48,14 +49,14 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
+  const isDraftMode = draftMode().isEnabled;
   if (process.env.NEXT_PUBLIC_BUILD_TYPE === 'static') {
     return notFound();
   }
 
-  const data = await getGlossaryEntry(params.slug);
+  const data = await getGlossaryEntry(params.slug, isDraftMode);
   if (!data) return notFound();
 
-  // Helper function to create slug from term name
   const createSlugFromTerm = (term: string) => {
     return term
       .toLowerCase()
@@ -63,7 +64,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
       .replace(/[^a-z0-9-]/g, '');
   };
 
-  // Process related terms - use actual slug for full page entries, generate from term for others
   const processedRelatedTerms =
     data.relatedTerms?.map((term) => ({
       ...term,
@@ -73,6 +73,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
           : createSlugFromTerm(term.term),
       isFullPage: !!(term.createFullPageEntry && term.slug),
     })) || [];
+
+  console.log('terms: ', data.relatedTerms);
+  console.log('processed terms: ', processedRelatedTerms);
 
   // All posts should have slugs, but filter just in case
   const validRelatedPosts =

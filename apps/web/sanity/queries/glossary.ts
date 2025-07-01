@@ -4,7 +4,7 @@ import { q, sanityImage } from 'groqd';
 import { headerSelection } from '../selections/blocks/header';
 import { glossaryEntrySelection } from '../selections/glossary/glossary-entry';
 
-export async function getGlossary() {
+export async function getGlossary(isDraftMode: boolean) {
   const query = q('*')
     .filterByType('glossary')
     .grab$({
@@ -26,14 +26,14 @@ export async function getGlossary() {
     .nullable();
 
   try {
-    const result = await runQuery(query, {}, false);
+    const result = await runQuery(query, {}, isDraftMode);
     return result;
   } catch (error) {
     console.error('Error fetching glossary:', error);
   }
 }
 
-export async function getGlossaryEntry(slug: string) {
+export async function getGlossaryEntry(slug: string, isDraftMode: boolean) {
   const query = q('*')
     .filterByType('glossaryEntry')
     .filter('slug.current == $slug')
@@ -44,7 +44,7 @@ export async function getGlossaryEntry(slug: string) {
     .nullable();
 
   try {
-    const result = await runQuery(query, { slug }, false);
+    const result = await runQuery(query, { slug }, isDraftMode);
     return result;
   } catch (error) {
     console.error('Error fetching glossary entry:', error);
@@ -52,7 +52,7 @@ export async function getGlossaryEntry(slug: string) {
   }
 }
 
-export async function getGlossaryEntryMeta(slug: string) {
+export async function getGlossaryEntryMeta(slug: string, isDraftMode: boolean) {
   const metaQuery = q('*')
     .filterByType('glossaryEntry')
     .filter('slug.current == $slug')
@@ -69,11 +69,11 @@ export async function getGlossaryEntryMeta(slug: string) {
     })
     .slice(0)
     .nullable();
-  const result = await runQuery(metaQuery, { slug }, false);
+  const result = await runQuery(metaQuery, { slug }, isDraftMode);
   return result;
 }
 
-export async function getAllGlossarySlugs() {
+export async function getAllGlossarySlugs(isDraftMode: boolean) {
   const slugQuery = q('*')
     .filterByType('glossaryEntry')
     .filter('createFullPageEntry == true')
@@ -83,7 +83,7 @@ export async function getAllGlossarySlugs() {
     .nullable();
 
   try {
-    const results = await runQuery(slugQuery, {}, false);
+    const results = await runQuery(slugQuery, {}, isDraftMode);
     if (results)
       return results
         .map((result: { slug?: unknown }) => result.slug)
