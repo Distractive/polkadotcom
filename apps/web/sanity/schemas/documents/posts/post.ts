@@ -79,7 +79,8 @@ export default defineType({
     defineField({
       name: 'featured_image',
       title: 'Featured Image',
-      description: 'Only for blog posts',
+      description:
+        'Standard 16:9 image for blogs and case studies, and a 1:1 icon for press releases.',
       type: 'image',
       group: 'content',
     }),

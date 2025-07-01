@@ -1,18 +1,18 @@
 // Auto-generated metrics from build process
-// Generated on: 2025-07-01T20:42:49.141Z
+// Generated on: 2025-06-20T16:23:35.927Z
 
 export const staticMetricsStore = {
   getActiveValidators: '600',
-  getApprovedReferendums: 921,
+  getApprovedReferendums: 915,
   getAverageMonthlyGovernanceVoters: 16265,
   getPercentDOTSupplyStaked: '54%',
   getPolkadotUptime30d: '100%',
   getTotalDOTStaked: '852516759.372461',
-  getTotalFeesUSD30d: 734924.7660461342,
+  getTotalFeesUSD30d: 400059.01654758333,
   getTotalNominators: 31276,
-  getTotalReferendums: 1636,
-  getTotalStablecoinsUSD: 54111422.35026431,
-  getTotalStakers: 0,
+  getTotalReferendums: 1618,
+  getTotalStablecoinsUSD: 49772020.08380222,
+  getTotalStakers: 70184,
   getTreasuryBalanceUSD: 56218803.86,
   getUniqueAccounts: 14372235,
 };
