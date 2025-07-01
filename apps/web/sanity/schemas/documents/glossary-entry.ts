@@ -32,6 +32,7 @@ export default defineType({
     defineField({
       name: 'slug',
       title: 'Slug',
+      description: 'Do not use a preceding "/"',
       type: 'slug',
       options: {
         //@ts-ignore

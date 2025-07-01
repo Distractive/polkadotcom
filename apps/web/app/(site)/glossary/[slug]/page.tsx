@@ -4,8 +4,8 @@ import {
   getGlossaryEntryMeta,
 } from '@/sanity/queries/glossary';
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { draftMode } from 'next/headers';
+import { notFound } from 'next/navigation';
 
 import { BreadcrumbBlock } from '@/features/page/blocks/breadcrumb';
 import type { BreadcrumbItemType } from '@/features/page/blocks/breadcrumb';
@@ -51,9 +51,6 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const isDraftMode = draftMode().isEnabled;
-  if (process.env.NEXT_PUBLIC_BUILD_TYPE === 'static') {
-    return notFound();
-  }
 
   const data = await getGlossaryEntry(params.slug, isDraftMode);
   if (!data) return notFound();
