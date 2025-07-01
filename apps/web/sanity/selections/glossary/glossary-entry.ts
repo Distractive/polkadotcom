@@ -10,7 +10,7 @@ export const glossaryEntrySelection = {
   createFullPageEntry: q.boolean().nullable(),
   fullEntry: q.array(q.contentBlock()).optional(),
   relatedTerms: q('relatedTerms')
-    .filter()
+    .filter('defined(@->_id)')
     .deref()
     .grab$({
       _id: q.string(),
@@ -21,14 +21,14 @@ export const glossaryEntrySelection = {
     })
     .nullable(),
   relatedPosts: q('relatedPosts')
-    .filter()
+    .filter('defined(@->_id)')
     .deref()
     .grab$({
       _id: q.string(),
       title: q.string().nullable(),
       slug: q.slug('slug'),
       post_type: q.string().nullable(),
-      custom_excerpt: q.string().nullable(),
+      custom_excerpt: q.string().nullable().optional(),
       published_date: q.date().nullable(),
       image: sanityImage('featured_image', {
         withAsset: ['base', 'dimensions'],

@@ -63,27 +63,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     { slug: `/glossary/${params.slug}`, title: data.term },
   ];
 
-  const createSlugFromTerm = (term: string) => {
-    return term
-      .toLowerCase()
-      .replace(/\s+/g, '-')
-      .replace(/[^a-z0-9-]/g, '');
-  };
-
-  const processedRelatedTerms =
-    data.relatedTerms?.map((term) => ({
-      ...term,
-      effectiveSlug:
-        term.createFullPageEntry && term.slug
-          ? term.slug
-          : createSlugFromTerm(term.term),
-      isFullPage: term.createFullPageEntry,
-    })) || [];
-
-  const validRelatedPosts =
-    data.relatedPosts?.filter((post) => post.slug) || [];
-
-  const extractPlainText = (
+  const richTextBlocksToString = (
     blocks: Array<{ children?: Array<{ text?: string }> }>,
   ) => {
     return (
@@ -105,74 +85,67 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
         <Body body={data.fullEntry} />
       </div>
-      <div className="col-span-full pt-section">
-        {processedRelatedTerms.length > 0 && (
-          <CardsSmallBlock
-            cards={{
-              _key: 'related-terms',
-              heading: 'Related Terms',
-              body: null,
-              items: processedRelatedTerms.map((term) => ({
-                _key: term._id,
-                heading: term.term,
-                body: extractPlainText(term.shortEntry),
-                link: term.isFullPage
-                  ? {
-                      label: null,
-                      variant: null,
-                      internal: {
-                        _type: 'glossaryEntry',
-                        post_type: null,
-                        slug: `glossary/${term.slug}`,
-                      },
-                      nofollow: null,
-                    }
-                  : null,
-                icon: null,
-                eyebrow: null,
-              })),
-              backgroundImage: null,
-            }}
-          />
+
+      <div className="col-span-full pt-16">
+        {data.relatedTerms && data.relatedTerms.length > 0 && (
+          <div className="py-section">
+            <CardsSmallBlock
+              cards={{
+                _key: 'related-terms',
+                heading: 'Related Terms',
+                items: data.relatedTerms.map((term) => ({
+                  _key: term._id,
+                  heading: term.term,
+                  body: richTextBlocksToString(term.shortEntry),
+                  link: term.createFullPageEntry
+                    ? {
+                        internal: {
+                          _type: 'glossaryEntry',
+                          slug: `glossary/${term.slug}`,
+                        },
+                      }
+                    : null,
+                  icon: null,
+                })),
+                backgroundImage: null,
+              }}
+            />
+          </div>
         )}
 
-        <div className="mb-24" />
-
-        {validRelatedPosts.length > 0 && (
-          <CardsBlock
-            cards={{
-              _key: 'related-posts',
-              heading: 'Related Posts',
-              body: '',
-              isCarousel: false,
-              hasTags: false,
-              useFourColumns: false,
-              tags: null,
-              items: validRelatedPosts.map((post) => ({
-                _key: post._id,
-                heading: post.title,
-                body: post.custom_excerpt || undefined,
-                link: {
-                  label: null,
-                  variant: null,
-                  internal: {
-                    _type: 'post',
-                    post_type: post.post_type,
-                    slug: post.slug,
+        {data.relatedPosts && data.relatedPosts.length > 0 && (
+          <div className="py-section">
+            <CardsBlock
+              cards={{
+                _key: 'related-posts',
+                heading: 'Related Posts',
+                body: '',
+                isCarousel: false,
+                hasTags: false,
+                useFourColumns: false,
+                tags: null,
+                items: data.relatedPosts.map((post) => ({
+                  _key: post._id,
+                  heading: post.title,
+                  body: post.custom_excerpt || undefined,
+                  link: {
+                    internal: {
+                      _type: 'post',
+                      post_type: post.post_type,
+                      slug: post.slug,
+                    },
                   },
-                  external: null,
-                  nofollow: null,
-                },
-                image: post.image,
-                icon: null,
-                headerImage: post.image,
-                useAsBackgroundImage: null,
-                useSmallHeading: true,
-                selectedTags: null,
-                eyebrow: post.post_type || undefined,
-              })),
-            }}
-          />
+                  image: post.image,
+                  icon: null,
+                  headerImage: post.image,
+                  useAsBackgroundImage: false,
+                  useSmallHeading: true,
+                  selectedTags: null,
+                  eyebrow: post.post_type || undefined,
+                })),
+              }}
+            />
+          </div>
         )}
       </div>
     </div>
