@@ -73,7 +73,7 @@ export async function getGlossaryEntryMeta(slug: string, isDraftMode: boolean) {
   return result;
 }
 
-export async function getAllGlossarySlugs(isDraftMode: boolean) {
+export async function getAllGlossarySlugs() {
   const slugQuery = q('*')
     .filterByType('glossaryEntry')
     .filter('createFullPageEntry == true')
@@ -83,7 +83,7 @@ export async function getAllGlossarySlugs(isDraftMode: boolean) {
     .nullable();
 
   try {
-    const results = await runQuery(slugQuery, {}, isDraftMode);
+    const results = await runQuery(slugQuery, {}, false);
     if (results)
       return results
         .map((result: { slug?: unknown }) => result.slug)

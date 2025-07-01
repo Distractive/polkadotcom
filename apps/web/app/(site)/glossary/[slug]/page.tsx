@@ -29,7 +29,8 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const meta = await getGlossaryEntryMeta(params.slug);
+  const isDraftMode = draftMode().isEnabled;
+  const meta = await getGlossaryEntryMeta(params.slug, isDraftMode);
 
   if (!meta)
     return {
@@ -57,6 +58,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const data = await getGlossaryEntry(params.slug, isDraftMode);
   if (!data) return notFound();
 
+  const breadcrumbItems: BreadcrumbItemType[] = [
+    { slug: '/glossary', title: 'Glossary' },
+    { slug: `/glossary/${params.slug}`, title: data.term },
+  ];
+
   const createSlugFromTerm = (term: string) => {
     return term
       .toLowerCase()
@@ -71,37 +77,22 @@ export default async function Page({ params }: { params: { slug: string } }) {
         term.createFullPageEntry && term.slug
           ? term.slug
           : createSlugFromTerm(term.term),
-      isFullPage: !!(term.createFullPageEntry && term.slug),
+      isFullPage: term.createFullPageEntry,
     })) || [];
 
-  console.log('terms: ', data.relatedTerms);
-  console.log('processed terms: ', processedRelatedTerms);
-
-  // All posts should have slugs, but filter just in case
   const validRelatedPosts =
     data.relatedPosts?.filter((post) => post.slug) || [];
 
-  const breadcrumbItems: BreadcrumbItemType[] = [
-    { slug: '/glossary', title: 'Glossary' },
-    { slug: `/glossary/${params.slug}`, title: data.term },
-  ];
-
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  const extractPlainText = (blocks: any[]) => {
+  const extractPlainText = (
+    blocks: Array<{ children?: Array<{ text?: string }> }>,
+  ) => {
     return (
-      blocks
-        ?.map(
-          (block) =>
-            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-            block.children?.map((child: any) => child.text).join('') || '',
-        )
-        .join(' ') || ''
+      (blocks ?? [])
+        .flatMap((block) => block.children ?? [])
+        .map((child) => child.text ?? '')
+        .join('') || ''
     );
   };
-
-  const hasRelatedContent =
-    (data.relatedTerms && data.relatedTerms.length > 0) ||
-    (data.relatedPosts && data.relatedPosts.length > 0);
 
   return (
     <div className="grid-system max-width col-span-full pt-36">
@@ -147,7 +138,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
         <div className="mb-24" />
 
-        {/* Related Posts Section */}
         {validRelatedPosts.length > 0 && (
           <CardsBlock
             cards={{
@@ -184,7 +174,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
             }}
           />
         )}
-        {/* <div className="md:-mb-12 lg:-mb-24" /> */}
       </div>
     </div>
   );
