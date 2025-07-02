@@ -42,7 +42,7 @@ export default function BlogCard({ post, className }: Props) {
         className,
       )}
     >
-      {image && (
+      {image && post_type !== 'Press Release' && (
         <CardHeader className={cn('relative z-10 aspect-video')}>
           <Image
             src={urlForImage(image.asset)}
@@ -55,6 +55,19 @@ export default function BlogCard({ post, className }: Props) {
         </CardHeader>
       )}
       <CardContent className="grid w-full p-card">
+        {image && post_type === 'Press Release' && (
+          <Image
+            src={image.asset.url}
+            alt=""
+            loading="lazy"
+            width={image.asset.metadata.dimensions?.width}
+            height={image.asset.metadata.dimensions?.height}
+            className={cn(
+              'relative z-10 ',
+              'mr-auto h-[4.5rem] w-auto rounded-2xl mb-6',
+            )}
+          />
+        )}
         {tags && (
           <ul className="mb-6 flex flex-wrap gap-3">
             {tags.map((tag) => (

@@ -76,7 +76,7 @@ test('Alpha Program', async ({ page }) => {
       'Got a project that is itching to go live? If your team is working on something that’s not launched yet, and you’re ready to experiment while receiving and providing feedback, the Polkadot Alpha Program is for you.',
     );
     await expect(
-      section.getByRole('heading', { name: 'Parachain teams' }),
+      section.getByRole('heading', { name: 'Rollup teams' }),
     ).toBeVisible();
     await expect(
       section.getByRole('heading', { name: 'Infrastructure providers' }),
