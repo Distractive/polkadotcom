@@ -1,6 +1,7 @@
 import { urlForImage } from '@/sanity/lib/image';
 import type { headerSelection } from '@/sanity/selections/blocks/header';
 import type { newsletterButtonSelection } from '@/sanity/selections/blocks/newsletter-button';
+import type { storeButtonSelection } from '@/sanity/selections/blocks/store-button';
 import type { customUrlSelection } from '@/sanity/selections/custom-url';
 import type { TypeFromSelection } from 'groqd';
 import Image from 'next/image';
@@ -10,7 +11,13 @@ import { Button, Heading, cn } from '@shared/ui';
 
 import { BreadcrumbBlock, type BreadcrumbProps } from './breadcrumb';
 import { NewsletterButton } from './newsletter-button';
+import { StoreButton } from './store-button';
 import { VideoBlock } from './video';
+
+type HeaderLink =
+  | TypeFromSelection<typeof newsletterButtonSelection>
+  | (TypeFromSelection<typeof customUrlSelection> & { _type: 'customUrl' })
+  | TypeFromSelection<typeof storeButtonSelection>;
 
 interface Props {
   header: TypeFromSelection<typeof headerSelection>;
@@ -19,59 +26,60 @@ interface Props {
 }
 
 export function HeaderBlock({ header, breadcrumb, className }: Props) {
-  const renderNewsletterButton = (
-    link: TypeFromSelection<typeof newsletterButtonSelection>,
-  ) => {
-    const variant =
-      link.variant === 'primary' || link.variant === 'secondary'
-        ? link.variant
-        : undefined;
-
+  function renderHeaderLinks(links: HeaderLink[]) {
+    if (!links) return null;
     return (
-      <NewsletterButton
-        key={link._key}
-        value={{
-          label: link.label,
-          modalHeading: link.modalHeading,
-          formType: link.formType,
-          variant: variant,
-          _key: link._key,
-          size: 'lg',
-        }}
-      />
+      <div id="main-content" className="mt-4 flex w-full flex-wrap gap-4">
+        {links.map((link, index) => {
+          switch (link._type) {
+            case 'newsletterButton':
+              return (
+                <NewsletterButton
+                  key={link._key}
+                  value={{
+                    label: link.label,
+                    modalHeading: link.modalHeading,
+                    formType: link.formType,
+                    variant: link.variant,
+                    _key: link._key,
+                    size: 'lg',
+                  }}
+                />
+              );
+            case 'customUrl':
+              return (
+                <Button
+                  variant={link.variant}
+                  size="lg"
+                  asChild
+                  className="md:cursor-pointer whitespace-nowrap"
+                >
+                  <CustomUrl
+                    className="outline-none"
+                    value={{
+                      internal: link.internal,
+                      external: link.external,
+                    }}
+                  >
+                    {link.label}
+                  </CustomUrl>
+                </Button>
+              );
+            case 'storeButton':
+              return (
+                <StoreButton
+                  store={link.store}
+                  href={link.href}
+                  key={link._key || index}
+                />
+              );
+            default:
+              return null;
+          }
+        })}
+      </div>
     );
-  };
-
-  const renderCustomUrl = (
-    link: TypeFromSelection<typeof customUrlSelection>,
-  ) => {
-    const variant =
-      link?.variant === 'primary' ||
-      link?.variant === 'secondary' ||
-      link?.variant === 'tertiary' ||
-      link?.variant === 'disabled'
-        ? link.variant
-        : 'primary';
-
-    return (
-      <Button
-        variant={variant}
-        size="lg"
-        asChild
-        className="md:cursor-pointer whitespace-nowrap"
-      >
-        <CustomUrl
-          className="outline-none"
-          value={{
-            internal: link.internal,
-            external: link.external,
-          }}
-        >
-          {link.label}
-        </CustomUrl>
-      </Button>
-    );
-  };
+  }
 
   // Alternate Header
   if (header.isAlternate) {
@@ -128,15 +136,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
           <Heading variant="h1">{header.title}</Heading>
 
           {header.body && <p className="text-lg">{header.body}</p>}
-          {header.links && (
-            <div id="main-content" className="mt-4 flex w-full flex-wrap gap-4">
-              {header.links?.map((link, index) =>
-                link._type === 'newsletterButton'
-                  ? renderNewsletterButton(link)
-                  : renderCustomUrl(link),
-              )}{' '}
-            </div>
-          )}
+          {renderHeaderLinks(header.links as HeaderLink[])}
           {header.video && (
             <VideoBlock video={header.video} className="mt-gutter w-full" />
           )}
@@ -188,15 +188,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         <Heading variant="h1">{header.title}</Heading>
 
         {header.body && <p className="text-lg">{header.body}</p>}
-        {header.links && (
-          <div id="main-content" className="mt-4 flex w-full flex-wrap gap-4">
-            {header.links?.map((link) =>
-              link._type === 'newsletterButton'
-                ? renderNewsletterButton(link)
-                : renderCustomUrl(link),
-            )}
-          </div>
-        )}
+        {renderHeaderLinks(header.links as HeaderLink[])}
         {header.video && (
           <VideoBlock video={header.video} className="mt-gutter w-full" />
         )}
