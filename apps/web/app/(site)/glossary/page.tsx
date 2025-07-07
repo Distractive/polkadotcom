@@ -13,6 +13,7 @@ import { Body } from '@/features/post/body';
 import { SearchBar } from '@/features/posts/search-bar';
 import { Heading } from '@shared/ui';
 
+import { draftMode } from 'next/headers';
 import AlphabetNav from './alphabet-nav';
 
 export const dynamicParams = true;
@@ -45,7 +46,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Page() {
-  const data = await getGlossary();
+  const isDraftMode = draftMode().isEnabled;
+
+  const data = await getGlossary(isDraftMode);
   if (!data) {
     return notFound();
   }

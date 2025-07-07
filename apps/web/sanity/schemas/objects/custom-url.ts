@@ -38,6 +38,8 @@ export default defineType({
         { type: 'landing' },
         { type: 'hygiene' },
         { type: 'post' },
+        { type: 'glossary' },
+        { type: 'glossaryEntry' },
       ],
       hidden: ({ parent, value }) => !value && !!parent?.external,
     },
