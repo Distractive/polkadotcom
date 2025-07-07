@@ -9,7 +9,7 @@ import { getTotalFeesUSD30d } from './get-total-fees-usd-30d';
 import { getTotalReferendums } from './get-total-referendums';
 import { getTotalStablecoinsUSD } from './get-total-stablecoins';
 import { getTotalStakers } from './get-total-stakers';
-import { getTreasuryBalanceUSD } from './get-treasury-balance-usd';
+import { getDailyTreasuryBalanceUSD } from './get-daily-treasury-balance-usd';
 import { getUniqueAccounts } from './get-unique-accounts';
 
 export const metricFetchers = {
@@ -24,7 +24,7 @@ export const metricFetchers = {
   getTotalReferendums,
   getTotalStablecoinsUSD,
   getTotalStakers,
-  getTreasuryBalanceUSD,
+  getDailyTreasuryBalanceUSD,
   getUniqueAccounts,
 };
 

@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export interface ParityQueryParams {
   endpoint: string;
   queryParams: {
-    relay_chain?: 'polkadot' | 'kusama' | 'solo';
+    relay_chain?: 'polkadot' | 'kusama' | 'solo' | '';
     chain?: string;
     start_date?: string;
     end_date?: string;
@@ -18,18 +18,24 @@ export const fetchParityData = async ({
 }: ParityQueryParams) => {
   // API takes 2-3 days to show data
   const defaultDate = new Date();
-  defaultDate.setDate(defaultDate.getDate() - 4);
+  defaultDate.setDate(defaultDate.getDate() - 3);
   const formattedDefaultDate = defaultDate.toISOString().split('T')[0];
 
-  const paramsWithDefaults = {
-    relay_chain: queryParams.relay_chain || 'polkadot',
-    chain: queryParams.chain || 'ecosystem',
+  const params: Record<string, string> = {
     start_date: (queryParams.start_date || formattedDefaultDate) as string,
     end_date: (queryParams.end_date || formattedDefaultDate) as string,
   };
 
-  const queryString = new URLSearchParams(paramsWithDefaults).toString();
+  if (queryParams.relay_chain) {
+    params.relay_chain = queryParams.relay_chain;
+  }
+  if (queryParams.chain) {
+    params.chain = queryParams.chain;
+  }
+
+  const queryString = new URLSearchParams(params).toString();
   const url = `http://163.172.132.42/api/${endpoint}?${queryString}`;
+  console.log('URL', url);
 
   try {
     const response = await fetch(url, {
