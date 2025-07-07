@@ -179,7 +179,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
             )}
           </PostPublish>
         </PostMetaData>
-        {image && (
+        {image && post_type !== 'Press Release' && (
           <PostImage>
             <Image
               src={image.asset.url || ''}
