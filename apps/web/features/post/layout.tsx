@@ -17,6 +17,7 @@ import {
 } from '@/constants/global';
 import { CarouselItem, Heading, cn } from '@shared/ui';
 
+import { urlForImage } from '@/sanity/lib/image';
 import { Carousel } from '../../components/carousel';
 import type { BreadcrumbProps } from '../page/blocks/breadcrumb';
 import { BreadcrumbBlock } from '../page/blocks/breadcrumb';
@@ -162,7 +163,7 @@ export default async function Layout({ slug, type }: LayoutProps) {
               <>
                 <img
                   className="h-6 w-6 rounded-full"
-                  src={author.image.asset.url}
+                  src={urlForImage(author.image.asset)}
                   alt=""
                   loading="lazy"
                 />
@@ -179,10 +180,10 @@ export default async function Layout({ slug, type }: LayoutProps) {
             )}
           </PostPublish>
         </PostMetaData>
-        {image && (
+        {image && post_type !== 'Press Release' && (
           <PostImage>
             <Image
-              src={image.asset.url || ''}
+              src={urlForImage(image.asset)}
               width={image.asset.metadata.dimensions?.width}
               height={image.asset.metadata.dimensions?.height}
               alt=""

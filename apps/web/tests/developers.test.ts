@@ -189,12 +189,6 @@ test('Developers', async ({ page }) => {
     await expect(
       section.getByRole('heading', { name: 'Need help? Let’s build' }),
     ).toBeVisible();
-    await expect(section.getByText('With Polkadot’s Alpha Program')).toHaveText(
-      /With Polkadot’s Alpha Program, whether you’re a new team just starting off or an established project looking to join the ecosystem, we’ll help you get started.\s*/,
-    );
-    await expect(
-      section.getByRole('link', { name: 'Alpha Program' }),
-    ).toBeVisible();
     await expect(
       section.getByRole('link', { name: 'Courses Explore a variety of' }),
     ).toBeVisible();

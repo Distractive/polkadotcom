@@ -4,6 +4,7 @@ import type { TypeFromSelection } from 'groqd';
 
 import { CustomUrl } from '@/components/custom-url';
 import { useToggleAnimation } from '@/hooks/use-toggle-animation';
+import { urlForImage } from '@/sanity/lib/image';
 import { cn } from '@shared/ui';
 
 interface Props {
@@ -89,7 +90,7 @@ export function MenuDesktop({
                 )}
               >
                 <img
-                  src={section.aside.image.asset.url || ''}
+                  src={urlForImage(section.aside.image.asset)}
                   alt=""
                   className="w-full"
                 />
