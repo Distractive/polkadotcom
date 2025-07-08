@@ -11,6 +11,10 @@ export const mainDocuments = defineDocuments([
     route: '/blog/:slug',
     filter: `_type == "post" && slug.current == $slug`,
   },
+  {
+    route: '/glossary/:slug',
+    filter: `_type == "glossaryEntry" && slug.current == $slug`,
+  },
 ]);
 
 export const locations = {

@@ -16,6 +16,7 @@ import {
   cn,
 } from '@shared/ui';
 
+import { urlForImage } from '@/sanity/lib/image';
 import { VideoBlock } from './video';
 
 interface Props {
@@ -47,7 +48,7 @@ export function MediaBlock({ mediaBlock, className }: Props) {
         {image && (
           <CardHeader className="relative z-10 aspect-video">
             <img
-              src={image.asset.url}
+              src={urlForImage(image.asset)}
               alt=""
               loading="lazy"
               className="absolute inset-0 h-full w-full rounded-2xl object-cover object-center"

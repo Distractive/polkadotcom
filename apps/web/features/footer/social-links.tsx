@@ -1,3 +1,4 @@
+import { urlForImage } from '@/sanity/lib/image';
 import type { socialLinkSelection } from '@/sanity/selections/footer/social-links';
 import type { TypeFromSelection } from 'groqd';
 
@@ -16,7 +17,7 @@ export default function SocialLinks({ items }: Props) {
           rel="noreferrer"
         >
           <img
-            src={item.image.asset.url}
+            src={urlForImage(item.image.asset)}
             alt=""
             aria-hidden="true"
             className="fill-black"

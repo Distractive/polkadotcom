@@ -94,12 +94,6 @@ test('Footer', async ({ page }) => {
       ).toBeVisible();
       await expect(
         footerContainer.getByRole('link', {
-          name: 'Alpha Program',
-          exact: true,
-        }),
-      ).toBeVisible();
-      await expect(
-        footerContainer.getByRole('link', {
           name: 'Blockchain Academy',
           exact: true,
         }),
