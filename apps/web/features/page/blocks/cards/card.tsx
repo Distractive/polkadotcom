@@ -14,7 +14,7 @@ import {
   Heading,
   cn,
 } from '@shared/ui';
-import { PortableText } from 'next-sanity';
+import { PortableText } from '@portabletext/react';
 
 interface Props {
   card: TypeFromSelection<typeof cardSelection>;
