@@ -64,11 +64,47 @@ export default defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'useRichText',
+      title: 'Use Rich Text?',
+      type: 'boolean',
+      initialValue: false,
+      description:
+        'Toggle to use rich text (for links, bold, etc.) instead of plain body copy. Toggling this option will not delete anything, it only hides the fields in the UI.',
+      group: 'content',
+    }),
+    defineField({
       name: 'body',
       title: 'Body',
+      description: 'The default field for card copy.',
       type: 'text',
       rows: 5,
       group: 'content',
+      hidden: ({ parent }) => !!parent?.useRichText,
+    }),
+    defineField({
+      name: 'richBody',
+      title: 'Rich Text',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'Smallprint', value: 'smallprint' },
+          ],
+          marks: {
+            decorators: [{ title: 'Strong', value: 'strong' }],
+          },
+        },
+        {
+          type: 'break',
+          initialValue: { style: 'lineBreak' },
+        },
+        {
+          type: 'customUrl',
+        },
+      ],
+      hidden: ({ parent }) => !parent?.useRichText,
     }),
     defineField({
       name: 'link',
