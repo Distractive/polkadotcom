@@ -69,7 +69,7 @@ export default defineType({
       type: 'boolean',
       initialValue: false,
       description:
-        'Toggle to use rich text (for links, bold, etc.) instead of plain body copy. Toggling this option will not delete anything, it only hides the fields in the UI.',
+        'Toggle to use rich text (for links, bold, etc.) instead of plain body copy. Toggling this option will not delete anything, it only hides the unused field in the UI.',
       group: 'content',
     }),
     defineField({
@@ -99,9 +99,6 @@ export default defineType({
         {
           type: 'break',
           initialValue: { style: 'lineBreak' },
-        },
-        {
-          type: 'customUrl',
         },
       ],
       hidden: ({ parent }) => !parent?.useRichText,

@@ -17,14 +17,10 @@ export const cardSelection = {
   useSmallHeading: q.boolean().nullable(),
   useRichText: q.boolean().nullable(),
   body: nullToUndefined(q.string().optional()),
-  richBody: q('content')
+  richBody: q('richBody')
     .filter()
     .select({
       '_type == "block"': ['{...}', q.contentBlock()],
-      '_type == "customUrl"': {
-        _type: q.literal('customUrl'),
-        ...customUrlSelection,
-      },
       default: {
         _key: q.string(),
         _type: ['"unsupported"', q.literal('unsupported')],

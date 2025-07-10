@@ -14,6 +14,7 @@ import {
   Heading,
   cn,
 } from '@shared/ui';
+import { PortableText } from 'next-sanity';
 
 interface Props {
   card: TypeFromSelection<typeof cardSelection>;
@@ -32,8 +33,11 @@ export default function CardBlock({ card, className }: Props) {
     link,
     useAsBackgroundImage,
     useSmallHeading,
+    useRichText,
+    richBody,
   } = card;
 
+  console.log(card);
   return (
     <Card
       key={_key}
@@ -138,7 +142,61 @@ export default function CardBlock({ card, className }: Props) {
                     {heading}
                   </Heading>
                 )}
-                {body && <CardDescription>{body}</CardDescription>}
+                {body && !useRichText && (
+                  <CardDescription>{body}</CardDescription>
+                )}
+                {richBody && useRichText && (
+                  <CardDescription>
+                    <PortableText
+                      value={richBody || []}
+                      components={{
+                        block: {
+                          normal: ({ children }) => (
+                            <p className="text-normal ">{children}</p>
+                          ),
+                          smallprint: ({ children }) => (
+                            <p className="text-sm ">{children}</p>
+                          ),
+                        },
+                        marks: {
+                          strong: ({ children }) => <strong>{children}</strong>,
+                          link: ({ children, value }) => {
+                            if (!value || !value.href) {
+                              return children;
+                            }
+
+                            const isExternal = value.href.startsWith('http');
+
+                            return (
+                              <a
+                                className="inline-flex font-default font-bold text-grey-900 underline  underline-offset-2 transition-colors  hover:text-pink"
+                                href={value.href}
+                                target={
+                                  isExternal ? '_blank noopener' : '_self'
+                                }
+                              >
+                                {children}
+                              </a>
+                            );
+                          },
+                        },
+                        list: {
+                          bullet: ({ children }) => (
+                            <ul className="flex list-inside list-disc flex-col gap-copy ">
+                              {children}
+                            </ul>
+                          ),
+                        },
+                        listItem: {
+                          bullet: ({ children }) => <li>{children}</li>,
+                        },
+                        types: {
+                          customUrl: ({ value }) => null,
+                        },
+                      }}
+                    />
+                  </CardDescription>
+                )}
               </div>
               {link?.variant && (
                 <CardFooter className="mt-auto">
