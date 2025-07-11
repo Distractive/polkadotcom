@@ -4,6 +4,8 @@ import type { TypeFromSelection } from 'groqd';
 import Image from 'next/image';
 
 import { CustomUrl } from '@/components/custom-url';
+import { PortableText } from '@portabletext/react';
+
 import {
   Button,
   Card,
@@ -14,7 +16,6 @@ import {
   Heading,
   cn,
 } from '@shared/ui';
-import { PortableText } from '@portabletext/react';
 
 interface Props {
   card: TypeFromSelection<typeof cardSelection>;
