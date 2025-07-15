@@ -58,7 +58,7 @@ export function MenuDesktop({
                 <li
                   key={item.link.label}
                   className={cn(
-                    'flex h-full min-w-[21rem] shadow-internal-border',
+                    'flex h-full min-w-[21rem] shadow-internal-border ',
                   )}
                 >
                   <CustomUrl

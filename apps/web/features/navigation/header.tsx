@@ -74,31 +74,37 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
               'border-l border-grey-300 font-bold',
             )}
           >
-            {menu.map((item) => (
-              <li
-                key={item.heading}
-                onMouseEnter={() => handleCurrentHeading(item.heading)}
-                className="relative flex h-full cursor-pointer items-center justify-center transition-colors duration-100 ease-in-out lg:hover:text-pink"
-              >
-                <CustomUrl
-                  value={item.link}
-                  onClick={handleItemSelect}
-                  className="duration-100 ease-in-out hover:text-pink focus:text-pink peer-focus:text-pink"
+            {menu.map((item) => {
+              console.log(item);
+              return (
+                <li
+                  key={item.heading}
+                  onMouseEnter={() => handleCurrentHeading(item.heading)}
+                  className="relative flex h-full cursor-pointer items-center justify-center transition-colors duration-100 ease-in-out "
                 >
-                  {item.heading}
-                </CustomUrl>
-                <button
-                  type="button"
-                  className="peer sr-only"
-                  aria-expanded={'' === item.heading}
-                  aria-controls={stegaClean(item.heading)}
-                  onFocus={() => handleCurrentHeading(item.heading)}
-                  onClick={onSubmenuToggleClick}
-                >
-                  Show submenu
-                </button>
-              </li>
-            ))}
+                  <CustomUrl
+                    value={item.link}
+                    onClick={handleItemSelect}
+                    className={cn(
+                      item.link &&
+                        'duration-100 ease-in-out hover:text-pink focus:text-pink peer-focus:text-pink',
+                    )}
+                  >
+                    {item.heading}
+                  </CustomUrl>
+                  <button
+                    type="button"
+                    className="peer sr-only"
+                    aria-expanded={'' === item.heading}
+                    aria-controls={stegaClean(item.heading)}
+                    onFocus={() => handleCurrentHeading(item.heading)}
+                    onClick={onSubmenuToggleClick}
+                  >
+                    Show submenu
+                  </button>
+                </li>
+              );
+            })}
           </ul>
           <div className="mr-5 border-l border-l-grey-200 pr-[5px] pl-2.5 h-[100%] flex items-center">
             <Search />

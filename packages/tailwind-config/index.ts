@@ -8,6 +8,13 @@ const config = {
     './features/**/**/*.{ts,tsx}',
     '../../packages/ui/components/**/*.{ts,tsx}',
   ],
+  safelist: [
+    'duration-100',
+    'ease-in-out',
+    'hover:text-pink',
+    'focus:text-pink',
+    'peer-focus:text-pink',
+  ],
   theme: {
     screens: {
       sm: '22.5rem',
