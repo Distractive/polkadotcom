@@ -75,7 +75,6 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
             )}
           >
             {menu.map((item) => {
-              console.log(item);
               return (
                 <li
                   key={item.heading}
