@@ -133,7 +133,9 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
             <BreadcrumbBlock items={breadcrumb.items} />
           )}
 
-          <Heading variant="h1">{header.title}</Heading>
+          <Heading variant="h1" className="!hyphens-none">
+            {header.title}
+          </Heading>
 
           {header.body && <p className="text-lg">{header.body}</p>}
           {renderHeaderLinks(header.links as HeaderLink[])}
