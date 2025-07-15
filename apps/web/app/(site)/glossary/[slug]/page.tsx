@@ -137,6 +137,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
                   headerImage: post.image,
                   useAsBackgroundImage: false,
                   useSmallHeading: true,
+                  useRichText: false,
+                  richBody: null,
                   selectedTags: null,
                   eyebrow: post.post_type || undefined,
                 })),

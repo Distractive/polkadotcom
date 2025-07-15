@@ -15,7 +15,19 @@ export const cardSelection = {
   eyebrow: nullToUndefined(q.string().optional()),
   heading: q.string().nullable(),
   useSmallHeading: q.boolean().nullable(),
+  useRichText: q.boolean().nullable(),
   body: nullToUndefined(q.string().optional()),
+  richBody: q('richBody')
+    .filter()
+    .select({
+      '_type == "block"': ['{...}', q.contentBlock()],
+      default: {
+        _key: q.string(),
+        _type: ['"unsupported"', q.literal('unsupported')],
+        unsupportedType: ['_type', q.string()],
+      },
+    })
+    .nullable(),
   selectedTags: q.array(q.string()).nullable(),
   link: q('link')
     .grab$({
