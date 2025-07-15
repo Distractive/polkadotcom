@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 import { Carousel } from '@/components/carousel';
 import { CustomUrl } from '@/components/custom-url';
+import { urlForImage } from '@/sanity/lib/image';
 import {
   Card,
   CardContent,
@@ -69,7 +70,7 @@ export function Connected({ connected }: Props) {
                       <CardHeader className={cn('relative z-10 aspect-video')}>
                         {card.headerImage && (
                           <Image
-                            src={card.headerImage?.asset.url}
+                            src={urlForImage(card.headerImage?.asset)}
                             alt=""
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

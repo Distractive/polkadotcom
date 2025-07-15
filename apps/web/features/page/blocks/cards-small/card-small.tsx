@@ -2,6 +2,7 @@ import type { cardSmallSelection } from '@/sanity/selections/blocks/card-small';
 import type { TypeFromSelection } from 'groqd';
 
 import { CustomUrl } from '@/components/custom-url';
+import { urlForImage } from '@/sanity/lib/image';
 import {
   Button,
   Card,
@@ -39,7 +40,7 @@ export default function CardSmallBlock({ card, className }: Props) {
         >
           {icon && (
             <img
-              src={icon.asset.url}
+              src={urlForImage(icon.asset)}
               alt=""
               loading="lazy"
               className={cn('size-14 rounded-2xl object-cover object-center')}

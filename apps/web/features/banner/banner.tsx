@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import { CustomUrl } from '@/components/custom-url';
+import { urlForImage } from '@/sanity/lib/image';
 import {
   Button,
   Card,
@@ -83,7 +84,7 @@ export default function Banner({ banner }: BannerProps) {
           >
             {banner.icon && (
               <Image
-                src={banner.icon.asset.url}
+                src={urlForImage(banner.icon.asset)}
                 alt={banner.altText || ''}
                 loading="lazy"
                 width={100}

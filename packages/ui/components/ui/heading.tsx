@@ -76,7 +76,7 @@ const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
     return (
       <>
         {/* biome-ignore lint/style/useSelfClosingElements: <Not possible> */}
-        <div id={anchorLink} className="anchor-link -translate-y-24"></div>
+        <div id={anchorLink} className="anchor-link -translate-y-12"></div>
 
         <Element
           className={cn(
