@@ -12,5 +12,8 @@ export const getUniqueAccounts = async () => {
     end_date: getLastDayOfPreviousMonth(),
   });
 
-  return response[0]?.number_of_unique_addresses;
+  const rawValue = Number(response[0]?.number_of_unique_addresses ?? 0);
+  const valueInMillions = rawValue / 1_000_000;
+  const roundedUp = Math.ceil(valueInMillions * 100) / 100;
+  return `${roundedUp.toFixed(2)} million`;
 };

@@ -12,7 +12,7 @@ export const getTotalReferendums = async () => {
   });
 
   // pull in total referendums using the last referendum in the response
-  const totalReferendum = response[response.length - 1]?.referendum_index;
+  const totalReferendum = `${response[response.length - 1]?.referendum_index} referenda`;
 
   return totalReferendum;
 };
