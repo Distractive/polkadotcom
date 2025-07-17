@@ -7,7 +7,7 @@ export const getUniqueAccounts = async () => {
 
   const response = await getMonthlyUniqueAccountsMetrics({
     relay_chain: 'polkadot',
-    chain: 'ecosystem',
+    chain: 'polkadot',
     start_date: getLastDayOfPreviousMonth(),
     end_date: getLastDayOfPreviousMonth(),
   });

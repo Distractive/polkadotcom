@@ -11,11 +11,7 @@ export const getDailyTreasuryBalanceUSD = async () => {
     end_date: date.toISOString().split('T')[0],
   });
 
-  console.log('TREASURY BALANCE RESPONSE: ', response);
-
   const balance = response.reduce((sum, obj) => sum + obj.balance_usd, 0);
-
-  console.log('TREASURY BALANCE: ', balance);
 
   return balance;
 };
