@@ -47,7 +47,10 @@ export default defineType({
             title: 'Total Stakers (Nominators + Pool Members)',
             value: 'getTotalStakers',
           },
-          { title: 'Treasury Balance (USD)', value: 'getTreasuryBalanceUSD' },
+          {
+            title: 'Treasury Balance (USD)',
+            value: 'getDailyTreasuryBalanceUSD',
+          },
           { title: 'Unique Accounts', value: 'getUniqueAccounts' },
           { title: 'Uptime (30-Day)', value: 'getPolkadotUptime30d' },
         ],
