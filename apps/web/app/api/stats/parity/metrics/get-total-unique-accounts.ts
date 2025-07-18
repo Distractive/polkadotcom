@@ -2,7 +2,7 @@ import { getMonthlyUniqueAccountsMetrics } from '../endpoints/monthly-unique-acc
 
 import { getLastDayOfPreviousMonth } from '../../utils/get-last-day-previous-month';
 
-export const getUniqueAccounts = async () => {
+export const getTotalUniqueAccounts = async () => {
   const date = getLastDayOfPreviousMonth();
 
   const response = await getMonthlyUniqueAccountsMetrics({
