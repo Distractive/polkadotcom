@@ -207,5 +207,5 @@ export default {
     ],
     additionalSitemaps: [],
   },
-  outDir: './out',
+  outDir: './public',
 };
