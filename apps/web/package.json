@@ -11,7 +11,7 @@
     "dev:turbo": "next dev --turbo",
     "build": "BUILD_FLAG=true next build",
     "fetch-metrics": "tsx scripts/fetch-metrics.ts",
-    "build:static": "pnpm fetch-metrics && rm -rf .next out && BUILD_FLAG=true NEXT_TELEMETRY_DISABLED=1 NEXT_DISABLE_VERCEL_ANALYTICS=1 NEXT_PUBLIC_BUILD_TYPE=static NODE_ENV=production next build",
+    "build:static": "pnpm fetch-metrics && rm -rf .next out && BUILD_FLAG=true NEXT_TELEMETRY_DISABLED=1 NEXT_DISABLE_VERCEL_ANALYTICS=1 NEXT_PUBLIC_BUILD_TYPE=static NODE_ENV=production next build && next-sitemap --config next-sitemap.config.mjs",
     "run:static": "npx serve out",
     "static": "pnpm build:static && pnpm run:static",
     "start": "next start",
