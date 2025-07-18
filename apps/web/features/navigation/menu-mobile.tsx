@@ -34,50 +34,65 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
         )}
       >
         <Accordion type="single" collapsible className="flex flex-col w-full">
-          {menu.map((section, sectionIndex) => (
-            <AccordionItem key={section.heading} value={section.heading}>
-              <div className="relative flex items-center justify-center shadow-internal-border">
-                <CustomUrl
-                  value={section.link}
-                  onClick={() => setIsOpen(false)}
-                  className={cn(
-                    'flex-1 p-nav border-r border-grey-200 text-left font-bold',
-                  )}
-                >
-                  {section.heading}
-                </CustomUrl>
-                <AccordionTrigger
-                  aria-label={`Open '${stegaClean(section.heading)}' page links`}
-                  className="[&>svg]:mx-nav"
-                />
-              </div>
-
-              <AccordionContent className={cn('bg-grey-50', 'flex flex-col')}>
-                {section.items.map((item, linkIndex) => {
-                  const lastLink = linkIndex === section.items.length - 1;
-                  const lastSection = sectionIndex === menu.length - 1;
-                  return (
-                    <span
-                      key={item.link.label}
+          {menu.map((section, sectionIndex) => {
+            console.log('section.link:', section.link);
+            return (
+              <AccordionItem key={section.heading} value={section.heading}>
+                <div className="relative flex items-center justify-center shadow-internal-border">
+                  {section.link && (
+                    <CustomUrl
+                      value={section.link}
+                      onClick={() => setIsOpen(false)}
                       className={cn(
-                        'flex h-full w-full text-left shadow-internal-border',
-                        lastLink && 'border-b border-grey-200',
-                        lastSection && lastLink && 'border-none',
+                        'flex-1 p-nav border-r border-grey-200 text-left font-bold',
                       )}
                     >
-                      <CustomUrl
-                        onClick={() => setIsOpen(false)}
-                        value={item.link}
-                        className="h-full w-full p-nav"
+                      {section.heading}
+                    </CustomUrl>
+                  )}
+                  {!section.link && (
+                    <div
+                      className={
+                        'flex-1 p-nav border-r border-grey-200 text-left font-bold'
+                      }
+                    >
+                      {section.heading}
+                    </div>
+                  )}
+
+                  <AccordionTrigger
+                    aria-label={`Open '${stegaClean(section.heading)}' page links`}
+                    className="[&>svg]:mx-nav"
+                  />
+                </div>
+
+                <AccordionContent className={cn('bg-grey-50', 'flex flex-col')}>
+                  {section.items.map((item, linkIndex) => {
+                    const lastLink = linkIndex === section.items.length - 1;
+                    const lastSection = sectionIndex === menu.length - 1;
+                    return (
+                      <span
+                        key={item.link.label}
+                        className={cn(
+                          'flex h-full w-full text-left shadow-internal-border',
+                          lastLink && 'border-b border-grey-200',
+                          lastSection && lastLink && 'border-none',
+                        )}
                       >
-                        {item.link.label}
-                      </CustomUrl>
-                    </span>
-                  );
-                })}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
+                        <CustomUrl
+                          onClick={() => setIsOpen(false)}
+                          value={item.link}
+                          className="h-full w-full p-nav "
+                        >
+                          {item.link.label}
+                        </CustomUrl>
+                      </span>
+                    );
+                  })}
+                </AccordionContent>
+              </AccordionItem>
+            );
+          })}
         </Accordion>
       </div>
     </div>
