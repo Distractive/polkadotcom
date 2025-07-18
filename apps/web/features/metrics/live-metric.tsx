@@ -25,10 +25,6 @@ export const LiveMetric = async ({
 
     let value = staticMetricsStore[metric];
 
-    console.log('METRIC: ', metric);
-
-    console.log('VALUE: ', value);
-
     if (!value) {
       return <>{fallbackMetric}</>;
     }
