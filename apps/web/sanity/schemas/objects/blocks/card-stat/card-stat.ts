@@ -35,6 +35,10 @@ export default defineType({
             value: 'getAverageMonthlyGovernanceVoters',
           },
           {
+            title: 'DAO Members',
+            value: 'getDaoMembers',
+          },
+          {
             title: 'Percent DOT Supply Staked',
             value: 'getPercentDOTSupplyStaked',
           },
@@ -51,7 +55,10 @@ export default defineType({
             title: 'Treasury Balance (USD)',
             value: 'getDailyTreasuryBalanceUSD',
           },
-          { title: 'Unique Accounts', value: 'getUniqueAccounts' },
+          {
+            title: 'Total Unique Accounts (Ecosystem)',
+            value: 'getTotalUniqueAccounts',
+          },
           { title: 'Uptime (30-Day)', value: 'getPolkadotUptime30d' },
         ],
         layout: 'dropdown',
