@@ -4,12 +4,156 @@
         <title>Polkadot - All Content</title>
         <link>https://polkadot.com</link>
         <description>Polkadot - The Platform for Web3</description>
-        <lastBuildDate>Tue, 03 Jun 2025 13:42:38 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 18 Jul 2025 13:29:35 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>All rights reserved 2025, Polkadot</copyright>
         <atom:link href="https://polkadot.com/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Hyperbridge Expands Polkadot DeFi Access with Uniswap V4 Integration]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/hyperbridge-expands-polkadot-defi-with-uniswap</link>
+            <guid>https://polkadot.com/newsroom/press-releases/hyperbridge-expands-polkadot-defi-with-uniswap</guid>
+            <pubDate>Thu, 17 Jul 2025 13:46:00 GMT</pubDate>
+            <description><![CDATA[Hyperbridge launches DOT/ETH liquidity incentives on Uniswap V4 to expand DOT utility across major EVM chains.]]></description>
+            <content:encoded><![CDATA[Hyperbridge launches DOT/ETH liquidity incentives on Uniswap V4 to expand DOT utility across major EVM chains.]]></content:encoded>
+            <category>Press Release</category>
+            <category>DeFi</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[Stablecoins: The $30 trillion market building tomorrow’s financial rails]]></title>
+            <link>https://polkadot.com/blog/stablecoin-adoption</link>
+            <guid>https://polkadot.com/blog/stablecoin-adoption</guid>
+            <pubDate>Fri, 11 Jul 2025 11:05:00 GMT</pubDate>
+            <description><![CDATA[Stablecoins are moving more money than Visa and Mastercard, but still make up just 1 percent of the global monetary supply. Here’s what needs to change.]]></description>
+            <content:encoded><![CDATA[Stablecoins are moving more money than Visa and Mastercard, but still make up just 1 percent of the global monetary supply. Here’s what needs to change.]]></content:encoded>
+            <category>Blog</category>
+            <category>Learn</category>
+            <category>Blockchain Basics</category>
+        </item>
+        <item>
+            <title><![CDATA[Dr. Marwan Al Zarouni Joins Polkadot’s Aventus & Truth Network as Strategic Advisor to Accelerate UAE Blockchain Expansion]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/polkadot-aventus-truth-network-accelerate-uae-blockchain-expansion</link>
+            <guid>https://polkadot.com/newsroom/press-releases/polkadot-aventus-truth-network-accelerate-uae-blockchain-expansion</guid>
+            <pubDate>Tue, 08 Jul 2025 13:00:00 GMT</pubDate>
+            <description><![CDATA[Aventus and Truth Network appoints Strategic Advisor to accelerate UAE expansion]]></description>
+            <content:encoded><![CDATA[Aventus and Truth Network appoints Strategic Advisor to accelerate UAE expansion]]></content:encoded>
+            <category>Press Release</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[The Blockspace at Permissionless: How gaming is bridging the gap in Web3]]></title>
+            <link>https://polkadot.com/blog/permissionless-2025-blockspace-gaming-event-recap</link>
+            <guid>https://polkadot.com/blog/permissionless-2025-blockspace-gaming-event-recap</guid>
+            <pubDate>Tue, 01 Jul 2025 20:12:00 GMT</pubDate>
+            <description><![CDATA[From gaming demos to investor brunches and DAO-funded creativity, The Blockspace brought a fresh, hands-on energy to Permissionless 2025. Here's how Polkadot made blockchain feel real.]]></description>
+            <content:encoded><![CDATA[From gaming demos to investor brunches and DAO-funded creativity, The Blockspace brought a fresh, hands-on energy to Permissionless 2025. Here's how Polkadot made blockchain feel real.]]></content:encoded>
+            <category>Blog</category>
+            <category>Events</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[The best Web3 games to play in 2025]]></title>
+            <link>https://polkadot.com/blog/best-web3-games-2025</link>
+            <guid>https://polkadot.com/blog/best-web3-games-2025</guid>
+            <pubDate>Wed, 25 Jun 2025 15:59:00 GMT</pubDate>
+            <description><![CDATA[2025 is shaping up to be a breakthrough year for Web3 games. These are the top titles delivering fun, ownership, and real rewards—with no hype required.]]></description>
+            <content:encoded><![CDATA[2025 is shaping up to be a breakthrough year for Web3 games. These are the top titles delivering fun, ownership, and real rewards—with no hype required.]]></content:encoded>
+            <category>Blog</category>
+            <category>Gaming</category>
+        </item>
+        <item>
+            <title><![CDATA[Unique Network and TapNation Activate Blockchain Rewards for Mobile Gamers at Scale]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/unique-network-and-tapnation-blockchain-rewards-for-mobile-gamers</link>
+            <guid>https://polkadot.com/newsroom/press-releases/unique-network-and-tapnation-blockchain-rewards-for-mobile-gamers</guid>
+            <pubDate>Tue, 24 Jun 2025 13:00:00 GMT</pubDate>
+            <description><![CDATA[Unique Network and TapNation today announced the successful launch of blockchain rewards for mobile gamers at scale, bringing over 650,000 new users into the Polkadot ecosystem.]]></description>
+            <content:encoded><![CDATA[Unique Network and TapNation today announced the successful launch of blockchain rewards for mobile gamers at scale, bringing over 650,000 new users into the Polkadot ecosystem.]]></content:encoded>
+            <category>Press Release</category>
+            <category>Gaming</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[What is decentralized AI? A beginner’s guide to blockchain-powered intelligence]]></title>
+            <link>https://polkadot.com/blog/what-is-decentralized-ai</link>
+            <guid>https://polkadot.com/blog/what-is-decentralized-ai</guid>
+            <pubDate>Fri, 20 Jun 2025 12:42:00 GMT</pubDate>
+            <description><![CDATA[Decentralized AI distributes data, compute, and control. It makes AI more open, private, and community-driven. Learn how Polkadot supports this shift.
+]]></description>
+            <content:encoded><![CDATA[Decentralized AI distributes data, compute, and control. It makes AI more open, private, and community-driven. Learn how Polkadot supports this shift.
+]]></content:encoded>
+            <category>Blog</category>
+            <category>AI</category>
+            <category>Blockchain Basics</category>
+        </item>
+        <item>
+            <title><![CDATA[Polkadot Cloud Staking Launches with Powerful Staking Tools and Revamped UX]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/polkadot-staking-dashboard-relaunches</link>
+            <guid>https://polkadot.com/newsroom/press-releases/polkadot-staking-dashboard-relaunches</guid>
+            <pubDate>Wed, 18 Jun 2025 13:04:00 GMT</pubDate>
+            <description><![CDATA[Polkadot Staking Dashboard relaunches with Easy Mode onboarding, multi-chain support, and enhanced user experience.]]></description>
+            <content:encoded><![CDATA[Polkadot Staking Dashboard relaunches with Easy Mode onboarding, multi-chain support, and enhanced user experience.]]></content:encoded>
+            <category>Press Release</category>
+            <category>DeFi</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[How to get involved with Polkadot DAO: A beginner’s guide to OpenGov and Polkassembly]]></title>
+            <link>https://polkadot.com/blog/how-to-use-opengov-and-polkassembly</link>
+            <guid>https://polkadot.com/blog/how-to-use-opengov-and-polkassembly</guid>
+            <pubDate>Fri, 13 Jun 2025 14:20:00 GMT</pubDate>
+            <description><![CDATA[A step-by-step Polkassembly guide for beginners looking to vote, delegate, and participate in Polkadot’s onchain governance system.]]></description>
+            <content:encoded><![CDATA[A step-by-step Polkassembly guide for beginners looking to vote, delegate, and participate in Polkadot’s onchain governance system.]]></content:encoded>
+            <category>Blog</category>
+            <category>Learn</category>
+            <category>DAO</category>
+        </item>
+        <item>
+            <title><![CDATA[FIFA Rivals Launches Worldwide, Bringing Non-Simulation Arcade Football Action to Mobile Devices]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/mythical-games-launches-fifa-rivals-worldwide</link>
+            <guid>https://polkadot.com/newsroom/press-releases/mythical-games-launches-fifa-rivals-worldwide</guid>
+            <pubDate>Thu, 12 Jun 2025 13:00:00 GMT</pubDate>
+            <description><![CDATA[FIFA, the global governing body of football, and next-generation gaming technology studio Mythical Games today announced the launch of FIFA Rivals]]></description>
+            <content:encoded><![CDATA[FIFA, the global governing body of football, and next-generation gaming technology studio Mythical Games today announced the launch of FIFA Rivals]]></content:encoded>
+            <category>Press Release</category>
+            <category>Gaming</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[Identity on your terms: How decentralized digital identity works]]></title>
+            <link>https://polkadot.com/blog/decentralized-digital-identity</link>
+            <guid>https://polkadot.com/blog/decentralized-digital-identity</guid>
+            <pubDate>Tue, 10 Jun 2025 13:39:00 GMT</pubDate>
+            <description><![CDATA[Explore how decentralized identity works and why Polkadot is powering the next era of user-controlled credentials.]]></description>
+            <content:encoded><![CDATA[Explore how decentralized identity works and why Polkadot is powering the next era of user-controlled credentials.]]></content:encoded>
+            <category>Blog</category>
+            <category>Blockchain Basics</category>
+            <category>Identity</category>
+        </item>
+        <item>
+            <title><![CDATA[Polkadot Powers Up with Visa Card for Worldwide Crypto Adoption]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/polkadot-proposes-visa-card-for-worldwide-crypto-adoption</link>
+            <guid>https://polkadot.com/newsroom/press-releases/polkadot-proposes-visa-card-for-worldwide-crypto-adoption</guid>
+            <pubDate>Tue, 10 Jun 2025 13:00:00 GMT</pubDate>
+            <description><![CDATA[Polkadot Community Foundation proposes world's first DAO-owned Visa payment card, offering non-custodial crypto payments worldwide.]]></description>
+            <content:encoded><![CDATA[Polkadot Community Foundation proposes world's first DAO-owned Visa payment card, offering non-custodial crypto payments worldwide.]]></content:encoded>
+            <category>Press Release</category>
+            <category>Ecosystem</category>
+            <category>DeFi</category>
+        </item>
+        <item>
+            <title><![CDATA[Build your own chain, your way: Meet the Polkadot SDK]]></title>
+            <link>https://polkadot.com/blog/polkadot-sdk-explained</link>
+            <guid>https://polkadot.com/blog/polkadot-sdk-explained</guid>
+            <pubDate>Fri, 06 Jun 2025 17:16:00 GMT</pubDate>
+            <description><![CDATA[The Polkadot SDK gives builders full control over blockchain development. Learn how teams use this modular, open-source framework to launch fast, secure, and interoperable networks.]]></description>
+            <content:encoded><![CDATA[The Polkadot SDK gives builders full control over blockchain development. Learn how teams use this modular, open-source framework to launch fast, secure, and interoperable networks.]]></content:encoded>
+            <category>Blog</category>
+            <category>Modular Tech</category>
+            <category>Learn</category>
+            <category>Product &amp; Engineering</category>
+        </item>
         <item>
             <title><![CDATA[Nova Wallet Partners with Mercuryo to Launch First Polkadot Mastercard Debit Card]]></title>
             <link>https://polkadot.com/newsroom/press-releases/nova-wallet-mercuryo-launch-first-polkadot-mastercard-debit-card</link>
@@ -19,7 +163,7 @@
             <content:encoded><![CDATA[Nova Wallet and Mercuryo launch the first Polkadot Mastercard debit card, enabling DOT holders to spend crypto for everyday purchases across Europe and beyond.]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
-            <category>Decentralized Finance</category>
+            <category>DeFi</category>
         </item>
         <item>
             <title><![CDATA[Polkadot's Web3 Philosophy: A legacy of digital freedom from Jobs to Wood]]></title>
@@ -31,7 +175,7 @@
             <category>Blog</category>
             <category>Reflection</category>
             <category>Blockchain Basics</category>
-            <category>Learn Polkadot</category>
+            <category>Learn</category>
         </item>
         <item>
             <title><![CDATA[Polkadot at Consensus 2025: Demos, DAO talk, and new audiences]]></title>
@@ -53,7 +197,7 @@
             <content:encoded><![CDATA[Web3 gaming is redefining ownership, player agency, and game design. Discover what’s changing and how Polkadot is helping build more immersive, community-first experiences.]]></content:encoded>
             <category>Blog</category>
             <category>Gaming</category>
-            <category>Modular Technology</category>
+            <category>Modular Tech</category>
             <category>Blockchain Basics</category>
         </item>
         <item>
@@ -64,8 +208,8 @@
             <description><![CDATA[Decentralized Mic brought together leaders from Silencio, Acurast, and DePIN Hub to explore how decentralized infrastructure networks are creating real-world utility, rewarding users, and reviving Web3’s original values.]]></description>
             <content:encoded><![CDATA[Decentralized Mic brought together leaders from Silencio, Acurast, and DePIN Hub to explore how decentralized infrastructure networks are creating real-world utility, rewarding users, and reviving Web3’s original values.]]></content:encoded>
             <category>Blog</category>
-            <category>Decentralized Physical Infrastructure</category>
-            <category>Learn Polkadot</category>
+            <category>DePIN</category>
+            <category>Learn</category>
         </item>
         <item>
             <title><![CDATA[Mubert goes Web3: Launching a Polkadot-supported rollup to power the creator economy]]></title>
@@ -76,7 +220,7 @@
             <content:encoded><![CDATA[Mubert, the AI music platform, transforms into a decentralized platform for content ownership, monetization, and innovation, powered by Polkadot.]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
-            <category>Artificial Intelligence</category>
+            <category>AI</category>
         </item>
         <item>
             <title><![CDATA[Acurast introduces Vibe Code and Deploy—AI-created websites and games hosted on a decentralized compute network]]></title>
@@ -87,8 +231,8 @@
             <content:encoded><![CDATA[Acurast launches 'vibe code and deploy' on Polkadot—create websites and games with a single AI prompt, instantly deployed on a decentralized network of 70,000+ smartphones across 130+ countries. ]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
-            <category>Decentralized Physical Infrastructure</category>
-            <category>Artificial Intelligence</category>
+            <category>DePIN</category>
+            <category>AI</category>
         </item>
         <item>
             <title><![CDATA[What is the Polkadot DAO? A beginner’s guide to decentralized governance]]></title>
@@ -103,7 +247,7 @@
 ]]></content:encoded>
             <category>Blog</category>
             <category>DAO</category>
-            <category>Learn Polkadot</category>
+            <category>Learn</category>
         </item>
         <item>
             <title><![CDATA[Chain abstraction and the future of Web3 UX: Insights from Decentralized Mic]]></title>
@@ -113,8 +257,8 @@
             <description><![CDATA[Discover how chain abstraction can remove complexity from Web3, improving user experience and enabling multichain applications. Featuring insights from Agoric, Polytope Labs, Sommelier, and Polkadot.]]></description>
             <content:encoded><![CDATA[Discover how chain abstraction can remove complexity from Web3, improving user experience and enabling multichain applications. Featuring insights from Agoric, Polytope Labs, Sommelier, and Polkadot.]]></content:encoded>
             <category>Blog</category>
-            <category>Learn Polkadot</category>
-            <category>Modular Technology</category>
+            <category>Learn</category>
+            <category>Modular Tech</category>
         </item>
         <item>
             <title><![CDATA[The rise of AI agents in crypto: how DeFAI is reshaping finance]]></title>
@@ -125,8 +269,8 @@
             <content:encoded><![CDATA[AI agents are transforming DeFi into a more intelligent, autonomous system. Discover how DeFAI is redefining finance, and how Polkadot’s modular design supports this shift.]]></content:encoded>
             <category>Blog</category>
             <category>Blockchain Basics</category>
-            <category>Decentralized Finance</category>
-            <category>Artificial Intelligence</category>
+            <category>DeFi</category>
+            <category>AI</category>
         </item>
         <item>
             <title><![CDATA[Polkadot SDK unleashes modular blockchain development for the future]]></title>
@@ -134,7 +278,7 @@
             <guid>https://polkadot.com/newsroom/press-releases/Polkadot-SDK-modular-blockchain-development-for-the-future</guid>
             <pubDate>Fri, 02 May 2025 16:30:00 GMT</pubDate>
             <category>Press Release</category>
-            <category>Modular Technology</category>
+            <category>Modular Tech</category>
         </item>
         <item>
             <title><![CDATA[From play-to-earn to play-to-own: Lessons for building the next generation of Web3 games]]></title>
@@ -145,8 +289,8 @@
             <content:encoded><![CDATA[Explore the evolution from play-to-earn to play-to-own, and how Polkadot enables builders to create sustainable, player-first Web3 games.]]></content:encoded>
             <category>Blog</category>
             <category>Gaming</category>
-            <category>Modular Technology</category>
-            <category>Learn Polkadot</category>
+            <category>Modular Tech</category>
+            <category>Learn</category>
         </item>
         <item>
             <title><![CDATA[The real future of blockchain gaming isn’t about money: It’s about meaning]]></title>
@@ -157,7 +301,7 @@
             <content:encoded><![CDATA[Early blockchain games missed the mark. But now, Dot Play and Polkadot are helping developers create games that prioritize ownership, creativity, and long-term engagement.]]></content:encoded>
             <category>Blog</category>
             <category>Gaming</category>
-            <category>Modular Technology</category>
+            <category>Modular Tech</category>
         </item>
         <item>
             <title><![CDATA[What is a modular blockchain? Polkadot’s architecture explained]]></title>
@@ -168,8 +312,8 @@
             <content:encoded><![CDATA[Learn the difference between modular and monolithic blockchain architectures, and how Polkadot pioneered early modular design. Explore how the Polkadot SDK and upcoming JAM upgrade empower teams to launch faster, scale easier, and build with more flexibility.]]></content:encoded>
             <category>Blog</category>
             <category>Blockchain Basics</category>
-            <category>Learn Polkadot</category>
-            <category>Modular Technology</category>
+            <category>Learn</category>
+            <category>Modular Tech</category>
         </item>
         <item>
             <title><![CDATA[CBDCs vs. Stablecoin: Competing visions for digital currency]]></title>
@@ -179,7 +323,7 @@
             <description><![CDATA[Two forms of digital money, two opposing visions for finance. From centralized control to decentralized participation, explore how CBDCs and stablecoins differ and how Polkadot supports a decentralized financial future shaped by community governance and open access.]]></description>
             <content:encoded><![CDATA[Two forms of digital money, two opposing visions for finance. From centralized control to decentralized participation, explore how CBDCs and stablecoins differ and how Polkadot supports a decentralized financial future shaped by community governance and open access.]]></content:encoded>
             <category>Blog</category>
-            <category>Decentralized Finance</category>
+            <category>DeFi</category>
             <category>Blockchain Basics</category>
         </item>
         <item>
@@ -191,7 +335,7 @@
             <content:encoded><![CDATA[Centralized and decentralized exchanges offer different paths into crypto. This beginner-friendly guide breaks down how they work, why DEXs matter for financial access, and how Polkadot supports a more open, permissionless future for global users.]]></content:encoded>
             <category>Blog</category>
             <category>Blockchain Basics</category>
-            <category>Decentralized Finance</category>
+            <category>DeFi</category>
         </item>
         <item>
             <title><![CDATA[What’s in a DOT? The fuel powering Polkadot's decentralized economy]]></title>
@@ -202,7 +346,7 @@
             <content:encoded><![CDATA[DOT is more than just a token. It keeps the Polkadot network secure, runs onchain governance, and supports builders and users alike. Discover how it works and what it means for you.]]></content:encoded>
             <category>Blog</category>
             <category>Blockchain Basics</category>
-            <category>Learn Polkadot</category>
+            <category>Learn</category>
             <category>Tokenomics</category>
         </item>
         <item>
@@ -215,7 +359,7 @@
             <category>Blog</category>
             <category>Reflection</category>
             <category>Security</category>
-            <category>Build on Polkadot</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[How to set up a Polkadot wallet: A step-by-step guide]]></title>
@@ -225,8 +369,8 @@
             <description><![CDATA[New to Polkadot? This beginner-friendly guide walks you through how to set up a Polkadot-compatible wallet, from choosing the right option to securing your seed phrase and getting started with staking and managing your DOT.]]></description>
             <content:encoded><![CDATA[New to Polkadot? This beginner-friendly guide walks you through how to set up a Polkadot-compatible wallet, from choosing the right option to securing your seed phrase and getting started with staking and managing your DOT.]]></content:encoded>
             <category>Blog</category>
-            <category>Learn Polkadot</category>
-            <category>Modular Technology</category>
+            <category>Learn</category>
+            <category>Modular Tech</category>
         </item>
         <item>
             <title><![CDATA[What is a DAO? How decentralized communities are reshaping governance]]></title>
@@ -248,7 +392,7 @@
             <content:encoded><![CDATA[Decentralized Mic pulled together experts from leading experts from Polkadot, Ethereum, and NEAR to discuss decentralized decision-making approaches, address participation challenges, and explore the potential impact of AI on future governance models.]]></content:encoded>
             <category>Blog</category>
             <category>DAO</category>
-            <category>Learn Polkadot</category>
+            <category>Learn</category>
         </item>
         <item>
             <title><![CDATA[Where real-world value meets access: How Polkadot powers RWA and DePIN]]></title>
@@ -258,9 +402,9 @@
             <description><![CDATA[Polkadot is making real-world assets and infrastructure accessible through tokenization, unlocking new opportunities in finance and energy for everyday participants and communities.]]></description>
             <content:encoded><![CDATA[Polkadot is making real-world assets and infrastructure accessible through tokenization, unlocking new opportunities in finance and energy for everyday participants and communities.]]></content:encoded>
             <category>Blog</category>
-            <category>Real-World Assets</category>
-            <category>Decentralized Physical Infrastructure</category>
-            <category>Modular Technology</category>
+            <category>RWA</category>
+            <category>DePIN</category>
+            <category>Modular Tech</category>
         </item>
         <item>
             <title><![CDATA[Understanding DeFi: A starter guide to decentralized finance]]></title>
@@ -270,23 +414,19 @@
             <description><![CDATA[DeFi transforms traditional finance by replacing banks and brokers with smart contracts on blockchain networks. Discover how dapps enable lending, trading, and earning interest without intermediaries—and how Polkadot’s interoperability brings these tools together for a connected financial future.]]></description>
             <content:encoded><![CDATA[DeFi transforms traditional finance by replacing banks and brokers with smart contracts on blockchain networks. Discover how dapps enable lending, trading, and earning interest without intermediaries—and how Polkadot’s interoperability brings these tools together for a connected financial future.]]></content:encoded>
             <category>Blog</category>
-            <category>Decentralized Finance</category>
-            <category>Modular Technology</category>
+            <category>DeFi</category>
+            <category>Modular Tech</category>
         </item>
         <item>
             <title><![CDATA[Acurast powers xcBTC: Making Bitcoin truly cross-chain]]></title>
             <link>https://polkadot.com/newsroom/press-releases/acurast-powers-xcBTC-making-Bitcoin-truly-cross-chain</link>
             <guid>https://polkadot.com/newsroom/press-releases/acurast-powers-xcBTC-making-Bitcoin-truly-cross-chain</guid>
             <pubDate>Tue, 25 Mar 2025 13:00:00 GMT</pubDate>
-            <description><![CDATA[Acurast provides the secure execution environment for automating Bitcoin wrapping and unwrapping across multiple blockchains
-
-
+            <description><![CDATA[Acurast provides the secure execution environment for automating Bitcoin wrapping and unwrapping across multiple blockchains.
 
 
 ]]></description>
-            <content:encoded><![CDATA[Acurast provides the secure execution environment for automating Bitcoin wrapping and unwrapping across multiple blockchains
-
-
+            <content:encoded><![CDATA[Acurast provides the secure execution environment for automating Bitcoin wrapping and unwrapping across multiple blockchains.
 
 
 ]]></content:encoded>
@@ -302,7 +442,7 @@
             <content:encoded><![CDATA[Acurast has surpassed 50,000 onboarded smartphones, becoming the world’s most decentralized compute network—powered by everyday devices across 115+ countries.]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
-            <category>Decentralized Physical Infrastructure</category>
+            <category>DePIN</category>
         </item>
         <item>
             <title><![CDATA[The evolution of digital ownership: How tokenization is transforming gaming, music, and beyond]]></title>
@@ -313,7 +453,7 @@
             <content:encoded><![CDATA[Tokenization is redefining digital ownership in gaming and music, enabling players and artists to control their assets. With blockchain, NFTs, and Polkadot’s interoperability, digital economies are becoming more decentralized, secure, and accessible.]]></content:encoded>
             <category>Blog</category>
             <category>Blockchain Basics</category>
-            <category>Modular Technology</category>
+            <category>Modular Tech</category>
         </item>
         <item>
             <title><![CDATA[Web3 funding playbook for builders, creators, and founders]]></title>
@@ -324,7 +464,7 @@
             <content:encoded><![CDATA[Discover funding opportunities in the Polkadot ecosystem, from grants and bounties to venture capital and community-driven fundraising. Explore pathways for builders at every stage, with insights on securing support for DeFi, DePIN, AI, gaming, and real-world asset tokenization.]]></content:encoded>
             <category>Blog</category>
             <category>Grants &amp; Funding</category>
-            <category>Build on Polkadot</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[Artemis Expands Blockchain Analytics Suite with Support for 10 Polkadot Ecosystem Chains]]></title>
@@ -344,7 +484,7 @@
             <description><![CDATA[This collaboration marks a significant milestone for both organizations as they work together to enhance Polkadot’s DeFi infrastructure.]]></description>
             <content:encoded><![CDATA[This collaboration marks a significant milestone for both organizations as they work together to enhance Polkadot’s DeFi infrastructure.]]></content:encoded>
             <category>Press Release</category>
-            <category>Decentralized Finance</category>
+            <category>DeFi</category>
             <category>Ecosystem</category>
         </item>
         <item>
@@ -399,8 +539,8 @@
             <description><![CDATA[Explore the top blockchain trends of 2025, from decentralized AI and tokenized assets to enterprise adoption and Web3 gaming. Learn how projects powered by Polkadot are shaping the future of finance, infrastructure, and digital identity.]]></description>
             <content:encoded><![CDATA[Explore the top blockchain trends of 2025, from decentralized AI and tokenized assets to enterprise adoption and Web3 gaming. Learn how projects powered by Polkadot are shaping the future of finance, infrastructure, and digital identity.]]></content:encoded>
             <category>Blog</category>
-            <category>Build on Polkadot</category>
-            <category>Modular Technology</category>
+            <category>Build</category>
+            <category>Modular Tech</category>
         </item>
         <item>
             <title><![CDATA[Decentralization’s ripple effect: How Web3 is rewriting digital sovereignty]]></title>
@@ -422,9 +562,9 @@
             <description><![CDATA[Energy Web is revolutionizing the energy sector by digitizing traditionally analog systems, integrating renewable energy, and enabling enterprise-ready, decentralized solutions with its innovative blockchain infrastructure.]]></description>
             <content:encoded><![CDATA[Energy Web is revolutionizing the energy sector by digitizing traditionally analog systems, integrating renewable energy, and enabling enterprise-ready, decentralized solutions with its innovative blockchain infrastructure.]]></content:encoded>
             <category>Case Study</category>
-            <category>Decentralized Physical Infrastructure</category>
-            <category>Real-World Assets</category>
-            <category>Build on Polkadot</category>
+            <category>DePIN</category>
+            <category>RWA</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[Hyperbridge creates a fully onchain multichain bridge]]></title>
@@ -434,8 +574,8 @@
             <description><![CDATA[Hyperbridge redefines cross-chain interoperability with a fully onchain, multichain bridging solution offering secure, seamless cross-chain interoperability.]]></description>
             <content:encoded><![CDATA[Hyperbridge redefines cross-chain interoperability with a fully onchain, multichain bridging solution offering secure, seamless cross-chain interoperability.]]></content:encoded>
             <category>Case Study</category>
-            <category>Build on Polkadot</category>
-            <category>Modular Technology</category>
+            <category>Build</category>
+            <category>Modular Tech</category>
         </item>
         <item>
             <title><![CDATA[Transforming trust in the age of AI with OriginTrail]]></title>
@@ -445,8 +585,8 @@
             <description><![CDATA[Discover how OriginTrail Decentralized Knowledge Graph (DKG) leverages Polkadot’s enterprise-grade infrastructure to revolutionize data connectivity and trust. By combining symbolic and neural AI with blockchain technology, NeuroWeb enables verifiable AI solutions across industries like supply chain, healthcare, and decentralized science.]]></description>
             <content:encoded><![CDATA[Discover how OriginTrail Decentralized Knowledge Graph (DKG) leverages Polkadot’s enterprise-grade infrastructure to revolutionize data connectivity and trust. By combining symbolic and neural AI with blockchain technology, NeuroWeb enables verifiable AI solutions across industries like supply chain, healthcare, and decentralized science.]]></content:encoded>
             <category>Case Study</category>
-            <category>Artificial Intelligence</category>
-            <category>Build on Polkadot</category>
+            <category>AI</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[How Centrifuge built a $661M+ real-world assets infrastructure on Polkadot]]></title>
@@ -456,9 +596,9 @@
             <description><![CDATA[Centrifuge revolutionized real-world asset tokenization by bringing offchain assets onchain. Learn how Polkadot’s modular infrastructure enabled scalability, interoperability, and innovation in decentralized finance.]]></description>
             <content:encoded><![CDATA[Centrifuge revolutionized real-world asset tokenization by bringing offchain assets onchain. Learn how Polkadot’s modular infrastructure enabled scalability, interoperability, and innovation in decentralized finance.]]></content:encoded>
             <category>Case Study</category>
-            <category>Real-World Assets</category>
-            <category>Decentralized Finance</category>
-            <category>Build on Polkadot</category>
+            <category>RWA</category>
+            <category>DeFi</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[Mythical Games revolutionizes gaming and digital asset ownership]]></title>
@@ -469,7 +609,7 @@
             <content:encoded><![CDATA[Mythical Games revolutionizes blockchain gaming with Polkadot, enabling secure asset ownership, vibrant economies, and unmatched scalability. Discover how they power millions of transactions and advance the future of player-driven economies.]]></content:encoded>
             <category>Case Study</category>
             <category>Gaming</category>
-            <category>Build on Polkadot</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[How Centrifuge built a $661M+ real-world asset infrastructure on Polkadot]]></title>
@@ -486,8 +626,8 @@
             <description><![CDATA[Discover why Analog chose Polkadot SDK to power its Timechain, leveraging modularity, security, and forkless upgrades to create a seamless interoperability hub for multichain and cross-chain dapp ecosystems.]]></description>
             <content:encoded><![CDATA[Discover why Analog chose Polkadot SDK to power its Timechain, leveraging modularity, security, and forkless upgrades to create a seamless interoperability hub for multichain and cross-chain dapp ecosystems.]]></content:encoded>
             <category>Blog</category>
-            <category>Build on Polkadot</category>
-            <category>Modular Technology</category>
+            <category>Build</category>
+            <category>Modular Tech</category>
         </item>
         <item>
             <title><![CDATA[Polkadot Roundup MMXXIV]]></title>
@@ -498,7 +638,7 @@
             <content:encoded><![CDATA[Dive into Polkadot Roundup MMXXIV for an in-depth look at 2024 milestones, including high-performance rollups, decentralized governance, and exciting expansions. Discover how Polkadot is evolving into a next-level web3 platform—plus a sneak peek at Polkadot 2, Polkadot 3, and the JAM protocol supercomputer.]]></content:encoded>
             <category>Blog</category>
             <category>Reflection</category>
-            <category>Modular Technology</category>
+            <category>Modular Tech</category>
             <category>Network Insights</category>
         </item>
         <item>
@@ -509,7 +649,7 @@
             <description><![CDATA[Acurast's groundbreaking app lets iPhone users worldwide contribute their phone's compute power to its decentralized confidential cloud network, earning rewards.]]></description>
             <content:encoded><![CDATA[Acurast's groundbreaking app lets iPhone users worldwide contribute their phone's compute power to its decentralized confidential cloud network, earning rewards.]]></content:encoded>
             <category>Press Release</category>
-            <category>Decentralized Physical Infrastructure</category>
+            <category>DePIN</category>
             <category>Ecosystem</category>
         </item>
         <item>
@@ -521,7 +661,7 @@
             <content:encoded><![CDATA[Harbour, in partnership with Velocity Labs, announces the launch of their stablecoin payment system “Magic Ramp”, connecting SEPA Instant payment rails with Polkadot. This collaboration seamlessly integrates TradFi banking systems into Web3, providing efficient, low-cost payment solutions.]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
-            <category>Decentralized Finance</category>
+            <category>DeFi</category>
         </item>
         <item>
             <title><![CDATA[Unifying Polkadot’s developer docs: A new chapter for builder experience]]></title>
@@ -531,7 +671,7 @@
             <description><![CDATA[The PaperMoon team, supported by a Decentralized Futures grant, launches the Polkadot Developer Documentation Hub, a unified platform that simplifies developer onboarding and provides access to essential resources. This marks a transformative step for builders in the Polkadot ecosystem.]]></description>
             <content:encoded><![CDATA[The PaperMoon team, supported by a Decentralized Futures grant, launches the Polkadot Developer Documentation Hub, a unified platform that simplifies developer onboarding and provides access to essential resources. This marks a transformative step for builders in the Polkadot ecosystem.]]></content:encoded>
             <category>Blog</category>
-            <category>Build on Polkadot</category>
+            <category>Build</category>
             <category>Reflection</category>
         </item>
         <item>
@@ -569,8 +709,8 @@
             <description><![CDATA[Bifrost transforms DeFi with Polkadot, unlocking secure and seamless cross-chain liquid staking opportunities.]]></description>
             <content:encoded><![CDATA[Bifrost transforms DeFi with Polkadot, unlocking secure and seamless cross-chain liquid staking opportunities.]]></content:encoded>
             <category>Case Study</category>
-            <category>Decentralized Finance</category>
-            <category>Build on Polkadot</category>
+            <category>DeFi</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[Acurast is building the future of decentralized cloud and confidential AI]]></title>
@@ -580,8 +720,8 @@
             <description><![CDATA[Acurast redefines cloud infrastructure with Polkadot, enabling secure compute for confidential AI applications on a decentralized network of consumer devices.]]></description>
             <content:encoded><![CDATA[Acurast redefines cloud infrastructure with Polkadot, enabling secure compute for confidential AI applications on a decentralized network of consumer devices.]]></content:encoded>
             <category>Case Study</category>
-            <category>Artificial Intelligence</category>
-            <category>Decentralized Physical Infrastructure</category>
+            <category>AI</category>
+            <category>DePIN</category>
         </item>
         <item>
             <title><![CDATA[Uplifting new voices and validators: Polkadot's path to sustainable decentralization]]></title>
@@ -602,7 +742,7 @@
             <description><![CDATA[The Polkadot Blockchain Academy (PBA) is taking Web3 education to the next level with PBA-X, an online course crafted to deliver high-quality blockchain knowledge at scale. Learn how we’re preserving educational standards, fostering a global community, and creating new opportunities for learners everywhere.]]></description>
             <content:encoded><![CDATA[The Polkadot Blockchain Academy (PBA) is taking Web3 education to the next level with PBA-X, an online course crafted to deliver high-quality blockchain knowledge at scale. Learn how we’re preserving educational standards, fostering a global community, and creating new opportunities for learners everywhere.]]></content:encoded>
             <category>Blog</category>
-            <category>Learn Polkadot</category>
+            <category>Learn</category>
             <category>Ecosystem</category>
         </item>
         <item>
@@ -635,7 +775,7 @@
             <content:encoded><![CDATA[Unlock a structured path to start building on Polkadot with EasyA x Polkadot University.]]></content:encoded>
             <category>Blog</category>
             <category>Ecosystem</category>
-            <category>Learn Polkadot</category>
+            <category>Learn</category>
         </item>
         <item>
             <title><![CDATA[How Polimec disrupts fundraising with Polkadot]]></title>
@@ -645,8 +785,8 @@
             <description><![CDATA[Polimec leverages Polkadot to disrupt capital fundraising, improving compliance, security, and cross-chain interoperability for web3 startups.]]></description>
             <content:encoded><![CDATA[Polimec leverages Polkadot to disrupt capital fundraising, improving compliance, security, and cross-chain interoperability for web3 startups.]]></content:encoded>
             <category>Case Study</category>
-            <category>Decentralized Finance</category>
-            <category>Build on Polkadot</category>
+            <category>DeFi</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[Hydration optimizes liquidity management for greater DeFi efficiency]]></title>
@@ -656,8 +796,8 @@
             <description><![CDATA[Hydration streamlines DeFi by unifying liquidity across chains, eliminating bottlenecks, and leveraging Polkadot’s multichain infrastructure.]]></description>
             <content:encoded><![CDATA[Hydration streamlines DeFi by unifying liquidity across chains, eliminating bottlenecks, and leveraging Polkadot’s multichain infrastructure.]]></content:encoded>
             <category>Case Study</category>
-            <category>Decentralized Finance</category>
-            <category>Build on Polkadot</category>
+            <category>DeFi</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[Chainflip powers secure and seamless cross-chain swaps without bridges]]></title>
@@ -667,8 +807,8 @@
             <description><![CDATA[Chainflip redefines DeFi with seamless, secure cross-chain swaps, eliminating bridges and wrapped tokens to enable true interoperability across blockchains.]]></description>
             <content:encoded><![CDATA[Chainflip redefines DeFi with seamless, secure cross-chain swaps, eliminating bridges and wrapped tokens to enable true interoperability across blockchains.]]></content:encoded>
             <category>Case Study</category>
-            <category>Decentralized Finance</category>
-            <category>Build on Polkadot</category>
+            <category>DeFi</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[Polkadot and SP Negócios Partner to Accelerate Blockchain Innovation and Economic Growth in São Paulo ]]></title>
@@ -681,7 +821,7 @@
 ]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
-            <category>Learn Polkadot</category>
+            <category>Learn</category>
         </item>
         <item>
             <title><![CDATA[Dynamic & Modular: Scaling Ambition with Agile Coretime ]]></title>
@@ -691,8 +831,8 @@
             <description><![CDATA[Polkadot’s Agile Coretime simplifies launching and scaling blockchain projects with dynamic blockspace allocation and flexible cost options. Learn how Agile Coretime makes it easier to build, launch, and scale ambitious Web3 projects.]]></description>
             <content:encoded><![CDATA[Polkadot’s Agile Coretime simplifies launching and scaling blockchain projects with dynamic blockspace allocation and flexible cost options. Learn how Agile Coretime makes it easier to build, launch, and scale ambitious Web3 projects.]]></content:encoded>
             <category>Blog</category>
-            <category>Modular Technology</category>
-            <category>Scale on Polkadot</category>
+            <category>Modular Tech</category>
+            <category>Scale</category>
         </item>
         <item>
             <title><![CDATA[How play-to-earn (P2E) is transforming onchain mobile sports gaming]]></title>
@@ -723,7 +863,7 @@
             <content:encoded><![CDATA[The Polkadot community celebrates the release of its latest major product, “Agile Coretime”, as part of the ongoing Polkadot 2.0 upgrade.]]></content:encoded>
             <category>Press Release</category>
             <category>Product &amp; Engineering</category>
-            <category>Scale on Polkadot</category>
+            <category>Scale</category>
         </item>
         <item>
             <title><![CDATA[What is a crypto wallet? Your all-access pass to the future web]]></title>
@@ -738,7 +878,7 @@
 ]]></content:encoded>
             <category>Blog</category>
             <category>Blockchain Basics</category>
-            <category>Decentralized Finance</category>
+            <category>DeFi</category>
         </item>
         <item>
             <title><![CDATA[The Tie Launches Polkadot Ecosystem Dashboard on The Tie Terminal]]></title>
@@ -795,7 +935,7 @@
             <description><![CDATA[Polkadot 2.0 reimagines blockchain with a bold rebrand and powerful features: Agile Coretime, Async Backing, and Elastic Scaling. Step into a more flexible, faster, and scalable network. Learn about the improvements and changes that led to this next era of Polkadot.]]></description>
             <content:encoded><![CDATA[Polkadot 2.0 reimagines blockchain with a bold rebrand and powerful features: Agile Coretime, Async Backing, and Elastic Scaling. Step into a more flexible, faster, and scalable network. Learn about the improvements and changes that led to this next era of Polkadot.]]></content:encoded>
             <category>Blog</category>
-            <category>Build on Polkadot</category>
+            <category>Build</category>
             <category>Ecosystem</category>
         </item>
         <item>
@@ -849,8 +989,8 @@
             <description><![CDATA[Welcome to your go-to source for the latest tech updates, key metrics, and discussions within Polkadot, brought to you by the Parity Success Team. This blog series covers a variety of topics, drawing insights from GitHub, project teams, and the Polkadot Forum.]]></description>
             <content:encoded><![CDATA[Welcome to your go-to source for the latest tech updates, key metrics, and discussions within Polkadot, brought to you by the Parity Success Team. This blog series covers a variety of topics, drawing insights from GitHub, project teams, and the Polkadot Forum.]]></content:encoded>
             <category>Blog</category>
-            <category>Network Insights</category>
             <category>Ecosystem</category>
+            <category>Network Insights</category>
         </item>
         <item>
             <title><![CDATA[Introducing the New Polkadot Ledger App]]></title>
@@ -861,7 +1001,7 @@
             <content:encoded><![CDATA[Discover the new Polkadot Ledger app for seamless, secure transactions. Now available on Ledger Live, it supports Polkadot, Kusama, and more.]]></content:encoded>
             <category>Blog</category>
             <category>Ecosystem</category>
-            <category>Decentralized Finance</category>
+            <category>DeFi</category>
         </item>
         <item>
             <title><![CDATA[Polkadot’s May Ecosystem Insights]]></title>
@@ -893,7 +1033,7 @@
             <description><![CDATA[Community-led DeFi initiative allocates 3M DOT from the Polkadot Treasury, boosting liquidity for DeFi projects Hydration and StellaSwap.]]></description>
             <content:encoded><![CDATA[Community-led DeFi initiative allocates 3M DOT from the Polkadot Treasury, boosting liquidity for DeFi projects Hydration and StellaSwap.]]></content:encoded>
             <category>Blog</category>
-            <category>Decentralized Finance</category>
+            <category>DeFi</category>
             <category>DAO</category>
         </item>
         <item>
@@ -905,7 +1045,7 @@
             <content:encoded><![CDATA[The world of blockchain is rapidly evolving, and one of the most exciting developments is the emergence of real-world asset (RWA) tokenization.]]></content:encoded>
             <category>Blog</category>
             <category>Ecosystem</category>
-            <category>Real-World Assets</category>
+            <category>RWA</category>
         </item>
         <item>
             <title><![CDATA[Consensus 2024: Get Ready, Get Set, Polkadot]]></title>
@@ -926,7 +1066,7 @@
             <content:encoded><![CDATA[Parity engineer Dmitry Sinyavin explains how blockchains on Polkadot can achieve a 10x throughput increase through a combination of async backing and proof-of-validity (PoV) reclaim, enhancing transaction efficiency and scalability.]]></content:encoded>
             <category>Blog</category>
             <category>Product &amp; Engineering</category>
-            <category>Scale on Polkadot</category>
+            <category>Scale</category>
         </item>
         <item>
             <title><![CDATA[April 2024: Key network metrics and insights]]></title>
@@ -948,7 +1088,7 @@
             <content:encoded><![CDATA[Polkadot’s Fellowship has approved the successful implementation of Asynchronous Backing, marking the debut of the first significant advancement in a series of upgrades that will culminate in the much-anticipated Polkadot 2.0.]]></content:encoded>
             <category>Press Release</category>
             <category>Product &amp; Engineering</category>
-            <category>Scale on Polkadot</category>
+            <category>Scale</category>
         </item>
         <item>
             <title><![CDATA[Racing Into the Future: Polkadot and Conor Daly Revolutionize Sports Sponsorship]]></title>
@@ -969,7 +1109,7 @@
             <content:encoded><![CDATA[Polkadot's Elastic Scaling boosts blockchain throughput with flexible coretime, enabling efficient and scalable solutions for web3 dapps (decentralized applications).]]></content:encoded>
             <category>Blog</category>
             <category>Product &amp; Engineering</category>
-            <category>Scale on Polkadot</category>
+            <category>Scale</category>
         </item>
         <item>
             <title><![CDATA[JAM session: Gavin Wood reveals bold vision for Polkadot's next revolution]]></title>
@@ -1000,7 +1140,7 @@
             <content:encoded><![CDATA[Polkadot powers cutting-edge AI projects, driving innovation and solving real-world challenges in decentralized AI development.]]></content:encoded>
             <category>Blog</category>
             <category>Ecosystem</category>
-            <category>Artificial Intelligence</category>
+            <category>AI</category>
         </item>
         <item>
             <title><![CDATA[Racing into the Future: Polkadot’s Community-Driven Indy 500 Sponsorship of Conor Daly a First in Sports History]]></title>
@@ -1041,19 +1181,8 @@
             <description><![CDATA[PBA introduces a remote learning option for the Wave 5 Developers Track. Become a skilled Polkadot developer from the comfort of your home.]]></description>
             <content:encoded><![CDATA[PBA introduces a remote learning option for the Wave 5 Developers Track. Become a skilled Polkadot developer from the comfort of your home.]]></content:encoded>
             <category>Blog</category>
-            <category>Build on Polkadot</category>
+            <category>Build</category>
             <category>Events</category>
-        </item>
-        <item>
-            <title><![CDATA[The Polkadot Alpha Program: A New Era of Collaborative Building]]></title>
-            <link>https://polkadot.com/blog/the-polkadot-alpha-program-a-new-era-for-decentralized-building-collaboration</link>
-            <guid>https://polkadot.com/blog/the-polkadot-alpha-program-a-new-era-for-decentralized-building-collaboration</guid>
-            <pubDate>Mon, 04 Mar 2024 09:37:07 GMT</pubDate>
-            <description><![CDATA[The Polkadot Alpha Program is a new initiative the helps lower entry barriers for teams eager to build in the ecosystem. ]]></description>
-            <content:encoded><![CDATA[The Polkadot Alpha Program is a new initiative the helps lower entry barriers for teams eager to build in the ecosystem. ]]></content:encoded>
-            <category>Blog</category>
-            <category>Ecosystem</category>
-            <category>Build on Polkadot</category>
         </item>
         <item>
             <title><![CDATA[Polkadot Blockchain Academy: Targeted Education for Builders and Founders]]></title>
@@ -1063,7 +1192,7 @@
             <description><![CDATA[Polkadot Blockchain Academy, which celebrates its second birthday later this year, is already meeting the needs of two distinct Web3 groups.]]></description>
             <content:encoded><![CDATA[Polkadot Blockchain Academy, which celebrates its second birthday later this year, is already meeting the needs of two distinct Web3 groups.]]></content:encoded>
             <category>Blog</category>
-            <category>Build on Polkadot</category>
+            <category>Build</category>
             <category>Events</category>
         </item>
         <item>
@@ -1074,7 +1203,7 @@
             <description><![CDATA[Polkadot’s final quarter of 2023 featured sustained organic growth, with pronounced spikes in transactional data in late December.]]></description>
             <content:encoded><![CDATA[Polkadot’s final quarter of 2023 featured sustained organic growth, with pronounced spikes in transactional data in late December.]]></content:encoded>
             <category>Blog</category>
-            <category>Scale on Polkadot</category>
+            <category>Scale</category>
             <category>Network Insights</category>
         </item>
         <item>
@@ -1097,7 +1226,7 @@
             <content:encoded><![CDATA[This is an invitation to all you brilliant innovators in the Polkadot ecosystem to make your mark on the next edition of sub0.]]></content:encoded>
             <category>Blog</category>
             <category>Events</category>
-            <category>Build on Polkadot</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[Crypto Donation Shows Potential for Digital Assets’ Role in Charitable Giving]]></title>
@@ -1117,7 +1246,7 @@
             <description><![CDATA[Farmers, businesses and financial institutions can easily trade, save, invest and transact with Agrotokens at any Visa point-of-sale.]]></description>
             <content:encoded><![CDATA[Farmers, businesses and financial institutions can easily trade, save, invest and transact with Agrotokens at any Visa point-of-sale.]]></content:encoded>
             <category>Press Release</category>
-            <category>Real-World Assets</category>
+            <category>RWA</category>
             <category>Ecosystem</category>
         </item>
         <item>
@@ -1162,7 +1291,7 @@
             <content:encoded><![CDATA[Discover how Polkadot's blockspace can address blockchain development challenges and empower developers to create, innovate, and thrive.]]></content:encoded>
             <category>Blog</category>
             <category>Product &amp; Engineering</category>
-            <category>Build on Polkadot</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[Polkadot reveals future-proof scaling updates at sub0 developer conference]]></title>
@@ -1173,7 +1302,7 @@
             <content:encoded><![CDATA[Polkadot will start testing a new process that will provide radical scaling solutions for the network within a matter of weeks. The plans were unveiled at sub0 by Sophia Gold, Engineering Lead at Parity Technologies.]]></content:encoded>
             <category>Press Release</category>
             <category>Events</category>
-            <category>Scale on Polkadot</category>
+            <category>Scale</category>
         </item>
         <item>
             <title><![CDATA[Elevating Polkadot's Performance and Scale with Asynchronous Backing]]></title>
@@ -1183,7 +1312,7 @@
             <description><![CDATA[Asynchronous backing is the latest step in the roadmap towards natively scaling Polkadot’s performance and flexibility for Web3 use cases across every industry.]]></description>
             <content:encoded><![CDATA[Asynchronous backing is the latest step in the roadmap towards natively scaling Polkadot’s performance and flexibility for Web3 use cases across every industry.]]></content:encoded>
             <category>Blog</category>
-            <category>Scale on Polkadot</category>
+            <category>Scale</category>
             <category>Product &amp; Engineering</category>
         </item>
         <item>
@@ -1195,7 +1324,7 @@
             <content:encoded><![CDATA[Circle has launched USDC on the Polkadot Asset Hub, giving the entire ecosystem immediate access to the popular stablecoin.]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
-            <category>Decentralized Finance</category>
+            <category>DeFi</category>
         </item>
         <item>
             <title><![CDATA[Polkadot Consensus Part 1: Enhanced Economic Security via NPoS]]></title>
@@ -1228,7 +1357,7 @@
             <content:encoded><![CDATA[Polkadot is preparing to return to Lisbon’s LX Factory (September 19-20) for its annual developer conference, sub0, as great minds shaping the way for Web3 come together to share great ideas.]]></content:encoded>
             <category>Press Release</category>
             <category>Events</category>
-            <category>Build on Polkadot</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[Polkadot Blockchain Academy: Forging Web3’s Future Innovators]]></title>
@@ -1355,7 +1484,7 @@
             <content:encoded><![CDATA[Energy Web, a global leader in the cleaner energy solutions movement, will use Polkadot’s superior blockchain tech to help its partners, like Shell, Vodafone and Volkswagen, to meet their clean energy goals.]]></content:encoded>
             <category>Press Release</category>
             <category>Enterprise</category>
-            <category>Real-World Assets</category>
+            <category>RWA</category>
         </item>
         <item>
             <title><![CDATA[Polkadot hands decision-making powers to its community with OpenGov launch]]></title>
@@ -1387,7 +1516,7 @@
             <content:encoded><![CDATA[Uniswap, the most popular decentralized exchange (DEX) by daily traded volume, is set to join Polkadot via the ecosystem’s native layer-1 parachain Moonbeam. ]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
-            <category>Decentralized Finance</category>
+            <category>DeFi</category>
         </item>
         <item>
             <title><![CDATA[Deloitte integrates KILT identity blockchain, creating new markets with reusable digital credentials]]></title>
@@ -1400,7 +1529,7 @@
 ]]></content:encoded>
             <category>Press Release</category>
             <category>Enterprise</category>
-            <category>Decentralized Finance</category>
+            <category>DeFi</category>
         </item>
         <item>
             <title><![CDATA[Frequency integrates KILT to build universal, unstoppable identities]]></title>
@@ -1457,7 +1586,7 @@
             <category>Blog</category>
             <category>Kusama</category>
             <category>Product &amp; Engineering</category>
-            <category>Modular Technology</category>
+            <category>Modular Tech</category>
         </item>
         <item>
             <title><![CDATA[peaq and Fetch.ai bring AI agents to the Polkadot and Kusama ecosystems]]></title>
@@ -1468,7 +1597,7 @@
             <content:encoded><![CDATA[The integration enables developers building on peaq and krest to leverage Fetch.ai’s agents for automating and optimizing various business processes in the Economy of Things.]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
-            <category>Artificial Intelligence</category>
+            <category>AI</category>
         </item>
         <item>
             <title><![CDATA[Staking Update: Q1 2023]]></title>
@@ -1489,7 +1618,7 @@
             <content:encoded><![CDATA[Mandala Metaverse Ready to go Cross-Chain thanks to Polkadot’s powerful interoperability benefits.]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
-            <category>Modular Technology</category>
+            <category>Modular Tech</category>
         </item>
         <item>
             <title><![CDATA[Parachain Dispatch: March 2023]]></title>
@@ -1562,7 +1691,7 @@
             <description><![CDATA[The Polkadot Blockchain Academy, a month-long intensive academic program designed to train the next generation of top blockchain engineers, is coming to Berkeley, CA Summer 2023.]]></description>
             <content:encoded><![CDATA[The Polkadot Blockchain Academy, a month-long intensive academic program designed to train the next generation of top blockchain engineers, is coming to Berkeley, CA Summer 2023.]]></content:encoded>
             <category>Blog</category>
-            <category>Build on Polkadot</category>
+            <category>Build</category>
             <category>Events</category>
         </item>
         <item>
@@ -1633,7 +1762,7 @@
             <description><![CDATA[Polkadot’s first year of parachains brings 79 blockchains across DeFi, gaming (GameFi), decentralized identity (DIDs), and more, showcasing Polkadot's web3 innovation and decentralization at scale.]]></description>
             <content:encoded><![CDATA[Polkadot’s first year of parachains brings 79 blockchains across DeFi, gaming (GameFi), decentralized identity (DIDs), and more, showcasing Polkadot's web3 innovation and decentralization at scale.]]></content:encoded>
             <category>Blog</category>
-            <category>Decentralized Finance</category>
+            <category>DeFi</category>
             <category>Ecosystem</category>
             <category>Network Insights</category>
         </item>
@@ -1723,7 +1852,7 @@
             <description><![CDATA[Web3 Foundation announced today a landmark achievement towards the realization of Web 3.0: the Polkadot blockchain’s native digital asset (DOT) has morphed and is no longer a security. ]]></description>
             <content:encoded><![CDATA[Web3 Foundation announced today a landmark achievement towards the realization of Web 3.0: the Polkadot blockchain’s native digital asset (DOT) has morphed and is no longer a security. ]]></content:encoded>
             <category>Press Release</category>
-            <category>Modular Technology</category>
+            <category>Modular Tech</category>
             <category>Tokenomics</category>
         </item>
         <item>
@@ -1777,7 +1906,7 @@
             <content:encoded><![CDATA[POLKADOT, the multichain ecosystem home to Web3’s boundary-pushing builders, has continued to raise the bar in terms of interoperability and development activity in Q3.]]></content:encoded>
             <category>Press Release</category>
             <category>Network Insights</category>
-            <category>Build on Polkadot</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[Web3 Foundation partners with edX for Polkadot educational courses]]></title>
@@ -1831,7 +1960,7 @@
             <description><![CDATA[Tether Operations Limited (“Tether”), the company operating the blockchain-enabled platform tether.to that powers the largest stablecoin by market capitalization, announced the launch of Tether tokens (“USD₮”) on Polkadot.]]></description>
             <content:encoded><![CDATA[Tether Operations Limited (“Tether”), the company operating the blockchain-enabled platform tether.to that powers the largest stablecoin by market capitalization, announced the launch of Tether tokens (“USD₮”) on Polkadot.]]></content:encoded>
             <category>Press Release</category>
-            <category>Decentralized Finance</category>
+            <category>DeFi</category>
             <category>Ecosystem</category>
         </item>
         <item>
@@ -1866,7 +1995,7 @@
             <content:encoded><![CDATA[The two-day live sub0 conference will run on November 28th-29th. Featuring keynote presentations, breakout sessions, workshops & side events. Sign up for ticket updates.]]></content:encoded>
             <category>Blog</category>
             <category>Events</category>
-            <category>Build on Polkadot</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[Proposal for Common Good Parachains]]></title>
@@ -1900,7 +2029,7 @@
 ]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
-            <category>Decentralized Finance</category>
+            <category>DeFi</category>
         </item>
         <item>
             <title><![CDATA[Staking Update: June-July 2022]]></title>
@@ -1975,8 +2104,8 @@
             <description><![CDATA[Polkadot, the network protocol building true multi-chain application, is happy to announce that the Substrate Developer Hub has just received a major update aimed at improving the Substrate learning and building experience.]]></description>
             <content:encoded><![CDATA[Polkadot, the network protocol building true multi-chain application, is happy to announce that the Substrate Developer Hub has just received a major update aimed at improving the Substrate learning and building experience.]]></content:encoded>
             <category>Press Release</category>
-            <category>Build on Polkadot</category>
-            <category>Modular Technology</category>
+            <category>Build</category>
+            <category>Modular Tech</category>
         </item>
         <item>
             <title><![CDATA[Gavin Wood announces Polkadot’s next-gen governance model for a decentralized future]]></title>
@@ -2112,7 +2241,7 @@
             <content:encoded><![CDATA[Polkadot is at ETHDenver from February 11th to February 20th, 2022, bringing workshops, presentations, and a prize pool of $15,000 as part of the world's largest Ethereum hackathon.]]></content:encoded>
             <category>Press Release</category>
             <category>Events</category>
-            <category>Build on Polkadot</category>
+            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[Staking Update: January 2022]]></title>
@@ -2466,7 +2595,7 @@ Polkadot and Kusama Gifts are a new way to send DOT or KSM to anyone, even if th
             <category>Blog</category>
             <category>Kusama</category>
             <category>Ecosystem</category>
-            <category>Learn Polkadot</category>
+            <category>Learn</category>
         </item>
         <item>
             <title><![CDATA[Polkadot 2020 Roundup]]></title>
@@ -2777,7 +2906,7 @@ Polkadot and Kusama Gifts are a new way to send DOT or KSM to anyone, even if th
             <content:encoded><![CDATA[Polkadot is designed to take back our digital sovereignty and agency from powerful third-parties, while also providing the foundation for new business models, services, organizations—and even entire societies and economies—to take shape and thrive into the future. ]]></content:encoded>
             <category>Blog</category>
             <category>Product &amp; Engineering</category>
-            <category>Learn Polkadot</category>
+            <category>Learn</category>
         </item>
         <item>
             <title><![CDATA[Join Hackusama - Hack on Polkadot's Wild Cousin]]></title>
