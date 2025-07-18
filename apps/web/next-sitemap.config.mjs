@@ -17,7 +17,6 @@ const sanityClient = createClient({
 });
 
 async function fetchDataFromSanity() {
-  console.log('Fetching Sanity data for sitemap...');
   const query = `
     *[_type in [${docTypes.map((type) => `"${type}"`).join(', ')}] && _id in path("drafts.**") == false] {
       _type,
