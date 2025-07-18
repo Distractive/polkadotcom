@@ -35,7 +35,6 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
       >
         <Accordion type="single" collapsible className="flex flex-col w-full">
           {menu.map((section, sectionIndex) => {
-            console.log('section.link:', section.link);
             return (
               <AccordionItem key={section.heading} value={section.heading}>
                 <div className="relative flex items-center justify-center shadow-internal-border">
