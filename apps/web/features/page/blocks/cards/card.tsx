@@ -38,7 +38,6 @@ export default function CardBlock({ card, className }: Props) {
     richBody,
   } = card;
 
-  console.log(card);
   return (
     <Card
       key={_key}
