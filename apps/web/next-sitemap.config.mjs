@@ -138,6 +138,7 @@ export default {
     '/case-studies/tag/*/page/*',
     '/newsroom/press-releases/tag/*/page/*',
     '/api/*',
+    '/admin',
   ],
   additionalPaths: async (config) => {
     const sanityData = await fetchDataFromSanity();
