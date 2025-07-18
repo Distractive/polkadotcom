@@ -17,6 +17,7 @@ export const metricFetchers = {
   getActiveValidators,
   getApprovedReferendums,
   getAverageMonthlyGovernanceVoters,
+  getDailyTreasuryBalanceUSD,
   getDaoMembers,
   getPercentDOTSupplyStaked,
   getPolkadotUptime30d,
@@ -26,7 +27,6 @@ export const metricFetchers = {
   getTotalReferendums,
   getTotalStablecoinsUSD,
   getTotalStakers,
-  getDailyTreasuryBalanceUSD,
   getTotalUniqueAccounts,
 };
 
