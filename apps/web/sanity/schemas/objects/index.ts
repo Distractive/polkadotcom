@@ -49,3 +49,4 @@ export { default as cta } from './blocks/cta';
 export { default as newsletterButton } from './blocks/newsletter-button';
 export { default as countdownTimer } from './blocks/countdown-timer';
 export { default as storeButton } from './blocks/store-button';
+export { default as ctaNewsletter } from './blocks/cta-newsletter';
