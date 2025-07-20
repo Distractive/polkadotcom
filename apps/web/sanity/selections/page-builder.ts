@@ -13,6 +13,7 @@ import { cardsTimelineSelection } from './blocks/cards-timeline';
 import { contentSelection } from './blocks/content';
 import { countdownTimerSelection } from './blocks/countdown-timer';
 import { ctaSelection } from './blocks/cta';
+import { newsletterCTASelection } from './blocks/newsletter-cta';
 import { formSelection } from './blocks/form';
 import { mediaBlockSelection } from './blocks/media-block';
 import { modalSelection } from './blocks/modal';
@@ -95,6 +96,10 @@ export const pageBuilderSelection = {
       '_type == "notfound"': {
         _type: q.literal('notfound'),
         ...notfoundSelection,
+      },
+      '_type == "newsletterCTA"': {
+        _type: q.literal('newsletterCTA'),
+        ...newsletterCTASelection,
       },
       default: {
         _key: q.string(),

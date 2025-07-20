@@ -2,7 +2,7 @@ import { HBSPT_LIST } from '@/sanity/lib/lists';
 import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: 'ctaNewsletter',
+  name: 'newsletterCTA',
   title: 'CTA - Newsletter',
   type: 'object',
   fields: [
