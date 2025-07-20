@@ -5,6 +5,7 @@ import Image from 'next/image';
 
 import { Heading, cn } from '@shared/ui';
 import type { newsletterCTASelection } from '@/sanity/selections/blocks/newsletter-cta';
+import { HubSpotForm } from '@/components/hubspot-form';
 
 interface Props {
   cta: TypeFromSelection<typeof newsletterCTASelection>;
@@ -14,30 +15,30 @@ export function NewsletterCTA({ cta }: Props) {
   return (
     <div className={cn('max-width flex px-gutter justify-center')}>
       <div
-        className="relative w-full max-w-[60rem] overflow-hidden rounded-2xl "
-        data-testid="cta-box"
+        className="relative w-full max-w-[60rem] overflow-hidden rounded-2xl border border-grey-300"
+        data-testid="newsletter-cta-box"
       >
-        {cta.image && (
-          <div className="absolute inset-0 -z-10  overflow-hidden rounded-2xl">
-            <Image
-              src={urlForImage(cta.image.asset)}
-              alt={cta.altText || ''}
-              layout="fill"
-              objectFit="cover"
-              quality={90}
-              className="rounded-2xl"
-            />
-          </div>
-        )}
-
         <div
           className={cn(
-            'flex rounded-2xl p-8 md:p-gutter',
-            !cta.image && 'border border-grey-300',
+            'flex flex-col md:flex-row rounded-2xl p-8 md:px-gutter gap-gutter',
           )}
         >
-          <div className={cn('flex flex-col gap-4')}>
-            <Heading variant="h2">{cta.heading}</Heading>
+          {cta.image && (
+            <div className="rounded-2xl pb-4">
+              <Image
+                src={urlForImage(cta.image.asset)}
+                alt={cta.altText || ''}
+                width={cta.image.asset.metadata.dimensions?.width}
+                height={cta.image.asset.metadata.dimensions?.height}
+                quality={90}
+                className="rounded-2xl"
+              />
+            </div>
+          )}
+          <div className={cn('flex flex-col justify-center')}>
+            <Heading variant="h2" className="pb-3">
+              {cta.heading}
+            </Heading>
             {cta.content && (
               <PortableText
                 value={cta.content}
@@ -52,6 +53,9 @@ export function NewsletterCTA({ cta }: Props) {
                   },
                 }}
               />
+            )}
+            {cta.formType && cta._key && (
+              <HubSpotForm type={cta.formType} id={cta._key} />
             )}
           </div>
         </div>
