@@ -20,11 +20,16 @@ export function NewsletterCTA({ cta }: Props) {
       >
         <div
           className={cn(
-            'flex flex-col md:flex-row rounded-2xl p-8 md:px-gutter gap-gutter',
+            'flex flex-col md:flex-row rounded-2xl p-card gap-gutter ',
           )}
         >
           {cta.image && (
-            <div className="rounded-2xl pb-4">
+            <div
+              className={cn(
+                'rounded-2xl md:min-w-[25%] flex flex-col justify-center ',
+                cta.adjustImageForOverflow && 'pb-6',
+              )}
+            >
               <Image
                 src={urlForImage(cta.image.asset)}
                 alt={cta.altText || ''}
@@ -35,24 +40,31 @@ export function NewsletterCTA({ cta }: Props) {
               />
             </div>
           )}
-          <div className={cn('flex flex-col justify-center')}>
-            <Heading variant="h2" className="pb-3">
+          <div
+            className={cn(
+              'flex flex-col justify-center',
+              cta.adjustImageForOverflow && 'pb-6 md:pb-0',
+            )}
+          >
+            <Heading variant="h2" className="pb-3 mt-0">
               {cta.heading}
             </Heading>
             {cta.content && (
-              <PortableText
-                value={cta.content}
-                components={{
-                  block: {
-                    normal: ({ children }) => (
-                      <p className="text-lg ">{children}</p>
-                    ),
-                    smallprint: ({ children }) => (
-                      <p className="text-sm ">{children}</p>
-                    ),
-                  },
-                }}
-              />
+              <div className="pb-3">
+                <PortableText
+                  value={cta.content}
+                  components={{
+                    block: {
+                      normal: ({ children }) => (
+                        <p className="text-lg ">{children}</p>
+                      ),
+                      smallprint: ({ children }) => (
+                        <p className="text-sm ">{children}</p>
+                      ),
+                    },
+                  }}
+                />
+              </div>
             )}
             {cta.formType && cta._key && (
               <HubSpotForm type={cta.formType} id={cta._key} />

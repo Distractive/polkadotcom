@@ -7,6 +7,7 @@ export const newsletterCTASelection = {
   image: sanityImage('image', {
     withAsset: ['base', 'dimensions'],
   }).nullable(),
+  adjustImageForOverflow: q.boolean().nullable(),
   altText: q.string().nullable().optional(),
   content: q('content')
     .filter()

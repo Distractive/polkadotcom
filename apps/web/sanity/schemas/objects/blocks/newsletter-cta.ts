@@ -12,6 +12,13 @@ export default defineType({
       type: 'image',
     }),
     defineField({
+      name: 'adjustImageForOverflow',
+      title: 'Adjust Image Padding?',
+      description:
+        "Turn this on to compensate for the paper airplane in the default image overflowing its container. Turn this off if you're using a different image.",
+      type: 'boolean',
+    }),
+    defineField({
       name: 'altText',
       title: 'Alt Text',
       type: 'string',
