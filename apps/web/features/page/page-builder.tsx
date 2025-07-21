@@ -60,7 +60,7 @@ export function PageBuilder({ pageBuilder }: Props) {
       case 'form':
         return <EmbedFormBlock form={item} />;
       case 'cta':
-        return <CTA cta={item} />;
+        return <CTA cta={item} isPostEmbed={false} />;
       case 'countdownTimer':
         return <CountdownTimer countdownTimer={item} />;
       case 'notfound':

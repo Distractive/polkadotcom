@@ -195,7 +195,7 @@ export default defineType({
         defineArrayMember({
           type: 'newsletterCTA',
           name: 'newsletterCTA',
-          title: 'CTA - Newsletter)',
+          title: 'CTA - Newsletter',
         }),
       ],
       group: 'content',

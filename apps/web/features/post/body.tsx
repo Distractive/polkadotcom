@@ -237,7 +237,7 @@ export function Body({ body }: Props) {
             return <NewsletterCTA cta={value} isPostEmbed={true} />;
           },
           cta: ({ value }) => {
-            return <CTA cta={value} />;
+            return <CTA cta={value} isPostEmbed={true} />;
           },
         },
       }}

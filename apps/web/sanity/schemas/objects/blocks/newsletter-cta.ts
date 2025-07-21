@@ -10,6 +10,12 @@ export default defineType({
       name: 'image',
       title: 'Image',
       type: 'image',
+      initialValue: {
+        asset: {
+          _type: 'reference',
+          _ref: 'image-62d84523d14243c6c33f2bf57c57da38142fe3bb-525x416-png',
+        },
+      },
     }),
     defineField({
       name: 'adjustImageForOverflow',
@@ -17,6 +23,7 @@ export default defineType({
       description:
         "Turn this on to compensate for the paper airplane in the default image overflowing its container. Turn this off if you're using a different image.",
       type: 'boolean',
+      initialValue: true,
     }),
     defineField({
       name: 'altText',
@@ -27,6 +34,7 @@ export default defineType({
       name: 'heading',
       title: 'Heading',
       type: 'string',
+      initialValue: "Don't miss a beat",
     }),
     defineField({
       name: 'content',
@@ -48,6 +56,20 @@ export default defineType({
           initialValue: { style: 'lineBreak' },
         },
       ],
+      initialValue: [
+        {
+          _type: 'block',
+          style: 'normal',
+          children: [
+            {
+              _type: 'span',
+              text: 'Subscribe to the Polkadot newsletter to get your regular dose of ecosystem updates and events straight to your inbox.',
+              marks: [],
+            },
+          ],
+          markDefs: [],
+        },
+      ],
     }),
     defineField({
       name: 'formType',
@@ -56,6 +78,7 @@ export default defineType({
       options: {
         list: HBSPT_LIST,
       },
+      initialValue: 'e2c50b46-5b6d-4d7e-b8cf-728a4ecc8da3',
     }),
   ],
   preview: {
