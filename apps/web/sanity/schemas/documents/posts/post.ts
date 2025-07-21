@@ -187,6 +187,16 @@ export default defineType({
           name: 'summary',
           title: 'Summary',
         }),
+        defineArrayMember({
+          type: 'cta',
+          name: 'cta',
+          title: 'CTA - Custom',
+        }),
+        defineArrayMember({
+          type: 'newsletterCTA',
+          name: 'newsletterCTA',
+          title: 'CTA - Newsletter)',
+        }),
       ],
       group: 'content',
     }),

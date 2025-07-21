@@ -3,6 +3,7 @@ import { q, sanityImage } from 'groqd';
 
 export const newsletterCTASelection = {
   _key: q.string(),
+  _type: q.literal('newsletterCTA'),
   heading: q.string().nullable().optional(),
   image: sanityImage('image', {
     withAsset: ['base', 'dimensions'],

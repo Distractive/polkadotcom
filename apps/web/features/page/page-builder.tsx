@@ -66,7 +66,7 @@ export function PageBuilder({ pageBuilder }: Props) {
       case 'notfound':
         return <NotFound />;
       case 'newsletterCTA':
-        return <NewsletterCTA cta={item} />;
+        return <NewsletterCTA cta={item} isPostEmbed={false} />;
       default:
         return <p>Unknown type: {item._type}</p>;
     }

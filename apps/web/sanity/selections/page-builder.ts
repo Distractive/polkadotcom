@@ -98,7 +98,6 @@ export const pageBuilderSelection = {
         ...notfoundSelection,
       },
       '_type == "newsletterCTA"': {
-        _type: q.literal('newsletterCTA'),
         ...newsletterCTASelection,
       },
       default: {

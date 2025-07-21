@@ -9,13 +9,19 @@ import { HubSpotForm } from '@/components/hubspot-form';
 
 interface Props {
   cta: TypeFromSelection<typeof newsletterCTASelection>;
+  isPostEmbed?: boolean;
 }
 
-export function NewsletterCTA({ cta }: Props) {
+export function NewsletterCTA({ cta, isPostEmbed }: Props) {
   return (
-    <div className={cn('max-width flex px-gutter justify-center')}>
+    <div
+      className={cn(
+        'max-width flex justify-center pt-6 pb-12',
+        !isPostEmbed && 'px-gutter',
+      )}
+    >
       <div
-        className="relative w-full max-w-[60rem] overflow-hidden rounded-2xl border border-grey-300"
+        className="relative w-full overflow-hidden rounded-2xl border border-grey-300"
         data-testid="newsletter-cta-box"
       >
         <div
