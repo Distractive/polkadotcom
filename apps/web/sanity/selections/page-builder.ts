@@ -86,7 +86,6 @@ export const pageBuilderSelection = {
         ...formSelection,
       },
       '_type == "cta"': {
-        _type: q.literal('cta'),
         ...ctaSelection,
       },
       '_type == "countdownTimer"': {

@@ -6,6 +6,7 @@ import { newsletterButtonSelection } from './newsletter-button';
 
 export const ctaSelection = {
   _key: q.string(),
+  _type: q.literal('cta'),
   heading: q.string().nullable().optional(),
   useWhiteText: q.boolean().nullable().optional(),
   isCentered: q.boolean().nullable().optional(),
