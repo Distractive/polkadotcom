@@ -17,10 +17,19 @@ interface Props {
 
 export default function Menu({ menu, modal }: Props) {
   return (
-    <div className="grid grid-cols-1 gap-6 px-gutter py-gutter sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-      <div className="order-1 col-span-1 font-default text-black md:order-[99]">
+    <div className="grid grid-cols-1 gap-6 px-gutter py-gutter sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+      <div className="order-1 col-span-1 font-default text-black">
         <div className="flex flex-col items-start gap-2">
           <ModalButton modal={modal} buttonClassName="font-medium" />
+          <div className="sm:pr-4 pt-3">
+            <Heading
+              variant="h4"
+              size="h4"
+              className="font-medium !text-[1.5rem]"
+            >
+              Polkadot news straight from the source.{' '}
+            </Heading>
+          </div>
         </div>
       </div>
 
