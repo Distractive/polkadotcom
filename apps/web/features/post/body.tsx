@@ -4,6 +4,8 @@ import type { Key } from 'react';
 
 import { CustomUrl } from '@/components/custom-url';
 import { Heading } from '@shared/ui';
+import { NewsletterCTA } from '../page/blocks/newsletter-cta';
+import { CTA } from '../page/blocks/cta';
 
 interface Props {
   // biome-ignore lint/suspicious/noExplicitAny: <TODO: Fix type>
@@ -230,6 +232,12 @@ export function Body({ body }: Props) {
                 </div>
               </div>
             );
+          },
+          newsletterCTA: ({ value }) => {
+            return <NewsletterCTA cta={value} isPostEmbed={true} />;
+          },
+          cta: ({ value }) => {
+            return <CTA cta={value} isPostEmbed={true} />;
           },
         },
       }}

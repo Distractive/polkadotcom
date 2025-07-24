@@ -62,6 +62,7 @@ import {
   summary,
   video,
   youtube,
+  newsletterCTA,
 } from './schemas/objects';
 import {
   banner,
@@ -137,6 +138,7 @@ const objectTypes = [
   summary,
   newsletterButton,
   storeButton,
+  newsletterCTA,
 ];
 
 const singletons = [

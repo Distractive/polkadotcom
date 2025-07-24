@@ -3,6 +3,8 @@ import { nullToUndefined, q, sanityImage } from 'groqd';
 import type { Selection } from 'groqd';
 
 import { customUrlSelection } from '../selections/custom-url';
+import { newsletterCTASelection } from '../selections/blocks/newsletter-cta';
+import { ctaSelection } from '../selections/blocks/cta';
 
 export const postSelection = {
   title: q.string().nullable(),
@@ -80,6 +82,12 @@ export const postSelection = {
             text: q.array(q.contentBlock()),
           }),
         ),
+      },
+      '_type == "newsletterCTA"': {
+        ...newsletterCTASelection,
+      },
+      '_type == "cta"': {
+        ...ctaSelection,
       },
       default: {
         _key: q.string(),

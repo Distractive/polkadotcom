@@ -1,31 +1,19 @@
 import type { Selection } from 'groqd';
 import { q, sanityImage } from 'groqd';
 
-import { customUrlSelection } from '../custom-url';
-import { newsletterButtonSelection } from './newsletter-button';
-
-export const ctaSelection = {
+export const newsletterCTASelection = {
   _key: q.string(),
-  _type: q.literal('cta'),
+  _type: q.literal('newsletterCTA'),
   heading: q.string().nullable().optional(),
-  useWhiteText: q.boolean().nullable().optional(),
-  isCentered: q.boolean().nullable().optional(),
-  twoThirdsText: q.boolean().nullable().optional(),
   image: sanityImage('image', {
     withAsset: ['base', 'dimensions'],
   }).nullable(),
+  adjustImageForOverflow: q.boolean().nullable(),
   altText: q.string().nullable().optional(),
   content: q('content')
     .filter()
     .select({
       '_type == "block"': ['{...}', q.contentBlock()],
-      '_type == "customUrl"': {
-        _type: q.literal('customUrl'),
-        ...customUrlSelection,
-      },
-      '_type == "newsletterButton"': {
-        ...newsletterButtonSelection,
-      },
       default: {
         _key: q.string(),
         _type: ['"unsupported"', q.literal('unsupported')],
@@ -33,4 +21,5 @@ export const ctaSelection = {
       },
     })
     .nullable(),
+  formType: q.string().optional().nullable(),
 } satisfies Selection;
