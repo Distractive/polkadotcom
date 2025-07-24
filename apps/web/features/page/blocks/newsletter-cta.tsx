@@ -33,7 +33,7 @@ export function NewsletterCTA({ cta, isPostEmbed }: Props) {
             <div
               className={cn(
                 'rounded-2xl md:min-w-[25%] flex flex-col justify-center ',
-                cta.adjustImageForOverflow && 'pb-6',
+                cta.adjustImageForOverflow && 'pb-[2.75%]',
               )}
             >
               <Image
