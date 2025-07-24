@@ -16,6 +16,7 @@ interface Props {
 }
 
 export function Root({ home }: Props) {
+  console.log(home);
   return (
     <div>
       <Hero hero={home.hero} />
@@ -25,7 +26,7 @@ export function Root({ home }: Props) {
       <Ecosystem ecosystem={home.ecosystem} />
       <Build build={home.build} />
       <Connected connected={home.connected} />
-      <Newsletter />
+      {home.newsletterCTA?.[0] && <Newsletter cta={home.newsletterCTA[0]} />}
     </div>
   );
 }

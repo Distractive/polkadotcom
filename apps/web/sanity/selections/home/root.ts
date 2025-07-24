@@ -6,17 +6,16 @@ import { buildSelection } from './build';
 import { connectedSelection } from './connected';
 import { ecosystemSelection } from './ecosystem';
 import { heroSelection } from './hero';
-import { innovationSelection } from './innovation';
 import { networkSelection } from './network';
 import { statsSelection } from './stats';
 import { videoSelection } from './video';
+import { newsletterCTASelection } from '../blocks/newsletter-cta';
 
 export const homeSelection = {
   home: q('*')
     .filterByType('home')
     .grab$({
       ...heroSelection,
-      ...innovationSelection,
       ...videoSelection,
       ...connectedSelection,
       ...ecosystemSelection,
@@ -24,6 +23,10 @@ export const homeSelection = {
       ...networkSelection,
       ...buildSelection,
       ...singletonMetaSelection,
+      newsletterCTA: q('newsletterCTA')
+        .filter()
+        .grab$({ ...newsletterCTASelection })
+        .nullable(),
     })
     .slice(0),
 } satisfies Selection;

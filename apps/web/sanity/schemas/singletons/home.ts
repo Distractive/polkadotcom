@@ -8,6 +8,10 @@ export default defineType({
   icon: HomeIcon,
   fields: [
     defineField({
+      name: 'meta',
+      type: 'meta',
+    }),
+    defineField({
       name: 'hero',
       type: 'homeHero',
     }),
@@ -36,8 +40,10 @@ export default defineType({
       type: 'homeConnected',
     }),
     defineField({
-      name: 'meta',
-      type: 'meta',
+      name: 'newsletterCTA',
+      type: 'array',
+      of: [{ type: 'newsletterCTA' }],
+      validation: (Rule) => Rule.max(1),
     }),
   ],
 });
