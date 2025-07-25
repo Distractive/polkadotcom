@@ -29,7 +29,7 @@ export function NewsletterCTA({ cta, isPostEmbed }: Props) {
             'flex flex-col md:flex-row rounded-2xl p-card gap-gutter ',
           )}
         >
-          {cta.image && (
+          {cta?.image && (
             <div
               className={cn(
                 'rounded-2xl md:min-w-[25%] flex flex-col justify-center ',
@@ -49,16 +49,16 @@ export function NewsletterCTA({ cta, isPostEmbed }: Props) {
           <div
             className={cn(
               'flex flex-col justify-center',
-              cta.adjustImageForOverflow && 'pb-6 md:pb-0',
+              cta?.adjustImageForOverflow && 'pb-6 md:pb-0',
             )}
           >
             <Heading variant="h2" className="pb-3 mt-0">
-              {cta.heading}
+              {cta?.heading}
             </Heading>
-            {cta.content && (
+            {cta?.content && (
               <div className="pb-3">
                 <PortableText
-                  value={cta.content}
+                  value={cta?.content}
                   components={{
                     block: {
                       normal: ({ children }) => (
@@ -72,8 +72,8 @@ export function NewsletterCTA({ cta, isPostEmbed }: Props) {
                 />
               </div>
             )}
-            {cta.formType && cta._key && (
-              <HubSpotForm type={cta.formType} id={cta._key} />
+            {cta?.formType && cta?._key && (
+              <HubSpotForm type={cta?.formType} id={cta?._key} />
             )}
           </div>
         </div>

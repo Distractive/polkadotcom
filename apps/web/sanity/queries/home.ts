@@ -9,7 +9,8 @@ export async function getHome(isDraftMode: boolean) {
     .nullable();
 
   try {
-    const result = await runQuery(query, {}, false);
+    const result = await runQuery(query, {}, isDraftMode);
+    console.log('result:', result);
     return result;
   } catch (error) {
     console.error('Error fetching home page:', error);

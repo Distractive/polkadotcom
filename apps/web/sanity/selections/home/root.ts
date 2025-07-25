@@ -10,6 +10,7 @@ import { networkSelection } from './network';
 import { statsSelection } from './stats';
 import { videoSelection } from './video';
 import { newsletterCTASelection } from '../blocks/newsletter-cta';
+import { cardsSelection } from '../blocks/cards';
 
 export const homeSelection = {
   home: q('*')
@@ -26,6 +27,10 @@ export const homeSelection = {
       newsletterCTA: q('newsletterCTA')
         .filter()
         .grab$({ ...newsletterCTASelection }),
+      cards: q('cards')
+        .filter()
+        .grab$({ ...cardsSelection }),
+      // .slice(1, 2),
     })
     .slice(0),
 } satisfies Selection;

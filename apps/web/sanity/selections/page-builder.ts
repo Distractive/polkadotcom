@@ -38,7 +38,6 @@ export const pageBuilderSelection = {
         ...buttonBlockSelection,
       },
       '_type == "cards"': {
-        _type: q.literal('cards'),
         ...cardsSelection,
       },
       '_type == "cardsSmall"': {

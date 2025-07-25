@@ -40,6 +40,12 @@ export default defineType({
       type: 'homeConnected',
     }),
     defineField({
+      name: 'cards',
+      type: 'array',
+      of: [{ type: 'cards' }],
+      validation: (Rule) => Rule.max(1),
+    }),
+    defineField({
       name: 'newsletterCTA',
       type: 'array',
       of: [{ type: 'newsletterCTA' }],
