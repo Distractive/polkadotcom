@@ -1,8 +1,8 @@
 import type { homeSelection } from '@/sanity/selections/home/root';
 import type { TypeFromSelection } from 'groqd';
 
-import { Connected } from '@/features/home/sections/connected';
-import { Ecosystem } from '@/features/home/sections/ecosystem';
+// import { Connected } from '@/features/home/sections/connected';
+// import { Ecosystem } from '@/features/home/sections/ecosystem';
 import { Hero } from '@/features/home/sections/hero';
 import { Network } from '@/features/home/sections/network';
 import { Build } from '@/features/home/sections/start-building';
@@ -24,11 +24,15 @@ export function Root({ home }: Props) {
       <Video video={home.video} />
       <Network network={home.network} />
       <Stats stats={home.stats} />
-      <Ecosystem ecosystem={home.ecosystem} />
+      {/* <Ecosystem ecosystem={home.ecosystem} /> */}
       <Build build={home.build} />
-      <Connected connected={home.connected} />
-      {home.cards?.[0] && <CardsBlock cards={home.cards[0]} />}
-      {home.newsletterCTA?.[0] && <Newsletter cta={home.newsletterCTA[0]} />}
+      {/* <Connected connected={home.connected} /> */}
+      <div className="py-section">
+        {home.cards?.[0] && <CardsBlock cards={home.cards[0]} />}
+      </div>
+      <div className="py-section">
+        {home.newsletterCTA?.[0] && <Newsletter cta={home.newsletterCTA[0]} />}
+      </div>
     </div>
   );
 }

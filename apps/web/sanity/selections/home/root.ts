@@ -30,7 +30,6 @@ export const homeSelection = {
       cards: q('cards')
         .filter()
         .grab$({ ...cardsSelection }),
-      // .slice(1, 2),
     })
     .slice(0),
 } satisfies Selection;

@@ -16,27 +16,27 @@ interface Props {
 export function CardsBlock({ cards }: Props) {
   return (
     <div
-      key={cards?._key}
+      key={cards._key}
       className={cn(
         'grid-system max-width relative',
-        !cards?.isCarousel && 'px-gutter',
+        !cards.isCarousel && 'px-gutter',
       )}
-      data-testid={`cards-block-${cards?._key}`}
+      data-testid={`cards-block-${cards._key}`}
     >
       <div className="col-span-full pb-section lg:col-span-8">
         <div
           className={cn(
             'flex flex-col gap-copy',
-            cards?.isCarousel && 'px-gutter',
+            cards.isCarousel && 'px-gutter',
           )}
         >
-          <Heading variant="h2">{cards?.heading}</Heading>
-          {cards?.body && <p>{cards?.body}</p>}
+          <Heading variant="h2">{cards.heading}</Heading>
+          {cards.body && <p>{cards.body}</p>}
         </div>
       </div>
-      {cards?.isCarousel ? (
+      {cards.isCarousel ? (
         <Carousel className="px-gutter">
-          {cards?.items?.map((card) => (
+          {cards.items?.map((card) => (
             <CarouselItem
               key={card._key}
               className={cn(
@@ -53,14 +53,14 @@ export function CardsBlock({ cards }: Props) {
           <div
             className={cn(
               'grid-system col-span-full gap-12',
-              !cards?.hasTags && 'md:auto-rows-1fr',
+              !cards.hasTags && 'md:auto-rows-1fr',
             )}
           >
-            {cards?.hasTags && cards?.items ? (
+            {cards.hasTags && cards.items ? (
               <CardTags
-                tags={cards.tags}
-                cards={cards.items}
-                useFourColumns={cards.useFourColumns}
+                tags={cards.tags ?? []}
+                cards={cards.items ?? []}
+                useFourColumns={cards.useFourColumns ?? false}
               />
             ) : (
               cards?.items?.map((card) => {

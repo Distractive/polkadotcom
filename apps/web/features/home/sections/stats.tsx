@@ -16,9 +16,6 @@ export function Stats({ stats }: Props) {
       className="grid-pile relative  "
       data-testid="stats-pile"
     >
-      {/* biome-ignore lint/style/useSelfClosingElements: <Not possible for div> */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(225deg,rgba(240,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(225deg,#E4FF07_0%,#07FFFF_100%)]"></div>
-
       <article
         id="stats.wrapper"
         className="grid-pile grid-system relative col-span-12 h-auto items-center justify-center lg:h-full"

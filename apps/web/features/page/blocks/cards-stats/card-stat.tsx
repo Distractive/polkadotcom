@@ -5,6 +5,7 @@ import { Button, Card, CardHeader, Heading, Icon, cn } from '@shared/ui';
 import type { TypeFromSelection } from 'groqd';
 
 import { LiveMetric } from '@/features/metrics/live-metric';
+import { urlForImage } from '@/sanity/lib/image';
 
 interface Props {
   card: TypeFromSelection<typeof cardStatSelection>;
@@ -14,7 +15,10 @@ interface Props {
 export default function CardStatBlock({ card, className }: Props) {
   const {
     _key,
+    icon,
+    makeIconFullWidth,
     heading,
+    fallbackHeading,
     body,
     content,
     useLiveMetric,
@@ -31,25 +35,39 @@ export default function CardStatBlock({ card, className }: Props) {
   return (
     <Card key={_key} className={cn('bg-white p-gutter', className)}>
       <CardHeader className="grid">
-        <Heading variant="h3" size="h2" className="pb-1">
-          {useLiveMetric && liveMetric !== null && liveMetric !== undefined ? (
-            <LiveMetric
-              metric={cleanMetric}
-              fallbackMetric={heading}
-              addDollarSign={addDollarSign}
-              displayInMillions={displayInMillions}
+        {icon && (
+          <div className="py-4 w-full">
+            <img
+              src={urlForImage(icon.asset)}
+              alt=""
+              loading="lazy"
+              className={cn(
+                'w-full rounded-2xl object-cover object-center',
+                !makeIconFullWidth && 'size-14',
+              )}
             />
+          </div>
+        )}
+        <Heading variant="h3" size="h2" className="pb-3">
+          {useLiveMetric && liveMetric !== null && liveMetric !== undefined ? (
+            <>
+              <LiveMetric
+                metric={cleanMetric}
+                fallback={fallbackHeading}
+                addDollarSign={addDollarSign}
+                displayInMillions={displayInMillions}
+              />
+              {heading}
+            </>
           ) : (
             heading
           )}
         </Heading>
-        <Heading variant="h3" size="h4" className="font-light">
-          {body}
-        </Heading>
+        {body && <div className={cn(content && 'pb-6')}>{body}</div>}
       </CardHeader>
 
       {content && (
-        <div className="pt-4  md:pt-5">
+        <div className="text-sm">
           <PortableText
             value={content}
             components={{

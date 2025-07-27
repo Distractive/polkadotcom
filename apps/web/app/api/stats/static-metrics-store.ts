@@ -6,7 +6,7 @@ export const staticMetricsStore = {
   getApprovedReferendums: 937,
   getAverageMonthlyGovernanceVoters: 15661,
   getDailyTreasuryBalanceUSD: 72791870.46000001,
-  getDaoMembers: '1.49 million',
+  getDaoMembers: '1.49',
   getPercentDOTSupplyStaked: '53%',
   getPolkadotUptime30d: '100%',
   getTotalDOTStaked: '836614566.3352035',
