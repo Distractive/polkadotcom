@@ -119,7 +119,7 @@ const config = {
         'header-top': 'var(--spacing-header-top)',
       },
       boxShadow: {
-        card: '0px 24px 32px 0px rgba(0, 0, 0, 0.05)',
+        card: '0px 4px 8px 0px rgba(0, 0, 0, 0.1)',
         'internal-border': '1px 1px 0px 0px #E7E7EC',
       },
       keyframes: {

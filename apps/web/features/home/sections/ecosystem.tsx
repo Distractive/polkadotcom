@@ -17,7 +17,7 @@ export function Ecosystem({ ecosystem }: Props) {
     <div
       id="ecosystem-pile"
       data-testid="ecosystem-pile"
-      className="grid-pile pt-20 md:pt-[6rem]"
+      className="grid-pile pt-20 md:pt-[6rem] max-width px-gutter "
     >
       <article
         id="ecosystem.wrapper"
@@ -26,13 +26,18 @@ export function Ecosystem({ ecosystem }: Props) {
         <div
           id="ecosystem.content"
           className={cn(
-            'max-width col-span-full flex flex-col items-center justify-center',
+            'col-span-full flex flex-col items-center justify-center',
             'lg:col-span-12 lg:col-start-1',
             'xl:col-span-10 xl:col-start-2',
             'mt-header-top',
           )}
         >
-          <div className="col-span-12 px-gutter md:w-3/4 lg:w-4/6 lg:px-0">
+          <div
+            className={cn(
+              'col-span-full px-gutter md:text-center',
+              'md:col-span-8 md:col-start-3 lg:w-4/6 pb-12',
+            )}
+          >
             <Heading
               variant="h2"
               className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"
@@ -41,25 +46,22 @@ export function Ecosystem({ ecosystem }: Props) {
             >
               {ecosystem.title}
             </Heading>
-            <p
-              id="ecosystem-body"
-              className="mb-card text-lg lg:w-9/12 xl:w-11/12"
-            >
+            <p id="ecosystem-body" className="mb-card text-lg">
               {ecosystem.body}
             </p>
           </div>
 
-          <div className="grid-system col-span-12 gap-card !gap-x-card px-gutter md:px-0">
+          <div className="grid-system col-span-12 gap-card !gap-x-card md:px-0">
             {ecosystem.items.map((item, index) => (
               <Card
                 data-testid={`ecosystem-content-${item._key}`}
                 key={item._key}
                 className={cn(
                   'eco-card aspect-video place-content-end overflow-hidden rounded-2xl md:aspect-auto md:!h-[22.5rem]',
-                  'col-span-full col-start-1 md:col-span-4 md:col-start-2 lg:col-span-8 lg:col-start-3',
+                  'col-span-full col-start-1',
                   (index === 2 || index === 5) && 'lg:col-start-7',
                   (index === 1 || index === 2 || index === 4 || index === 5) &&
-                    'relative lg:col-span-4',
+                    'relative lg:col-span-6',
                 )}
                 data-index={index}
               >

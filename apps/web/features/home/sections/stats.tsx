@@ -13,12 +13,12 @@ export function Stats({ stats }: Props) {
   return (
     <div
       id="stats-pile"
-      className="grid-pile relative  "
+      className="grid-pile relative px-gutter max-width"
       data-testid="stats-pile"
     >
       <div
         id="stats.wrapper"
-        className="grid-pile grid-system relative col-span-12 h-auto items-center justify-center lg:h-full"
+        className=" relative col-span-12 h-auto items-center justify-center lg:h-full"
       >
         <div
           id="stats.content"
@@ -33,8 +33,8 @@ export function Stats({ stats }: Props) {
           <Heading
             variant="h2"
             className={cn(
-              'px-gutter  leading-[1.1] lg:pl-gutter lg:pr-gutter',
-              'col-span-full md:col-span-3 md:col-start-1  md:text-[3.25rem] lg:col-start-1 xl:col-start-2 xl:text-[3.813rem]',
+              'leading-[1.1]',
+              'col-span-full md:col-span-3 md:col-start-1  md:text-[3rem] lg:col-start-1 xl:col-start-2 xl:text-[3.813rem]',
               '!hyphens-none !break-normal',
             )}
             size="display"
@@ -45,9 +45,9 @@ export function Stats({ stats }: Props) {
           </Heading>
           <div
             className={cn(
-              'columns-1 md:columns-2 gap-8 relative col-span-full mt-10 px-gutter lg:mt-0',
-              'lg:col-span-8 lg:col-start-6',
-              'xl:col-span-9 xl:col-start-7',
+              'columns-1 md:columns-2 gap-8 relative col-span-full mt-10 lg:mt-0',
+              'lg:col-span-7 lg:col-start-6',
+              'xl:col-span-5 xl:col-start-7',
             )}
           >
             {stats.items.map((item, index) => {
@@ -58,7 +58,7 @@ export function Stats({ stats }: Props) {
                   className={cn(
                     'stats-card',
                     'break-inside-avoid mb-8 p-card lg:p-8 !h-fit',
-                    // Apply padding transform only on medium screens and above
+                    // Nudge down second column on md and above
                     stats.columnPadding &&
                       (index === 3 || index === 4) &&
                       'md:translate-y-[var(--column-padding)]',

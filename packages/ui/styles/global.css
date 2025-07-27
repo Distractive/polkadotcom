@@ -16,7 +16,7 @@
   }
 
   .max-width {
-    @apply mx-auto w-full max-w-[100rem];
+    @apply mx-auto w-full max-w-[90rem];
   }
 
   .link-styling {

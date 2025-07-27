@@ -8,7 +8,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   Heading,
   Icon,
   cn,
@@ -31,10 +30,10 @@ export default function CardSmallBlock({ card, className }: Props) {
         className,
       )}
     >
-      <CustomUrl value={link} isWrapper>
+      <CustomUrl value={link} isWrapper className="w-full h-full">
         <div
           className={cn(
-            'flex h-full gap-6 p-6 lg:gap-card lg:p-card',
+            'flex h-full gap-5 p-6 lg:p-card w-full',
             icon ? 'items-center' : 'items-start',
           )}
         >
@@ -78,7 +77,7 @@ export default function CardSmallBlock({ card, className }: Props) {
                     : 'primary'
                 }
                 size="md"
-                className="mt-copy group-focus-within:after:translate-x-0 md:mr-auto md:group-hover:after:translate-x-0"
+                className="mt-copy group-focus-within:after:translate-x-0 md:mr-auto "
               >
                 <CustomUrl className="outline-none" value={link} isNested>
                   {link.label}
@@ -87,9 +86,12 @@ export default function CardSmallBlock({ card, className }: Props) {
             )}
           </CardContent>
           {link && !link.variant && (
-            <CardFooter className="ml-auto place-self-center">
-              <Icon variant={link.internal ? 'arrowRight' : 'arrowRightUp'} />
-            </CardFooter>
+            <div className="h-full flex justify-center items-center">
+              <Icon
+                variant={link.internal ? 'arrowRight' : 'arrowRightUp'}
+                className="transition-transform duration-200 ease-in-out group-hover:translate-x-2"
+              />
+            </div>
           )}
         </div>
       </CustomUrl>
