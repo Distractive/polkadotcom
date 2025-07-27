@@ -84,7 +84,7 @@ export default defineType({
     defineField({
       name: 'heading',
       description:
-        'For static metrics, use this field to append a heading to the metric. For example, if you want the header to say "*Metric Number* Approved Referenda", you can set the heading to " Approved Referenda". Be sure to add the preceding space if necessary.',
+        'For static metrics, use this field as normal for your heading.For live metrics, this field will append a heading to the metric. For example, if you want the header to say "*Metric Number* Approved Referenda", you can set the heading to " Approved Referenda". Be sure to add the preceding space if necessary.',
       title: 'Heading',
       type: 'string',
       group: 'content',

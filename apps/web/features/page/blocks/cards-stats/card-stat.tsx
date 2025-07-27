@@ -10,9 +10,10 @@ import { urlForImage } from '@/sanity/lib/image';
 interface Props {
   card: TypeFromSelection<typeof cardStatSelection>;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export default function CardStatBlock({ card, className }: Props) {
+export default function CardStatBlock({ card, className, style }: Props) {
   const {
     _key,
     icon,
@@ -31,24 +32,28 @@ export default function CardStatBlock({ card, className }: Props) {
     /[\u200B-\u200F\u2028-\u202F\u2060-\u206F\uFEFF]/g,
     '',
   ) as keyof typeof metricFetchers;
-
+  console.log(card);
   return (
-    <Card key={_key} className={cn('bg-white p-gutter', className)}>
+    <Card
+      key={_key}
+      className={cn('bg-white p-gutter', className)}
+      style={style}
+    >
       <CardHeader className="grid">
         {icon && (
-          <div className="py-4 w-full">
+          <div className="pb-4 w-full">
             <img
               src={urlForImage(icon.asset)}
               alt=""
               loading="lazy"
               className={cn(
-                'w-full rounded-2xl object-cover object-center',
-                !makeIconFullWidth && 'size-14',
+                'w-full size-14 lg:size-auto rounded-2xl object-center object-contain',
+                !makeIconFullWidth && '!size-14',
               )}
             />
           </div>
         )}
-        <Heading variant="h3" size="h2" className="pb-3">
+        <Heading variant="h3" size="h3" className="pb-3">
           {useLiveMetric && liveMetric !== null && liveMetric !== undefined ? (
             <>
               <LiveMetric

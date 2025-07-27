@@ -2,7 +2,7 @@ import type { homeSelection } from '@/sanity/selections/home/root';
 import type { TypeFromSelection } from 'groqd';
 
 // import { Connected } from '@/features/home/sections/connected';
-// import { Ecosystem } from '@/features/home/sections/ecosystem';
+import { Ecosystem } from '@/features/home/sections/ecosystem';
 import { Hero } from '@/features/home/sections/hero';
 import { Network } from '@/features/home/sections/network';
 import { Build } from '@/features/home/sections/start-building';
@@ -17,14 +17,13 @@ interface Props {
 }
 
 export function Root({ home }: Props) {
-  console.log(home);
   return (
     <div>
       <Hero hero={home.hero} />
       <Video video={home.video} />
       <Network network={home.network} />
       <Stats stats={home.stats} />
-      {/* <Ecosystem ecosystem={home.ecosystem} /> */}
+      <Ecosystem ecosystem={home.ecosystem} />
       <Build build={home.build} />
       {/* <Connected connected={home.connected} /> */}
       <div className="py-section">

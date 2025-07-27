@@ -7,6 +7,7 @@ import { customUrlSelection } from '../custom-url';
 export const statsSelection = {
   stats: q('stats').grab({
     title: q.string(),
+    columnPadding: q.number().optional().nullable(),
     items: q('items')
       .filter()
       .grab({
