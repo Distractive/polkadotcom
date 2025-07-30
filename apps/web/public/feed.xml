@@ -4,12 +4,35 @@
         <title>Polkadot - All Content</title>
         <link>https://polkadot.com</link>
         <description>Polkadot - The Platform for Web3</description>
-        <lastBuildDate>Mon, 21 Jul 2025 13:07:51 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 30 Jul 2025 22:07:45 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>All rights reserved 2025, Polkadot</copyright>
         <atom:link href="https://polkadot.com/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Web3 promised a music industry revolution—it hasn't delivered (yet)]]></title>
+            <link>https://polkadot.com/blog/web3-music-industry-revolution</link>
+            <guid>https://polkadot.com/blog/web3-music-industry-revolution</guid>
+            <pubDate>Mon, 28 Jul 2025 17:00:16 GMT</pubDate>
+            <description><![CDATA[Web3 promised to revolutionize music. So far, it hasn’t. This blog breaks down why most projects fall short, and what it’ll take to build tools that actually work.]]></description>
+            <content:encoded><![CDATA[Web3 promised to revolutionize music. So far, it hasn’t. This blog breaks down why most projects fall short, and what it’ll take to build tools that actually work.]]></content:encoded>
+            <category>Blog</category>
+            <category>Reflection</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[Inside JAM: Daniel Cukier on implementing Polkadot’s next big upgrade]]></title>
+            <link>https://polkadot.com/blog/interview-with-daniel-cukier-jam-implementer</link>
+            <guid>https://polkadot.com/blog/interview-with-daniel-cukier-jam-implementer</guid>
+            <pubDate>Mon, 21 Jul 2025 16:04:00 GMT</pubDate>
+            <description><![CDATA[As a core implementer of the JAM upgrade, Daniel Cukier brings both technical expertise and artistic sensibility to Polkadot’s next chapter. In an interview with Abigail Carlson, he shares how JAM is reshaping blockchain infrastructure, and why appealing to developers might be the key to adoption.]]></description>
+            <content:encoded><![CDATA[As a core implementer of the JAM upgrade, Daniel Cukier brings both technical expertise and artistic sensibility to Polkadot’s next chapter. In an interview with Abigail Carlson, he shares how JAM is reshaping blockchain infrastructure, and why appealing to developers might be the key to adoption.]]></content:encoded>
+            <category>Blog</category>
+            <category>Reflection</category>
+            <category>Product &amp; Engineering</category>
+            <category>Ecosystem</category>
+        </item>
         <item>
             <title><![CDATA[Hyperbridge Expands Polkadot DeFi Access with Uniswap V4 Integration]]></title>
             <link>https://polkadot.com/newsroom/press-releases/hyperbridge-expands-polkadot-defi-with-uniswap</link>

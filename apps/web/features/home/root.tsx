@@ -1,15 +1,12 @@
 import type { homeSelection } from '@/sanity/selections/home/root';
 import type { TypeFromSelection } from 'groqd';
 
-// import { Connected } from '@/features/home/sections/connected';
 import { Ecosystem } from '@/features/home/sections/ecosystem';
 import { Hero } from '@/features/home/sections/hero';
 import { SmallCardsHome } from '@/features/home/sections/small-cards-home';
-
 import { Stats } from '@/features/home/sections/stats';
 import { CardsBlock } from '../page/blocks/cards/cards';
-
-import { Newsletter } from '../page/blocks/newsletter';
+import { NewsletterCTA } from '../page/blocks/newsletter-cta';
 
 interface Props {
   home: TypeFromSelection<typeof homeSelection>['home'];
@@ -36,7 +33,9 @@ export function Root({ home }: Props) {
       </div>
       {/* <Connected connected={home.connected} /> */}
       <div className="py-32 section-fade-in">
-        {home.newsletterCTA?.[0] && <Newsletter cta={home.newsletterCTA[0]} />}
+        {home.newsletterCTA?.[0] && (
+          <NewsletterCTA cta={home.newsletterCTA[0]} />
+        )}
       </div>
     </div>
   );
