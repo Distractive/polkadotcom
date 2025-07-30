@@ -1,10 +1,14 @@
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export function useScrollFadeIn(
   className = '.section-fade-in',
   animateClass = 'animate',
   options: { rootMargin?: string; threshold?: number } = {},
 ) {
+  const pathname = usePathname();
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <need to rerun the effect when the pathname changes but we don't need to use it within the useEffect>
   useEffect(() => {
     const sections = Array.from(
       document.querySelectorAll<HTMLElement>(className),
@@ -29,5 +33,11 @@ export function useScrollFadeIn(
       sections.forEach((el) => observer.observe(el));
       return () => observer.disconnect();
     }
-  }, [className, animateClass, options.rootMargin, options.threshold]);
+  }, [
+    pathname,
+    className,
+    animateClass,
+    options.rootMargin,
+    options.threshold,
+  ]);
 }

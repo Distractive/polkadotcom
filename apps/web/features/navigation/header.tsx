@@ -57,7 +57,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
           data-testid="navbar"
           className={cn(
             'flex h-full items-center justify-center pl-4 gap-4',
-            'rounded-[3rem] border border-grey-300 bg-white',
+            'rounded-[3rem] border border-white/30 bg-black/50',
           )}
         >
           <Link
@@ -71,7 +71,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
           <ul
             className={cn(
               'hidden h-full items-center justify-center gap-nav px-nav lg:flex',
-              'border-l border-grey-300 font-bold',
+              'border-l border-white/40 font-bold',
             )}
           >
             {menu.map((item) => {
@@ -105,7 +105,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
               );
             })}
           </ul>
-          <div className="mr-5 border-l border-l-grey-200 pr-[5px] pl-2.5 h-[100%] flex items-center">
+          <div className="mr-5 border-l border-white/40 pr-[5px] pl-2.5 h-[100%] flex items-center">
             <Search />
           </div>
         </div>

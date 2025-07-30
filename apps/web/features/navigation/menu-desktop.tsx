@@ -46,7 +46,7 @@ export function MenuDesktop({
           id={`${stegaClean(section.heading)}`}
           className={cn(
             'mb-auto mr-auto flex items-start overflow-hidden',
-            'rounded-2xl border border-grey-300 bg-white',
+            'rounded-2xl border border-white/40 bg-black/40',
             section.heading === hovered
               ? 'pointer-events-auto visible'
               : 'pointer-events-none invisible',
@@ -58,7 +58,7 @@ export function MenuDesktop({
                 <li
                   key={item.link.label}
                   className={cn(
-                    'flex h-full min-w-[21rem] shadow-internal-border ',
+                    'flex h-full min-w-[21rem] border border-white/40 ',
                   )}
                 >
                   <CustomUrl
@@ -74,7 +74,7 @@ export function MenuDesktop({
               );
             })}
             {section.items.length % 2 !== 0 && (
-              <li className="min-w-[21rem] shadow-internal-border" />
+              <li className="min-w-[21rem] border border-white/40" />
             )}
           </ul>
           {section.aside && (
