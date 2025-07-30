@@ -18,6 +18,7 @@ interface Props {
   className?: string;
   showOverlay?: boolean;
   overlayOpacity?: number; // 0-100
+  muted?: boolean;
 }
 
 // Use dynamic import to fix hydration error
@@ -28,6 +29,7 @@ export function BackgroundVideo({
   className,
   showOverlay = true,
   overlayOpacity = 20,
+  muted,
 }: Props) {
   const [isClient, setIsClient] = useState(false);
 
@@ -51,7 +53,7 @@ export function BackgroundVideo({
             height="100%"
             controls={false}
             playing={true}
-            muted={true} // Always muted for autoplay compatibility
+            muted={muted}
             loop={true}
             playsinline={true}
             wrapper={Wrapper}

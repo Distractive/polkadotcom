@@ -2,6 +2,7 @@
 
 import type { heroSelection } from '@/sanity/selections/home/hero';
 import type { TypeFromSelection } from 'groqd';
+import { useState } from 'react';
 
 import { CustomUrl } from '@/components/custom-url';
 import { Button, Heading, cn } from '@shared/ui';
@@ -14,6 +15,12 @@ interface Props {
 }
 
 export function Hero({ hero, backgroundVideo }: Props) {
+  const [isMuted, setIsMuted] = useState(true);
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+  };
+
   return (
     <div
       id="hero-pile"
@@ -34,7 +41,50 @@ export function Hero({ hero, backgroundVideo }: Props) {
           showOverlay={true}
           overlayOpacity={20}
           className=""
+          muted={isMuted}
         />
+
+        {/* Watch with Sound Button */}
+        {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
+        <button
+          onClick={toggleMute}
+          className="absolute bottom-4 right-4 z-20 flex items-center gap-2 rounded-full bg-black/50 px-4 py-3 text-white transition-all duration-200 hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+          aria-label={isMuted ? 'Watch with sound' : 'Mute video'}
+        >
+          <span className="text-sm font-medium whitespace-nowrap">
+            WATCH WITH SOUND
+          </span>
+          {isMuted ? (
+            // Muted icon (speaker with X)
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.5 12C16.5 10.23 15.5 8.71 14 7.97V10.18L16.45 12.63C16.48 12.43 16.5 12.22 16.5 12ZM19 12C19 12.94 18.8 13.82 18.46 14.64L19.97 16.15C20.63 14.91 21 13.5 21 12C21 7.72 18 4.14 14 3.23V5.29C16.89 6.15 19 8.83 19 12ZM4.27 3L3 4.27L7.73 9H3V15H7L12 20V13.27L16.25 17.53C15.58 18.04 14.83 18.46 14 18.7V20.77C15.38 20.45 16.63 19.82 17.68 18.96L19.73 21L21 19.73L12 10.73L4.27 3ZM12 4L9.91 6.09L12 8.18V4Z"
+                fill="currentColor"
+              />
+            </svg>
+          ) : (
+            // Unmuted icon (speaker with sound waves)
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 9V15H7L12 20V4L7 9H3ZM16.5 12C16.5 10.23 15.5 8.71 14 7.97V16.02C15.5 15.29 16.5 13.77 16.5 12ZM14 3.23V5.29C16.89 6.15 19 8.83 19 12C19 15.17 16.89 17.85 14 18.71V20.77C18.01 19.86 21 16.28 21 12C21 7.72 18.01 4.14 14 3.23Z"
+                fill="currentColor"
+              />
+            </svg>
+          )}
+        </button>
+
         <div className="max-width col-span-12 flex flex-col !overflow-visible  lg:flex-row">
           {/* HEADING */}
           <div

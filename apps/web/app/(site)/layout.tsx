@@ -15,6 +15,8 @@ import { BannerWrapper } from '@/features/banner/banner-wrapper';
 import FooterLayout from '@/features/footer/layout';
 import NavigationLayout from '@/features/navigation/layout';
 
+import { ScrollFadeWrapper } from '@/animations/scroll-fade-wrapper';
+
 export const metadata: Metadata = {
   title: 'Polkadot: Web3 Interoperability | Decentralized Blockchain',
   description:
@@ -184,7 +186,10 @@ export default async function RootLayout({
         <div className="relative">
           {navigation && <NavigationLayout navigation={navigation} />}
 
-          <main className="flex-grow ">{children}</main>
+          <main className="flex-grow ">
+            {' '}
+            <ScrollFadeWrapper>{children}</ScrollFadeWrapper>
+          </main>
         </div>
         {footer && <FooterLayout footer={footer} />}
 

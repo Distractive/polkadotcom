@@ -21,7 +21,7 @@ export function Ecosystem({ ecosystem }: Props) {
       <div
         id="ecosystem-pile"
         data-testid="ecosystem-pile"
-        className="grid-pile pt-20 md:pt-[6rem] max-width px-gutter relative" // Added relative positioning
+        className="grid-pile max-width px-gutter relative" // Added relative positioning
       >
         <article
           id="ecosystem.wrapper"

@@ -19,16 +19,23 @@ export function Root({ home }: Props) {
   return (
     <div>
       <Hero hero={home.hero} backgroundVideo={home.video} />
-      <SmallCardsHome cards={home.network} />
-      <div className="py-section">
+      <div className="py-section section-fade-in">
+        <SmallCardsHome cards={home.network} />
+      </div>
+      <div className="py-section section-fade-in">
         {home.cards?.[0] && <CardsBlock cards={home.cards[0]} />}
       </div>
-      <Stats stats={home.stats} />
-      <Ecosystem ecosystem={home.ecosystem} />
-      <SmallCardsHome cards={home.build} />
-
+      <div className="py-section section-fade-in">
+        <Stats stats={home.stats} />
+      </div>
+      <div className="py-section section-fade-in">
+        <Ecosystem ecosystem={home.ecosystem} />
+      </div>
+      <div className="py-section section-fade-in">
+        <SmallCardsHome cards={home.build} />
+      </div>
       {/* <Connected connected={home.connected} /> */}
-      <div className="py-section">
+      <div className="py-32 section-fade-in">
         {home.newsletterCTA?.[0] && <Newsletter cta={home.newsletterCTA[0]} />}
       </div>
     </div>
