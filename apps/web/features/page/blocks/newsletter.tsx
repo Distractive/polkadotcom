@@ -1,15 +1,19 @@
-import type { newsletterCTASelection } from '@/sanity/selections/blocks/newsletter-cta';
-import type { TypeFromSelection } from 'groqd';
-import { NewsletterCTA } from './newsletter-cta';
+import { FormModalBlock } from './form-modal';
 
-interface Props {
-  cta: TypeFromSelection<typeof newsletterCTASelection>;
-}
+export const polkadotNewsletter = {
+  _type: 'modal',
+  _key: '0e433bc64886',
+  heading: 'Polkadot’s latest news, straight from the source',
+  body: 'Get your monthly fix of Polkadot updates, events, and scoop on the many incredible projects building on Polkadot.',
+  cta: 'Subscribe',
+  modalHeading: 'Polkadot’s latest news, straight from the source.',
+  formType: 'a5ecd657-6aae-4da0-bf08-f3b994919f0b',
+};
 
-export function Newsletter({ cta }: Props) {
+export function Newsletter() {
   return (
-    <div className="" data-testid="newsletter">
-      <NewsletterCTA cta={cta} />
+    <div className="py-16  " data-testid="newsletter">
+      <FormModalBlock modal={polkadotNewsletter} />
     </div>
   );
 }
