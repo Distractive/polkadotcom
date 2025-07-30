@@ -189,3 +189,18 @@ html {
   font-weight: bold;
   margin: 0;
 }
+
+
+.zoom-hover {
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.zoom-hover img {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1);
+}
+
+.zoom-hover:hover img {
+  transform: scale(1.05);
+}

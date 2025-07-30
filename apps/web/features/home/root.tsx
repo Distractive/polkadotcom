@@ -18,7 +18,7 @@ interface Props {
 export function Root({ home }: Props) {
   return (
     <div>
-      <Hero hero={home.hero} />
+      <Hero hero={home.hero} backgroundVideo={home.video} />
       <SmallCardsHome cards={home.network} />
       <div className="py-section">
         {home.cards?.[0] && <CardsBlock cards={home.cards[0]} />}
