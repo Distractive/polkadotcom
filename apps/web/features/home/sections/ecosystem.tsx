@@ -6,8 +6,8 @@ import type { TypeFromSelection } from 'groqd';
 import Image from 'next/image';
 
 import { CustomUrl } from '@/components/custom-url';
-import { Button, Card, CardContent, Heading, cn } from '@shared/ui';
 import HomeEcosystemGradient from '@/features/gradients/home-ecosystem-gradient';
+import { Button, Card, CardContent, Heading, cn } from '@shared/ui';
 
 interface Props {
   ecosystem: TypeFromSelection<typeof ecosystemSelection>['ecosystem'];

@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
 
 export function useScrollFadeIn(
   className = '.section-fade-in',

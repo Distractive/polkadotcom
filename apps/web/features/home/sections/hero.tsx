@@ -5,9 +5,9 @@ import type { TypeFromSelection } from 'groqd';
 import { useState } from 'react';
 
 import { CustomUrl } from '@/components/custom-url';
+import type { videoSelection } from '@/sanity/selections/home/video';
 import { Button, Heading, cn } from '@shared/ui';
 import { BackgroundVideo } from './background-video';
-import type { videoSelection } from '@/sanity/selections/home/video';
 
 interface Props {
   hero: TypeFromSelection<typeof heroSelection>['hero'];
@@ -27,8 +27,6 @@ export function Hero({ hero, backgroundVideo }: Props) {
       data-testid="hero-pile"
       className="md:pt-30 relative -mt-[2rem] mb-8 flex flex-col overflow-visible md:mt-0 md:pt-16 xl:mb-32"
     >
-      {/* biome-ignore lint/style/useSelfClosingElements: <Not possible> */}
-      {/* <div className="absolute inset-0 -z-10 bg-[image:linear-gradient(to_bottom_right,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom_right,#07FFFF_0%,#7916F3_100%)] bg-[length:101%_100%] bg-no-repeat "></div> */}
       <BackgroundVideo
         video={backgroundVideo.video}
         showOverlay={true}

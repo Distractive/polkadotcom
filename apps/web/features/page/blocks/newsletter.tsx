@@ -1,5 +1,5 @@
-import type { TypeFromSelection } from 'groqd';
 import type { newsletterCTASelection } from '@/sanity/selections/blocks/newsletter-cta';
+import type { TypeFromSelection } from 'groqd';
 import { NewsletterCTA } from './newsletter-cta';
 
 interface Props {
