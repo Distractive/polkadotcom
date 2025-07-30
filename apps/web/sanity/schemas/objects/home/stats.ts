@@ -12,6 +12,11 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'body',
+      title: 'Body',
+      type: 'text',
+    }),
+    defineField({
       name: 'columnPadding',
       title: '2nd Column Padding',
       description: 'Padding for the 2nd column in rem on large screens.',

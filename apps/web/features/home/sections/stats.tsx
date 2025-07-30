@@ -13,41 +13,44 @@ export function Stats({ stats }: Props) {
   return (
     <div
       id="stats-pile"
-      className="grid-pile relative px-gutter max-width"
+      className="grid-pile relative py-section"
       data-testid="stats-pile"
     >
       <div
         id="stats.wrapper"
-        className=" relative col-span-12 h-auto items-center justify-center lg:h-full"
+        className=" relative col-span-12 h-auto items-center justify-center lg:h-full "
       >
         <div
           id="stats.content"
           className={cn(
-            'max-width grid-system col-span-full sm:w-dvw',
-            'md:col-span-full md:col-start-1 md:w-full',
-            'lg:col-span-full lg:col-start-1',
-            'xl:col-span-12 xl:col-start-1',
-            'mt-header-top',
+            'max-width grid-system px-gutter col-span-full sm:w-dvw',
           )}
         >
-          <Heading
-            variant="h2"
-            className={cn(
-              'leading-[1.1]',
-              'col-span-full md:col-span-3 md:col-start-1  md:text-[3rem] lg:col-start-1 xl:col-start-2 xl:text-[3.813rem]',
-              '!hyphens-none !break-normal',
+          <div className="col-span-full md:col-span-3 md:col-start-1 lg:col-span-4 lg:col-start-1">
+            {stats.title && (
+              <Heading
+                variant="h2"
+                className={cn(
+                  'leading-[1.1]',
+                  'md:text-[3rem] xl:text-[3.813rem]',
+                  '!hyphens-none !break-normal',
+                )}
+                size="display"
+                aria-label={stats.title}
+                role="heading"
+              >
+                {stats.title || ''}
+              </Heading>
             )}
-            size="display"
-            aria-label={stats.title}
-            role="heading"
-          >
-            {stats.title}
-          </Heading>
+            {stats.body && (
+              <p className="pt-5 text-lg text-black">{stats.body}</p>
+            )}
+          </div>
           <div
             className={cn(
               'columns-1 md:columns-2 gap-8 relative col-span-full mt-10 lg:mt-0',
+              'col-span-full md:col-start-1',
               'lg:col-span-7 lg:col-start-6',
-              'xl:col-span-5 xl:col-start-7',
             )}
           >
             {stats.items.map((item, index) => {

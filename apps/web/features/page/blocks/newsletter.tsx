@@ -8,7 +8,7 @@ interface Props {
 
 export function Newsletter({ cta }: Props) {
   return (
-    <div className="py-16" data-testid="newsletter">
+    <div className="" data-testid="newsletter">
       <NewsletterCTA cta={cta} />
     </div>
   );

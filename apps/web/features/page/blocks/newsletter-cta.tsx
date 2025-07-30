@@ -16,7 +16,7 @@ export function NewsletterCTA({ cta, isPostEmbed }: Props) {
   return (
     <div
       className={cn(
-        'max-width flex justify-center pt-6 pb-12',
+        'max-width flex justify-center',
         !isPostEmbed && 'px-gutter',
       )}
     >

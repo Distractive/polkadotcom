@@ -27,9 +27,6 @@ export function Ecosystem({ ecosystem }: Props) {
           id="ecosystem.content"
           className={cn(
             'col-span-full flex flex-col items-center justify-center',
-            'lg:col-span-12 lg:col-start-1',
-            'xl:col-span-10 xl:col-start-2',
-            'mt-header-top',
           )}
         >
           <div
@@ -46,7 +43,7 @@ export function Ecosystem({ ecosystem }: Props) {
             >
               {ecosystem.title}
             </Heading>
-            <p id="ecosystem-body" className="mb-card text-lg">
+            <p id="ecosystem-body" className="mb-card text-lg  text-black">
               {ecosystem.body}
             </p>
           </div>

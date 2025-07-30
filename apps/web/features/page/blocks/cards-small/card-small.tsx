@@ -33,60 +33,70 @@ export default function CardSmallBlock({ card, className }: Props) {
       <CustomUrl value={link} isWrapper className="w-full h-full">
         <div
           className={cn(
-            'flex h-full gap-5 p-6 lg:p-card w-full',
-            icon ? 'items-center' : 'items-start',
+            'flex h-full w-full justify-between items-start p-6 lg:p-card',
           )}
         >
-          {icon && (
-            <img
-              src={urlForImage(icon.asset)}
-              alt=""
-              loading="lazy"
-              className={cn('size-14 rounded-2xl object-cover object-center')}
-            />
-          )}
-          <CardContent className="grid gap-copy">
-            {eyebrow && (
-              <span className="text-caps-small text-base font-bold uppercase">
-                {eyebrow}
-              </span>
+          <div
+            className={cn(
+              'flex gap-5 flex-1 min-w-0',
+              icon ? 'items-center' : 'items-start',
             )}
-            {heading && (
-              <Heading
-                variant="h3"
-                size="h4"
+          >
+            {icon && (
+              <img
+                src={urlForImage(icon.asset)}
+                alt=""
+                loading="lazy"
                 className={cn(
-                  'transition-colors duration-200 ease-in-out',
-                  link &&
-                    'group-focus-within:text-pink md:group-hover:text-pink',
+                  'size-14 rounded-2xl object-cover object-center flex-shrink-0',
                 )}
-              >
-                {heading}
-              </Heading>
+              />
             )}
-            {body && <CardDescription className="">{body}</CardDescription>}
-            {link?.variant && (link.external || link.internal) && (
-              <Button
-                tabIndex={-1}
-                asChild
-                variant={
-                  link.variant
-                    ? link.variant === 'primary'
-                      ? 'primary'
-                      : 'secondary'
-                    : 'primary'
-                }
-                size="md"
-                className="mt-copy group-focus-within:after:translate-x-0 md:mr-auto "
-              >
-                <CustomUrl className="outline-none" value={link} isNested>
-                  {link.label}
-                </CustomUrl>
-              </Button>
-            )}
-          </CardContent>
+            <CardContent className="grid flex-1 min-w-0">
+              {eyebrow && (
+                <span className="text-caps-small text-base font-bold uppercase">
+                  {eyebrow}
+                </span>
+              )}
+              {heading && (
+                <Heading
+                  variant="h3"
+                  size="h4"
+                  className={cn(
+                    'transition-colors duration-200 ease-in-out',
+                    link &&
+                      'group-focus-within:text-pink md:group-hover:text-pink',
+                  )}
+                >
+                  {heading}
+                </Heading>
+              )}
+              {body && (
+                <CardDescription className="pt-copy">{body}</CardDescription>
+              )}
+              {link?.variant && (link.external || link.internal) && (
+                <Button
+                  tabIndex={-1}
+                  asChild
+                  variant={
+                    link.variant
+                      ? link.variant === 'primary'
+                        ? 'primary'
+                        : 'secondary'
+                      : 'primary'
+                  }
+                  size="md"
+                  className="mt-copy group-focus-within:after:translate-x-0 md:mr-auto "
+                >
+                  <CustomUrl className="outline-none" value={link} isNested>
+                    {link.label}
+                  </CustomUrl>
+                </Button>
+              )}
+            </CardContent>
+          </div>
           {link && !link.variant && (
-            <div className="h-full flex justify-center items-center">
+            <div className="flex justify-center items-center flex-shrink-0 ml-4 h-full">
               <Icon
                 variant={link.internal ? 'arrowRight' : 'arrowRightUp'}
                 className="transition-transform duration-200 ease-in-out group-hover:translate-x-2"
