@@ -29,26 +29,25 @@ export function Hero({ hero, backgroundVideo }: Props) {
     >
       {/* biome-ignore lint/style/useSelfClosingElements: <Not possible> */}
       {/* <div className="absolute inset-0 -z-10 bg-[image:linear-gradient(to_bottom_right,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom_right,#07FFFF_0%,#7916F3_100%)] bg-[length:101%_100%] bg-no-repeat "></div> */}
-
+      <BackgroundVideo
+        video={backgroundVideo.video}
+        showOverlay={true}
+        overlayOpacity={20}
+        className=""
+        muted={isMuted}
+        localVideoPath={'/videos/defy-whats-possible-video.mp4'}
+      />
       <article
         id="hero.wrapper"
         className={cn(
           'grid-system max-width relative   !overflow-visible lg:px-gutter',
         )}
       >
-        <BackgroundVideo
-          video={backgroundVideo.video}
-          showOverlay={true}
-          overlayOpacity={20}
-          className=""
-          muted={isMuted}
-        />
-
         {/* Watch with Sound Button */}
         {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
         <button
           onClick={toggleMute}
-          className="absolute bottom-4 right-4 z-20 flex items-center gap-2 rounded-full bg-black/50 px-4 py-3 text-white transition-all duration-200 hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+          className="absolute bottom-4 right-4 z-20 flex items-center gap-2  bg-black/50 px-4 py-1 border border-white/20 text-white transition-all duration-200 hover:bg-black/70 hover:outline-none hover:ring-2 hover:ring-white/50"
           aria-label={isMuted ? 'Watch with sound' : 'Mute video'}
         >
           <span className="text-sm font-medium whitespace-nowrap">

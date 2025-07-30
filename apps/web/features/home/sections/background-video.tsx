@@ -19,6 +19,8 @@ interface Props {
   showOverlay?: boolean;
   overlayOpacity?: number; // 0-100
   muted?: boolean;
+  // Add option to use local file instead of URL
+  localVideoPath?: string;
 }
 
 // Use dynamic import to fix hydration error
@@ -30,12 +32,16 @@ export function BackgroundVideo({
   showOverlay = true,
   overlayOpacity = 20,
   muted,
+  localVideoPath,
 }: Props) {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  // Use local video path if provided, otherwise fall back to video.url
+  const videoSource = localVideoPath || video.url || '';
 
   return (
     <div
@@ -48,7 +54,7 @@ export function BackgroundVideo({
       <div className="absolute inset-0 w-full h-full">
         {isClient && (
           <ReactPlayer
-            url={video.url || ''}
+            url={videoSource}
             width="100%"
             height="100%"
             controls={false}
