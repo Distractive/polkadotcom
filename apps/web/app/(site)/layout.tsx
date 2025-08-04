@@ -14,6 +14,7 @@ import { env } from '@/env.mjs';
 import { BannerWrapper } from '@/features/banner/banner-wrapper';
 import FooterLayout from '@/features/footer/layout';
 import NavigationLayout from '@/features/navigation/layout';
+import FocusHandler from '@/components/focus-handler';
 
 export const metadata: Metadata = {
   title: 'Polkadot: Web3 Interoperability | Decentralized Blockchain',
@@ -48,6 +49,8 @@ export default async function RootLayout({
     VisualEditingComponent = VisualEditing;
     isDraftModeEnabled = await draftMode().isEnabled;
   }
+
+
 
   return (
     <html lang="en">
@@ -168,31 +171,35 @@ export default async function RootLayout({
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
-        <a
-          href="#main-content"
-          className={cn(
-            'group absolute -left-[9999px] -top-[9999px] z-[999] w-screen border-b border-b-grey-400 bg-grey-100 p-4 opacity-100 outline-none',
-            'focus:left-0 focus:top-0 focus:opacity-100',
+
+        <FocusHandler>
+          <a
+            href="#main-content"
+            tabIndex={-1}
+            className={cn(
+              'group absolute -left-[9999px] -top-[9999px] z-[999] w-screen border-b border-b-grey-400 bg-grey-100 p-4 opacity-100 outline-none',
+              'focus:left-0 focus:top-0 focus:opacity-100',
+            )}
+          >
+            <span className="bg-blue inline-block rounded-lg px-10 py-4 font-display text-xs uppercase tracking-wide text-white group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#1351d8]">
+              Skip to main content
+            </span>
+          </a>
+
+          <BannerWrapper />
+          <div className="relative">
+            {navigation && <NavigationLayout navigation={navigation} />}
+
+            <main className="flex-grow " tabIndex={0}>{children}</main>
+          </div>
+          {footer && <FooterLayout footer={footer} />}
+
+          {env.VERCEL_ENV === 'development' && <TailwindIndicator />}
+          {isDraftModeEnabled && VisualEditingComponent && (
+            <VisualEditingComponent />
           )}
-        >
-          <span className="bg-blue inline-block rounded-lg px-10 py-4 font-display text-xs uppercase tracking-wide text-white group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#1351d8]">
-            Skip to main content
-          </span>
-        </a>
-
-        <BannerWrapper />
-        <div className="relative">
-          {navigation && <NavigationLayout navigation={navigation} />}
-
-          <main className="flex-grow ">{children}</main>
-        </div>
-        {footer && <FooterLayout footer={footer} />}
-
-        {env.VERCEL_ENV === 'development' && <TailwindIndicator />}
-        {isDraftModeEnabled && VisualEditingComponent && (
-          <VisualEditingComponent />
-        )}
-        {env.VERCEL_ENV === 'production' && <Analytics />}
+          {env.VERCEL_ENV === 'production' && <Analytics />}
+        </FocusHandler>
       </body>
     </html>
   );
