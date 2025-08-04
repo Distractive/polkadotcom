@@ -9,12 +9,12 @@ import { getFooter } from '@/sanity/queries/footer';
 import { getNavigation } from '@/sanity/queries/navigation';
 import { cn } from '@shared/ui/lib/utils';
 
+import FocusHandler from '@/components/focus-handler';
 import { TailwindIndicator } from '@/components/tailwind-indicator';
 import { env } from '@/env.mjs';
 import { BannerWrapper } from '@/features/banner/banner-wrapper';
 import FooterLayout from '@/features/footer/layout';
 import NavigationLayout from '@/features/navigation/layout';
-import FocusHandler from '@/components/focus-handler';
 
 export const metadata: Metadata = {
   title: 'Polkadot: Web3 Interoperability | Decentralized Blockchain',
@@ -49,8 +49,6 @@ export default async function RootLayout({
     VisualEditingComponent = VisualEditing;
     isDraftModeEnabled = await draftMode().isEnabled;
   }
-
-
 
   return (
     <html lang="en">
@@ -190,7 +188,7 @@ export default async function RootLayout({
           <div className="relative">
             {navigation && <NavigationLayout navigation={navigation} />}
 
-            <main className="flex-grow " tabIndex={0}>{children}</main>
+            <main className="flex-grow">{children}</main>
           </div>
           {footer && <FooterLayout footer={footer} />}
 

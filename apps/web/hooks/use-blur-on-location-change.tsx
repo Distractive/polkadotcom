@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
 
 export function useBlurOnLocationChange() {
   const pathname = usePathname();
@@ -43,5 +43,5 @@ export function useBlurOnLocationChange() {
       window.removeEventListener('click', handleClick, true);
       window.removeEventListener('keydown', handleKeyDown, true);
     };
-  }, [pathname]);
+  }, []);
 }
