@@ -4,14 +4,15 @@ import { q } from 'groqd';
 import { homeSelection } from '../selections/home/root';
 
 export async function getHome(isDraftMode: boolean) {
-  const query = q('')
+  // Your original query
+  const query = q('*')
+    .filterByType('home')
     .grab({ ...homeSelection })
+    .slice(0)
     .nullable();
 
   try {
-    console.log('isdraft:', isDraftMode);
-    const result = await runQuery(query, {}, false);
-    console.log('result:', result);
+    const result = await runQuery(query, {}, isDraftMode);
     return result;
   } catch (error) {
     console.error('Error fetching home page:', error);

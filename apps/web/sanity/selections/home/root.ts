@@ -13,23 +13,20 @@ import { statsSelection } from './stats';
 import { videoSelection } from './video';
 
 export const homeSelection = {
-  home: q('*')
-    .filterByType('home')
-    .grab$({
-      ...heroSelection,
-      ...videoSelection,
-      ...connectedSelection,
-      ...ecosystemSelection,
-      ...statsSelection,
-      ...networkSelection,
-      ...buildSelection,
-      ...singletonMetaSelection,
-      newsletterCTA: q('newsletterCTA')
-        .filter()
-        .grab$({ ...newsletterCTASelection }),
-      cards: q('cards')
-        .filter()
-        .grab$({ ...cardsSelection }),
-    })
-    .slice(0),
+  home: q('').grab$({
+    ...heroSelection,
+    ...videoSelection,
+    ...connectedSelection,
+    ...ecosystemSelection,
+    ...statsSelection,
+    ...networkSelection,
+    ...buildSelection,
+    ...singletonMetaSelection,
+    newsletterCTA: q('newsletterCTA')
+      .filter()
+      .grab$({ ...newsletterCTASelection }),
+    cards: q('cards')
+      .filter()
+      .grab$({ ...cardsSelection }),
+  }),
 } satisfies Selection;

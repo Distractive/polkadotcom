@@ -32,7 +32,6 @@ export default function CardStatBlock({ card, className, style }: Props) {
     /[\u200B-\u200F\u2028-\u202F\u2060-\u206F\uFEFF]/g,
     '',
   ) as keyof typeof metricFetchers;
-  console.log(card);
   return (
     <Card
       key={_key}

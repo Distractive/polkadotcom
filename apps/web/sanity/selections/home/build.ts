@@ -4,13 +4,15 @@ import type { Selection } from 'groqd';
 import { cardSmallSelection } from '../blocks/card-small';
 
 export const buildSelection = {
-  build: q('build').grab({
-    title: q.string(),
-    body: q.string(),
-    items: q('items')
-      .filter()
-      .grab({
-        ...cardSmallSelection,
-      }),
-  }),
+  build: q('build')
+    .grab({
+      title: q.string(),
+      body: q.string(),
+      items: q('items')
+        .filter()
+        .grab({
+          ...cardSmallSelection,
+        }),
+    })
+    .nullable(),
 } satisfies Selection;
