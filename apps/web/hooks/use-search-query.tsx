@@ -6,7 +6,7 @@ export function useQueryHook() {
   return useCallback((query: string, search: (val: string) => void) => {
     clearTimeout(timeoutRef.current);
 
-    if (query.trim().length < 4) {
+    if (query.trim().length < 3) {
       search('');
       return;
     }
