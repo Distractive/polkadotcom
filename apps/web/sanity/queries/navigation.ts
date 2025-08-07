@@ -3,7 +3,7 @@ import { q } from 'groqd';
 
 import { navigationSelection } from '../selections/navigation/navigation';
 
-export async function getNavigation() {
+export async function getNavigation(isDraftMode: boolean) {
   const query = q('*')
     .filterByType('navigation')
     .grab$({
@@ -13,7 +13,7 @@ export async function getNavigation() {
     .nullable();
 
   try {
-    const result = await runQuery(query, {}, false);
+    const result = await runQuery(query, {}, isDraftMode);
     return result;
   } catch (error) {
     console.error('Error fetching navigation:', error);

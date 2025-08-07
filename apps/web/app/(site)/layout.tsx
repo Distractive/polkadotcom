@@ -37,10 +37,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const footer = await getFooter();
-  const navigation = await getNavigation();
+  // MIGHT NEED TO REFACTOR IS BUILD DOESN'T WORK CORRECTLY
+  // const { draftMode } = await import('next/headers');
+  // let isDraftModeEnabled = await draftMode().isEnabled;
+
   const isProduction = env.NODE_ENV === 'production';
   const isProductionDeployment = env.NEXT_PUBLIC_DEPLOYMENT === 'production';
+
   let VisualEditingComponent = null;
   let isDraftModeEnabled = false;
 
@@ -50,6 +53,9 @@ export default async function RootLayout({
     VisualEditingComponent = VisualEditing;
     isDraftModeEnabled = await draftMode().isEnabled;
   }
+
+  const footer = await getFooter(isDraftModeEnabled);
+  const navigation = await getNavigation(isDraftModeEnabled);
 
   return (
     <html lang="en">
