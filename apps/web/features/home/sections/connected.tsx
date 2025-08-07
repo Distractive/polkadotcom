@@ -40,13 +40,13 @@ export function Connected({ connected }: Props) {
             <Heading
               variant="h2"
               className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"
-              aria-label={connected.title}
+              aria-label={connected?.title}
               role="heading"
             >
-              {connected.title}
+              {connected?.title}
             </Heading>
             <p id="connected-body" className="text-lg">
-              {connected.body}
+              {connected?.body}
             </p>
           </div>
           <div
@@ -54,7 +54,7 @@ export function Connected({ connected }: Props) {
             className="col-span-12 flex flex-col gap-gutter pb-page pl-gutter md:pb-0 lg:col-span-7 lg:col-start-6 xl:col-start-7"
           >
             <Carousel navClassName="pr-gutter" className="rounded-l-2xl">
-              {connected.items.map((card) => (
+              {connected?.items.map((card) => (
                 <CarouselItem
                   key={card._key}
                   className="basis-5/6 md:basis-3/6 lg:basis-4/6"

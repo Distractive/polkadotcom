@@ -6,7 +6,6 @@ import type { TypeFromSelection } from 'groqd';
 import Image from 'next/image';
 
 import { CustomUrl } from '@/components/custom-url';
-import HomeEcosystemGradient from '@/features/gradients/home-ecosystem-gradient';
 import { Button, Card, CardContent, Heading, cn } from '@shared/ui';
 
 interface Props {
@@ -17,7 +16,6 @@ export function Ecosystem({ ecosystem }: Props) {
   return (
     <div className="relative w-full">
       {' '}
-      <HomeEcosystemGradient />
       <div
         id="ecosystem-pile"
         data-testid="ecosystem-pile"
@@ -42,18 +40,18 @@ export function Ecosystem({ ecosystem }: Props) {
               <Heading
                 variant="h2"
                 className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"
-                aria-label={ecosystem.title}
+                aria-label={ecosystem?.title}
                 role="heading"
               >
-                {ecosystem.title}
+                {ecosystem?.title}
               </Heading>
               <p id="ecosystem-body" className="mb-card text-lg  text-black">
-                {ecosystem.body}
+                {ecosystem?.body}
               </p>
             </div>
 
             <div className="grid-system col-span-12 gap-card !gap-x-card md:px-0">
-              {ecosystem.items.map((item, index) => (
+              {ecosystem?.items.map((item, index) => (
                 <Card
                   data-testid={`ecosystem-content-${item._key}`}
                   key={item._key}
@@ -99,8 +97,8 @@ export function Ecosystem({ ecosystem }: Props) {
               className="my-gutter px-gutter md:w-auto"
               asChild
             >
-              <CustomUrl value={ecosystem.link}>
-                {ecosystem.link?.label}
+              <CustomUrl value={ecosystem?.link}>
+                {ecosystem?.link?.label}
               </CustomUrl>
             </Button>
           </div>

@@ -4,6 +4,7 @@ import type { TypeFromSelection } from 'groqd';
 import { Heading, cn } from '@shared/ui';
 
 import CardStatBlock from '@/features/page/blocks/cards-stats/card-stat';
+import HomeGradient from '@/features/gradients/home-gradient';
 
 interface Props {
   stats: TypeFromSelection<typeof statsSelection>['stats'];
@@ -16,6 +17,8 @@ export function Stats({ stats }: Props) {
       className="grid-pile relative py-section"
       data-testid="stats-pile"
     >
+      <HomeGradient />
+
       <div
         id="stats.wrapper"
         className=" relative col-span-12 h-auto items-center justify-center lg:h-full "
