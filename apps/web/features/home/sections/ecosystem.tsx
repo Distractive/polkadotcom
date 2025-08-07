@@ -34,7 +34,7 @@ export function Ecosystem({ ecosystem }: Props) {
             <div
               className={cn(
                 'col-span-full px-gutter md:text-center',
-                'md:col-span-8 md:col-start-3 lg:w-4/6 pb-12',
+                'md:col-span-8 md:col-start-3 lg:w-9/12 pb-12',
               )}
             >
               <Heading
