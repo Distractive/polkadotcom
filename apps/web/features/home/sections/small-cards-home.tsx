@@ -35,18 +35,18 @@ export function SmallCardsHome({ cards }: Props) {
             <Heading
               variant="h2"
               className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"
-              aria-label={cards.title}
+              aria-label={cards?.title}
               role="heading"
             >
-              {cards.title}
+              {cards?.title}
             </Heading>
 
             <p id="network-body" className="mb-gutter text-lg text-black">
-              {cards.body}
+              {cards?.body}
             </p>
           </div>
           <div className="grid-system relative col-span-full gap-card pb-2">
-            {cards.items.map((item, index) => (
+            {cards?.items.map((item, index) => (
               <CardSmallBlock
                 key={item._key}
                 card={item}

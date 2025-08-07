@@ -14,7 +14,7 @@ interface WrapperProps {
 const Wrapper = ({ children }: WrapperProps) => <>{children}</>;
 
 interface Props {
-  video: TypeFromSelection<typeof videoSelection>;
+  video?: TypeFromSelection<typeof videoSelection>;
   className?: string;
   showOverlay?: boolean;
   overlayOpacity?: number; // 0-100
@@ -41,7 +41,7 @@ export function BackgroundVideo({
   }, []);
 
   // Use local video path if provided, otherwise fall back to video.url
-  const videoSource = localVideoPath || video.url || '';
+  const videoSource = localVideoPath || video?.url || '';
 
   return (
     <div

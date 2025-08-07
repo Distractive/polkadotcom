@@ -28,7 +28,7 @@ export function Hero({ hero, backgroundVideo }: Props) {
       className="md:pt-30 relative -mt-[2rem] mb-8 flex flex-col overflow-visible md:mt-0 md:pt-16 xl:mb-32"
     >
       <BackgroundVideo
-        video={backgroundVideo.video}
+        video={backgroundVideo?.video}
         showOverlay={true}
         overlayOpacity={20}
         className=""
@@ -96,18 +96,18 @@ export function Hero({ hero, backgroundVideo }: Props) {
                 variant="h1"
                 className="pb-card leading-[1] md:!text-[3.813rem] text-white"
               >
-                {hero.title}
+                {hero?.title}
               </Heading>
               <div className="flex w-full">
                 {' '}
-                <p className="text-lg xl:text-2xl text-white">{hero.copy}</p>
+                <p className="text-lg xl:text-2xl text-white">{hero?.copy}</p>
               </div>
 
               <div
                 id="main-content"
                 className="flex flex-col  gap-4  pt-card md:flex-row"
               >
-                {hero.links?.map((link, index) => (
+                {hero?.links?.map((link, index) => (
                   <Button
                     asChild
                     key={link.label}

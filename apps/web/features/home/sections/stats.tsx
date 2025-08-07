@@ -27,7 +27,7 @@ export function Stats({ stats }: Props) {
           )}
         >
           <div className="col-span-full md:col-span-3 md:col-start-1 lg:col-span-4 lg:col-start-1">
-            {stats.title && (
+            {stats?.title && (
               <Heading
                 variant="h2"
                 className={cn(
@@ -36,14 +36,14 @@ export function Stats({ stats }: Props) {
                   '!hyphens-none !break-normal',
                 )}
                 size="display"
-                aria-label={stats.title}
+                aria-label={stats?.title}
                 role="heading"
               >
-                {stats.title || ''}
+                {stats?.title || ''}
               </Heading>
             )}
-            {stats.body && (
-              <p className="pt-5 text-lg text-black">{stats.body}</p>
+            {stats?.body && (
+              <p className="pt-5 text-lg text-black">{stats?.body}</p>
             )}
           </div>
           <div
@@ -53,7 +53,7 @@ export function Stats({ stats }: Props) {
               'lg:col-span-7 lg:col-start-6',
             )}
           >
-            {stats.items.map((item, index) => {
+            {stats?.items.map((item, index) => {
               return (
                 <CardStatBlock
                   key={item._key}
