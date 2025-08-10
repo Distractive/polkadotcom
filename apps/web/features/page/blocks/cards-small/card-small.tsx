@@ -48,7 +48,7 @@ export default function CardSmallBlock({ card, className }: Props) {
                 alt=""
                 loading="lazy"
                 className={cn(
-                  'size-14 rounded-2xl object-cover object-center flex-shrink-0',
+                  'size-8 rounded-2xl object-cover object-center flex-shrink-0',
                 )}
               />
             )}
