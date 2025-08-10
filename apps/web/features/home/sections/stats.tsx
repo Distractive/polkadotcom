@@ -33,12 +33,8 @@ export function Stats({ stats }: Props) {
             {stats?.title && (
               <Heading
                 variant="h2"
-                className={cn(
-                  'leading-[1.1]',
-                  'md:text-[3rem] xl:text-[3.813rem]',
-                  '!hyphens-none !break-normal',
-                )}
-                size="display"
+                className={cn('!hyphens-none !break-normal')}
+                size="h2"
                 aria-label={stats?.title}
                 role="heading"
               >

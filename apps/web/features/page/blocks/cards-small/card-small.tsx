@@ -26,7 +26,7 @@ export default function CardSmallBlock({ card, className }: Props) {
       key={_key}
       className={cn(
         link &&
-          'focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0',
+          'focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer ',
         className,
       )}
     >
