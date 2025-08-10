@@ -15,8 +15,8 @@ const ButtonStyles = {
   ),
   sizes: {
     lg: 'rounded-xl px-[1.875rem] py-8 text-sm max-w-[24.375rem] h-[4rem]',
-    md: 'rounded-lg px-8 py-4 text-xs max-w-[20rem] h-[3.125rem]',
-    sm: 'rounded-md px-4 py-2 text-xs max-w-[15rem]',
+    md: 'rounded-lg px-4 py-6 text-xs max-w-[20rem] h-[3.125rem]',
+    sm: 'rounded-md px-4 py-4 text-xs max-w-[15rem]',
   },
   variants: {
     primary: 'text-white after:from-pink after:via-pink after:to-black',

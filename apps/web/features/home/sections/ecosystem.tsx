@@ -4,9 +4,11 @@ import { urlForImage } from '@/sanity/lib/image';
 import type { ecosystemSelection } from '@/sanity/selections/home/ecosystem';
 import type { TypeFromSelection } from 'groqd';
 import Image from 'next/image';
+import { stegaClean } from '@sanity/client/stega';
 
 import { CustomUrl } from '@/components/custom-url';
-import { Button, Card, CardContent, Heading, cn } from '@shared/ui';
+import { Card, CardContent, Heading, cn } from '@shared/ui';
+import { ButtonBlock } from '@/features/page/blocks/button-block';
 
 interface Props {
   ecosystem: TypeFromSelection<typeof ecosystemSelection>['ecosystem'];
@@ -19,7 +21,7 @@ export function Ecosystem({ ecosystem }: Props) {
       <div
         id="ecosystem-pile"
         data-testid="ecosystem-pile"
-        className="grid-pile max-width px-gutter relative" // Added relative positioning
+        className="grid-pile max-width px-gutter relative"
       >
         <article
           id="ecosystem.wrapper"
@@ -76,13 +78,26 @@ export function Ecosystem({ ecosystem }: Props) {
                       width={item.image.asset.metadata.dimensions?.width}
                       height={item.image.asset.metadata.dimensions?.height}
                     />
-                    <CardContent className="relative flex flex-col justify-end p-gutter">
-                      <Heading
-                        variant="h3"
-                        className={cn(
-                          'text-balance text-white transition-colors duration-200 ease-in-out',
-                        )}
+                    {item.category && (
+                      <div
+                        className={cn('pointer-events-none absolute inset-0')}
                       >
+                        <div className="p-gutter">
+                          <span
+                            className={cn('rounded-lg bg-black/40 px-4 py-2')}
+                            style={{
+                              color: stegaClean(
+                                item.categoryColor ?? '#FFFFFF',
+                              ),
+                            }}
+                          >
+                            {item.category}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                    <CardContent className="relative flex flex-col justify-end p-gutter">
+                      <Heading variant="h4" className={cn('text-white pb-2')}>
                         {item.heading}
                       </Heading>
                       <p className="text-white">{item.body}</p>
@@ -91,16 +106,13 @@ export function Ecosystem({ ecosystem }: Props) {
                 </Card>
               ))}
             </div>
-            <Button
-              variant="secondary"
-              size="md"
-              className="my-gutter px-gutter md:w-auto"
-              asChild
-            >
-              <CustomUrl value={ecosystem?.link}>
-                {ecosystem?.link?.label}
-              </CustomUrl>
-            </Button>
+            <div className="py-12" />
+            <ButtonBlock
+              buttonBlock={{
+                _key: 'ecosystem-cta',
+                link: ecosystem?.link ?? null,
+              }}
+            />
           </div>
         </article>
       </div>{' '}

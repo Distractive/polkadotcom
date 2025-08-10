@@ -1,4 +1,4 @@
-import { nullToUndefined, q, sanityImage } from 'groqd';
+import { q, sanityImage } from 'groqd';
 import type { Selection } from 'groqd';
 
 import { customUrlSelection } from '../custom-url';
@@ -7,7 +7,7 @@ export const ecosystemSelection = {
   ecosystem: q('ecosystem')
     .grab({
       title: q.string(),
-      body: q.string().optional().nullable(),
+      body: q.string().nullable(),
       link: q('link')
         .grab$({
           ...customUrlSelection,
@@ -20,8 +20,10 @@ export const ecosystemSelection = {
           image: sanityImage('image', {
             withAsset: ['base', 'dimensions'],
           }),
-          heading: q.string(),
-          body: nullToUndefined(q.string().optional()),
+          heading: q.string().nullable().optional(),
+          category: q.string().nullable().optional(),
+          categoryColor: q.string().nullable().optional(),
+          body: q.string().nullable().optional(),
           link: q('link')
             .grab$({
               ...customUrlSelection,

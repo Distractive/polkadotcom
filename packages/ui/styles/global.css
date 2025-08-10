@@ -165,7 +165,7 @@ html {
 }
 
 .hubspot input[type="submit"] {
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   border-radius: 0.75rem;
   background: black !important;
   cursor: pointer;
@@ -220,7 +220,7 @@ html {
 .section-fade-in {
   opacity: 0;
   transform: translateY(2rem);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 .section-fade-in.animate {

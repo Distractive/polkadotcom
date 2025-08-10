@@ -20,7 +20,7 @@ export function ButtonBlock({ buttonBlock }: Props) {
       <DecorativeLine forButtonBlock>
         <Button
           asChild
-          size="md"
+          size="lg"
           className="w-full md:group-hover:after:translate-x-0"
           variant={
             buttonBlock.link?.variant
