@@ -57,7 +57,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
           data-testid="navbar"
           className={cn(
             'flex h-full items-center justify-center pl-4 gap-4',
-            'rounded-[3rem] border border-white/30 bg-black/50',
+            'rounded-[3rem] border border-white/30 bg-black/30 backdrop-blur-md',
           )}
         >
           <Link

@@ -37,7 +37,7 @@ export function MenuDesktop({
     <div
       ref={ref}
       id="page-menu"
-      className="max-width grid-pile overflow-hidden px-gutter"
+      className="max-width grid-pile overflow-hidden px-gutter backdrop-blur-md"
     >
       {menu.map((section, _index) => (
         <div
@@ -46,7 +46,7 @@ export function MenuDesktop({
           id={`${stegaClean(section.heading)}`}
           className={cn(
             'mb-auto mr-auto flex items-start overflow-hidden',
-            'rounded-2xl border border-white/40 bg-black/40',
+            'rounded-2xl border border-white/40 bg-black/30',
             section.heading === hovered
               ? 'pointer-events-auto visible'
               : 'pointer-events-none invisible',
