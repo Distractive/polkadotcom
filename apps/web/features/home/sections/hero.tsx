@@ -2,7 +2,8 @@
 
 import type { heroSelection } from '@/sanity/selections/home/hero';
 import type { TypeFromSelection } from 'groqd';
-import { useState } from 'react';
+import dynamic from 'next/dynamic';
+import { useEffect, useRef, useState } from 'react';
 
 import { CustomUrl } from '@/components/custom-url';
 import type { videoSelection } from '@/sanity/selections/home/video';
@@ -15,11 +16,49 @@ interface Props {
 }
 
 export function Hero({ hero, backgroundVideo }: Props) {
-  const [isMuted, setIsMuted] = useState(true);
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  // ReactPlayer ref
+  const playerRef = useRef<{ getInternalPlayer?: () => unknown } | null>(null);
 
-  const toggleMute = () => {
-    setIsMuted(!isMuted);
+  const openOverlay = () => {
+    setIsOverlayOpen(true);
+    try {
+      const internal = playerRef.current?.getInternalPlayer?.() as
+        | { play?: () => void | Promise<void>; playVideo?: () => void }
+        | undefined;
+      internal?.play?.();
+      internal?.playVideo?.();
+    } catch {}
   };
+  const closeOverlay = () => {
+    setIsOverlayOpen(false);
+    try {
+      const internal = playerRef.current?.getInternalPlayer?.() as
+        | {
+            pause?: () => void;
+            pauseVideo?: () => void;
+            unload?: () => void;
+          }
+        | undefined;
+      internal?.pause?.();
+      internal?.pauseVideo?.();
+      internal?.unload?.();
+    } catch {}
+  };
+
+  // Lock scroll while overlay is open
+  useEffect(() => {
+    if (isOverlayOpen) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [isOverlayOpen]);
+
+  // Dynamically import ReactPlayer to avoid SSR issues
+  const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
   return (
     <div
@@ -32,7 +71,7 @@ export function Hero({ hero, backgroundVideo }: Props) {
         showOverlay={true}
         overlayOpacity={20}
         className=""
-        muted={isMuted}
+        muted={true}
         localVideoPath={'/videos/defy-whats-possible-video.mp4'}
       />
       <article
@@ -41,45 +80,29 @@ export function Hero({ hero, backgroundVideo }: Props) {
           'grid-system max-width relative   !overflow-visible lg:px-gutter',
         )}
       >
-        {/* Watch with Sound Button */}
-        {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
+        {/* Launch Video Button */}
         <button
-          onClick={toggleMute}
-          className="absolute bottom-4 right-4 z-20 flex items-center gap-2  bg-black/50 px-4 py-1 border border-white/20 text-white transition-all duration-200 hover:bg-black/70 hover:outline-none hover:ring-2 hover:ring-white/50"
-          aria-label={isMuted ? 'Watch with sound' : 'Mute video'}
+          onClick={openOverlay}
+          className="absolute bottom-4 right-4 flex items-center gap-2  bg-black/50 px-4 py-1 border border-white/20 text-white transition-all duration-200 hover:bg-black/70 hover:outline-none hover:ring-2 hover:ring-white/50 z-[999] hover:cursor-pointer"
+          aria-label="Watch with sound"
+          type="button"
         >
           <span className="text-sm font-medium whitespace-nowrap">
-            WATCH WITH SOUND
+            WATCH VIDEO
           </span>
-          {isMuted ? (
-            // Muted icon (speaker with X)
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.5 12C16.5 10.23 15.5 8.71 14 7.97V10.18L16.45 12.63C16.48 12.43 16.5 12.22 16.5 12ZM19 12C19 12.94 18.8 13.82 18.46 14.64L19.97 16.15C20.63 14.91 21 13.5 21 12C21 7.72 18 4.14 14 3.23V5.29C16.89 6.15 19 8.83 19 12ZM4.27 3L3 4.27L7.73 9H3V15H7L12 20V13.27L16.25 17.53C15.58 18.04 14.83 18.46 14 18.7V20.77C15.38 20.45 16.63 19.82 17.68 18.96L19.73 21L21 19.73L12 10.73L4.27 3ZM12 4L9.91 6.09L12 8.18V4Z"
-                fill="currentColor"
-              />
-            </svg>
-          ) : (
-            // Unmuted icon (speaker with sound waves)
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M3 9V15H7L12 20V4L7 9H3ZM16.5 12C16.5 10.23 15.5 8.71 14 7.97V16.02C15.5 15.29 16.5 13.77 16.5 12ZM14 3.23V5.29C16.89 6.15 19 8.83 19 12C19 15.17 16.89 17.85 14 18.71V20.77C18.01 19.86 21 16.28 21 12C21 7.72 18.01 4.14 14 3.23Z"
-                fill="currentColor"
-              />
-            </svg>
-          )}
+          {/* Speaker icon */}
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 9V15H7L12 20V4L7 9H3ZM16.5 12C16.5 10.23 15.5 8.71 14 7.97V16.02C15.5 15.29 16.5 13.77 16.5 12ZM14 3.23V5.29C16.89 6.15 19 8.83 19 12C19 15.17 16.89 17.85 14 18.71V20.77C18.01 19.86 21 16.28 21 12C21 7.72 18.01 4.14 14 3.23Z"
+              fill="currentColor"
+            />
+          </svg>
         </button>
 
         <div className="max-width col-span-12 flex flex-col !overflow-visible  lg:flex-row">
@@ -135,18 +158,70 @@ export function Hero({ hero, backgroundVideo }: Props) {
               </div>
             </div>
           </div>
-          {/* ANIMATION */}
-
-          <div
-            className="bg-transparent relative  order-1   min-h-[36rem] w-full scale-75 overflow-visible  md:min-w-[36rem] md:scale-100 lg:order-2 lg:mb-0 lg:min-h-[48rem] xl:translate-x-[5%] 2xl:translate-x-[10%]"
-            data-testid="dots-animation"
-          >
-            {/* <div className="bg-transparent absolute inset-0 w-full origin-center  !overflow-visible lg:pl-10 lg:pr-16">
-              <Spline scene="/scene3.splinecode" />
-            </div> */}
-          </div>
         </div>
       </article>
+      {isOverlayOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            onClick={closeOverlay}
+            aria-label="Close video"
+            className="absolute right-4 bottom-4 z-[60] rounded-full border border-white/20 bg-black/50 p-2 text-white hover:bg-black/70 hover:ring-2 hover:ring-white/50"
+            type="button"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2" />
+              <path d="M6 6L18 18" stroke="currentColor" strokeWidth="2" />
+            </svg>
+          </button>
+          <div className="z-[55] w-full max-w-6xl">
+            <ReactPlayer
+              ref={playerRef}
+              url="/videos/defy-whats-possible-video.mp4"
+              playing={isOverlayOpen}
+              controls
+              width="100%"
+              height="80vh"
+              muted={false}
+              volume={1}
+              playsinline
+              config={{
+                youtube: {
+                  playerVars: {
+                    autoplay: 1,
+                    playsinline: 1,
+                    rel: 0,
+                    showinfo: 0,
+                    modestbranding: 1,
+                  },
+                },
+                vimeo: {
+                  playerOptions: {
+                    autoplay: true,
+                    byline: false,
+                    portrait: false,
+                    title: false,
+                  },
+                },
+                file: {
+                  attributes: {
+                    playsInline: true,
+                  },
+                },
+              }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
