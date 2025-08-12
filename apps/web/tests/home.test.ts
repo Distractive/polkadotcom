@@ -22,17 +22,17 @@ test('Homepage', async ({ page }) => {
       'Polkadot | The secure, powerful core of Web3',
     );
     const heading = page.locator('h1');
-    await expect(heading).toHaveText("Defy what's possible");
+    await expect(heading).toHaveText('Built for the billions');
   });
 
   await test.step('assert "hero" section is displayed properly', async () => {
     const section = page.getByTestId('hero-pile');
 
     await expect(
-      section.getByRole('heading', { name: "Defy what's possible" }),
+      section.getByRole('heading', { name: 'Built for the billions' }),
     ).toBeVisible();
-    await expect(section.getByText("Polkadot unites the world's")).toHaveText(
-      "Polkadot unites the world's innovators and changemakers, building and using the most transformative apps and blockchains.",
+    await expect(section.getByText('Polkadot is the most')).toHaveText(
+      'Polkadot is the most scalable, secure, and resilient blockchain platform—designed for builders pushing boundaries and users who demand true ownership. Engineered for mass adoption, Polkadot brings Web3 to the world.',
     );
     await expect(
       section.getByRole('link', {
@@ -61,7 +61,9 @@ test('Homepage', async ({ page }) => {
     const section = page.getByTestId('video-pile-content');
 
     await expect(
-      section.getByRole('heading', { name: 'A future led by you' }),
+      section.getByRole('heading', {
+        name: 'Shaping the future internet together',
+      }),
     ).toBeVisible();
     await expect(section.getByTestId('video-block')).toBeVisible();
   });
@@ -80,27 +82,30 @@ test('Homepage', async ({ page }) => {
     const section = page.getByTestId('network-pile');
 
     await expect(
-      section.getByRole('heading', { name: 'A network governed by a' }),
-    ).toHaveText('A network governed by a rebelliously innovative community');
-    await expect(section.getByText('Polkadot is a blockchain')).toHaveText(
-      'Polkadot is a blockchain network of networks designed to challenge our assumptions, directed and governed by those who hold the DOT token. By holding DOT, you are part of the largest and most decentralized decision-making group in the world.',
+      section.getByRole('heading', { name: 'Power without permission' }),
+    ).toHaveText('Power without permission');
+    await expect(section.getByText('Polkadot gives you')).toHaveText(
+      "Polkadot gives you everything you need to build, participate, or lead in Web3. The tools are ready. The community is here. What's your next move?",
     );
+
     await expect(
       section.getByRole('link', {
-        name: 'DOT token basics What’s in a',
+        name: 'Get a wallet?',
       }),
     ).toHaveText(
-      'DOT token basicsWhat’s in a DOT? Dive into the utility token that powers the Polkadot ecosystem.',
+      'Get a wallet?Learn how DOT gives you a voice—and powers the Polkadot ecosystem.',
     );
+
     await expect(
-      section.getByRole('link', { name: 'Build on Polkadot Spin up a' }),
+      section.getByRole('link', { name: 'Ready to build?' }),
     ).toHaveText(
-      'Build on PolkadotSpin up a custom blockchain in minutes, or build the app of your dreams.',
+      'Ready to build? Spin up a custom blockchain or dream dapp in minutes—on your terms.',
     );
+
     await expect(
-      section.getByRole('link', { name: 'Join the community Join a' }),
+      section.getByRole('link', { name: 'Want to connect?' }),
     ).toHaveText(
-      'Join the communityJoin a chat, create content, or help champion Polkadot.',
+      "Want to connect? Join the world's largest DAO shaping the next generation of Web3.",
     );
   });
 
@@ -119,16 +124,16 @@ test('Homepage', async ({ page }) => {
 
     await expect(
       section.getByRole('heading', {
-        name: 'What are you waiting for?',
+        name: "Ready to shape what's next?",
       }),
     ).toBeVisible();
-    await expect(section.getByText('We’re the most open,')).toHaveText(
-      'We’re the most open, collaborative, passionate group of free thinkers, boundary pushers, creators, builders, innovators, and misfits. Share your ideas, projects, and vision for an open web. We can’t wait to meet you.',
+    await expect(section.getByText('Join a global')).toHaveText(
+      "Join a global community of builders, creators, and visionaries pushing boundaries. If you're bold enough to build it, Polkadot is here for it.",
     );
     await expect(
       section
         .locator('[id="build\\.content"]')
-        .getByRole('link', { name: 'Get started' }),
+        .getByRole('link', { name: 'Explore Web3' }),
     ).toBeVisible();
     await expect(
       section.getByText('Start building', { exact: true }),
@@ -180,11 +185,11 @@ test('Homepage', async ({ page }) => {
 
     await expect(
       section.getByRole('heading', {
-        name: 'Home to the bold and visionary',
+        name: 'Where breakthrough ideas become reality',
       }),
     ).toBeVisible();
-    await expect(section.getByText('Polkadot combines unbeatable')).toHaveText(
-      'Polkadot combines unbeatable technology and a strong community to bring inspiring projects to life.',
+    await expect(section.getByText('Polkadot gives builders')).toHaveText(
+      'Polkadot gives builders the tools and community to turn bold ideas into real-world impact—powering everything from next-gen games to AI.',
     );
     await expect(
       section.getByRole('link', { name: 'NFL Rivals Digital' }),
