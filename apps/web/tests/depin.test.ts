@@ -150,7 +150,7 @@ test('DePIN', async ({ page }) => {
       }),
     ).toBeVisible();
     await expect(section.getByText('Discover how Polkadot powers')).toHaveText(
-      'Discover how Polkadot powers the future of DePIN with innovative solutions in cloud computing, AI, and beyond.',
+      'Discover how Polkadot powers the future of DePIN with innovative solutions in cloud compute, AI, and beyond.',
     );
     await expect(
       section.getByRole('link', { name: 'Acurast is building the' }),

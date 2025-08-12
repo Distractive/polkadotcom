@@ -49,12 +49,12 @@ test('Events', async ({ page }) => {
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'July 16-18, 2025 | Berlin Web3 Summit 2025',
+        name: 'August 18 - 21, 2025 | Wyoming SALT Blockchain Symposium',
       }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'August 24 - September 13, 2025 | Bali PBA Bali',
+        name: 'August 16 - 24, 2025 | India Polkadot India Workshop Series',
       }),
     ).toBeVisible();
   });
@@ -71,17 +71,12 @@ test('Events', async ({ page }) => {
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'June 23-26, 2025 | Brooklyn, NY The Blockspace Brooklyn',
+        name: 'August 3, 2025 | Berkeley Summit on Decentralization',
       }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'June 18, 2025 | Berlin Telekom & Friends Vol. 2',
-      }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', {
-        name: 'June 7-22, Berlin Berlin Blockchain Week 2025',
+        name: 'August 1-2, 2025 | Hanoi Vietnam Tech Week',
       }),
     ).toBeVisible();
   });
