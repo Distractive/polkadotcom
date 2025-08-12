@@ -11,7 +11,7 @@ test('DAO', async ({ page }) => {
   await test.step('assert title and header are properly displayed', async () => {
     await expect(page).toHaveTitle('DAO');
     const heading = page.locator('h1');
-    await expect(heading).toHaveText('Discover the world’s largest DAO');
+    await expect(heading).toHaveText('You run Polkadot. Seriously.');
   });
 
   await test.step('assert "header" section is displayed properly', async () => {
@@ -19,14 +19,13 @@ test('DAO', async ({ page }) => {
 
     await expect(
       section.getByRole('heading', {
-        name: 'Discover the world’s largest',
+        name: 'You run Polkadot',
       }),
     ).toBeVisible();
     await expect(section.getByTestId('breadcrumb')).toBeVisible();
-    await expect(section.getByText('Join millions of visionaries')).toHaveText(
-      'Join millions of visionaries building a better future with DOT.',
+    await expect(section.getByText('With just a wallet')).toHaveText(
+      'With just a wallet and some DOT, you can vote, propose, and participate in the onchain decision-making that shapes the network.',
     );
-    await expect(section.getByTestId('video-block')).toBeVisible();
   });
 
   await test.step('"header" section screenshot', async () => {
@@ -43,29 +42,17 @@ test('DAO', async ({ page }) => {
 
     await expect(
       section.getByRole('heading', {
-        name: 'Decentralization as it was',
+        name: 'Get involved in 3 easy steps',
       }),
     ).toBeVisible();
-    await expect(section.getByText('Web3 is all about cutting out')).toHaveText(
-      'Web3 is all about cutting out gatekeepers and putting people in control of the tech that shapes our world. Decentralization isn’t just about spreading nodes around—it’s about making sure there’s no single point of failure. With blockchain outages, hard forks, and crypto exchange bankruptcies making headlines, centralized decision-making is clearly a risk. That’s why, on Polkadot, the community of DOT token holders makes all the decisions. And there’s always room for one more.',
-    );
     await expect(
-      section.getByRole('heading', { name: 'Community driven' }),
+      section.getByRole('heading', { name: 'Step 1' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('heading', { name: 'Decentralized' }),
+      section.getByRole('heading', { name: 'Step 2' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('heading', { name: 'Transparent and open' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('heading', { name: 'Fast-paced' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('heading', { name: 'Seamless upgrades' }),
-    ).toBeVisible();
-    await expect(
-      page.getByRole('link', { name: 'Join the DAO' }).first(),
+      section.getByRole('heading', { name: 'Step 3' }),
     ).toBeVisible();
   });
 
@@ -78,16 +65,42 @@ test('DAO', async ({ page }) => {
     );
   });
 
-  await test.step('assert "democracy" section is displayed properly', async () => {
+  await test.step('assert "join" section is displayed properly', async () => {
+    const section = page.getByTestId('cards-block-66f97030f3ca');
+
+    await expect(
+      section.getByRole('heading', {
+        name: 'Why join Polkadot DAO?',
+      }),
+    ).toBeVisible();
+    await expect(section.getByText('Joining Polkadot DAO')).toHaveText(
+      'Joining Polkadot DAO means more than just voting. It’s your opportunity to shape the direction of a decentralized ecosystem, earn recognition for your contributions, and connect with others building the future of the internet.',
+    );
+    await expect(section.getByText('Shape the future')).toBeVisible();
+    await expect(section.getByText('Earn rewards')).toBeVisible();
+    await expect(section.getByText('Build community')).toBeVisible();
+    await expect(section.getByText('Delegate your vote')).toBeVisible();
+  });
+
+  await test.step('"join" section screenshot', async () => {
+    const section = page.getByTestId('cards-block-66f97030f3ca');
+    await page.waitForTimeout(2000);
+    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+      'join.png',
+      snapshotConfig,
+    );
+  });
+
+  await test.step('assert "stats" section is displayed properly', async () => {
     const section = page.getByTestId('cards-stat');
 
     await expect(
       section.getByRole('heading', {
-        name: 'Unstoppable democracy, driven',
+        name: 'Polkadot DAO by the numbers',
       }),
     ).toBeVisible();
-    await expect(section.getByText('DAO members represented by')).toBeVisible();
-    await expect(section.getByText('OpenGov proposals')).toBeVisible();
+    await expect(section.getByText('DAO members')).toBeVisible();
+    await expect(section.getByText('Submitted to OpenGov')).toBeVisible();
     await expect(
       section.getByText('DOT available in Treasury pool'),
     ).toBeVisible();
@@ -102,99 +115,30 @@ test('DAO', async ({ page }) => {
     );
   });
 
-  await test.step('assert "join" section is displayed properly', async () => {
-    const section = page.getByTestId('cards-block-66f97030f3ca');
+  await test.step('assert "new-benefits" section is displayed properly', async () => {
+    const section = page.getByTestId('cards-block-6c5f350b7323');
 
     await expect(
       section.getByRole('heading', {
-        name: 'Join the DAO',
-      }),
-    ).toBeVisible();
-    await expect(section.getByText('Polkadot DAO uses OpenGov,')).toHaveText(
-      'Polkadot DAO uses OpenGov, the pioneering decentralized governance platform that empowers the community to be in full control of the network. Since the Polkadot DAO was launched, there’s no going back—Polkadot decentralized decision-making power cannot be stopped, even by its creators.',
-    );
-    await expect(
-      section.getByRole('link', { name: 'Open a Polkadot account and' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Propose ideas Bring your' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Join the discussion Make your' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Participate in voting Vote on' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Form alliance or delegate' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Share your passion Become a' }),
-    ).toBeVisible();
-  });
-
-  await test.step('"join" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-66f97030f3ca');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'join.png',
-      snapshotConfig,
-    );
-  });
-
-  await test.step('assert "benefits" section is displayed properly', async () => {
-    const section = page.getByTestId('cards-block-cce69b71f986');
-
-    await expect(
-      section.getByRole('heading', {
-        name: 'Benefits of joining the',
+        name: 'New to DAOs? Start here',
       }),
     ).toBeVisible();
     await expect(
-      section.getByRole('heading', { name: 'Shape the future' }),
+      section.getByRole('link', { name: 'What is Polkadot DAO' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('heading', { name: 'Earn rewards' }),
+      section.getByRole('link', { name: 'How to get involved' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('heading', { name: 'Build community' }),
-    ).toBeVisible();
-    await expect(
-      page.getByRole('link', { name: 'Join the DAO' }).nth(1),
+      section.getByRole('link', { name: 'What is a DAO' }),
     ).toBeVisible();
   });
 
   await test.step('"benefits" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-cce69b71f986');
+    const section = page.getByTestId('cards-block-6c5f350b7323');
     await page.waitForTimeout(2000);
     expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
       'benefits.png',
-      snapshotConfig,
-    );
-  });
-
-  await test.step('assert "treasury" section is displayed properly', async () => {
-    const section = page.getByTestId('side-by-side-a41c64edadfc');
-
-    await expect(
-      section.getByRole('heading', {
-        name: 'Backed by a 19+ million DOT',
-      }),
-    ).toBeVisible();
-    await expect(section.getByText('Polkadot’s governance system')).toHaveText(
-      'Polkadot’s governance system features a robust onchain treasury that the community can use to fund projects that benefit the network. Any DOT holder can submit funding and bounty proposals, and can nominate community members for rewards.',
-    );
-    await expect(
-      section.getByRole('link', { name: 'Learn more' }),
-    ).toBeVisible();
-    await expect(section.locator('img')).toBeVisible();
-  });
-
-  await test.step('"treasury" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-a41c64edadfc');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'treasury.png',
       snapshotConfig,
     );
   });
