@@ -109,14 +109,14 @@ test('Assets', async ({ page }) => {
         name: 'Tokenized assets in action',
       }),
     ).toBeVisible();
-    await expect(section.getByText('Explore groundbreaking')).toHaveText(
-      'Explore groundbreaking projects leveraging Polkadot for asset tokenization and innovation.',
+    await expect(section.getByText('Explore stories')).toHaveText(
+      'Explore stories that trace the shift from traditional markets to tokenized systems, with Polkadot powering the next wave of real-world assets.',
     );
     await expect(
       section.getByRole('link', { name: 'How Centrifuge built a $661M' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Energy Web is transforming' }),
+      section.getByRole('link', { name: 'Energy Web is building' }),
     ).toBeVisible();
   });
 
