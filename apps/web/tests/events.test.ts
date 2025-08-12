@@ -54,7 +54,7 @@ test('Events', async ({ page }) => {
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'August 16 - 24, 2025 | India Polkadot India Workshop Series',
+        name: 'August 16 - 24, 2025 | India Polkadot India Workshops Series',
       }),
     ).toBeVisible();
   });
