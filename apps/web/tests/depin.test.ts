@@ -146,7 +146,7 @@ test('DePIN', async ({ page }) => {
 
     await expect(
       section.getByRole('heading', {
-        name: 'DePIN in action: real-world',
+        name: 'DePIN for real-world impact',
       }),
     ).toBeVisible();
     await expect(section.getByText('Discover how Polkadot powers')).toHaveText(
