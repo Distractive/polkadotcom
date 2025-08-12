@@ -12,7 +12,7 @@ test('DeFi', async ({ page }) => {
     await expect(page).toHaveTitle('DeFi');
     const heading = page.locator('h1');
     await expect(heading).toHaveText(
-      'Decentralized Finance (DeFi) reinvented on Polkadot',
+      'Decentralized finance reinvented on Polkadot',
     );
   });
 
@@ -21,7 +21,7 @@ test('DeFi', async ({ page }) => {
 
     await expect(
       section.getByRole('heading', {
-        name: 'Decentralized Finance (DeFi)',
+        name: 'Decentralized Finance',
       }),
     ).toBeVisible();
     await expect(section.getByTestId('breadcrumb')).toBeVisible();
@@ -52,8 +52,8 @@ test('DeFi', async ({ page }) => {
         name: 'Build the future of finance',
       }),
     ).toBeVisible();
-    await expect(section.getByText('From decentralized exchanges')).toHaveText(
-      'From decentralized exchanges (DEXes) to tokenized assets and stablecoins, Polkadot equips DeFi innovators with tools to reimagine financial ecosystems and create groundbreaking solutions.',
+    await expect(section.getByText('From stablecoins')).toHaveText(
+      'From stablecoins and decentralized exchanges (DEXs) to tokenized assets, Polkadot equips DeFi innovators with tools to reimagine financial ecosystems and create groundbreaking solutions.',
     );
     await expect(
       section.getByRole('heading', { name: 'Reimagine decentralized' }),
@@ -89,7 +89,7 @@ test('DeFi', async ({ page }) => {
 
     await expect(
       section.getByRole('heading', {
-        name: 'Build DeFi without boundaries',
+        name: 'DeFi without boundaries',
       }),
     ).toBeVisible();
     await expect(section.getByText('Polkadot removes trade-offs')).toHaveText(
@@ -152,12 +152,6 @@ test('DeFi', async ({ page }) => {
     await expect(
       section.getByRole('link', { name: 'Chainflip powers secure and' }),
     ).toBeVisible();
-    await section
-      .getByRole('button', { name: 'Next slide' })
-      .click({ timeout: 2000 });
-    await section
-      .getByRole('button', { name: 'Next slide' })
-      .click({ timeout: 2000 });
     await expect(
       section.getByRole('link', { name: 'How Polimec disrupts' }),
     ).toBeVisible();
