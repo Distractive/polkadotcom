@@ -113,22 +113,28 @@ test('AI', async ({ page }) => {
     );
   });
 
-  await test.step('assert "case" section is displayed properly', async () => {
+  await test.step('assert "case studies" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-4607f67ffdf3');
 
     await expect(
       section.getByRole('heading', {
-        name: 'Case Studies: Pioneering AI',
+        name: 'Smarter AI starts on Polkadot',
       }),
     ).toBeVisible();
-    await expect(section.getByText('Explore how forward-thinking')).toHaveText(
-      'Explore how forward-thinking projects are leveraging Polkadot to push the boundaries of what AI can achieve.',
+    await expect(section.getByText('See how teams')).toHaveText(
+      'See how teams are building smarter, more open AI systems on Polkadot, from privacy-first models to decentralized compute and beyond.',
     );
     await expect(
       section.getByRole('link', { name: 'Acurast is building the' }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', { name: 'Transforming trust in the age' }),
+    ).toBeVisible();
+    await expect(
+      section.getByRole('link', { name: 'Decentralized AI' }),
+    ).toBeVisible();
+    await expect(
+      section.getByRole('link', { name: 'DeFAI is coming' }),
     ).toBeVisible();
   });
 

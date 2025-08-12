@@ -7,7 +7,10 @@ interface Props {
 }
 export default function SocialLinks({ items }: Props) {
   return (
-    <div className="flex w-full flex-row flex-wrap items-center gap-3 md:justify-end">
+    <div
+      className="flex w-full flex-row flex-wrap items-center gap-3 md:justify-end"
+      data-testid="social-links"
+    >
       {items?.map((item, index) => (
         <a
           href={item.url}
