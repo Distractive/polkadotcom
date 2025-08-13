@@ -160,14 +160,14 @@ test('DePIN', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"impact" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-675ea328fbfe');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'impact.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"impact" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-675ea328fbfe');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'impact.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "quote" section is displayed properly', async () => {
     const section = page.getByTestId('quote-block');

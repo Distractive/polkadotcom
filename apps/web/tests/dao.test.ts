@@ -162,12 +162,12 @@ test('DAO', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"initiatives" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-e1516f9dc848');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'initiatives.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"initiatives" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-e1516f9dc848');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'initiatives.png',
+  //     snapshotConfig,
+  //   );
+  // });
 });

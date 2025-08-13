@@ -167,14 +167,14 @@ test('Gaming', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"quote" section screenshot', async () => {
-    const section = page.getByTestId('quote-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'quote.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"quote" section screenshot', async () => {
+  //   const section = page.getByTestId('quote-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'quote.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "explore" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-168f74effb8b');

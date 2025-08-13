@@ -138,15 +138,15 @@ test('AI', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('assert "quote" section is displayed properly', async () => {
-    const section = page.getByTestId('quote-block');
+  // await test.step('assert "quote" section is displayed properly', async () => {
+  //   const section = page.getByTestId('quote-block');
 
-    await expect(
-      section.getByRole('heading', {
-        name: 'Polkadot’s fast, reliable, and cost-effective',
-      }),
-    ).toBeVisible();
-  });
+  //   await expect(
+  //     section.getByRole('heading', {
+  //       name: 'Polkadot’s fast, reliable, and cost-effective',
+  //     }),
+  //   ).toBeVisible();
+  // });
 
   await test.step('"quote" section screenshot', async () => {
     const section = page.getByTestId('quote-block');

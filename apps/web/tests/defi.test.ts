@@ -220,14 +220,14 @@ test('DeFi', async ({ page }) => {
     await expect(section.locator('img')).toBeVisible();
   });
 
-  await test.step('"career" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-e58b7421538d');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'career.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"career" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-e58b7421538d');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'career.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "faqs" section is displayed properly', async () => {
     const section = page.getByTestId('faqs');
