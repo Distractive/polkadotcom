@@ -204,12 +204,10 @@ test('Homepage', async ({ page }) => {
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'ChatDKG Launchpad for trusted',
+        name: 'Hyperbridge',
       }),
     ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Exiled Racers Racing and' }),
-    ).toBeVisible();
+    await expect(section.getByRole('link', { name: 'Bifrost' })).toBeVisible();
     await expect(
       section.getByRole('link', { name: 'FIFA Rivals' }),
     ).toBeVisible();

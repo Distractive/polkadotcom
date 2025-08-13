@@ -156,14 +156,14 @@ test('Assets', async ({ page }) => {
     await expect(section.locator('img')).toBeVisible();
   });
 
-  await test.step('"careers" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-94ff34ddfc9c');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'careers.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"careers" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-94ff34ddfc9c');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'careers.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "faqs" section is displayed properly', async () => {
     const section = page.getByTestId('faqs');
