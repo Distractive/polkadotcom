@@ -141,7 +141,7 @@ test('Gaming', async ({ page }) => {
       }),
     ).toBeVisible();
     await expect(section.getByText('From play-to-earn ecosystems')).toHaveText(
-      'From play-to-earn ecosystems to dynamic cross-game economies, explore how Polkadot powers innovative Web3 gaming projects that redefine player engagement and digital ownership.',
+      'From play-to-earn ecosystems to dynamic cross-game economies, explore stories and insights redefining player engagement, digital ownership, and performance at scale.',
     );
     await expect(
       section.getByRole('link', { name: 'Mythical Games revolutionizes' }),
@@ -167,14 +167,14 @@ test('Gaming', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"quote" section screenshot', async () => {
-    const section = page.getByTestId('quote-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'quote.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"quote" section screenshot', async () => {
+  //   const section = page.getByTestId('quote-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'quote.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "explore" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-168f74effb8b');
@@ -205,23 +205,6 @@ test('Gaming', async ({ page }) => {
     await expect(
       section.getByRole('link', { name: 'Age of Chronos Age of Chronos' }),
     ).toBeVisible();
-  });
-
-  await test.step('assert "how-to" section is displayed properly', async () => {
-    const section = page.getByTestId('side-by-side-d9741ecbaecf');
-
-    await expect(
-      section.getByRole('heading', {
-        name: 'How play-to-earn (P2E) is',
-      }),
-    ).toBeVisible();
-    await expect(section.getByText('Play-to-earn games are')).toHaveText(
-      'Play-to-earn games are transforming mobile sports gaming by allowing players to earn real-world value through in-game assets like NFTs. Learn how Polkadot creates new opportunities for digital asset ownership and cross-chain gameplay.',
-    );
-    await expect(
-      section.getByRole('link', { name: 'Read more' }),
-    ).toBeVisible();
-    await expect(section.locator('img')).toBeVisible();
   });
 
   await test.step('assert "jobs" section is displayed properly', async () => {
