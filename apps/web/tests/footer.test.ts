@@ -178,35 +178,37 @@ test('Footer', async ({ page }) => {
       ).toBeVisible();
     });
 
-    await test.step('Social media', async () => {
-      await expect(
-        footerContainer.getByRole('link', { name: 'Discord' }),
-      ).toBeVisible();
-
-      await expect(
-        footerContainer.getByRole('link', { name: 'Reddit' }),
-      ).toBeVisible();
-
-      await expect(
-        footerContainer.getByRole('link', { name: 'Github' }),
-      ).toBeVisible();
-
-      await expect(
-        footerContainer.getByRole('link', { name: 'YouTube' }),
-      ).toBeVisible();
-
-      await expect(
-        footerContainer.getByRole('link', { name: 'Twitter' }),
-      ).toBeVisible();
-
-      await expect(
-        footerContainer.getByRole('link', { name: 'Instagram' }),
-      ).toBeVisible();
-    });
-
     await test.step('Logo', async () => {
       await expect(
         footerContainer.getByRole('link', { name: 'Polkadot logo' }),
+      ).toBeVisible();
+    });
+
+    const socialLinks = page.getByTestId('social-links');
+
+    await test.step('Social media', async () => {
+      await expect(
+        socialLinks.getByRole('link', { name: 'Discord' }),
+      ).toBeVisible();
+
+      await expect(
+        socialLinks.getByRole('link', { name: 'Reddit' }),
+      ).toBeVisible();
+
+      await expect(
+        socialLinks.getByRole('link', { name: 'Github' }),
+      ).toBeVisible();
+
+      await expect(
+        socialLinks.getByRole('link', { name: 'YouTube' }),
+      ).toBeVisible();
+
+      await expect(
+        socialLinks.getByRole('link', { name: 'Twitter' }),
+      ).toBeVisible();
+
+      await expect(
+        socialLinks.getByRole('link', { name: 'Instagram' }),
       ).toBeVisible();
     });
   });
