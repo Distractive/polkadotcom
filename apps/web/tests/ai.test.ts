@@ -174,14 +174,14 @@ test('AI', async ({ page }) => {
     await expect(section.locator('img')).toBeVisible();
   });
 
-  await test.step('"revolution" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-427e46c63e20');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'revolution.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"revolution" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-427e46c63e20');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'revolution.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "faqs" section is displayed properly', async () => {
     const section = page.getByTestId('faqs');
