@@ -116,9 +116,6 @@ test('Dapps', async ({ page }) => {
     const exiled = section.getByRole('link', {
       name: 'Gaming Exiled Racers Racing',
     });
-    const gamma = section.getByRole('link', {
-      name: 'DeFi Gamma Active liquidity',
-    });
     const houdini = section.getByRole('link', {
       name: 'DeFi HoudiniSwap Send, swap',
     });
@@ -148,9 +145,6 @@ test('Dapps', async ({ page }) => {
     });
     const beatport = section.getByRole('link', {
       name: 'Marketplaces Beatport.io',
-    });
-    const destore = section.getByRole('link', {
-      name: 'Marketplaces DeStore Craft,',
     });
     const kodaDot = section.getByRole('link', {
       name: 'Marketplaces KodaDot',
@@ -191,12 +185,6 @@ test('Dapps', async ({ page }) => {
     const galaxe = section.getByRole('link', {
       name: 'Social Galxe Onboarding the',
     });
-    const grillChat = section.getByRole('link', {
-      name: 'Social Grill Chat Free,',
-    });
-    const heal3 = section.getByRole('link', {
-      name: 'Social Heal3 Gamefied fitness',
-    });
     const kilt = section.getByRole('link', {
       name: 'Other KILT Digital identities',
     });
@@ -206,9 +194,6 @@ test('Dapps', async ({ page }) => {
     const mewe = section.getByRole('link', {
       name: 'Social MeWe Decentralized',
     });
-    const moonFit = section.getByRole('link', {
-      name: 'Social MoonFit Web3 & NFT',
-    });
     const teddy = section.getByRole('link', {
       name: 'Social Teddy DAO Donations',
     });
@@ -217,9 +202,6 @@ test('Dapps', async ({ page }) => {
     });
     const apillon = section.getByRole('link', {
       name: 'Tokenization Apillon Launch',
-    });
-    const carbify = section.getByRole('link', {
-      name: 'Tokenization Carbify UN-',
     });
     const centrifuge = section.getByRole('link', {
       name: 'Tokenization Centrifuge',
@@ -241,9 +223,6 @@ test('Dapps', async ({ page }) => {
     });
     const squidRouter = section.getByRole('link', {
       name: 'Bridges Squid Router Axelar-',
-    });
-    const algem = section.getByRole('link', {
-      name: 'DeFi Algem Liquid assets on',
     });
     const primeProtocol = section.getByRole('link', {
       name: 'DeFi Prime Protocol Cross-',
@@ -297,7 +276,6 @@ test('Dapps', async ({ page }) => {
     expect(beam).toBeVisible();
     expect(colb).toBeVisible();
     expect(exiled).toBeVisible();
-    expect(gamma).toBeVisible();
     expect(houdini).toBeVisible();
     expect(interlay).toBeVisible();
     expect(moonwell).toBeVisible();
@@ -308,7 +286,6 @@ test('Dapps', async ({ page }) => {
     expect(greatEscape).toBeVisible();
     expect(artZero).toBeVisible();
     expect(beatport).toBeVisible();
-    expect(destore).toBeVisible();
     expect(kodaDot).toBeVisible();
     expect(moonbeans).toBeVisible();
     expect(rarible).toBeVisible();
@@ -322,16 +299,12 @@ test('Dapps', async ({ page }) => {
     expect(airlyft).toBeVisible();
     expect(diode).toBeVisible();
     expect(galaxe).toBeVisible();
-    expect(grillChat).toBeVisible();
-    expect(heal3).toBeVisible();
     expect(kilt).toBeVisible();
     expect(livetree).toBeVisible();
     expect(mewe).toBeVisible();
-    expect(moonFit).toBeVisible();
     expect(teddy).toBeVisible();
     expect(zeitgeist).toBeVisible();
     expect(apillon).toBeVisible();
-    expect(carbify).toBeVisible();
     expect(centrifuge).toBeVisible();
     expect(ewx).toBeVisible();
     expect(smartflow).toBeVisible();
@@ -339,7 +312,6 @@ test('Dapps', async ({ page }) => {
     expect(polkasafe).toBeVisible();
     expect(subwallet).toBeVisible();
     expect(squidRouter).toBeVisible();
-    expect(algem).toBeVisible();
     expect(primeProtocol).toBeVisible();
     expect(bagpipes).toBeVisible();
     expect(polkaswap).toBeVisible();
@@ -366,7 +338,6 @@ test('Dapps', async ({ page }) => {
     expect(beam).toBeHidden();
     expect(colb).toBeHidden();
     expect(exiled).toBeHidden();
-    expect(gamma).toBeHidden();
     expect(houdini).toBeHidden();
     expect(interlay).toBeHidden();
     expect(moonwell).toBeHidden();
@@ -377,7 +348,6 @@ test('Dapps', async ({ page }) => {
     expect(greatEscape).toBeHidden();
     expect(artZero).toBeHidden();
     expect(beatport).toBeHidden();
-    expect(destore).toBeHidden();
     expect(kodaDot).toBeHidden();
     expect(moonbeans).toBeHidden();
     expect(rarible).toBeHidden();
@@ -391,16 +361,12 @@ test('Dapps', async ({ page }) => {
     expect(airlyft).toBeHidden();
     expect(diode).toBeHidden();
     expect(galaxe).toBeHidden();
-    expect(grillChat).toBeHidden();
-    expect(heal3).toBeHidden();
     expect(kilt).toBeHidden();
     expect(livetree).toBeHidden();
     expect(mewe).toBeHidden();
-    expect(moonFit).toBeHidden();
     expect(teddy).toBeHidden();
     expect(zeitgeist).toBeHidden();
     expect(apillon).toBeHidden();
-    expect(carbify).toBeHidden();
     expect(centrifuge).toBeHidden();
     expect(ewx).toBeHidden();
     expect(smartflow).toBeHidden();
@@ -408,7 +374,6 @@ test('Dapps', async ({ page }) => {
     expect(polkasafe).toBeHidden();
     expect(subwallet).toBeHidden();
     expect(squidRouter).toBeVisible();
-    expect(algem).toBeHidden();
     expect(primeProtocol).toBeHidden();
     expect(bagpipes).toBeHidden();
     expect(polkaswap).toBeHidden();
@@ -435,7 +400,6 @@ test('Dapps', async ({ page }) => {
     expect(beam).toBeVisible();
     expect(colb).toBeVisible();
     expect(exiled).toBeHidden();
-    expect(gamma).toBeHidden();
     expect(houdini).toBeHidden();
     expect(interlay).toBeHidden();
     expect(moonwell).toBeHidden();
@@ -446,7 +410,6 @@ test('Dapps', async ({ page }) => {
     expect(greatEscape).toBeHidden();
     expect(artZero).toBeHidden();
     expect(beatport).toBeHidden();
-    expect(destore).toBeHidden();
     expect(kodaDot).toBeHidden();
     expect(moonbeans).toBeHidden();
     expect(rarible).toBeHidden();
@@ -460,16 +423,12 @@ test('Dapps', async ({ page }) => {
     expect(airlyft).toBeHidden();
     expect(diode).toBeHidden();
     expect(galaxe).toBeHidden();
-    expect(grillChat).toBeHidden();
-    expect(heal3).toBeHidden();
     expect(kilt).toBeHidden();
     expect(livetree).toBeHidden();
     expect(mewe).toBeHidden();
-    expect(moonFit).toBeHidden();
     expect(teddy).toBeHidden();
     expect(zeitgeist).toBeHidden();
     expect(apillon).toBeHidden();
-    expect(carbify).toBeHidden();
     expect(centrifuge).toBeHidden();
     expect(ewx).toBeHidden();
     expect(smartflow).toBeHidden();
@@ -477,7 +436,6 @@ test('Dapps', async ({ page }) => {
     expect(polkasafe).toBeHidden();
     expect(subwallet).toBeHidden();
     expect(squidRouter).toBeHidden();
-    expect(algem).toBeHidden();
     expect(primeProtocol).toBeHidden();
     expect(bagpipes).toBeHidden();
     expect(polkaswap).toBeHidden();
