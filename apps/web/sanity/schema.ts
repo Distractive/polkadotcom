@@ -52,6 +52,7 @@ import {
   meta,
   modal,
   newsletterButton,
+  newsletterCTA,
   pageBuilder,
   quote,
   sideBySide,
@@ -62,7 +63,6 @@ import {
   summary,
   video,
   youtube,
-  newsletterCTA,
 } from './schemas/objects';
 import {
   banner,

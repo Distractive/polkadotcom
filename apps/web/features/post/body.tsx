@@ -4,8 +4,8 @@ import type { Key } from 'react';
 
 import { CustomUrl } from '@/components/custom-url';
 import { Heading } from '@shared/ui';
-import { NewsletterCTA } from '../page/blocks/newsletter-cta';
 import { CTA } from '../page/blocks/cta';
+import { NewsletterCTA } from '../page/blocks/newsletter-cta';
 
 interface Props {
   // biome-ignore lint/suspicious/noExplicitAny: <TODO: Fix type>

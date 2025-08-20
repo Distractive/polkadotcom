@@ -3,9 +3,9 @@ import { PortableText } from '@portabletext/react';
 import type { TypeFromSelection } from 'groqd';
 import Image from 'next/image';
 
-import { Heading, cn } from '@shared/ui';
-import type { newsletterCTASelection } from '@/sanity/selections/blocks/newsletter-cta';
 import { HubSpotForm } from '@/components/hubspot-form';
+import type { newsletterCTASelection } from '@/sanity/selections/blocks/newsletter-cta';
+import { Heading, cn } from '@shared/ui';
 
 interface Props {
   cta: TypeFromSelection<typeof newsletterCTASelection>;
