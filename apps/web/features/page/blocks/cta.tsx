@@ -11,14 +11,16 @@ import { NewsletterButton } from './newsletter-button';
 
 interface Props {
   cta: TypeFromSelection<typeof ctaSelection>;
+  isPostEmbed?: boolean;
 }
 
-export function CTA({ cta }: Props) {
+export function CTA({ cta, isPostEmbed }: Props) {
   return (
     <div
       className={cn(
-        'max-width flex px-gutter',
+        'max-width flex pb-12 pt-6',
         cta.isCentered ? 'justify-center' : 'items-start',
+        !isPostEmbed && 'px-gutter pb-0 pt-0',
       )}
     >
       <div

@@ -74,6 +74,10 @@ export default defineType({
           type: 'cta',
         }),
         defineArrayMember({
+          name: 'newsletterCTA',
+          type: 'newsletterCTA',
+        }),
+        defineArrayMember({
           name: 'countdownTimer',
           type: 'countdownTimer',
         }),
