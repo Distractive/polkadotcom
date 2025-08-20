@@ -16,6 +16,7 @@ import { ctaSelection } from './blocks/cta';
 import { formSelection } from './blocks/form';
 import { mediaBlockSelection } from './blocks/media-block';
 import { modalSelection } from './blocks/modal';
+import { newsletterCTASelection } from './blocks/newsletter-cta';
 import { quoteSelection } from './blocks/quote';
 import { sideBySideSelection } from './blocks/side-by-side';
 import { notfoundSelection } from './notfound/notfound';
@@ -85,7 +86,6 @@ export const pageBuilderSelection = {
         ...formSelection,
       },
       '_type == "cta"': {
-        _type: q.literal('cta'),
         ...ctaSelection,
       },
       '_type == "countdownTimer"': {
@@ -95,6 +95,9 @@ export const pageBuilderSelection = {
       '_type == "notfound"': {
         _type: q.literal('notfound'),
         ...notfoundSelection,
+      },
+      '_type == "newsletterCTA"': {
+        ...newsletterCTASelection,
       },
       default: {
         _key: q.string(),
