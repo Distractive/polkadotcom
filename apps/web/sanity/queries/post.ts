@@ -2,6 +2,8 @@ import { runQuery } from '@/sanity/lib/groqd-query';
 import { nullToUndefined, q, sanityImage } from 'groqd';
 import type { Selection } from 'groqd';
 
+import { ctaSelection } from '../selections/blocks/cta';
+import { newsletterCTASelection } from '../selections/blocks/newsletter-cta';
 import { customUrlSelection } from '../selections/custom-url';
 
 export const postSelection = {
@@ -80,6 +82,12 @@ export const postSelection = {
             text: q.array(q.contentBlock()),
           }),
         ),
+      },
+      '_type == "newsletterCTA"': {
+        ...newsletterCTASelection,
+      },
+      '_type == "cta"': {
+        ...ctaSelection,
       },
       default: {
         _key: q.string(),
