@@ -13,7 +13,7 @@ export const getTotalStablecoinsUSD = async () => {
   });
 
   if (!usdcResponse[0] || !usdtResponse[0]) {
-    return;
+    return null;
   }
   const total = usdcResponse[0].sum_of_usdc + usdtResponse[0].sum_of_usdt;
 
