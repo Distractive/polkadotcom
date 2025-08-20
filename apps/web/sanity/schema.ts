@@ -52,6 +52,7 @@ import {
   meta,
   modal,
   newsletterButton,
+  newsletterCTA,
   pageBuilder,
   quote,
   sideBySide,
@@ -137,6 +138,7 @@ const objectTypes = [
   summary,
   newsletterButton,
   storeButton,
+  newsletterCTA,
 ];
 
 const singletons = [

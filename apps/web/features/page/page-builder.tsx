@@ -20,6 +20,7 @@ import { SideBySideBlock } from '@/features/page/blocks/side-by-side';
 
 import { CountdownTimer } from './blocks/countdown-timer';
 import { CTA } from './blocks/cta';
+import { NewsletterCTA } from './blocks/newsletter-cta';
 
 interface Props {
   pageBuilder: TypeFromSelection<typeof pageBuilderSelection>['pageBuilder'];
@@ -59,11 +60,13 @@ export function PageBuilder({ pageBuilder }: Props) {
       case 'form':
         return <EmbedFormBlock form={item} />;
       case 'cta':
-        return <CTA cta={item} />;
+        return <CTA cta={item} isPostEmbed={false} />;
       case 'countdownTimer':
         return <CountdownTimer countdownTimer={item} />;
       case 'notfound':
         return <NotFound />;
+      case 'newsletterCTA':
+        return <NewsletterCTA cta={item} isPostEmbed={false} />;
       default:
         return <p>Unknown type: {item._type}</p>;
     }
