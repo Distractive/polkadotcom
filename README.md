@@ -73,7 +73,7 @@ pnpm dev
 ```
 
 ## Contribution Guide
-Contributions are welcome — whether it's a bug fix, feature, or copy suggestion. Please follow our contribution guide for a breakdown of submissions we accept and details on how to get started.
+Contributions are welcome — whether it's a bug fix, feature, or copy suggestion. Please follow our [contribution guide](https://github.com/Distractive/polkadotcom/blob/main/CONTRIBUTING.md) for a breakdown of submissions we accept and details on how to get started.
 
 ## Code of Conduct
 The Polkadot website has transitioned to an open-source project, welcoming contributions that enhance our technical foundation while maintaining high standards of quality and security. We foster an inclusive environment where developers of all backgrounds can contribute constructively to our codebase. Our community values a focus on technical excellence, security consciousness, and collaborative development in alignment with Polkadot's principles of decentralization.
