@@ -32,7 +32,8 @@ async function fetchAllMetrics() {
 
     for (const [key, fetchFn] of Object.entries(metricFetchers)) {
       try {
-        metrics[key] = await fetchFn();
+        const result = await fetchFn();
+        metrics[key] = result ?? null;
       } catch (error) {
         if (error instanceof Error) {
           console.error(`  ✗ Error fetching ${key}:`, error?.message);
