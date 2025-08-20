@@ -4,12 +4,79 @@
         <title>Polkadot - All Content</title>
         <link>https://polkadot.com</link>
         <description>Polkadot - The Platform for Web3</description>
-        <lastBuildDate>Mon, 21 Jul 2025 13:07:51 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 20 Aug 2025 13:29:38 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>All rights reserved 2025, Polkadot</copyright>
         <atom:link href="https://polkadot.com/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[6 takeaways from Gavin Wood’s Web3 Summit 2025 keynote]]></title>
+            <link>https://polkadot.com/blog/gavin-wood-web3-summit-2025-takeaways</link>
+            <guid>https://polkadot.com/blog/gavin-wood-web3-summit-2025-takeaways</guid>
+            <pubDate>Thu, 14 Aug 2025 16:24:00 GMT</pubDate>
+            <description><![CDATA[From JAM to proof of personhood to Web3 outposts, Gavin Wood’s keynote offers a clear vision for the future of Polkadot—and Web3 more broadly.]]></description>
+            <content:encoded><![CDATA[From JAM to proof of personhood to Web3 outposts, Gavin Wood’s keynote offers a clear vision for the future of Polkadot—and Web3 more broadly.]]></content:encoded>
+            <category>Blog</category>
+            <category>Ecosystem</category>
+            <category>Tokenomics</category>
+            <category>Events</category>
+        </item>
+        <item>
+            <title><![CDATA[DePIN 101: How Polkadot powers the future of decentralized infrastructure]]></title>
+            <link>https://polkadot.com/blog/what-is-depin</link>
+            <guid>https://polkadot.com/blog/what-is-depin</guid>
+            <pubDate>Tue, 12 Aug 2025 16:26:00 GMT</pubDate>
+            <description><![CDATA[Discover the basics of DePIN, real-world use cases, and why Polkadot’s ecosystem is leading the way in decentralized infrastructure.]]></description>
+            <content:encoded><![CDATA[Discover the basics of DePIN, real-world use cases, and why Polkadot’s ecosystem is leading the way in decentralized infrastructure.]]></content:encoded>
+            <category>Blog</category>
+            <category>DePIN</category>
+            <category>Blockchain Basics</category>
+        </item>
+        <item>
+            <title><![CDATA[DeFAI: Could AI agents be the missing piece for DeFi adoption?]]></title>
+            <link>https://polkadot.com/blog/defai-for-defi-adoption</link>
+            <guid>https://polkadot.com/blog/defai-for-defi-adoption</guid>
+            <pubDate>Thu, 07 Aug 2025 13:52:00 GMT</pubDate>
+            <description><![CDATA[AI agents could make DeFi feel intuitive instead of overwhelming. Built on Polkadot, DeFAI aims to simplify participation and expand access for all users.]]></description>
+            <content:encoded><![CDATA[AI agents could make DeFi feel intuitive instead of overwhelming. Built on Polkadot, DeFAI aims to simplify participation and expand access for all users.]]></content:encoded>
+            <category>Blog</category>
+            <category>AI</category>
+            <category>DeFi</category>
+        </item>
+        <item>
+            <title><![CDATA[Polkadot Blockchain Academy Launches Executive Blockchain Governance Course in Asia]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/Polkadot-Blockchain-Academy-launches-executive-governance-course-in-Asia</link>
+            <guid>https://polkadot.com/newsroom/press-releases/Polkadot-Blockchain-Academy-launches-executive-governance-course-in-Asia</guid>
+            <pubDate>Thu, 31 Jul 2025 20:36:00 GMT</pubDate>
+            <category>Press Release</category>
+            <category>Ecosystem</category>
+            <category>Build</category>
+            <category>Learn</category>
+        </item>
+        <item>
+            <title><![CDATA[Web3 promised a music industry revolution—it hasn't delivered (yet)]]></title>
+            <link>https://polkadot.com/blog/web3-music-industry-revolution</link>
+            <guid>https://polkadot.com/blog/web3-music-industry-revolution</guid>
+            <pubDate>Mon, 28 Jul 2025 17:00:16 GMT</pubDate>
+            <description><![CDATA[Web3 promised to revolutionize music. So far, it hasn’t. This blog breaks down why most projects fall short, and what it’ll take to build tools that actually work.]]></description>
+            <content:encoded><![CDATA[Web3 promised to revolutionize music. So far, it hasn’t. This blog breaks down why most projects fall short, and what it’ll take to build tools that actually work.]]></content:encoded>
+            <category>Blog</category>
+            <category>Reflection</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[Inside JAM: Daniel Cukier on implementing Polkadot’s next big upgrade]]></title>
+            <link>https://polkadot.com/blog/interview-with-daniel-cukier-jam-implementer</link>
+            <guid>https://polkadot.com/blog/interview-with-daniel-cukier-jam-implementer</guid>
+            <pubDate>Mon, 21 Jul 2025 16:04:00 GMT</pubDate>
+            <description><![CDATA[As a core implementer of the JAM upgrade, Daniel Cukier brings both technical expertise and artistic sensibility to Polkadot’s next chapter. In an interview with Abigail Carlson, he shares how JAM is reshaping blockchain infrastructure, and why appealing to developers might be the key to adoption.]]></description>
+            <content:encoded><![CDATA[As a core implementer of the JAM upgrade, Daniel Cukier brings both technical expertise and artistic sensibility to Polkadot’s next chapter. In an interview with Abigail Carlson, he shares how JAM is reshaping blockchain infrastructure, and why appealing to developers might be the key to adoption.]]></content:encoded>
+            <category>Blog</category>
+            <category>Reflection</category>
+            <category>Product &amp; Engineering</category>
+            <category>Ecosystem</category>
+        </item>
         <item>
             <title><![CDATA[Hyperbridge Expands Polkadot DeFi Access with Uniswap V4 Integration]]></title>
             <link>https://polkadot.com/newsroom/press-releases/hyperbridge-expands-polkadot-defi-with-uniswap</link>

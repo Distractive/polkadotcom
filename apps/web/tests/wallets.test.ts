@@ -90,7 +90,6 @@ test('Wallets', async ({ page }) => {
     const talisman = section.getByRole('link', {
       name: 'Browser Talisman Get Talisman',
     });
-    const polka = section.getByRole('link', { name: 'Mobile PolkaWallet Get' });
     const fearless = section.getByRole('link', {
       name: 'Browser Mobile Fearless',
     });
@@ -102,14 +101,12 @@ test('Wallets', async ({ page }) => {
     await expect(nova).toBeVisible();
     await expect(subwallet).toBeVisible();
     await expect(talisman).toBeVisible();
-    await expect(polka).toBeVisible();
     await expect(fearless).toBeVisible();
 
     await mobile.click({ timeout: 2000 });
 
     await expect(nova).toBeVisible();
     await expect(subwallet).toBeVisible();
-    await expect(polka).toBeVisible();
     await expect(fearless).toBeVisible();
 
     await browser.click({ timeout: 2000 });
@@ -123,7 +120,6 @@ test('Wallets', async ({ page }) => {
     await expect(nova).toBeVisible();
     await expect(subwallet).toBeVisible();
     await expect(talisman).toBeVisible();
-    await expect(polka).toBeVisible();
     await expect(fearless).toBeVisible();
   });
 

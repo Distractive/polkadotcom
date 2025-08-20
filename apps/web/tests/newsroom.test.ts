@@ -51,19 +51,19 @@ test('Newsroom', async ({ page }) => {
       }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'mubert goes web' }),
+      section.getByRole('link', { name: 'unique network' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'copper and velocity labs' }),
+      section.getByRole('link', { name: 'mythical games launches' }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'mythical games launches',
+        name: 'mubert goes web3',
       }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'polkadot is the official global',
+        name: 'copper and velocity labs',
       }),
     ).toBeVisible();
   });
@@ -77,19 +77,14 @@ test('Newsroom', async ({ page }) => {
       }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Nasdaq files to list Grayscale' }),
+      section.getByRole('link', { name: 'Polkadot launches institutional' }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', { name: 'What makes or breaks a blockchain' }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'polkadot to launch first blockchain',
-      }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', {
-        name: '21shares files for a spot polkadot etf',
+        name: 'Polkadot to launch first blockchain',
       }),
     ).toBeVisible();
   });
