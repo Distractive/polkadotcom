@@ -24,6 +24,8 @@ export async function generateMetadata({
     openGraph: {
       title: `Polkadot Press Releases | Page ${page}`,
       description: `Stay updated with the latest Polkadot news and announcements. Page ${page}.`,
+      images:
+        'https://cdn.sanity.io/images/qf32zgfm/production/6dcc019907837cd0a9d93995f715381354226cea-1200x630.png',
     },
   };
 }
