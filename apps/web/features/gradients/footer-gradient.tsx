@@ -10,7 +10,7 @@ const gradient = {
 
 export default function FooterGradient() {
   return (
-    <div className="absolute inset-0 flex items-center justify-center -z-10">
+    <div className="absolute inset-0 flex items-center justify-center -z-10 overflow-hidden">
       <div className="w-[2600px] h-full flex-shrink-0" style={gradient} />
     </div>
   );

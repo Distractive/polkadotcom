@@ -109,10 +109,10 @@ export function BackgroundVideo({
         )}
       </div>
 
-      {/* Optional Overlay */}
+      {/* Overlay */}
       {showOverlay && (
         <div
-          className="absolute inset-0 z-10"
+          className="absolute inset-0"
           style={{ backgroundColor: `rgba(0, 0, 0, ${overlayOpacity / 100})` }}
         />
       )}

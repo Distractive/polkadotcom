@@ -17,7 +17,6 @@ interface Props {
 
 export function Hero({ hero, backgroundVideo }: Props) {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
-  // ReactPlayer ref
   const playerRef = useRef<{ getInternalPlayer?: () => unknown } | null>(null);
 
   const openOverlay = () => {
@@ -30,6 +29,7 @@ export function Hero({ hero, backgroundVideo }: Props) {
       internal?.playVideo?.();
     } catch {}
   };
+
   const closeOverlay = () => {
     setIsOverlayOpen(false);
     try {
@@ -46,7 +46,6 @@ export function Hero({ hero, backgroundVideo }: Props) {
     } catch {}
   };
 
-  // Lock scroll while overlay is open
   useEffect(() => {
     if (isOverlayOpen) {
       const prevOverflow = document.body.style.overflow;
@@ -64,28 +63,28 @@ export function Hero({ hero, backgroundVideo }: Props) {
     <div
       id="hero-pile"
       data-testid="hero-pile"
-      className="relative mb-8 flex flex-col overflow-visible pt-20 xl:mb-32 h-[40rem]"
+      className="relative mb-8 flex flex-col overflow-visible pt-20 xl:mb-32 h-screen md:h-[60rem]"
     >
-      {/* <BackgroundVideo
+      <BackgroundVideo
         video={backgroundVideo?.video}
         showOverlay={true}
         overlayOpacity={20}
         className=""
         muted={true}
         localVideoPath={'/videos/defy-whats-possible-video.mp4'}
-      /> */}
+      />
       <article
         id="hero.wrapper"
         className={cn(
-          'grid-system max-width relative   !overflow-visible lg:px-gutter h-full',
+          'grid-system max-width relative   !overflow-visible px-gutter h-full',
         )}
       >
-        <div className="relative max-width col-span-12 flex flex-row !overflow-visible   bg-pink ">
+        <div className="relative max-width col-span-12 flex flex-row !overflow-visible ">
           {/* HEADING */}
           <div
             id="hero.content"
             className={cn(
-              'relative  order-2  flex flex-col justify-center px-gutter lg:order-1 lg:col-span-2 lg:px-0',
+              'relative  order-2  flex flex-col justify-end pb-24 md:pb-0 md:justify-center lg:order-1 lg:col-span-2',
               ' md:mt-0',
             )}
           >
@@ -134,29 +133,33 @@ export function Hero({ hero, backgroundVideo }: Props) {
             </div>
           </div>
           {/* Launch Video Button */}
-          <button
-            onClick={openOverlay}
-            className="absolute bottom-4 right-0 flex items-center gap-2  bg-black/50 px-4 py-1 border border-white/20 text-white transition-all duration-200 hover:bg-black/70 hover:outline-none hover:ring-2 hover:ring-white/50 z-[999] hover:cursor-pointer"
-            aria-label="Watch with sound"
-            type="button"
-          >
-            <span className="text-sm font-medium whitespace-nowrap">
-              WATCH VIDEO
-            </span>
-            {/* Speaker icon */}
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+          {!isOverlayOpen && (
+            <button
+              onClick={openOverlay}
+              className={cn(
+                'absolute bottom-4 flex items-center gap-2 px-4 py-1 border-white/20 text-white transition-all duration-200 z-[999]',
+                'left-1/2 transform -translate-x-1/2',
+                'md:left-auto md:right-0 md:transform-none md:bg-black/50 md:border md:hover:bg-black/70',
+                'hover:outline-none hover:ring-2 hover:ring-white/50 hover:cursor-pointer',
+              )}
+              aria-label="Watch with sound"
+              type="button"
             >
-              <path
-                d="M3 9V15H7L12 20V4L7 9H3ZM16.5 12C16.5 10.23 15.5 8.71 14 7.97V16.02C15.5 15.29 16.5 13.77 16.5 12ZM14 3.23V5.29C16.89 6.15 19 8.83 19 12C19 15.17 16.89 17.85 14 18.71V20.77C18.01 19.86 21 16.28 21 12C21 7.72 18.01 4.14 14 3.23Z"
-                fill="currentColor"
-              />
-            </svg>
-          </button>
+              <span className="text-sm font-medium whitespace-nowrap">
+                WATCH VIDEO
+              </span>
+              {/* Speaker icon */}
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M8 5V19L19 12L8 5Z" fill="currentColor" />
+              </svg>
+            </button>
+          )}
         </div>
       </article>
       {isOverlayOpen && (
@@ -164,35 +167,27 @@ export function Hero({ hero, backgroundVideo }: Props) {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
           role="dialog"
           aria-modal="true"
+          onClick={closeOverlay}
+          onKeyDown={closeOverlay}
         >
-          <button
-            onClick={closeOverlay}
-            aria-label="Close video"
-            className="absolute right-4 bottom-4 z-[60] rounded-full border border-white/20 bg-black/50 p-2 text-white hover:bg-black/70 hover:ring-2 hover:ring-white/50"
-            type="button"
+          <div
+            className="z-[55] w-full max-w-6xl aspect-video"
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => e.stopPropagation()}
           >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2" />
-              <path d="M6 6L18 18" stroke="currentColor" strokeWidth="2" />
-            </svg>
-          </button>
-          <div className="z-[55] w-full max-w-6xl">
             <ReactPlayer
               ref={playerRef}
               url="/videos/defy-whats-possible-video.mp4"
               playing={isOverlayOpen}
               controls
               width="100%"
-              height="80vh"
+              height="100%"
               muted={false}
               volume={1}
               playsinline
+              style={{
+                backgroundColor: 'black',
+              }}
               config={{
                 youtube: {
                   playerVars: {
@@ -214,6 +209,11 @@ export function Hero({ hero, backgroundVideo }: Props) {
                 file: {
                   attributes: {
                     playsInline: true,
+                    style: {
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                    },
                   },
                 },
               }}
