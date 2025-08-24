@@ -64,57 +64,32 @@ export function Hero({ hero, backgroundVideo }: Props) {
     <div
       id="hero-pile"
       data-testid="hero-pile"
-      className="md:pt-30 relative -mt-[2rem] mb-8 flex flex-col overflow-visible md:mt-0 md:pt-16 xl:mb-32"
+      className="relative mb-8 flex flex-col overflow-visible pt-20 xl:mb-32 h-[40rem]"
     >
-      <BackgroundVideo
+      {/* <BackgroundVideo
         video={backgroundVideo?.video}
         showOverlay={true}
         overlayOpacity={20}
         className=""
         muted={true}
         localVideoPath={'/videos/defy-whats-possible-video.mp4'}
-      />
+      /> */}
       <article
         id="hero.wrapper"
         className={cn(
-          'grid-system max-width relative   !overflow-visible lg:px-gutter',
+          'grid-system max-width relative   !overflow-visible lg:px-gutter h-full',
         )}
       >
-        {/* Launch Video Button */}
-        <button
-          onClick={openOverlay}
-          className="absolute bottom-4 right-4 flex items-center gap-2  bg-black/50 px-4 py-1 border border-white/20 text-white transition-all duration-200 hover:bg-black/70 hover:outline-none hover:ring-2 hover:ring-white/50 z-[999] hover:cursor-pointer"
-          aria-label="Watch with sound"
-          type="button"
-        >
-          <span className="text-sm font-medium whitespace-nowrap">
-            WATCH VIDEO
-          </span>
-          {/* Speaker icon */}
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M3 9V15H7L12 20V4L7 9H3ZM16.5 12C16.5 10.23 15.5 8.71 14 7.97V16.02C15.5 15.29 16.5 13.77 16.5 12ZM14 3.23V5.29C16.89 6.15 19 8.83 19 12C19 15.17 16.89 17.85 14 18.71V20.77C18.01 19.86 21 16.28 21 12C21 7.72 18.01 4.14 14 3.23Z"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
-
-        <div className="max-width col-span-12 flex flex-col !overflow-visible  lg:flex-row">
+        <div className="relative max-width col-span-12 flex flex-row !overflow-visible   bg-pink ">
           {/* HEADING */}
           <div
-            id="network.content"
+            id="hero.content"
             className={cn(
               'relative  order-2  flex flex-col justify-center px-gutter lg:order-1 lg:col-span-2 lg:px-0',
-              '-mt-[8rem] sm:-mt-[5rem] md:mt-0',
+              ' md:mt-0',
             )}
           >
-            <div className="sm:max-w-xl md:max-w-2xl lg:max-w-2xl xl:max-w-6xl  ">
+            <div className="sm:max-w-xl md:max-w-2xl ">
               <Heading
                 variant="h1"
                 className="pb-card leading-[1] md:!text-[3.813rem] text-white"
@@ -142,7 +117,7 @@ export function Hero({ hero, backgroundVideo }: Props) {
                         : 'primary'
                     }
                     size="lg"
-                    className="flex-1 whitespace-nowrap"
+                    className="md:flex-1 whitespace-nowrap"
                   >
                     <CustomUrl
                       className="outline-none"
@@ -158,6 +133,30 @@ export function Hero({ hero, backgroundVideo }: Props) {
               </div>
             </div>
           </div>
+          {/* Launch Video Button */}
+          <button
+            onClick={openOverlay}
+            className="absolute bottom-4 right-0 flex items-center gap-2  bg-black/50 px-4 py-1 border border-white/20 text-white transition-all duration-200 hover:bg-black/70 hover:outline-none hover:ring-2 hover:ring-white/50 z-[999] hover:cursor-pointer"
+            aria-label="Watch with sound"
+            type="button"
+          >
+            <span className="text-sm font-medium whitespace-nowrap">
+              WATCH VIDEO
+            </span>
+            {/* Speaker icon */}
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 9V15H7L12 20V4L7 9H3ZM16.5 12C16.5 10.23 15.5 8.71 14 7.97V16.02C15.5 15.29 16.5 13.77 16.5 12ZM14 3.23V5.29C16.89 6.15 19 8.83 19 12C19 15.17 16.89 17.85 14 18.71V20.77C18.01 19.86 21 16.28 21 12C21 7.72 18.01 4.14 14 3.23Z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
         </div>
       </article>
       {isOverlayOpen && (

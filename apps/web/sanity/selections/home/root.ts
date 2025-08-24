@@ -24,9 +24,11 @@ export const homeSelection = {
     ...singletonMetaSelection,
     newsletterCTA: q('newsletterCTA')
       .filter()
-      .grab$({ ...newsletterCTASelection }),
+      .grab$({ ...newsletterCTASelection })
+      .nullable(),
     cards: q('cards')
       .filter()
-      .grab$({ ...cardsSelection }),
+      .grab$({ ...cardsSelection })
+      .nullable(),
   }),
 } satisfies Selection;

@@ -19,7 +19,6 @@ interface Props {
   showOverlay?: boolean;
   overlayOpacity?: number; // 0-100
   muted?: boolean;
-  // Add option to use local file instead of URL
   localVideoPath?: string;
 }
 
@@ -40,7 +39,6 @@ export function BackgroundVideo({
     setIsClient(true);
   }, []);
 
-  // Use local video path if provided, otherwise fall back to video.url
   const videoSource = localVideoPath || video?.url || '';
 
   return (
