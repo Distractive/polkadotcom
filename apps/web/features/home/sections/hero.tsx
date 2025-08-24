@@ -60,167 +60,170 @@ export function Hero({ hero, backgroundVideo }: Props) {
   const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
   return (
-    <div
-      id="hero-pile"
-      data-testid="hero-pile"
-      className="relative mb-8 flex flex-col overflow-visible pt-20 xl:mb-32 h-screen md:h-[60rem]"
-    >
-      <BackgroundVideo
-        video={backgroundVideo?.video}
-        showOverlay={true}
-        overlayOpacity={20}
-        className=""
-        muted={true}
-        localVideoPath={'/videos/defy-whats-possible-video.mp4'}
-      />
-      <article
-        id="hero.wrapper"
-        className={cn(
-          'grid-system max-width relative   !overflow-visible px-gutter h-full',
-        )}
+    <>
+      <div
+        id="hero-pile"
+        data-testid="hero-pile"
+        className="relative flex flex-col overflow-visible pt-20 h-screen md:h-[60rem]"
       >
-        <div className="relative max-width col-span-12 flex flex-row !overflow-visible ">
-          {/* HEADING */}
-          <div
-            id="hero.content"
-            className={cn(
-              'relative  order-2  flex flex-col justify-end pb-24 md:pb-0 md:justify-center lg:order-1 lg:col-span-2',
-              ' md:mt-0',
-            )}
-          >
-            <div className="sm:max-w-xl md:max-w-2xl ">
-              <Heading
-                variant="h1"
-                className="pb-card leading-[1] md:!text-[3.813rem] text-white"
-              >
-                {hero?.title}
-              </Heading>
-              <div className="flex w-full">
-                {' '}
-                <p className="text-lg xl:text-2xl text-white">{hero?.copy}</p>
-              </div>
+        <BackgroundVideo
+          video={backgroundVideo?.video}
+          showOverlay={true}
+          overlayOpacity={20}
+          className=""
+          muted={true}
+          localVideoPath={'/videos/defy-whats-possible-video.mp4'}
+        />
+        <article
+          id="hero.wrapper"
+          className={cn(
+            'grid-system max-width relative   !overflow-visible px-gutter h-full',
+          )}
+        >
+          <div className="relative max-width col-span-12 flex flex-row !overflow-visible ">
+            {/* HEADING */}
+            <div
+              id="hero.content"
+              className={cn(
+                'relative  order-2  flex flex-col justify-end pb-24 md:pb-0 md:justify-center lg:order-1 lg:col-span-2',
+                ' md:mt-0',
+              )}
+            >
+              <div className="sm:max-w-xl md:max-w-2xl ">
+                <Heading
+                  variant="h1"
+                  className="pb-card leading-[1] md:!text-[3.813rem] text-white"
+                >
+                  {hero?.title}
+                </Heading>
+                <div className="flex w-full">
+                  {' '}
+                  <p className="text-lg xl:text-2xl text-white">{hero?.copy}</p>
+                </div>
 
-              <div
-                id="main-content"
-                className="flex flex-col  gap-4  pt-card md:flex-row"
-              >
-                {hero?.links?.map((link, index) => (
-                  <Button
-                    asChild
-                    key={link.label}
-                    variant={
-                      link?.variant
-                        ? link.variant === 'primary'
-                          ? 'primary'
-                          : 'secondary'
-                        : 'primary'
-                    }
-                    size="lg"
-                    className="md:flex-1 whitespace-nowrap"
-                  >
-                    <CustomUrl
-                      className="outline-none"
-                      value={{
-                        internal: link?.internal,
-                        external: link?.external,
-                      }}
+                <div
+                  id="main-content"
+                  className="flex flex-col  gap-4  pt-card md:flex-row"
+                >
+                  {hero?.links?.map((link, index) => (
+                    <Button
+                      asChild
+                      key={link.label}
+                      variant={
+                        link?.variant
+                          ? link.variant === 'primary'
+                            ? 'primary'
+                            : 'secondary'
+                          : 'primary'
+                      }
+                      size="lg"
+                      className="md:flex-1 whitespace-nowrap"
                     >
-                      {link.label}
-                    </CustomUrl>
-                  </Button>
-                ))}
+                      <CustomUrl
+                        className="outline-none"
+                        value={{
+                          internal: link?.internal,
+                          external: link?.external,
+                        }}
+                      >
+                        {link.label}
+                      </CustomUrl>
+                    </Button>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-          {/* Launch Video Button */}
-          {!isOverlayOpen && (
-            <button
-              onClick={openOverlay}
-              className={cn(
-                'absolute bottom-4 flex items-center gap-2 px-4 py-1 border-white/20 text-white transition-all duration-200 z-[999]',
-                'left-1/2 transform -translate-x-1/2',
-                'md:left-auto md:right-0 md:transform-none md:bg-black/50 md:border md:hover:bg-black/70',
-                'hover:outline-none hover:ring-2 hover:ring-white/50 hover:cursor-pointer',
-              )}
-              aria-label="Watch with sound"
-              type="button"
-            >
-              <span className="text-sm font-medium whitespace-nowrap">
-                WATCH VIDEO
-              </span>
-              {/* Speaker icon */}
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            {/* Launch Video Button */}
+            {!isOverlayOpen && (
+              <button
+                onClick={openOverlay}
+                className={cn(
+                  'absolute bottom-8 flex items-center gap-2 px-4 py-1 border-white/20 text-white transition-all duration-200 z-[999] rounded-md',
+                  'left-1/2 transform -translate-x-1/2',
+                  'md:left-auto md:right-0 md:transform-none md:bg-black/50 md:border md:hover:bg-black/70',
+                  'hover:outline-none hover:ring-2 hover:ring-white/50 hover:cursor-pointer',
+                )}
+                aria-label="Watch with sound"
+                type="button"
               >
-                <path d="M8 5V19L19 12L8 5Z" fill="currentColor" />
-              </svg>
-            </button>
-          )}
-        </div>
-      </article>
-      {isOverlayOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
-          role="dialog"
-          aria-modal="true"
-          onClick={closeOverlay}
-          onKeyDown={closeOverlay}
-        >
+                <span className="text-sm font-medium whitespace-nowrap">
+                  WATCH VIDEO
+                </span>
+                {/* Speaker icon */}
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M8 5V19L19 12L8 5Z" fill="currentColor" />
+                </svg>
+              </button>
+            )}
+          </div>
+        </article>
+        {isOverlayOpen && (
           <div
-            className="z-[55] w-full max-w-6xl aspect-video"
-            onClick={(e) => e.stopPropagation()}
-            onKeyDown={(e) => e.stopPropagation()}
+            className="fixed inset-0 z-40 flex items-center justify-center bg-black/90 p-4"
+            role="dialog"
+            aria-modal="true"
+            onClick={closeOverlay}
+            onKeyDown={closeOverlay}
           >
-            <ReactPlayer
-              ref={playerRef}
-              url="/videos/defy-whats-possible-video.mp4"
-              playing={isOverlayOpen}
-              controls
-              width="100%"
-              height="100%"
-              muted={false}
-              volume={1}
-              playsinline
-              style={{
-                backgroundColor: 'black',
-              }}
-              config={{
-                youtube: {
-                  playerVars: {
-                    autoplay: 1,
-                    playsinline: 1,
-                    rel: 0,
-                    showinfo: 0,
-                    modestbranding: 1,
-                  },
-                },
-                vimeo: {
-                  playerOptions: {
-                    autoplay: true,
-                    byline: false,
-                    portrait: false,
-                    title: false,
-                  },
-                },
-                file: {
-                  attributes: {
-                    playsInline: true,
-                    style: {
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
+            <div
+              className="z-[55] w-full max-w-6xl aspect-video"
+              onClick={(e) => e.stopPropagation()}
+              onKeyDown={(e) => e.stopPropagation()}
+            >
+              <ReactPlayer
+                ref={playerRef}
+                url="/videos/defy-whats-possible-video.mp4"
+                playing={isOverlayOpen}
+                controls
+                width="100%"
+                height="100%"
+                muted={false}
+                volume={1}
+                playsinline
+                style={{
+                  backgroundColor: 'black',
+                }}
+                config={{
+                  youtube: {
+                    playerVars: {
+                      autoplay: 1,
+                      playsinline: 1,
+                      rel: 0,
+                      showinfo: 0,
+                      modestbranding: 1,
                     },
                   },
-                },
-              }}
-            />
+                  vimeo: {
+                    playerOptions: {
+                      autoplay: true,
+                      byline: false,
+                      portrait: false,
+                      title: false,
+                    },
+                  },
+                  file: {
+                    attributes: {
+                      playsInline: true,
+                      style: {
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      },
+                    },
+                  },
+                }}
+              />
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+      <div className="h-8 rounded-t-xl -mt-3 relative z-30 bg-white w-full" />
+    </>
   );
 }
