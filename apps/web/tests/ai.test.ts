@@ -3,12 +3,6 @@ import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('AI', async ({ page }) => {
-  // Block tracking/analytics requests to prevent network errors
-  await page.route('**/ad360.media/**', (route) => route.abort());
-  await page.route('**/tracking-europe.ad360.media/**', (route) =>
-    route.abort(),
-  );
-
   await test.step('go to "AI" page', async () => {
     await page.goto('/use-cases/ai');
     await acceptOrCloseCookieBanner(page);

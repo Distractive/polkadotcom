@@ -50,7 +50,6 @@ const cspSources = {
     'https://v1.slise.xyz/analytics/tpe',
     'https://v1.slise.xyz/track',
     'https://www.googleadservices.com',
-    'https://www.google.com',
     'https://googleads.g.doubleclick.net',
     'https://stats.g.doubleclick.net',
     'https://*.doubleclick.net',
@@ -113,7 +112,6 @@ const cspSources = {
     'https://*.reddit.com',
     'https://alb.reddit.com',
     'https://*.ad360.media',
-    'https://www.google.com',
   ],
   'object-src': ["'none'"],
   'script-src': [
@@ -146,11 +144,6 @@ const cspSources = {
     'https://cdn.ad360.media',
     'https://vercel.live/',
     'https://v1.slise.xyz/scripts/pix3l.js',
-    // NEW ADDITIONS FOR GOOGLE ADS:
-    'https://www.googleadservices.com',
-    'https://www.google.com',
-    'https://googleads.g.doubleclick.net',
-    'https://*.doubleclick.net',
   ],
   'style-src': [
     "'self'",
