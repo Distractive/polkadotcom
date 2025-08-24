@@ -14,13 +14,13 @@ const client = !isTest
     })
   : undefined;
 
-// CSP sources
 const cspSources = {
   'base-uri': ["'self'"],
   'connect-src': [
     "'self'",
     'analytics.google.com',
     'ekndrsoc.ust.stape.io',
+    'sc.polkadot.com',
     'https://*.api.sanity.io',
     'wss://qf32zgfm.api.sanity.io',
     'https://*.hotjar.com',
@@ -49,6 +49,12 @@ const cspSources = {
     'https://v1.slise.xyz/scripts',
     'https://v1.slise.xyz/analytics/tpe',
     'https://v1.slise.xyz/track',
+    'https://www.googleadservices.com',
+    'https://www.google.com',
+    'https://googleads.g.doubleclick.net',
+    'https://stats.g.doubleclick.net',
+    'https://*.doubleclick.net',
+    'https://tracking-europe.ad360.media/track/events',
   ],
   'default-src': ["'self'"],
   'font-src': [
@@ -66,6 +72,7 @@ const cspSources = {
     'https://*.hsforms.net',
     'https://*.hotjar.com',
     'https://*.stape.io',
+    'https://sc.polkadot.com',
     'https://app.spline.design',
     'https://ekndrsoc.ust.stape.io',
     'https://player.vimeo.com',
@@ -83,6 +90,7 @@ const cspSources = {
     'https://forms-na1.hsforms.com',
     'https://*.hubspot.com',
     'https://*.stape.io',
+    'https://sc.polkadot.com',
     'https://googleads.g.doubleclick.net',
     'https://lh3.googleusercontent.com',
     'https://www.google.com/pagead/*',
@@ -92,6 +100,7 @@ const cspSources = {
     'https://analytics.twitter.com',
     'https://cdn.sanity.io',
     'https://ekndrsoc.ust.stape.io',
+    'sc.polkadot.com',
     'https://i.ytimg.com',
     'https://plausible.io',
     'https://queue.simpleanalyticscdn.com',
@@ -104,6 +113,7 @@ const cspSources = {
     'https://*.reddit.com',
     'https://alb.reddit.com',
     'https://*.ad360.media',
+    'https://www.google.com',
   ],
   'object-src': ["'none'"],
   'script-src': [
@@ -116,6 +126,7 @@ const cspSources = {
     'https://*.hotjar.io',
     'https://*.spline.design',
     'https://*.stape.io',
+    'sc.polkadot.com',
     'https://app.spline.design',
     'https://cdn.sanity.io',
     'https://cmp.osano.com',
@@ -135,6 +146,11 @@ const cspSources = {
     'https://cdn.ad360.media',
     'https://vercel.live/',
     'https://v1.slise.xyz/scripts/pix3l.js',
+    // NEW ADDITIONS FOR GOOGLE ADS:
+    'https://www.googleadservices.com',
+    'https://www.google.com',
+    'https://googleads.g.doubleclick.net',
+    'https://*.doubleclick.net',
   ],
   'style-src': [
     "'self'",
