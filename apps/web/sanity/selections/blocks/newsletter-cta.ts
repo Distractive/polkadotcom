@@ -2,7 +2,11 @@ import type { Selection } from 'groqd';
 import { q, sanityImage } from 'groqd';
 
 export const newsletterCTASelection = {
+<<<<<<< HEAD
   _key: q.string().optional().nullable(),
+=======
+  _key: q.string(),
+>>>>>>> origin/develop
   _type: q.literal('newsletterCTA'),
   heading: q.string().nullable().optional(),
   image: sanityImage('image', {

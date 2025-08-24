@@ -68,7 +68,7 @@ export function MobileSearch() {
           </button>
         </div>
 
-        <div className="m-2 bg-white rounded-xl shadow-lg max-h-[80vh] overflow-scroll text-grey-700">
+        <div className="m-2 bg-white rounded-xl shadow-lg max-h-[80vh] overflow-auto text-grey-700">
           <NoResults />
           <Hits
             hitComponent={({ hit }) =>

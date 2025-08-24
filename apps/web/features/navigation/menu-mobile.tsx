@@ -22,7 +22,12 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
   const { ref } = useToggleAnimation({ isVisible: isOpen });
 
   return (
-    <div className="z-30 mt-4 flex w-full items-end justify-end">
+    <div
+      className={cn(
+        'z-30 mt-4 flex w-full items-end justify-end',
+        !isOpen ? 'hidden' : 'flex',
+      )}
+    >
       <div
         id="page-menu"
         ref={ref}

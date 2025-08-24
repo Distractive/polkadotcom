@@ -1,12 +1,11 @@
 import { urlForImage } from '@/sanity/lib/image';
 import { PortableText } from '@portabletext/react';
-import { cn } from '@shared/ui';
 import type { TypeFromSelection } from 'groqd';
 import Image from 'next/image';
 
 import { HubSpotForm } from '@/components/hubspot-form';
 import type { newsletterCTASelection } from '@/sanity/selections/blocks/newsletter-cta';
-import { Heading } from '@shared/ui';
+import { Heading, cn } from '@shared/ui';
 
 interface Props {
   cta: TypeFromSelection<typeof newsletterCTASelection>;
@@ -17,7 +16,7 @@ export function NewsletterCTA({ cta, isPostEmbed }: Props) {
   return (
     <div
       className={cn(
-        'max-width flex justify-center',
+        'max-width flex justify-center pt-6 pb-12',
         !isPostEmbed && 'px-gutter',
       )}
     >
@@ -30,11 +29,11 @@ export function NewsletterCTA({ cta, isPostEmbed }: Props) {
             'flex flex-col md:flex-row rounded-2xl p-card gap-gutter ',
           )}
         >
-          {cta?.image && (
+          {cta.image && (
             <div
               className={cn(
                 'rounded-2xl md:min-w-[25%] flex flex-col justify-center ',
-                cta.adjustImageForOverflow && 'pb-[2.75%]',
+                cta.adjustImageForOverflow && 'pb-6',
               )}
             >
               <Image
@@ -50,16 +49,16 @@ export function NewsletterCTA({ cta, isPostEmbed }: Props) {
           <div
             className={cn(
               'flex flex-col justify-center',
-              cta?.adjustImageForOverflow && 'pb-6 md:pb-0',
+              cta.adjustImageForOverflow && 'pb-6 md:pb-0',
             )}
           >
             <Heading variant="h2" className="pb-3 mt-0">
-              {cta?.heading}
+              {cta.heading}
             </Heading>
-            {cta?.content && (
+            {cta.content && (
               <div className="pb-3">
                 <PortableText
-                  value={cta?.content}
+                  value={cta.content}
                   components={{
                     block: {
                       normal: ({ children }) => (
@@ -73,8 +72,8 @@ export function NewsletterCTA({ cta, isPostEmbed }: Props) {
                 />
               </div>
             )}
-            {cta?.formType && cta?._key && (
-              <HubSpotForm type={cta?.formType} id={cta?._key} />
+            {cta.formType && cta._key && (
+              <HubSpotForm type={cta.formType} id={cta._key} />
             )}
           </div>
         </div>
