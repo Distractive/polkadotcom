@@ -56,10 +56,14 @@ export default function Banner({ banner }: BannerProps) {
   }
 
   return (
-    <div className="fixed bottom-4 left-4 right-6 z-40 rounded-2xl bg-white sm:right-auto ">
+    <div
+      className="fixed bottom-4 left-4 right-6 z-40 rounded-2xl bg-white sm:right-auto "
+      data-testid="banner"
+    >
       <div className="relative h-full w-full">
         <button
           type="button"
+          data-testid="banner-close-button"
           className="group absolute right-[-1rem] top-[-1rem] z-50 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-grey-300 bg-white transition-colors duration-200 hover:bg-black"
           onClick={handleClose}
         >
