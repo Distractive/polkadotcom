@@ -50,9 +50,9 @@ export function DesktopSearch() {
             queryHook={queryHook}
             placeholder="Search..."
             classNames={{
-              form: 'w-full flex justify-between',
+              form: 'w-full flex justify-between ',
               input:
-                'rounded border-none outline-none focus:ring-0 focus:border-0 w-[85%]',
+                'rounded border-none outline-none focus:ring-0 focus:border-0 w-[85%] p-1 bg-black/30',
               submit: 'hidden',
             }}
           />
