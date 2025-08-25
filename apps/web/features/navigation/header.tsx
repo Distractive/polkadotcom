@@ -64,7 +64,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
             <Link
               href="/"
               onClick={handleItemSelect}
-              className="pr-4"
+              className="pr-3"
               aria-label="Navigate to the home page"
             >
               <Logo ariaLabel="Polkadot homepage" width={140} />
