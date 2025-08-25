@@ -227,3 +227,45 @@ html {
   opacity: 1;
   transform: translateY(0);
 }
+
+.gradient-border-wrapper {
+  position: relative;
+  border-radius: 3rem;
+  background: #000000/30;
+  backdrop-filter: blur(16px);
+}
+
+.gradient-border-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.169),
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.169)
+  ),
+  linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.169),
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.169)
+  );
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+}
+
+.nav-divider-gradient {
+  border-left: 1px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    rgba(220, 226, 233, 0.2) 0%,
+    rgba(124, 127, 131, 0) 100%
+  ) 1;
+}
+
