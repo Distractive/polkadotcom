@@ -46,7 +46,7 @@ export function MenuDesktop({
           id={`${stegaClean(section.heading)}`}
           className={cn(
             'mb-auto mr-auto flex items-start overflow-hidden backdrop-blur-md',
-            'rounded-2xl border border-white/40 bg-black/30',
+            'rounded-2xl border bg-black/30',
             section.heading === hovered
               ? 'pointer-events-auto visible'
               : 'pointer-events-none invisible',
