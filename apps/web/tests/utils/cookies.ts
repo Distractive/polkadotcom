@@ -3,6 +3,15 @@ import type { Page } from '@playwright/test';
 export async function acceptOrCloseCookieBanner(page: Page) {
   await page.waitForTimeout(5000);
 
+  const banner = page.getByTestId('banner');
+  if (await banner.isVisible()) {
+    const bannerCloseButton = page.getByTestId('banner-close-button');
+    if (await bannerCloseButton.isVisible()) {
+      await bannerCloseButton.click();
+      await page.waitForTimeout(2000);
+    }
+  }
+
   const cookieBanner = page.getByRole('dialog', {
     name: 'Cookie Consent Banner',
   });
