@@ -7,6 +7,10 @@ on:
         description: "Commit hash"
         required: true
         type: string
+      run_number:
+        description: "Workflow run number"
+        required: true
+        type: string
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -28,10 +32,17 @@ jobs:
           role-to-assume: ${{ vars.AWS_ROLE }}
           aws-region: ${{ vars.AWS_REGION }}
 
+      - name: Validate inputs
+        run: |
+          # ensure run_number is numeric
+          if ! [[ "${{ github.event.inputs.run_number }}" =~ ^[0-9]+$ ]]; then
+            echo "run_number must be numeric"; exit 1
+          fi
+
       - name: Getting backup_path
         id: backup_path
         run: |
-          backup_path="s3://${{ vars.DEPLOYMENT_BUCKET_BACKUP }}/${{ github.event.inputs.commit_hash }}.zip"
+          backup_path="s3://${{ vars.DEPLOYMENT_BUCKET_BACKUP }}/${{ github.event.inputs.commit_hash }}-${{ github.event.inputs.run_number }}.zip"
           echo "backup_path=$backup_path" >> $GITHUB_OUTPUT
 
       - name: Check if ZIP file exists in S3
