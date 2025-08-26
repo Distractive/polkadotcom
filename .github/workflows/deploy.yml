@@ -81,7 +81,7 @@ jobs:
       - name: Getting filename
         id: filename
         run: |
-          filename=$(git log -1 --format=%H).zip
+          filename="$(git log -1 --format=%H)-${GITHUB_RUN_NUMBER}.zip"
           echo "filename=$filename" >> $GITHUB_OUTPUT
 
       - name: Zip build folder
