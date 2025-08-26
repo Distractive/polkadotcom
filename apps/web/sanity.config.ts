@@ -13,6 +13,7 @@ import { structureTool } from 'sanity/structure';
 
 import { env } from '@/env.mjs';
 import { presentationTool } from 'sanity/presentation';
+import Rollback from './components/rollback';
 
 // Helper function to check user roles
 const userHasRole = (user: CurrentUser | null, role: string): boolean => {
@@ -80,14 +81,23 @@ export default defineConfig({
           media(),
           vercelDeployTool(),
         ],
-  // Show or hide vercelDeployTool based on user role
-  tools: (prevTools, context: ConfigContext) => {
+  tools: (prev, context) => {
     const { currentUser } = context;
+    const isAdmin = userHasRole(currentUser, "administrator");
 
-    if (!userHasRole(currentUser, 'administrator')) {
-      return prevTools.filter((tool) => tool.name !== 'vercel-deploy');
-    }
+    const withRollback = isAdmin
+      ? [
+          ...prev,
+          {
+            name: "rollback",
+            title: "Rollback",
+            component: Rollback,
+          },
+        ]
+      : prev;
 
-    return prevTools;
+    return isAdmin
+      ? withRollback
+      : withRollback.filter((tool) => tool.name !== "vercel-deploy");
   },
 });
