@@ -63,7 +63,6 @@ export default defineConfig({
             },
           }),
           media(),
-          vercelDeployTool(),
         ]
       : [
           structureTool({
@@ -79,7 +78,6 @@ export default defineConfig({
             },
           }),
           media(),
-          vercelDeployTool(),
         ],
   tools: (prev, context) => {
     const { currentUser } = context;
