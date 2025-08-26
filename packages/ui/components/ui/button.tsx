@@ -31,7 +31,7 @@ import { cn } from '../../lib/utils';
 
 const ButtonStyles = {
   base: cn(
-    'inline-flex items-center justify-center gap-2 uppercase font-display relative overflow-hidden content-none outline-none box-border',
+    'inline-flex items-center justify-center  uppercase font-display relative overflow-hidden content-none outline-none box-border',
     'relative overflow-hidden',
     // Slide effect
     'before:absolute before:inset-0 before:-z-10',
@@ -53,6 +53,8 @@ const ButtonStyles = {
       'bg-white/40 text-black border border-grey-200 before:bg-[#aeb7cb]/30 [&>*]:relative [&>*]:z-30 active:after:bg-[#aeb7cb]/45',
     tertiary:
       'bg-black/30 text-white before:bg-black/40 active:after:bg-black/50',
+    legacy:
+      'text-black bg-white hover:bg-grey-200 border-[1px] border-grey-200 duration-200',
     disabled:
       'bg-grey-200 text-grey-300 pointer-events-none border border-grey-100',
   },
