@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["6744744763.io.pcf.polkadotapp"],
+        "components": [
+          {
+            "/": "/app/*",
+            "comment": "Matches only /app/ routes"
+          }
+        ]
+      }
+    ]
+  }
+}
