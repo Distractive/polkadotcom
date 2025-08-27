@@ -4,12 +4,33 @@
         <title>Polkadot - All Content</title>
         <link>https://polkadot.com</link>
         <description>Polkadot - The Platform for Web3</description>
-        <lastBuildDate>Wed, 20 Aug 2025 13:29:38 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 27 Aug 2025 15:14:10 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>All rights reserved 2025, Polkadot</copyright>
         <atom:link href="https://polkadot.com/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Paraguay invests in Polkadot to tokenize innovation hub with hotel, university, and data center]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/paraguay-invests-in-polkadot</link>
+            <guid>https://polkadot.com/newsroom/press-releases/paraguay-invests-in-polkadot</guid>
+            <pubDate>Tue, 26 Aug 2025 21:12:00 GMT</pubDate>
+            <description><![CDATA[Assuncion Innovation Valley launches with US$6 million in tokenized equity, combining blockchain-based governance, interoperability, and regulated investment in Paraguay’s capital.]]></description>
+            <content:encoded><![CDATA[Assuncion Innovation Valley launches with US$6 million in tokenized equity, combining blockchain-based governance, interoperability, and regulated investment in Paraguay’s capital.]]></content:encoded>
+            <category>Press Release</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[Your HOA sucks. Maybe it needs a DAO.]]></title>
+            <link>https://polkadot.com/blog/dao-for-everyday-groups</link>
+            <guid>https://polkadot.com/blog/dao-for-everyday-groups</guid>
+            <pubDate>Thu, 21 Aug 2025 13:51:44 GMT</pubDate>
+            <description><![CDATA[Endless meetings. Hidden decisions. Petty drama. What if your HOA (or PTA, or book club) ran onchain instead? DAOs bring transparency, accountability, and real participation to everyday groups.]]></description>
+            <content:encoded><![CDATA[Endless meetings. Hidden decisions. Petty drama. What if your HOA (or PTA, or book club) ran onchain instead? DAOs bring transparency, accountability, and real participation to everyday groups.]]></content:encoded>
+            <category>Blog</category>
+            <category>DAO</category>
+            <category>Reflection</category>
+        </item>
         <item>
             <title><![CDATA[6 takeaways from Gavin Wood’s Web3 Summit 2025 keynote]]></title>
             <link>https://polkadot.com/blog/gavin-wood-web3-summit-2025-takeaways</link>
@@ -875,9 +896,9 @@
             <link>https://polkadot.com/newsroom/press-releases/Polkadot-and-SP-Negocios-Partner</link>
             <guid>https://polkadot.com/newsroom/press-releases/Polkadot-and-SP-Negocios-Partner</guid>
             <pubDate>Tue, 29 Oct 2024 12:30:00 GMT</pubDate>
-            <description><![CDATA[Polkadot partnership provides free blockchain developer training program to empower companies and citizens of São Paulo, Brazil.
+            <description><![CDATA[Polkadot partnership provides free blockchain developer training program to empower companies and citizens of São Paulo, Brazil.  
 ]]></description>
-            <content:encoded><![CDATA[Polkadot partnership provides free blockchain developer training program to empower companies and citizens of São Paulo, Brazil.
+            <content:encoded><![CDATA[Polkadot partnership provides free blockchain developer training program to empower companies and citizens of São Paulo, Brazil.  
 ]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
@@ -930,10 +951,10 @@
             <link>https://polkadot.com/blog/what-is-a-crypto-wallet</link>
             <guid>https://polkadot.com/blog/what-is-a-crypto-wallet</guid>
             <pubDate>Wed, 18 Sep 2024 14:20:00 GMT</pubDate>
-            <description><![CDATA[In Web3, your wallet is your most valuable digital tool. It’s more than just a place to store, send, and receive cryptocurrencies securely—it’s your passport to the decentralized world.
+            <description><![CDATA[In Web3, your wallet is your most valuable digital tool. It’s more than just a place to store, send, and receive cryptocurrencies securely—it’s your passport to the decentralized world. 
 
 ]]></description>
-            <content:encoded><![CDATA[In Web3, your wallet is your most valuable digital tool. It’s more than just a place to store, send, and receive cryptocurrencies securely—it’s your passport to the decentralized world.
+            <content:encoded><![CDATA[In Web3, your wallet is your most valuable digital tool. It’s more than just a place to store, send, and receive cryptocurrencies securely—it’s your passport to the decentralized world. 
 
 ]]></content:encoded>
             <category>Blog</category>
@@ -2038,9 +2059,9 @@
             <link>https://polkadot.com/newsroom/press-releases/parity-joins-forces-with-aventus-to-bring-blockchain-to-businesses</link>
             <guid>https://polkadot.com/newsroom/press-releases/parity-joins-forces-with-aventus-to-bring-blockchain-to-businesses</guid>
             <pubDate>Wed, 31 Aug 2022 21:00:00 GMT</pubDate>
-            <description><![CDATA[Parity Technologies, a decentralized infrastructure provider for Web3 which enables blockchains to operate together at scale, has joined forces with enterprise-grade blockchain Aventus Network to bring blockchain offerings to the enterprise sector.
+            <description><![CDATA[Parity Technologies, a decentralized infrastructure provider for Web3 which enables blockchains to operate together at scale, has joined forces with enterprise-grade blockchain Aventus Network to bring blockchain offerings to the enterprise sector. 
 ]]></description>
-            <content:encoded><![CDATA[Parity Technologies, a decentralized infrastructure provider for Web3 which enables blockchains to operate together at scale, has joined forces with enterprise-grade blockchain Aventus Network to bring blockchain offerings to the enterprise sector.
+            <content:encoded><![CDATA[Parity Technologies, a decentralized infrastructure provider for Web3 which enables blockchains to operate together at scale, has joined forces with enterprise-grade blockchain Aventus Network to bring blockchain offerings to the enterprise sector. 
 ]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
@@ -2083,9 +2104,9 @@
             <link>https://polkadot.com/newsroom/press-releases/interlay-launches-landmark-trustless-bitcoin-bridge-on-polkadot</link>
             <guid>https://polkadot.com/newsroom/press-releases/interlay-launches-landmark-trustless-bitcoin-bridge-on-polkadot</guid>
             <pubDate>Wed, 10 Aug 2022 21:00:00 GMT</pubDate>
-            <description><![CDATA[Interoperability network Interlay has launched interBTC (ticker: iBTC) - the first fully trustless and decentralized wrapped Bitcoin bridge - on Polkadot. iBTC is a secure way to use Bitcoin on other blockchains for DeFi, cross-chain transfers, NFTs, and more.
+            <description><![CDATA[Interoperability network Interlay has launched interBTC (ticker: iBTC) - the first fully trustless and decentralized wrapped Bitcoin bridge - on Polkadot. iBTC is a secure way to use Bitcoin on other blockchains for DeFi, cross-chain transfers, NFTs, and more. 
 ]]></description>
-            <content:encoded><![CDATA[Interoperability network Interlay has launched interBTC (ticker: iBTC) - the first fully trustless and decentralized wrapped Bitcoin bridge - on Polkadot. iBTC is a secure way to use Bitcoin on other blockchains for DeFi, cross-chain transfers, NFTs, and more.
+            <content:encoded><![CDATA[Interoperability network Interlay has launched interBTC (ticker: iBTC) - the first fully trustless and decentralized wrapped Bitcoin bridge - on Polkadot. iBTC is a secure way to use Bitcoin on other blockchains for DeFi, cross-chain transfers, NFTs, and more. 
 ]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
@@ -2422,10 +2443,10 @@
             <link>https://polkadot.com/blog/introducing-polkadot-kusama-gifts</link>
             <guid>https://polkadot.com/blog/introducing-polkadot-kusama-gifts</guid>
             <pubDate>Wed, 13 Oct 2021 19:15:00 GMT</pubDate>
-            <description><![CDATA[Introducing Polkadot and Kusama Gifts, the easiest Way to send DOT and KSM to Friends and Family.
+            <description><![CDATA[Introducing Polkadot and Kusama Gifts, the easiest Way to send DOT and KSM to Friends and Family. 
 
 Polkadot and Kusama Gifts are a new way to send DOT or KSM to anyone, even if they don’t already have an account or wallet.]]></description>
-            <content:encoded><![CDATA[Introducing Polkadot and Kusama Gifts, the easiest Way to send DOT and KSM to Friends and Family.
+            <content:encoded><![CDATA[Introducing Polkadot and Kusama Gifts, the easiest Way to send DOT and KSM to Friends and Family. 
 
 Polkadot and Kusama Gifts are a new way to send DOT or KSM to anyone, even if they don’t already have an account or wallet.]]></content:encoded>
             <category>Blog</category>
@@ -3344,9 +3365,9 @@ Council motion: #85]]></content:encoded>
             <link>https://polkadot.com/blog/announcing-the-polkadot-ecosystem-fund</link>
             <guid>https://polkadot.com/blog/announcing-the-polkadot-ecosystem-fund</guid>
             <pubDate>Tue, 29 Oct 2019 13:56:09 GMT</pubDate>
-            <description><![CDATA[San Francisco and Zug — Web3 Foundation and Polychain Capital are joining forces to launch the Polkadot Ecosystem Fund during San Francisco Blockchain Week.
+            <description><![CDATA[San Francisco and Zug — Web3 Foundation and Polychain Capital are joining forces to launch the Polkadot Ecosystem Fund during San Francisco Blockchain Week. 
 The fund is a Polychain-operated investment vehicle jointly capitalized by Web3 Foundation and Polychain. ]]></description>
-            <content:encoded><![CDATA[San Francisco and Zug — Web3 Foundation and Polychain Capital are joining forces to launch the Polkadot Ecosystem Fund during San Francisco Blockchain Week.
+            <content:encoded><![CDATA[San Francisco and Zug — Web3 Foundation and Polychain Capital are joining forces to launch the Polkadot Ecosystem Fund during San Francisco Blockchain Week. 
 The fund is a Polychain-operated investment vehicle jointly capitalized by Web3 Foundation and Polychain. ]]></content:encoded>
             <category>Blog</category>
             <category>Grants &amp; Funding</category>
