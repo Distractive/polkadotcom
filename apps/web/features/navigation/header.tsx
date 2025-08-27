@@ -67,7 +67,10 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
             <Link
               href="/"
               onClick={handleItemSelect}
-              className={cn('pr-3', isSearchOpen && 'lg:hidden xl:block')}
+              className={cn(
+                'pr-3 cursor-pointer',
+                isSearchOpen && 'lg:hidden xl:block',
+              )}
               aria-label="Navigate to the home page"
             >
               <Logo ariaLabel="Polkadot homepage" width={140} />
