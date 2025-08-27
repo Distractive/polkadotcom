@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.pcf.polkadotapp",
+      "sha256_cert_fingerprints": [
+        "7B:47:1D:1B:BC:16:F8:FD:81:1F:09:AC:E1:C0:54:1B:A4:62:E6:26:7A:2B:7B:6A:BB:EC:3F:6D:FB:EA:30:61"
+      ]
+    }
+  }
+]
