@@ -11,25 +11,6 @@ export default function SocialLinks({ items }: Props) {
       className="flex w-full flex-row flex-wrap items-center gap-3 md:justify-end"
       data-testid="social-links"
     >
-      {items?.map((item, index) => (
-        <a
-          href={item.url}
-          target="_blank"
-          key={item.title}
-          className="flex size-12 items-center justify-center rounded-full transition duration-500 ease-out hover:bg-grey-400"
-          rel="noreferrer"
-        >
-          <img
-            src={urlForImage(item.image.asset)}
-            alt=""
-            aria-hidden="true"
-            className="fill-black"
-            width={32}
-            height={32}
-          />
-          <span className="sr-only">{item.title}</span>
-        </a>
-      ))}
       <div className="flex w-full flex-row flex-wrap items-center gap-3 md:justify-end">
         {items?.map((item) => {
           const src = urlForImage(item.image.asset);

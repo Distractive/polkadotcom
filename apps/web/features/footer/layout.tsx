@@ -27,29 +27,30 @@ export default function FooterLayout({ footer }: Props) {
           className="border border-grey-200  md:mb-gutter md:rounded-2xl relative bg-white"
           data-testid="footer"
         >
-          <div className="mx-auto w-full">
-            <Menu menu={footer.menu} modal={modalData} />
-          </div>
-          <hr className="border-grey-300 sm:mx-auto" />
           <div className="flex flex-col items-start px-gutter py-4 md:flex-row md:items-center md:justify-between">
             <div className="flex h-full max-w-56 flex-row items-end gap-6 md:max-w-64">
               <a href="/" className="group">
                 <Image
                   src={logo}
                   alt="Polkadot logo"
-                  width={360}
+                  width={180}
                   style={{ height: 'auto' }}
                   role="img"
                   priority
                 />
               </a>
-              <div className="flex h-full flex-col">
-                <p className="flex translate-y-[-1px] transform flex-row gap-1 text-sm text-grey-500">
-                  <span>©</span> {new Date().getFullYear()}
-                </p>
-              </div>
             </div>
             <SocialLinks items={footer.socialLinks} />
+          </div>
+          <hr className="border-grey-300 sm:mx-auto" />
+          <div className="mx-auto w-full">
+            <Menu menu={footer.menu} modal={modalData} />
+          </div>
+          <hr className="border-grey-300 sm:mx-auto" />
+          <div className="flex flex-col items-center justify-center px-gutter py-4 md:flex-row">
+            <p className="flex translate-y-[-1px] transform flex-row gap-1 text-sm text-grey-500">
+              <span>©</span> {new Date().getFullYear()}
+            </p>
           </div>
         </div>
       </footer>
