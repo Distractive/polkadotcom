@@ -1,9 +1,10 @@
 'use client';
 
 import { useQueryHook } from '@/hooks/use-search-query';
+import { useSearchState } from '../../hooks/use-search-state';
 import { Icon } from '@shared/ui';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import {
   Highlight,
   Hits,
@@ -27,7 +28,7 @@ function NoResults() {
 }
 
 export function DesktopSearch() {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const { isSearchOpen, setIsSearchOpen } = useSearchState();
   const queryHook = useQueryHook();
 
   const containerRef = useRef<HTMLDivElement>(null);

@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 import { CustomUrl } from '@/components/custom-url';
 import { Logo } from '@/components/logo';
+import { useSearchState } from '@/hooks/use-search-state';
 import { cn } from '@shared/ui';
 
 import { Search } from '@/components/search/search';
@@ -19,6 +20,8 @@ interface Props {
 }
 
 export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
+  const { isSearchOpen } = useSearchState();
+
   const handleItemSelect = () => {
     setHovered('');
     setIsOpen(false);
@@ -64,7 +67,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
             <Link
               href="/"
               onClick={handleItemSelect}
-              className="pr-3"
+              className={cn('pr-3', isSearchOpen && 'lg:hidden xl:block')}
               aria-label="Navigate to the home page"
             >
               <Logo ariaLabel="Polkadot homepage" width={140} />
@@ -72,7 +75,8 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
             <ul
               className={cn(
                 'hidden  items-center justify-center gap-nav px-nav lg:flex -mr-4',
-                'nav-divider-gradient  font-bold',
+                'font-bold nav-divider-gradient',
+                isSearchOpen && 'lg:hidden xl:flex',
               )}
             >
               {menu.map((item) => {
@@ -86,6 +90,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
                       value={item.link}
                       onClick={handleItemSelect}
                       className={cn(
+                        'whitespace-nowrap',
                         item.link &&
                           'duration-100 ease-in-out hover:text-pink focus:text-pink peer-focus:text-pink',
                       )}

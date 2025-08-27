@@ -6,6 +6,7 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { useBreakpoint } from '@/hooks/use-breakpoint';
 import { useHideOnScroll } from '@/hooks/use-hide-on-scroll';
+import { SearchStateProvider } from '../../hooks/use-search-state';
 import { cn } from '@shared/ui';
 
 import { Header } from './header';
@@ -69,7 +70,7 @@ export default function NavigationLayout({ navigation }: Props) {
   };
 
   return (
-    <>
+    <SearchStateProvider>
       <MotionWrapper
         ref={ref}
         animate={animationControls || { y: '0%', opacity: 1 }}
@@ -108,6 +109,6 @@ export default function NavigationLayout({ navigation }: Props) {
       </MotionWrapper>
 
       <Overlay isVisible={isOpen && isMobile} />
-    </>
+    </SearchStateProvider>
   );
 }
