@@ -41,26 +41,40 @@ export function DesktopSearch() {
       ref={containerRef}
       data-testid="search-button"
       className={`relative transition-all duration-300 ${
-        isSearchOpen ? 'w-[30rem]' : 'w-10'
+        isSearchOpen ? 'w-[20rem]' : 'w-10'
       }`}
     >
-      {isSearchOpen ? (
-        <>
-          <SearchBox
-            queryHook={queryHook}
-            placeholder="Search..."
-            classNames={{
-              form: 'w-full flex justify-between ',
-              input:
-                'rounded border-none outline-none focus:ring-0 focus:border-0 w-[85%] p-1 bg-white/0',
-              submit: 'hidden',
-            }}
-          />
-          <div
-            className={
-              'm-5 absolute left-0 right-0 mt-8 bg-white shadow-lg max-h-[80vh] overflow-auto text-grey-700 z-[999999] customRounded'
-            }
-          >
+      <div className="flex items-center">
+        <button
+          type="button"
+          onClick={() => setIsSearchOpen(!isSearchOpen)}
+          className="p-2 flex-shrink-0"
+        >
+          <Icon variant="magnify" className="size-10" />
+        </button>
+        {isSearchOpen && (
+          <div className="flex-1">
+            <SearchBox
+              queryHook={queryHook}
+              placeholder="Search..."
+              classNames={{
+                form: 'w-full flex flex-row items-center',
+                input:
+                  'rounded border-none outline-none focus:ring-0 focus:border-0 flex-1 p-1 bg-white/0',
+                submit: 'hidden',
+                reset: 'flex-shrink-0 ml-2',
+              }}
+            />
+          </div>
+        )}
+      </div>
+      {isSearchOpen && (
+        <div
+          className={
+            'm-5 absolute left-[-1rem] mt-8 bg-white shadow-lg max-h-[80vh] text-grey-700 z-[999999] customRounded w-[30rem]'
+          }
+        >
+          <div className="max-h-[80vh] overflow-y-auto overflow-x-hidden">
             <NoResults />
             <Hits
               hitComponent={({ hit }) =>
@@ -100,15 +114,7 @@ export function DesktopSearch() {
               }
             />
           </div>
-        </>
-      ) : (
-        <button
-          type="button"
-          onClick={() => setIsSearchOpen(true)}
-          className="p-2"
-        >
-          <Icon variant="magnify" className="size-10" />
-        </button>
+        </div>
       )}
     </div>
   );
