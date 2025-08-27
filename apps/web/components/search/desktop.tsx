@@ -4,6 +4,7 @@ import { useQueryHook } from '@/hooks/use-search-query';
 import { useSearchState } from '../../hooks/use-search-state';
 import { Icon } from '@shared/ui';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRef } from 'react';
 import {
   Highlight,
@@ -41,8 +42,10 @@ export function DesktopSearch() {
     <div
       ref={containerRef}
       data-testid="search-button"
-      className={`relative transition-all duration-300 ${
-        isSearchOpen ? 'w-[20rem]' : 'w-10'
+      className={`relative ${
+        isSearchOpen
+          ? 'w-[20rem] transition-all duration-300 ease-in-out'
+          : 'w-10 transition-all duration-0'
       }`}
     >
       <div className="flex items-center">
@@ -51,7 +54,13 @@ export function DesktopSearch() {
           onClick={() => setIsSearchOpen(!isSearchOpen)}
           className="p-2 flex-shrink-0"
         >
-          <Icon variant="magnify" className="size-10" />
+          <Image
+            src="/icons/magnifying-glass.svg"
+            alt="Search"
+            width={32}
+            height={18}
+            className="w-8 h-auto"
+          />
         </button>
         {isSearchOpen && (
           <div className="flex-1">
@@ -88,7 +97,13 @@ export function DesktopSearch() {
                       onClick={() => setIsSearchOpen(false)}
                     >
                       <div className="grid grid-cols-10 text-l font-bold hover:bg-grey-100 p-2">
-                        <Icon variant="magnify" className="size-8 col-span-1" />
+                        <Image
+                          src="/icons/magnifying-glass.svg"
+                          alt="Search"
+                          width={32}
+                          height={18}
+                          className="w-6 h-auto"
+                        />
                         <div className="col-span-9">
                           <Highlight attribute="title" hit={hit} />
                         </div>

@@ -3,6 +3,7 @@
 import { useQueryHook } from '@/hooks/use-search-query';
 import { Icon } from '@shared/ui';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import {
   Highlight,
@@ -36,7 +37,13 @@ export function MobileSearch() {
         onClick={() => setIsSearchOpen(true)}
         className="p-2"
       >
-        <Icon variant="magnify" className="size-10" />
+        <Image
+          src="/icons/magnifying-glass.svg"
+          alt="Search"
+          width={32}
+          height={18}
+          className="w-8 h-auto"
+        />
       </button>
     );
   }
@@ -83,7 +90,13 @@ export function MobileSearch() {
                         <Highlight attribute="title" hit={hit} />
                       </div>
                       <div>
-                        <Icon variant="magnify" className="size-10" />
+                        <Image
+                          src="/icons/magnifying-glass.svg"
+                          alt="Search"
+                          width={32}
+                          height={18}
+                          className="w-8 h-auto"
+                        />
                       </div>
                     </div>
                     <p className="font-light mb-5">
