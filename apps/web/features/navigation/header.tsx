@@ -69,7 +69,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
               onClick={handleItemSelect}
               className={cn(
                 'pr-3 cursor-pointer',
-                isSearchOpen && 'lg:hidden xl:block',
+                isSearchOpen && 'hidden lg:hidden xl:block',
               )}
               aria-label="Navigate to the home page"
             >

@@ -1,10 +1,10 @@
 'use client';
 
 import { useQueryHook } from '@/hooks/use-search-query';
-import { Icon } from '@shared/ui';
+import { useSearchState } from '../../hooks/use-search-state';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useRef } from 'react';
 import {
   Highlight,
   Hits,
@@ -13,6 +13,7 @@ import {
   useSearchBox,
 } from 'react-instantsearch';
 import { CustomSnippet } from './custom-snippet';
+import { useOnSearchClose } from './useOnSearchClose';
 
 function NoResults() {
   const { results } = useInstantSearch();
@@ -27,98 +28,105 @@ function NoResults() {
 }
 
 export function MobileSearch() {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const { isSearchOpen, setIsSearchOpen } = useSearchState();
   const queryHook = useQueryHook();
 
-  if (!isSearchOpen) {
-    return (
-      <button
-        type="button"
-        onClick={() => setIsSearchOpen(true)}
-        className="p-2"
-      >
-        <Image
-          src="/icons/magnifying-glass.svg"
-          alt="Search"
-          width={32}
-          height={18}
-          className="w-8 h-auto"
-        />
-      </button>
-    );
-  }
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useOnSearchClose(containerRef, () => {
+    setIsSearchOpen(false);
+  });
 
   return (
-    <div className="fixed inset-0 z-[9999]">
-      <div className="fixed inset-0 w-screen h-screen bg-black/30 backdrop-blur-sm">
-        {' '}
-      </div>
-      <div className="relative z-[10000]">
-        <div className="flex justify-between items-center bg-white m-2 p-2 rounded-xl">
-          <SearchBox
-            queryHook={queryHook}
-            placeholder="Search..."
-            className="w-full"
-            classNames={{
-              form: 'w-full flex',
-              input: 'rounded p-2 w-full outline-none focus:ring-0',
-              submit: 'hidden',
-              reset: 'hidden',
-            }}
+    <div
+      ref={containerRef}
+      data-testid="search-button"
+      className={`relative ${
+        isSearchOpen
+          ? 'flex-1 min-w-0 transition-all duration-300 ease-in-out'
+          : 'w-10 transition-all duration-0'
+      }`}
+    >
+      <div className="flex items-center">
+        <button
+          type="button"
+          onClick={() => setIsSearchOpen(!isSearchOpen)}
+          className="p-2 flex-shrink-0"
+        >
+          <Image
+            src="/icons/magnifying-glass.svg"
+            alt="Search"
+            width={32}
+            height={18}
+            className="w-8 h-auto"
           />
-          <button
-            type="button"
-            onClick={() => setIsSearchOpen(false)}
-            className="ml-2 p-2 text-lg"
-          >
-            <Icon variant="close" className="size-10" />
-          </button>
-        </div>
-
-        <div className="m-2 bg-white shadow-lg max-h-[80vh] text-grey-700 mobileSearchRounded">
-          <NoResults />
-          <Hits
-            hitComponent={({ hit }) =>
-              hit.slug && (
-                <div className="p-5 border-b border-grey-200">
-                  <Link
-                    href={`${hit.slug}`}
-                    onClick={() => setIsSearchOpen(false)}
+        </button>
+        {isSearchOpen && (
+          <div className="flex-1">
+            <SearchBox
+              queryHook={queryHook}
+              placeholder="Search..."
+              classNames={{
+                form: 'w-full flex flex-row items-center',
+                input:
+                  'rounded border-none outline-none focus:ring-0 focus:border-0 flex-1 p-1 bg-white/0',
+                submit: 'hidden',
+                reset: 'flex-shrink-0 ml-2',
+              }}
+            />
+          </div>
+        )}
+      </div>
+      {isSearchOpen && (
+        <div className="fixed left-4 right-4 mt-6 bg-white shadow-lg max-h-[80vh] text-grey-700 z-[999999] customRounded max-w-xl mx-auto">
+          <div className="max-h-[80vh] overflow-y-auto overflow-x-hidden">
+            <NoResults />
+            <Hits
+              hitComponent={({ hit }) =>
+                hit.slug && (
+                  <div
+                    className={`p-4 ${hit.__position === 1 ? 'border-0' : 'border-t border-grey-200'}`}
                   >
-                    <div className="flex justify-between items-center font-bold mb-5">
-                      <div>
-                        <Highlight attribute="title" hit={hit} />
-                      </div>
-                      <div>
+                    <Link
+                      href={`${hit.slug}`}
+                      onClick={() => setIsSearchOpen(false)}
+                    >
+                      <div className="grid grid-cols-10 text-l font-bold hover:bg-grey-100 p-2">
                         <Image
                           src="/icons/magnifying-glass.svg"
                           alt="Search"
                           width={32}
                           height={18}
-                          className="w-8 h-auto"
+                          className="w-6 h-auto"
                         />
+                        <div className="col-span-9">
+                          <Highlight attribute="title" hit={hit} />
+                        </div>
                       </div>
-                    </div>
-                    <p className="font-light mb-5">
-                      <CustomSnippet
-                        hit={hit}
-                        attributes={[
-                          'page_builder_body',
-                          'page_builder_items_body',
-                          'page_builder_items_heading',
-                          'meta_description',
-                          'page_builder_heading',
-                          'body',
-                        ]}
-                      />
-                    </p>
-                  </Link>
-                </div>
-              )
-            }
-          />
+                      <div className="grid grid-cols-10 font-light hover:bg-grey-100 p-2">
+                        <div className="col-span-1"> </div>
+                        <div className="col-span-9">
+                          <CustomSnippet
+                            hit={hit}
+                            attributes={[
+                              'page_builder_body',
+                              'page_builder_items_body',
+                              'page_builder_items_heading',
+                              'meta_description',
+                              'page_builder_heading',
+                              'body',
+                            ]}
+                          />
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                )
+              }
+            />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
