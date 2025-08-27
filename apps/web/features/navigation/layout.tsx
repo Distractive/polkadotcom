@@ -6,8 +6,8 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { useBreakpoint } from '@/hooks/use-breakpoint';
 import { useHideOnScroll } from '@/hooks/use-hide-on-scroll';
-import { SearchStateProvider } from '../../hooks/use-search-state';
 import { cn } from '@shared/ui';
+import { SearchStateProvider } from '../../hooks/use-search-state';
 
 import { Header } from './header';
 import { MenuDesktop } from './menu-desktop';

@@ -1,10 +1,8 @@
 'use client';
 
 import { useQueryHook } from '@/hooks/use-search-query';
-import { useSearchState } from '../../hooks/use-search-state';
-import { Icon } from '@shared/ui';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef } from 'react';
 import {
   Highlight,
@@ -13,6 +11,7 @@ import {
   useInstantSearch,
   useSearchBox,
 } from 'react-instantsearch';
+import { useSearchState } from '../../hooks/use-search-state';
 import { CustomSnippet } from './custom-snippet';
 import { useOnSearchClose } from './useOnSearchClose';
 

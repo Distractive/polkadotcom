@@ -2,13 +2,13 @@
 
 import { urlForImage } from '@/sanity/lib/image';
 import type { ecosystemSelection } from '@/sanity/selections/home/ecosystem';
+import { stegaClean } from '@sanity/client/stega';
 import type { TypeFromSelection } from 'groqd';
 import Image from 'next/image';
-import { stegaClean } from '@sanity/client/stega';
 
 import { CustomUrl } from '@/components/custom-url';
-import { Card, CardContent, Heading, cn } from '@shared/ui';
 import { ButtonBlock } from '@/features/page/blocks/button-block';
+import { Card, CardContent, Heading, cn } from '@shared/ui';
 
 interface Props {
   ecosystem: TypeFromSelection<typeof ecosystemSelection>['ecosystem'];

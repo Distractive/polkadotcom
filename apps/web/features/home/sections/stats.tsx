@@ -3,8 +3,8 @@ import type { TypeFromSelection } from 'groqd';
 
 import { Heading, cn } from '@shared/ui';
 
-import CardStatBlock from '@/features/page/blocks/cards-stats/card-stat';
 import HomeGradient from '@/features/gradients/home-gradient';
+import CardStatBlock from '@/features/page/blocks/cards-stats/card-stat';
 
 interface Props {
   stats: TypeFromSelection<typeof statsSelection>['stats'];
