@@ -35,7 +35,11 @@ export function ModalButton({ modal, buttonClassName }: Props) {
             modal.variant === 'secondary'
               ? // Account for 1px border on secondary buttons
                 [ButtonStyles.variants.secondary, '!py-[15px]']
-              : ButtonStyles.variants.primary,
+              : modal.variant === 'tertiary'
+                ? ButtonStyles.variants.tertiary
+                : modal.variant === 'disabled'
+                  ? ButtonStyles.variants.disabled
+                  : ButtonStyles.variants.primary,
             ButtonStyles.sizes[modal.size || 'md'],
             'text-left group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0',
           )}

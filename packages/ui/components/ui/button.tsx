@@ -52,7 +52,7 @@ const ButtonStyles = {
     secondary:
       'bg-white/40 text-black border border-grey-200 before:bg-[#aeb7cb]/30 [&>*]:relative [&>*]:z-30 active:after:bg-[#aeb7cb]/45',
     tertiary:
-      'bg-black/30 text-white before:bg-black/40 active:after:bg-black/50',
+      'glass-effect text-white before:bg-black/40 active:after:bg-black/50',
     legacy:
       'text-black bg-white hover:bg-grey-200 border-[1px] border-grey-200 duration-200',
     disabled:

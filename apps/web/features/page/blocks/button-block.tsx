@@ -22,13 +22,7 @@ export function ButtonBlock({ buttonBlock }: Props) {
           asChild
           size="lg"
           className="w-full md:group-hover:after:translate-x-0"
-          variant={
-            buttonBlock.link?.variant
-              ? buttonBlock.link.variant === 'primary'
-                ? 'primary'
-                : 'secondary'
-              : 'primary'
-          }
+          variant={buttonBlock.link?.variant || 'primary'}
         >
           <CustomUrl className="outline-none" value={buttonBlock.link}>
             {buttonBlock.link?.label}

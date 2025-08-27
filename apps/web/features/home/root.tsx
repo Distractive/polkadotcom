@@ -32,7 +32,7 @@ export function Root({ home }: Props) {
         <SmallCardsHome cards={home.build} />
       </div>
       {/* <Connected connected={home.connected} /> */}
-      <div className="py-32 section-fade-in">
+      <div className="pt-24 pb-32 section-fade-in">
         {home.newsletterCTA?.[0] && (
           <NewsletterCTA cta={home.newsletterCTA[0]} />
         )}

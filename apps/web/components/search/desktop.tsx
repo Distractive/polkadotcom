@@ -52,7 +52,7 @@ export function DesktopSearch() {
             classNames={{
               form: 'w-full flex justify-between ',
               input:
-                'rounded border-none outline-none focus:ring-0 focus:border-0 w-[85%] p-1 bg-black/30',
+                'rounded border-none outline-none focus:ring-0 focus:border-0 w-[85%] p-1 bg-white/0',
               submit: 'hidden',
             }}
           />

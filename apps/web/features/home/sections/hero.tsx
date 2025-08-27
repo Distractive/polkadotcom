@@ -72,7 +72,7 @@ export function Hero({ hero, backgroundVideo }: Props) {
           overlayOpacity={20}
           className=""
           muted={true}
-          localVideoPath={'/videos/defy-whats-possible-video.mp4'}
+          localVideoPath={'/videos/polkadot-home-video-2.mp4'}
         />
         <article
           id="hero.wrapper"
@@ -109,15 +109,7 @@ export function Hero({ hero, backgroundVideo }: Props) {
                     <Button
                       asChild
                       key={link.label}
-                      variant={
-                        link?.variant
-                          ? link.variant === 'primary'
-                            ? 'primary'
-                            : 'secondary'
-                          : 'primary'
-                      }
-                      size="lg"
-                      className="md:flex-1 whitespace-nowrap"
+                      variant={link?.variant || 'primary'}
                     >
                       <CustomUrl
                         className="outline-none"
