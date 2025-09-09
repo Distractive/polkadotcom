@@ -2,7 +2,6 @@ import type { footerMenuSelection } from '@/sanity/selections/footer/footer-menu
 import type { TypeFromSelection } from 'groqd';
 
 import { CustomUrl } from '@/components/custom-url';
-import { ModalButton } from '@/features/page/blocks/modal-button';
 import { Heading } from '@shared/ui';
 
 interface Props {
@@ -17,13 +16,7 @@ interface Props {
 
 export default function Menu({ menu, modal }: Props) {
   return (
-    <div className="grid grid-cols-1 gap-6 px-gutter py-gutter sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-      <div className="order-1 col-span-1 font-default text-black md:order-[99]">
-        <div className="flex flex-col items-start gap-2">
-          <ModalButton modal={modal} buttonClassName="font-medium" />
-        </div>
-      </div>
-
+    <div className="grid grid-cols-1 gap-6 px-gutter py-gutter sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
       {menu.map((item) => (
         <div
           key={item.heading || item.link?.label}

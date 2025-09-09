@@ -16,7 +16,7 @@
   }
 
   .max-width {
-    @apply mx-auto w-full max-w-[100rem];
+    @apply mx-auto w-full max-w-[90rem];
   }
 
   .link-styling {
@@ -26,6 +26,13 @@
   .heading-break {
     text-wrap: balance;
     overflow-wrap: break-word;
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
 }
 
@@ -165,7 +172,7 @@ html {
 }
 
 .hubspot input[type="submit"] {
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   border-radius: 0.75rem;
   background: black !important;
   cursor: pointer;
@@ -189,3 +196,87 @@ html {
   font-weight: bold;
   margin: 0;
 }
+
+
+.zoom-hover {
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.zoom-hover img {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1);
+}
+
+.zoom-hover:hover img {
+  transform: scale(1.05);
+}
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.section-fade-in.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gradient-border-wrapper {
+  position: relative;
+  border-radius: 3rem;
+  background: #000000/30;
+  backdrop-filter: blur(16px);
+}
+
+.gradient-border-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.169),
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.169)
+  ),
+  linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.169),
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.169)
+  );
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+.nav-divider-gradient {
+  border-left: 1px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    rgba(220, 226, 233, 0.2) 0%,
+    rgba(124, 127, 131, 0) 100%
+  ) 1;
+}
+
+
+
+

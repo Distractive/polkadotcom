@@ -86,7 +86,10 @@ export function CardsStatBlock({ cards }: Props) {
                 customUrl: ({ value }) => {
                   return (
                     <Button
-                      variant={value.internal ? 'primary' : 'secondary'}
+                      variant={
+                        value.variant ||
+                        (value.internal ? 'primary' : 'secondary')
+                      }
                       size="md"
                       className="mr-auto mt-copy"
                       asChild

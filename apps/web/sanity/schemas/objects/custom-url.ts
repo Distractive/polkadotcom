@@ -17,7 +17,7 @@ export default defineType({
         'Choose the variant of the link (choose the blank field from the dropdown to remove the link)',
       type: 'string',
       options: {
-        list: ['primary', 'secondary'],
+        list: ['primary', 'secondary', 'tertiary'],
       },
     },
     {

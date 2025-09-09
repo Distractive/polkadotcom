@@ -32,7 +32,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
         id="page-menu"
         ref={ref}
         className={cn(
-          'mx-gutter w-full md:w-[20rem] rounded-2xl border border-grey-200 bg-white',
+          'mx-gutter w-full md:w-[20rem] rounded-2xl border border-white/40 bg-black/40',
           'max-h-[80vh] overflow-y-auto overscroll-contain',
           'transition-opacity duration-300 ease-in-out',
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none',
@@ -42,7 +42,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
           {menu.map((section, sectionIndex) => {
             return (
               <AccordionItem key={section.heading} value={section.heading}>
-                <div className="relative flex items-center justify-center shadow-internal-border">
+                <div className="relative flex items-center justify-center shadow-internal-border ">
                   {section.link && (
                     <CustomUrl
                       value={section.link}
@@ -66,11 +66,13 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
 
                   <AccordionTrigger
                     aria-label={`Open '${stegaClean(section.heading)}' page links`}
-                    className="[&>svg]:mx-nav"
+                    className="[&>svg]:mx-nav text-white"
                   />
                 </div>
 
-                <AccordionContent className={cn('bg-grey-50', 'flex flex-col')}>
+                <AccordionContent
+                  className={cn('border-white/10 ', 'flex flex-col')}
+                >
                   {section.items.map((item, linkIndex) => {
                     const lastLink = linkIndex === section.items.length - 1;
                     const lastSection = sectionIndex === menu.length - 1;
@@ -78,7 +80,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                       <span
                         key={item.link.label}
                         className={cn(
-                          'flex h-full w-full text-left shadow-internal-border',
+                          'flex h-full w-full text-left shadow-internal-border ',
                           lastLink && 'border-b border-grey-200',
                           lastSection && lastLink && 'border-none',
                         )}

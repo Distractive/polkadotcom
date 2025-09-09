@@ -36,7 +36,7 @@ export default function BlogCard({ post, className }: Props) {
     <Card
       key={slug}
       className={cn(
-        'group relative h-full overflow-hidden rounded-2xl border border-grey-400 bg-white  transition-shadow duration-200 ease-in-out focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0',
+        'group relative h-full overflow-hidden rounded-2xl border border-grey-400 bg-white  transition-shadow duration-300 ease-in-out focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0',
         slug &&
           'focus-within:shadow-card focus-within:backdrop-blur-0 md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0',
         className,

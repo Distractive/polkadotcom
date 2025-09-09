@@ -16,6 +16,8 @@ import { BannerWrapper } from '@/features/banner/banner-wrapper';
 import FooterLayout from '@/features/footer/layout';
 import NavigationLayout from '@/features/navigation/layout';
 
+import { ScrollFadeWrapper } from '@/animations/scroll-fade-wrapper';
+
 export const metadata: Metadata = {
   title: 'Polkadot: Web3 Interoperability | Decentralized Blockchain',
   description:
@@ -36,10 +38,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const footer = await getFooter();
-  const navigation = await getNavigation();
+  // MIGHT NEED TO REFACTOR IS BUILD DOESN'T WORK CORRECTLY
+  // const { draftMode } = await import('next/headers');
+  // let isDraftModeEnabled = await draftMode().isEnabled;
+
   const isProduction = env.NODE_ENV === 'production';
   const isProductionDeployment = env.NEXT_PUBLIC_DEPLOYMENT === 'production';
+
   let VisualEditingComponent = null;
   let isDraftModeEnabled = false;
 
@@ -49,6 +54,9 @@ export default async function RootLayout({
     VisualEditingComponent = VisualEditing;
     isDraftModeEnabled = await draftMode().isEnabled;
   }
+
+  const footer = await getFooter(isDraftModeEnabled);
+  const navigation = await getNavigation(isDraftModeEnabled);
 
   return (
     <html lang="en">
@@ -188,7 +196,10 @@ export default async function RootLayout({
           <div className="relative">
             {navigation && <NavigationLayout navigation={navigation} />}
 
-            <main className="flex-grow">{children}</main>
+            <main className="flex-grow ">
+              {' '}
+              <ScrollFadeWrapper>{children}</ScrollFadeWrapper>
+            </main>
           </div>
           {footer && <FooterLayout footer={footer} />}
 
