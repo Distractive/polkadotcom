@@ -4,12 +4,89 @@
         <title>Polkadot - All Content</title>
         <link>https://polkadot.com</link>
         <description>Polkadot - The Platform for Web3</description>
-        <lastBuildDate>Wed, 20 Aug 2025 13:29:38 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 10 Sep 2025 22:03:07 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>All rights reserved 2025, Polkadot</copyright>
         <atom:link href="https://polkadot.com/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Polkadot Showcases Next-Generation Tech at TUM Blockchain Conference 2025]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/polkadot-showcases-next-gen-tech-at-tum-blockchain-conference</link>
+            <guid>https://polkadot.com/newsroom/press-releases/polkadot-showcases-next-gen-tech-at-tum-blockchain-conference</guid>
+            <pubDate>Mon, 08 Sep 2025 18:16:00 GMT</pubDate>
+            <description><![CDATA[Polkadot is a silver sponsor at TUM Blockchain Conference in Munich, on September 11 & 12. ]]></description>
+            <content:encoded><![CDATA[Polkadot is a silver sponsor at TUM Blockchain Conference in Munich, on September 11 & 12. ]]></content:encoded>
+            <category>Press Release</category>
+            <category>Events</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[DeFi Builders Program: Scaling the future of DeFi on Polkadot]]></title>
+            <link>https://polkadot.com/blog/defi-builders-program</link>
+            <guid>https://polkadot.com/blog/defi-builders-program</guid>
+            <pubDate>Thu, 04 Sep 2025 14:06:00 GMT</pubDate>
+            <description><![CDATA[The DeFi Builders Program on Polkadot helps developers tackle the biggest challenges in DeFi, including liquidity, security, and adoption. It combines funding, technical support, and scalable infrastructure to launch stronger, safer applications.]]></description>
+            <content:encoded><![CDATA[The DeFi Builders Program on Polkadot helps developers tackle the biggest challenges in DeFi, including liquidity, security, and adoption. It combines funding, technical support, and scalable infrastructure to launch stronger, safer applications.]]></content:encoded>
+            <category>Blog</category>
+            <category>Build</category>
+            <category>DeFi</category>
+            <category>Modular Tech</category>
+        </item>
+        <item>
+            <title><![CDATA[Velocity Labs and Partners Launch DeFi Builders Program to Accelerate DeFi Innovation on Polkadot Hub]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/velocity-labs-launch-polkadot-hub-defi-builders-program</link>
+            <guid>https://polkadot.com/newsroom/press-releases/velocity-labs-launch-polkadot-hub-defi-builders-program</guid>
+            <pubDate>Tue, 02 Sep 2025 18:50:27 GMT</pubDate>
+            <description><![CDATA[Velocity Labs and partners launch the DeFi Builders Program to fund, mentor, and accelerate next-gen DeFi projects on Polkadot Hub.]]></description>
+            <content:encoded><![CDATA[Velocity Labs and partners launch the DeFi Builders Program to fund, mentor, and accelerate next-gen DeFi projects on Polkadot Hub.]]></content:encoded>
+            <category>Press Release</category>
+            <category>Ecosystem</category>
+            <category>DeFi</category>
+        </item>
+        <item>
+            <title><![CDATA[Polkadot Flagship Conference sub0 SYMBIOSIS Returns November 14–16 in Argentina]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/polkadot-sub0-conference-argentina</link>
+            <guid>https://polkadot.com/newsroom/press-releases/polkadot-sub0-conference-argentina</guid>
+            <pubDate>Tue, 02 Sep 2025 18:40:07 GMT</pubDate>
+            <description><![CDATA[Polkadot’s sub0 SYMBIOSIS hits Buenos Aires Nov 14–16: 3 days of code, culture & Web3 innovation]]></description>
+            <content:encoded><![CDATA[Polkadot’s sub0 SYMBIOSIS hits Buenos Aires Nov 14–16: 3 days of code, culture & Web3 innovation]]></content:encoded>
+            <category>Press Release</category>
+            <category>Ecosystem</category>
+            <category>Events</category>
+        </item>
+        <item>
+            <title><![CDATA[How to stake DOT on Polkadot (without breaking a sweat)]]></title>
+            <link>https://polkadot.com/blog/how-to-stake-dot</link>
+            <guid>https://polkadot.com/blog/how-to-stake-dot</guid>
+            <pubDate>Wed, 27 Aug 2025 19:00:00 GMT</pubDate>
+            <description><![CDATA[A step-by-step guide to staking DOT on Polkadot. Learn how to stake from your wallet or with the Polkadot Staking Dashboard—and start earning rewards securely.]]></description>
+            <content:encoded><![CDATA[A step-by-step guide to staking DOT on Polkadot. Learn how to stake from your wallet or with the Polkadot Staking Dashboard—and start earning rewards securely.]]></content:encoded>
+            <category>Blog</category>
+            <category>Learn</category>
+            <category>DeFi</category>
+        </item>
+        <item>
+            <title><![CDATA[Paraguay invests in Polkadot to tokenize innovation hub with hotel, university, and data center]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/paraguay-invests-in-polkadot</link>
+            <guid>https://polkadot.com/newsroom/press-releases/paraguay-invests-in-polkadot</guid>
+            <pubDate>Tue, 26 Aug 2025 21:12:00 GMT</pubDate>
+            <description><![CDATA[Assuncion Innovation Valley launches with US$6 million in tokenized equity, combining blockchain-based governance, interoperability, and regulated investment in Paraguay’s capital.]]></description>
+            <content:encoded><![CDATA[Assuncion Innovation Valley launches with US$6 million in tokenized equity, combining blockchain-based governance, interoperability, and regulated investment in Paraguay’s capital.]]></content:encoded>
+            <category>Press Release</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[Your HOA sucks. Maybe it needs a DAO.]]></title>
+            <link>https://polkadot.com/blog/dao-for-everyday-groups</link>
+            <guid>https://polkadot.com/blog/dao-for-everyday-groups</guid>
+            <pubDate>Thu, 21 Aug 2025 13:51:44 GMT</pubDate>
+            <description><![CDATA[Endless meetings. Hidden decisions. Petty drama. What if your HOA (or PTA, or book club) ran onchain instead? DAOs bring transparency, accountability, and real participation to everyday groups.]]></description>
+            <content:encoded><![CDATA[Endless meetings. Hidden decisions. Petty drama. What if your HOA (or PTA, or book club) ran onchain instead? DAOs bring transparency, accountability, and real participation to everyday groups.]]></content:encoded>
+            <category>Blog</category>
+            <category>DAO</category>
+            <category>Reflection</category>
+        </item>
         <item>
             <title><![CDATA[6 takeaways from Gavin Wood’s Web3 Summit 2025 keynote]]></title>
             <link>https://polkadot.com/blog/gavin-wood-web3-summit-2025-takeaways</link>
@@ -49,6 +126,8 @@
             <link>https://polkadot.com/newsroom/press-releases/Polkadot-Blockchain-Academy-launches-executive-governance-course-in-Asia</link>
             <guid>https://polkadot.com/newsroom/press-releases/Polkadot-Blockchain-Academy-launches-executive-governance-course-in-Asia</guid>
             <pubDate>Thu, 31 Jul 2025 20:36:00 GMT</pubDate>
+            <description><![CDATA[Polkadot Blockchain Academy has launched a week-long "Governance for New Leadership" program for senior policymakers, entrepreneurs and industry leaders to Bali this September.]]></description>
+            <content:encoded><![CDATA[Polkadot Blockchain Academy has launched a week-long "Governance for New Leadership" program for senior policymakers, entrepreneurs and industry leaders to Bali this September.]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
             <category>Build</category>
@@ -2820,16 +2899,6 @@ Polkadot and Kusama Gifts are a new way to send DOT or KSM to anyone, even if th
             <category>Ecosystem</category>
         </item>
         <item>
-            <title><![CDATA[Swisscom Blockchain to develop Kubernetes Operator for Kusama and Polkadot]]></title>
-            <link>https://polkadot.com/blog/swisscom-blockchain-to-develop-kubernetes-operator-for-kusama-and-polkadot</link>
-            <guid>https://polkadot.com/blog/swisscom-blockchain-to-develop-kubernetes-operator-for-kusama-and-polkadot</guid>
-            <pubDate>Wed, 09 Sep 2020 11:06:00 GMT</pubDate>
-            <description><![CDATA[Swisscom Blockchain AG has received a Wave 5 grant from Web3 Foundation to develop a Kubernetes Operator for sentry nodes and validators for both Kusama and Polkadot.]]></description>
-            <content:encoded><![CDATA[Swisscom Blockchain AG has received a Wave 5 grant from Web3 Foundation to develop a Kubernetes Operator for sentry nodes and validators for both Kusama and Polkadot.]]></content:encoded>
-            <category>Blog</category>
-            <category>Kusama</category>
-        </item>
-        <item>
             <title><![CDATA[Kusama & Polkadot: ¿En qué consisten? Similitudes y diferencias]]></title>
             <link>https://polkadot.com/blog/kusama-polkadot-en-que-consisten-similitudes-y-diferencias</link>
             <guid>https://polkadot.com/blog/kusama-polkadot-en-que-consisten-similitudes-y-diferencias</guid>
@@ -3362,7 +3431,7 @@ The fund is a Polychain-operated investment vehicle jointly capitalized by Web3 
             <category>Kusama</category>
         </item>
         <item>
-            <title><![CDATA[Kusama CC2]]></title>
+            <title><![CDATA[Kusama CC2: The next chapter in the Kusama series]]></title>
             <link>https://polkadot.com/blog/kusama-cc2</link>
             <guid>https://polkadot.com/blog/kusama-cc2</guid>
             <pubDate>Thu, 26 Sep 2019 08:30:00 GMT</pubDate>

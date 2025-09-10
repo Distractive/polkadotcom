@@ -1,19 +1,19 @@
 // Auto-generated metrics from build process
-// Generated on: 2025-08-20T13:27:55.866Z
+// Generated on: 2025-09-10T22:01:46.135Z
 
 export const staticMetricsStore = {
   getActiveValidators: '600',
-  getApprovedReferendums: 955,
-  getAverageMonthlyGovernanceVoters: 15065,
-  getDailyTreasuryBalanceUSD: 70441200.61,
-  getDaoMembers: '1.50 million',
-  getPercentDOTSupplyStaked: '49%',
+  getApprovedReferendums: 967,
+  getAverageMonthlyGovernanceVoters: 14514,
+  getDailyTreasuryBalanceUSD: 70021464.21,
+  getDaoMembers: '1.51 million',
+  getPercentDOTSupplyStaked: '48%',
   getPolkadotUptime30d: '100%',
-  getTotalDOTStaked: '789738685.2332054',
-  getTotalFeesUSD30d: 5234.994137095342,
-  getTotalNominators: 29972,
-  getTotalReferendums: '1,707 referenda',
-  getTotalStablecoinsUSD: null,
-  getTotalStakers: 67448,
-  getTotalUniqueAccounts: 23561656,
+  getTotalDOTStaked: '781911566.1135274',
+  getTotalFeesUSD30d: 7366.0225934413975,
+  getTotalNominators: 29393,
+  getTotalReferendums: '1,745 referenda',
+  getTotalStablecoinsUSD: 59912278.989161626,
+  getTotalStakers: 66846,
+  getTotalUniqueAccounts: 16486463,
 };
