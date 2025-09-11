@@ -1,6 +1,6 @@
 const gradient = {
   background: `
-    linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 1) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.6) 40%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0.6) 60%, rgba(255, 255, 255, 1) 100%),
     linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1) 100%),
     linear-gradient(90deg, rgba(7, 255, 255, 1) 0%, rgba(121, 22, 243, 1) 100%)
   `,
@@ -11,7 +11,7 @@ const gradient = {
 export default function HomeGradient() {
   return (
     <div className="absolute inset-0 flex items-center justify-center -z-10">
-      <div className="w-[2600px] h-3/4 flex-shrink-0" style={gradient} />
+      <div className="w-[2600px] h-full flex-shrink-0" style={gradient} />
     </div>
   );
 }

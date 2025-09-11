@@ -227,7 +227,7 @@ html {
 .section-fade-in {
   opacity: 0;
   transform: translateY(2rem);
-  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 1s ease-in, transform 1s ease;
 }
 
 .section-fade-in.animate {

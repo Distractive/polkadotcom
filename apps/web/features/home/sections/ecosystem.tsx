@@ -58,7 +58,7 @@ export function Ecosystem({ ecosystem }: Props) {
                   data-testid={`ecosystem-content-${item._key}`}
                   key={item._key}
                   className={cn(
-                    'eco-card aspect-video place-content-end overflow-hidden rounded-2xl md:aspect-auto md:!h-[22.5rem] zoom-hover',
+                    'eco-card aspect-video place-content-end overflow-hidden rounded-2xl md:aspect-auto md:!h-[22.5rem] zoom-hover p-8',
                     'col-span-full col-start-1',
                     (index === 2 || index === 5) && 'lg:col-start-7',
                     (index === 1 ||
@@ -82,7 +82,7 @@ export function Ecosystem({ ecosystem }: Props) {
                       <div
                         className={cn('pointer-events-none absolute inset-0')}
                       >
-                        <div className="p-gutter">
+                        <div className="pt-10 pl-8">
                           <span
                             className={cn('rounded-lg bg-black/40 px-4 py-2')}
                             style={{
@@ -96,7 +96,7 @@ export function Ecosystem({ ecosystem }: Props) {
                         </div>
                       </div>
                     )}
-                    <CardContent className="relative flex flex-col justify-end p-gutter">
+                    <CardContent className="relative flex flex-col justify-end">
                       <Heading variant="h4" className={cn('text-white pb-2')}>
                         {item.heading}
                       </Heading>
