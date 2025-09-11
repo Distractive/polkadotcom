@@ -138,7 +138,7 @@ export function Hero({ hero, backgroundVideo }: Props) {
                 aria-label="Watch with sound"
                 type="button"
               >
-                <span className="text-sm font-medium whitespace-nowrap">
+                <span className="text-sm font-medium font-display whitespace-nowrap">
                   WATCH VIDEO
                 </span>
                 {/* Speaker icon */}
