@@ -197,6 +197,13 @@ html {
   margin: 0;
 }
 
+.hubspot input[type="checkbox"],
+div[id^="hbspt-"] input[type="checkbox"],
+.hs-form input[type="checkbox"],
+.hs-form-booleancheckbox input[type="checkbox"] {
+  accent-color: #ff2670 !important;
+}
+
 
 .zoom-hover {
   overflow: hidden;
@@ -276,6 +283,10 @@ html {
     rgba(124, 127, 131, 0) 100%
   ) 1;
 }
+
+
+
+
 
 
 

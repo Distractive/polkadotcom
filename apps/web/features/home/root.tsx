@@ -31,7 +31,6 @@ export function Root({ home }: Props) {
       <div className="py-section section-fade-in">
         <SmallCardsHome cards={home.build} />
       </div>
-      {/* <Connected connected={home.connected} /> */}
       <div className="pt-24 pb-32 section-fade-in">
         {home.newsletterCTA?.[0] && (
           <NewsletterCTA cta={home.newsletterCTA[0]} />
