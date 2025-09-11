@@ -42,15 +42,39 @@ export default function FooterLayout({ footer }: Props) {
             </div>
             <SocialLinks items={footer.socialLinks} />
           </div>
-          <hr className="border-grey-300 sm:mx-auto" />
+          <hr className="border-grey-200 sm:mx-auto" />
           <div className="mx-auto w-full">
             <Menu menu={footer.menu} modal={modalData} />
           </div>
-          <hr className="border-grey-300 sm:mx-auto" />
-          <div className="flex flex-col items-center justify-center px-gutter py-4 md:flex-row">
-            <p className="flex translate-y-[-1px] transform flex-row gap-1 text-sm text-grey-500">
-              <span>©</span> {new Date().getFullYear()}
-            </p>
+          <hr className="border-grey-200 sm:mx-auto" />
+          <div className="flex flex-col items-center justify-between px-gutter py-4 text-sm font-light text-grey-700 md:flex-row">
+            <div className="flex flex-col gap-4 md:flex-row md:gap-8">
+              <div>
+                <a href="https://web3.foundation/" className="hover:text-black">
+                  Web3 Foundation
+                </a>
+              </div>
+              <div>
+                <a href="/legal-disclosures/" className="hover:text-black">
+                  Legal Disclosures
+                </a>
+              </div>
+              <div>
+                <a href="/privacy/" className="hover:text-black">
+                  Privacy Policy
+                </a>
+              </div>
+              <div>
+                <a href="/cookie-policy/" className="hover:text-black">
+                  Cookie Policy
+                </a>
+              </div>
+            </div>
+            <div className="mt-4 md:mt-0">
+              <p className="flex translate-y-[-1px] transform flex-row gap-1">
+                <span>©</span> {new Date().getFullYear()}
+              </p>
+            </div>
           </div>
         </div>
       </footer>
