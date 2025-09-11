@@ -33,11 +33,7 @@ export default function CardStatBlock({ card, className, style }: Props) {
     '',
   ) as keyof typeof metricFetchers;
   return (
-    <Card
-      key={_key}
-      className={cn('bg-white p-gutter', className)}
-      style={style}
-    >
+    <Card key={_key} className={cn('bg-white p-card', className)} style={style}>
       <CardHeader className="grid">
         {icon && (
           <div className="pb-4 w-full">
