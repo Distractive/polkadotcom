@@ -47,7 +47,7 @@ export function Stats({ stats }: Props) {
           </div>
           <div
             className={cn(
-              'columns-1 md:columns-2 gap-8 relative col-span-full mt-10 lg:mt-0',
+              'columns-1 md:columns-2 relative col-span-full mt-10 lg:mt-0',
               'col-span-full md:col-start-1',
               'lg:col-span-7 lg:col-start-6',
             )}
@@ -59,7 +59,7 @@ export function Stats({ stats }: Props) {
                   card={item}
                   className={cn(
                     'stats-card',
-                    'break-inside-avoid mb-8 p-card lg:p-8 !h-fit',
+                    'break-inside-avoid mb-4 md:mb-8 p-card lg:p-8 !h-fit',
                     // Nudge down second column on md and above
                     stats.columnPadding &&
                       (index === 3 || index === 4) &&

@@ -28,7 +28,7 @@ export function SmallCardsHome({ cards }: Props) {
         >
           <div
             className={cn(
-              'col-span-full md:text-center',
+              'col-span-full text-center',
               'md:col-span-8 md:col-start-3 lg:w-4/6 pb-4',
             )}
           >

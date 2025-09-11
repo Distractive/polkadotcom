@@ -35,24 +35,27 @@ export function Ecosystem({ ecosystem }: Props) {
           >
             <div
               className={cn(
-                'col-span-full px-gutter md:text-center',
-                'md:col-span-8 md:col-start-3 lg:w-9/12 pb-12',
+                'col-span-full',
+                'md:col-span-8 md:col-start-3 lg:w-8/12 pb-8 md:pb-12',
               )}
             >
               <Heading
                 variant="h2"
-                className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"
+                className="!hyphens-none !break-normal pb-4 md:pb-7 text-5xl  leading-[1.1] md:text-7xl text-center"
                 aria-label={ecosystem?.title}
                 role="heading"
               >
                 {ecosystem?.title}
               </Heading>
-              <p id="ecosystem-body" className="mb-card text-lg  text-black">
+              <p
+                id="ecosystem-body"
+                className="md:mb-6 text-lg  text-black text-center "
+              >
                 {ecosystem?.body}
               </p>
             </div>
 
-            <div className="grid-system col-span-12 gap-card !gap-x-card md:px-0">
+            <div className="grid-system col-span-12 gap-4 md:gap-card !gap-x-card md:px-0">
               {ecosystem?.items.map((item, index) => (
                 <Card
                   data-testid={`ecosystem-content-${item._key}`}
