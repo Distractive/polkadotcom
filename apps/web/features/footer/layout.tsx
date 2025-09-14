@@ -40,7 +40,10 @@ export default function FooterLayout({ footer }: Props) {
                 />
               </a>
             </div>
-            <SocialLinks items={footer.socialLinks} />
+            {/* Desktop Links */}
+            <div className="hidden md:block">
+              <SocialLinks items={footer.socialLinks} />
+            </div>
           </div>
           <hr className="border-grey-200 sm:mx-auto" />
           <div className="mx-auto w-full">
@@ -69,6 +72,10 @@ export default function FooterLayout({ footer }: Props) {
                   Cookie Policy
                 </a>
               </div>
+            </div>
+            {/* Mobile Links */}
+            <div className="block md:hidden">
+              <SocialLinks items={footer.socialLinks} />
             </div>
             <div className="mt-4 md:mt-0">
               <p className="flex translate-y-[-1px] transform flex-row gap-1">

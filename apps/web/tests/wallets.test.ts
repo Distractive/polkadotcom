@@ -9,7 +9,9 @@ test('Wallets', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Polkadot Wallets');
+    await expect(page).toHaveTitle(
+      'Polkadot Wallets | The Best Wallets for Managing DOT',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Your passport to Polkadot');
   });

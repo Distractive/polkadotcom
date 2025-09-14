@@ -9,7 +9,9 @@ test('Newsroom', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Newsroom');
+    await expect(page).toHaveTitle(
+      'Polkadot Newsroom | The Latest News and Stories from the Polkadot ecosystem',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Newsroom');
   });

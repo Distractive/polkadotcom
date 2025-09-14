@@ -9,7 +9,9 @@ test('Chain', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Chain');
+    await expect(page).toHaveTitle(
+      "Polkadot Chain | Discover Polkadot's Relay Chain and Rollups",
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('The heartbeat of next-gen blockchain');
   });

@@ -9,7 +9,9 @@ test('Events', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Events');
+    await expect(page).toHaveTitle(
+      'Polkadot Events | Upcoming Conferences, Meetups, and Hackathons',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Come find your people');
   });

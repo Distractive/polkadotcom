@@ -174,7 +174,7 @@ html {
 .hubspot input[type="submit"] {
   padding: 1rem 1.5rem;
   border-radius: 0.75rem;
-  background: black !important;
+  background: #ff2670 !important;
   cursor: pointer;
   text-transform: uppercase;
   color: white;
@@ -184,7 +184,7 @@ html {
 }
 
 .hubspot input[type="submit"]:hover {
-  background: #ff2670 !important;
+  background: #cc3662 !important;
 }
 
 .hubspot p {
@@ -203,7 +203,6 @@ div[id^="hbspt-"] input[type="checkbox"],
 .hs-form-booleancheckbox input[type="checkbox"] {
   accent-color: #ff2670 !important;
 }
-
 
 .zoom-hover {
   overflow: hidden;

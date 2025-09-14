@@ -9,7 +9,9 @@ test('Dapps', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Dapps');
+    await expect(page).toHaveTitle(
+      'Polkadot Dapps | Decentralized Applications Powered by Polkadot',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Polkadot Dapps');
   });

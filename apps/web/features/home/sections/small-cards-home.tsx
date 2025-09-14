@@ -45,7 +45,7 @@ export function SmallCardsHome({ cards }: Props) {
               {cards?.body}
             </p>
           </div>
-          <div className="grid-system relative col-span-full gap-card pb-2">
+          <div className="grid-system relative col-span-full gap-4 md:gap-card">
             {cards?.items.map((item, index) => (
               <CardSmallBlock
                 key={item._key}
