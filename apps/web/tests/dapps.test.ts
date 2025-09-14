@@ -94,9 +94,6 @@ test('Dapps', async ({ page }) => {
     const nova = section.getByRole('link', {
       name: 'Wallets Nova Wallet Leading',
     });
-    const polimec = section.getByRole('link', {
-      name: 'DeFi Polimec Decentralized',
-    });
     const stella = section.getByRole('link', {
       name: 'DeFi StellaSwap Hybrid DEX',
     });
@@ -109,9 +106,6 @@ test('Dapps', async ({ page }) => {
     const arth = section.getByRole('link', {
       name: 'DeFi ArthSwap Swaps, staking',
     });
-    const beam = section.getByRole('link', {
-      name: 'DeFi BeamEx Perpetuals',
-    });
     const colb = section.getByRole('link', {
       name: 'DeFi Colb Finance Liquid RWA',
     });
@@ -121,20 +115,11 @@ test('Dapps', async ({ page }) => {
     const houdini = section.getByRole('link', {
       name: 'DeFi HoudiniSwap Send, swap',
     });
-    const interlay = section.getByRole('link', {
-      name: 'DeFi Interlay Trustless',
-    });
-    const moonwell = section.getByRole('link', {
-      name: 'DeFi Moonwell Open lending',
-    });
     const oku = section.getByRole('link', {
       name: "DeFi Oku (Uniswap) DeFi's",
     });
     const zenlink = section.getByRole('link', {
       name: 'DeFi Zenlink DEX composable',
-    });
-    const chronos = section.getByRole('link', {
-      name: 'Gaming Age of Chronos',
     });
     const avatars = section.getByRole('link', {
       name: 'Gaming Awesome Ajuna Avatars',
@@ -262,7 +247,7 @@ test('Dapps', async ({ page }) => {
       }
     }
 
-    await clickShowMoreTimes(8);
+    await clickShowMoreTimes(7);
     expect(hydration).toBeVisible();
     expect(rivals).toBeVisible();
     expect(hyperbridge).toBeVisible();
@@ -270,20 +255,15 @@ test('Dapps', async ({ page }) => {
     expect(talisman).toBeVisible();
     expect(evrloot).toBeVisible();
     expect(nova).toBeVisible();
-    expect(polimec).toBeVisible();
     expect(stella).toBeVisible();
     expect(wormhole).toBeVisible();
     expect(acala).toBeVisible();
     expect(arth).toBeVisible();
-    expect(beam).toBeVisible();
     expect(colb).toBeVisible();
     expect(exiled).toBeVisible();
     expect(houdini).toBeVisible();
-    expect(interlay).toBeVisible();
-    expect(moonwell).toBeVisible();
     expect(oku).toBeVisible();
     expect(zenlink).toBeVisible();
-    expect(chronos).toBeVisible();
     expect(avatars).toBeVisible();
     expect(greatEscape).toBeVisible();
     expect(artZero).toBeVisible();
@@ -332,20 +312,15 @@ test('Dapps', async ({ page }) => {
     expect(talisman).toBeHidden();
     expect(evrloot).toBeHidden();
     expect(nova).toBeHidden();
-    expect(polimec).toBeHidden();
     expect(stella).toBeHidden();
     expect(wormhole).toBeVisible();
     expect(acala).toBeHidden();
     expect(arth).toBeHidden();
-    expect(beam).toBeHidden();
     expect(colb).toBeHidden();
     expect(exiled).toBeHidden();
     expect(houdini).toBeHidden();
-    expect(interlay).toBeHidden();
-    expect(moonwell).toBeHidden();
     expect(oku).toBeHidden();
     expect(zenlink).toBeHidden();
-    expect(chronos).toBeHidden();
     expect(avatars).toBeHidden();
     expect(greatEscape).toBeHidden();
     expect(artZero).toBeHidden();
@@ -394,20 +369,15 @@ test('Dapps', async ({ page }) => {
     expect(talisman).toBeHidden();
     expect(evrloot).toBeHidden();
     expect(nova).toBeHidden();
-    expect(polimec).toBeVisible();
     expect(stella).toBeVisible();
     expect(wormhole).toBeHidden();
     expect(acala).toBeVisible();
     expect(arth).toBeVisible();
-    expect(beam).toBeVisible();
     expect(colb).toBeVisible();
     expect(exiled).toBeHidden();
     expect(houdini).toBeHidden();
-    expect(interlay).toBeHidden();
-    expect(moonwell).toBeHidden();
     expect(oku).toBeHidden();
     expect(zenlink).toBeHidden();
-    expect(chronos).toBeHidden();
     expect(avatars).toBeHidden();
     expect(greatEscape).toBeHidden();
     expect(artZero).toBeHidden();
