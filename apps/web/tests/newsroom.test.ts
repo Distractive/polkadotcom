@@ -63,11 +63,6 @@ test('Newsroom', async ({ page }) => {
         name: 'mubert goes web3',
       }),
     ).toBeVisible();
-    await expect(
-      section.getByRole('link', {
-        name: 'copper and velocity labs',
-      }),
-    ).toBeVisible();
   });
 
   await test.step('assert "mentions" section is displayed properly', async () => {

@@ -16,7 +16,7 @@ export function Root({ home }: Props) {
   return (
     <div>
       <Hero hero={home.hero} backgroundVideo={home.video} />
-      <div className="py-section section-fade-in">
+      <div className="py-section section-fade-in" data-testid="network-cards">
         <SmallCardsHome cards={home.network} />
       </div>
       <div className="py-section section-fade-in">
@@ -28,10 +28,10 @@ export function Root({ home }: Props) {
       <div className="py-section section-fade-in">
         <Ecosystem ecosystem={home.ecosystem} />
       </div>
-      <div className="py-section section-fade-in">
+      <div className="py-section section-fade-in" data-testid="build-cards">
         <SmallCardsHome cards={home.build} />
       </div>
-      <div className="pt-24 pb-32 section-fade-in">
+      <div className="pt-24 pb-32 section-fade-in" data-testid="newsletter">
         {home.newsletterCTA?.[0] && (
           <NewsletterCTA cta={home.newsletterCTA[0]} />
         )}

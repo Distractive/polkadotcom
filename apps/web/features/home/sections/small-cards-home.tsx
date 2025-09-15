@@ -11,7 +11,6 @@ export function SmallCardsHome({ cards }: Props) {
   return (
     <div
       id="network-pile"
-      data-testid="network-pile"
       className="grid-pile relative py-section max-width px-gutter"
     >
       <div
@@ -20,7 +19,6 @@ export function SmallCardsHome({ cards }: Props) {
       >
         <div
           id="network.content"
-          data-testid="network-pile-content"
           className={cn(
             'col-span-full flex flex-col items-center justify-center',
             'md:col-span-full md:col-start-1 md:w-full',
