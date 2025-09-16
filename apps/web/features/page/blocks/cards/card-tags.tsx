@@ -145,6 +145,7 @@ export function CardTags({ tags, cards, useFourColumns }: Props) {
             }
             size={'sm'}
             onClick={showMoreItems}
+            className="!bg-white"
           >
             Show More
             <Icon
