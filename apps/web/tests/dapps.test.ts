@@ -236,16 +236,16 @@ test('Dapps', async ({ page }) => {
       name: 'Social PolkaIdentity',
     });
 
-    const showMore = page.getByRole('button', { name: 'Show More' });
-    // @Note: show all
-    async function clickShowMoreTimes(times: number) {
-      for (let i = 0; i < times; i++) {
-        const button = page.getByRole('button', { name: 'Show More' });
-        await button.scrollIntoViewIfNeeded();
-        await button.waitFor({ state: 'visible' });
-        await button.click({ timeout: 3000 });
-      }
-    }
+    //   const showMore = page.getByRole('button', { name: 'Show More' });
+    //   // @Note: show all
+    //   async function clickShowMoreTimes(times: number) {
+    //     for (let i = 0; i < times; i++) {
+    //       const button = page.getByRole('button', { name: 'Show More' });
+    //       await button.scrollIntoViewIfNeeded();
+    //       await button.waitFor({ state: 'visible' });
+    //       await button.click({ timeout: 3000 });
+    //     }
+    //   }
 
     await clickShowMoreTimes(7);
     expect(hydration).toBeVisible();
@@ -302,9 +302,6 @@ test('Dapps', async ({ page }) => {
     expect(fearless).toBeVisible();
     expect(mimir).toBeVisible();
     expect(polkadentity).toBeVisible();
-
-    await bridges.click({ timeout: 2000 });
-
     expect(hydration).toBeHidden();
     expect(rivals).toBeHidden();
     expect(hyperbridge).toBeVisible();
@@ -359,9 +356,6 @@ test('Dapps', async ({ page }) => {
     expect(fearless).toBeHidden();
     expect(mimir).toBeHidden();
     expect(polkadentity).toBeHidden();
-
-    await defi.click({ timeout: 2000 });
-
     expect(hydration).toBeVisible();
     expect(rivals).toBeHidden();
     expect(hyperbridge).toBeHidden();
@@ -416,8 +410,6 @@ test('Dapps', async ({ page }) => {
     expect(fearless).toBeHidden();
     expect(mimir).toBeHidden();
     expect(polkadentity).toBeHidden();
-
-    await all.click({ timeout: 2000 });
   });
 
   await test.step('"featured" section screenshot', async () => {
