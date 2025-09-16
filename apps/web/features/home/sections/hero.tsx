@@ -64,7 +64,7 @@ export function Hero({ hero, backgroundVideo }: Props) {
       <div
         id="hero-pile"
         data-testid="hero-pile"
-        className="relative flex flex-col overflow-visible pt-20 h-screen md:h-[60rem]"
+        className="relative flex flex-col overflow-visible pt-20 h-screen md:h-[60rem] bg-black"
       >
         <BackgroundVideo
           video={backgroundVideo?.video}
