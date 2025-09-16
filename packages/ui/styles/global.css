@@ -259,7 +259,6 @@ div[id^="hbspt-"] input[type="checkbox"],
   flex-shrink: 0;
 }
 
-/* Responsive breakpoint: switch to column layout at 1440px and above */
 @media (max-width: 1800px) {
   .hs-form-e2c50b46-5b6d-4d7e-b8cf-728a4ecc8da3 .legal-consent-container {
     flex-direction: column;
