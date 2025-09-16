@@ -37,7 +37,7 @@ export function MenuDesktop({
     <div
       ref={ref}
       id="page-menu"
-      className="max-width grid-pile overflow-hidden px-gutter"
+      className="max-width grid-pile overflow-hidden px-gutter "
     >
       {menu.map((section, _index) => (
         <div
@@ -45,20 +45,23 @@ export function MenuDesktop({
           onMouseLeave={handleCloseMenu}
           id={`${stegaClean(section.heading)}`}
           className={cn(
-            'mb-auto mr-auto flex items-start overflow-hidden backdrop-blur-md',
+            'mb-auto mr-auto flex items-start overflow-hidden backdrop-blur-md border border-grey-200',
             'rounded-2xl  bg-white',
             section.heading === hovered
               ? 'pointer-events-auto visible'
               : 'pointer-events-none invisible',
           )}
         >
-          <ul className="grid grid-cols-2 border border-grey-200 divide-x divide-grey-200">
+          <ul className="grid grid-cols-2">
             {section.items.map((item, index) => {
               const totalItems = section.items.length;
               const isInLastRow =
                 totalItems % 2 === 0
                   ? index >= totalItems - 2
                   : index === totalItems - 1;
+              const isLeftColumn = index % 2 === 0;
+              const isLastItemOdd =
+                totalItems % 2 !== 0 && index === totalItems - 1;
 
               return (
                 <li
@@ -66,6 +69,7 @@ export function MenuDesktop({
                   className={cn(
                     'flex min-w-[21rem]',
                     !isInLastRow && 'border-b border-grey-200',
+                    isLeftColumn && 'border-r border-grey-200',
                   )}
                 >
                   <CustomUrl
