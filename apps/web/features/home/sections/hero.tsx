@@ -110,6 +110,7 @@ export function Hero({ hero, backgroundVideo }: Props) {
                       asChild
                       key={link.label}
                       variant={link?.variant || 'primary'}
+                      size="lg"
                     >
                       <CustomUrl
                         className="outline-none"
