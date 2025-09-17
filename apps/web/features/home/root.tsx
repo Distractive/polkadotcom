@@ -1,6 +1,7 @@
 import type { homeSelection } from '@/sanity/selections/home/root';
 import type { TypeFromSelection } from 'groqd';
 
+import { ScrollFadeWrapper } from '@/animations/scroll/fade-up';
 import { Ecosystem } from '@/features/home/sections/ecosystem';
 import { Hero } from '@/features/home/sections/hero';
 import { SmallCardsHome } from '@/features/home/sections/small-cards-home';
@@ -16,26 +17,26 @@ export function Root({ home }: Props) {
   return (
     <div>
       <Hero hero={home.hero} backgroundVideo={home.video} />
-      <div className="py-section section-fade-in" data-testid="network-cards">
+      <ScrollFadeWrapper className="py-section" data-testid="network-cards">
         <SmallCardsHome cards={home.network} />
-      </div>
-      <div className="py-section section-fade-in">
+      </ScrollFadeWrapper>
+      <ScrollFadeWrapper className="py-section">
         {home.cards?.[0] && <CardsBlock cards={home.cards[0]} />}
-      </div>
-      <div className="py-section section-fade-in">
+      </ScrollFadeWrapper>
+      <ScrollFadeWrapper className="py-section">
         <Stats stats={home.stats} />
-      </div>
-      <div className="py-section section-fade-in">
+      </ScrollFadeWrapper>
+      <ScrollFadeWrapper className="py-section">
         <Ecosystem ecosystem={home.ecosystem} />
-      </div>
-      <div className="py-section section-fade-in" data-testid="build-cards">
+      </ScrollFadeWrapper>
+      <ScrollFadeWrapper className="py-section" data-testid="build-cards">
         <SmallCardsHome cards={home.build} />
-      </div>
-      <div className="pt-24 pb-32 section-fade-in" data-testid="newsletter">
+      </ScrollFadeWrapper>
+      <ScrollFadeWrapper className="py-section" data-testid="newsletter">
         {home.newsletterCTA?.[0] && (
           <NewsletterCTA cta={home.newsletterCTA[0]} />
         )}
-      </div>
+      </ScrollFadeWrapper>
     </div>
   );
 }

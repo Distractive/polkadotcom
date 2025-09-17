@@ -298,15 +298,8 @@ div[id^="hbspt-"] input[type="checkbox"],
   }
 }
 
-.section-fade-in {
-  opacity: 0;
-  transform: translateY(2rem);
+.scroll-fade-transition {
   transition: opacity 1s ease-in, transform 1s ease;
-}
-
-.section-fade-in.animate {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .gradient-border-wrapper {
