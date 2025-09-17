@@ -9,12 +9,7 @@ type Props = {
   className?: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-export function ScrollFadeWrapper({
-  children,
-  options,
-  className = '',
-  ...props
-}: Props) {
+export function FadeUp({ children, options, className = '', ...props }: Props) {
   const { ref, isVisible } = useScrollAnimation(options);
 
   return (
