@@ -11,7 +11,7 @@ export function useScrollAnimation(options: UseScrollFadeInOptions = {}) {
 
   const observerOptions = useMemo(
     () => ({
-      rootMargin: options.rootMargin ?? '0px 0px -20% 0px',
+      rootMargin: options.rootMargin ?? '0px 0px -10% 0px',
       threshold: options.threshold ?? 0,
     }),
     [options.rootMargin, options.threshold],

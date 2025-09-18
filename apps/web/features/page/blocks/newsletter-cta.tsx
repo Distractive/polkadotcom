@@ -26,7 +26,7 @@ export function NewsletterCTA({ cta, isPostEmbed }: Props) {
       >
         <div
           className={cn(
-            'flex flex-col md:flex-row rounded-2xl p-card gap-gutter ',
+            'flex flex-col md:flex-row rounded-2xl pt-4 md:pt-card px-card pb-card gap-gutter ',
           )}
         >
           {cta.image && (
@@ -52,11 +52,14 @@ export function NewsletterCTA({ cta, isPostEmbed }: Props) {
               cta.adjustImageForOverflow && 'pb-6 md:pb-0',
             )}
           >
-            <Heading variant="h2" className="pb-3 mt-0">
+            <Heading
+              variant="h2"
+              className="pb-3 mt-0 text-center md:text-left"
+            >
               {cta.heading}
             </Heading>
             {cta.content && (
-              <div className="pb-3">
+              <div className="pb-3 text-center md:text-left">
                 <PortableText
                   value={cta.content}
                   components={{

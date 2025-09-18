@@ -99,6 +99,11 @@ html {
   font-size: 0.875rem;
 }
 
+/* Hide HubSpot labels */
+.hubspot .hs-form-field > label {
+  display: none;
+}
+
 @media (min-width: 45.5rem) {
   .hubspot {
     font-size: 1rem !important;
@@ -181,6 +186,13 @@ html {
   font-family: var(--font-unbounded), system-ui, sans-serif;
   font-style: normal;
   font-weight: 400;
+  width: 100%;
+}
+
+@media (min-width: 45.5rem) {
+  .hubspot input[type="submit"] {
+    width: auto;
+  }
 }
 
 .hubspot input[type="submit"]:hover {
