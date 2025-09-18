@@ -69,7 +69,7 @@ export function MobileSearch() {
               classNames={{
                 form: 'w-full flex flex-row items-center',
                 input:
-                  'rounded border-none outline-none focus:ring-0 focus:border-0 flex-1 p-1 bg-white/0',
+                  'rounded border-none outline-none focus:ring-0 focus:border-0 flex-1 p-1 bg-white/0 text-white placeholder:text-white',
                 submit: 'hidden',
                 reset: 'flex-shrink-0 ml-2',
               }}

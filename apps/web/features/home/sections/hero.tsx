@@ -133,8 +133,8 @@ export function Hero({ hero, backgroundVideo }: Props) {
                 className={cn(
                   'absolute bottom-8 flex items-center gap-2 px-4 py-1 border-white/20 text-white transition-all duration-200 z-10 rounded-md',
                   'left-1/2 transform -translate-x-1/2',
-                  'md:left-auto md:right-0 md:transform-none md:bg-black/50 md:border md:hover:bg-black/70',
-                  'hover:outline-none hover:ring-2 hover:ring-white/50 hover:cursor-pointer',
+                  'md:left-auto md:right-0 md:transform-none md:bg-black/50 md:border ',
+                  'hover:ring-2 hover:ring-white/50 hover:cursor-pointer',
                 )}
                 aria-label="Watch with sound"
                 type="button"
