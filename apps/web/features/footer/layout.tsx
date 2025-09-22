@@ -22,7 +22,7 @@ export default function FooterLayout({ footer }: Props) {
   return (
     <div className="relative flex flex-col items-center pt-40 font-bold md:pt-36 ">
       <FooterGradient />
-      <footer className="relative  max-width px-gutter">
+      <footer className="relative max-width px-gutter">
         <div
           className="border border-grey-200  md:mb-gutter md:rounded-2xl relative bg-white"
           data-testid="footer"

@@ -138,7 +138,7 @@ test('Homepage', async ({ page }) => {
       }),
     ).toBeVisible();
     await expect(
-      newsletterWrapper.getByRole('button', { name: 'Submit' }),
+      newsletterWrapper.getByRole('button', { name: 'Subscribe' }),
     ).toBeVisible();
   });
 
