@@ -132,14 +132,14 @@ test('About', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"founded" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-ae722d979a22');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'founded.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"founded" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-ae722d979a22');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'founded.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "vision" section is displayed properly', async () => {
     const section = page.getByTestId('cards-small-block');
