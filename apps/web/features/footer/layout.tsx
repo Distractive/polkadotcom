@@ -27,8 +27,8 @@ export default function FooterLayout({ footer }: Props) {
           className="border border-grey-200  md:mb-gutter md:rounded-2xl relative bg-white"
           data-testid="footer"
         >
-          <div className="flex flex-col items-start px-gutter py-4 md:flex-row md:items-center md:justify-between">
-            <div className="flex h-full max-w-56 flex-row items-end gap-6 md:max-w-64">
+          <div className="flex flex-col items-start py-4 md:flex-row md:items-center md:justify-between">
+            <div className="flex h-full max-w-56 flex-row items-end gap-6 md:max-w-64 px-gutter pb-4 md:pb-0">
               <a href="/" className="group">
                 <Image
                   src={logo}
@@ -40,8 +40,8 @@ export default function FooterLayout({ footer }: Props) {
                 />
               </a>
             </div>
-            {/* Desktop Links */}
-            <div className="hidden md:block">
+            <hr className="border-grey-200 sm:mx-auto w-full md:hidden" />
+            <div className="pt-4 md:pt-0 px-gutter">
               <SocialLinks items={footer.socialLinks} />
             </div>
           </div>
@@ -51,9 +51,12 @@ export default function FooterLayout({ footer }: Props) {
           </div>
           <hr className="border-grey-200 sm:mx-auto" />
           <div className="flex flex-col items-center justify-between px-gutter py-4 text-sm font-light text-grey-700 md:flex-row">
-            <div className="flex flex-col gap-4 md:flex-row md:gap-8">
+            <div className="flex flex-row gap-4 md:flex-row md:gap-8 text-center md:text-left flex-wrap justify-center">
               <div>
-                <a href="https://web3.foundation/" className="hover:text-black">
+                <a
+                  href="https://web3.foundation/"
+                  className="hover:text-black whitespace-nowrap"
+                >
                   Web3 Foundation
                 </a>
               </div>
@@ -72,10 +75,6 @@ export default function FooterLayout({ footer }: Props) {
                   Cookie Policy
                 </a>
               </div>
-            </div>
-            {/* Mobile Links */}
-            <div className="block md:hidden">
-              <SocialLinks items={footer.socialLinks} />
             </div>
             <div className="mt-4 md:mt-0">
               <p className="flex translate-y-[-1px] transform flex-row gap-1">

@@ -11,7 +11,7 @@ export default function SocialLinks({ items }: Props) {
       className="flex w-full flex-row flex-wrap items-center md:justify-end"
       data-testid="social-links"
     >
-      <div className="flex w-full flex-row flex-wrap items-center gap-7 md:justify-end">
+      <div className="flex w-full flex-row flex-wrap items-center gap-8 md:gap-5 lg:gap-7 md:justify-end">
         {items?.map((item) => {
           const src = urlForImage(item.image.asset);
           return (
