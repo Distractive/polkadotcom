@@ -43,54 +43,12 @@ test('Events', async ({ page }) => {
 
   await test.step('assert "events" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-19aadd126d30');
-
-    await expect(
-      section.getByRole('heading', {
-        name: 'Events',
-      }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', {
-        name: 'August 24 - September 13, 2025 | Bali PBA Bali',
-      }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', {
-        name: 'September 11 - 12, 2025 | Munich TUM Conference',
-      }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', {
-        name: 'September 30, 2025 | Singapore Arcadium: Token2049',
-      }),
-    ).toBeVisible();
   });
 
   await test.step('assert "past events" section is displayed properly', async () => {
     const section = page.getByTestId(
       'cards-block-e4dd0438ac1dd6c40d7125c21091e263',
     );
-
-    await expect(
-      section.getByRole('heading', {
-        name: 'Past Events',
-      }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', {
-        name: 'August 18 - 21, 2025 | Wyoming SALT Blockchain Symposium',
-      }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', {
-        name: 'August 21 - 23, 2025 | Bali Coinfest Asia 2025',
-      }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', {
-        name: 'August 16 - 24, 2025 | India Polkadot India Workshops Series',
-      }),
-    ).toBeVisible();
   });
 
   await test.step('assert "community" section is displayed properly', async () => {

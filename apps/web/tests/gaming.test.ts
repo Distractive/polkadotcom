@@ -193,18 +193,6 @@ test('Gaming', async ({ page }) => {
       section.getByRole('link', { name: 'NFL Rivals Polkadot and' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Evrloot Polkadot brings dark' }),
-    ).toBeVisible();
-    await section
-      .getByRole('button', { name: 'Next slide' })
-      .click({ timeout: 2000 });
-    await section
-      .getByRole('button', { name: 'Next slide' })
-      .click({ timeout: 2000 });
-    await expect(
-      section.getByRole('link', { name: 'Exiled Racers With Polkadot’s' }),
-    ).toBeVisible();
-    await expect(
       section.getByRole('link', { name: 'Age of Chronos Age of Chronos' }),
     ).toBeVisible();
   });

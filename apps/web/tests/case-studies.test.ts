@@ -52,9 +52,6 @@ test('Case Studies', async ({ page }) => {
       section.getByRole('link', { name: 'Transforming trust in the age' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'How Centrifuge built a $661M' }),
-    ).toBeVisible();
-    await expect(
       section.getByRole('link', { name: 'Mythical Games revolutionizes' }),
     ).toBeVisible();
     await expect(
@@ -62,9 +59,6 @@ test('Case Studies', async ({ page }) => {
     ).toBeVisible();
     await expect(
       section.getByRole('link', { name: 'Acurast is building the' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'How Polimec disrupts' }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', { name: 'Hydration optimizes liquidity' }),

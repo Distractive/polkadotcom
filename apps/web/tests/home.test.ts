@@ -205,7 +205,7 @@ test('Homepage', async ({ page }) => {
 
     await expect(
       section.getByRole('heading', {
-        name: 'Recent ecosystem happenings',
+        name: 'Ecosystem happenings',
       }),
     ).toBeVisible();
     await expect(section.getByText('The latest news, notes')).toHaveText(

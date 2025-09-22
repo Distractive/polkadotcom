@@ -400,7 +400,7 @@ test('Dapps', async ({ page }) => {
       section.getByRole('link', { name: 'disclaimer page.' }),
     ).toBeVisible();
     await expect(section.getByText('The list includes apps that')).toHaveText(
-      'The list includes apps that are running on Polkadot or its parachains, that are end-user oriented, with TVL, and active community in social networks. If your dapp fulfills these criteria and is not listed here, submit a form.',
+      'The list includes apps that are running on Polkadot or its rollups (i.e., parachains), that are end-user oriented, with TVL, and active community in social networks. If your dapp fulfills these criteria and is not listed here, submit a form.',
     );
     await expect(
       section.getByRole('link', { name: 'submit a form' }),
