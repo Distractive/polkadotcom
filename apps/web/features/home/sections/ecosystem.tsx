@@ -61,7 +61,7 @@ export function Ecosystem({ ecosystem }: Props) {
                   data-testid={`ecosystem-content-${item._key}`}
                   key={item._key}
                   className={cn(
-                    'eco-card aspect-video place-content-end overflow-hidden rounded-2xl md:aspect-auto md:!h-[22.5rem] zoom-hover p-8',
+                    'eco-card aspect-video place-content-end overflow-hidden rounded-2xl md:aspect-auto md:!h-[22.5rem] zoom-hover p-6 md:p-8',
                     'col-span-full col-start-1',
                     (index === 2 || index === 5) && 'lg:col-start-7',
                     (index === 1 ||

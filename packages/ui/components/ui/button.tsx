@@ -9,7 +9,7 @@ const ButtonStyles = {
     'inline-flex items-center justify-center uppercase font-display relative overflow-hidden content-none outline-none box-border',
     // Slide effect
     'after:absolute after:top-0 after:left-[-100%] after:w-full after:h-full after:-z-10',
-    'after:transition-[left] after:ease-in-out after:duration-[300ms]',
+    'after:transition-[left] after:ease-in-out after:duration-[500ms]',
     'md:hover:after:left-0 md:focus-within:after:left-0',
     'active:after:left-0',
     // Active overlay

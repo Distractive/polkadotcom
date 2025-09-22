@@ -19,7 +19,7 @@ export function FadeUp({ children, options, className = '', ...props }: Props) {
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(0)' : 'translateY(64px)',
-        transition: 'opacity 1s ease-in, transform 1s ease',
+        transition: 'opacity 1.2s ease-in, transform 1.2s ease',
       }}
       {...props}
     >

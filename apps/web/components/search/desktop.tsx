@@ -44,7 +44,7 @@ export function DesktopSearch() {
       className={`relative ${
         isSearchOpen
           ? 'w-[20rem] transition-all duration-300 ease-in-out'
-          : 'w-10 transition-all duration-0'
+          : 'w-10 transition-all'
       }`}
     >
       <div className="flex items-center">
@@ -95,15 +95,15 @@ export function DesktopSearch() {
                       href={`${hit.slug}`}
                       onClick={() => setIsSearchOpen(false)}
                     >
-                      <div className="grid grid-cols-10 text-l font-bold hover:bg-grey-100 p-2">
+                      <div className="flex items-center text-l font-bold hover:bg-grey-100 p-2">
                         <Image
                           src="/icons/magnifying-glass.svg"
                           alt="Search"
                           width={32}
                           height={18}
-                          className="w-6 h-auto"
+                          className="w-6 h-auto brightness-0 mr-3 flex-shrink-0"
                         />
-                        <div className="col-span-9">
+                        <div className="flex-1">
                           <Highlight attribute="title" hit={hit} />
                         </div>
                       </div>
