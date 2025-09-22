@@ -9,7 +9,9 @@ test('Platform', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Platform');
+    await expect(page).toHaveTitle(
+      'Polkadot Platform | Build Without Limits on Web3',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Unleash the power of Polkadot');
   });

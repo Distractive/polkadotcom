@@ -64,7 +64,7 @@ export function Hero({ hero, backgroundVideo }: Props) {
       <div
         id="hero-pile"
         data-testid="hero-pile"
-        className="relative flex flex-col overflow-visible pt-20 h-screen md:h-[60rem]"
+        className="relative flex flex-col overflow-visible pt-20 h-screen md:h-[60rem] bg-black"
       >
         <BackgroundVideo
           video={backgroundVideo?.video}
@@ -110,6 +110,7 @@ export function Hero({ hero, backgroundVideo }: Props) {
                       asChild
                       key={link.label}
                       variant={link?.variant || 'primary'}
+                      size="lg"
                     >
                       <CustomUrl
                         className="outline-none"
@@ -138,7 +139,7 @@ export function Hero({ hero, backgroundVideo }: Props) {
                 aria-label="Watch with sound"
                 type="button"
               >
-                <span className="text-sm font-medium whitespace-nowrap">
+                <span className="text-sm font-medium font-display whitespace-nowrap">
                   WATCH VIDEO
                 </span>
                 {/* Speaker icon */}

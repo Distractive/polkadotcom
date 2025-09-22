@@ -35,30 +35,33 @@ export function Ecosystem({ ecosystem }: Props) {
           >
             <div
               className={cn(
-                'col-span-full px-gutter md:text-center',
-                'md:col-span-8 md:col-start-3 lg:w-9/12 pb-12',
+                'col-span-full',
+                'md:col-span-8 md:col-start-3 lg:w-8/12 pb-8 md:pb-12',
               )}
             >
               <Heading
                 variant="h2"
-                className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"
+                className="!hyphens-none !break-normal pb-4 md:pb-7 text-5xl  leading-[1.1] md:text-7xl text-center"
                 aria-label={ecosystem?.title}
                 role="heading"
               >
                 {ecosystem?.title}
               </Heading>
-              <p id="ecosystem-body" className="mb-card text-lg  text-black">
+              <p
+                id="ecosystem-body"
+                className="md:mb-6 text-lg  text-black text-center "
+              >
                 {ecosystem?.body}
               </p>
             </div>
 
-            <div className="grid-system col-span-12 gap-card !gap-x-card md:px-0">
+            <div className="grid-system col-span-12 gap-4 md:gap-card !gap-x-card md:px-0">
               {ecosystem?.items.map((item, index) => (
                 <Card
                   data-testid={`ecosystem-content-${item._key}`}
                   key={item._key}
                   className={cn(
-                    'eco-card aspect-video place-content-end overflow-hidden rounded-2xl md:aspect-auto md:!h-[22.5rem] zoom-hover',
+                    'eco-card aspect-video place-content-end overflow-hidden rounded-2xl md:aspect-auto md:!h-[22.5rem] zoom-hover p-8',
                     'col-span-full col-start-1',
                     (index === 2 || index === 5) && 'lg:col-start-7',
                     (index === 1 ||
@@ -82,7 +85,7 @@ export function Ecosystem({ ecosystem }: Props) {
                       <div
                         className={cn('pointer-events-none absolute inset-0')}
                       >
-                        <div className="p-gutter">
+                        <div className="pt-10 pl-8">
                           <span
                             className={cn('rounded-lg bg-black/40 px-4 py-2')}
                             style={{
@@ -96,7 +99,7 @@ export function Ecosystem({ ecosystem }: Props) {
                         </div>
                       </div>
                     )}
-                    <CardContent className="relative flex flex-col justify-end p-gutter">
+                    <CardContent className="relative flex flex-col justify-end">
                       <Heading variant="h4" className={cn('text-white pb-2')}>
                         {item.heading}
                       </Heading>

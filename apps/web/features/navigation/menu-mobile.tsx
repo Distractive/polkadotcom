@@ -32,7 +32,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
         id="page-menu"
         ref={ref}
         className={cn(
-          'mx-gutter w-full md:w-[20rem] rounded-2xl border border-white/40 bg-black/40',
+          'mx-gutter w-full md:w-[20rem] rounded-2xl border border-grey-200 bg-white',
           'max-h-[80vh] overflow-y-auto overscroll-contain',
           'transition-opacity duration-300 ease-in-out',
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none',
@@ -42,13 +42,13 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
           {menu.map((section, sectionIndex) => {
             return (
               <AccordionItem key={section.heading} value={section.heading}>
-                <div className="relative flex items-center justify-center shadow-internal-border ">
+                <div className="relative flex text-black items-center justify-center bg-white border-r border-b border-grey-200  ">
                   {section.link && (
                     <CustomUrl
                       value={section.link}
                       onClick={() => setIsOpen(false)}
                       className={cn(
-                        'flex-1 p-nav border-r border-grey-200 text-left font-bold',
+                        'flex-1 p-nav text-left font-bold border-r  border-grey-200',
                       )}
                     >
                       {section.heading}
@@ -57,7 +57,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                   {!section.link && (
                     <div
                       className={
-                        'flex-1 p-nav border-r border-grey-200 text-left font-bold'
+                        'flex-1 p-nav text-left font-bold border-r  border-grey-200'
                       }
                     >
                       {section.heading}
@@ -66,13 +66,11 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
 
                   <AccordionTrigger
                     aria-label={`Open '${stegaClean(section.heading)}' page links`}
-                    className="[&>svg]:mx-nav text-white"
+                    className="[&>svg]:mx-nav text-black "
                   />
                 </div>
 
-                <AccordionContent
-                  className={cn('border-white/10 ', 'flex flex-col')}
-                >
+                <AccordionContent className={cn('', 'flex flex-col')}>
                   {section.items.map((item, linkIndex) => {
                     const lastLink = linkIndex === section.items.length - 1;
                     const lastSection = sectionIndex === menu.length - 1;
@@ -80,7 +78,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                       <span
                         key={item.link.label}
                         className={cn(
-                          'flex h-full w-full text-left shadow-internal-border ',
+                          'flex h-full w-full text-left text-black shadow-internal-border ',
                           lastLink && 'border-b border-grey-200',
                           lastSection && lastLink && 'border-none',
                         )}

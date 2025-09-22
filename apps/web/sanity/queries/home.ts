@@ -12,8 +12,6 @@ export async function getHome(isDraftMode: boolean) {
 
   try {
     const result = await runQuery(query, {}, isDraftMode);
-    console.log('Raw newsletterCTA:', result?.home.newsletterCTA);
-    console.log('Full result:', JSON.stringify(result, null, 2));
     return result;
   } catch (error) {
     console.error('Error fetching home page:', error);

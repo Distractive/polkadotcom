@@ -9,7 +9,9 @@ test('DePIN', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('DePIN');
+    await expect(page).toHaveTitle(
+      'Web3 DePIN Use Cases | Powering IoT, Energy & Cloud with Polkadot',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText(
       'Decentralizing the future of physical infrastructure ',

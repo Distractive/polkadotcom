@@ -150,31 +150,49 @@ test('Footer', async ({ page }) => {
 
     await test.step('Legal', async () => {
       await expect(
-        footerContainer.getByRole('link', { name: 'Legal' }),
+        footerContainer.getByRole('link', { name: 'Solutions' }),
       ).toBeVisible();
       await expect(
         footerContainer.getByRole('link', {
-          name: 'Legal Disclosures',
+          name: 'AI',
           exact: true,
         }),
       ).toBeVisible();
       await expect(
         footerContainer.getByRole('link', {
-          name: 'Privacy Policy',
+          name: 'Business',
           exact: true,
         }),
       ).toBeVisible();
       await expect(
         footerContainer.getByRole('link', {
-          name: 'Cookie Policy',
+          name: 'DeFi',
           exact: true,
         }),
       ).toBeVisible();
-    });
-
-    await test.step('Subscribe button', async () => {
       await expect(
-        footerContainer.getByRole('button', { name: 'Subscribe' }),
+        footerContainer.getByRole('link', {
+          name: 'DePIN',
+          exact: true,
+        }),
+      ).toBeVisible();
+      await expect(
+        footerContainer.getByRole('link', {
+          name: 'Gaming',
+          exact: true,
+        }),
+      ).toBeVisible();
+      await expect(
+        footerContainer.getByRole('link', {
+          name: 'Government',
+          exact: true,
+        }),
+      ).toBeVisible();
+      await expect(
+        footerContainer.getByRole('link', {
+          name: 'RWAs',
+          exact: true,
+        }),
       ).toBeVisible();
     });
 

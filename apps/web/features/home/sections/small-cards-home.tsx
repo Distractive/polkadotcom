@@ -11,7 +11,6 @@ export function SmallCardsHome({ cards }: Props) {
   return (
     <div
       id="network-pile"
-      data-testid="network-pile"
       className="grid-pile relative py-section max-width px-gutter"
     >
       <div
@@ -20,7 +19,6 @@ export function SmallCardsHome({ cards }: Props) {
       >
         <div
           id="network.content"
-          data-testid="network-pile-content"
           className={cn(
             'col-span-full flex flex-col items-center justify-center',
             'md:col-span-full md:col-start-1 md:w-full',
@@ -28,7 +26,7 @@ export function SmallCardsHome({ cards }: Props) {
         >
           <div
             className={cn(
-              'col-span-full px-gutter md:text-center',
+              'col-span-full text-center',
               'md:col-span-8 md:col-start-3 lg:w-4/6 pb-4',
             )}
           >
@@ -45,7 +43,7 @@ export function SmallCardsHome({ cards }: Props) {
               {cards?.body}
             </p>
           </div>
-          <div className="grid-system relative col-span-full gap-card pb-2">
+          <div className="grid-system relative col-span-full gap-4 md:gap-card">
             {cards?.items.map((item, index) => (
               <CardSmallBlock
                 key={item._key}

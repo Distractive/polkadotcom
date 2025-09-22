@@ -53,7 +53,7 @@
 :root {
   --spacing-page: 6rem;
   --spacing-section: 2rem;
-  --spacing-gutter: 1.5rem;
+  --spacing-gutter: 1rem;
   --spacing-card: 2rem;
   --spacing-copy: 0.5rem;
   --spacing-nav: 1rem;
@@ -174,7 +174,7 @@ html {
 .hubspot input[type="submit"] {
   padding: 1rem 1.5rem;
   border-radius: 0.75rem;
-  background: black !important;
+  background: #ff2670 !important;
   cursor: pointer;
   text-transform: uppercase;
   color: white;
@@ -184,7 +184,7 @@ html {
 }
 
 .hubspot input[type="submit"]:hover {
-  background: #ff2670 !important;
+  background: #cc3662 !important;
 }
 
 .hubspot p {
@@ -197,6 +197,80 @@ html {
   margin: 0;
 }
 
+.hubspot input[type="checkbox"],
+div[id^="hbspt-"] input[type="checkbox"],
+.hs-form input[type="checkbox"],
+.hs-form-booleancheckbox input[type="checkbox"] {
+  accent-color: #ff2670 !important;
+}
+
+.hs-form-e2c50b46-5b6d-4d7e-b8cf-728a4ecc8da3 {
+  display: flex;
+  flex-direction: column;
+}
+
+.hs-form-e2c50b46-5b6d-4d7e-b8cf-728a4ecc8da3 .legal-consent-container {
+  order: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.hs-form-e2c50b46-5b6d-4d7e-b8cf-728a4ecc8da3 .hs_email {
+  order: 2;
+}
+
+.hs-form-e2c50b46-5b6d-4d7e-b8cf-728a4ecc8da3 .hs_submit {
+  order: 3;
+}
+
+.hs-form-e2c50b46-5b6d-4d7e-b8cf-728a4ecc8da3 [style*="display: none"] {
+  order: 0;
+}
+
+.legal-consent-container  {
+  margin-top: 1rem;
+}
+
+.legal-consent-container > div {
+  flex: 1;
+}
+
+.legal-consent-container .hs-form-field {
+  margin-bottom: 0;
+}
+
+.legal-consent-container .hs-form-booleancheckbox-display {
+  gap: 0rem;
+}
+
+.hs-form-booleancheckbox-display span {
+  margin-left: 0.25rem !important;
+}
+
+.legal-consent-container .hs-form-booleancheckbox-display {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.legal-consent-container .hs-input[type="checkbox"] {
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1800px) {
+  .hs-form-e2c50b46-5b6d-4d7e-b8cf-728a4ecc8da3 .legal-consent-container {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+
+
+  .legal-consent-container .hs-form-field {
+    margin-bottom: 0.75rem;
+  }
+}
 
 .zoom-hover {
   overflow: hidden;
@@ -224,15 +298,8 @@ html {
   }
 }
 
-.section-fade-in {
-  opacity: 0;
-  transform: translateY(2rem);
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-.section-fade-in.animate {
-  opacity: 1;
-  transform: translateY(0);
+.scroll-fade-transition {
+  transition: opacity 1s ease-in, transform 1s ease;
 }
 
 .gradient-border-wrapper {
@@ -276,6 +343,10 @@ html {
     rgba(124, 127, 131, 0) 100%
   ) 1;
 }
+
+
+
+
 
 
 

@@ -8,10 +8,10 @@ interface Props {
 export default function SocialLinks({ items }: Props) {
   return (
     <div
-      className="flex w-full flex-row flex-wrap items-center gap-3 md:justify-end"
+      className="flex w-full flex-row flex-wrap items-center md:justify-end"
       data-testid="social-links"
     >
-      <div className="flex w-full flex-row flex-wrap items-center gap-3 md:justify-end">
+      <div className="flex w-full flex-row flex-wrap items-center gap-7 md:justify-end">
         {items?.map((item) => {
           const src = urlForImage(item.image.asset);
           return (
@@ -19,7 +19,7 @@ export default function SocialLinks({ items }: Props) {
               href={item.url}
               target="_blank"
               key={item.title}
-              className="group flex size-12 items-center justify-center rounded-full transition duration-200 ease-out text-black hover:text-pink focus:text-pink"
+              className="group flex size-8 items-center justify-center rounded-full transition duration-200 ease-out text-black hover:text-pink focus:text-pink"
               rel="noreferrer"
             >
               <span

@@ -9,7 +9,9 @@ test('Events', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Events');
+    await expect(page).toHaveTitle(
+      'Polkadot Events | Upcoming Conferences, Meetups, and Hackathons',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Come find your people');
   });
@@ -49,12 +51,17 @@ test('Events', async ({ page }) => {
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'August 18 - 21, 2025 | Wyoming SALT Blockchain Symposium',
+        name: 'August 24 - September 13, 2025 | Bali PBA Bali',
       }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'August 16 - 24, 2025 | India Polkadot India Workshops Series',
+        name: 'September 11 - 12, 2025 | Munich TUM Conference',
+      }),
+    ).toBeVisible();
+    await expect(
+      section.getByRole('link', {
+        name: 'September 30, 2025 | Singapore Arcadium: Token2049',
       }),
     ).toBeVisible();
   });
@@ -71,12 +78,17 @@ test('Events', async ({ page }) => {
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'August 3, 2025 | Berkeley Summit on Decentralization',
+        name: 'August 18 - 21, 2025 | Wyoming SALT Blockchain Symposium',
       }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', {
-        name: 'August 1-2, 2025 | Hanoi Vietnam Tech Week',
+        name: 'August 21 - 23, 2025 | Bali Coinfest Asia 2025',
+      }),
+    ).toBeVisible();
+    await expect(
+      section.getByRole('link', {
+        name: 'August 16 - 24, 2025 | India Polkadot India Workshops Series',
       }),
     ).toBeVisible();
   });

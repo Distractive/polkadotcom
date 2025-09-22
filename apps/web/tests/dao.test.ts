@@ -9,7 +9,9 @@ test('DAO', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('DAO');
+    await expect(page).toHaveTitle(
+      "Polkadot DAO | The World's Largest DAO is Here",
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('You run Polkadot. Seriously.');
   });

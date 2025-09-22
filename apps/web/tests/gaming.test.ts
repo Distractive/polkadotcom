@@ -9,7 +9,9 @@ test('Gaming', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Gaming');
+    await expect(page).toHaveTitle(
+      'Web3 Gaming Use Cases | GameFi and Play-to-Earn on Polkadot',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Level-up with GameFi on Polkadot');
   });

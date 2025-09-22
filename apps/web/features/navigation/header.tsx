@@ -60,7 +60,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
           <div
             data-testid="navbar"
             className={cn(
-              'flex h-full items-center justify-center pl-4 gap-4',
+              'flex h-full items-center justify-center pl-4 gap-1 sm:gap-4',
               'rounded-[3rem]',
             )}
           >

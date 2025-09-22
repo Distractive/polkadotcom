@@ -9,7 +9,9 @@ test('Decentralized Jobs', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Decentralized Jobs');
+    await expect(page).toHaveTitle(
+      'Decentralized Jobs | Discover Career Opportunities in the Polkadot Community',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Decentralized jobs');
   });
