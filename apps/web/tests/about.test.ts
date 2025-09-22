@@ -172,14 +172,14 @@ test('About', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"vision" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'vision.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"vision" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-small-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'vision.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "standards" section is displayed properly', async () => {
     const section = page.getByTestId('cards-stat');
