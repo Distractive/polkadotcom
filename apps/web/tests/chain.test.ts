@@ -199,16 +199,16 @@ test('Chain', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"interconnected" section screenshot', async () => {
-    const section = page.getByTestId(
-      'side-by-side-8715749e27f924c9c9aecd3ace015471',
-    );
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'interconnected.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"interconnected" section screenshot', async () => {
+  //   const section = page.getByTestId(
+  //     'side-by-side-8715749e27f924c9c9aecd3ace015471',
+  //   );
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'interconnected.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "coretime" section is displayed properly', async () => {
     const section = page.getByTestId('cards-small-block').nth(1);

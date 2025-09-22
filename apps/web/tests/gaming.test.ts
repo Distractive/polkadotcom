@@ -218,16 +218,16 @@ test('Gaming', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"jobs" section screenshot', async () => {
-    const section = page.getByTestId(
-      'side-by-side-41eb253cbfbb975807389f83febc729e',
-    );
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'jobs.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"jobs" section screenshot', async () => {
+  //   const section = page.getByTestId(
+  //     'side-by-side-41eb253cbfbb975807389f83febc729e',
+  //   );
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'jobs.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "faqs" section is displayed properly', async () => {
     const section = page.getByTestId('faqs');

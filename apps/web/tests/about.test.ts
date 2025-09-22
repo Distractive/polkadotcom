@@ -240,7 +240,7 @@ test('About', async ({ page }) => {
     await expect(
       section.getByText('Polkadot’s mainnet launched'),
     ).toBeVisible();
-    await expect(section.getByText('First Polkadot parachains')).toBeVisible();
+    await expect(section.getByText('First Polkadot rollups')).toBeVisible();
     await expect(
       section.getByText('OpenGov, the first ever on-'),
     ).toBeVisible();
