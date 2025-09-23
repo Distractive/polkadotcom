@@ -119,13 +119,7 @@ export function CTA({ cta, isPostEmbed }: Props) {
                               size="md"
                               asChild
                               className="no-wrap md:cursor-pointer"
-                              variant={
-                                value?.variant
-                                  ? value.variant === 'primary'
-                                    ? 'primary'
-                                    : 'secondary'
-                                  : 'primary'
-                              }
+                              variant={value?.variant || 'primary'}
                             >
                               <CustomUrl
                                 className="outline-none"

@@ -36,10 +36,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const footer = await getFooter();
-  const navigation = await getNavigation();
+  // MIGHT NEED TO REFACTOR IS BUILD DOESN'T WORK CORRECTLY
+  // const { draftMode } = await import('next/headers');
+  // let isDraftModeEnabled = await draftMode().isEnabled;
+
   const isProduction = env.NODE_ENV === 'production';
   const isProductionDeployment = env.NEXT_PUBLIC_DEPLOYMENT === 'production';
+
   let VisualEditingComponent = null;
   let isDraftModeEnabled = false;
 
@@ -49,6 +52,9 @@ export default async function RootLayout({
     VisualEditingComponent = VisualEditing;
     isDraftModeEnabled = await draftMode().isEnabled;
   }
+
+  const footer = await getFooter(isDraftModeEnabled);
+  const navigation = await getNavigation(isDraftModeEnabled);
 
   return (
     <html lang="en">
@@ -179,7 +185,7 @@ export default async function RootLayout({
               'focus:left-0 focus:top-0 focus:opacity-100',
             )}
           >
-            <span className="bg-blue inline-block rounded-lg px-10 py-4 font-display text-xs uppercase tracking-wide text-white group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#1351d8]">
+            <span className="inline-block rounded-lg px-10 py-4 font-display text-xs uppercase tracking-wide group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#1351d8] !text-black">
               Skip to main content
             </span>
           </a>
@@ -188,7 +194,7 @@ export default async function RootLayout({
           <div className="relative">
             {navigation && <NavigationLayout navigation={navigation} />}
 
-            <main className="flex-grow">{children}</main>
+            <main className="flex-grow "> {children}</main>
           </div>
           {footer && <FooterLayout footer={footer} />}
 

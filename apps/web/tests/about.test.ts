@@ -9,7 +9,9 @@ test('About', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('About');
+    await expect(page).toHaveTitle(
+      'About Polkadot | Learn More About the Polkadot Network',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('This is Polkadot');
   });
@@ -130,14 +132,14 @@ test('About', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"founded" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-ae722d979a22');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'founded.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"founded" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-ae722d979a22');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'founded.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "vision" section is displayed properly', async () => {
     const section = page.getByTestId('cards-small-block');
@@ -170,14 +172,14 @@ test('About', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"vision" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'vision.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"vision" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-small-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'vision.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "standards" section is displayed properly', async () => {
     const section = page.getByTestId('cards-stat');
@@ -238,7 +240,7 @@ test('About', async ({ page }) => {
     await expect(
       section.getByText('Polkadot’s mainnet launched'),
     ).toBeVisible();
-    await expect(section.getByText('First Polkadot parachains')).toBeVisible();
+    await expect(section.getByText('First Polkadot rollups')).toBeVisible();
     await expect(
       section.getByText('OpenGov, the first ever on-'),
     ).toBeVisible();

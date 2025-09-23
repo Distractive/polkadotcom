@@ -9,7 +9,9 @@ test('Grants', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Grants & Funding');
+    await expect(page).toHaveTitle(
+      'Polkadot Grants & Funding | Web3 Foundation & Community Led Funding',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText(
       'Empowering the builders and dreamers in Web3',

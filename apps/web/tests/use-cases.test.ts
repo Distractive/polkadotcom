@@ -9,7 +9,9 @@ test('Use Cases', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Use Cases');
+    await expect(page).toHaveTitle(
+      'Web3 Use Cases on Polkadot | From Gaming to Real-World Assets',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('The future runs on Polkadot');
   });

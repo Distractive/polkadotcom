@@ -40,18 +40,18 @@ export function Build({ build }: Props) {
             <Heading
               variant="h2"
               className="!hyphens-none !break-normal pb-copy text-5xl  leading-[1.1] md:text-7xl"
-              aria-label={build.title}
+              aria-label={build?.title}
               role="heading"
             >
-              {build.title}
+              {build?.title}
             </Heading>
 
             <p id="building-body" className="mb-gutter text-lg">
-              {build.body}
+              {build?.body}
             </p>
           </div>
           <div className="grid-system relative col-span-full gap-card px-card lg:px-gutter">
-            {build.items.map((item, index) => (
+            {build?.items.map((item, index) => (
               <Card
                 key={item._key}
                 className={cn(

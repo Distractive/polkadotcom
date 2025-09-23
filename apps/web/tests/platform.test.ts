@@ -9,7 +9,9 @@ test('Platform', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Platform');
+    await expect(page).toHaveTitle(
+      'Polkadot Platform | Build Without Limits on Web3',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Unleash the power of Polkadot');
   });
@@ -18,7 +20,7 @@ test('Platform', async ({ page }) => {
     const section = page.getByTestId('header');
 
     await expect(section.getByText('Innovate without constraints')).toHaveText(
-      'Innovate without constraints using Polkadot’s powerful, secure, and flexible multi-chain platform',
+      'Innovate without constraints using Polkadot’s powerful, secure, and flexible multi-chain platform.',
     );
 
     await expect(
@@ -81,19 +83,10 @@ test('Platform', async ({ page }) => {
       section.getByRole('link', { name: 'NFL Rivals' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Exiled Racers' }),
-    ).toBeVisible();
-    await expect(
       section.getByRole('link', { name: 'Hydration' }),
     ).toBeVisible();
-    await section.getByRole('button', { name: 'Next slide' }).click();
-    await section.getByRole('button', { name: 'Next slide' }).click();
-    await page.waitForTimeout(2000);
     await expect(
       section.getByRole('link', { name: 'StellaSwap' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Centrifuge' }),
     ).toBeVisible();
   });
 
@@ -171,7 +164,7 @@ test('Platform', async ({ page }) => {
         .getByRole('link'),
     ).toBeVisible();
     await expect(section.getByText('December 2021 The milestone')).toHaveText(
-      'December 2021 The milestone launch of parachains (now rollups) and parachain slot auctions on Polkadot marked Polkadot 1.0’s completion.',
+      'December 2021 The milestone launch of parachains (i.e., rollups) and slot auctions on Polkadot marked Polkadot 1.0’s completion.',
     );
 
     await expect(

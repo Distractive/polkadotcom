@@ -1,4 +1,4 @@
-import logo from '@/public/polkadot-logo.png';
+import logo from '@/public/polkadot-white-logo.png';
 import Image from 'next/image';
 
 interface Props {

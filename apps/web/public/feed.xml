@@ -4,12 +4,33 @@
         <title>Polkadot - All Content</title>
         <link>https://polkadot.com</link>
         <description>Polkadot - The Platform for Web3</description>
-        <lastBuildDate>Wed, 20 Aug 2025 13:29:38 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 27 Aug 2025 15:14:10 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>All rights reserved 2025, Polkadot</copyright>
         <atom:link href="https://polkadot.com/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Paraguay invests in Polkadot to tokenize innovation hub with hotel, university, and data center]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/paraguay-invests-in-polkadot</link>
+            <guid>https://polkadot.com/newsroom/press-releases/paraguay-invests-in-polkadot</guid>
+            <pubDate>Tue, 26 Aug 2025 21:12:00 GMT</pubDate>
+            <description><![CDATA[Assuncion Innovation Valley launches with US$6 million in tokenized equity, combining blockchain-based governance, interoperability, and regulated investment in Paraguay’s capital.]]></description>
+            <content:encoded><![CDATA[Assuncion Innovation Valley launches with US$6 million in tokenized equity, combining blockchain-based governance, interoperability, and regulated investment in Paraguay’s capital.]]></content:encoded>
+            <category>Press Release</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[Your HOA sucks. Maybe it needs a DAO.]]></title>
+            <link>https://polkadot.com/blog/dao-for-everyday-groups</link>
+            <guid>https://polkadot.com/blog/dao-for-everyday-groups</guid>
+            <pubDate>Thu, 21 Aug 2025 13:51:44 GMT</pubDate>
+            <description><![CDATA[Endless meetings. Hidden decisions. Petty drama. What if your HOA (or PTA, or book club) ran onchain instead? DAOs bring transparency, accountability, and real participation to everyday groups.]]></description>
+            <content:encoded><![CDATA[Endless meetings. Hidden decisions. Petty drama. What if your HOA (or PTA, or book club) ran onchain instead? DAOs bring transparency, accountability, and real participation to everyday groups.]]></content:encoded>
+            <category>Blog</category>
+            <category>DAO</category>
+            <category>Reflection</category>
+        </item>
         <item>
             <title><![CDATA[6 takeaways from Gavin Wood’s Web3 Summit 2025 keynote]]></title>
             <link>https://polkadot.com/blog/gavin-wood-web3-summit-2025-takeaways</link>

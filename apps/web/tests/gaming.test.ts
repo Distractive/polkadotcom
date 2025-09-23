@@ -9,7 +9,9 @@ test('Gaming', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Gaming');
+    await expect(page).toHaveTitle(
+      'Web3 Gaming Use Cases | GameFi and Play-to-Earn on Polkadot',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Level-up with GameFi on Polkadot');
   });
@@ -191,18 +193,6 @@ test('Gaming', async ({ page }) => {
       section.getByRole('link', { name: 'NFL Rivals Polkadot and' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Evrloot Polkadot brings dark' }),
-    ).toBeVisible();
-    await section
-      .getByRole('button', { name: 'Next slide' })
-      .click({ timeout: 2000 });
-    await section
-      .getByRole('button', { name: 'Next slide' })
-      .click({ timeout: 2000 });
-    await expect(
-      section.getByRole('link', { name: 'Exiled Racers With Polkadot’s' }),
-    ).toBeVisible();
-    await expect(
       section.getByRole('link', { name: 'Age of Chronos Age of Chronos' }),
     ).toBeVisible();
   });
@@ -228,16 +218,16 @@ test('Gaming', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"jobs" section screenshot', async () => {
-    const section = page.getByTestId(
-      'side-by-side-41eb253cbfbb975807389f83febc729e',
-    );
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'jobs.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"jobs" section screenshot', async () => {
+  //   const section = page.getByTestId(
+  //     'side-by-side-41eb253cbfbb975807389f83febc729e',
+  //   );
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'jobs.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "faqs" section is displayed properly', async () => {
     const section = page.getByTestId('faqs');

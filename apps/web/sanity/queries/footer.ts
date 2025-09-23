@@ -3,7 +3,7 @@ import { q } from 'groqd';
 
 import { footerSelection } from '../selections/footer/footer';
 
-export async function getFooter() {
+export async function getFooter(isDraftMode: boolean) {
   const footerQuery = q('*')
     .filterByType('footer')
     .grab$({
@@ -13,7 +13,7 @@ export async function getFooter() {
     .nullable();
 
   try {
-    const result = await runQuery(footerQuery, {}, false);
+    const result = await runQuery(footerQuery, {}, isDraftMode);
     return result;
   } catch (error) {
     console.error('Error fetching footer:', error);

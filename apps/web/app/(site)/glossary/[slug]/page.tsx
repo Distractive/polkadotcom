@@ -114,6 +114,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
           <div className="py-section">
             <CardsBlock
               cards={{
+                _type: 'cards',
                 _key: 'related-posts',
                 heading: 'Related Posts',
                 body: '',

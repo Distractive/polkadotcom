@@ -9,7 +9,9 @@ test('AI', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('AI');
+    await expect(page).toHaveTitle(
+      'AI Use Cases | Build Decentralized, Trustworthy AI on Polkadot',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText(
       'Empowering the evolution of AI and crypto',

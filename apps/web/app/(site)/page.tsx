@@ -27,7 +27,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const isDraftMode = (await draftMode()).isEnabled;
+  const draftModeResult = await draftMode();
+  const isDraftMode = draftModeResult.isEnabled;
+
   const home = await getHome(isDraftMode);
 
   return (

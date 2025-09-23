@@ -95,13 +95,7 @@ export default function CardTimelineBlock({
                       <div>
                         <Button
                           asChild
-                          variant={
-                            value?.variant
-                              ? value.variant === 'primary'
-                                ? 'primary'
-                                : 'secondary'
-                              : 'primary'
-                          }
+                          variant={value?.variant || 'primary'}
                           size="md"
                         >
                           <CustomUrl className="outline-none" value={value}>

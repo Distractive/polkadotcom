@@ -157,7 +157,10 @@ export function AccordionBlock({ accordion }: Props) {
                           },
                           customUrl: ({ value }) => (
                             <Button
-                              variant={value.internal ? 'primary' : 'secondary'}
+                              variant={
+                                value.variant ||
+                                (value.internal ? 'primary' : 'secondary')
+                              }
                               size="sm"
                               asChild
                               className="mt-gutter"
