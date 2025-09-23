@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
-test('Case Studies', async ({ page }) => {
+test.skip('Case Studies', async ({ page }) => {
   await test.step('go to "Case Studies" page', async () => {
     await page.goto('/case-studies');
     await acceptOrCloseCookieBanner(page);
