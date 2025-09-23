@@ -35,6 +35,7 @@ export default defineType({
         list: [
           { title: 'Primary', value: 'primary' },
           { title: 'Secondary', value: 'secondary' },
+          { title: 'Tertiary', value: 'tertiary' },
         ],
       },
       initialValue: 'primary',

@@ -16,7 +16,7 @@
   }
 
   .max-width {
-    @apply mx-auto w-full max-w-[100rem];
+    @apply mx-auto w-full max-w-[90rem];
   }
 
   .link-styling {
@@ -26,6 +26,13 @@
   .heading-break {
     text-wrap: balance;
     overflow-wrap: break-word;
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
 }
 
@@ -46,7 +53,7 @@
 :root {
   --spacing-page: 6rem;
   --spacing-section: 2rem;
-  --spacing-gutter: 1.5rem;
+  --spacing-gutter: 1rem;
   --spacing-card: 2rem;
   --spacing-copy: 0.5rem;
   --spacing-nav: 1rem;
@@ -90,6 +97,11 @@ html {
 
 .hubspot {
   font-size: 0.875rem;
+}
+
+/* Hide HubSpot labels */
+.hubspot .hs-form-field > label {
+  display: none;
 }
 
 @media (min-width: 45.5rem) {
@@ -165,19 +177,28 @@ html {
 }
 
 .hubspot input[type="submit"] {
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   border-radius: 0.75rem;
-  background: black !important;
+  background: #ff2670 !important;
   cursor: pointer;
   text-transform: uppercase;
   color: white;
   font-family: var(--font-unbounded), system-ui, sans-serif;
   font-style: normal;
   font-weight: 400;
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 45.5rem) {
+  .hubspot input[type="submit"] {
+    width: auto;
+  }
 }
 
 .hubspot input[type="submit"]:hover {
-  background: #ff2670 !important;
+  background: #cc3662 !important;
 }
 
 .hubspot p {
@@ -189,3 +210,158 @@ html {
   font-weight: bold;
   margin: 0;
 }
+
+.hubspot input[type="checkbox"],
+div[id^="hbspt-"] input[type="checkbox"],
+.hs-form input[type="checkbox"],
+.hs-form-booleancheckbox input[type="checkbox"] {
+  accent-color: #ff2670 !important;
+}
+
+.hs-form-e2c50b46-5b6d-4d7e-b8cf-728a4ecc8da3 {
+  display: flex;
+  flex-direction: column;
+}
+
+.hs-form-e2c50b46-5b6d-4d7e-b8cf-728a4ecc8da3 .legal-consent-container {
+  order: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.hs-form-e2c50b46-5b6d-4d7e-b8cf-728a4ecc8da3 .hs_email {
+  order: 2;
+}
+
+.hs-form-e2c50b46-5b6d-4d7e-b8cf-728a4ecc8da3 .hs_submit {
+  order: 3;
+}
+
+.hs-form-e2c50b46-5b6d-4d7e-b8cf-728a4ecc8da3 [style*="display: none"] {
+  order: 0;
+}
+
+.legal-consent-container  {
+  margin-top: 1rem;
+}
+
+.legal-consent-container > div {
+  flex: 1;
+}
+
+.legal-consent-container .hs-form-field {
+  margin-bottom: 0;
+}
+
+.legal-consent-container .hs-form-booleancheckbox-display {
+  gap: 0rem;
+}
+
+.hs-form-booleancheckbox-display span {
+  margin-left: 0.25rem !important;
+}
+
+.legal-consent-container .hs-form-booleancheckbox-display {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.legal-consent-container .hs-input[type="checkbox"] {
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1800px) {
+  .hs-form-e2c50b46-5b6d-4d7e-b8cf-728a4ecc8da3 .legal-consent-container {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+
+
+  .legal-consent-container .hs-form-field {
+    margin-bottom: 0.75rem;
+  }
+}
+
+.zoom-hover {
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.zoom-hover img {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1);
+}
+
+.zoom-hover:hover img {
+  transform: scale(1.05);
+}
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-fade-transition {
+  transition: opacity 1s ease-in, transform 1s ease;
+}
+
+.gradient-border-wrapper {
+  position: relative;
+  border-radius: 3rem;
+  background: #000000/30;
+  backdrop-filter: blur(16px);
+}
+
+.gradient-border-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.169),
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.169)
+  ),
+  linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.169),
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.169)
+  );
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+.nav-divider-gradient {
+  border-left: 1px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    rgba(220, 226, 233, 0.2) 0%,
+    rgba(124, 127, 131, 0) 100%
+  ) 1;
+}
+
+
+
+
+
+
+
+

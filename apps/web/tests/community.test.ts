@@ -9,7 +9,9 @@ test('Community', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Community');
+    await expect(page).toHaveTitle(
+      'Polkadot Community | The Most Rebellious & Innovative Community in Web3',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Come play with Polkadot');
   });

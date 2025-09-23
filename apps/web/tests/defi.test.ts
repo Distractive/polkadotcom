@@ -9,7 +9,9 @@ test('DeFi', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('DeFi');
+    await expect(page).toHaveTitle(
+      'Web3 DeFi Use Cases | Decentralized Finance on Polkadot',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText(
       'Decentralized finance reinvented on Polkadot',

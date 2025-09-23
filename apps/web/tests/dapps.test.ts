@@ -9,7 +9,9 @@ test('Dapps', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Dapps');
+    await expect(page).toHaveTitle(
+      'Polkadot Dapps | Decentralized Applications Powered by Polkadot',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Polkadot Dapps');
   });
@@ -92,9 +94,6 @@ test('Dapps', async ({ page }) => {
     const nova = section.getByRole('link', {
       name: 'Wallets Nova Wallet Leading',
     });
-    const polimec = section.getByRole('link', {
-      name: 'DeFi Polimec Decentralized',
-    });
     const stella = section.getByRole('link', {
       name: 'DeFi StellaSwap Hybrid DEX',
     });
@@ -107,9 +106,6 @@ test('Dapps', async ({ page }) => {
     const arth = section.getByRole('link', {
       name: 'DeFi ArthSwap Swaps, staking',
     });
-    const beam = section.getByRole('link', {
-      name: 'DeFi BeamEx Perpetuals',
-    });
     const colb = section.getByRole('link', {
       name: 'DeFi Colb Finance Liquid RWA',
     });
@@ -119,20 +115,11 @@ test('Dapps', async ({ page }) => {
     const houdini = section.getByRole('link', {
       name: 'DeFi HoudiniSwap Send, swap',
     });
-    const interlay = section.getByRole('link', {
-      name: 'DeFi Interlay Trustless',
-    });
-    const moonwell = section.getByRole('link', {
-      name: 'DeFi Moonwell Open lending',
-    });
     const oku = section.getByRole('link', {
       name: "DeFi Oku (Uniswap) DeFi's",
     });
     const zenlink = section.getByRole('link', {
       name: 'DeFi Zenlink DEX composable',
-    });
-    const chronos = section.getByRole('link', {
-      name: 'Gaming Age of Chronos',
     });
     const avatars = section.getByRole('link', {
       name: 'Gaming Awesome Ajuna Avatars',
@@ -249,203 +236,119 @@ test('Dapps', async ({ page }) => {
       name: 'Social PolkaIdentity',
     });
 
-    //   const showMore = page.getByRole('button', { name: 'Show More' });
+    const showMore = page.getByRole('button', { name: 'Show More' });
     //   // @Note: show all
-    //   async function clickShowMoreTimes(times: number) {
-    //     for (let i = 0; i < times; i++) {
-    //       const button = page.getByRole('button', { name: 'Show More' });
-    //       await button.scrollIntoViewIfNeeded();
-    //       await button.waitFor({ state: 'visible' });
-    //       await button.click({ timeout: 3000 });
-    //     }
-    //   }
+    async function clickShowMoreTimes(times: number) {
+      for (let i = 0; i < times; i++) {
+        const button = page.getByRole('button', { name: 'Show More' });
+        await button.scrollIntoViewIfNeeded();
+        await button.waitFor({ state: 'visible' });
+        await button.click({ timeout: 3000 });
+      }
+    }
 
-    //   await clickShowMoreTimes(8);
-    //   expect(hydration).toBeVisible();
-    //   expect(rivals).toBeVisible();
-    //   expect(hyperbridge).toBeVisible();
-    //   expect(bifrost).toBeVisible();
-    //   expect(talisman).toBeVisible();
-    //   expect(evrloot).toBeVisible();
-    //   expect(nova).toBeVisible();
-    //   expect(polimec).toBeVisible();
-    //   expect(stella).toBeVisible();
-    //   expect(wormhole).toBeVisible();
-    //   expect(acala).toBeVisible();
-    //   expect(arth).toBeVisible();
-    //   expect(beam).toBeVisible();
-    //   expect(colb).toBeVisible();
-    //   expect(exiled).toBeVisible();
-    //   expect(houdini).toBeVisible();
-    //   expect(interlay).toBeVisible();
-    //   expect(moonwell).toBeVisible();
-    //   expect(oku).toBeVisible();
-    //   expect(zenlink).toBeVisible();
-    //   expect(chronos).toBeVisible();
-    //   expect(avatars).toBeVisible();
-    //   expect(greatEscape).toBeVisible();
-    //   expect(artZero).toBeVisible();
-    //   expect(beatport).toBeVisible();
-    //   expect(kodaDot).toBeVisible();
-    //   expect(moonbeans).toBeVisible();
-    //   expect(rarible).toBeVisible();
-    //   expect(singular).toBeVisible();
-    //   expect(uniqueNetwork).toBeVisible();
-    //   expect(agentWars).toBeVisible();
-    //   expect(chatDkg).toBeVisible();
-    //   expect(acurast).toBeVisible();
-    //   expect(mapMetrics).toBeVisible();
-    //   expect(silencio).toBeVisible();
-    //   expect(airlyft).toBeVisible();
-    //   expect(diode).toBeVisible();
-    //   expect(galaxe).toBeVisible();
-    //   expect(kilt).toBeVisible();
-    //   expect(livetree).toBeVisible();
-    //   expect(mewe).toBeVisible();
-    //   expect(teddy).toBeVisible();
-    //   expect(zeitgeist).toBeVisible();
-    //   expect(apillon).toBeVisible();
-    //   expect(centrifuge).toBeVisible();
-    //   expect(ewx).toBeVisible();
-    //   expect(smartflow).toBeVisible();
-    //   expect(ledger).toBeVisible();
-    //   expect(polkasafe).toBeVisible();
-    //   expect(subwallet).toBeVisible();
-    //   expect(squidRouter).toBeVisible();
-    //   expect(primeProtocol).toBeVisible();
-    //   expect(bagpipes).toBeVisible();
-    //   expect(polkaswap).toBeVisible();
-    //   expect(flappyWud).toBeVisible();
-    //   expect(pinkDrop).toBeVisible();
-    //   expect(fearless).toBeVisible();
-    //   expect(mimir).toBeVisible();
-    //   expect(polkadentity).toBeVisible();
+    expect(stella).toBeHidden();
+    expect(acala).toBeHidden();
+    expect(arth).toBeHidden();
+    expect(colb).toBeHidden();
+    expect(exiled).toBeHidden();
+    expect(houdini).toBeHidden();
+    expect(oku).toBeHidden();
+    expect(zenlink).toBeHidden();
+    expect(avatars).toBeHidden();
+    expect(greatEscape).toBeHidden();
+    expect(artZero).toBeHidden();
+    expect(beatport).toBeHidden();
+    expect(kodaDot).toBeHidden();
+    expect(moonbeans).toBeHidden();
+    expect(rarible).toBeHidden();
+    expect(singular).toBeHidden();
+    expect(uniqueNetwork).toBeHidden();
+    expect(agentWars).toBeHidden();
+    expect(chatDkg).toBeHidden();
+    expect(acurast).toBeHidden();
+    expect(mapMetrics).toBeHidden();
+    expect(silencio).toBeHidden();
+    expect(airlyft).toBeHidden();
+    expect(diode).toBeHidden();
+    expect(galaxe).toBeHidden();
+    expect(kilt).toBeHidden();
+    expect(livetree).toBeHidden();
+    expect(mewe).toBeHidden();
+    expect(teddy).toBeHidden();
+    expect(zeitgeist).toBeHidden();
+    expect(apillon).toBeHidden();
+    expect(centrifuge).toBeHidden();
+    expect(ewx).toBeHidden();
+    expect(smartflow).toBeHidden();
+    expect(ledger).toBeHidden();
+    expect(polkasafe).toBeHidden();
+    expect(subwallet).toBeHidden();
+    expect(primeProtocol).toBeHidden();
+    expect(bagpipes).toBeHidden();
+    expect(polkaswap).toBeHidden();
+    expect(flappyWud).toBeHidden();
+    expect(pinkDrop).toBeHidden();
+    expect(fearless).toBeHidden();
+    expect(mimir).toBeHidden();
+    expect(polkadentity).toBeHidden();
 
-    //   await bridges.click({ timeout: 2000 });
+    await clickShowMoreTimes(7);
 
-    //   expect(hydration).toBeHidden();
-    //   expect(rivals).toBeHidden();
-    //   expect(hyperbridge).toBeVisible();
-    //   expect(bifrost).toBeHidden();
-    //   expect(talisman).toBeHidden();
-    //   expect(evrloot).toBeHidden();
-    //   expect(nova).toBeHidden();
-    //   expect(polimec).toBeHidden();
-    //   expect(stella).toBeHidden();
-    //   expect(wormhole).toBeVisible();
-    //   expect(acala).toBeHidden();
-    //   expect(arth).toBeHidden();
-    //   expect(beam).toBeHidden();
-    //   expect(colb).toBeHidden();
-    //   expect(exiled).toBeHidden();
-    //   expect(houdini).toBeHidden();
-    //   expect(interlay).toBeHidden();
-    //   expect(moonwell).toBeHidden();
-    //   expect(oku).toBeHidden();
-    //   expect(zenlink).toBeHidden();
-    //   expect(chronos).toBeHidden();
-    //   expect(avatars).toBeHidden();
-    //   expect(greatEscape).toBeHidden();
-    //   expect(artZero).toBeHidden();
-    //   expect(beatport).toBeHidden();
-    //   expect(kodaDot).toBeHidden();
-    //   expect(moonbeans).toBeHidden();
-    //   expect(rarible).toBeHidden();
-    //   expect(singular).toBeHidden();
-    //   expect(uniqueNetwork).toBeHidden();
-    //   expect(agentWars).toBeHidden();
-    //   expect(chatDkg).toBeHidden();
-    //   expect(acurast).toBeHidden();
-    //   expect(mapMetrics).toBeHidden();
-    //   expect(silencio).toBeHidden();
-    //   expect(airlyft).toBeHidden();
-    //   expect(diode).toBeHidden();
-    //   expect(galaxe).toBeHidden();
-    //   expect(kilt).toBeHidden();
-    //   expect(livetree).toBeHidden();
-    //   expect(mewe).toBeHidden();
-    //   expect(teddy).toBeHidden();
-    //   expect(zeitgeist).toBeHidden();
-    //   expect(apillon).toBeHidden();
-    //   expect(centrifuge).toBeHidden();
-    //   expect(ewx).toBeHidden();
-    //   expect(smartflow).toBeHidden();
-    //   expect(ledger).toBeHidden();
-    //   expect(polkasafe).toBeHidden();
-    //   expect(subwallet).toBeHidden();
-    //   expect(squidRouter).toBeVisible();
-    //   expect(primeProtocol).toBeHidden();
-    //   expect(bagpipes).toBeHidden();
-    //   expect(polkaswap).toBeHidden();
-    //   expect(flappyWud).toBeHidden();
-    //   expect(pinkDrop).toBeHidden();
-    //   expect(fearless).toBeHidden();
-    //   expect(mimir).toBeHidden();
-    //   expect(polkadentity).toBeHidden();
-
-    //   await defi.click({ timeout: 2000 });
-
-    //   expect(hydration).toBeVisible();
-    //   expect(rivals).toBeHidden();
-    //   expect(hyperbridge).toBeHidden();
-    //   expect(bifrost).toBeVisible();
-    //   expect(talisman).toBeHidden();
-    //   expect(evrloot).toBeHidden();
-    //   expect(nova).toBeHidden();
-    //   expect(polimec).toBeVisible();
-    //   expect(stella).toBeVisible();
-    //   expect(wormhole).toBeHidden();
-    //   expect(acala).toBeVisible();
-    //   expect(arth).toBeVisible();
-    //   expect(beam).toBeVisible();
-    //   expect(colb).toBeVisible();
-    //   expect(exiled).toBeHidden();
-    //   expect(houdini).toBeHidden();
-    //   expect(interlay).toBeHidden();
-    //   expect(moonwell).toBeHidden();
-    //   expect(oku).toBeHidden();
-    //   expect(zenlink).toBeHidden();
-    //   expect(chronos).toBeHidden();
-    //   expect(avatars).toBeHidden();
-    //   expect(greatEscape).toBeHidden();
-    //   expect(artZero).toBeHidden();
-    //   expect(beatport).toBeHidden();
-    //   expect(kodaDot).toBeHidden();
-    //   expect(moonbeans).toBeHidden();
-    //   expect(rarible).toBeHidden();
-    //   expect(singular).toBeHidden();
-    //   expect(uniqueNetwork).toBeHidden();
-    //   expect(agentWars).toBeHidden();
-    //   expect(chatDkg).toBeHidden();
-    //   expect(acurast).toBeHidden();
-    //   expect(mapMetrics).toBeHidden();
-    //   expect(silencio).toBeHidden();
-    //   expect(airlyft).toBeHidden();
-    //   expect(diode).toBeHidden();
-    //   expect(galaxe).toBeHidden();
-    //   expect(kilt).toBeHidden();
-    //   expect(livetree).toBeHidden();
-    //   expect(mewe).toBeHidden();
-    //   expect(teddy).toBeHidden();
-    //   expect(zeitgeist).toBeHidden();
-    //   expect(apillon).toBeHidden();
-    //   expect(centrifuge).toBeHidden();
-    //   expect(ewx).toBeHidden();
-    //   expect(smartflow).toBeHidden();
-    //   expect(ledger).toBeHidden();
-    //   expect(polkasafe).toBeHidden();
-    //   expect(subwallet).toBeHidden();
-    //   expect(squidRouter).toBeHidden();
-    //   expect(primeProtocol).toBeHidden();
-    //   expect(bagpipes).toBeHidden();
-    //   expect(polkaswap).toBeHidden();
-    //   expect(flappyWud).toBeHidden();
-    //   expect(pinkDrop).toBeHidden();
-    //   expect(fearless).toBeHidden();
-    //   expect(mimir).toBeHidden();
-    //   expect(polkadentity).toBeHidden();
-
-    //   await all.click({ timeout: 2000 });
+    expect(hydration).toBeVisible();
+    expect(rivals).toBeVisible();
+    expect(hyperbridge).toBeVisible();
+    expect(bifrost).toBeVisible();
+    expect(talisman).toBeVisible();
+    expect(evrloot).toBeVisible();
+    expect(nova).toBeVisible();
+    expect(stella).toBeVisible();
+    expect(wormhole).toBeVisible();
+    expect(acala).toBeVisible();
+    expect(arth).toBeVisible();
+    expect(colb).toBeVisible();
+    expect(exiled).toBeVisible();
+    expect(houdini).toBeVisible();
+    expect(oku).toBeVisible();
+    expect(zenlink).toBeVisible();
+    expect(avatars).toBeVisible();
+    expect(greatEscape).toBeVisible();
+    expect(artZero).toBeVisible();
+    expect(beatport).toBeVisible();
+    expect(kodaDot).toBeVisible();
+    expect(moonbeans).toBeVisible();
+    expect(rarible).toBeVisible();
+    expect(singular).toBeVisible();
+    expect(uniqueNetwork).toBeVisible();
+    expect(agentWars).toBeVisible();
+    expect(chatDkg).toBeVisible();
+    expect(acurast).toBeVisible();
+    expect(mapMetrics).toBeVisible();
+    expect(silencio).toBeVisible();
+    expect(airlyft).toBeVisible();
+    expect(diode).toBeVisible();
+    expect(galaxe).toBeVisible();
+    expect(kilt).toBeVisible();
+    expect(livetree).toBeVisible();
+    expect(mewe).toBeVisible();
+    expect(teddy).toBeVisible();
+    expect(zeitgeist).toBeVisible();
+    expect(apillon).toBeVisible();
+    expect(centrifuge).toBeVisible();
+    expect(ewx).toBeVisible();
+    expect(smartflow).toBeVisible();
+    expect(ledger).toBeVisible();
+    expect(polkasafe).toBeVisible();
+    expect(subwallet).toBeVisible();
+    expect(squidRouter).toBeVisible();
+    expect(primeProtocol).toBeVisible();
+    expect(bagpipes).toBeVisible();
+    expect(polkaswap).toBeVisible();
+    expect(flappyWud).toBeVisible();
+    expect(pinkDrop).toBeVisible();
+    expect(fearless).toBeVisible();
+    expect(mimir).toBeVisible();
+    expect(polkadentity).toBeVisible();
   });
 
   await test.step('"featured" section screenshot', async () => {
@@ -497,7 +400,7 @@ test('Dapps', async ({ page }) => {
       section.getByRole('link', { name: 'disclaimer page.' }),
     ).toBeVisible();
     await expect(section.getByText('The list includes apps that')).toHaveText(
-      'The list includes apps that are running on Polkadot or its parachains, that are end-user oriented, with TVL, and active community in social networks. If your dapp fulfills these criteria and is not listed here, submit a form.',
+      'The list includes apps that are running on Polkadot or its rollups (i.e., parachains), that are end-user oriented, with TVL, and active community in social networks. If your dapp fulfills these criteria and is not listed here, submit a form.',
     );
     await expect(
       section.getByRole('link', { name: 'submit a form' }),

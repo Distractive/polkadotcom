@@ -37,7 +37,7 @@ export function MenuDesktop({
     <div
       ref={ref}
       id="page-menu"
-      className="max-width grid-pile overflow-hidden px-gutter"
+      className="max-width grid-pile overflow-hidden px-gutter "
     >
       {menu.map((section, _index) => (
         <div
@@ -45,26 +45,37 @@ export function MenuDesktop({
           onMouseLeave={handleCloseMenu}
           id={`${stegaClean(section.heading)}`}
           className={cn(
-            'mb-auto mr-auto flex items-start overflow-hidden',
-            'rounded-2xl border border-grey-300 bg-white',
+            'mb-auto mr-auto flex items-start overflow-hidden backdrop-blur-md border border-grey-200',
+            'rounded-2xl  bg-white',
             section.heading === hovered
               ? 'pointer-events-auto visible'
               : 'pointer-events-none invisible',
           )}
         >
-          <ul className="grid h-full grid-cols-2">
+          <ul className="grid grid-cols-2">
             {section.items.map((item, index) => {
+              const totalItems = section.items.length;
+              const isInLastRow =
+                totalItems % 2 === 0
+                  ? index >= totalItems - 2
+                  : index === totalItems - 1;
+              const isLeftColumn = index % 2 === 0;
+              const isLastItemOdd =
+                totalItems % 2 !== 0 && index === totalItems - 1;
+
               return (
                 <li
                   key={item.link.label}
                   className={cn(
-                    'flex h-full min-w-[21rem] shadow-internal-border ',
+                    'flex min-w-[21rem]',
+                    !isInLastRow && 'border-b border-grey-200',
+                    isLeftColumn && 'border-r border-grey-200',
                   )}
                 >
                   <CustomUrl
                     value={item.link}
                     onClick={handleCloseMenu}
-                    className="leading-none flex h-full w-full p-nav transition-colors duration-200 ease-in-out hover:text-pink focus:text-pink"
+                    className="leading-none flex h-full w-full p-nav transition-colors duration-200 ease-in-out hover:text-pink focus:text-pink text-black"
                     tabIndex={0}
                   >
                     {' '}
@@ -73,9 +84,7 @@ export function MenuDesktop({
                 </li>
               );
             })}
-            {section.items.length % 2 !== 0 && (
-              <li className="min-w-[21rem] shadow-internal-border" />
-            )}
+            {section.items.length % 2 !== 0 && <li className="min-w-[21rem]" />}
           </ul>
           {section.aside && (
             <CustomUrl
@@ -94,7 +103,7 @@ export function MenuDesktop({
                   alt=""
                   className="w-full"
                 />
-                <p className="text-lg font-bold transition-colors duration-200 ease-in-out group-hover:text-pink">
+                <p className="text-lg font-bold text-black transition-colors duration-200 ease-in-out group-hover:text-pink">
                   {section.aside.heading}
                 </p>
               </aside>

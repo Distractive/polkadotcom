@@ -23,7 +23,7 @@ export function CardsSmallBlock({ cards }: Props) {
       </div>
       <div
         className={cn(
-          'grid-system col-span-full w-full gap-gutter md:auto-rows-1fr',
+          'grid-system col-span-full w-full gap-gutter md:auto-rows-1fr pb-2',
         )}
       >
         {cards.items &&

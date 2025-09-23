@@ -4,12 +4,12 @@ import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Homepage', async ({ page }) => {
   const ecosystemIds = [
-    'c4910461f906',
-    '3b6847866f76',
-    '878be89f9898d0ab5e266e4fc49614c2',
-    'b006a029787b991dcdea6a3338249e84',
-    '1041062bfe436968c080cdeee5496b1b',
-    '3479ce3e3534297a92fd5f2a5ec98880',
+    '6a0752e5901e',
+    '2c4394a44c26',
+    'afda3000310d',
+    '95ac39dd9b4d',
+    '5c8923c74226',
+    'e05ed05ddb24',
   ];
 
   await test.step('go to homepage', async () => {
@@ -18,9 +18,7 @@ test('Homepage', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle(
-      'Polkadot | The secure, powerful core of Web3',
-    );
+    await expect(page).toHaveTitle('Polkadot | Freedom to build at Web3 scale');
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Built for the billions');
   });
@@ -57,29 +55,9 @@ test('Homepage', async ({ page }) => {
     ).toMatchSnapshot('hero.png', snapshotConfig);
   });
 
-  await test.step('assert "video" section is displayed properly', async () => {
-    const section = page.getByTestId('video-pile-content');
-
-    await expect(
-      section.getByRole('heading', {
-        name: 'Shaping the future internet together',
-      }),
-    ).toBeVisible();
-    await expect(section.getByTestId('video-block')).toBeVisible();
-  });
-
-  await test.step('"video" section screenshot', async () => {
-    await page.waitForTimeout(2000);
-    const section = page.getByTestId('video-pile-content');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot({ timeout: 7000 })).toMatchSnapshot(
-      'video.png',
-      snapshotConfig,
-    );
-  });
-
   await test.step('assert "network" section displayed properly', async () => {
-    const section = page.getByTestId('network-pile');
+    const section = page.getByTestId('network-cards');
+    await section.scrollIntoViewIfNeeded();
 
     await expect(
       section.getByRole('heading', { name: 'Power without permission' }),
@@ -89,29 +67,26 @@ test('Homepage', async ({ page }) => {
     );
 
     await expect(
-      section.getByRole('link', {
-        name: 'Get a wallet?',
-      }),
+      section.getByRole('link', { name: /DOT token basics/ }),
     ).toHaveText(
-      'Get a wallet?Learn how DOT gives you a voice—and powers the Polkadot ecosystem.',
+      'DOT token basicsWhat’s in a DOT? Dive into the utility token that powers the Polkadot ecosystem.',
+    );
+    await expect(
+      section.getByRole('link', { name: 'Build on Polkadot' }),
+    ).toHaveText(
+      'Build on PolkadotSpin up a custom blockchain in minutes, or build the app of your dreams.',
     );
 
     await expect(
-      section.getByRole('link', { name: 'Ready to build?' }),
+      section.getByRole('link', { name: 'Join the Community' }),
     ).toHaveText(
-      'Ready to build? Spin up a custom blockchain or dream dapp in minutes—on your terms.',
-    );
-
-    await expect(
-      section.getByRole('link', { name: 'Want to connect?' }),
-    ).toHaveText(
-      "Want to connect? Join the world's largest DAO shaping the next generation of Web3.",
+      'Join the communityJoin a chat, create content, or help champion in your local region.',
     );
   });
 
   await test.step('"network" section screenshot', async () => {
     await page.waitForTimeout(2000);
-    const section = page.getByTestId('network-pile-content');
+    const section = page.getByTestId('network-cards');
     await page.waitForTimeout(2000);
     expect(await section.screenshot({ timeout: 7000 })).toMatchSnapshot(
       'network.png',
@@ -120,7 +95,8 @@ test('Homepage', async ({ page }) => {
   });
 
   await test.step('assert "building" section is displayed properly', async () => {
-    const section = page.getByTestId('building-pile');
+    const section = page.getByTestId('build-cards');
+    await section.scrollIntoViewIfNeeded();
 
     await expect(
       section.getByRole('heading', {
@@ -131,21 +107,19 @@ test('Homepage', async ({ page }) => {
       "Join a global community of builders, creators, and visionaries pushing boundaries. If you're bold enough to build it, Polkadot is here for it.",
     );
     await expect(
-      section
-        .locator('[id="build\\.content"]')
-        .getByRole('link', { name: 'Explore Web3' }),
+      section.getByText('Get Started', { exact: true }),
     ).toBeVisible();
     await expect(
-      section.getByText('Start building', { exact: true }),
+      section.getByText('Start Building', { exact: true }),
     ).toBeVisible();
     await expect(
-      section.getByText('Explore funding', { exact: true }),
+      section.getByText('Explore Funding', { exact: true }),
     ).toBeVisible();
   });
 
   await test.step('"building" section screenshot', async () => {
     await page.waitForTimeout(2000);
-    const section = page.getByTestId('building-pile');
+    const section = page.getByTestId('build-cards');
     await page.waitForTimeout(2000);
     expect(
       await section.screenshot({
@@ -160,11 +134,8 @@ test('Homepage', async ({ page }) => {
 
     await expect(
       newsletterWrapper.getByRole('heading', {
-        name: 'Polkadot’s latest news,',
+        name: 'Get the insider scoop',
       }),
-    ).toBeVisible();
-    await expect(
-      newsletterWrapper.getByText('Get your monthly fix of'),
     ).toBeVisible();
     await expect(
       newsletterWrapper.getByRole('button', { name: 'Subscribe' }),
@@ -174,6 +145,8 @@ test('Homepage', async ({ page }) => {
   await test.step('newsletter section screenshot', async () => {
     await page.waitForTimeout(2000);
     const newsletterWrapper = page.getByTestId('newsletter');
+    await newsletterWrapper.scrollIntoViewIfNeeded();
+
     await page.waitForTimeout(2000);
     expect(
       await newsletterWrapper.screenshot({ timeout: 7000 }),
@@ -182,6 +155,7 @@ test('Homepage', async ({ page }) => {
 
   await test.step('assert "ecosystem" section is displayed properly', async () => {
     const section = page.getByTestId('ecosystem-pile');
+    await section.scrollIntoViewIfNeeded();
 
     await expect(
       section.getByRole('heading', {
@@ -192,27 +166,22 @@ test('Homepage', async ({ page }) => {
       'Polkadot gives builders the tools and community to turn bold ideas into real-world impact—powering everything from next-gen games to AI.',
     );
     await expect(
-      section.getByRole('link', { name: 'NFL Rivals Digital' }),
-    ).toBeVisible();
-    await expect(
       section.getByRole('link', {
-        name: 'Hydration Omnipool DEX for',
+        name: 'FIFA Rivals',
       }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Acurast Provide compute &' }),
-    ).toBeVisible();
-    await expect(
       section.getByRole('link', {
-        name: 'Hyperbridge',
+        name: 'Hydration',
       }),
     ).toBeVisible();
-    await expect(section.getByRole('link', { name: 'Bifrost' })).toBeVisible();
+    await expect(section.getByRole('link', { name: 'Acurast' })).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'FIFA Rivals' }),
+      section.getByRole('link', { name: 'NFL Rivals' }),
     ).toBeVisible();
+    await expect(section.getByRole('link', { name: 'BiFrost' })).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Explore Dapps' }),
+      section.getByRole('link', { name: 'Hyperbridge' }),
     ).toBeVisible();
   });
 
@@ -228,5 +197,31 @@ test('Homepage', async ({ page }) => {
         }),
       ).toMatchSnapshot(`ecosystem-${id}.png`, snapshotConfig);
     }
+  });
+
+  await test.step('assert "recent happenings" section is displayed properly', async () => {
+    const section = page.getByTestId('cards-block-5d955696c731');
+    await section.scrollIntoViewIfNeeded();
+
+    await expect(
+      section.getByRole('heading', {
+        name: 'Ecosystem happenings',
+      }),
+    ).toBeVisible();
+    await expect(section.getByText('The latest news, notes')).toHaveText(
+      'The latest news, notes, and notions from across the Polkadot ecosystem',
+    );
+  });
+
+  await test.step('"recent happenings" section screenshot', async () => {
+    await page.waitForTimeout(2000);
+    const section = page.getByTestId('cards-block-5d955696c731');
+    await page.waitForTimeout(2000);
+    expect(
+      await section.screenshot({
+        timeout: 7000,
+        animations: 'disabled',
+      }),
+    ).toMatchSnapshot('recent-happenings.png', snapshotConfig);
   });
 });

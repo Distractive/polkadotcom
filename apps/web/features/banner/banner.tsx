@@ -107,7 +107,7 @@ export default function Banner({ banner }: BannerProps) {
                   variant="h3"
                   size="h4"
                   className={cn(
-                    'text-sm text-black transition-colors duration-100 ease-in-out',
+                    'text-black text-2xl transition-colors duration-100 ease-in-out',
                     banner.link && [
                       'group-hover:text-pink group-focus-visible:text-pink',
                       'link:!text-current visited:!text-current',

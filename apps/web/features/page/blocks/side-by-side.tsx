@@ -90,13 +90,7 @@ export function SideBySideBlock({ content }: Props) {
                         size="md"
                         asChild
                         className="md:cursor-pointer whitespace-nowrap"
-                        variant={
-                          value?.variant
-                            ? value.variant === 'primary'
-                              ? 'primary'
-                              : 'secondary'
-                            : 'primary'
-                        }
+                        variant={value?.variant || 'primary'}
                       >
                         <CustomUrl
                           className="outline-none"
