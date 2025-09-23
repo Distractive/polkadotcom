@@ -9,7 +9,9 @@ test('Assets', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Real-World Assets');
+    await expect(page).toHaveTitle(
+      'Web3 RWA Use Cases | Tokenize Assets, Finance & IP on Polkadot',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText(
       'The future of real-world assets lives on Polkadot',

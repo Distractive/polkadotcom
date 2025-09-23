@@ -1,16 +1,17 @@
-import { nullToUndefined, q } from 'groqd';
+import { q } from 'groqd';
 import type { Selection } from 'groqd';
 
 import { cardSelection } from './card';
 
 export const cardsSelection = {
   _key: q.string(),
-  heading: nullToUndefined(q.string().optional()),
-  body: nullToUndefined(q.string().optional()),
-  isCarousel: nullToUndefined(q.boolean().optional()),
-  hasTags: nullToUndefined(q.boolean().optional()),
-  useFourColumns: nullToUndefined(q.boolean().optional()),
-  tags: q.array(q.string()).nullable(),
+  _type: q.literal('cards'),
+  heading: q.string().optional().nullable(),
+  body: q.string().optional().nullable(),
+  isCarousel: q.boolean().optional().nullable(),
+  hasTags: q.boolean().optional().nullable(),
+  useFourColumns: q.boolean().optional().nullable(),
+  tags: q.array(q.string()).optional().nullable(),
   items: q('items')
     .filter()
     .grab({ ...cardSelection })

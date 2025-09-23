@@ -1,97 +1,222 @@
 'use client';
 
 import type { heroSelection } from '@/sanity/selections/home/hero';
-import Spline from '@splinetool/react-spline';
 import type { TypeFromSelection } from 'groqd';
+import dynamic from 'next/dynamic';
+import { useEffect, useRef, useState } from 'react';
 
 import { CustomUrl } from '@/components/custom-url';
+import type { videoSelection } from '@/sanity/selections/home/video';
 import { Button, Heading, cn } from '@shared/ui';
+import { BackgroundVideo } from './background-video';
 
 interface Props {
   hero: TypeFromSelection<typeof heroSelection>['hero'];
+  backgroundVideo: TypeFromSelection<typeof videoSelection>['video'];
 }
 
-export function Hero({ hero }: Props) {
+export function Hero({ hero, backgroundVideo }: Props) {
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const playerRef = useRef<{ getInternalPlayer?: () => unknown } | null>(null);
+
+  const openOverlay = () => {
+    setIsOverlayOpen(true);
+    try {
+      const internal = playerRef.current?.getInternalPlayer?.() as
+        | { play?: () => void | Promise<void>; playVideo?: () => void }
+        | undefined;
+      internal?.play?.();
+      internal?.playVideo?.();
+    } catch {}
+  };
+
+  const closeOverlay = () => {
+    setIsOverlayOpen(false);
+    try {
+      const internal = playerRef.current?.getInternalPlayer?.() as
+        | {
+            pause?: () => void;
+            pauseVideo?: () => void;
+            unload?: () => void;
+          }
+        | undefined;
+      internal?.pause?.();
+      internal?.pauseVideo?.();
+      internal?.unload?.();
+    } catch {}
+  };
+
+  useEffect(() => {
+    if (isOverlayOpen) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [isOverlayOpen]);
+
+  // Dynamically import ReactPlayer to avoid SSR issues
+  const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
+
   return (
-    <div
-      id="hero-pile"
-      data-testid="hero-pile"
-      className="md:pt-30 relative -mt-[2rem] mb-8 flex flex-col overflow-visible md:mt-0 md:pt-16 xl:mb-32"
-    >
-      {/* biome-ignore lint/style/useSelfClosingElements: <Not possible> */}
-      <div className="absolute inset-0 -z-10 bg-[image:linear-gradient(to_bottom_right,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom_right,#07FFFF_0%,#7916F3_100%)] bg-[length:101%_100%] bg-no-repeat "></div>
-
-      <article
-        id="hero.wrapper"
-        className={cn(
-          'grid-system max-width relative   !overflow-visible lg:px-gutter',
-        )}
+    <>
+      <div
+        id="hero-pile"
+        data-testid="hero-pile"
+        className="relative flex flex-col overflow-visible pt-20 h-screen md:h-[60rem] bg-black"
       >
-        <div className="max-width col-span-12 flex flex-col !overflow-visible  lg:flex-row">
-          {/* HEADING */}
-          <div
-            id="network.content"
-            className={cn(
-              'relative  order-2  flex flex-col justify-center px-gutter lg:order-1 lg:col-span-2 lg:px-0',
-              '-mt-[8rem] sm:-mt-[5rem] md:mt-0',
-            )}
-          >
-            <div className="sm:max-w-xl md:max-w-2xl lg:max-w-2xl xl:max-w-6xl  ">
-              <Heading
-                variant="h1"
-                className="pb-card leading-[1] md:!text-[3.813rem] "
-              >
-                {hero.title}
-              </Heading>
-              <div className="flex w-full">
-                {' '}
-                <p className="text-lg xl:text-2xl">{hero.copy}</p>
-              </div>
+        <BackgroundVideo
+          video={backgroundVideo?.video}
+          showOverlay={true}
+          overlayOpacity={20}
+          className=""
+          muted={true}
+          localVideoPath={'/videos/polkadot-home-video-2.mp4'}
+        />
+        <article
+          id="hero.wrapper"
+          className={cn(
+            'grid-system max-width relative   !overflow-visible px-gutter h-full',
+          )}
+        >
+          <div className="relative max-width col-span-12 flex flex-row !overflow-visible ">
+            {/* HEADING */}
+            <div
+              id="hero.content"
+              className={cn(
+                'relative  order-2  flex flex-col justify-end pb-24 md:pb-0 md:justify-center lg:order-1 lg:col-span-2',
+                ' md:mt-0',
+              )}
+            >
+              <div className="sm:max-w-xl md:max-w-2xl ">
+                <Heading
+                  variant="h1"
+                  className="pb-card leading-[1] md:!text-[3.813rem] text-white"
+                >
+                  {hero?.title}
+                </Heading>
+                <div className="flex w-full">
+                  {' '}
+                  <p className="text-lg xl:text-2xl text-white">{hero?.copy}</p>
+                </div>
 
-              <div
-                id="main-content"
-                className="flex flex-col  gap-4  pt-card md:flex-row"
-              >
-                {hero.links?.map((link, index) => (
-                  <Button
-                    asChild
-                    key={link.label}
-                    variant={
-                      link?.variant
-                        ? link.variant === 'primary'
-                          ? 'primary'
-                          : 'secondary'
-                        : 'primary'
-                    }
-                    size="lg"
-                    className="flex-1 whitespace-nowrap"
-                  >
-                    <CustomUrl
-                      className="outline-none"
-                      value={{
-                        internal: link?.internal,
-                        external: link?.external,
-                      }}
+                <div
+                  id="main-content"
+                  className="flex flex-col  gap-4  pt-card md:flex-row"
+                >
+                  {hero?.links?.map((link, index) => (
+                    <Button
+                      asChild
+                      key={link.label}
+                      variant={link?.variant || 'primary'}
+                      size="lg"
                     >
-                      {link.label}
-                    </CustomUrl>
-                  </Button>
-                ))}
+                      <CustomUrl
+                        className="outline-none"
+                        value={{
+                          internal: link?.internal,
+                          external: link?.external,
+                        }}
+                      >
+                        {link.label}
+                      </CustomUrl>
+                    </Button>
+                  ))}
+                </div>
               </div>
             </div>
+            {/* Launch Video Button */}
+            {!isOverlayOpen && (
+              <button
+                onClick={openOverlay}
+                className={cn(
+                  'absolute bottom-8 flex items-center gap-2 px-4 py-1 border-white/20 text-white transition-all duration-200 z-10 rounded-md',
+                  'left-1/2 transform -translate-x-1/2',
+                  'md:left-auto md:right-0 md:transform-none md:bg-black/50 md:border ',
+                  'hover:ring-2 hover:ring-white/50 hover:cursor-pointer',
+                )}
+                aria-label="Watch with sound"
+                type="button"
+              >
+                <span className="text-sm font-medium font-display whitespace-nowrap">
+                  WATCH VIDEO
+                </span>
+                {/* Speaker icon */}
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M8 5V19L19 12L8 5Z" fill="currentColor" />
+                </svg>
+              </button>
+            )}
           </div>
-          {/* ANIMATION */}
-
+        </article>
+        {isOverlayOpen && (
           <div
-            className="bg-transparent relative  order-1   min-h-[36rem] w-full scale-75 overflow-visible  md:min-w-[36rem] md:scale-100 lg:order-2 lg:mb-0 lg:min-h-[48rem] xl:translate-x-[5%] 2xl:translate-x-[10%]"
-            data-testid="dots-animation"
+            className="fixed inset-0 z-40 flex items-center justify-center bg-black/90 p-4"
+            role="dialog"
+            aria-modal="true"
+            onClick={closeOverlay}
+            onKeyDown={closeOverlay}
           >
-            <div className="bg-transparent absolute inset-0 w-full origin-center  !overflow-visible lg:pl-10 lg:pr-16">
-              <Spline scene="/scene3.splinecode" />
+            <div
+              className="z-[55] w-full max-w-6xl aspect-video"
+              onClick={(e) => e.stopPropagation()}
+              onKeyDown={(e) => e.stopPropagation()}
+            >
+              <ReactPlayer
+                ref={playerRef}
+                url="/videos/defy-whats-possible-video.mp4"
+                playing={isOverlayOpen}
+                controls
+                width="100%"
+                height="100%"
+                muted={false}
+                volume={1}
+                playsinline
+                style={{
+                  backgroundColor: 'black',
+                }}
+                config={{
+                  youtube: {
+                    playerVars: {
+                      autoplay: 1,
+                      playsinline: 1,
+                      rel: 0,
+                      showinfo: 0,
+                      modestbranding: 1,
+                    },
+                  },
+                  vimeo: {
+                    playerOptions: {
+                      autoplay: true,
+                      byline: false,
+                      portrait: false,
+                      title: false,
+                    },
+                  },
+                  file: {
+                    attributes: {
+                      playsInline: true,
+                      style: {
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      },
+                    },
+                  },
+                }}
+              />
             </div>
           </div>
-        </div>
-      </article>
-    </div>
+        )}
+      </div>
+      <div className="h-8 rounded-t-xl -mt-3 relative z-30 bg-white w-full" />
+    </>
   );
 }

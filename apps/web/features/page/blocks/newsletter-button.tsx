@@ -32,7 +32,7 @@ export function NewsletterButton({ value, className }: NewsletterSignupProps) {
     modalHeading: value.modalHeading,
     formType: value.formType,
     _key: value._key,
-    variant: value.variant as 'primary' | 'secondary',
+    variant: value.variant as 'primary' | 'secondary' | 'tertiary' | 'disabled',
     size: value.size,
   };
 

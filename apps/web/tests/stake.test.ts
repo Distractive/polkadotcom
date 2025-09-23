@@ -9,7 +9,9 @@ test('Stake', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Staking');
+    await expect(page).toHaveTitle(
+      'Polkadot Staking | Earn Rewards & Secure the Network',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Stake your claim');
   });

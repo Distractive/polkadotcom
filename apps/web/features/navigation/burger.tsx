@@ -11,7 +11,7 @@ interface Props {
 
 const OFFSET = 5;
 const ROTATE = 45;
-const LINE_STYLES = 'h-[2px] w-5 bg-black';
+const LINE_STYLES = 'h-[2px] w-5 bg-white';
 
 export function Burger({ isOpen, setIsOpen }: Props) {
   const topCtrl = useAnimation();
@@ -38,7 +38,7 @@ export function Burger({ isOpen, setIsOpen }: Props) {
       onClick={() => setIsOpen(!isOpen)}
       className={cn(
         'grid-pile h-full w-14 items-center justify-center lg:hidden',
-        'rounded-full border border-grey-300 bg-white',
+        'rounded-full border border-white/40 bg-black/40',
       )}
     >
       <motion.span

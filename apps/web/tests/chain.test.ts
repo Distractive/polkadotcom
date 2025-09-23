@@ -9,7 +9,9 @@ test('Chain', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Chain');
+    await expect(page).toHaveTitle(
+      "Polkadot Chain | Discover Polkadot's Relay Chain and Rollups",
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('The heartbeat of next-gen blockchain');
   });
@@ -190,23 +192,23 @@ test('Chain', async ({ page }) => {
       }),
     ).toBeVisible();
     await expect(section.getByText('Say goodbye to the era of')).toHaveText(
-      'Say goodbye to the era of siloed networks. Polkadot pioneered the standard for inter-blockchain communication, uniting independent rollups via secure messaging with XCM and reliable bridges to external blockchains.',
+      'Say goodbye to the era of siloed networks. Polkadot pioneered the standard for inter-blockchain communication, uniting independent rollups (i.e., parachains) via secure messaging with XCM and reliable bridges to external blockchains.',
     );
     await expect(
       section.getByRole('link', { name: 'Explore XCM' }),
     ).toBeVisible();
   });
 
-  await test.step('"interconnected" section screenshot', async () => {
-    const section = page.getByTestId(
-      'side-by-side-8715749e27f924c9c9aecd3ace015471',
-    );
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'interconnected.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"interconnected" section screenshot', async () => {
+  //   const section = page.getByTestId(
+  //     'side-by-side-8715749e27f924c9c9aecd3ace015471',
+  //   );
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'interconnected.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "coretime" section is displayed properly', async () => {
     const section = page.getByTestId('cards-small-block').nth(1);

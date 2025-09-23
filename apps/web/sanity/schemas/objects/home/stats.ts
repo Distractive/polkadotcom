@@ -10,7 +10,17 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'body',
+      title: 'Body',
+      type: 'text',
+    }),
+    defineField({
+      name: 'columnPadding',
+      title: '2nd Column Padding',
+      description: 'Padding for the 2nd column in rem on large screens.',
+      type: 'number',
     }),
     defineField({
       name: 'items',

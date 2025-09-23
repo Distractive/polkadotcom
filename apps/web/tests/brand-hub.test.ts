@@ -9,7 +9,9 @@ test('Brand Hub', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Brand Hub');
+    await expect(page).toHaveTitle(
+      'Polkadot Brand Hub | Logos, Fonts & Official Assets',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Fun first, quality always');
   });

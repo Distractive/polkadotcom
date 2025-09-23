@@ -36,7 +36,7 @@ export function CardsBlock({ cards }: Props) {
       </div>
       {cards.isCarousel ? (
         <Carousel className="px-gutter">
-          {cards?.items?.map((card) => (
+          {cards.items?.map((card) => (
             <CarouselItem
               key={card._key}
               className={cn(
@@ -52,18 +52,18 @@ export function CardsBlock({ cards }: Props) {
         <>
           <div
             className={cn(
-              'grid-system col-span-full gap-section',
+              'grid-system col-span-full gap-12',
               !cards.hasTags && 'md:auto-rows-1fr',
             )}
           >
             {cards.hasTags && cards.items ? (
               <CardTags
-                tags={cards.tags}
-                cards={cards.items}
-                useFourColumns={cards.useFourColumns}
+                tags={cards.tags ?? []}
+                cards={cards.items ?? []}
+                useFourColumns={cards.useFourColumns ?? false}
               />
             ) : (
-              cards.items?.map((card) => {
+              cards?.items?.map((card) => {
                 return (
                   <div
                     key={card._key}

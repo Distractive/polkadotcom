@@ -9,7 +9,9 @@ test('DOT Token', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('DOT Token');
+    await expect(page).toHaveTitle(
+      'DOT Token | The Native Cryptocurrency of Polkadot',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('DOT token');
   });

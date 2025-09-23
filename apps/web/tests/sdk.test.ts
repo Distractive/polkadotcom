@@ -9,7 +9,9 @@ test('SDK', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('SDK');
+    await expect(page).toHaveTitle(
+      'Polkadot SDK | The Ultimate Blockchain Toolkit for Web3 Developers',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Your ultimate modular playground');
   });

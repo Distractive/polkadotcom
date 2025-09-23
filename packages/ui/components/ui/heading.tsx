@@ -4,12 +4,13 @@ import { forwardRef } from 'react';
 import { cn } from '../../lib/utils';
 
 const SIZES = {
-  display: 'text-9xl md:text-10xl leading-snug heading-break',
-  h1: 'text-7xl md:text-8xl leading-snug heading-break',
-  h2: 'text-5xl md:text-6xl leading-snug heading-break',
-  h3: 'text-3xl md:text-5xl leading-snug heading-break',
-  h4: 'text-xl md:text-2xl leading-normal',
-  h5: 'text-sm md:text-base font-default',
+  display: 'text-[4rem] md:text-10xl leading-snug heading-break',
+  h1: 'text-7xl leading-snug heading-break',
+  h2: 'text-[2rem]  leading-snug heading-break',
+  h3: 'text-[1.5rem] leading-snug heading-break',
+  h4: 'text-[1.25rem] leading-normal',
+  h5: 'text-[1.125rem]',
+  h6: 'text-sm md:text-base font-default',
 };
 
 const HeadingStyles = {

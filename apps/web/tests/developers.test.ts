@@ -9,7 +9,9 @@ test('Developers', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Developers');
+    await expect(page).toHaveTitle(
+      'Build on Polkadot | Developer Docs, SDK & Tools',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Build on Polkadot');
   });
@@ -17,7 +19,7 @@ test('Developers', async ({ page }) => {
   await test.step('assert "header" section is displayed properly', async () => {
     const section = page.getByTestId('header');
     await expect(section.getByText('Deploy and scale powerful,')).toHaveText(
-      'Deploy and scale powerful, scalable, and customizable rollups with seamless access to Ethereum and other ecosystems. Full freedom to build your way with predictable costs.',
+      'Deploy and scale powerful, scalable, and customizable rollups (i.e., parachains) with seamless access to Ethereum and other ecosystems. Full freedom to build your way with predictable costs.',
     );
 
     await expect(

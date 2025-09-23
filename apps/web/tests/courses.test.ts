@@ -9,7 +9,9 @@ test('Courses', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Courses');
+    await expect(page).toHaveTitle(
+      'Polkadot Courses | Learn Blockchain & Web3 Development',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Learn from the best in blockchain');
   });
