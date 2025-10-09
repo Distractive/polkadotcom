@@ -38,3 +38,7 @@ yarn-error.log*
 test-results/
 
 sanity.cli.js
+
+
+# Ignore kluster.ai Verify Code rules
+.github/instructions/kluster-code-verify.instructions.md

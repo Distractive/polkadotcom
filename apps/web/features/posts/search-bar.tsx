@@ -150,7 +150,7 @@ const SearchBarInput = ({
       <input
         aria-label="Enter your search"
         ref={inputRef}
-        className="w-full bg-grey-100 text-black outline-none  placeholder:flex placeholder:font-default placeholder:text-grey-500"
+        className="w-full bg-grey-100 text-black dark:text-white outline-none  placeholder:flex placeholder:font-default placeholder:text-grey-500"
         placeholder="Enter your search"
         type="text"
         onChange={(e) => {

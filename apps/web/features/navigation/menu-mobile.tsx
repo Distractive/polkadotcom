@@ -42,7 +42,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
           {menu.map((section, sectionIndex) => {
             return (
               <AccordionItem key={section.heading} value={section.heading}>
-                <div className="relative flex text-black items-center justify-center bg-white border-r border-b border-grey-200  ">
+                <div className="relative flex text-black dark:text-white items-center justify-center bg-white border-r border-b border-grey-200  ">
                   {section.link && (
                     <CustomUrl
                       value={section.link}
@@ -66,7 +66,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
 
                   <AccordionTrigger
                     aria-label={`Open '${stegaClean(section.heading)}' page links`}
-                    className="[&>svg]:mx-nav text-black "
+                    className="[&>svg]:mx-nav text-black dark:text-white "
                   />
                 </div>
 
@@ -78,7 +78,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                       <span
                         key={item.link.label}
                         className={cn(
-                          'flex h-full w-full text-left text-black shadow-internal-border ',
+                          'flex h-full w-full text-left text-black dark:text-white shadow-internal-border ',
                           lastLink && 'border-b border-grey-200',
                           lastSection && lastLink && 'border-none',
                         )}

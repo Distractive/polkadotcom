@@ -39,7 +39,7 @@ export function SmallCardsHome({ cards }: Props) {
               {cards?.title}
             </Heading>
 
-            <p id="network-body" className="mb-gutter text-lg text-black">
+            <p id="network-body" className="mb-gutter text-lg text-black dark:text-white">
               {cards?.body}
             </p>
           </div>

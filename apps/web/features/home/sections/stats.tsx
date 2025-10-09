@@ -42,7 +42,7 @@ export function Stats({ stats }: Props) {
               </Heading>
             )}
             {stats?.body && (
-              <p className="pt-5 text-lg text-black">{stats?.body}</p>
+              <p className="pt-5 text-lg text-black dark:text-white">{stats?.body}</p>
             )}
           </div>
           <div

@@ -49,13 +49,13 @@ export function CTA({ cta, isPostEmbed }: Props) {
           <div
             className={cn(
               'flex flex-col gap-4',
-              cta.useWhiteText ? 'text-white' : 'text-black',
+              cta.useWhiteText ? 'text-white dark:text-black' : 'text-black dark:text-white',
               cta.twoThirdsText ? 'md:w-2/3' : '',
             )}
           >
             <Heading
               variant="h2"
-              className={cta.useWhiteText ? 'text-white' : 'text-black'}
+              className={cta.useWhiteText ? 'text-white dark:text-black' : 'text-black dark:text-white'}
             >
               {cta.heading}
             </Heading>

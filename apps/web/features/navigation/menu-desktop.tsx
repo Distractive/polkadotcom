@@ -46,7 +46,7 @@ export function MenuDesktop({
           id={`${stegaClean(section.heading)}`}
           className={cn(
             'mb-auto mr-auto flex items-start overflow-hidden backdrop-blur-md border border-grey-200',
-            'rounded-2xl  bg-white',
+            'rounded-2xl  bg-white dark:bg-black',
             section.heading === hovered
               ? 'pointer-events-auto visible'
               : 'pointer-events-none invisible',
@@ -75,7 +75,7 @@ export function MenuDesktop({
                   <CustomUrl
                     value={item.link}
                     onClick={handleCloseMenu}
-                    className="leading-none flex h-full w-full p-nav transition-colors duration-200 ease-in-out hover:text-pink focus:text-pink text-black"
+                    className="leading-none flex h-full w-full p-nav transition-colors duration-200 ease-in-out hover:text-pink focus:text-pink text-black dark:text-white"
                     tabIndex={0}
                   >
                     {' '}

@@ -39,6 +39,7 @@
 @layer base {
   body {
     @apply text-grey-800;
+    @apply dark:text-white;
   }
   h1,
   h2,
@@ -47,6 +48,7 @@
   h5,
   h6 {
     @apply text-black;
+    @apply dark:text-white;
   }
 }
 

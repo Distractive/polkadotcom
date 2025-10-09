@@ -60,7 +60,7 @@ export default function CardTimelineBlock({
                     <p className="font-default  text-grey-800">{children}</p>
                   ),
                   large: ({ children }) => (
-                    <p className="font-default text-lg text-black">
+                    <p className="font-default text-lg text-black dark:text-white">
                       {children}
                     </p>
                   ),

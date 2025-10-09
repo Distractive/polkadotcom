@@ -4,12 +4,90 @@
         <title>Polkadot - All Content</title>
         <link>https://polkadot.com</link>
         <description>Polkadot - The Platform for Web3</description>
-        <lastBuildDate>Wed, 27 Aug 2025 15:14:10 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 22 Sep 2025 15:17:44 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>All rights reserved 2025, Polkadot</copyright>
         <atom:link href="https://polkadot.com/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Hydration Launches HOLLAR as Polkadot’s Premier Decentralized Stablecoin]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/hydration-launches-hollar-decentralized-stablecoin-polkadot-defi</link>
+            <guid>https://polkadot.com/newsroom/press-releases/hydration-launches-hollar-decentralized-stablecoin-polkadot-defi</guid>
+            <pubDate>Mon, 22 Sep 2025 14:58:00 GMT</pubDate>
+            <description><![CDATA[Hydration launches HOLLAR, its native decentralized stablecoin.]]></description>
+            <content:encoded><![CDATA[Hydration launches HOLLAR, its native decentralized stablecoin.]]></content:encoded>
+            <category>Press Release</category>
+            <category>DeFi</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[Building to stay, not just for hype]]></title>
+            <link>https://polkadot.com/blog/luka-stanisic-peer3-polkadot-academy-journey</link>
+            <guid>https://polkadot.com/blog/luka-stanisic-peer3-polkadot-academy-journey</guid>
+            <pubDate>Thu, 18 Sep 2025 14:16:00 GMT</pubDate>
+            <description><![CDATA[How Peer3’s journey from the Polkadot Blockchain Academy shaped its vision for the future.]]></description>
+            <content:encoded><![CDATA[How Peer3’s journey from the Polkadot Blockchain Academy shaped its vision for the future.]]></content:encoded>
+            <category>Blog</category>
+            <category>Build</category>
+            <category>Modular Tech</category>
+        </item>
+        <item>
+            <title><![CDATA[Polkadot Showcases Next-Generation Tech at TUM Blockchain Conference 2025]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/polkadot-showcases-next-gen-tech-at-tum-blockchain-conference</link>
+            <guid>https://polkadot.com/newsroom/press-releases/polkadot-showcases-next-gen-tech-at-tum-blockchain-conference</guid>
+            <pubDate>Mon, 08 Sep 2025 18:16:00 GMT</pubDate>
+            <description><![CDATA[Polkadot is a silver sponsor at TUM Blockchain Conference in Munich, on September 11 & 12. ]]></description>
+            <content:encoded><![CDATA[Polkadot is a silver sponsor at TUM Blockchain Conference in Munich, on September 11 & 12. ]]></content:encoded>
+            <category>Press Release</category>
+            <category>Events</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[DeFi Builders Program: Scaling the future of DeFi on Polkadot]]></title>
+            <link>https://polkadot.com/blog/defi-builders-program</link>
+            <guid>https://polkadot.com/blog/defi-builders-program</guid>
+            <pubDate>Thu, 04 Sep 2025 14:06:00 GMT</pubDate>
+            <description><![CDATA[The DeFi Builders Program on Polkadot helps developers tackle the biggest challenges in DeFi, including liquidity, security, and adoption. It combines funding, technical support, and scalable infrastructure to launch stronger, safer applications.]]></description>
+            <content:encoded><![CDATA[The DeFi Builders Program on Polkadot helps developers tackle the biggest challenges in DeFi, including liquidity, security, and adoption. It combines funding, technical support, and scalable infrastructure to launch stronger, safer applications.]]></content:encoded>
+            <category>Blog</category>
+            <category>Build</category>
+            <category>DeFi</category>
+            <category>Modular Tech</category>
+        </item>
+        <item>
+            <title><![CDATA[Velocity Labs and Partners Launch DeFi Builders Program to Accelerate DeFi Innovation on Polkadot Hub]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/velocity-labs-launch-polkadot-hub-defi-builders-program</link>
+            <guid>https://polkadot.com/newsroom/press-releases/velocity-labs-launch-polkadot-hub-defi-builders-program</guid>
+            <pubDate>Tue, 02 Sep 2025 18:50:27 GMT</pubDate>
+            <description><![CDATA[Velocity Labs and partners launch the DeFi Builders Program to fund, mentor, and accelerate next-gen DeFi projects on Polkadot Hub.]]></description>
+            <content:encoded><![CDATA[Velocity Labs and partners launch the DeFi Builders Program to fund, mentor, and accelerate next-gen DeFi projects on Polkadot Hub.]]></content:encoded>
+            <category>Press Release</category>
+            <category>Ecosystem</category>
+            <category>DeFi</category>
+        </item>
+        <item>
+            <title><![CDATA[Polkadot Flagship Conference sub0 SYMBIOSIS Returns November 14–16 in Argentina]]></title>
+            <link>https://polkadot.com/newsroom/press-releases/polkadot-sub0-conference-argentina</link>
+            <guid>https://polkadot.com/newsroom/press-releases/polkadot-sub0-conference-argentina</guid>
+            <pubDate>Tue, 02 Sep 2025 18:40:07 GMT</pubDate>
+            <description><![CDATA[Polkadot’s sub0 SYMBIOSIS hits Buenos Aires Nov 14–16: 3 days of code, culture & Web3 innovation]]></description>
+            <content:encoded><![CDATA[Polkadot’s sub0 SYMBIOSIS hits Buenos Aires Nov 14–16: 3 days of code, culture & Web3 innovation]]></content:encoded>
+            <category>Press Release</category>
+            <category>Ecosystem</category>
+            <category>Events</category>
+        </item>
+        <item>
+            <title><![CDATA[How to stake DOT on Polkadot (without breaking a sweat)]]></title>
+            <link>https://polkadot.com/blog/how-to-stake-dot</link>
+            <guid>https://polkadot.com/blog/how-to-stake-dot</guid>
+            <pubDate>Wed, 27 Aug 2025 19:00:00 GMT</pubDate>
+            <description><![CDATA[A step-by-step guide to staking DOT on Polkadot. Learn how to stake from your wallet or with the Polkadot Staking Dashboard—and start earning rewards securely.]]></description>
+            <content:encoded><![CDATA[A step-by-step guide to staking DOT on Polkadot. Learn how to stake from your wallet or with the Polkadot Staking Dashboard—and start earning rewards securely.]]></content:encoded>
+            <category>Blog</category>
+            <category>Learn</category>
+            <category>DeFi</category>
+        </item>
         <item>
             <title><![CDATA[Paraguay invests in Polkadot to tokenize innovation hub with hotel, university, and data center]]></title>
             <link>https://polkadot.com/newsroom/press-releases/paraguay-invests-in-polkadot</link>
@@ -70,6 +148,8 @@
             <link>https://polkadot.com/newsroom/press-releases/Polkadot-Blockchain-Academy-launches-executive-governance-course-in-Asia</link>
             <guid>https://polkadot.com/newsroom/press-releases/Polkadot-Blockchain-Academy-launches-executive-governance-course-in-Asia</guid>
             <pubDate>Thu, 31 Jul 2025 20:36:00 GMT</pubDate>
+            <description><![CDATA[Polkadot Blockchain Academy has launched a week-long "Governance for New Leadership" program for senior policymakers, entrepreneurs and industry leaders to Bali this September.]]></description>
+            <content:encoded><![CDATA[Polkadot Blockchain Academy has launched a week-long "Governance for New Leadership" program for senior policymakers, entrepreneurs and industry leaders to Bali this September.]]></content:encoded>
             <category>Press Release</category>
             <category>Ecosystem</category>
             <category>Build</category>
@@ -677,18 +757,6 @@
             <category>Build</category>
         </item>
         <item>
-            <title><![CDATA[How Centrifuge built a $661M+ real-world assets infrastructure on Polkadot]]></title>
-            <link>https://polkadot.com/case-studies/centrifuge-real-world-asset-tokenization</link>
-            <guid>https://polkadot.com/case-studies/centrifuge-real-world-asset-tokenization</guid>
-            <pubDate>Wed, 08 Jan 2025 20:30:00 GMT</pubDate>
-            <description><![CDATA[Centrifuge revolutionized real-world asset tokenization by bringing offchain assets onchain. Learn how Polkadot’s modular infrastructure enabled scalability, interoperability, and innovation in decentralized finance.]]></description>
-            <content:encoded><![CDATA[Centrifuge revolutionized real-world asset tokenization by bringing offchain assets onchain. Learn how Polkadot’s modular infrastructure enabled scalability, interoperability, and innovation in decentralized finance.]]></content:encoded>
-            <category>Case Study</category>
-            <category>RWA</category>
-            <category>DeFi</category>
-            <category>Build</category>
-        </item>
-        <item>
             <title><![CDATA[Mythical Games revolutionizes gaming and digital asset ownership]]></title>
             <link>https://polkadot.com/case-studies/mythical-games-digital-ownership</link>
             <guid>https://polkadot.com/case-studies/mythical-games-digital-ownership</guid>
@@ -857,17 +925,6 @@
             <category>Blog</category>
             <category>Ecosystem</category>
             <category>Learn</category>
-        </item>
-        <item>
-            <title><![CDATA[How Polimec disrupts fundraising with Polkadot]]></title>
-            <link>https://polkadot.com/case-studies/polimec-disrupts-fundraising</link>
-            <guid>https://polkadot.com/case-studies/polimec-disrupts-fundraising</guid>
-            <pubDate>Thu, 31 Oct 2024 13:30:00 GMT</pubDate>
-            <description><![CDATA[Polimec leverages Polkadot to disrupt capital fundraising, improving compliance, security, and cross-chain interoperability for web3 startups.]]></description>
-            <content:encoded><![CDATA[Polimec leverages Polkadot to disrupt capital fundraising, improving compliance, security, and cross-chain interoperability for web3 startups.]]></content:encoded>
-            <category>Case Study</category>
-            <category>DeFi</category>
-            <category>Build</category>
         </item>
         <item>
             <title><![CDATA[Hydration optimizes liquidity management for greater DeFi efficiency]]></title>
@@ -2841,16 +2898,6 @@ Polkadot and Kusama Gifts are a new way to send DOT or KSM to anyone, even if th
             <category>Ecosystem</category>
         </item>
         <item>
-            <title><![CDATA[Swisscom Blockchain to develop Kubernetes Operator for Kusama and Polkadot]]></title>
-            <link>https://polkadot.com/blog/swisscom-blockchain-to-develop-kubernetes-operator-for-kusama-and-polkadot</link>
-            <guid>https://polkadot.com/blog/swisscom-blockchain-to-develop-kubernetes-operator-for-kusama-and-polkadot</guid>
-            <pubDate>Wed, 09 Sep 2020 11:06:00 GMT</pubDate>
-            <description><![CDATA[Swisscom Blockchain AG has received a Wave 5 grant from Web3 Foundation to develop a Kubernetes Operator for sentry nodes and validators for both Kusama and Polkadot.]]></description>
-            <content:encoded><![CDATA[Swisscom Blockchain AG has received a Wave 5 grant from Web3 Foundation to develop a Kubernetes Operator for sentry nodes and validators for both Kusama and Polkadot.]]></content:encoded>
-            <category>Blog</category>
-            <category>Kusama</category>
-        </item>
-        <item>
             <title><![CDATA[Kusama & Polkadot: ¿En qué consisten? Similitudes y diferencias]]></title>
             <link>https://polkadot.com/blog/kusama-polkadot-en-que-consisten-similitudes-y-diferencias</link>
             <guid>https://polkadot.com/blog/kusama-polkadot-en-que-consisten-similitudes-y-diferencias</guid>
@@ -3383,7 +3430,7 @@ The fund is a Polychain-operated investment vehicle jointly capitalized by Web3 
             <category>Kusama</category>
         </item>
         <item>
-            <title><![CDATA[Kusama CC2]]></title>
+            <title><![CDATA[Kusama CC2: The next chapter in the Kusama series]]></title>
             <link>https://polkadot.com/blog/kusama-cc2</link>
             <guid>https://polkadot.com/blog/kusama-cc2</guid>
             <pubDate>Thu, 26 Sep 2019 08:30:00 GMT</pubDate>

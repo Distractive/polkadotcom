@@ -73,7 +73,7 @@ export default function BlogCard({ post, className }: Props) {
             {tags.map((tag) => (
               <li
                 key={tag.slug}
-                className="mb-1 flex rounded bg-grey-200 px-3 py-1 text-left text-sm leading-relaxed text-black hover:bg-black hover:text-white"
+                className="mb-1 flex rounded bg-grey-200 px-3 py-1 text-left text-sm leading-relaxed text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black"
               >
                 <a
                   className="relative z-20"

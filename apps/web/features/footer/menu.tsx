@@ -20,7 +20,7 @@ export default function Menu({ menu, modal }: Props) {
       {menu.map((item) => (
         <div
           key={item.heading || item.link?.label}
-          className="order-2 col-span-1 font-default text-black"
+          className="order-2 col-span-1 font-default text-black dark:text-white"
         >
           <Heading
             variant="h2"
