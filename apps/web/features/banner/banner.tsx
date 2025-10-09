@@ -69,7 +69,7 @@ export default function Banner({ banner }: BannerProps) {
         >
           <Icon
             variant="close"
-            className="size-6 text-black transition-colors duration-200 group-hover:text-white"
+            className="size-6 text-black dark:text-white transition-colors duration-200 group-hover:text-white"
           />
         </button>
       </div>
@@ -107,7 +107,7 @@ export default function Banner({ banner }: BannerProps) {
                   variant="h3"
                   size="h4"
                   className={cn(
-                    'text-sm text-black text-2xl transition-colors duration-100 ease-in-out',
+                    'text-sm text-black dark:text-white text-2xl transition-colors duration-100 ease-in-out',
                     banner.link && [
                       'group-hover:text-pink group-focus-visible:text-pink',
                       'link:!text-current visited:!text-current',

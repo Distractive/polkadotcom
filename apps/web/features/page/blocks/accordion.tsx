@@ -126,17 +126,17 @@ export function AccordionBlock({ accordion }: Props) {
                             </Heading>
                           ),
                           normal: ({ children }) => (
-                            <p className="text-black md:w-3/4">{children}</p>
+                            <p className="text-black dark:text-white md:w-3/4">{children}</p>
                           ),
                         },
                         list: {
                           bullet: ({ children }) => (
-                            <ul className="my-4 list-outside list-disc pl-8 text-black marker:text-black">
+                            <ul className="my-4 list-outside list-disc pl-8 text-black dark:text-white marker:text-black">
                               {children}
                             </ul>
                           ),
                           number: ({ children }) => (
-                            <ol className="my-4 list-outside list-decimal pl-8 text-black marker:text-black">
+                            <ol className="my-4 list-outside list-decimal pl-8 text-black dark:text-white marker:text-black dark:marker:text-white">
                               {children}
                             </ol>
                           ),

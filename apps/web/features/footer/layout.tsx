@@ -24,7 +24,7 @@ export default function FooterLayout({ footer }: Props) {
       <FooterGradient />
       <footer className="relative  max-width px-gutter">
         <div
-          className="border border-grey-200  md:mb-gutter md:rounded-2xl relative bg-white"
+          className="border border-grey-200  md:mb-gutter md:rounded-2xl relative bg-white dark:bg-black"
           data-testid="footer"
         >
           <div className="flex flex-col items-start px-gutter py-4 md:flex-row md:items-center md:justify-between">
@@ -53,22 +53,22 @@ export default function FooterLayout({ footer }: Props) {
           <div className="flex flex-col items-center justify-between px-gutter py-4 text-sm font-light text-grey-700 md:flex-row">
             <div className="flex flex-col gap-4 md:flex-row md:gap-8">
               <div>
-                <a href="https://web3.foundation/" className="hover:text-black">
+                <a href="https://web3.foundation/" className="hover:text-black dark:hover:text-white">
                   Web3 Foundation
                 </a>
               </div>
               <div>
-                <a href="/legal-disclosures/" className="hover:text-black">
+                <a href="/legal-disclosures/" className="hover:text-black dark:hover:text-white">
                   Legal Disclosures
                 </a>
               </div>
               <div>
-                <a href="/privacy/" className="hover:text-black">
+                <a href="/privacy/" className="hover:text-black dark:hover:text-white">
                   Privacy Policy
                 </a>
               </div>
               <div>
-                <a href="/cookie-policy/" className="hover:text-black">
+                <a href="/cookie-policy/" className="hover:text-black dark:hover:text-white">
                   Cookie Policy
                 </a>
               </div>

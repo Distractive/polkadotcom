@@ -163,7 +163,7 @@ export default async function RootLayout({
         className={cn(
           unbounded.variable,
           manrope.variable,
-          'flex min-h-screen flex-col bg-white font-default antialiased',
+          'flex min-h-screen flex-col bg-white dark:bg-black dark:text-white font-default antialiased',
         )}
       >
         <noscript>
@@ -185,7 +185,7 @@ export default async function RootLayout({
               'focus:left-0 focus:top-0 focus:opacity-100',
             )}
           >
-            <span className="bg-blue inline-block rounded-lg px-10 py-4 font-display text-xs uppercase tracking-wide text-white group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#1351d8]">
+            <span className="bg-blue inline-block rounded-lg px-10 py-4 font-display text-xs uppercase tracking-wide text-white dark:text-black group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#1351d8]">
               Skip to main content
             </span>
           </a>
