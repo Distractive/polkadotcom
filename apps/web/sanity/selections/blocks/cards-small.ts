@@ -8,7 +8,7 @@ export const cardsSmallSelection = {
   isHeadingCenteredDesktop: q.boolean().optional().nullable(),
   isHeadingCenteredMobile: q.boolean().optional().nullable(),
   heading: q.string().optional().nullable(),
-  useRichText: q.boolean().nullable(),
+  useRichText: q.boolean().optional().nullable(),
   body: q.string().optional().nullable(),
   richBody: q('richBody')
     .filter()

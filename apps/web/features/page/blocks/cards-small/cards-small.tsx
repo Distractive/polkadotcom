@@ -1,10 +1,8 @@
-import type { cardsSmallSelection } from '@/sanity/selections/blocks/cards-small';
-import type { TypeFromSelection } from 'groqd';
-
-import { Heading, cn } from '@shared/ui';
-import { PortableText } from '@portabletext/react';
-
 import { urlForImage } from '@/sanity/lib/image';
+import type { cardsSmallSelection } from '@/sanity/selections/blocks/cards-small';
+import { PortableText } from '@portabletext/react';
+import { Heading, cn } from '@shared/ui';
+import type { TypeFromSelection } from 'groqd';
 import CardSmallBlock from './card-small';
 
 interface Props {
