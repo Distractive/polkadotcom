@@ -33,7 +33,7 @@ export default function CardSmallBlock({ card, className }: Props) {
       <CustomUrl value={link} isWrapper className="w-full h-full">
         <div
           className={cn(
-            'flex h-full w-full justify-between items-start px-6 py-8',
+            'flex h-full w-full justify-between items-center px-6 py-8',
           )}
         >
           <div
