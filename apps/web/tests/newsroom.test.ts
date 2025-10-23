@@ -65,25 +65,22 @@ test('Newsroom', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('assert "mentions" section is displayed properly', async () => {
-    const section = page.getByTestId('cards-block-ca63eb6f3ee9');
+  await test.step('"stories" section screenshot', async () => {
+    const section = page.getByTestId('cards-block-aa3c92a7db2d');
+    await page.waitForTimeout(2000);
+    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+      'stories.png',
+      snapshotConfig,
+    );
+  });
 
-    await expect(
-      section.getByRole('heading', {
-        name: 'Recent mentions',
-      }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Polkadot launches institutional' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'What makes or breaks a blockchain' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', {
-        name: 'Polkadot to launch first blockchain',
-      }),
-    ).toBeVisible();
+  await test.step('"mentions" section screenshot', async () => {
+    const section = page.getByTestId('cards-block-ca63eb6f3ee9');
+    await page.waitForTimeout(2000);
+    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+      'mentions.png',
+      snapshotConfig,
+    );
   });
 
   await test.step('assert "featured" section is displayed properly', async () => {
@@ -108,6 +105,17 @@ test('Newsroom', async ({ page }) => {
     await expect(
       section.getByRole('link', { name: 'Creating the Web3 future' }),
     ).toBeVisible();
+  });
+
+  await test.step('"featured videos" section screenshot', async () => {
+    const section = page.getByTestId(
+      'cards-block-c188658c825b3b0268979f1583ebe37b',
+    );
+    await page.waitForTimeout(2000);
+    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+      'featured-videos.png',
+      snapshotConfig,
+    );
   });
 
   await test.step('assert "communication" section is displayed properly', async () => {

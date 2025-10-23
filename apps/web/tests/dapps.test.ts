@@ -127,14 +127,8 @@ test('Dapps', async ({ page }) => {
     const greatEscape = section.getByRole('link', {
       name: 'Gaming The Great Escape Hyper',
     });
-    const artZero = section.getByRole('link', {
-      name: 'Marketplaces ArtZero NFT',
-    });
     const beatport = section.getByRole('link', {
       name: 'Marketplaces Beatport.io',
-    });
-    const kodaDot = section.getByRole('link', {
-      name: 'Marketplaces KodaDot',
     });
     const moonbeans = section.getByRole('link', {
       name: 'Marketplaces Moonbeans Multi-',
@@ -189,9 +183,6 @@ test('Dapps', async ({ page }) => {
     });
     const apillon = section.getByRole('link', {
       name: 'Tokenization Apillon Launch',
-    });
-    const centrifuge = section.getByRole('link', {
-      name: 'Tokenization Centrifuge',
     });
     const ewx = section.getByRole('link', {
       name: 'Tokenization EWX Marketplace',
@@ -257,9 +248,7 @@ test('Dapps', async ({ page }) => {
     expect(zenlink).toBeHidden();
     expect(avatars).toBeHidden();
     expect(greatEscape).toBeHidden();
-    expect(artZero).toBeHidden();
     expect(beatport).toBeHidden();
-    expect(kodaDot).toBeHidden();
     expect(moonbeans).toBeHidden();
     expect(rarible).toBeHidden();
     expect(singular).toBeHidden();
@@ -278,7 +267,6 @@ test('Dapps', async ({ page }) => {
     expect(teddy).toBeHidden();
     expect(zeitgeist).toBeHidden();
     expect(apillon).toBeHidden();
-    expect(centrifuge).toBeHidden();
     expect(ewx).toBeHidden();
     expect(smartflow).toBeHidden();
     expect(ledger).toBeHidden();
@@ -313,9 +301,7 @@ test('Dapps', async ({ page }) => {
     expect(zenlink).toBeVisible();
     expect(avatars).toBeVisible();
     expect(greatEscape).toBeVisible();
-    expect(artZero).toBeVisible();
     expect(beatport).toBeVisible();
-    expect(kodaDot).toBeVisible();
     expect(moonbeans).toBeVisible();
     expect(rarible).toBeVisible();
     expect(singular).toBeVisible();
@@ -334,7 +320,6 @@ test('Dapps', async ({ page }) => {
     expect(teddy).toBeVisible();
     expect(zeitgeist).toBeVisible();
     expect(apillon).toBeVisible();
-    expect(centrifuge).toBeVisible();
     expect(ewx).toBeVisible();
     expect(smartflow).toBeVisible();
     expect(ledger).toBeVisible();
