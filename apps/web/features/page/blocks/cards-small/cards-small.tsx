@@ -32,9 +32,9 @@ export function CardsSmallBlock({ cards }: Props) {
               value={cards.richBody || []}
               components={{
                 block: {
-                  normal: ({ children }) => <p>{children}</p>,
+                  normal: ({ children }) => <p className="mb-3">{children}</p>,
                   smallprint: ({ children }) => (
-                    <p className="text-sm">{children}</p>
+                    <p className="mb-4 text-sm">{children}</p>
                   ),
                 },
                 marks: {
