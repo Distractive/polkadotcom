@@ -2,6 +2,7 @@ import type { cardsSmallSelection } from '@/sanity/selections/blocks/cards-small
 import type { TypeFromSelection } from 'groqd';
 
 import { Heading, cn } from '@shared/ui';
+import { PortableText } from '@portabletext/react';
 
 import { urlForImage } from '@/sanity/lib/image';
 import CardSmallBlock from './card-small';
@@ -26,7 +27,56 @@ export function CardsSmallBlock({ cards }: Props) {
         )}
       >
         <Heading variant="h2">{cards.heading}</Heading>
-        {cards.body && <p>{cards.body}</p>}
+        {cards.body && !cards.useRichText && <p>{cards.body}</p>}
+        {cards.richBody && cards.useRichText && (
+          <div className="prose">
+            <PortableText
+              value={cards.richBody || []}
+              components={{
+                block: {
+                  normal: ({ children }) => <p>{children}</p>,
+                  smallprint: ({ children }) => (
+                    <p className="text-sm">{children}</p>
+                  ),
+                },
+                marks: {
+                  strong: ({ children }) => <strong>{children}</strong>,
+                  link: ({ children, value }) => {
+                    if (!value || !value.href) {
+                      return children;
+                    }
+
+                    const isExternal = value.href.startsWith('http');
+
+                    return (
+                      <a
+                        className="inline-flex font-default font-bold text-grey-900 underline underline-offset-2 transition-colors hover:text-pink"
+                        href={value.href}
+                        target={isExternal ? '_blank noopener' : '_self'}
+                      >
+                        {children}
+                      </a>
+                    );
+                  },
+                },
+                list: {
+                  bullet: ({ children }) => (
+                    <ul className="flex list-inside list-disc flex-col gap-copy">
+                      {children}
+                    </ul>
+                  ),
+                },
+                listItem: {
+                  bullet: ({ children }) => <li>{children}</li>,
+                },
+                types: {
+                  break: () => <br />,
+                  unsupported: () => null,
+                },
+              }}
+            />
+          </div>
+        )}
       </div>
       <div
         className={cn(

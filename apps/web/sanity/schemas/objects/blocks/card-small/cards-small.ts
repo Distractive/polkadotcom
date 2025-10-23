@@ -30,11 +30,44 @@ export default defineType({
       group: 'heading',
     }),
     defineField({
+      name: 'useRichText',
+      title: 'Use Rich Text?',
+      type: 'boolean',
+      initialValue: false,
+      description:
+        'Toggle to use rich text (for links, bold, multiple paragraphs,etc.) instead of plain body copy. Toggling this option will not delete anything, it only hides the unused field in the UI.',
+      group: 'heading',
+    }),
+    defineField({
       title: 'Body',
       name: 'body',
       type: 'text',
       rows: 3,
       group: 'heading',
+      hidden: ({ parent }) => !!parent?.useRichText,
+    }),
+    defineField({
+      name: 'richBody',
+      title: 'Rich Text',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'Smallprint', value: 'smallprint' },
+          ],
+          marks: {
+            decorators: [{ title: 'Strong', value: 'strong' }],
+          },
+        },
+        {
+          type: 'break',
+          initialValue: { style: 'lineBreak' },
+        },
+      ],
+      group: 'heading',
+      hidden: ({ parent }) => !parent?.useRichText,
     }),
     defineField({
       name: 'items',
