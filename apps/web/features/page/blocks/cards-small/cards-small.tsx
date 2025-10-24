@@ -19,10 +19,10 @@ export function CardsSmallBlock({ cards }: Props) {
     >
       <div
         className={cn(
-          'col-span-full flex flex-col gap-copy',
-          cards.isHeadingCentered
-            ? 'items-center text-center lg:col-span-8 lg:col-start-3'
-            : 'lg:col-span-8',
+          'col-span-full flex flex-col gap-copy lg:col-span-8',
+          cards.isHeadingCenteredMobile && 'items-center text-center',
+          cards.isHeadingCenteredDesktop &&
+            'lg:items-center lg:text-center lg:col-start-3',
         )}
       >
         <Heading variant="h2">{cards.heading}</Heading>
