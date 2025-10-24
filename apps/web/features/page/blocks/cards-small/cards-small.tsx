@@ -17,7 +17,14 @@ export function CardsSmallBlock({ cards }: Props) {
       key={cards._key}
       className="grid-system max-width relative gap-y-section px-gutter"
     >
-      <div className="col-span-full flex flex-col gap-copy lg:col-span-8">
+      <div
+        className={cn(
+          'col-span-full flex flex-col gap-copy',
+          cards.isHeadingCentered
+            ? 'items-center text-center lg:col-span-8 lg:col-start-3'
+            : 'lg:col-span-8',
+        )}
+      >
         <Heading variant="h2">{cards.heading}</Heading>
         {cards.body && <p>{cards.body}</p>}
       </div>

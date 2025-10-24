@@ -12,6 +12,12 @@ export default defineType({
   ],
   fields: [
     defineField({
+      title: 'Center the heading?',
+      name: 'isHeadingCentered',
+      type: 'boolean',
+      group: 'heading',
+    }),
+    defineField({
       title: 'Heading',
       name: 'heading',
       type: 'string',

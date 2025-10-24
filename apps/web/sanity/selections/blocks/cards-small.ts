@@ -5,6 +5,7 @@ import { cardSmallSelection } from './card-small';
 
 export const cardsSmallSelection = {
   _key: q.string(),
+  isHeadingCentered: q.boolean().optional().nullable(),
   heading: q.string().optional().nullable(),
   body: q.string().optional().nullable(),
   items: q('items')
