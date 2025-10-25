@@ -37,7 +37,8 @@ export function VideoBlock({ video, className }: Props) {
       ? video.videoFile
       : ''
     : video.url || '';
-  const aspectClass = isSelfHosted ? '' : 'aspect-video';
+  // Apply aspect-video to prevent layout shift while placeholder loads
+  const aspectClass = 'aspect-square';
   const placeholderImageUrl = video.placeholderImage?.asset
     ? urlForImage(video.placeholderImage.asset)
     : null;
@@ -60,7 +61,7 @@ export function VideoBlock({ video, className }: Props) {
   return (
     <div
       className={cn(
-        'max-width overflow-hidden rounded-2xl',
+        'max-width overflow-hidden rounded-2xl bg-grey-100',
         aspectClass,
         '[&>div>div]:!rounded-2xl [&>div>iframe]:!rounded-2xl [&_div]:!rounded-2xl',
         className,
