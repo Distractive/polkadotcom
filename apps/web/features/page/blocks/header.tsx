@@ -166,7 +166,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
       {!header.image && !header.video && <div className="pt-4"></div>}
 
       {header.image && (
-        <div className="col-span-full w-full px-gutter lg:order-2 lg:col-span-7 lg:col-start-6">
+        <div className="col-span-full w-full px-gutter lg:order-2 lg:col-span-5 lg:col-start-8">
           <Image
             src={urlForImage(header.image.asset)}
             alt={header?.altText || ''}
@@ -179,7 +179,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         </div>
       )}
       {header.video && (
-        <div className="col-span-full w-full px-gutter lg:order-2 lg:col-span-7 lg:col-start-6">
+        <div className="col-span-full w-full px-gutter lg:order-2 lg:col-span-6 lg:col-start-7 lg:pl-28">
           <VideoBlock video={header.video} className="w-full" />
         </div>
       )}
@@ -187,7 +187,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         className={cn(
           'col-span-full flex flex-col items-start justify-center gap-copy',
           header.image || header.video
-            ? 'px-gutter pt-card lg:order-1 lg:col-span-5 lg:col-start-1 '
+            ? 'px-gutter pt-card lg:order-1 lg:col-span-6 lg:col-start-1 '
             : 'mt-gutter px-gutter pt-header-top lg:col-span-8 lg:col-start-3',
         )}
       >
