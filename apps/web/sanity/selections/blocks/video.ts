@@ -7,12 +7,5 @@ export const videoSelection = {
     withAsset: ['base', 'dimensions'],
   }).nullable(),
   url: q.string().optional().nullable(),
-  videoFile: q('videoFile')
-    .grab$({
-      asset: q('asset').deref().grab$({
-        url: q.string(),
-        mimeType: q.string().optional(),
-      }),
-    })
-    .nullable(),
+  videoFile: q('videoFile.asset->url').nullable(),
 } satisfies Selection;
