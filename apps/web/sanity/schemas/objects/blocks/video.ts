@@ -13,6 +13,14 @@ export default defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'useSquareAspectRatio',
+      title: 'Use Square Aspect Ratio',
+      description: 'Turn on to use a 1:1 aspect ratio for the video.',
+      type: 'boolean',
+      initialValue: false,
+      hidden: ({ parent }) => !parent?.useSelfHostedVideo,
+    }),
+    defineField({
       name: 'url',
       title: 'YouTube URL',
       type: 'string',

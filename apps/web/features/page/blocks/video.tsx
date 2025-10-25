@@ -5,6 +5,7 @@ import type { videoSelection } from '@/sanity/selections/blocks/video';
 import type { TypeFromSelection } from 'groqd';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
+import { stegaClean } from '@sanity/client/stega';
 
 import { FullscreenVideoButton } from '@/components/fullscreen-video-button';
 import { Icon, cn } from '@shared/ui';
@@ -18,13 +19,13 @@ const Wrapper = ({ children }: WrapperProps) => <>{children}</>;
 interface Props {
   video: TypeFromSelection<typeof videoSelection>;
   className?: string;
-  aspect?: 'square' | 'video' | 'wide';
+  useSquareAspectRatio?: boolean;
 }
 
 // Use dynamic import to fix hydration error
 const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
-export function VideoBlock({ video, className, aspect }: Props) {
+export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
   const [isClient, setIsClient] = useState(false);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
 
@@ -38,18 +39,19 @@ export function VideoBlock({ video, className, aspect }: Props) {
       ? video.videoFile
       : ''
     : video.url || '';
-  // Use the aspect from props if provided, otherwise use the aspect from video data, default to 'square'
-  const videoAspect =
-    aspect ?? (video.aspect as 'square' | 'video' | 'wide') ?? 'square';
+
+  const aspectStyle = {
+    aspectRatio: useSquareAspectRatio ? '1 / 1' : '16 / 9',
+  } as const;
 
   // Debug logging
   console.log(
     'VideoBlock - video.aspect:',
     video.aspect,
-    'prop aspect:',
-    aspect,
-    'final videoAspect:',
-    videoAspect,
+    'useSquareAspectRatio:',
+    useSquareAspectRatio,
+    'aspectRatio:',
+    aspectStyle.aspectRatio,
   );
 
   const placeholderImageUrl = video.placeholderImage?.asset
@@ -77,10 +79,8 @@ export function VideoBlock({ video, className, aspect }: Props) {
         className={cn(
           'relative w-full overflow-hidden rounded-2xl bg-grey-100',
           '[&>div>div]:!rounded-2xl [&>div>iframe]:!rounded-2xl [&_div]:!rounded-2xl',
-          videoAspect === 'square' && 'aspect-square',
-          videoAspect === 'video' && 'aspect-video',
-          videoAspect === 'wide' && 'aspect-[21/9]',
         )}
+        style={aspectStyle}
       >
         {/* Self-hosted: Placeholder video with autoplay and play button */}
         {isClient &&
@@ -217,7 +217,7 @@ export function VideoBlock({ video, className, aspect }: Props) {
               <img
                 src={placeholderImageUrl}
                 alt="Video placeholder"
-                className="size-full rounded-2xl object-cover"
+                className="size-full rounded-2xl object-contain"
               />
               {!isFullScreen && (
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -267,7 +267,7 @@ export function VideoBlock({ video, className, aspect }: Props) {
               <img
                 src={placeholderImageUrl}
                 alt="Video placeholder"
-                className="size-full rounded-2xl object-cover"
+                className="size-full rounded-2xl object-contain"
               />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div

@@ -140,11 +140,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
           {header.body && <p className="text-lg">{header.body}</p>}
           {renderHeaderLinks(header.links as HeaderLink[])}
           {header.video && (
-            <VideoBlock
-              video={header.video}
-              className="mt-gutter w-full"
-              aspect="video"
-            />
+            <VideoBlock video={header.video} className="mt-gutter w-full" />
           )}
         </div>
       </header>
@@ -184,7 +180,11 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
       )}
       {header.video && (
         <div className="col-span-full w-full px-gutter lg:order-2 lg:col-span-6 lg:col-start-7 lg:pl-28">
-          <VideoBlock video={header.video} className="w-full" />
+          <VideoBlock
+            video={header.video}
+            className="w-full"
+            useSquareAspectRatio={header.video.useSquareAspectRatio ?? false}
+          />
         </div>
       )}
       <div
