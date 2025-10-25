@@ -123,7 +123,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         <div
           data-testid="header"
           className={cn(
-            'flex max-w-4xl flex-col justify-center gap-copy lg:pt-16',
+            'flex max-w-4xl flex-col justify-center gap-copy lg:pt-16 mx-auto',
             header.image
               ? 'px-gutter pt-card'
               : 'mt-gutter px-gutter pt-header-top',
@@ -166,7 +166,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
       {!header.image && !header.video && <div className="pt-4"></div>}
 
       {header.image && (
-        <div className="col-span-full w-full px-gutter lg:order-2 lg:col-span-5 lg:col-start-8">
+        <div className="col-span-full w-full px-gutter lg:order-2 lg:col-span-6 lg:col-start-7 lg:pl-20">
           <Image
             src={urlForImage(header.image.asset)}
             alt={header?.altText || ''}
@@ -179,7 +179,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         </div>
       )}
       {header.video && (
-        <div className="col-span-full w-full px-gutter lg:order-2 lg:col-span-6 lg:col-start-7 lg:pl-28">
+        <div className="col-span-full w-full px-gutter lg:order-2 lg:col-span-6 lg:col-start-7 lg:pl-20">
           <VideoBlock
             video={header.video}
             className="w-full"
