@@ -6,14 +6,33 @@ export default defineType({
   type: 'object',
   fields: [
     defineField({
+      name: 'isYouTubeVideo',
+      title: 'Use a YouTube video?',
+      description: 'Leave this unchecked for self-hosted videos.',
+      type: 'boolean',
+      initialValue: true,
+    }),
+    defineField({
       name: 'placeholderImage',
       title: 'Placeholder Image',
+      description:
+        'Use a 16:9 placeholder for YouTube videos, and a 1:1 placeholder for self-hosted videos.',
       type: 'image',
     }),
     defineField({
       name: 'url',
-      title: 'URL for Video',
+      title: 'YouTube URL',
       type: 'string',
+      hidden: ({ parent }) => !parent?.isYouTubeVideo,
+    }),
+    defineField({
+      name: 'videoFile',
+      title: 'Self-Hosted Video File',
+      type: 'file',
+      options: {
+        accept: 'video/*',
+      },
+      hidden: ({ parent }) => parent?.isYouTubeVideo,
     }),
   ],
 });

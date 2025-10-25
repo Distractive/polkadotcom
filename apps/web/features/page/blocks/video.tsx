@@ -24,32 +24,77 @@ const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
 export function VideoBlock({ video, className }: Props) {
   const [isClient, setIsClient] = useState(false);
+  const [showPlaceholder, setShowPlaceholder] = useState(true);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
+  const isYouTube = video.isYouTubeVideo ?? true;
+  const videoUrl = isYouTube ? video.url : video.videoFile?.asset?.url;
+  const aspectClass = isYouTube ? 'aspect-video' : 'aspect-square';
+  const placeholderImageUrl = video.placeholderImage?.asset
+    ? urlForImage(video.placeholderImage.asset)
+    : null;
+
+  const handlePlayClick = () => {
+    setShowPlaceholder(false);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handlePlayClick();
+    }
+  };
+
   return (
     <div
       className={cn(
-        'max-width aspect-video overflow-hidden rounded-2xl',
+        'max-width overflow-hidden rounded-2xl',
+        aspectClass,
         '[&>div>div]:!rounded-2xl [&>div>iframe]:!rounded-2xl [&_div]:!rounded-2xl',
         className,
       )}
       data-testid="video-block"
     >
-      <div className="size-full">
+      <div className="relative size-full">
+        {isClient && !isYouTube && showPlaceholder && placeholderImageUrl && (
+          <div
+            className="absolute inset-0 z-10 cursor-pointer"
+            onClick={handlePlayClick}
+            onKeyDown={handleKeyDown}
+            role="button"
+            tabIndex={0}
+            aria-label="Play video"
+          >
+            <img
+              src={placeholderImageUrl}
+              alt="Video placeholder"
+              className="size-full rounded-2xl object-cover"
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div
+                className={cn(
+                  'flex size-16 items-center justify-center rounded-2xl',
+                  'border border-grey-300 bg-white ',
+                  'group transition-colors duration-200 ease-in-out hover:border-pink',
+                )}
+              >
+                <Icon variant="videoPlay" className="group-hover:fill-pink" />
+              </div>
+            </div>
+          </div>
+        )}
         {isClient && (
           <ReactPlayer
-            url={video.url || ''}
+            url={videoUrl || ''}
             width="100%"
             height="100%"
-            controls={false}
-            playing
+            controls={!isYouTube}
+            playing={isYouTube || !showPlaceholder}
             light={
-              video.placeholderImage?.asset
-                ? urlForImage(video.placeholderImage.asset)
-                : false
+              isYouTube && placeholderImageUrl ? placeholderImageUrl : false
             }
             loop
             playIcon={
@@ -75,6 +120,11 @@ export function VideoBlock({ video, className }: Props) {
                   playsinline: 1,
                   modestbranding: 1,
                   loop: 1,
+                },
+              },
+              file: {
+                attributes: {
+                  controlsList: 'nodownload',
                 },
               },
             }}
