@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { cn } from '@shared/ui';
 
 // Dynamically import ReactPlayer to avoid SSR issues
@@ -33,7 +34,12 @@ export function FullscreenVideoButton({
   playerConfig,
 }: FullscreenVideoButtonProps) {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const playerRef = useRef<{ getInternalPlayer?: () => unknown } | null>(null);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const openOverlay = () => {
     setIsOverlayOpen(true);
@@ -111,8 +117,6 @@ export function FullscreenVideoButton({
 
   return (
     <>
-      {/* Button to open video overlay */}
-
       <button
         onClick={openOverlay}
         className={cn(
@@ -140,49 +144,52 @@ export function FullscreenVideoButton({
         </svg>
       </button>
 
-      {/* Fullscreen video overlay */}
-      {isOverlayOpen && (
-        <div
-          className={cn(
-            'fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4',
-            overlayClassName,
-          )}
-          role="dialog"
-          aria-modal="true"
-          onClick={closeOverlay}
-          onKeyDown={(e) => {
-            if (e.key === 'Escape' || e.key === 'Enter') {
-              closeOverlay();
-            }
-          }}
-        >
-          {/* Video player container */}
+      {/* Fullscreen video overlay - rendered via portal at document.body to avoid stacking context issues */}
+      {isMounted &&
+        isOverlayOpen &&
+        createPortal(
           <div
             className={cn(
-              'z-[55] w-full max-w-6xl aspect-video',
-              playerClassName,
+              'fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 p-4',
+              overlayClassName,
             )}
-            onClick={(e) => e.stopPropagation()}
-            onKeyDown={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            onClick={closeOverlay}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape' || e.key === 'Enter') {
+                closeOverlay();
+              }
+            }}
           >
-            <ReactPlayer
-              ref={playerRef}
-              url={videoUrl}
-              controls={controls}
-              width="100%"
-              height="100%"
-              muted={false}
-              volume={volume}
-              playsinline
-              onReady={handleAutoPlay}
-              style={{
-                backgroundColor: 'black',
-              }}
-              config={defaultPlayerConfig}
-            />
-          </div>
-        </div>
-      )}
+            {/* Video player container */}
+            <div
+              className={cn(
+                'z-[10000] w-full max-w-6xl aspect-video',
+                playerClassName,
+              )}
+              onClick={(e) => e.stopPropagation()}
+              onKeyDown={(e) => e.stopPropagation()}
+            >
+              <ReactPlayer
+                ref={playerRef}
+                url={videoUrl}
+                controls={controls}
+                width="100%"
+                height="100%"
+                muted={false}
+                volume={volume}
+                playsinline
+                onReady={handleAutoPlay}
+                style={{
+                  backgroundColor: 'black',
+                }}
+                config={defaultPlayerConfig}
+              />
+            </div>
+          </div>,
+          document.body,
+        )}
     </>
   );
 }

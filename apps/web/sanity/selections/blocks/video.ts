@@ -10,4 +10,5 @@ export const videoSelection = {
     withAsset: ['base', 'dimensions'],
   }).nullable(),
   placeholderVideo: q('placeholderVideo.asset->url').nullable(),
+  isFullScreen: q.boolean().optional().nullable(),
 } satisfies Selection;

@@ -54,5 +54,14 @@ export default defineType({
       },
       hidden: ({ parent }) => !parent?.usePlaceholderVideo,
     }),
+    defineField({
+      name: 'isFullScreen',
+      title: 'Enable Fullscreen Mode',
+      description:
+        'When enabled, adds a button to launch the video in fullscreen mode. Only works with self-hosted videos.',
+      type: 'boolean',
+      initialValue: false,
+      hidden: ({ parent }) => !parent?.useSelfHostedVideo,
+    }),
   ],
 });
