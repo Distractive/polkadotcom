@@ -30,16 +30,19 @@ export function VideoBlock({ video, className }: Props) {
     setIsClient(true);
   }, []);
 
-  const isYouTube = video.isYouTubeVideo ?? true;
-  const videoUrl = isYouTube
-    ? video.url || ''
-    : typeof video.videoFile === 'string'
+  const isSelfHosted = video.useSelfHostedVideo ?? false;
+  const videoUrl = isSelfHosted
+    ? typeof video.videoFile === 'string'
       ? video.videoFile
-      : '';
-  const aspectClass = isYouTube ? 'aspect-video' : '';
+      : ''
+    : video.url || '';
+  const aspectClass = isSelfHosted ? '' : 'aspect-video';
   const placeholderImageUrl = video.placeholderImage?.asset
     ? urlForImage(video.placeholderImage.asset)
     : null;
+  const usePlaceholderVideo = video.usePlaceholderVideo ?? false;
+  const placeholderVideoUrl =
+    typeof video.placeholderVideo === 'string' ? video.placeholderVideo : null;
 
   const handlePlayClick = () => {
     setShowPlaceholder(false);
@@ -63,42 +66,101 @@ export function VideoBlock({ video, className }: Props) {
       data-testid="video-block"
     >
       <div className="relative size-full">
-        {isClient && !isYouTube && showPlaceholder && placeholderImageUrl && (
-          <div
-            className="absolute inset-0 z-10 cursor-pointer"
-            onClick={handlePlayClick}
-            onKeyDown={handleKeyDown}
-            role="button"
-            tabIndex={0}
-            aria-label="Play video"
-          >
-            <img
-              src={placeholderImageUrl}
-              alt="Video placeholder"
+        {/* Self-hosted: Placeholder video with autoplay (no controls, like home page) */}
+        {isClient &&
+          isSelfHosted &&
+          usePlaceholderVideo &&
+          placeholderVideoUrl && (
+            <video
+              src={placeholderVideoUrl}
               className="size-full rounded-2xl object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
             />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div
-                className={cn(
-                  'flex size-16 items-center justify-center rounded-2xl',
-                  'border border-grey-300 bg-white ',
-                  'group transition-colors duration-200 ease-in-out hover:border-pink',
-                )}
-              >
-                <Icon variant="videoPlay" className="group-hover:fill-pink" />
+          )}
+
+        {/* Self-hosted: Clickable placeholder video with play button */}
+        {isClient &&
+          isSelfHosted &&
+          !usePlaceholderVideo &&
+          showPlaceholder &&
+          placeholderVideoUrl && (
+            <div
+              className="absolute inset-0 z-10 cursor-pointer"
+              onClick={handlePlayClick}
+              onKeyDown={handleKeyDown}
+              role="button"
+              tabIndex={0}
+              aria-label="Play video"
+            >
+              <video
+                src={placeholderVideoUrl}
+                className="size-full rounded-2xl object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div
+                  className={cn(
+                    'flex size-16 items-center justify-center rounded-2xl',
+                    'border border-grey-300 bg-white ',
+                    'group transition-colors duration-200 ease-in-out hover:border-pink',
+                  )}
+                >
+                  <Icon variant="videoPlay" className="group-hover:fill-pink" />
+                </div>
               </div>
             </div>
-          </div>
-        )}
-        {isClient && (
+          )}
+
+        {/* Self-hosted: Clickable placeholder image with play button */}
+        {isClient &&
+          isSelfHosted &&
+          !usePlaceholderVideo &&
+          showPlaceholder &&
+          !placeholderVideoUrl &&
+          placeholderImageUrl && (
+            <div
+              className="absolute inset-0 z-10 cursor-pointer"
+              onClick={handlePlayClick}
+              onKeyDown={handleKeyDown}
+              role="button"
+              tabIndex={0}
+              aria-label="Play video"
+            >
+              <img
+                src={placeholderImageUrl}
+                alt="Video placeholder"
+                className="size-full rounded-2xl object-cover"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div
+                  className={cn(
+                    'flex size-16 items-center justify-center rounded-2xl',
+                    'border border-grey-300 bg-white ',
+                    'group transition-colors duration-200 ease-in-out hover:border-pink',
+                  )}
+                >
+                  <Icon variant="videoPlay" className="group-hover:fill-pink" />
+                </div>
+              </div>
+            </div>
+          )}
+
+        {/* Main video player (hidden when placeholder video is in autoplay mode) */}
+        {isClient && !(usePlaceholderVideo && placeholderVideoUrl) && (
           <ReactPlayer
             url={videoUrl || ''}
             width="100%"
             height="100%"
-            controls={!isYouTube}
-            playing={isYouTube || !showPlaceholder}
+            controls={isSelfHosted}
+            playing={!isSelfHosted || !showPlaceholder}
             light={
-              isYouTube && placeholderImageUrl ? placeholderImageUrl : false
+              !isSelfHosted && placeholderImageUrl ? placeholderImageUrl : false
             }
             loop
             playIcon={
