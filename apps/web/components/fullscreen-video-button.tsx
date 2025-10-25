@@ -11,7 +11,6 @@ interface FullscreenVideoButtonProps {
   videoUrl: string;
   buttonText?: string;
   buttonClassName?: string;
-  renderButton?: (props: { onClick: () => void }) => React.ReactNode;
   overlayClassName?: string;
   playerClassName?: string;
   controls?: boolean;
@@ -27,7 +26,6 @@ export function FullscreenVideoButton({
   videoUrl,
   buttonText = 'WATCH VIDEO',
   buttonClassName,
-  renderButton,
   overlayClassName,
   playerClassName,
   controls = true,
@@ -55,6 +53,7 @@ export function FullscreenVideoButton({
     } catch {}
   };
 
+  // Prevent scrolling when overlay is open
   useEffect(() => {
     if (isOverlayOpen) {
       const prevOverflow = document.body.style.overflow;
@@ -65,6 +64,7 @@ export function FullscreenVideoButton({
     }
   }, [isOverlayOpen]);
 
+  // Handle escape key to close overlay
   useEffect(() => {
     if (!isOverlayOpen) return;
 
@@ -111,36 +111,34 @@ export function FullscreenVideoButton({
 
   return (
     <>
-      {renderButton ? (
-        renderButton({ onClick: openOverlay })
-      ) : (
-        <button
-          onClick={openOverlay}
-          className={cn(
-            'absolute bottom-8 flex items-center gap-2 px-4 py-1 border-white/20 text-white transition-all duration-200 z-10 rounded-md',
-            'left-1/2 transform -translate-x-1/2',
-            'md:left-auto md:right-0 md:transform-none md:bg-black/50 md:border',
-            'hover:ring-2 hover:ring-white/50 hover:cursor-pointer',
-            buttonClassName,
-          )}
-          aria-label="Watch with sound"
-          type="button"
+      {/* Button to open video overlay */}
+
+      <button
+        onClick={openOverlay}
+        className={cn(
+          'absolute bottom-8 flex items-center gap-2 px-4 py-1 border-white/20 text-white transition-all duration-200 z-10 rounded-md',
+          'left-1/2 transform -translate-x-1/2',
+          'md:left-auto md:right-0 md:transform-none md:bg-black/50 md:border',
+          'hover:ring-2 hover:ring-white/50 hover:cursor-pointer',
+          buttonClassName,
+        )}
+        aria-label="Watch with sound"
+        type="button"
+      >
+        <span className="text-sm font-medium font-display whitespace-nowrap">
+          {buttonText}
+        </span>
+        {/* Play icon */}
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <span className="text-sm font-medium font-display whitespace-nowrap">
-            {buttonText}
-          </span>
-          {/* Play icon */}
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M8 5V19L19 12L8 5Z" fill="currentColor" />
-          </svg>
-        </button>
-      )}
+          <path d="M8 5V19L19 12L8 5Z" fill="currentColor" />
+        </svg>
+      </button>
 
       {/* Fullscreen video overlay */}
       {isOverlayOpen && (
