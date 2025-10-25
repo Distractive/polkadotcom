@@ -164,10 +164,7 @@ export function FullscreenVideoButton({
           >
             {/* Video player container */}
             <div
-              className={cn(
-                'z-[10000] w-full max-w-6xl aspect-video',
-                playerClassName,
-              )}
+              className={cn('z-[10000] w-full max-w-6xl', playerClassName)}
               onClick={(e) => e.stopPropagation()}
               onKeyDown={(e) => e.stopPropagation()}
             >

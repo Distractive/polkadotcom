@@ -34,6 +34,7 @@ export default defineType({
         'When enabled, the placeholder video will replace the placeholder image and will autoplay continuously without controls until clicked.',
       type: 'boolean',
       initialValue: false,
+      hidden: ({ parent }) => !parent?.useSelfHostedVideo,
     }),
     defineField({
       name: 'placeholderImage',
@@ -52,7 +53,8 @@ export default defineType({
       options: {
         accept: 'video/*',
       },
-      hidden: ({ parent }) => !parent?.usePlaceholderVideo,
+      hidden: ({ parent }) =>
+        !parent?.useSelfHostedVideo || !parent?.usePlaceholderVideo,
     }),
     defineField({
       name: 'isFullScreen',
