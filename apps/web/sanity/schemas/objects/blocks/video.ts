@@ -15,7 +15,16 @@ export default defineType({
     defineField({
       name: 'useSquareAspectRatio',
       title: 'Use Square Aspect Ratio',
-      description: 'Turn on to use a 1:1 aspect ratio for the video.',
+      description:
+        'Turn on to use a 1:1 aspect ratio for the placeholder and video container.',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'isFullScreen',
+      title: 'Enable Fullscreen Mode',
+      description:
+        'When enabled, adds a button to launch the video in fullscreen mode. Only works with self-hosted videos.',
       type: 'boolean',
       initialValue: false,
       hidden: ({ parent }) => !parent?.useSelfHostedVideo,
@@ -48,7 +57,7 @@ export default defineType({
       name: 'placeholderImage',
       title: 'Placeholder Image',
       description:
-        "Use a 16:9 image placeholder for YouTube videos. For self-hosted videos, use an image that matches your video's aspect ratio. (Gifs are supported.)",
+        "Use a placeholder image that matches your video's aspect ratio. (Gifs are supported.)",
       type: 'image',
       hidden: ({ parent }) => parent?.usePlaceholderVideo,
     }),
@@ -63,15 +72,6 @@ export default defineType({
       },
       hidden: ({ parent }) =>
         !parent?.useSelfHostedVideo || !parent?.usePlaceholderVideo,
-    }),
-    defineField({
-      name: 'isFullScreen',
-      title: 'Enable Fullscreen Mode',
-      description:
-        'When enabled, adds a button to launch the video in fullscreen mode. Only works with self-hosted videos.',
-      type: 'boolean',
-      initialValue: false,
-      hidden: ({ parent }) => !parent?.useSelfHostedVideo,
     }),
   ],
 });

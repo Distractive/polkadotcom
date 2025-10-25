@@ -5,7 +5,6 @@ import type { videoSelection } from '@/sanity/selections/blocks/video';
 import type { TypeFromSelection } from 'groqd';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import { stegaClean } from '@sanity/client/stega';
 
 import { FullscreenVideoButton } from '@/components/fullscreen-video-button';
 import { Icon, cn } from '@shared/ui';
@@ -139,69 +138,11 @@ export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
             </div>
           )}
 
-        {/* Self-hosted: Clickable placeholder video with play button */}
-        {isClient &&
-          isSelfHosted &&
-          !usePlaceholderVideo &&
-          showPlaceholder &&
-          placeholderVideoUrl && (
-            <div
-              className={cn(
-                'absolute inset-0 z-10',
-                !isFullScreen && 'cursor-pointer',
-              )}
-              onClick={!isFullScreen ? handlePlayClick : undefined}
-              onKeyDown={!isFullScreen ? handleKeyDown : undefined}
-              role={!isFullScreen ? 'button' : undefined}
-              tabIndex={!isFullScreen ? 0 : undefined}
-              aria-label={!isFullScreen ? 'Play video' : undefined}
-            >
-              <video
-                src={placeholderVideoUrl}
-                className="size-full rounded-2xl object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-              />
-              {!isFullScreen && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div
-                    className={cn(
-                      'flex size-16 items-center justify-center rounded-2xl',
-                      'border border-grey-300 bg-white ',
-                      'group transition-colors duration-200 ease-in-out hover:border-pink',
-                    )}
-                  >
-                    <Icon
-                      variant="videoPlay"
-                      className="group-hover:fill-pink"
-                    />
-                  </div>
-                </div>
-              )}
-              {/* Fullscreen button */}
-              {isFullScreen && videoUrl && (
-                <div
-                  className="absolute bottom-4 right-4 z-20"
-                  onClick={(e) => e.stopPropagation()}
-                  onKeyDown={(e) => e.stopPropagation()}
-                >
-                  <FullscreenVideoButton
-                    videoUrl={videoUrl}
-                    buttonClassName="!static !transform-none"
-                  />
-                </div>
-              )}
-            </div>
-          )}
-
         {/* Self-hosted: Clickable placeholder image with play button */}
         {isClient &&
           isSelfHosted &&
           !usePlaceholderVideo &&
           showPlaceholder &&
-          !placeholderVideoUrl &&
           placeholderImageUrl && (
             <div
               className={cn(
