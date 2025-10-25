@@ -36,7 +36,7 @@ export function VideoBlock({ video, className }: Props) {
     : typeof video.videoFile === 'string'
       ? video.videoFile
       : '';
-  const aspectClass = isYouTube ? 'aspect-video' : 'aspect-square';
+  const aspectClass = isYouTube ? 'aspect-video' : '';
   const placeholderImageUrl = video.placeholderImage?.asset
     ? urlForImage(video.placeholderImage.asset)
     : null;

@@ -16,7 +16,7 @@ export default defineType({
       name: 'placeholderImage',
       title: 'Placeholder Image',
       description:
-        'Use a 16:9 placeholder for YouTube videos, and a 1:1 placeholder for self-hosted videos.',
+        "Use a 16:9 placeholder for YouTube videos. For self-hosted videos, use an image that matches your video's aspect ratio.",
       type: 'image',
     }),
     defineField({
