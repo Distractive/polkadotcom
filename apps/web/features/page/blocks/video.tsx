@@ -66,19 +66,40 @@ export function VideoBlock({ video, className }: Props) {
       data-testid="video-block"
     >
       <div className="relative size-full">
-        {/* Self-hosted: Placeholder video with autoplay (no controls, like home page) */}
+        {/* Self-hosted: Placeholder video with autoplay and play button */}
         {isClient &&
           isSelfHosted &&
           usePlaceholderVideo &&
-          placeholderVideoUrl && (
-            <video
-              src={placeholderVideoUrl}
-              className="size-full rounded-2xl object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-            />
+          placeholderVideoUrl &&
+          showPlaceholder && (
+            <div
+              className="absolute inset-0 z-10 cursor-pointer"
+              onClick={handlePlayClick}
+              onKeyDown={handleKeyDown}
+              role="button"
+              tabIndex={0}
+              aria-label="Play video"
+            >
+              <video
+                src={placeholderVideoUrl}
+                className="size-full rounded-2xl object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div
+                  className={cn(
+                    'flex size-16 items-center justify-center rounded-2xl',
+                    'border border-grey-300 bg-white ',
+                    'group transition-colors duration-200 ease-in-out hover:border-pink',
+                  )}
+                >
+                  <Icon variant="videoPlay" className="group-hover:fill-pink" />
+                </div>
+              </div>
+            </div>
           )}
 
         {/* Self-hosted: Clickable placeholder video with play button */}
@@ -151,50 +172,60 @@ export function VideoBlock({ video, className }: Props) {
             </div>
           )}
 
-        {/* Main video player (hidden when placeholder video is in autoplay mode) */}
-        {isClient && !(usePlaceholderVideo && placeholderVideoUrl) && (
-          <ReactPlayer
-            url={videoUrl || ''}
-            width="100%"
-            height="100%"
-            controls={isSelfHosted}
-            playing={!isSelfHosted || !showPlaceholder}
-            light={
-              !isSelfHosted && placeholderImageUrl ? placeholderImageUrl : false
-            }
-            loop
-            playIcon={
-              <div
-                className={cn(
-                  'flex size-16 items-center justify-center rounded-2xl',
-                  'border border-grey-300 bg-white ',
-                  'group transition-colors duration-200 ease-in-out',
-                )}
-              >
-                <Icon variant="videoPlay" className="group-hover:fill-pink" />
-              </div>
-            }
-            wrapper={Wrapper}
-            config={{
-              youtube: {
-                playerVars: {
-                  showinfo: 0,
-                  controls: 1,
-                  disablekb: 1,
-                  rel: 0,
-                  autoplay: 1,
-                  playsinline: 1,
-                  modestbranding: 1,
-                  loop: 1,
+        {/* Main video player */}
+        {isClient && (
+          <div
+            className={cn(
+              usePlaceholderVideo && placeholderVideoUrl && showPlaceholder
+                ? 'invisible'
+                : 'visible',
+            )}
+          >
+            <ReactPlayer
+              url={videoUrl || ''}
+              width="100%"
+              height="100%"
+              controls={isSelfHosted}
+              playing={!isSelfHosted || !showPlaceholder}
+              light={
+                !isSelfHosted && placeholderImageUrl
+                  ? placeholderImageUrl
+                  : false
+              }
+              loop
+              playIcon={
+                <div
+                  className={cn(
+                    'flex size-16 items-center justify-center rounded-2xl',
+                    'border border-grey-300 bg-white ',
+                    'group transition-colors duration-200 ease-in-out',
+                  )}
+                >
+                  <Icon variant="videoPlay" className="group-hover:fill-pink" />
+                </div>
+              }
+              wrapper={Wrapper}
+              config={{
+                youtube: {
+                  playerVars: {
+                    showinfo: 0,
+                    controls: 1,
+                    disablekb: 1,
+                    rel: 0,
+                    autoplay: 1,
+                    playsinline: 1,
+                    modestbranding: 1,
+                    loop: 1,
+                  },
                 },
-              },
-              file: {
-                attributes: {
-                  controlsList: 'nodownload',
+                file: {
+                  attributes: {
+                    controlsList: 'nodownload',
+                  },
                 },
-              },
-            }}
-          />
+              }}
+            />
+          </div>
         )}
       </div>
     </div>
