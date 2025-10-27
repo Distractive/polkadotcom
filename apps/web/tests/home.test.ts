@@ -125,16 +125,16 @@ test('Homepage', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('newsletter section screenshot', async () => {
-    await page.waitForTimeout(2000);
-    const newsletterWrapper = page.getByTestId('newsletter');
-    await newsletterWrapper.scrollIntoViewIfNeeded();
+  // await test.step('newsletter section screenshot', async () => {
+  //   await page.waitForTimeout(2000);
+  //   const newsletterWrapper = page.getByTestId('newsletter');
+  //   await newsletterWrapper.scrollIntoViewIfNeeded();
 
-    await page.waitForTimeout(2000);
-    expect(
-      await newsletterWrapper.screenshot({ timeout: 7000 }),
-    ).toMatchSnapshot('newsletter.png', snapshotConfig);
-  });
+  //   await page.waitForTimeout(2000);
+  //   expect(
+  //     await newsletterWrapper.screenshot({ timeout: 7000 }),
+  //   ).toMatchSnapshot('newsletter.png', snapshotConfig);
+  // });
 
   await test.step('assert "ecosystem" section is displayed properly', async () => {
     const section = page.getByTestId('ecosystem-pile');

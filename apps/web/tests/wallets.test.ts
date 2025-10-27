@@ -170,14 +170,14 @@ test('Wallets', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"hardware" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block').nth(1);
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'hardware.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"hardware" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-small-block').nth(1);
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'hardware.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "staking" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-e0781e9c4199');

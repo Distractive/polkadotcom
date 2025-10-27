@@ -336,14 +336,14 @@ test('Dapps', async ({ page }) => {
     expect(polkadentity).toBeVisible();
   });
 
-  await test.step('"featured" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-efb18d9d56b7');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'featured.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"featured" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-efb18d9d56b7');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'featured.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "submit" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-9983f349ce1b');

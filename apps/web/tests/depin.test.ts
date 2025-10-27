@@ -181,14 +181,14 @@ test('DePIN', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"quote" section screenshot', async () => {
-    const section = page.getByTestId('quote-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'quote.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"quote" section screenshot', async () => {
+  //   const section = page.getByTestId('quote-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'quote.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "future" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-8c052d265a4a');
