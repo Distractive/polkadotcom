@@ -51,6 +51,10 @@ export function CustomUrl({
     slug = `glossary/${slug}`;
   }
 
+  if (value?.internal && value?.internal._type === 'caseStudy') {
+    slug = `case-studies/${slug}`;
+  }
+
   // isNested is for buttons inside of cards and prevents hydration errors due to nested <a> tags
   if (isNested) {
     return value ? (
