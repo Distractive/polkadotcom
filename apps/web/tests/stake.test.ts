@@ -17,7 +17,7 @@ test('Stake', async ({ page }) => {
   });
 
   await test.step('assert "header" section is displayed properly', async () => {
-    const section = page.getByTestId('side-by-side-header');
+    const section = page.getByTestId('header');
 
     await expect(
       section.getByRole('heading', {
@@ -35,7 +35,7 @@ test('Stake', async ({ page }) => {
   });
 
   await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
+    const section = page.getByTestId('header');
     await page.waitForTimeout(2000);
     expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
       'header.png',

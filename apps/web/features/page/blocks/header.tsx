@@ -26,7 +26,6 @@ interface Props {
 }
 
 export function HeaderBlock({ header, breadcrumb, className }: Props) {
-  console.log('header:', header);
   function renderHeaderLinks(links: HeaderLink[]) {
     if (!links) return null;
     return (
