@@ -8,17 +8,18 @@ test('Footer', async ({ page }) => {
     await acceptOrCloseCookieBanner(page);
   });
 
-  await test.step('"footer" screenshot', async () => {
-    const footerContainer = page.getByTestId('footer');
-    await page.waitForTimeout(2000);
-    // expect(
-    //   await footerContainer.screenshot({
-    //     animations: 'disabled',
-    //     timeout: 10_000,
-    //     mask: [page.getByTestId('dots-animation')],
-    //   }),
-    // ).toMatchSnapshot('footer.png', snapshotConfig);
-  });
+  // await test.step('"footer" screenshot', async () => {
+  //   const footerContainer = page.getByTestId('footer');
+  //   await page.waitForTimeout(2000);
+  // expect(
+  //   await footerContainer.screenshot({
+  //     animations: 'disabled',
+  //     timeout: 10_000,
+  //     mask: [page.getByTestId('dots-animation')],
+  //   }),
+  // ).toMatchSnapshot('footer.png', snapshotConfig);
+  // });
+
   await test.step('assert "footer" is properly displayed', async () => {
     const footerContainer = page.getByTestId('footer');
 

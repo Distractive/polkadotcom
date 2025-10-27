@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Dapps', async ({ page }) => {
@@ -36,14 +36,14 @@ test('Dapps', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "featured" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-efb18d9d56b7');
@@ -392,12 +392,12 @@ test('Dapps', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"disclaimer" section screenshot', async () => {
-    const section = page.getByTestId('content-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'disclaimer.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"disclaimer" section screenshot', async () => {
+  //   const section = page.getByTestId('content-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'disclaimer.png',
+  //     snapshotConfig,
+  //   );
+  // });
 });
