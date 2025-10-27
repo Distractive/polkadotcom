@@ -7,7 +7,8 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 
 import { FullscreenVideoButton } from '@/components/fullscreen-video-button';
-import { Icon, cn } from '@shared/ui';
+import { PlaceholderOverlay } from '@/components/placeholder-overlay';
+import { cn } from '@shared/ui';
 
 interface WrapperProps {
   children: React.ReactNode;
@@ -26,7 +27,6 @@ const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
 export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
   const [isClient, setIsClient] = useState(false);
-  const [showPlaceholder, setShowPlaceholder] = useState(true);
 
   useEffect(() => {
     setIsClient(true);
@@ -43,16 +43,6 @@ export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
     aspectRatio: useSquareAspectRatio ? '1 / 1' : '16 / 9',
   } as const;
 
-  // Debug logging
-  console.log(
-    'VideoBlock - video.aspect:',
-    video.aspect,
-    'useSquareAspectRatio:',
-    useSquareAspectRatio,
-    'aspectRatio:',
-    aspectStyle.aspectRatio,
-  );
-
   const placeholderImageUrl = video.placeholderImage?.asset
     ? urlForImage(video.placeholderImage.asset)
     : null;
@@ -61,16 +51,12 @@ export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
     typeof video.placeholderVideo === 'string' ? video.placeholderVideo : null;
   const isFullScreen = video.isFullScreen ?? false;
 
-  const handlePlayClick = () => {
-    setShowPlaceholder(false);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      handlePlayClick();
-    }
-  };
+  const hasPlaceholder = Boolean(
+    (usePlaceholderVideo && placeholderVideoUrl) || placeholderImageUrl,
+  );
+  const [phase, setPhase] = useState<'placeholder' | 'playing'>(
+    hasPlaceholder ? 'placeholder' : 'playing',
+  );
 
   return (
     <div className={cn(className)} data-testid="video-block">
@@ -81,160 +67,44 @@ export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
         )}
         style={aspectStyle}
       >
-        {/* Self-hosted: Placeholder video with autoplay and play button */}
-        {isClient &&
-          isSelfHosted &&
-          usePlaceholderVideo &&
-          placeholderVideoUrl &&
-          showPlaceholder && (
-            <div
-              className={cn(
-                'absolute inset-0 z-10',
-                !isFullScreen && 'cursor-pointer',
-              )}
-              onClick={!isFullScreen ? handlePlayClick : undefined}
-              onKeyDown={!isFullScreen ? handleKeyDown : undefined}
-              role={!isFullScreen ? 'button' : undefined}
-              tabIndex={!isFullScreen ? 0 : undefined}
-              aria-label={!isFullScreen ? 'Play video' : undefined}
-            >
-              <video
-                src={placeholderVideoUrl}
-                className="size-full rounded-2xl object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-              />
-              {!isFullScreen && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div
-                    className={cn(
-                      'flex size-16 items-center justify-center rounded-2xl',
-                      'border border-grey-300 bg-white ',
-                      'group transition-colors duration-200 ease-in-out hover:border-pink',
-                    )}
-                  >
-                    <Icon
-                      variant="videoPlay"
-                      className="group-hover:fill-pink"
-                    />
-                  </div>
-                </div>
-              )}
-              {/* Fullscreen button */}
-              {isFullScreen && videoUrl && (
-                <div
-                  className="absolute bottom-4 right-4 z-20"
-                  onClick={(e) => e.stopPropagation()}
-                  onKeyDown={(e) => e.stopPropagation()}
-                >
-                  <FullscreenVideoButton
-                    videoUrl={videoUrl}
-                    buttonClassName="!static !transform-none"
-                  />
-                </div>
-              )}
-            </div>
-          )}
-
-        {/* Self-hosted: Clickable placeholder image with play button */}
-        {isClient &&
-          isSelfHosted &&
-          !usePlaceholderVideo &&
-          showPlaceholder &&
-          placeholderImageUrl && (
-            <div
-              className={cn(
-                'absolute inset-0 z-10',
-                !isFullScreen && 'cursor-pointer',
-              )}
-              onClick={!isFullScreen ? handlePlayClick : undefined}
-              onKeyDown={!isFullScreen ? handleKeyDown : undefined}
-              role={!isFullScreen ? 'button' : undefined}
-              tabIndex={!isFullScreen ? 0 : undefined}
-              aria-label={!isFullScreen ? 'Play video' : undefined}
-            >
-              <img
-                src={placeholderImageUrl}
-                alt="Video placeholder"
-                className="size-full rounded-2xl object-contain"
-              />
-              {!isFullScreen && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div
-                    className={cn(
-                      'flex size-16 items-center justify-center rounded-2xl',
-                      'border border-grey-300 bg-white ',
-                      'group transition-colors duration-200 ease-in-out hover:border-pink',
-                    )}
-                  >
-                    <Icon
-                      variant="videoPlay"
-                      className="group-hover:fill-pink"
-                    />
-                  </div>
-                </div>
-              )}
-              {/* Fullscreen button */}
-              {isFullScreen && videoUrl && (
-                <div
-                  className="absolute bottom-4 right-4 z-20"
-                  onClick={(e) => e.stopPropagation()}
-                  onKeyDown={(e) => e.stopPropagation()}
-                >
-                  <FullscreenVideoButton
-                    videoUrl={videoUrl}
-                    buttonClassName="!static !transform-none"
-                  />
-                </div>
-              )}
-            </div>
-          )}
-
-        {/* Embedded videos: Clickable placeholder image with play button */}
-        {isClient &&
-          !isSelfHosted &&
-          showPlaceholder &&
-          placeholderImageUrl && (
-            <div
-              className="absolute inset-0 z-10 cursor-pointer"
-              onClick={handlePlayClick}
-              onKeyDown={handleKeyDown}
-              role="button"
-              tabIndex={0}
-              aria-label="Play video"
-            >
-              <img
-                src={placeholderImageUrl}
-                alt="Video placeholder"
-                className="size-full rounded-2xl object-contain"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div
-                  className={cn(
-                    'flex size-16 items-center justify-center rounded-2xl',
-                    'border border-grey-300 bg-white ',
-                    'group transition-colors duration-200 ease-in-out hover:border-pink',
-                  )}
-                >
-                  <Icon variant="videoPlay" className="group-hover:fill-pink" />
-                </div>
-              </div>
-            </div>
-          )}
-
-        {/* Main video player */}
-        {isClient && (
-          <div
-            className={cn(
-              'absolute inset-0',
-              (usePlaceholderVideo && placeholderVideoUrl && showPlaceholder) ||
-                (isSelfHosted && showPlaceholder && placeholderImageUrl)
-                ? 'invisible'
-                : 'visible',
-            )}
+        {/* Unified placeholder overlay */}
+        {hasPlaceholder && phase === 'placeholder' && (
+          <PlaceholderOverlay
+            imageUrl={placeholderImageUrl}
+            videoUrl={usePlaceholderVideo ? placeholderVideoUrl : null}
+            interactive={!isFullScreen}
+            onPlay={!isFullScreen ? () => setPhase('playing') : undefined}
           >
+            {isFullScreen && videoUrl && (
+              <div
+                className="absolute bottom-4 right-4 z-20"
+                onClick={(e) => e.stopPropagation()}
+                onKeyDown={(e) => e.stopPropagation()}
+              >
+                <FullscreenVideoButton
+                  videoUrl={videoUrl}
+                  buttonClassName="!static !transform-none"
+                />
+              </div>
+            )}
+          </PlaceholderOverlay>
+        )}
+
+        {/* Fullscreen only, no placeholder: just show the fullscreen button */}
+        {isFullScreen && !hasPlaceholder && videoUrl && (
+          <div className="absolute inset-0">
+            <div className="absolute bottom-4 right-4 z-20">
+              <FullscreenVideoButton
+                videoUrl={videoUrl}
+                buttonClassName="!static !transform-none"
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Inline player: only when not fullscreen and in playing phase */}
+        {isClient && !isFullScreen && phase === 'playing' && (
+          <div className={cn('absolute inset-0')}>
             <ReactPlayer
               url={videoUrl || ''}
               width="100%"
@@ -242,9 +112,9 @@ export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
               controls={isSelfHosted}
               playing={
                 isSelfHosted
-                  ? !showPlaceholder
+                  ? phase === 'playing'
                   : placeholderImageUrl
-                    ? !showPlaceholder
+                    ? phase === 'playing'
                     : false
               }
               loop
