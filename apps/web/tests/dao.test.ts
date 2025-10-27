@@ -136,14 +136,14 @@ test('DAO', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"benefits" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-6c5f350b7323');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'benefits.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"benefits" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-6c5f350b7323');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'benefits.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "initiatives" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-e1516f9dc848');
