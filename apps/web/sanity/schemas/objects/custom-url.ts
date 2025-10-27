@@ -25,7 +25,7 @@ export default defineType({
       type: 'string',
       title: 'URL or Path',
       description:
-        'External URL (https://...) or internal path (/blog, /case-studies)',
+        'External URL (https://...), internal path (/case-studies), or anchor link (#section-name)',
       hidden: ({ parent, value }) => !value && !!parent?.internal,
     },
     {
