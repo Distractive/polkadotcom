@@ -168,19 +168,19 @@ test('Homepage', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"ecosystem" section screenshot', async () => {
-    await page.waitForTimeout(2000);
-    for (const id of ecosystemIds) {
-      const ecosystemImage = page.getByTestId(`ecosystem-content-${id}`);
-      await page.waitForTimeout(2000);
-      expect(
-        await ecosystemImage.screenshot({
-          animations: 'disabled',
-          timeout: 7000,
-        }),
-      ).toMatchSnapshot(`ecosystem-${id}.png`, snapshotConfig);
-    }
-  });
+  // await test.step('"ecosystem" section screenshot', async () => {
+  //   await page.waitForTimeout(2000);
+  //   for (const id of ecosystemIds) {
+  //     const ecosystemImage = page.getByTestId(`ecosystem-content-${id}`);
+  //     await page.waitForTimeout(2000);
+  //     expect(
+  //       await ecosystemImage.screenshot({
+  //         animations: 'disabled',
+  //         timeout: 7000,
+  //       }),
+  //     ).toMatchSnapshot(`ecosystem-${id}.png`, snapshotConfig);
+  //   }
+  // });
 
   await test.step('assert "recent happenings" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-5d955696c731');

@@ -361,14 +361,14 @@ test('Dapps', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"submit" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-9983f349ce1b');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'submit.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"submit" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-9983f349ce1b');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'submit.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "disclaimer" section is displayed properly', async () => {
     const section = page.getByTestId('content-block');

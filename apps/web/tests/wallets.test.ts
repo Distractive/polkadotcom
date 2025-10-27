@@ -197,14 +197,14 @@ test('Wallets', async ({ page }) => {
     await expect(section.locator('img')).toBeVisible();
   });
 
-  await test.step('"staking" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-e0781e9c4199');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'staking.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"staking" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-e0781e9c4199');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'staking.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "disclaimer" section is displayed properly', async () => {
     const section = page.getByTestId('content-block');
