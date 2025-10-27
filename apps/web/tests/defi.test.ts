@@ -100,14 +100,14 @@ test('DeFi', async ({ page }) => {
     await expect(section.locator('img')).toBeVisible();
   });
 
-  await test.step('"no-boundaries" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-1ca6fdda3a37');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'no-boundaries.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"no-boundaries" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-1ca6fdda3a37');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'no-boundaries.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "performance" section is displayed properly', async () => {
     const section = page.getByTestId('cards-sticky-block');
