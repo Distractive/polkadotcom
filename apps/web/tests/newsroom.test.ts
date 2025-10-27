@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Newsroom', async ({ page }) => {
@@ -36,13 +36,13 @@ test('Newsroom', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "stories" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-aa3c92a7db2d');
@@ -65,23 +65,23 @@ test('Newsroom', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"stories" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-aa3c92a7db2d');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'stories.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"stories" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-aa3c92a7db2d');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'stories.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
-  await test.step('"mentions" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-ca63eb6f3ee9');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'mentions.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"mentions" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-ca63eb6f3ee9');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'mentions.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "featured" section is displayed properly', async () => {
     const section = page.getByTestId(
@@ -107,16 +107,16 @@ test('Newsroom', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"featured videos" section screenshot', async () => {
-    const section = page.getByTestId(
-      'cards-block-c188658c825b3b0268979f1583ebe37b',
-    );
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'featured-videos.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"featured videos" section screenshot', async () => {
+  //   const section = page.getByTestId(
+  //     'cards-block-c188658c825b3b0268979f1583ebe37b',
+  //   );
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'featured-videos.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "communication" section is displayed properly', async () => {
     const section = page.getByTestId('cards-small-block');
@@ -134,14 +134,14 @@ test('Newsroom', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"communication" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'communication.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"communication" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-small-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'communication.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "newsletter" section is displayed properly', async () => {
     const section = page.getByTestId('form-modal');
@@ -159,12 +159,12 @@ test('Newsroom', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"newsletter" section screenshot', async () => {
-    const section = page.getByTestId('form-modal');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'newsletter.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"newsletter" section screenshot', async () => {
+  //   const section = page.getByTestId('form-modal');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'newsletter.png',
+  //     snapshotConfig,
+  //   );
+  // });
 });

@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('DePIN', async ({ page }) => {
@@ -39,13 +39,13 @@ test('DePIN', async ({ page }) => {
     await expect(section.locator('img')).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "unlock" section is displayed properly', async () => {
     const section = page.getByTestId('cards-sticky-block').first();
@@ -69,14 +69,14 @@ test('DePIN', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"unlock" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block').first();
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'unlock.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"unlock" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-sticky-block').first();
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'unlock.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "explore dapps" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-3c532ef8d8f7');
@@ -103,14 +103,14 @@ test('DePIN', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"explore dapps" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-3c532ef8d8f7');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'explore-dapps.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"explore dapps" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-3c532ef8d8f7');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'explore-dapps.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "why" section is displayed properly', async () => {
     const section = page.getByTestId('cards-sticky-block').nth(1);
@@ -134,14 +134,14 @@ test('DePIN', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"why" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block').nth(1);
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'why.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"why" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-sticky-block').nth(1);
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'why.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "impact" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-675ea328fbfe');

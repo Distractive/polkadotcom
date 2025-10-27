@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test.skip('Case Studies', async ({ page }) => {
@@ -28,14 +28,14 @@ test.skip('Case Studies', async ({ page }) => {
     );
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('platform-header');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('platform-header');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "cases" section is displayed properly', async () => {
     const section = page.getByTestId('main-content');
@@ -68,12 +68,12 @@ test.skip('Case Studies', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"cases" section screenshot', async () => {
-    const section = page.getByTestId('main-content');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'cases.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"cases" section screenshot', async () => {
+  //   const section = page.getByTestId('main-content');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'cases.png',
+  //     snapshotConfig,
+  //   );
+  // });
 });

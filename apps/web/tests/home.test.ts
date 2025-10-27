@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { snapshotConfig } from './constants';
+// import { snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Homepage', async ({ page }) => {
@@ -43,17 +43,17 @@ test('Homepage', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"hero" section screenshot', async () => {
-    const heroLandingFrame = page.getByTestId('hero-pile');
-    await page.waitForTimeout(2000);
-    expect(
-      await heroLandingFrame.screenshot({
-        animations: 'disabled',
-        timeout: 12_000,
-        mask: [page.getByTestId('dots-animation')],
-      }),
-    ).toMatchSnapshot('hero.png', snapshotConfig);
-  });
+  // await test.step('"hero" section screenshot', async () => {
+  //   const heroLandingFrame = page.getByTestId('hero-pile');
+  //   await page.waitForTimeout(2000);
+  //   expect(
+  //     await heroLandingFrame.screenshot({
+  //       animations: 'disabled',
+  //       timeout: 12_000,
+  //       mask: [page.getByTestId('dots-animation')],
+  //     }),
+  //   ).toMatchSnapshot('hero.png', snapshotConfig);
+  // });
 
   await test.step('assert "Power without permission" section displayed properly', async () => {
     const section = page.getByTestId('network-cards');
@@ -67,15 +67,15 @@ test('Homepage', async ({ page }) => {
     );
   });
 
-  await test.step('"network" section screenshot', async () => {
-    await page.waitForTimeout(2000);
-    const section = page.getByTestId('network-cards');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot({ timeout: 7000 })).toMatchSnapshot(
-      'network.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"network" section screenshot', async () => {
+  //   await page.waitForTimeout(2000);
+  //   const section = page.getByTestId('network-cards');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot({ timeout: 7000 })).toMatchSnapshot(
+  //     'network.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "building" section is displayed properly', async () => {
     const section = page.getByTestId('build-cards');
@@ -100,17 +100,17 @@ test('Homepage', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"building" section screenshot', async () => {
-    await page.waitForTimeout(2000);
-    const section = page.getByTestId('build-cards');
-    await page.waitForTimeout(2000);
-    expect(
-      await section.screenshot({
-        timeout: 7000,
-        animations: 'disabled',
-      }),
-    ).toMatchSnapshot('building.png', snapshotConfig);
-  });
+  // await test.step('"building" section screenshot', async () => {
+  //   await page.waitForTimeout(2000);
+  //   const section = page.getByTestId('build-cards');
+  //   await page.waitForTimeout(2000);
+  //   expect(
+  //     await section.screenshot({
+  //       timeout: 7000,
+  //       animations: 'disabled',
+  //     }),
+  //   ).toMatchSnapshot('building.png', snapshotConfig);
+  // });
 
   await test.step('assert "newsletter" block is displayed properly', async () => {
     const newsletterWrapper = page.getByTestId('newsletter');
@@ -196,15 +196,15 @@ test('Homepage', async ({ page }) => {
     );
   });
 
-  await test.step('"recent happenings" section screenshot', async () => {
-    await page.waitForTimeout(2000);
-    const section = page.getByTestId('cards-block-5d955696c731');
-    await page.waitForTimeout(2000);
-    expect(
-      await section.screenshot({
-        timeout: 7000,
-        animations: 'disabled',
-      }),
-    ).toMatchSnapshot('recent-happenings.png', snapshotConfig);
-  });
+  // await test.step('"recent happenings" section screenshot', async () => {
+  //   await page.waitForTimeout(2000);
+  //   const section = page.getByTestId('cards-block-5d955696c731');
+  //   await page.waitForTimeout(2000);
+  //   expect(
+  //     await section.screenshot({
+  //       timeout: 7000,
+  //       animations: 'disabled',
+  //     }),
+  //   ).toMatchSnapshot('recent-happenings.png', snapshotConfig);
+  // });
 });

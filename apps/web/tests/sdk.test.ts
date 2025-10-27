@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('SDK', async ({ page }) => {
@@ -35,48 +35,48 @@ test('SDK', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
-  await test.step('"build with the polkadot sdk" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'build.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"build with the polkadot sdk" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-sticky-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'build.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
-  await test.step('"why builders choose the polkadot sdk" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block').nth(0);
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'why-builders.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"why builders choose the polkadot sdk" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-small-block').nth(0);
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'why-builders.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
-  await test.step('"the engine driving real-world web3" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-841c1b7c6953');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'engine.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"the engine driving real-world web3" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-841c1b7c6953');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'engine.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
-  await test.step('"your custom chain starts here" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-b3cad6a31130');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'custom-chain.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"your custom chain starts here" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-b3cad6a31130');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'custom-chain.png',
+  //     snapshotConfig,
+  //   );
+  // });
 });

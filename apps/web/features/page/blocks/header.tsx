@@ -123,10 +123,11 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         <div
           data-testid="header"
           className={cn(
-            'flex max-w-4xl flex-col justify-center gap-copy lg:pt-16',
+            'flex max-w-4xl flex-col justify-center gap-copy lg:pt-16 ',
             header.image
               ? 'px-gutter pt-card'
               : 'mt-gutter px-gutter pt-header-top',
+            header.video && 'mx-auto',
           )}
         >
           {breadcrumb && !header.hideBreadcrumbs && (
@@ -154,16 +155,19 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
       className={cn(
         'grid-system max-width relative col-span-full mb-16 overflow-x-hidden lg:mb-page',
         className,
-        header.image ? 'pt-32' : 'pt-0',
+        header.image || header.video ? 'pt-32' : 'pt-0',
         // Hide margin if no image or title
-        !header.image && !header.title && '!mb-[-4rem] md:!mb-[-6rem]',
+        !header.image &&
+          !header.video &&
+          !header.title &&
+          '!mb-[-4rem] md:!mb-[-6rem]',
       )}
     >
       {/* biome-ignore lint/style/useSelfClosingElements: <Not possible> */}
-      {!header.image && <div className="pt-4"></div>}
+      {!header.image && !header.video && <div className="pt-4"></div>}
 
       {header.image && (
-        <div className="col-span-full w-full px-gutter lg:order-2 lg:col-span-7 lg:col-start-6">
+        <div className="col-span-full w-full px-gutter lg:order-2 lg:col-span-6 lg:col-start-7 lg:pl-20">
           <Image
             src={urlForImage(header.image.asset)}
             alt={header?.altText || ''}
@@ -175,11 +179,20 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
           />
         </div>
       )}
+      {header.video && (
+        <div className="col-span-full w-full px-gutter lg:order-2 lg:col-span-6 lg:col-start-7 lg:pl-20">
+          <VideoBlock
+            video={header.video}
+            className="w-full"
+            useSquareAspectRatio={header.video.useSquareAspectRatio ?? false}
+          />
+        </div>
+      )}
       <div
         className={cn(
           'col-span-full flex flex-col items-start justify-center gap-copy',
-          header.image
-            ? 'px-gutter pt-card lg:order-1 lg:col-span-5 lg:col-start-1 '
+          header.image || header.video
+            ? 'px-gutter pt-card lg:order-1 lg:col-span-6 lg:col-start-1 '
             : 'mt-gutter px-gutter pt-header-top lg:col-span-8 lg:col-start-3',
         )}
       >
@@ -191,9 +204,6 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
 
         {header.body && <p className="text-lg text-black">{header.body}</p>}
         {renderHeaderLinks(header.links as HeaderLink[])}
-        {header.video && (
-          <VideoBlock video={header.video} className="mt-gutter w-full" />
-        )}
       </div>
     </header>
   );
