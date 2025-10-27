@@ -4,7 +4,7 @@ import { urlForImage } from '@/sanity/lib/image';
 import type { videoSelection } from '@/sanity/selections/blocks/video';
 import type { TypeFromSelection } from 'groqd';
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 
 import { FullscreenVideoButton } from '@/components/fullscreen-video-button';
 import { PlaceholderOverlay } from '@/components/placeholder-overlay';
@@ -27,10 +27,8 @@ const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
 export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
   const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const playerRef = useRef<{ getInternalPlayer?: () => unknown } | null>(null);
+  const videoId = useId();
 
   const isSelfHosted = video.useSelfHostedVideo ?? false;
   const videoUrl = isSelfHosted
@@ -38,6 +36,27 @@ export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
       ? video.videoFile
       : ''
     : video.url || '';
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Cleanup: stop player when component unmounts
+  useEffect(() => {
+    return () => {
+      if (playerRef.current) {
+        try {
+          const internal = playerRef.current.getInternalPlayer?.() as
+            | { pause?: () => void; pauseVideo?: () => void }
+            | undefined;
+          internal?.pause?.();
+          internal?.pauseVideo?.();
+        } catch {
+          // Ignore errors during cleanup
+        }
+      }
+    };
+  }, []);
 
   const aspectStyle = {
     aspectRatio: useSquareAspectRatio ? '1 / 1' : '16 / 9',
@@ -90,22 +109,12 @@ export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
           </PlaceholderOverlay>
         )}
 
-        {/* Fullscreen only, no placeholder: just show the fullscreen button */}
-        {isFullScreen && !hasPlaceholder && videoUrl && (
-          <div className="absolute inset-0">
-            <div className="absolute bottom-4 right-4 z-20">
-              <FullscreenVideoButton
-                videoUrl={videoUrl}
-                buttonClassName="!static !transform-none"
-              />
-            </div>
-          </div>
-        )}
-
         {/* Inline player: only when not fullscreen and in playing phase */}
         {isClient && !isFullScreen && phase === 'playing' && (
           <div className={cn('absolute inset-0')}>
             <ReactPlayer
+              ref={playerRef}
+              key={`${videoId}`}
               url={videoUrl || ''}
               width="100%"
               height="100%"
