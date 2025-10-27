@@ -1,7 +1,7 @@
 import type { customUrlSelection } from '@/sanity/selections/custom-url';
+import { stegaClean } from '@sanity/client/stega';
 import type { TypeFromSelection } from 'groqd';
 import Link from 'next/link';
-import { stegaClean } from '@sanity/client/stega';
 
 import {
   BLOG_POSTTYPE,

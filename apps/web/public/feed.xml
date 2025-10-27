@@ -4,7 +4,7 @@
         <title>Polkadot - All Content</title>
         <link>https://polkadot.com</link>
         <description>Polkadot - The Platform for Web3</description>
-        <lastBuildDate>Thu, 23 Oct 2025 13:49:10 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 27 Oct 2025 19:33:14 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -30,6 +30,8 @@
             <content:encoded><![CDATA[Real-World Assets bring physical value onto blockchain. Learn what RWAs are, how tokenization works, and why Polkadot is best for RWA projects.]]></content:encoded>
             <category>Blog</category>
             <category>RWA</category>
+            <category>Blockchain Basics</category>
+            <category>Learn</category>
         </item>
         <item>
             <title><![CDATA[Q3 2025 Polkadot DAO recap: Supply cap, treasury decisions & what's next]]></title>
