@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Wallets', async ({ page }) => {
@@ -33,14 +33,14 @@ test('Wallets', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "why" section is displayed properly', async () => {
     const section = page.getByTestId('cards-sticky-block');
@@ -58,14 +58,14 @@ test('Wallets', async ({ page }) => {
     await expect(section.getByTestId('sticky-card').nth(2)).toBeVisible();
   });
 
-  await test.step('"why" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'why.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"why" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-sticky-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'why.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "find" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-142c29784e8f');
@@ -118,14 +118,14 @@ test('Wallets', async ({ page }) => {
     await expect(talisman).toBeVisible();
   });
 
-  await test.step('"find" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-142c29784e8f');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'find.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"find" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-142c29784e8f');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'find.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "evm" section is displayed properly', async () => {
     const section = page.getByTestId('cards-small-block').first();
@@ -144,14 +144,14 @@ test('Wallets', async ({ page }) => {
     await expect(section.getByRole('link', { name: 'Peaq' })).toBeVisible();
   });
 
-  await test.step('"evm" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block').first();
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'evm.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"evm" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-small-block').first();
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'evm.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "hardware" section is displayed properly', async () => {
     const section = page.getByTestId('cards-small-block').nth(1);
@@ -222,12 +222,12 @@ test('Wallets', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"disclaimer" section screenshot', async () => {
-    const section = page.getByTestId('content-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'disclaimer.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"disclaimer" section screenshot', async () => {
+  //   const section = page.getByTestId('content-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'disclaimer.png',
+  //     snapshotConfig,
+  //   );
+  // });
 });

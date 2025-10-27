@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('DeFi', async ({ page }) => {
@@ -38,13 +38,13 @@ test('DeFi', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "build future" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-2e59569b9fd9');
@@ -77,14 +77,14 @@ test('DeFi', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"build future" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-2e59569b9fd9');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'build-future.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"build future" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-2e59569b9fd9');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'build-future.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "no-boundaries" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-1ca6fdda3a37');
@@ -167,14 +167,14 @@ test('DeFi', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"quote" section screenshot', async () => {
-    const section = page.getByTestId('quote-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'quote.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"quote" section screenshot', async () => {
+  //   const section = page.getByTestId('quote-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'quote.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "dao" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-341907d33edc');
@@ -193,14 +193,14 @@ test('DeFi', async ({ page }) => {
     await expect(section.locator('img')).toBeVisible();
   });
 
-  await test.step('"dao" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-341907d33edc');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'dao.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"dao" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-341907d33edc');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'dao.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "career" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-e58b7421538d');

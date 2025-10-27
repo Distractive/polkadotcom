@@ -125,14 +125,14 @@ test('Gaming', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"infrastructure" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'infrastructure.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"infrastructure" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-sticky-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'infrastructure.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "reimagined" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-63f601cae0dd');

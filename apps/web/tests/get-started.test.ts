@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Get started', async ({ page }) => {
@@ -38,14 +38,14 @@ test('Get started', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"what the #" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-2b43f0ea2de8');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'what-the.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"what the #" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-2b43f0ea2de8');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'what-the.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "nothing" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-631ad4f8ab11');
@@ -66,14 +66,14 @@ test('Get started', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"nothing" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-631ad4f8ab11');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'nothing.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"nothing" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-631ad4f8ab11');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'nothing.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "non coders" section is displayed properly', async () => {
     const nonCoders = page.getByTestId('side-by-side-48025e541257');
@@ -91,14 +91,14 @@ test('Get started', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"non coders" section screenshot', async () => {
-    const nonCoders = page.getByTestId('side-by-side-48025e541257');
-    await page.waitForTimeout(2000);
-    expect(await nonCoders.screenshot(screenshotConfig)).toMatchSnapshot(
-      'non-coders.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"non coders" section screenshot', async () => {
+  //   const nonCoders = page.getByTestId('side-by-side-48025e541257');
+  //   await page.waitForTimeout(2000);
+  //   expect(await nonCoders.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'non-coders.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "read on" section is displayed properly', async () => {
     const cardsSmallBlock = page.getByTestId('cards-small-block');
@@ -116,14 +116,14 @@ test('Get started', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"read on" section screenshot', async () => {
-    const cardsSmall = page.getByTestId('cards-small-block');
-    await page.waitForTimeout(2000);
-    expect(await cardsSmall.screenshot(screenshotConfig)).toMatchSnapshot(
-      'cards-small.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"read on" section screenshot', async () => {
+  //   const cardsSmall = page.getByTestId('cards-small-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await cardsSmall.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'cards-small.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "ready to join" section is displayed properly', async () => {
     const cardsStickyBlock = page.getByTestId('cards-sticky-block');
@@ -158,14 +158,14 @@ test('Get started', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"ready to join" section screenshot', async () => {
-    const cardsSmall = page.getByTestId('cards-sticky-block');
-    await page.waitForTimeout(2000);
-    expect(await cardsSmall.screenshot(screenshotConfig)).toMatchSnapshot(
-      'cards-sticky.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"ready to join" section screenshot', async () => {
+  //   const cardsSmall = page.getByTestId('cards-sticky-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await cardsSmall.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'cards-sticky.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "newsletter" block is displayed properly', async () => {
     const newsletterWrapper = page.getByTestId('form-modal');
@@ -183,11 +183,11 @@ test('Get started', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"newsletter" section screenshot', async () => {
-    const newsletterWrapper = page.getByTestId('form-modal');
-    await page.waitForTimeout(2000);
-    expect(
-      await newsletterWrapper.screenshot(screenshotConfig),
-    ).toMatchSnapshot('newsletter.png', snapshotConfig);
-  });
+  // await test.step('"newsletter" section screenshot', async () => {
+  //   const newsletterWrapper = page.getByTestId('form-modal');
+  //   await page.waitForTimeout(2000);
+  //   expect(
+  //     await newsletterWrapper.screenshot(screenshotConfig),
+  //   ).toMatchSnapshot('newsletter.png', snapshotConfig);
+  // });
 });

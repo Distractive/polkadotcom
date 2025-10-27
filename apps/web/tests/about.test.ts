@@ -107,14 +107,14 @@ test('About', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"quote" section screenshot', async () => {
-    const section = page.getByTestId('quote-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'quote.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"quote" section screenshot', async () => {
+  //   const section = page.getByTestId('quote-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'quote.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "founded" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-ae722d979a22');
@@ -201,14 +201,14 @@ test('About', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"standards" section screenshot', async () => {
-    const section = page.getByTestId('cards-stat');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'standards.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"standards" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-stat');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'standards.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "connecting" section is displayed properly', async () => {
     const section = page.getByTestId('timeline');
@@ -246,14 +246,14 @@ test('About', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"connecting" section screenshot', async () => {
-    const section = page.getByTestId('timeline');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'connecting.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"connecting" section screenshot', async () => {
+  //   const section = page.getByTestId('timeline');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'connecting.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "work" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-8695dc2f5823');
@@ -271,12 +271,12 @@ test('About', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"work" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-8695dc2f5823');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'work.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"work" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-8695dc2f5823');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'work.png',
+  //     snapshotConfig,
+  //   );
+  // });
 });

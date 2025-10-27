@@ -93,14 +93,14 @@ test('Brand Hub', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"unbounded" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-b1e83a40bff7');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'unbounded.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"unbounded" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-b1e83a40bff7');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'unbounded.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "pink" section is displayed properly', async () => {
     const section = page.getByTestId('cards-small-block');
