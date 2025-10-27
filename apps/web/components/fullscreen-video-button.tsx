@@ -65,7 +65,7 @@ export function FullscreenVideoButton({
       const prevOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
       return () => {
-        document.body.style.overflow = prevOverflow;
+        document.body.style.overflow = prevOverflow || 'auto';
       };
     }
   }, [isOverlayOpen]);
@@ -164,7 +164,10 @@ export function FullscreenVideoButton({
           >
             {/* Video player container */}
             <div
-              className={cn('z-[10000] w-full max-w-6xl', playerClassName)}
+              className={cn(
+                'z-[10000] w-full aspect-video max-w-6xl',
+                playerClassName,
+              )}
               onClick={(e) => e.stopPropagation()}
               onKeyDown={(e) => e.stopPropagation()}
             >
