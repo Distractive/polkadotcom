@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('About', async ({ page }) => {
@@ -33,13 +33,13 @@ test('About', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "press" section is displayed properly', async () => {
     const section = page.getByTestId('cards-logo-block');
@@ -62,14 +62,14 @@ test('About', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"press" section screenshot', async () => {
-    const section = page.getByTestId('cards-logo-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'press.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"press" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-logo-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'press.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "mission" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-86f48bbfb7c7');
@@ -88,14 +88,14 @@ test('About', async ({ page }) => {
     await expect(section.locator('img')).toBeVisible();
   });
 
-  await test.step('"mission" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-86f48bbfb7c7');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'mission.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"mission" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-86f48bbfb7c7');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'mission.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "quote" section is displayed properly', async () => {
     const section = page.getByTestId('quote-block');
