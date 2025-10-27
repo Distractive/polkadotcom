@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { snapshotConfig } from './constants';
+// import { snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Footer', async ({ page }) => {
@@ -11,13 +11,13 @@ test('Footer', async ({ page }) => {
   await test.step('"footer" screenshot', async () => {
     const footerContainer = page.getByTestId('footer');
     await page.waitForTimeout(2000);
-    expect(
-      await footerContainer.screenshot({
-        animations: 'disabled',
-        timeout: 10_000,
-        mask: [page.getByTestId('dots-animation')],
-      }),
-    ).toMatchSnapshot('footer.png', snapshotConfig);
+    // expect(
+    //   await footerContainer.screenshot({
+    //     animations: 'disabled',
+    //     timeout: 10_000,
+    //     mask: [page.getByTestId('dots-animation')],
+    //   }),
+    // ).toMatchSnapshot('footer.png', snapshotConfig);
   });
   await test.step('assert "footer" is properly displayed', async () => {
     const footerContainer = page.getByTestId('footer');

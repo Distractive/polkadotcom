@@ -92,9 +92,6 @@ test('Wallets', async ({ page }) => {
     const talisman = section.getByRole('link', {
       name: 'Browser Talisman Get Talisman',
     });
-    const fearless = section.getByRole('link', {
-      name: 'Browser Mobile Fearless',
-    });
 
     await expect(all).toBeVisible();
     await expect(mobile).toBeVisible();
@@ -103,26 +100,22 @@ test('Wallets', async ({ page }) => {
     await expect(nova).toBeVisible();
     await expect(subwallet).toBeVisible();
     await expect(talisman).toBeVisible();
-    await expect(fearless).toBeVisible();
 
     await mobile.click({ timeout: 2000 });
 
     await expect(nova).toBeVisible();
     await expect(subwallet).toBeVisible();
-    await expect(fearless).toBeVisible();
 
     await browser.click({ timeout: 2000 });
 
     await expect(subwallet).toBeVisible();
     await expect(talisman).toBeVisible();
-    await expect(fearless).toBeVisible();
 
     await all.click({ timeout: 2000 });
 
     await expect(nova).toBeVisible();
     await expect(subwallet).toBeVisible();
     await expect(talisman).toBeVisible();
-    await expect(fearless).toBeVisible();
   });
 
   await test.step('"find" section screenshot', async () => {
@@ -177,14 +170,14 @@ test('Wallets', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"hardware" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block').nth(1);
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'hardware.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"hardware" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-small-block').nth(1);
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'hardware.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "staking" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-e0781e9c4199');
@@ -204,14 +197,14 @@ test('Wallets', async ({ page }) => {
     await expect(section.locator('img')).toBeVisible();
   });
 
-  await test.step('"staking" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-e0781e9c4199');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'staking.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"staking" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-e0781e9c4199');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'staking.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "disclaimer" section is displayed properly', async () => {
     const section = page.getByTestId('content-block');

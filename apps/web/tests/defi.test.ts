@@ -155,9 +155,6 @@ test('DeFi', async ({ page }) => {
       section.getByRole('link', { name: 'Chainflip powers secure and' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'How Polimec disrupts' }),
-    ).toBeVisible();
-    await expect(
       section.getByRole('link', { name: 'How Bifrost redefines cross-' }),
     ).toBeVisible();
   });
