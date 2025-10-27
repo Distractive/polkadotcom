@@ -1,9 +1,9 @@
 'use client';
 
+import { cn } from '@shared/ui';
 import dynamic from 'next/dynamic';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { cn } from '@shared/ui';
 
 // Dynamically import ReactPlayer to avoid SSR issues
 const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });

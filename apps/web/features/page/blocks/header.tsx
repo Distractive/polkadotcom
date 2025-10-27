@@ -123,10 +123,11 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         <div
           data-testid="header"
           className={cn(
-            'flex max-w-4xl flex-col justify-center gap-copy lg:pt-16 mx-auto',
+            'flex max-w-4xl flex-col justify-center gap-copy lg:pt-16 ',
             header.image
               ? 'px-gutter pt-card'
               : 'mt-gutter px-gutter pt-header-top',
+            header.video && 'mx-auto',
           )}
         >
           {breadcrumb && !header.hideBreadcrumbs && (

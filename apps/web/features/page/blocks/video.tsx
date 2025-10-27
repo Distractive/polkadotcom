@@ -31,11 +31,8 @@ export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
   const videoId = useId();
 
   const isSelfHosted = video.useSelfHostedVideo ?? false;
-  const videoUrl = isSelfHosted
-    ? typeof video.videoFile === 'string'
-      ? video.videoFile
-      : ''
-    : video.url || '';
+  const videoUrl = ((isSelfHosted ? video.videoFile : video.url) ||
+    '') as string;
 
   useEffect(() => {
     setIsClient(true);
@@ -51,9 +48,7 @@ export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
             | undefined;
           internal?.pause?.();
           internal?.pauseVideo?.();
-        } catch {
-          // Ignore errors during cleanup
-        }
+        } catch {}
       }
     };
   }, []);
@@ -61,21 +56,14 @@ export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
   const aspectStyle = {
     aspectRatio: useSquareAspectRatio ? '1 / 1' : '16 / 9',
   } as const;
-
   const placeholderImageUrl = video.placeholderImage?.asset
     ? urlForImage(video.placeholderImage.asset)
     : null;
   const usePlaceholderVideo = video.usePlaceholderVideo ?? false;
-  const placeholderVideoUrl =
-    typeof video.placeholderVideo === 'string' ? video.placeholderVideo : null;
+  const placeholderVideoUrl = (video.placeholderVideo ?? null) as string | null;
   const isFullScreen = video.isFullScreen ?? false;
 
-  const hasPlaceholder = Boolean(
-    (usePlaceholderVideo && placeholderVideoUrl) || placeholderImageUrl,
-  );
-  const [phase, setPhase] = useState<'placeholder' | 'playing'>(
-    hasPlaceholder ? 'placeholder' : 'playing',
-  );
+  const [phase, setPhase] = useState<'placeholder' | 'playing'>('placeholder');
 
   return (
     <div className={cn(className)} data-testid="video-block">
@@ -86,8 +74,8 @@ export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
         )}
         style={aspectStyle}
       >
-        {/* Unified placeholder overlay */}
-        {hasPlaceholder && phase === 'placeholder' && (
+        {/* Placeholder overlay */}
+        {phase === 'placeholder' && (
           <PlaceholderOverlay
             imageUrl={placeholderImageUrl}
             videoUrl={usePlaceholderVideo ? placeholderVideoUrl : null}
@@ -119,13 +107,7 @@ export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
               width="100%"
               height="100%"
               controls={isSelfHosted}
-              playing={
-                isSelfHosted
-                  ? phase === 'playing'
-                  : placeholderImageUrl
-                    ? phase === 'playing'
-                    : false
-              }
+              playing={phase === 'playing'}
               loop
               wrapper={Wrapper}
               config={{
