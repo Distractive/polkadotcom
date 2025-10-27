@@ -60,7 +60,7 @@ export function CustomUrl({
         <div className={className}>
           <span className="inline-flex items-center gap-2">
             <span className="flex-1">{children}</span>
-            {value.external && !disableArrow && (
+            {value?.external?.startsWith('http') && !disableArrow && (
               <Icon
                 variant="arrowRightUp"
                 className={cn(
@@ -81,7 +81,7 @@ export function CustomUrl({
     <Link
       tabIndex={tabIndex}
       href={value?.external || `/${slug}` || ''}
-      target={value.external ? '_blank' : '_self'}
+      target={value?.external?.startsWith('http') ? '_blank' : '_self'}
       className={className}
       prefetch={false}
       onClick={onClick}
@@ -91,7 +91,7 @@ export function CustomUrl({
       ) : (
         <span className="inline-flex items-center gap-2">
           <span className="flex-1"> {children}</span>
-          {value.external && !disableArrow && (
+          {value?.external?.startsWith('http') && !disableArrow && (
             <Icon
               variant="arrowRightUp"
               className={cn(
