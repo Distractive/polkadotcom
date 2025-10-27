@@ -27,17 +27,6 @@ export default defineType({
       description:
         'External URL (https://...) or internal path (/blog, /case-studies)',
       hidden: ({ parent, value }) => !value && !!parent?.internal,
-      validation: (Rule) =>
-        Rule.custom((value: string) => {
-          if (!value) return true;
-
-          if (value.startsWith('/')) return true;
-
-          if (value.startsWith('https://') || value.startsWith('mailto:'))
-            return true;
-
-          return 'Must be a relative path starting with / or an external URL starting with https://';
-        }),
     },
     {
       name: 'internal',
@@ -49,7 +38,6 @@ export default defineType({
         { type: 'post' },
         { type: 'glossary' },
         { type: 'glossaryEntry' },
-        { type: 'caseStudy' },
       ],
       hidden: ({ parent, value }) => !value && !!parent?.external,
     },

@@ -1,6 +1,7 @@
 import type { customUrlSelection } from '@/sanity/selections/custom-url';
 import type { TypeFromSelection } from 'groqd';
 import Link from 'next/link';
+import { stegaClean } from '@sanity/client/stega';
 
 import {
   BLOG_POSTTYPE,
@@ -30,7 +31,7 @@ export function CustomUrl({
   isNested,
   onClick,
 }: Props) {
-  let slug = value?.external || value?.internal?.slug;
+  let slug = stegaClean(value?.external || value?.internal?.slug);
   if (value?.internal && value?.internal._type === 'post') {
     const parentSlug = (() => {
       switch (value?.internal?.post_type) {
@@ -84,7 +85,7 @@ export function CustomUrl({
   return value ? (
     <Link
       tabIndex={tabIndex}
-      href={value?.external || `/${slug}` || ''}
+      href={(value?.external ? slug : `/${slug}`) || ''}
       target={value?.external?.startsWith('http') ? '_blank' : '_self'}
       className={className}
       prefetch={false}
