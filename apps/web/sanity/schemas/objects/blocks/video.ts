@@ -19,6 +19,7 @@ export default defineType({
         'Turn on to use a 1:1 aspect ratio for the placeholder and video container.',
       type: 'boolean',
       initialValue: false,
+      hidden: ({ parent }) => !parent?.useSelfHostedVideo,
     }),
     defineField({
       name: 'isFullScreen',
