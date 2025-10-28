@@ -90,6 +90,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
               cards={{
                 _key: 'related-terms',
                 heading: 'Related Terms',
+                useRichText: false,
+                body: '',
+                richBody: null,
                 items: data.relatedTerms.map((term) => ({
                   _key: term._id,
                   heading: term.term,

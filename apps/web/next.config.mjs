@@ -113,6 +113,7 @@ const cspSources = {
     'https://alb.reddit.com',
     'https://*.ad360.media',
   ],
+  'media-src': ["'self'", 'https://cdn.sanity.io'],
   'object-src': ["'none'"],
   'script-src': [
     "'self'",

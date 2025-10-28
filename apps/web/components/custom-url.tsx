@@ -1,4 +1,5 @@
 import type { customUrlSelection } from '@/sanity/selections/custom-url';
+import { stegaClean } from '@sanity/client/stega';
 import type { TypeFromSelection } from 'groqd';
 import Link from 'next/link';
 
@@ -30,7 +31,7 @@ export function CustomUrl({
   isNested,
   onClick,
 }: Props) {
-  let slug = value?.external || value?.internal?.slug;
+  let slug = stegaClean(value?.external || value?.internal?.slug);
   if (value?.internal && value?.internal._type === 'post') {
     const parentSlug = (() => {
       switch (value?.internal?.post_type) {
@@ -51,6 +52,10 @@ export function CustomUrl({
     slug = `glossary/${slug}`;
   }
 
+  if (value?.internal && value?.internal._type === 'caseStudy') {
+    slug = `case-studies/${slug}`;
+  }
+
   // isNested is for buttons inside of cards and prevents hydration errors due to nested <a> tags
   if (isNested) {
     return value ? (
@@ -60,7 +65,7 @@ export function CustomUrl({
         <div className={className}>
           <span className="inline-flex items-center gap-2">
             <span className="flex-1">{children}</span>
-            {value.external && !disableArrow && (
+            {value?.external?.startsWith('http') && !disableArrow && (
               <Icon
                 variant="arrowRightUp"
                 className={cn(
@@ -80,8 +85,8 @@ export function CustomUrl({
   return value ? (
     <Link
       tabIndex={tabIndex}
-      href={value?.external || `/${slug}` || ''}
-      target={value.external ? '_blank' : '_self'}
+      href={(value?.external ? slug : `/${slug}`) || ''}
+      target={value?.external?.startsWith('http') ? '_blank' : '_self'}
       className={className}
       prefetch={false}
       onClick={onClick}
@@ -91,7 +96,7 @@ export function CustomUrl({
       ) : (
         <span className="inline-flex items-center gap-2">
           <span className="flex-1"> {children}</span>
-          {value.external && !disableArrow && (
+          {value?.external?.startsWith('http') && !disableArrow && (
             <Icon
               variant="arrowRightUp"
               className={cn(

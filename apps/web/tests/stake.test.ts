@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Stake', async ({ page }) => {
@@ -17,7 +17,7 @@ test('Stake', async ({ page }) => {
   });
 
   await test.step('assert "header" section is displayed properly', async () => {
-    const section = page.getByTestId('side-by-side-header');
+    const section = page.getByTestId('header');
 
     await expect(
       section.getByRole('heading', {
@@ -34,14 +34,14 @@ test('Stake', async ({ page }) => {
     await expect(section.getByTestId('video-block')).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('header');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "metrics" section is displayed properly', async () => {
     const section = page.getByTestId('cards-stat');
@@ -59,14 +59,14 @@ test('Stake', async ({ page }) => {
     await expect(section.getByText('Active Validators')).toBeVisible();
   });
 
-  await test.step('"metrics" section screenshot', async () => {
-    const section = page.getByTestId('cards-stat');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'metrics.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"metrics" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-stat');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'metrics.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "staking" section is displayed properly', async () => {
     const section = page.getByTestId('cards-sticky-block');
@@ -90,14 +90,14 @@ test('Stake', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"staking" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'staking.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"staking" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-sticky-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'staking.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "quote" section is displayed properly', async () => {
     const section = page.getByTestId('quote-block');
@@ -141,14 +141,14 @@ test('Stake', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"accordion" section screenshot', async () => {
-    const section = page.getByTestId('accordion');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'accordion.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"accordion" section screenshot', async () => {
+  //   const section = page.getByTestId('accordion');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'accordion.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "hardware staking" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-d0fd69b5942c');

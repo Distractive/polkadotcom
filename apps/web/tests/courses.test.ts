@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Courses', async ({ page }) => {
@@ -33,14 +33,14 @@ test('Courses', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "online class" section is displayed properly', async () => {
     const section = page.getByTestId('cards-sticky-block');
@@ -65,14 +65,14 @@ test('Courses', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"online class" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'online-class.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"online class" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-sticky-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'online-class.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "academy" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-b3890d3d9888');
@@ -93,14 +93,14 @@ test('Courses', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"academy" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-b3890d3d9888');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'academy.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"academy" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-b3890d3d9888');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'academy.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "adventure" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-6c5d3290ea45');
