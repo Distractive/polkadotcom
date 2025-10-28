@@ -192,8 +192,8 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
         className={cn(
           'col-span-full flex flex-col items-start justify-center gap-copy',
           header.image || header.video
-            ? 'px-gutter pt-card lg:order-1 lg:col-span-6 lg:col-start-1 '
-            : 'mt-gutter px-gutter pt-header-top lg:col-span-8 lg:col-start-3',
+            ? 'px-gutter lg:order-1 lg:col-span-6 lg:col-start-1 '
+            : 'mt-gutter px-gutter lg:col-span-8 lg:col-start-3',
         )}
       >
         {breadcrumb && !header.hideBreadcrumbs && (
