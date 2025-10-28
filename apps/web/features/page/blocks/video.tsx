@@ -65,8 +65,9 @@ export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
 
   const [phase, setPhase] = useState<'placeholder' | 'playing'>('placeholder');
 
-  // Only show placeholder if there's content to show (video to play OR placeholder content)
-  const hasContent = videoUrl || placeholderImageUrl || placeholderVideoUrl;
+  if (!videoUrl) {
+    return null;
+  }
 
   return (
     <div className={cn(className)} data-testid="video-block">
@@ -78,7 +79,7 @@ export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
         style={aspectStyle}
       >
         {/* Placeholder overlay */}
-        {hasContent && phase === 'placeholder' && (
+        {phase === 'placeholder' && (
           <PlaceholderOverlay
             imageUrl={placeholderImageUrl}
             videoUrl={usePlaceholderVideo ? placeholderVideoUrl : null}
