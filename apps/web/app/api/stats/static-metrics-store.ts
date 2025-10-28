@@ -1,5 +1,5 @@
 // Auto-generated metrics from build process
-// Generated on: 2025-10-23T13:47:36.569Z
+// Generated on: 2025-10-27T19:31:54.413Z
 
 export const staticMetricsStore = {
   getActiveValidators: '600',
@@ -14,6 +14,6 @@ export const staticMetricsStore = {
   getTotalNominators: 29179,
   getTotalReferendums: '1,758 referenda',
   getTotalStablecoinsUSD: null,
-  getTotalStakers: 65699,
+  getTotalStakers: 0,
   getTotalUniqueAccounts: 17764662,
 };
