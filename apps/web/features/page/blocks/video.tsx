@@ -65,6 +65,10 @@ export function VideoBlock({ video, className, useSquareAspectRatio }: Props) {
 
   const [phase, setPhase] = useState<'placeholder' | 'playing'>('placeholder');
 
+  if (!videoUrl) {
+    return null;
+  }
+
   return (
     <div className={cn(className)} data-testid="video-block">
       <div

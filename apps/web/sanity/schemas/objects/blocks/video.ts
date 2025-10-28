@@ -15,10 +15,10 @@ export default defineType({
     defineField({
       name: 'useSquareAspectRatio',
       title: 'Use Square Aspect Ratio',
-      description:
-        'Turn on to use a 1:1 aspect ratio for the placeholder and video container.',
+      description: 'Forces a 1:1 aspect ratio for the video player.',
       type: 'boolean',
       initialValue: false,
+      hidden: ({ parent }) => !parent?.useSelfHostedVideo,
     }),
     defineField({
       name: 'isFullScreen',
@@ -70,8 +70,7 @@ export default defineType({
       options: {
         accept: 'video/*',
       },
-      hidden: ({ parent }) =>
-        !parent?.useSelfHostedVideo || !parent?.usePlaceholderVideo,
+      hidden: ({ parent }) => !parent?.usePlaceholderVideo,
     }),
   ],
 });
