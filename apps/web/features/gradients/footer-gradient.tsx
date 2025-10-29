@@ -16,14 +16,20 @@ const gradients = {
     `,
     backgroundSize: '100% 100%',
     backgroundRepeat: 'no-repeat',
-  }
+  },
 } as const;
 
 export default function FooterGradient() {
   return (
     <div className="absolute inset-0 flex items-center justify-center -z-10 overflow-hidden">
-      <div className="w-[2600px] h-full flex-shrink-0 dark:hidden" style={gradients.light} />
-      <div className="w-[2600px] h-full flex-shrink-0 hidden dark:block" style={gradients.dark} />
+      <div
+        className="w-[2600px] h-full flex-shrink-0 dark:hidden"
+        style={gradients.light}
+      />
+      <div
+        className="w-[2600px] h-full flex-shrink-0 hidden dark:block"
+        style={gradients.dark}
+      />
     </div>
   );
 }

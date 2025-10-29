@@ -3,9 +3,9 @@
 import type { navigationMenuSelection } from '@/sanity/selections/navigation/navigation-menu';
 import { stegaClean } from '@sanity/client/stega';
 import type { TypeFromSelection } from 'groqd';
-import Link from 'next/link';
-import Image from 'next/image';
 import { useTheme } from 'next-themes';
+import Image from 'next/image';
+import Link from 'next/link';
 
 import { CustomUrl } from '@/components/custom-url';
 import { Logo } from '@/components/logo';

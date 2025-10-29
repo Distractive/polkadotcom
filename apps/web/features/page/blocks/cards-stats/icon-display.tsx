@@ -3,8 +3,8 @@
 import { cn } from '@shared/ui';
 import { useTheme } from 'next-themes';
 
-import type { cardStatSelection } from '@/sanity/selections/blocks/card-stat';
 import { urlForImage } from '@/sanity/lib/image';
+import type { cardStatSelection } from '@/sanity/selections/blocks/card-stat';
 import type { TypeFromSelection } from 'groqd';
 
 interface IconDisplayProps {
