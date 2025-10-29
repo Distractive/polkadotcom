@@ -6,7 +6,7 @@ import type { TypeFromSelection } from 'groqd';
 
 interface IconDisplayProps {
   icon: TypeFromSelection<typeof cardStatSelection>['icon'];
-  darkModeIcon: TypeFromSelection<typeof cardStatSelection>['darkModeIcon'];
+  darkModeIcon?: TypeFromSelection<typeof cardStatSelection>['darkModeIcon'];
   makeIconFullWidth?: boolean | null;
 }
 
