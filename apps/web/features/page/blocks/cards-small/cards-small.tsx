@@ -1,9 +1,8 @@
-import type { cardsSmallSelection } from '@/sanity/selections/blocks/cards-small';
-import type { TypeFromSelection } from 'groqd';
-
-import { Heading, cn } from '@shared/ui';
-
 import { urlForImage } from '@/sanity/lib/image';
+import type { cardsSmallSelection } from '@/sanity/selections/blocks/cards-small';
+import { PortableText } from '@portabletext/react';
+import { Heading, cn } from '@shared/ui';
+import type { TypeFromSelection } from 'groqd';
 import CardSmallBlock from './card-small';
 
 interface Props {
@@ -17,9 +16,69 @@ export function CardsSmallBlock({ cards }: Props) {
       key={cards._key}
       className="grid-system max-width relative gap-y-section px-gutter"
     >
-      <div className="col-span-full flex flex-col gap-copy lg:col-span-8">
+      <div
+        className={cn(
+          'col-span-full flex flex-col gap-copy lg:col-span-8',
+          cards.isHeadingCenteredMobile && 'items-center text-center',
+          cards.isHeadingCenteredDesktop &&
+            'lg:items-center lg:text-center lg:col-start-3',
+        )}
+      >
         <Heading variant="h2">{cards.heading}</Heading>
-        {cards.body && <p>{cards.body}</p>}
+        {cards.body && !cards.useRichText && (
+          <p className="text-black">{cards.body}</p>
+        )}
+        {cards.richBody && cards.useRichText && (
+          <div className="prose">
+            <PortableText
+              value={cards.richBody || []}
+              components={{
+                block: {
+                  normal: ({ children }) => (
+                    <p className="mb-3 text-black">{children}</p>
+                  ),
+                  smallprint: ({ children }) => (
+                    <p className="mb-4 text-sm text-black">{children}</p>
+                  ),
+                },
+                marks: {
+                  strong: ({ children }) => <strong>{children}</strong>,
+                  link: ({ children, value }) => {
+                    if (!value || !value.href) {
+                      return children;
+                    }
+
+                    const isExternal = value.href.startsWith('http');
+
+                    return (
+                      <a
+                        className="inline-flex font-default font-bold text-grey-900 underline underline-offset-2 transition-colors hover:text-pink"
+                        href={value.href}
+                        target={isExternal ? '_blank noopener' : '_self'}
+                      >
+                        {children}
+                      </a>
+                    );
+                  },
+                },
+                list: {
+                  bullet: ({ children }) => (
+                    <ul className="flex list-inside list-disc flex-col gap-copy">
+                      {children}
+                    </ul>
+                  ),
+                },
+                listItem: {
+                  bullet: ({ children }) => <li>{children}</li>,
+                },
+                types: {
+                  break: () => <br />,
+                  unsupported: () => null,
+                },
+              }}
+            />
+          </div>
+        )}
       </div>
       <div
         className={cn(

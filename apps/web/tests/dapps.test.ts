@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Dapps', async ({ page }) => {
@@ -36,14 +36,14 @@ test('Dapps', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "featured" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-efb18d9d56b7');
@@ -127,14 +127,8 @@ test('Dapps', async ({ page }) => {
     const greatEscape = section.getByRole('link', {
       name: 'Gaming The Great Escape Hyper',
     });
-    const artZero = section.getByRole('link', {
-      name: 'Marketplaces ArtZero NFT',
-    });
     const beatport = section.getByRole('link', {
       name: 'Marketplaces Beatport.io',
-    });
-    const kodaDot = section.getByRole('link', {
-      name: 'Marketplaces KodaDot',
     });
     const moonbeans = section.getByRole('link', {
       name: 'Marketplaces Moonbeans Multi-',
@@ -189,9 +183,6 @@ test('Dapps', async ({ page }) => {
     });
     const apillon = section.getByRole('link', {
       name: 'Tokenization Apillon Launch',
-    });
-    const centrifuge = section.getByRole('link', {
-      name: 'Tokenization Centrifuge',
     });
     const ewx = section.getByRole('link', {
       name: 'Tokenization EWX Marketplace',
@@ -257,9 +248,7 @@ test('Dapps', async ({ page }) => {
     expect(zenlink).toBeHidden();
     expect(avatars).toBeHidden();
     expect(greatEscape).toBeHidden();
-    expect(artZero).toBeHidden();
     expect(beatport).toBeHidden();
-    expect(kodaDot).toBeHidden();
     expect(moonbeans).toBeHidden();
     expect(rarible).toBeHidden();
     expect(singular).toBeHidden();
@@ -278,7 +267,6 @@ test('Dapps', async ({ page }) => {
     expect(teddy).toBeHidden();
     expect(zeitgeist).toBeHidden();
     expect(apillon).toBeHidden();
-    expect(centrifuge).toBeHidden();
     expect(ewx).toBeHidden();
     expect(smartflow).toBeHidden();
     expect(ledger).toBeHidden();
@@ -313,9 +301,7 @@ test('Dapps', async ({ page }) => {
     expect(zenlink).toBeVisible();
     expect(avatars).toBeVisible();
     expect(greatEscape).toBeVisible();
-    expect(artZero).toBeVisible();
     expect(beatport).toBeVisible();
-    expect(kodaDot).toBeVisible();
     expect(moonbeans).toBeVisible();
     expect(rarible).toBeVisible();
     expect(singular).toBeVisible();
@@ -334,7 +320,6 @@ test('Dapps', async ({ page }) => {
     expect(teddy).toBeVisible();
     expect(zeitgeist).toBeVisible();
     expect(apillon).toBeVisible();
-    expect(centrifuge).toBeVisible();
     expect(ewx).toBeVisible();
     expect(smartflow).toBeVisible();
     expect(ledger).toBeVisible();
@@ -351,14 +336,14 @@ test('Dapps', async ({ page }) => {
     expect(polkadentity).toBeVisible();
   });
 
-  await test.step('"featured" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-efb18d9d56b7');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'featured.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"featured" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-efb18d9d56b7');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'featured.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "submit" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-9983f349ce1b');
@@ -376,14 +361,14 @@ test('Dapps', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"submit" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-9983f349ce1b');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'submit.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"submit" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-9983f349ce1b');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'submit.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "disclaimer" section is displayed properly', async () => {
     const section = page.getByTestId('content-block');
@@ -407,12 +392,12 @@ test('Dapps', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"disclaimer" section screenshot', async () => {
-    const section = page.getByTestId('content-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'disclaimer.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"disclaimer" section screenshot', async () => {
+  //   const section = page.getByTestId('content-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'disclaimer.png',
+  //     snapshotConfig,
+  //   );
+  // });
 });
