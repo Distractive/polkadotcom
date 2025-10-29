@@ -45,8 +45,8 @@ export function MenuDesktop({
           onMouseLeave={handleCloseMenu}
           id={`${stegaClean(section.heading)}`}
           className={cn(
-            'mb-auto mr-auto flex items-start overflow-hidden backdrop-blur-md border border-grey-200',
-            'rounded-2xl bg-white dark:bg-black transition-colors !text-pink',
+            'mb-auto mr-auto flex items-start overflow-hidden backdrop-blur-md border border-grey-200 dark:border-grey-900',
+            'rounded-2xl bg-white dark:bg-black transition-colors',
             section.heading === hovered
               ? 'pointer-events-auto visible'
               : 'pointer-events-none invisible',
@@ -68,8 +68,10 @@ export function MenuDesktop({
                   key={item.link.label}
                   className={cn(
                     'flex min-w-[21rem]',
-                    !isInLastRow && 'border-b border-grey-200',
-                    isLeftColumn && 'border-r border-grey-200',
+                    !isInLastRow &&
+                      'border-b border-grey-200 dark:border-grey-900',
+                    isLeftColumn &&
+                      'border-r border-grey-200 dark:border-grey-900',
                   )}
                 >
                   <CustomUrl
@@ -95,7 +97,7 @@ export function MenuDesktop({
               <aside
                 className={cn(
                   'group grid h-full max-w-[21rem] gap-copy p-nav',
-                  'cursor-pointer border-l border-grey-300',
+                  'cursor-pointer border-l border-grey-200 dark:border-grey-900',
                 )}
               >
                 <img
