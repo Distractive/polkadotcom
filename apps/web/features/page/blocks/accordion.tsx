@@ -112,7 +112,7 @@ export function AccordionBlock({ accordion }: Props) {
                 <AccordionContent
                   className={cn(
                     index === validItems.length - 1 && 'rounded-b-2xl border-b',
-                    'border-x border-grey-300 bg-grey-50 px-gutter py-gutter',
+                    'border-x border-grey-300 dark:bg-black bg-grey-50 px-gutter py-gutter',
                   )}
                 >
                   {item.content && (
@@ -126,7 +126,9 @@ export function AccordionBlock({ accordion }: Props) {
                             </Heading>
                           ),
                           normal: ({ children }) => (
-                            <p className="text-black dark:text-white md:w-3/4">{children}</p>
+                            <p className="text-black dark:text-white md:w-3/4">
+                              {children}
+                            </p>
                           ),
                         },
                         list: {
