@@ -45,7 +45,7 @@ export function MenuDesktop({
           onMouseLeave={handleCloseMenu}
           id={`${stegaClean(section.heading)}`}
           className={cn(
-            'mb-auto mr-auto flex items-start overflow-hidden backdrop-blur-md border border-grey-200 dark:border-grey-900',
+            'mb-auto mr-auto flex items-start overflow-hidden backdrop-blur-xl border border-grey-200 dark:border-grey-900',
             'rounded-2xl bg-white dark:bg-white/10 transition-colors',
             section.heading === hovered
               ? 'pointer-events-auto visible'
