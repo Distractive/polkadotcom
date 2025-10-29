@@ -71,7 +71,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
           <div
             data-testid="navbar"
             className={cn(
-              'flex h-full items-center justify-center pl-4 gap-1 sm:gap-4',
+              'flex h-full items-center justify-center pl-4 gap-1 sm:gap-1',
               'rounded-[3rem]',
             )}
           >
@@ -146,7 +146,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
                   alt={currentTheme === 'dark' ? 'Dark mode' : 'Light mode'}
                   width={18}
                   height={18}
-                  className="w-4 h-auto"
+                  className="w-[16px] h-auto"
                 />
               </button>
             </div>
