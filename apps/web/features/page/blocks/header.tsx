@@ -86,7 +86,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
     return (
       <header
         className={cn(
-          'max-width relative mb-page flex flex-col overflow-x-hidden bg-white dark:bg-black transition-colors',
+          'max-width relative mb-page flex flex-col overflow-x-hidden',
           className,
         )}
       >
@@ -155,7 +155,7 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
     <header
       data-testid="side-by-side-header"
       className={cn(
-        'grid-system max-width relative col-span-full mb-16 overflow-x-hidden lg:mb-page bg-white dark:bg-black transition-colors duration-150',
+        'grid-system max-width relative col-span-full mb-16 overflow-x-hidden lg:mb-page',
         className,
         header.image || header.video ? 'pt-32' : 'pt-0',
         // Hide margin if no image or title
