@@ -58,7 +58,7 @@ export default async function RootLayout({
   const navigation = await getNavigation(isDraftModeEnabled);
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {isProduction && isProductionDeployment && (
           // biome-ignore lint/style/useSelfClosingElements: <Allowed>

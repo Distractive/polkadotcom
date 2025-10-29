@@ -98,7 +98,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
                   <li
                     key={item.heading}
                     onMouseEnter={() => handleCurrentHeading(item.heading)}
-                    className="relative flex h-full cursor-pointer items-center justify-center transition-colors duration-100 ease-in-out "
+                    className="relative flex h-full cursor-pointer items-center justify-center transition-colors ease-in-out text-white"
                   >
                     <CustomUrl
                       value={item.link}
@@ -106,7 +106,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
                       className={cn(
                         'whitespace-nowrap',
                         item.link &&
-                          'duration-100 ease-in-out hover:text-pink focus:text-pink peer-focus:text-pink',
+                          'ease-in-out hover:text-pink focus:text-pink peer-focus:text-pink',
                       )}
                     >
                       {item.heading}
