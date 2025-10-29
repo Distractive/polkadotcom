@@ -25,7 +25,7 @@ interface Props {
 
 export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
   const { isSearchOpen } = useSearchState();
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   const handleItemSelect = () => {
     setHovered('');
@@ -35,6 +35,8 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
+
+  const currentTheme = resolvedTheme || theme;
 
   const handleCurrentHeading = (heading: string) => {
     setHovered(heading);
@@ -137,11 +139,11 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
               >
                 <Image
                   src={
-                    theme === 'dark'
+                    currentTheme === 'dark'
                       ? '/icons/moon-filled.svg'
                       : '/icons/moon.svg'
                   }
-                  alt={theme === 'dark' ? 'Dark mode' : 'Light mode'}
+                  alt={currentTheme === 'dark' ? 'Dark mode' : 'Light mode'}
                   width={18}
                   height={18}
                   className="w-4 h-auto"
