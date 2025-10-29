@@ -32,7 +32,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
         id="page-menu"
         ref={ref}
         className={cn(
-          'mx-gutter w-full md:w-[20rem] rounded-2xl border border-grey-200 dark:border-grey-900 bg-white dark:bg-black',
+          'mx-gutter w-full md:w-[20rem] rounded-2xl border border-grey-200 dark:border-grey-900 bg-white dark:bg-white/5 backdrop-blur-md',
           'max-h-[80vh] overflow-y-auto overscroll-contain',
           'transition-all duration-300 ease-in-out',
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none',
@@ -42,7 +42,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
           {menu.map((section, sectionIndex) => {
             return (
               <AccordionItem key={section.heading} value={section.heading}>
-                <div className="relative flex text-black dark:text-white items-center justify-center bg-white dark:bg-black border-r border-b border-grey-200 dark:border-grey-900 transition-colors">
+                <div className="relative flex text-black dark:text-white items-center justify-center bg-white dark:bg-white/5 border-r border-b border-grey-200 dark:border-grey-900 transition-colors">
                   {section.link && (
                     <CustomUrl
                       value={section.link}
@@ -78,7 +78,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                       <span
                         key={item.link.label}
                         className={cn(
-                          'flex h-full w-full text-left text-black dark:text-white shadow-internal-border transition-colors',
+                          'flex h-full w-full text-left text-black dark:text-white shadow-internal-border dark:shadow-[1px_1px_0px_0px_rgba(64,64,64,1)] transition-colors',
                           lastLink &&
                             'border-b border-grey-200 dark:border-grey-900',
                           lastSection && lastLink && 'border-none',

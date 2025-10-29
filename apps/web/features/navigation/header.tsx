@@ -67,7 +67,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
   return (
     <div className="max-width z-40 mt-4">
       <div className="relative flex h-nav-height flex-shrink-0 items-center justify-between px-gutter w-full">
-        <div className="rounded-[3rem] gradient-border-wrapper bg-black/30 backdrop-blur-md h-full">
+        <div className="rounded-[3rem] gradient-border-wrapper bg-black/30 dark:bg-white/10 backdrop-blur-md h-full">
           <div
             data-testid="navbar"
             className={cn(
