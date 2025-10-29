@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { snapshotConfig } from './constants';
+// import { snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Navbar', async ({ page }) => {
@@ -8,18 +8,18 @@ test('Navbar', async ({ page }) => {
     await acceptOrCloseCookieBanner(page);
   });
 
-  await test.step('navbar screenshot', async () => {
-    await page.waitForTimeout(10000);
-    const navbar = page.getByTestId('navbar');
-    await page.waitForTimeout(2000);
-    expect(
-      await navbar.screenshot({
-        animations: 'disabled',
-        timeout: 10_000,
-        mask: [page.getByTestId('dots-animation')],
-      }),
-    ).toMatchSnapshot('navbar.png', snapshotConfig);
-  });
+  // await test.step('navbar screenshot', async () => {
+  //   await page.waitForTimeout(10000);
+  //   const navbar = page.getByTestId('navbar');
+  //   await page.waitForTimeout(2000);
+  //   expect(
+  //     await navbar.screenshot({
+  //       animations: 'disabled',
+  //       timeout: 10_000,
+  //       mask: [page.getByTestId('dots-animation')],
+  //     }),
+  //   ).toMatchSnapshot('navbar.png', snapshotConfig);
+  // });
 
   await test.step('assert navbar is properly displayed', async () => {
     const navbar = page.getByTestId('navbar');

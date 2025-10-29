@@ -22,13 +22,11 @@ export default defineType({
     },
     {
       name: 'external',
-      type: 'url',
-      title: 'URL',
+      type: 'string',
+      title: 'URL or Path',
+      description:
+        'External URL (https://...), internal path (/case-studies), or anchor link (#section-name)',
       hidden: ({ parent, value }) => !value && !!parent?.internal,
-      validation: (Rule) =>
-        Rule.uri({
-          scheme: ['https', 'mailto'],
-        }),
     },
     {
       name: 'internal',

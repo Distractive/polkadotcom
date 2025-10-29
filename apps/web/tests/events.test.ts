@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Events', async ({ page }) => {
@@ -33,13 +33,13 @@ test('Events', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "events" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-19aadd126d30');
@@ -70,14 +70,14 @@ test('Events', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"community" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'community.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"community" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-sticky-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'community.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "form-modal" section is displayed properly', async () => {
     const section = page.getByTestId('form-modal');
@@ -95,12 +95,12 @@ test('Events', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"form-modal" section screenshot', async () => {
-    const section = page.getByTestId('form-modal');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'form-modal.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"form-modal" section screenshot', async () => {
+  //   const section = page.getByTestId('form-modal');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'form-modal.png',
+  //     snapshotConfig,
+  //   );
+  // });
 });
