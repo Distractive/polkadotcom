@@ -77,11 +77,11 @@ export function CardTags({ tags, cards, useFourColumns }: Props) {
           key="all"
           className={cn(
             'flex cursor-pointer items-center justify-center rounded  text-sm leading-relaxed  transition-colors  ',
-            'hover:bg-black hover:text-white',
+            'hover:bg-black hover:text-white dark:hover:bg-grey-500',
             'relative',
             currentTag === 'All'
               ? 'bg-black text-white dark:text-black dark:bg-white'
-              : 'bg-grey-200 text-black dark:text-white',
+              : 'bg-grey-200 text-black dark:bg-grey-900 dark:text-white',
           )}
         >
           <button
@@ -102,10 +102,11 @@ export function CardTags({ tags, cards, useFourColumns }: Props) {
           <li
             key={tag}
             className={cn(
-              'flex cursor-pointer flex-wrap items-center justify-center rounded bg-grey-200 text-sm  leading-relaxed text-black dark:text-white transition-colors',
-              'hover:bg-black hover:text-white',
+              'flex cursor-pointer flex-wrap items-center justify-center rounded bg-grey-200 text-sm  leading-relaxed text-black dark:bg-grey-900 dark:text-white transition-colors',
+              'hover:bg-black hover:text-white dark:hover:bg-grey-500',
               'relative',
-              currentTag === tag && 'bg-black text-white dark:text-black dark:bg-white',
+              currentTag === tag &&
+                'bg-black text-white dark:text-black dark:bg-white',
             )}
             aria-label={`Filter by ${tag}`}
           >
