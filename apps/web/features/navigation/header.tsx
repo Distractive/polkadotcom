@@ -1,8 +1,11 @@
+'use client';
+
 import type { navigationMenuSelection } from '@/sanity/selections/navigation/navigation-menu';
 import { stegaClean } from '@sanity/client/stega';
 import type { TypeFromSelection } from 'groqd';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTheme } from 'next-themes';
 
 import { CustomUrl } from '@/components/custom-url';
 import { Logo } from '@/components/logo';
@@ -22,10 +25,15 @@ interface Props {
 
 export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
   const { isSearchOpen } = useSearchState();
+  const { theme, setTheme } = useTheme();
 
   const handleItemSelect = () => {
     setHovered('');
     setIsOpen(false);
+  };
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
   const handleCurrentHeading = (heading: string) => {
@@ -123,12 +131,17 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
             >
               <button
                 type="button"
-                className="rounded-full "
+                onClick={toggleTheme}
+                className="rounded-full p-2 hover:bg-white/10 transition-colors"
                 aria-label="Toggle dark mode"
               >
                 <Image
-                  src="/icons/moon.svg"
-                  alt="Moon"
+                  src={
+                    theme === 'dark'
+                      ? '/icons/moon-filled.svg'
+                      : '/icons/moon.svg'
+                  }
+                  alt={theme === 'dark' ? 'Dark mode' : 'Light mode'}
                   width={18}
                   height={18}
                   className="w-4 h-auto"

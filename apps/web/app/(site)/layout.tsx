@@ -11,6 +11,7 @@ import { cn } from '@shared/ui/lib/utils';
 
 import FocusHandler from '@/components/focus-handler';
 import { TailwindIndicator } from '@/components/tailwind-indicator';
+import { ThemeProvider } from '@/components/theme-provider';
 import { env } from '@/env.mjs';
 import { BannerWrapper } from '@/features/banner/banner-wrapper';
 import FooterLayout from '@/features/footer/layout';
@@ -166,44 +167,46 @@ export default async function RootLayout({
           'flex min-h-screen flex-col bg-white dark:bg-black dark:text-white font-default antialiased',
         )}
       >
-        <noscript>
-          <iframe
-            title="GTM-MG9HQ6PM"
-            src="https://ekndrsoc.ust.stape.io/ns.html?id=GTM-MG9HQ6PM"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <noscript>
+            <iframe
+              title="GTM-MG9HQ6PM"
+              src="https://ekndrsoc.ust.stape.io/ns.html?id=GTM-MG9HQ6PM"
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
 
-        <FocusHandler>
-          <a
-            href="#main-content"
-            tabIndex={-1}
-            className={cn(
-              'group absolute -left-[9999px] -top-[9999px] z-[999] w-screen border-b border-b-grey-400 bg-grey-100 p-4 opacity-100 outline-none',
-              'focus:left-0 focus:top-0 focus:opacity-100',
+          <FocusHandler>
+            <a
+              href="#main-content"
+              tabIndex={-1}
+              className={cn(
+                'group absolute -left-[9999px] -top-[9999px] z-[999] w-screen border-b border-b-grey-400 bg-grey-100 p-4 opacity-100 outline-none',
+                'focus:left-0 focus:top-0 focus:opacity-100',
+              )}
+            >
+              <span className="inline-block rounded-lg px-10 py-4 font-display text-xs uppercase dark:text-black tracking-wide group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#1351d8] !text-black">
+                Skip to main content
+              </span>
+            </a>
+
+            <BannerWrapper />
+            <div className="relative">
+              {navigation && <NavigationLayout navigation={navigation} />}
+
+              <main className="flex-grow "> {children}</main>
+            </div>
+            {footer && <FooterLayout footer={footer} />}
+
+            {env.VERCEL_ENV === 'development' && <TailwindIndicator />}
+            {isDraftModeEnabled && VisualEditingComponent && (
+              <VisualEditingComponent />
             )}
-          >
-            <span className="inline-block rounded-lg px-10 py-4 font-display text-xs uppercase dark:text-black tracking-wide group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#1351d8] !text-black">
-              Skip to main content
-            </span>
-          </a>
-
-          <BannerWrapper />
-          <div className="relative">
-            {navigation && <NavigationLayout navigation={navigation} />}
-
-            <main className="flex-grow "> {children}</main>
-          </div>
-          {footer && <FooterLayout footer={footer} />}
-
-          {env.VERCEL_ENV === 'development' && <TailwindIndicator />}
-          {isDraftModeEnabled && VisualEditingComponent && (
-            <VisualEditingComponent />
-          )}
-          {env.VERCEL_ENV === 'production' && <Analytics />}
-        </FocusHandler>
+            {env.VERCEL_ENV === 'production' && <Analytics />}
+          </FocusHandler>
+        </ThemeProvider>
       </body>
     </html>
   );
