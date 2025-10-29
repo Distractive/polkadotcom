@@ -87,7 +87,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                         <CustomUrl
                           onClick={() => setIsOpen(false)}
                           value={item.link}
-                          className="h-full w-full p-nav "
+                          className="h-full w-full p-nav transition-colors hover:text-pink focus:text-pink dark:hover:text-pink dark:focus:text-pink"
                         >
                           {item.link.label}
                         </CustomUrl>

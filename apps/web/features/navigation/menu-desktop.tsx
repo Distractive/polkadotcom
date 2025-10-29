@@ -77,7 +77,7 @@ export function MenuDesktop({
                   <CustomUrl
                     value={item.link}
                     onClick={handleCloseMenu}
-                    className="leading-none flex h-full w-full p-nav transition-colors hover:text-pink focus:text-pink text-black dark:text-white"
+                    className="leading-none flex h-full w-full p-nav transition-colors hover:text-pink focus:text-pink dark:hover:text-pink dark:focus:text-pink text-black dark:text-white"
                     tabIndex={0}
                   >
                     {' '}
@@ -105,7 +105,7 @@ export function MenuDesktop({
                   alt=""
                   className="w-full"
                 />
-                <p className="text-lg font-bold text-white dark:text-black transition-colors group-hover:text-pink">
+                <p className="text-lg font-bold text-black dark:text-white transition-colors group-hover:text-pink">
                   {section.aside.heading}
                 </p>
               </aside>
