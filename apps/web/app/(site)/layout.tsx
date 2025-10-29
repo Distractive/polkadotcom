@@ -164,7 +164,7 @@ export default async function RootLayout({
         className={cn(
           unbounded.variable,
           manrope.variable,
-          'flex min-h-screen flex-col bg-white dark:bg-black dark:text-white font-default antialiased transition-colors',
+          'flex min-h-screen flex-col bg-white dark:bg-black dark:text-white font-default antialiased transition-colors duration-150',
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
