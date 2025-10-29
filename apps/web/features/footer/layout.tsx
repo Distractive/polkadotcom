@@ -61,17 +61,26 @@ export default function FooterLayout({ footer }: Props) {
                 </a>
               </div>
               <div>
-                <a href="/legal-disclosures/" className="hover:text-black dark:hover:text-white">
+                <a
+                  href="/legal-disclosures/"
+                  className="hover:text-black dark:hover:text-white"
+                >
                   Legal Disclosures
                 </a>
               </div>
               <div>
-                <a href="/privacy/" className="hover:text-black dark:hover:text-white">
+                <a
+                  href="/privacy/"
+                  className="hover:text-black dark:hover:text-white"
+                >
                   Privacy Policy
                 </a>
               </div>
               <div>
-                <a href="/cookie-policy/" className="hover:text-black dark:hover:text-white">
+                <a
+                  href="/cookie-policy/"
+                  className="hover:text-black dark:hover:text-white"
+                >
                   Cookie Policy
                 </a>
               </div>
