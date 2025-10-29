@@ -16,6 +16,7 @@ export const Primary: Story = {
     card: {
       _key: 'internal',
       icon: null,
+      darkModeIcon: null,
       useLiveMetric: false,
       heading: '1.3 million',
       body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -29,6 +30,7 @@ export const PrimaryWithSource: Story = {
     card: {
       _key: 'internal',
       icon: null,
+      darkModeIcon: null,
       useLiveMetric: false,
       heading: '1.3 million',
       body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
