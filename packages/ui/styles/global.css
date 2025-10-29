@@ -101,9 +101,9 @@ html {
   font-size: 0.875rem;
 }
 
-/* Hide HubSpot labels */
-.hubspot .hs-form-field > label {
-  display: none;
+
+.hubspot [class*="utm_source"] {
+  display: none !important;
 }
 
 @media (min-width: 45.5rem) {
@@ -143,6 +143,30 @@ html {
   border: 1px solid #d5d4d8;
   background: #e7e7ec;
   padding: 0 1rem;
+  color: #000;
+}
+
+.hubspot input[type="text"]::placeholder,
+.hubspot input[type="email"]::placeholder,
+.hubspot textarea::placeholder {
+  color: #6b6b6b;
+  opacity: 1;
+}
+
+.dark .hubspot input[type="text"],
+.dark .hubspot input[type="email"],
+.dark .hubspot select,
+.dark .hubspot textarea {
+  border-color: #404040;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.dark .hubspot input[type="text"]::placeholder,
+.dark .hubspot input[type="email"]::placeholder,
+.dark .hubspot textarea::placeholder {
+  color: #a0a0a0;
+  opacity: 1;
 }
 
 .hubspot input[type="text"],
@@ -176,6 +200,14 @@ html {
 
 .hubspot a {
   text-decoration: underline;
+}
+
+.dark .hubspot,
+.dark .hubspot p,
+.dark .hubspot h1,
+.dark .hubspot label,
+.dark .hubspot .hs-form-booleancheckbox-display {
+  color: #fff;
 }
 
 .hubspot input[type="submit"] {
