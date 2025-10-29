@@ -146,13 +146,14 @@ export function CardTags({ tags, cards, useFourColumns }: Props) {
             }
             size={'sm'}
             onClick={showMoreItems}
-            className="!bg-white"
+            className="bg-white dark:bg-grey-900 dark:text-white"
           >
             Show More
             <Icon
               variant="chevronDown"
               className={cn(
-                visibleCount >= filteredItems.length && 'fill-grey-300',
+                visibleCount >= filteredItems.length &&
+                  'fill-grey-300 dark:fill-grey-700',
               )}
             />
           </Button>
