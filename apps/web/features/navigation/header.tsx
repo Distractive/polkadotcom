@@ -71,7 +71,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
           <div
             data-testid="navbar"
             className={cn(
-              'flex h-full items-center justify-center pl-4 gap-1 sm:gap-1',
+              'flex h-full items-center justify-center pl-4 gap-1 sm:gap-2 md:gap-4',
               'rounded-[3rem]',
             )}
           >
@@ -134,7 +134,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
               <button
                 type="button"
                 onClick={toggleTheme}
-                className="rounded-full p-2 hover:bg-white/10 transition-colors"
+                className="rounded-full p-2  transition-colors"
                 aria-label="Toggle dark mode"
               >
                 <Image
