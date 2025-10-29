@@ -127,7 +127,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
             </ul>
             <div
               className={cn(
-                'hidden lg:flex items-center justify-center pl-2',
+                'lg:flex items-center justify-center pl-2',
                 isSearchOpen && 'lg:hidden xl:flex',
               )}
             >
