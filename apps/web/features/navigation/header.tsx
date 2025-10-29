@@ -2,6 +2,7 @@ import type { navigationMenuSelection } from '@/sanity/selections/navigation/nav
 import { stegaClean } from '@sanity/client/stega';
 import type { TypeFromSelection } from 'groqd';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { CustomUrl } from '@/components/custom-url';
 import { Logo } from '@/components/logo';
@@ -114,6 +115,26 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
                 );
               })}
             </ul>
+            <div
+              className={cn(
+                'hidden lg:flex items-center justify-center pl-2',
+                isSearchOpen && 'lg:hidden xl:flex',
+              )}
+            >
+              <button
+                type="button"
+                className="rounded-full "
+                aria-label="Toggle dark mode"
+              >
+                <Image
+                  src="/icons/moon.svg"
+                  alt="Moon"
+                  width={18}
+                  height={18}
+                  className="w-4 h-auto"
+                />
+              </button>
+            </div>
             <div className="mr-5  pr-[5px] h-[100%] flex items-center">
               <Search />
             </div>
