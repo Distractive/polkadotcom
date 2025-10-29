@@ -1,0 +1,41 @@
+'use client';
+
+import { cn } from '@shared/ui';
+import { useTheme } from 'next-themes';
+
+import type { cardStatSelection } from '@/sanity/selections/blocks/card-stat';
+import { urlForImage } from '@/sanity/lib/image';
+import type { TypeFromSelection } from 'groqd';
+
+interface IconDisplayProps {
+  icon: TypeFromSelection<typeof cardStatSelection>['icon'];
+  darkModeIcon: TypeFromSelection<typeof cardStatSelection>['darkModeIcon'];
+  makeIconFullWidth?: boolean | null;
+}
+
+export function IconDisplay({
+  icon,
+  darkModeIcon,
+  makeIconFullWidth,
+}: IconDisplayProps) {
+  const { theme, resolvedTheme } = useTheme();
+  const isDarkMode = theme === 'dark' || resolvedTheme === 'dark';
+
+  const currentIcon = isDarkMode && darkModeIcon ? darkModeIcon : icon;
+
+  if (!currentIcon) return null;
+
+  return (
+    <div className="pb-4 w-full">
+      <img
+        src={urlForImage(currentIcon.asset)}
+        alt=""
+        loading="lazy"
+        className={cn(
+          'w-full size-14 lg:size-auto rounded-2xl object-center object-contain',
+          !makeIconFullWidth && '!size-14',
+        )}
+      />
+    </div>
+  );
+}

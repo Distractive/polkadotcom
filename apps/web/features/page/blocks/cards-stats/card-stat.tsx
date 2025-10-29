@@ -5,7 +5,7 @@ import { Button, Card, CardHeader, Heading, Icon, cn } from '@shared/ui';
 import type { TypeFromSelection } from 'groqd';
 
 import { LiveMetric } from '@/features/metrics/live-metric';
-import { urlForImage } from '@/sanity/lib/image';
+import { IconDisplay } from './icon-display';
 
 interface Props {
   card: TypeFromSelection<typeof cardStatSelection>;
@@ -17,6 +17,7 @@ export default function CardStatBlock({ card, className, style }: Props) {
   const {
     _key,
     icon,
+    darkModeIcon,
     makeIconFullWidth,
     heading,
     fallbackHeading,
@@ -33,21 +34,17 @@ export default function CardStatBlock({ card, className, style }: Props) {
     '',
   ) as keyof typeof metricFetchers;
   return (
-    <Card key={_key} className={cn('bg-white p-card', className)} style={style}>
+    <Card
+      key={_key}
+      className={cn('bg-white dark:bg-black p-card', className)}
+      style={style}
+    >
       <CardHeader className="grid">
-        {icon && (
-          <div className="pb-4 w-full">
-            <img
-              src={urlForImage(icon.asset)}
-              alt=""
-              loading="lazy"
-              className={cn(
-                'w-full size-14 lg:size-auto rounded-2xl object-center object-contain',
-                !makeIconFullWidth && '!size-14',
-              )}
-            />
-          </div>
-        )}
+        <IconDisplay
+          icon={icon}
+          darkModeIcon={darkModeIcon}
+          makeIconFullWidth={makeIconFullWidth}
+        />
         <Heading variant="h3" size="h3" className="pb-3">
           {useLiveMetric && liveMetric !== null && liveMetric !== undefined ? (
             <>
