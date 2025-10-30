@@ -115,7 +115,7 @@ export default function BlogCard({ post, className }: Props) {
           </h2>
         )}
         {body && (
-          <CardDescription className="line-clamp-3 text-grey-900">
+          <CardDescription className="line-clamp-3 text-grey-900 dark:text-white">
             {excerpt}
           </CardDescription>
         )}
