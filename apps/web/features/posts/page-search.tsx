@@ -4,6 +4,7 @@ import { useQueryHook } from '@/hooks/use-search-query';
 import { getSearchClient } from '@/services/algolia';
 import { Icon, cn } from '@shared/ui';
 import Link from 'next/link';
+import { useEffect, useRef } from 'react';
 import {
   Hits,
   InstantSearch,
@@ -41,11 +42,28 @@ function NoResults() {
 }
 
 function Wrapper() {
-  const { query } = useSearchBox();
+  const { query, refine } = useSearchBox();
   const queryHook = useQueryHook();
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(event.target as Node)
+      ) {
+        refine('');
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [refine]);
 
   return (
-    <>
+    <div ref={searchRef}>
       <div
         data-testid="blog-search"
         className={cn(
@@ -78,7 +96,7 @@ function Wrapper() {
         <NoResults />
         <Hits hitComponent={HitComponent} />
       </div>
-    </>
+    </div>
   );
 }
 
