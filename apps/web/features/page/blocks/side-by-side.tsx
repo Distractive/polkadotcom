@@ -126,7 +126,7 @@ export function SideBySideBlock({ content }: Props) {
           )}
         </div>
       </div>
-      {content.video && (
+      {!!(content?.video?.url || content?.video?.videoFile) && (
         <div
           className={cn(
             'order-1 col-span-full h-auto lg:col-span-7 lg:my-auto',
@@ -136,7 +136,7 @@ export function SideBySideBlock({ content }: Props) {
           <VideoBlock video={content.video} />
         </div>
       )}
-      {content.image && !content?.video && (
+      {content.image && (
         <Image
           src={urlForImage(content.image.asset)}
           alt={content?.altText || ''}
