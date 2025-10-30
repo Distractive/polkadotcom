@@ -1,4 +1,5 @@
-import logo from '@/public/polkadot-logo.png';
+import logoBlack from '@/public/logos/Polkadot_Logo_Pink-Black.svg';
+import logoWhite from '@/public/logos/Polkadot_Logo_Pink-White.svg';
 import type { footerSelection } from '@/sanity/selections/footer/footer';
 import type { TypeFromSelection } from 'groqd';
 import Image from 'next/image';
@@ -31,12 +32,22 @@ export default function FooterLayout({ footer }: Props) {
             <div className="flex h-full max-w-56 flex-row items-end gap-6 md:max-w-64 px-gutter pb-4 md:pb-0">
               <a href="/" className="group">
                 <Image
-                  src={logo}
+                  src={logoBlack}
                   alt="Polkadot logo"
                   width={180}
                   style={{ height: 'auto' }}
                   role="img"
                   priority
+                  className="dark:hidden"
+                />
+                <Image
+                  src={logoWhite}
+                  alt="Polkadot logo"
+                  width={180}
+                  style={{ height: 'auto' }}
+                  role="img"
+                  priority
+                  className="hidden dark:block"
                 />
               </a>
             </div>
