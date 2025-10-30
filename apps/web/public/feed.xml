@@ -4,7 +4,7 @@
         <title>Polkadot - All Content</title>
         <link>https://polkadot.com</link>
         <description>Polkadot - The Platform for Web3</description>
-        <lastBuildDate>Mon, 27 Oct 2025 19:33:14 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 30 Oct 2025 20:35:55 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -20,6 +20,17 @@
             <category>Case Study</category>
             <category>RWA</category>
             <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[5 tech outages that prove decentralization can't wait]]></title>
+            <link>https://polkadot.com/blog/5-tech-outages-that-prove-decentralization-cant-wait</link>
+            <guid>https://polkadot.com/blog/5-tech-outages-that-prove-decentralization-cant-wait</guid>
+            <pubDate>Thu, 30 Oct 2025 14:17:00 GMT</pubDate>
+            <description><![CDATA[From AWS to CrowdStrike, major outages are increasing. Discover why centralized infrastructure keeps failing and how decentralization offers a solution.]]></description>
+            <content:encoded><![CDATA[From AWS to CrowdStrike, major outages are increasing. Discover why centralized infrastructure keeps failing and how decentralization offers a solution.]]></content:encoded>
+            <category>Blog</category>
+            <category>Reflection</category>
+            <category>Modular Tech</category>
         </item>
         <item>
             <title><![CDATA[Real World Assets on Polkadot: Your comprehensive guide to RWA]]></title>
