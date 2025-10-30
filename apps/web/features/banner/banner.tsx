@@ -64,7 +64,7 @@ export default function Banner({ banner }: BannerProps) {
         <button
           type="button"
           data-testid="banner-close-button"
-          className="group absolute right-[-1rem] top-[-1rem] z-50 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-grey-300 bg-white dark:bg-black transition-colors duration-200 hover:bg-black dark:hover:bg-grey-900"
+          className="group absolute right-[-1rem] top-[-1rem] z-50 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-grey-200 dark:border-grey-900 bg-white dark:bg-black transition-colors duration-200 hover:bg-black dark:hover:bg-grey-900"
           onClick={handleClose}
         >
           <Icon
