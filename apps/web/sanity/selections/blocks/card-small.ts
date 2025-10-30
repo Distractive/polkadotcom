@@ -15,5 +15,8 @@ export const cardSmallSelection = {
   icon: sanityImage('icon', {
     withAsset: ['base', 'dimensions'],
   }).nullable(),
+  darkModeIcon: sanityImage('darkModeIcon', {
+    withAsset: ['base', 'dimensions'],
+  }).nullable(),
   eyebrow: q.string().optional().nullable(),
 } satisfies Selection;

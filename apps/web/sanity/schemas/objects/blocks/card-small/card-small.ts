@@ -17,6 +17,13 @@ export default defineType({
       group: 'content',
     }),
     defineField({
+      name: 'darkModeIcon',
+      title: 'Dark Mode Icon',
+      description: 'Optional icon to display in dark mode. If not provided, the regular icon will be used.',
+      type: 'image',
+      group: 'content',
+    }),
+    defineField({
       name: 'eyebrow',
       title: 'Eyebrow',
       type: 'string',
