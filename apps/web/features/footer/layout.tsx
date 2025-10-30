@@ -50,7 +50,7 @@ export default function FooterLayout({ footer }: Props) {
             <Menu menu={footer.menu} modal={modalData} />
           </div>
           <hr className="border-grey-200 sm:mx-auto" />
-          <div className="flex flex-col items-center justify-between px-gutter py-4 text-sm font-light text-grey-700 md:flex-row">
+          <div className="flex flex-col items-center justify-between px-gutter py-4 text-sm font-light text-grey-700 dark:text-white md:flex-row">
             <div className="flex flex-row gap-4 md:flex-row md:gap-8 text-center md:text-left flex-wrap justify-center">
               <div>
                 <a

@@ -49,7 +49,7 @@ export function Ecosystem({ ecosystem }: Props) {
               </Heading>
               <p
                 id="ecosystem-body"
-                className="md:mb-6 text-lg  text-black dark:text-whtie text-center "
+                className="md:mb-6 text-lg  text-black dark:text-white text-center "
               >
                 {ecosystem?.body}
               </p>
