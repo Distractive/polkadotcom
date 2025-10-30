@@ -28,7 +28,7 @@ const ButtonStyles = {
     tertiary:
       'glass-effect text-white after:bg-black/40 active:before:bg-black/50',
     legacy:
-      'text-black dark:text-white bg-white dark:bg-black hover:bg-grey-200 border-[1px] border-grey-200 duration-200',
+      'text-black dark:text-white bg-white dark:bg-black hover:bg-grey-200 dark:hover:bg-grey-900 border-[1px] border-grey-200 duration-200',
     disabled:
       'bg-grey-200 text-grey-300 pointer-events-none border border-grey-100',
   },
