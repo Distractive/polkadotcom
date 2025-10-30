@@ -24,7 +24,7 @@ const ButtonStyles = {
   variants: {
     primary: 'bg-pink text-white after:bg-black/15 active:before:bg-black/25',
     secondary:
-      'bg-white/40 text-black dark:text-white border border-grey-200 after:bg-[#aeb7cb]/30 [&>*]:relative [&>*]:z-30 active:before:bg-[#aeb7cb]/45',
+      'bg-white/40 text-black dark:text-white border border-grey-200 after:bg-[#aeb7cb]/30 [&>*]:relative [&>*]:z-30 active:before:bg-[#aeb7cb]/45 dark:bg-black',
     tertiary:
       'glass-effect text-white after:bg-black/40 active:before:bg-black/50',
     legacy:
