@@ -28,7 +28,7 @@ export function Body({ body }: Props) {
             const canonical = value.canonical;
             return (
               <a
-                className="inline-flex font-default font-bold text-grey-900 underline  underline-offset-2 transition-colors duration-200 ease-in-out hover:text-pink"
+                className="inline-flex font-default font-bold text-grey-900 dark:text-white underline  underline-offset-2 transition-colors duration-200 ease-in-out hover:text-pink"
                 href={value.href}
                 target={isExternal ? '_blank noopener' : '_self'}
                 rel={`${canonical ? 'canonical' : ''} ${noReferrer ? 'noreferrer' : ''}`}
@@ -40,7 +40,7 @@ export function Body({ body }: Props) {
         },
         block: {
           normal: ({ children }) => (
-            <p className="mb-6 font-default text-lg text-grey-900">
+            <p className="mb-6 font-default text-lg text-grey-900 dark:text-white">
               {children}
             </p>
           ),
@@ -67,12 +67,12 @@ export function Body({ body }: Props) {
         },
         list: {
           bullet: ({ children }) => (
-            <ul className="mx-0 my-4 list-outside list-disc pl-7 text-grey-900 md:my-6">
+            <ul className="mx-0 my-4 list-outside list-disc pl-7 text-grey-900 dark:text-white md:my-6">
               {children}
             </ul>
           ),
           number: ({ children }) => (
-            <ol className="mx-0 my-4 list-outside list-decimal pl-7 text-grey-900 md:my-6">
+            <ol className="mx-0 my-4 list-outside list-decimal pl-7 text-grey-900 dark:text-white md:my-6">
               {children}
             </ol>
           ),
@@ -91,7 +91,7 @@ export function Body({ body }: Props) {
                   alt={value.alt}
                   loading="lazy"
                 />
-                <figcaption className="mx-auto w-5/6 text-sm italic">
+                <figcaption className="mx-auto w-5/6 text-sm italic text-grey-900 dark:text-white">
                   {value.caption}
                 </figcaption>
               </figure>
@@ -99,7 +99,7 @@ export function Body({ body }: Props) {
           },
           code: ({ value }) => {
             return (
-              <pre className="overflow-x-auto p-4">
+              <pre className="overflow-x-auto p-4 bg-grey-100 dark:bg-grey-900 text-grey-900 dark:text-white rounded-lg">
                 <code>{value.code}</code>
               </pre>
             );
@@ -118,7 +118,7 @@ export function Body({ body }: Props) {
           custom_quote: ({ value }) => {
             return (
               <div className="mx-auto my-10 text-lg">
-                <blockquote className="rounded-3xl border border-grey-400  p-4 text-grey-900 md:p-12">
+                <blockquote className="rounded-3xl border border-grey-400 dark:border-grey-700 p-4 text-grey-900 dark:text-white md:p-12">
                   <div className="flex flex-col items-start gap-10 md:flex-row">
                     {value.image && (
                       <div className="shrink-0">
@@ -157,7 +157,7 @@ export function Body({ body }: Props) {
 
             return (
               <div className="mx-auto mb-10 text-lg">
-                <div className="rounded-3xl border border-grey-400  p-8 text-grey-900 md:p-12">
+                <div className="rounded-3xl border border-grey-400 dark:border-grey-700 p-8 text-grey-900 dark:text-white md:p-12">
                   <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
                     {/* First Column: Sector and Links */}
                     <div className="pr-4 xl:col-span-1">
@@ -180,7 +180,7 @@ export function Body({ body }: Props) {
                             // biome-ignore lint/suspicious/noArrayIndexKey: <TODO: Fix>
                             <li key={index}>
                               <CustomUrl
-                                className="inline-flex gap-2 text-left  underline decoration-black/0 underline-offset-4 transition duration-500 ease-out hover:decoration-black"
+                                className="inline-flex gap-2 text-left  underline decoration-black/0 dark:decoration-white/0 underline-offset-4 transition duration-500 ease-out hover:decoration-black dark:hover:decoration-white"
                                 value={link}
                               >
                                 {link.label}
@@ -211,7 +211,7 @@ export function Body({ body }: Props) {
                                     value.href.startsWith('http');
                                   return (
                                     <a
-                                      className="inline-flex font-bold underline underline-offset-2 transition-colors duration-500 ease-in-out hover:text-pink"
+                                      className="inline-flex font-bold text-grey-900 dark:text-white underline underline-offset-2 transition-colors duration-500 ease-in-out hover:text-pink"
                                       href={value.href}
                                       target={isExternal ? '_blank' : '_self'}
                                       rel={
