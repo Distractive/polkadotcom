@@ -138,7 +138,9 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
             {header.title}
           </Heading>
 
-          {header.body && <p className="text-lg text-black">{header.body}</p>}
+          {header.body && (
+            <p className="text-lg text-black dark:text-white">{header.body}</p>
+          )}
           {renderHeaderLinks(header.links as HeaderLink[])}
           {header.video && (
             <VideoBlock video={header.video} className="mt-gutter w-full" />
@@ -202,7 +204,9 @@ export function HeaderBlock({ header, breadcrumb, className }: Props) {
 
         <Heading variant="h1">{header.title}</Heading>
 
-        {header.body && <p className="text-lg text-black">{header.body}</p>}
+        {header.body && (
+          <p className="text-lg text-black dark:text-white">{header.body}</p>
+        )}
         {renderHeaderLinks(header.links as HeaderLink[])}
       </div>
     </header>

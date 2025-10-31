@@ -57,10 +57,12 @@ export default function CardTimelineBlock({
               components={{
                 block: {
                   normal: ({ children }) => (
-                    <p className="font-default  text-grey-800">{children}</p>
+                    <p className="font-default text-grey-800 dark:text-grey-200">
+                      {children}
+                    </p>
                   ),
                   large: ({ children }) => (
-                    <p className="font-default text-lg text-black">
+                    <p className="font-default text-lg text-black dark:text-white">
                       {children}
                     </p>
                   ),
@@ -92,7 +94,7 @@ export default function CardTimelineBlock({
                 types: {
                   customUrl: ({ value }) => {
                     return (
-                      <div>
+                      <div className="mt-3">
                         <Button
                           asChild
                           variant={value?.variant || 'primary'}

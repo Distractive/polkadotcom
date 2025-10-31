@@ -26,7 +26,7 @@ export function CardsSmallBlock({ cards }: Props) {
       >
         <Heading variant="h2">{cards.heading}</Heading>
         {cards.body && !cards.useRichText && (
-          <p className="text-black">{cards.body}</p>
+          <p className="text-black dark:text-white">{cards.body}</p>
         )}
         {cards.richBody && cards.useRichText && (
           <div className="prose">
@@ -35,10 +35,14 @@ export function CardsSmallBlock({ cards }: Props) {
               components={{
                 block: {
                   normal: ({ children }) => (
-                    <p className="mb-3 text-black">{children}</p>
+                    <p className="mb-3 text-black dark:text-white">
+                      {children}
+                    </p>
                   ),
                   smallprint: ({ children }) => (
-                    <p className="mb-4 text-sm text-black">{children}</p>
+                    <p className="mb-4 text-sm text-black dark:text-white">
+                      {children}
+                    </p>
                   ),
                 },
                 marks: {

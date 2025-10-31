@@ -44,6 +44,14 @@ export default defineType({
       group: 'heading',
     }),
     defineField({
+      name: 'darkModeIcon',
+      title: 'Dark Mode Icon',
+      description:
+        'Optional icon to display in dark mode. If not provided, the regular icon will be used.',
+      type: 'image',
+      group: 'heading',
+    }),
+    defineField({
       name: 'makeIconFullWidth',
       title: 'Make icon full width?',
       type: 'boolean',
