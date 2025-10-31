@@ -58,7 +58,7 @@ export function FAQBlock({ faqs }: Props) {
                 >
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="py-card text-black">
+                <AccordionContent className="py-card  dark:text-white">
                   {faq.answer && (
                     <PortableText
                       value={faq.answer}
@@ -72,12 +72,12 @@ export function FAQBlock({ faqs }: Props) {
                         },
                         list: {
                           bullet: ({ children }) => (
-                            <ul className="my-4 list-outside list-disc pl-8 marker:text-black">
+                            <ul className="my-4 list-outside list-disc pl-8 marker:text-black dark:marker:text-white">
                               {children}
                             </ul>
                           ),
                           number: ({ children }) => (
-                            <ol className="my-4 list-outside list-decimal pl-8 text-black marker:text-black">
+                            <ol className="my-4 list-outside list-decimal pl-8 text-black dark:text-white marker:text-black dark:marker:text-white">
                               {children}
                             </ol>
                           ),

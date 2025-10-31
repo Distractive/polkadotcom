@@ -30,7 +30,9 @@ export function SideBySideBlock({ content }: Props) {
         <div className="flex flex-col gap-copy">
           <Heading variant="h2">{content.heading}</Heading>
           {content.subheading && (
-            <p className="text-lg text-black">{content.subheading}</p>
+            <p className="text-lg text-black dark:text-white">
+              {content.subheading}
+            </p>
           )}
         </div>
         <div className="flex flex-col gap-copy">
@@ -43,10 +45,14 @@ export function SideBySideBlock({ content }: Props) {
                     <Heading variant="h3">{children}</Heading>
                   ),
                   normal: ({ children }) => (
-                    <p className="text-lg text-black">{children}</p>
+                    <p className="text-lg text-black dark:text-white">
+                      {children}
+                    </p>
                   ),
                   smallprint: ({ children }) => (
-                    <p className="text-sm text-black">{children}</p>
+                    <p className="text-sm text-black dark:text-white">
+                      {children}
+                    </p>
                   ),
                 },
                 list: {
@@ -126,7 +132,7 @@ export function SideBySideBlock({ content }: Props) {
           )}
         </div>
       </div>
-      {content.video && (
+      {!!(content?.video?.url || content?.video?.videoFile) && (
         <div
           className={cn(
             'order-1 col-span-full h-auto lg:col-span-7 lg:my-auto',
@@ -136,7 +142,7 @@ export function SideBySideBlock({ content }: Props) {
           <VideoBlock video={content.video} />
         </div>
       )}
-      {content.image && !content?.video && (
+      {content.image && (
         <Image
           src={urlForImage(content.image.asset)}
           alt={content?.altText || ''}

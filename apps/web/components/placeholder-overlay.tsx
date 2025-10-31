@@ -66,7 +66,10 @@ export function PlaceholderOverlay({
               'group transition-colors duration-200 ease-in-out hover:border-pink',
             )}
           >
-            <Icon variant="videoPlay" className="group-hover:fill-pink" />
+            <Icon
+              variant="videoPlay"
+              className="fill-grey-800 group-hover:fill-pink"
+            />
           </div>
         </div>
       )}

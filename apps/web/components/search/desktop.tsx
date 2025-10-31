@@ -69,7 +69,7 @@ export function DesktopSearch() {
               classNames={{
                 form: 'w-full flex flex-row items-center',
                 input:
-                  'rounded border-none outline-none focus:ring-0 focus:border-0 flex-1 p-1 bg-white/0 placeholder-white',
+                  'rounded border-none outline-none focus:ring-0 focus:border-0 flex-1 p-1 bg-white/0 placeholder-white text-white',
                 submit: 'hidden',
                 reset: 'flex-shrink-0 ml-2',
               }}
@@ -80,7 +80,7 @@ export function DesktopSearch() {
       {isSearchOpen && (
         <div
           className={
-            'm-5 absolute left-[-1rem] mt-8 bg-white shadow-lg max-h-[80vh] text-grey-700 z-[999999] customRounded w-[30rem]'
+            'm-5 absolute left-[-1rem] mt-8 bg-white dark:bg-black shadow-lg max-h-[80vh] text-grey-700 dark:text-white z-[999999] customRounded w-[30rem]'
           }
         >
           <div className="max-h-[80vh] overflow-y-auto overflow-x-hidden">
@@ -94,8 +94,9 @@ export function DesktopSearch() {
                     <Link
                       href={`${hit.slug}`}
                       onClick={() => setIsSearchOpen(false)}
+                      className="group"
                     >
-                      <div className="flex items-center text-l font-bold hover:bg-grey-100 p-2">
+                      <div className="flex items-center text-l font-bold p-2">
                         <Image
                           src="/icons/magnifying-glass.svg"
                           alt="Search"
@@ -103,11 +104,11 @@ export function DesktopSearch() {
                           height={18}
                           className="w-6 h-auto brightness-0 mr-3 flex-shrink-0"
                         />
-                        <div className="flex-1">
+                        <div className="flex-1 group-hover:text-pink transition-colors">
                           <Highlight attribute="title" hit={hit} />
                         </div>
                       </div>
-                      <div className="grid grid-cols-10 font-light hover:bg-grey-100 p-2">
+                      <div className="grid grid-cols-10 font-light p-2">
                         <div className="col-span-1"> </div>
                         <div className="col-span-9">
                           <CustomSnippet

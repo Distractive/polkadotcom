@@ -87,7 +87,7 @@ export function Hero({ hero, backgroundVideo }: Props) {
           </div>
         </article>
       </div>
-      <div className="h-8 rounded-t-xl -mt-3 relative z-30 bg-white w-full" />
+      <div className="h-8 rounded-t-xl -mt-3 relative z-30 bg-white dark:bg-black w-full" />
     </>
   );
 }

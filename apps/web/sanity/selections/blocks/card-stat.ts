@@ -8,6 +8,9 @@ export const cardStatSelection = {
   icon: sanityImage('icon', {
     withAsset: ['base', 'dimensions'],
   }).nullable(),
+  darkModeIcon: sanityImage('darkModeIcon', {
+    withAsset: ['base', 'dimensions'],
+  }).nullable(),
   makeIconFullWidth: q.boolean().optional().nullable(),
   useLiveMetric: q.boolean().nullable(),
   liveMetric: q.string().optional().nullable(),

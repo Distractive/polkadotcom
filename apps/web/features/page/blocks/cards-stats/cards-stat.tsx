@@ -56,12 +56,12 @@ export function CardsStatBlock({ cards }: Props) {
               },
               list: {
                 bullet: ({ children }) => (
-                  <ul className="my-4 list-outside list-disc pl-8 marker:text-black">
+                  <ul className="my-4 list-outside list-disc pl-8 marker:text-black dark:marker:text-white">
                     {children}
                   </ul>
                 ),
                 number: ({ children }) => (
-                  <ol className="my-4 list-outside list-decimal pl-8 text-grey-900 marker:text-black ">
+                  <ol className="my-4 list-outside list-decimal pl-8 text-grey-900 marker:text-black dark:marker:text-white ">
                     {children}
                   </ol>
                 ),

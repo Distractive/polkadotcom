@@ -112,7 +112,7 @@ export function AccordionBlock({ accordion }: Props) {
                 <AccordionContent
                   className={cn(
                     index === validItems.length - 1 && 'rounded-b-2xl border-b',
-                    'border-x border-grey-300 bg-grey-50 px-gutter py-gutter',
+                    'border-x border-grey-300 dark:bg-black bg-grey-50 px-gutter py-gutter',
                   )}
                 >
                   {item.content && (
@@ -126,17 +126,19 @@ export function AccordionBlock({ accordion }: Props) {
                             </Heading>
                           ),
                           normal: ({ children }) => (
-                            <p className="text-black md:w-3/4">{children}</p>
+                            <p className="text-black dark:text-white md:w-3/4">
+                              {children}
+                            </p>
                           ),
                         },
                         list: {
                           bullet: ({ children }) => (
-                            <ul className="my-4 list-outside list-disc pl-8 text-black marker:text-black">
+                            <ul className="my-4 list-outside list-disc pl-8 text-black dark:text-white marker:text-black">
                               {children}
                             </ul>
                           ),
                           number: ({ children }) => (
-                            <ol className="my-4 list-outside list-decimal pl-8 text-black marker:text-black">
+                            <ol className="my-4 list-outside list-decimal pl-8 text-black dark:text-white marker:text-black dark:marker:text-white">
                               {children}
                             </ol>
                           ),
