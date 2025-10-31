@@ -1,4 +1,5 @@
-import logo from '@/public/polkadot-logo.png';
+import logoBlack from '@/public/logos/Polkadot_Logo_Pink-Black.svg';
+import logoWhite from '@/public/logos/Polkadot_Logo_Pink-White.svg';
 import type { footerSelection } from '@/sanity/selections/footer/footer';
 import type { TypeFromSelection } from 'groqd';
 import Image from 'next/image';
@@ -24,19 +25,29 @@ export default function FooterLayout({ footer }: Props) {
       <FooterGradient />
       <footer className="relative max-width px-gutter">
         <div
-          className="border border-grey-200  md:mb-gutter md:rounded-2xl relative bg-white"
+          className="border border-grey-200  md:mb-gutter md:rounded-2xl relative bg-white dark:bg-black"
           data-testid="footer"
         >
           <div className="flex flex-col items-start py-4 md:flex-row md:items-center md:justify-between">
             <div className="flex h-full max-w-56 flex-row items-end gap-6 md:max-w-64 px-gutter pb-4 md:pb-0">
               <a href="/" className="group">
                 <Image
-                  src={logo}
+                  src={logoBlack}
                   alt="Polkadot logo"
                   width={180}
                   style={{ height: 'auto' }}
                   role="img"
                   priority
+                  className="dark:hidden"
+                />
+                <Image
+                  src={logoWhite}
+                  alt="Polkadot logo"
+                  width={180}
+                  style={{ height: 'auto' }}
+                  role="img"
+                  priority
+                  className="hidden dark:block"
                 />
               </a>
             </div>
@@ -50,28 +61,37 @@ export default function FooterLayout({ footer }: Props) {
             <Menu menu={footer.menu} modal={modalData} />
           </div>
           <hr className="border-grey-200 sm:mx-auto" />
-          <div className="flex flex-col items-center justify-between px-gutter py-4 text-sm font-light text-grey-700 md:flex-row">
+          <div className="flex flex-col items-center justify-between px-gutter py-4 text-sm font-light text-grey-700 dark:text-white md:flex-row">
             <div className="flex flex-row gap-4 md:flex-row md:gap-8 text-center md:text-left flex-wrap justify-center">
               <div>
                 <a
                   href="https://web3.foundation/"
-                  className="hover:text-black whitespace-nowrap"
+                  className="hover:text-black whitespace-nowrap dark:hover:text-white"
                 >
                   Web3 Foundation
                 </a>
               </div>
               <div>
-                <a href="/legal-disclosures/" className="hover:text-black">
+                <a
+                  href="/legal-disclosures/"
+                  className="hover:text-black dark:hover:text-white"
+                >
                   Legal Disclosures
                 </a>
               </div>
               <div>
-                <a href="/privacy/" className="hover:text-black">
+                <a
+                  href="/privacy/"
+                  className="hover:text-black dark:hover:text-white"
+                >
                   Privacy Policy
                 </a>
               </div>
               <div>
-                <a href="/cookie-policy/" className="hover:text-black">
+                <a
+                  href="/cookie-policy/"
+                  className="hover:text-black dark:hover:text-white"
+                >
                   Cookie Policy
                 </a>
               </div>

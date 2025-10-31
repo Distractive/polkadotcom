@@ -19,7 +19,7 @@ interface Props {
 }
 
 export default function CardSmallBlock({ card, className }: Props) {
-  const { _key, heading, body, link, icon, eyebrow } = card;
+  const { _key, heading, body, link, icon, darkModeIcon, eyebrow } = card;
 
   return (
     <Card
@@ -43,14 +43,25 @@ export default function CardSmallBlock({ card, className }: Props) {
             )}
           >
             {icon && (
-              <img
-                src={urlForImage(icon.asset)}
-                alt=""
-                loading="lazy"
-                className={cn(
-                  'size-8 object-cover object-center flex-shrink-0',
+              <>
+                <img
+                  src={urlForImage(icon.asset)}
+                  alt=""
+                  loading="lazy"
+                  className={cn(
+                    'size-8 object-cover object-center flex-shrink-0',
+                    darkModeIcon && 'dark:hidden',
+                  )}
+                />
+                {darkModeIcon && (
+                  <img
+                    src={urlForImage(darkModeIcon.asset)}
+                    alt=""
+                    loading="lazy"
+                    className="size-8 object-cover object-center flex-shrink-0 hidden dark:block"
+                  />
                 )}
-              />
+              </>
             )}
             <CardContent className="grid flex-1 min-w-0">
               {eyebrow && (

@@ -1,6 +1,10 @@
+'use client';
+
 import type { navigationMenuSelection } from '@/sanity/selections/navigation/navigation-menu';
 import { stegaClean } from '@sanity/client/stega';
 import type { TypeFromSelection } from 'groqd';
+import { useTheme } from 'next-themes';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { CustomUrl } from '@/components/custom-url';
@@ -21,11 +25,18 @@ interface Props {
 
 export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
   const { isSearchOpen } = useSearchState();
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   const handleItemSelect = () => {
     setHovered('');
     setIsOpen(false);
   };
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  const currentTheme = resolvedTheme || theme;
 
   const handleCurrentHeading = (heading: string) => {
     setHovered(heading);
@@ -56,11 +67,11 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
   return (
     <div className="max-width z-40 mt-4">
       <div className="relative flex h-nav-height flex-shrink-0 items-center justify-between px-gutter w-full">
-        <div className="rounded-[3rem] gradient-border-wrapper bg-black/30 backdrop-blur-md h-full">
+        <div className="rounded-[3rem] gradient-border-wrapper bg-black/30 dark:bg-white/10 backdrop-blur-md h-full">
           <div
             data-testid="navbar"
             className={cn(
-              'flex h-full items-center justify-center pl-4 gap-1 sm:gap-4',
+              'flex h-full items-center justify-center pl-4 gap-1 sm:gap-2 md:gap-4',
               'rounded-[3rem]',
             )}
           >
@@ -87,7 +98,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
                   <li
                     key={item.heading}
                     onMouseEnter={() => handleCurrentHeading(item.heading)}
-                    className="relative flex h-full cursor-pointer items-center justify-center transition-colors duration-100 ease-in-out "
+                    className="relative flex h-full cursor-pointer items-center justify-center transition-colors ease-in-out text-white"
                   >
                     <CustomUrl
                       value={item.link}
@@ -95,7 +106,7 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
                       className={cn(
                         'whitespace-nowrap',
                         item.link &&
-                          'duration-100 ease-in-out hover:text-pink focus:text-pink peer-focus:text-pink',
+                          'ease-in-out hover:text-pink focus:text-pink peer-focus:text-pink',
                       )}
                     >
                       {item.heading}
@@ -114,6 +125,31 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
                 );
               })}
             </ul>
+            <div
+              className={cn(
+                'lg:flex items-center justify-center pl-2',
+                isSearchOpen && 'lg:hidden xl:flex',
+              )}
+            >
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="rounded-full p-2  transition-colors"
+                aria-label="Toggle dark mode"
+              >
+                <Image
+                  src={
+                    currentTheme === 'dark'
+                      ? '/icons/moon-filled.svg'
+                      : '/icons/moon.svg'
+                  }
+                  alt={currentTheme === 'dark' ? 'Dark mode' : 'Light mode'}
+                  width={18}
+                  height={18}
+                  className="w-[16px] h-auto"
+                />
+              </button>
+            </div>
             <div className="mr-5  pr-[5px] h-[100%] flex items-center">
               <Search />
             </div>

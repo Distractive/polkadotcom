@@ -129,7 +129,7 @@ export function FullscreenVideoButton({
         aria-label="Watch with sound"
         type="button"
       >
-        <span className="text-sm font-medium font-display whitespace-nowrap">
+        <span className="text-sm text-white  font-medium font-display whitespace-nowrap">
           {buttonText}
         </span>
         {/* Play icon */}

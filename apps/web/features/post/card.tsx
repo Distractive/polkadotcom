@@ -73,7 +73,7 @@ export default function BlogCard({ post, className }: Props) {
             {tags.map((tag) => (
               <li
                 key={tag.slug}
-                className="mb-1 flex rounded bg-grey-200 px-3 py-1 text-left text-sm leading-relaxed text-black hover:bg-black hover:text-white"
+                className="mb-1 flex rounded bg-grey-200 px-3 py-1 text-left text-sm leading-relaxed text-black dark:bg-grey-900 dark:text-white transition-[background-color] hover:bg-grey-500 dark:hover:bg-grey-500"
               >
                 <a
                   className="relative z-20"
@@ -115,7 +115,7 @@ export default function BlogCard({ post, className }: Props) {
           </h2>
         )}
         {body && (
-          <CardDescription className="line-clamp-3 text-grey-900">
+          <CardDescription className="line-clamp-3 text-grey-900 dark:text-white">
             {excerpt}
           </CardDescription>
         )}

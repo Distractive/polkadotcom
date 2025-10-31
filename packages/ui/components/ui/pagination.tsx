@@ -48,7 +48,7 @@ const PaginationLink = ({
       'transition-all duration-200 hover:text-pink',
       isActive
         ? 'text-pink after:bg-pink'
-        : 'text-black hover:after:bg-grey-300',
+        : 'text-black dark:text-white hover:after:bg-grey-300',
       className,
     )}
     {...props}

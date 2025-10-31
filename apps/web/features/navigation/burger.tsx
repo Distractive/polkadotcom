@@ -38,7 +38,7 @@ export function Burger({ isOpen, setIsOpen }: Props) {
       onClick={() => setIsOpen(!isOpen)}
       className={cn(
         'grid-pile h-full w-14 items-center justify-center lg:hidden',
-        'rounded-full border border-white/40 bg-black/40',
+        'rounded-full border border-white/40 bg-black/40 dark:bg-white/10 backdrop-blur-md',
       )}
     >
       <motion.span

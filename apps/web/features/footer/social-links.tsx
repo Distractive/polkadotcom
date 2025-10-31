@@ -19,7 +19,7 @@ export default function SocialLinks({ items }: Props) {
               href={item.url}
               target="_blank"
               key={item.title}
-              className="group flex size-8 items-center justify-center rounded-full transition duration-200 ease-out text-black hover:text-pink focus:text-pink"
+              className="group flex size-8 items-center justify-center rounded-full transition duration-200 ease-out text-black dark:text-white hover:text-pink focus:text-pink dark:hover:text-pink dark:focus:text-pink"
               rel="noreferrer"
             >
               <span

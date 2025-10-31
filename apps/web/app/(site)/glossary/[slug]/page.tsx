@@ -106,6 +106,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                       }
                     : null,
                   icon: null,
+                  darkModeIcon: null,
                 })),
                 backgroundImage: null,
               }}

@@ -32,9 +32,9 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
         id="page-menu"
         ref={ref}
         className={cn(
-          'mx-gutter w-full md:w-[20rem] rounded-2xl border border-grey-200 bg-white',
+          'mx-gutter w-full md:w-[20rem] rounded-2xl border border-grey-200 dark:border-grey-900 bg-white dark:bg-white/5 backdrop-blur-md',
           'max-h-[80vh] overflow-y-auto overscroll-contain',
-          'transition-opacity duration-300 ease-in-out',
+          'transition-all duration-300 ease-in-out',
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none',
         )}
       >
@@ -42,13 +42,13 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
           {menu.map((section, sectionIndex) => {
             return (
               <AccordionItem key={section.heading} value={section.heading}>
-                <div className="relative flex text-black items-center justify-center bg-white border-r border-b border-grey-200  ">
+                <div className="relative flex text-black dark:text-white items-center justify-center bg-white dark:bg-white/5 border-r border-b border-grey-200 dark:border-grey-900 transition-colors">
                   {section.link && (
                     <CustomUrl
                       value={section.link}
                       onClick={() => setIsOpen(false)}
                       className={cn(
-                        'flex-1 p-nav text-left font-bold border-r  border-grey-200',
+                        'flex-1 p-nav text-left font-bold border-r border-grey-200 dark:border-grey-900',
                       )}
                     >
                       {section.heading}
@@ -57,7 +57,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                   {!section.link && (
                     <div
                       className={
-                        'flex-1 p-nav text-left font-bold border-r  border-grey-200'
+                        'flex-1 p-nav text-left font-bold border-r border-grey-200 dark:border-grey-900'
                       }
                     >
                       {section.heading}
@@ -66,7 +66,7 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
 
                   <AccordionTrigger
                     aria-label={`Open '${stegaClean(section.heading)}' page links`}
-                    className="[&>svg]:mx-nav text-black "
+                    className="[&>svg]:mx-nav text-black dark:text-white transition-colors"
                   />
                 </div>
 
@@ -78,15 +78,16 @@ export function MenuMobile({ menu, isOpen, setIsOpen }: Props) {
                       <span
                         key={item.link.label}
                         className={cn(
-                          'flex h-full w-full text-left text-black shadow-internal-border ',
-                          lastLink && 'border-b border-grey-200',
+                          'flex h-full w-full text-left text-black dark:text-white shadow-internal-border dark:shadow-[1px_1px_0px_0px_rgba(64,64,64,1)] transition-colors',
+                          lastLink &&
+                            'border-b border-grey-200 dark:border-grey-900',
                           lastSection && lastLink && 'border-none',
                         )}
                       >
                         <CustomUrl
                           onClick={() => setIsOpen(false)}
                           value={item.link}
-                          className="h-full w-full p-nav "
+                          className="h-full w-full p-nav transition-colors hover:text-pink focus:text-pink dark:hover:text-pink dark:focus:text-pink"
                         >
                           {item.link.label}
                         </CustomUrl>

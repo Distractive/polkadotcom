@@ -112,7 +112,7 @@ export default async function Page() {
                             >
                               {entry.term}
                             </Heading>
-                            <div className="text-lg font-bold text-black group-hover:text-pink">
+                            <div className="text-lg font-bold text-black dark:text-white group-hover:text-pink">
                               &nbsp;→
                             </div>
                           </div>

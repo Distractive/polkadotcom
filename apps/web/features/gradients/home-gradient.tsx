@@ -1,17 +1,7 @@
-const gradient = {
-  background: `
-    linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.6) 40%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0.6) 60%, rgba(255, 255, 255, 1) 100%),
-    linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1) 100%),
-    linear-gradient(90deg, rgba(7, 255, 255, 1) 0%, rgba(121, 22, 243, 1) 100%)
-  `,
-  backgroundSize: '100% 100%',
-  backgroundRepeat: 'no-repeat',
-} as const;
-
 export default function HomeGradient() {
   return (
     <div className="absolute inset-0 flex items-center justify-center -z-10">
-      <div className="w-[2600px] h-full flex-shrink-0" style={gradient} />
+      <div className="w-[2600px] h-full flex-shrink-0 [background:linear-gradient(180deg,rgb(255_255_255)_0%,rgb(255_255_255_/_0.6)_40%,rgb(255_255_255_/_0.55)_50%,rgb(255_255_255_/_0.6)_60%,rgb(255_255_255)_100%),linear-gradient(90deg,rgb(255_255_255)_0%,rgb(255_255_255_/_0)_20%,rgb(255_255_255_/_0)_80%,rgb(255_255_255)_100%),linear-gradient(90deg,rgb(7_255_255)_0%,rgb(121_22_243)_100%)] dark:[background:linear-gradient(180deg,rgb(0_0_0)_0%,rgb(0_0_0_/_0.6)_40%,rgb(0_0_0_/_0.55)_50%,rgb(0_0_0_/_0.6)_60%,rgb(0_0_0)_100%),linear-gradient(90deg,rgb(0_0_0)_0%,rgb(0_0_0_/_0)_20%,rgb(0_0_0_/_0)_80%,rgb(0_0_0)_100%),linear-gradient(90deg,rgb(7_255_255)_0%,rgb(121_22_243)_100%)] bg-no-repeat" />
     </div>
   );
 }
