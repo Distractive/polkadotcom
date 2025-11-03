@@ -48,7 +48,7 @@ export function CTA({ cta, isPostEmbed }: Props) {
         >
           <div
             className={cn(
-              'flex flex-col gap-4',
+              'flex flex-col',
               cta.useWhiteText
                 ? 'text-white dark:text-black'
                 : 'text-black dark:text-white',
@@ -65,9 +65,12 @@ export function CTA({ cta, isPostEmbed }: Props) {
             </Heading>
             {cta.content && (
               <div
-                className={
-                  cta.useWhiteText ? 'text-white' : 'text-black dark:text-white'
-                }
+                className={cn(
+                  cta.useWhiteText
+                    ? 'text-white'
+                    : 'text-black dark:text-white',
+                  'my-4',
+                )}
               >
                 <PortableText
                   value={cta.content}
