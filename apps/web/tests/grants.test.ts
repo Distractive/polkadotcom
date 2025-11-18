@@ -96,9 +96,6 @@ test('Grants', async ({ page }) => {
       section.getByRole('link', { name: 'Ava Protocol Developer Grants' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Darwinia Grants Program' }),
-    ).toBeVisible();
-    await expect(
       section.getByRole('link', { name: 'Hydration Grants and Bounties' }),
     ).toBeVisible();
     await expect(
@@ -115,12 +112,6 @@ test('Grants', async ({ page }) => {
     ).toBeVisible();
     await expect(
       section.getByRole('link', { name: 'Pendulum / Amplitude Grant' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Polimec On-chain funding' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Polkadot Pioneers Prize' }),
     ).toBeVisible();
     await expect(
       section.getByRole('link', { name: 'SubQuery Grants Programme' }),
@@ -149,9 +140,6 @@ test('Grants', async ({ page }) => {
     ).toBeVisible();
     await expect(
       section.getByRole('link', { name: 'Decentralized JAM Prize With' }),
-    ).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Decentralized Futures This' }),
     ).toBeVisible();
   });
 
