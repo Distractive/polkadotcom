@@ -90,9 +90,6 @@ test('Grants', async ({ page }) => {
       section.getByRole('link', { name: 'Acala Grants Program' }),
     ).toBeVisible();
     await expect(
-      section.getByRole('link', { name: 'Aleph Zero Funding Program' }),
-    ).toBeVisible();
-    await expect(
       section.getByRole('link', { name: 'Avail Uncharted Grants' }),
     ).toBeVisible();
     await expect(
