@@ -31,13 +31,13 @@ const TimeUnit = ({ value, label }: TimeUnitProps) => (
         'md:text-[5rem]',
         'lg:text-[7rem]',
         'xl:text-[11rem]',
-        'flex min-w-0  items-center rounded-lg tabular-nums text-black',
+        'flex min-w-0  items-center rounded-lg tabular-nums text-black dark:text-white',
         '',
       )}
     >
       {value.toString().padStart(2, '0')}
     </div>
-    <span className="md:text-normal text-nowrap font-display text-[.75rem] leading-snug text-black sm:text-sm  md:text-2xl lg:text-5xl">
+    <span className="md:text-normal text-nowrap font-display text-[.75rem] leading-snug text-black dark:text-white sm:text-sm  md:text-2xl lg:text-5xl">
       {label}
     </span>
   </div>

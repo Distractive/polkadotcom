@@ -17,7 +17,7 @@ export function ContentBlock({ content }: Props) {
     >
       <div
         className={cn(
-          'col-span-full col-start-1 flex flex-col gap-copy justify-self-center text-grey-900',
+          'col-span-full col-start-1 flex flex-col gap-copy justify-self-center text-grey-900 dark:text-white',
           !content.fullWidth && 'lg:col-span-8',
           content.isCentered && 'text-center lg:col-start-3',
           content.isCentered && content.fullWidth && 'lg:col-start-1',
@@ -42,12 +42,12 @@ export function ContentBlock({ content }: Props) {
               },
               list: {
                 bullet: ({ children }) => (
-                  <ul className="my-4 list-outside list-disc pl-8 marker:text-black">
+                  <ul className="my-4 list-outside list-disc pl-8 marker:text-black dark:marker:text-white">
                     {children}
                   </ul>
                 ),
                 number: ({ children }) => (
-                  <ol className="my-4 list-outside list-decimal pl-8 text-grey-900 marker:text-black ">
+                  <ol className="my-4 list-outside list-decimal pl-8 text-grey-900 marker:text-black dark:marker:text-white">
                     {children}
                   </ol>
                 ),
@@ -72,7 +72,10 @@ export function ContentBlock({ content }: Props) {
                 customUrl: ({ value }) => {
                   return (
                     <Button
-                      variant={value.internal ? 'primary' : 'secondary'}
+                      variant={
+                        value.variant ||
+                        (value.internal ? 'primary' : 'secondary')
+                      }
                       size="md"
                       className="mr-auto mt-copy"
                       asChild

@@ -1,10 +1,15 @@
+'use client';
+
 import type { navigationMenuSelection } from '@/sanity/selections/navigation/navigation-menu';
 import { stegaClean } from '@sanity/client/stega';
 import type { TypeFromSelection } from 'groqd';
+import { useTheme } from 'next-themes';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { CustomUrl } from '@/components/custom-url';
 import { Logo } from '@/components/logo';
+import { useSearchState } from '@/hooks/use-search-state';
 import { cn } from '@shared/ui';
 
 import { Search } from '@/components/search/search';
@@ -19,10 +24,19 @@ interface Props {
 }
 
 export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
+  const { isSearchOpen } = useSearchState();
+  const { theme, setTheme, resolvedTheme } = useTheme();
+
   const handleItemSelect = () => {
     setHovered('');
     setIsOpen(false);
   };
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  const currentTheme = resolvedTheme || theme;
 
   const handleCurrentHeading = (heading: string) => {
     setHovered(heading);
@@ -53,62 +67,94 @@ export function Header({ menu, isOpen, setIsOpen, setHovered }: Props) {
   return (
     <div className="max-width z-40 mt-4">
       <div className="relative flex h-nav-height flex-shrink-0 items-center justify-between px-gutter w-full">
-        <div
-          data-testid="navbar"
-          className={cn(
-            'flex h-full items-center justify-center pl-4 gap-4',
-            'rounded-[3rem] border border-grey-300 bg-white',
-          )}
-        >
-          <Link
-            href="/"
-            onClick={handleItemSelect}
-            className="pr-nav"
-            aria-label="Navigate to the home page"
-          >
-            <Logo ariaLabel="Polkadot homepage" width={140} />
-          </Link>
-          <ul
+        <div className="rounded-[3rem] gradient-border-wrapper bg-black/30 dark:bg-white/10 backdrop-blur-md h-full">
+          <div
+            data-testid="navbar"
             className={cn(
-              'hidden h-full items-center justify-center gap-nav px-nav lg:flex',
-              'border-l border-grey-300 font-bold',
+              'flex h-full items-center justify-center pl-4 gap-1 sm:gap-2 md:gap-4',
+              'rounded-[3rem]',
             )}
           >
-            {menu.map((item) => {
-              return (
-                <li
-                  key={item.heading}
-                  onMouseEnter={() => handleCurrentHeading(item.heading)}
-                  className="relative flex h-full cursor-pointer items-center justify-center transition-colors duration-100 ease-in-out "
-                >
-                  <CustomUrl
-                    value={item.link}
-                    onClick={handleItemSelect}
-                    className={cn(
-                      item.link &&
-                        'duration-100 ease-in-out hover:text-pink focus:text-pink peer-focus:text-pink',
-                    )}
+            <Link
+              href="/"
+              onClick={handleItemSelect}
+              className={cn(
+                'pr-3 cursor-pointer',
+                isSearchOpen && 'hidden lg:hidden xl:block',
+              )}
+              aria-label="Navigate to the home page"
+            >
+              <Logo ariaLabel="Polkadot homepage" width={140} />
+            </Link>
+            <ul
+              className={cn(
+                'hidden  items-center justify-center gap-nav px-nav lg:flex -mr-4',
+                'font-bold nav-divider-gradient',
+                isSearchOpen && 'lg:hidden xl:flex',
+              )}
+            >
+              {menu.map((item) => {
+                return (
+                  <li
+                    key={item.heading}
+                    onMouseEnter={() => handleCurrentHeading(item.heading)}
+                    className="relative flex h-full cursor-pointer items-center justify-center transition-colors ease-in-out text-white"
                   >
-                    {item.heading}
-                  </CustomUrl>
-                  <button
-                    type="button"
-                    className="peer sr-only"
-                    aria-expanded={'' === item.heading}
-                    aria-controls={stegaClean(item.heading)}
-                    onFocus={() => handleCurrentHeading(item.heading)}
-                    onClick={onSubmenuToggleClick}
-                  >
-                    Show submenu
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-          <div className="mr-5 border-l border-l-grey-200 pr-[5px] pl-2.5 h-[100%] flex items-center">
-            <Search />
+                    <CustomUrl
+                      value={item.link}
+                      onClick={handleItemSelect}
+                      className={cn(
+                        'whitespace-nowrap',
+                        item.link &&
+                          'ease-in-out hover:text-pink focus:text-pink peer-focus:text-pink',
+                      )}
+                    >
+                      {item.heading}
+                    </CustomUrl>
+                    <button
+                      type="button"
+                      className="peer sr-only"
+                      aria-expanded={'' === item.heading}
+                      aria-controls={stegaClean(item.heading)}
+                      onFocus={() => handleCurrentHeading(item.heading)}
+                      onClick={onSubmenuToggleClick}
+                    >
+                      Show submenu
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+            <div
+              className={cn(
+                'lg:flex items-center justify-center pl-2',
+                isSearchOpen && 'lg:hidden xl:flex',
+              )}
+            >
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="rounded-full p-2  transition-colors"
+                aria-label="Toggle dark mode"
+              >
+                <Image
+                  src={
+                    currentTheme === 'dark'
+                      ? '/icons/moon-filled.svg'
+                      : '/icons/moon.svg'
+                  }
+                  alt={currentTheme === 'dark' ? 'Dark mode' : 'Light mode'}
+                  width={18}
+                  height={18}
+                  className="w-[16px] h-auto"
+                />
+              </button>
+            </div>
+            <div className="mr-5  pr-[5px] h-[100%] flex items-center">
+              <Search />
+            </div>
           </div>
-        </div>
+        </div>{' '}
         <Burger isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     </div>

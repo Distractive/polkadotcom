@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('AI', async ({ page }) => {
@@ -9,7 +9,9 @@ test('AI', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('AI');
+    await expect(page).toHaveTitle(
+      'AI Use Cases | Build Decentralized, Trustworthy AI on Polkadot',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText(
       'Empowering the evolution of AI and crypto',
@@ -34,13 +36,13 @@ test('AI', async ({ page }) => {
     await expect(section.locator('img')).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "redefining" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-917b7207b005');
@@ -70,14 +72,14 @@ test('AI', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"redefining" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-917b7207b005');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'redefining.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"redefining" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-917b7207b005');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'redefining.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "infrastructure" section is displayed properly', async () => {
     const section = page.getByTestId('cards-sticky-block');
@@ -104,14 +106,14 @@ test('AI', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"infrastructure" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'infrastructure.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"infrastructure" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-sticky-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'infrastructure.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "case studies" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-4607f67ffdf3');

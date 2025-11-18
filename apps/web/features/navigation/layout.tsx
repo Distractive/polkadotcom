@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useBreakpoint } from '@/hooks/use-breakpoint';
 import { useHideOnScroll } from '@/hooks/use-hide-on-scroll';
 import { cn } from '@shared/ui';
+import { SearchStateProvider } from '../../hooks/use-search-state';
 
 import { Header } from './header';
 import { MenuDesktop } from './menu-desktop';
@@ -69,7 +70,7 @@ export default function NavigationLayout({ navigation }: Props) {
   };
 
   return (
-    <>
+    <SearchStateProvider>
       <MotionWrapper
         ref={ref}
         animate={animationControls || { y: '0%', opacity: 1 }}
@@ -79,7 +80,7 @@ export default function NavigationLayout({ navigation }: Props) {
         onBlur={onLeave}
         className={cn(
           'fixed left-0 right-0 top-0 z-[100]',
-          'flex flex-col text-black lg:gap-2',
+          'flex flex-col text-white dark:text-black lg:gap-2',
           isOpen && isMobile && 'bottom-0',
         )}
       >
@@ -108,6 +109,6 @@ export default function NavigationLayout({ navigation }: Props) {
       </MotionWrapper>
 
       <Overlay isVisible={isOpen && isMobile} />
-    </>
+    </SearchStateProvider>
   );
 }

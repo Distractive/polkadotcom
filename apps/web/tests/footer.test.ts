@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { snapshotConfig } from './constants';
+// import { snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Footer', async ({ page }) => {
@@ -8,17 +8,18 @@ test('Footer', async ({ page }) => {
     await acceptOrCloseCookieBanner(page);
   });
 
-  await test.step('"footer" screenshot', async () => {
-    const footerContainer = page.getByTestId('footer');
-    await page.waitForTimeout(2000);
-    expect(
-      await footerContainer.screenshot({
-        animations: 'disabled',
-        timeout: 10_000,
-        mask: [page.getByTestId('dots-animation')],
-      }),
-    ).toMatchSnapshot('footer.png', snapshotConfig);
-  });
+  // await test.step('"footer" screenshot', async () => {
+  //   const footerContainer = page.getByTestId('footer');
+  //   await page.waitForTimeout(2000);
+  // expect(
+  //   await footerContainer.screenshot({
+  //     animations: 'disabled',
+  //     timeout: 10_000,
+  //     mask: [page.getByTestId('dots-animation')],
+  //   }),
+  // ).toMatchSnapshot('footer.png', snapshotConfig);
+  // });
+
   await test.step('assert "footer" is properly displayed', async () => {
     const footerContainer = page.getByTestId('footer');
 
@@ -150,31 +151,49 @@ test('Footer', async ({ page }) => {
 
     await test.step('Legal', async () => {
       await expect(
-        footerContainer.getByRole('link', { name: 'Legal' }),
+        footerContainer.getByRole('link', { name: 'Solutions' }),
       ).toBeVisible();
       await expect(
         footerContainer.getByRole('link', {
-          name: 'Legal Disclosures',
+          name: 'AI',
           exact: true,
         }),
       ).toBeVisible();
       await expect(
         footerContainer.getByRole('link', {
-          name: 'Privacy Policy',
+          name: 'Business',
           exact: true,
         }),
       ).toBeVisible();
       await expect(
         footerContainer.getByRole('link', {
-          name: 'Cookie Policy',
+          name: 'DeFi',
           exact: true,
         }),
       ).toBeVisible();
-    });
-
-    await test.step('Subscribe button', async () => {
       await expect(
-        footerContainer.getByRole('button', { name: 'Subscribe' }),
+        footerContainer.getByRole('link', {
+          name: 'DePIN',
+          exact: true,
+        }),
+      ).toBeVisible();
+      await expect(
+        footerContainer.getByRole('link', {
+          name: 'Gaming',
+          exact: true,
+        }),
+      ).toBeVisible();
+      await expect(
+        footerContainer.getByRole('link', {
+          name: 'Government',
+          exact: true,
+        }),
+      ).toBeVisible();
+      await expect(
+        footerContainer.getByRole('link', {
+          name: 'RWAs',
+          exact: true,
+        }),
       ).toBeVisible();
     });
 

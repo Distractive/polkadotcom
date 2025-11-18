@@ -12,12 +12,57 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
   font-weight: 600;
 }
 
-/* Fix for visibility issue in some browsers (visibility-invisible issue) */
+
 .customHidden {
   visibility: hidden!important;
 }
 
-/* Fix for rounded issue in some browsers (rounded-xl issue) */
 .customRounded {
-  border-radius: 0.75rem!important
+  border-radius: 0.75rem!important;
+  /* Force rounded corners on all sides */
+  -webkit-border-radius: 0.75rem!important;
+  -moz-border-radius: 0.75rem!important;
+  /* Hide overflow to preserve rounded corners */
+  overflow: hidden;
+  /* Ensure the border radius is preserved */
+  background-clip: padding-box;
+}
+
+.mobileSearchRounded {
+  border-radius: 0.75rem!important;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-clip: padding-box;
+}
+
+.mobileSearchRounded::-webkit-scrollbar {
+  width: 8px;
+}
+
+.mobileSearchRounded::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 0.75rem;
+}
+
+.mobileSearchRounded::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.mobileSearchRounded::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Style the search reset (X) icon to be white */
+.ais-SearchBox-reset {
+  color: white !important;
+}
+
+.ais-SearchBox-resetIcon {
+  fill: white !important;
+  color: white !important;
+}
+
+.ais-SearchBox-reset:hover .ais-SearchBox-resetIcon {
+  fill: #e5e7eb !important;
 }

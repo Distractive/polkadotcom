@@ -24,7 +24,7 @@ export default defineType({
       type: 'array',
       of: [
         defineArrayMember({
-          type: 'smallCard',
+          type: 'cardSmall',
         }),
       ],
     }),

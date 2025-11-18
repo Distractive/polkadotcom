@@ -128,7 +128,7 @@ const CarouselContainer = React.forwardRef<
           carouselRef,
           api: api,
           opts,
-          orientation: 'horizontal',
+          orientation: orientation,
           scrollPrev,
           scrollNext,
           canScrollPrev,
@@ -158,8 +158,8 @@ const CarouselContent = React.forwardRef<
   const { carouselRef } = useCarousel();
 
   return (
-    <div ref={carouselRef}>
-      <div ref={ref} className={cn('-ml-gutter flex', className)} {...props} />
+    <div ref={carouselRef} className={cn('overflow-hidden')}>
+      <div ref={ref} className={cn('-ml-8 flex', className)} {...props} />
     </div>
   );
 });
@@ -174,7 +174,7 @@ const CarouselItem = React.forwardRef<
       ref={ref}
       role="group"
       aria-roledescription="slide"
-      className={cn('min-w-0 shrink-0 grow-0 pl-gutter', className)}
+      className={cn('min-w-0 shrink-0 grow-0 pl-8', className)}
       {...props}
     />
   );
@@ -193,7 +193,7 @@ const CarouselPrevious = React.forwardRef<
   return (
     <Button
       ref={ref}
-      variant="tertiary"
+      variant="legacy"
       className={cn(buttonStyles, className)}
       onClick={scrollPrev}
       {...props}
@@ -214,7 +214,7 @@ const CarouselNext = React.forwardRef<
   return (
     <Button
       ref={ref}
-      variant="tertiary"
+      variant="legacy"
       className={cn(buttonStyles, className)}
       onClick={scrollNext}
       {...props}

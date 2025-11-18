@@ -5,16 +5,22 @@ import { Button, Card, CardHeader, Heading, Icon, cn } from '@shared/ui';
 import type { TypeFromSelection } from 'groqd';
 
 import { LiveMetric } from '@/features/metrics/live-metric';
+import { IconDisplay } from './icon-display';
 
 interface Props {
   card: TypeFromSelection<typeof cardStatSelection>;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export default function CardStatBlock({ card, className }: Props) {
+export default function CardStatBlock({ card, className, style }: Props) {
   const {
     _key,
+    icon,
+    darkModeIcon,
+    makeIconFullWidth,
     heading,
+    fallbackHeading,
     body,
     content,
     useLiveMetric,
@@ -27,29 +33,38 @@ export default function CardStatBlock({ card, className }: Props) {
     /[\u200B-\u200F\u2028-\u202F\u2060-\u206F\uFEFF]/g,
     '',
   ) as keyof typeof metricFetchers;
-
   return (
-    <Card key={_key} className={cn('bg-white p-gutter', className)}>
+    <Card
+      key={_key}
+      className={cn('bg-white dark:bg-black p-card', className)}
+      style={style}
+    >
       <CardHeader className="grid">
-        <Heading variant="h3" size="h2" className="pb-1">
+        <IconDisplay
+          icon={icon}
+          darkModeIcon={darkModeIcon}
+          makeIconFullWidth={makeIconFullWidth}
+        />
+        <Heading variant="h3" size="h3" className="pb-3">
           {useLiveMetric && liveMetric !== null && liveMetric !== undefined ? (
-            <LiveMetric
-              metric={cleanMetric}
-              fallbackMetric={heading}
-              addDollarSign={addDollarSign}
-              displayInMillions={displayInMillions}
-            />
+            <>
+              <LiveMetric
+                metric={cleanMetric}
+                fallback={fallbackHeading}
+                addDollarSign={addDollarSign}
+                displayInMillions={displayInMillions}
+              />
+              {heading}
+            </>
           ) : (
             heading
           )}
         </Heading>
-        <Heading variant="h3" size="h4" className="font-light">
-          {body}
-        </Heading>
+        {body && <div className={cn(content && 'pb-6')}>{body}</div>}
       </CardHeader>
 
       {content && (
-        <div className="pt-4  md:pt-5">
+        <div className="text-sm">
           <PortableText
             value={content}
             components={{

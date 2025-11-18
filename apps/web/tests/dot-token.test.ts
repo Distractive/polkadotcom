@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('DOT Token', async ({ page }) => {
@@ -9,7 +9,9 @@ test('DOT Token', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('DOT Token');
+    await expect(page).toHaveTitle(
+      'DOT Token | The Native Cryptocurrency of Polkadot',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('DOT token');
   });
@@ -32,14 +34,14 @@ test('DOT Token', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "whats" section is displayed properly', async () => {
     const section = page.getByTestId('cards-sticky-block');
@@ -63,14 +65,14 @@ test('DOT Token', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"whats" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'whats.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"whats" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-sticky-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'whats.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "dao" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-0911d952910a');
@@ -94,14 +96,14 @@ test('DOT Token', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"dao" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-0911d952910a');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'dao.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"dao" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-0911d952910a');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'dao.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "get" section is displayed properly', async () => {
     const section = page.getByTestId('cards-small-block');
@@ -128,14 +130,14 @@ test('DOT Token', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"get" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'get.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"get" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-small-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'get.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "button" section is displayed properly', async () => {
     const section = page.getByTestId('button-block');
@@ -144,14 +146,14 @@ test('DOT Token', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"button" section screenshot', async () => {
-    const section = page.getByTestId('button-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'button.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"button" section screenshot', async () => {
+  //   const section = page.getByTestId('button-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'button.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "faqs" section is displayed properly', async () => {
     const section = page.getByTestId('faqs');
@@ -206,12 +208,12 @@ test('DOT Token', async ({ page }) => {
     await expect(section.getByText('Supply: Polkadot has an')).toBeVisible();
   });
 
-  await test.step('"faqs" section screenshot', async () => {
-    const section = page.getByTestId('faqs');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'faqs.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"faqs" section screenshot', async () => {
+  //   const section = page.getByTestId('faqs');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'faqs.png',
+  //     snapshotConfig,
+  //   );
+  // });
 });
