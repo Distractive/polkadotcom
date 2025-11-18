@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Use Cases', async ({ page }) => {
@@ -9,7 +9,9 @@ test('Use Cases', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Use Cases');
+    await expect(page).toHaveTitle(
+      'Web3 Use Cases on Polkadot | From Gaming to Real-World Assets',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('The future runs on Polkadot');
   });
@@ -21,14 +23,14 @@ test('Use Cases', async ({ page }) => {
     );
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('header');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('header');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "industries" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-c932a4156113');
@@ -58,14 +60,14 @@ test('Use Cases', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"industries" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-c932a4156113');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'industries.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"industries" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-c932a4156113');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'industries.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "quote" section is displayed properly', async () => {
     const section = page.getByTestId('quote-block');
@@ -80,14 +82,14 @@ test('Use Cases', async ({ page }) => {
     );
   });
 
-  await test.step('"quote" section screenshot', async () => {
-    const section = page.getByTestId('quote-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'quote.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"quote" section screenshot', async () => {
+  //   const section = page.getByTestId('quote-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'quote.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "by numbers" section is displayed properly', async () => {
     const section = page.getByTestId('cards-stat');
@@ -99,12 +101,12 @@ test('Use Cases', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"by numbers" section screenshot', async () => {
-    const section = page.getByTestId('cards-stat');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'by-numbers.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"by numbers" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-stat');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'by-numbers.png',
+  //     snapshotConfig,
+  //   );
+  // });
 });

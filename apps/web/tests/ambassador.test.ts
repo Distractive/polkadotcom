@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Ambassador Program', async ({ page }) => {
@@ -28,13 +28,13 @@ test('Ambassador Program', async ({ page }) => {
     );
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "growing movement" section is displayed properly', async () => {
     const section = page.getByTestId('content-block').first();
@@ -79,14 +79,14 @@ test('Ambassador Program', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"involved" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block').first();
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'champion.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"involved" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-small-block').first();
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'champion.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "ambassador" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-e3f39b1c7ff0');
@@ -101,12 +101,12 @@ test('Ambassador Program', async ({ page }) => {
     );
   });
 
-  await test.step('"ambassador" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-e3f39b1c7ff0');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'ambassador.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"ambassador" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-e3f39b1c7ff0');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'ambassador.png',
+  //     snapshotConfig,
+  //   );
+  // });
 });

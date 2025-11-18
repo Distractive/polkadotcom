@@ -49,49 +49,59 @@ export function CTA({ cta, isPostEmbed }: Props) {
           <div
             className={cn(
               'flex flex-col gap-4',
-              cta.useWhiteText ? 'text-white' : 'text-black',
+              cta.useWhiteText
+                ? 'text-white dark:text-black'
+                : 'text-black dark:text-white',
               cta.twoThirdsText ? 'md:w-2/3' : '',
             )}
           >
             <Heading
               variant="h2"
-              className={cta.useWhiteText ? 'text-white' : 'text-black'}
+              className={
+                cta.useWhiteText ? 'text-white' : 'text-black dark:text-white'
+              }
             >
               {cta.heading}
             </Heading>
             {cta.content && (
-              <PortableText
-                value={cta.content}
-                components={{
-                  block: {
-                    h3: ({ children }) => (
-                      <Heading variant="h3" className="w-full">
-                        {children}
-                      </Heading>
-                    ),
-                    normal: ({ children }) => (
-                      <p className="text-lg ">{children}</p>
-                    ),
-                    smallprint: ({ children }) => (
-                      <p className="text-sm ">{children}</p>
-                    ),
-                  },
-                  list: {
-                    bullet: ({ children }) => (
-                      <ul className="flex list-inside list-disc flex-col gap-copy ">
-                        {children}
-                      </ul>
-                    ),
-                  },
-                  listItem: {
-                    bullet: ({ children }) => <li>{children}</li>,
-                  },
-                  types: {
-                    customUrl: () => null,
-                    newsletterButton: () => null,
-                  },
-                }}
-              />
+              <div
+                className={
+                  cta.useWhiteText ? 'text-white' : 'text-black dark:text-white'
+                }
+              >
+                <PortableText
+                  value={cta.content}
+                  components={{
+                    block: {
+                      h3: ({ children }) => (
+                        <Heading variant="h3" className="w-full">
+                          {children}
+                        </Heading>
+                      ),
+                      normal: ({ children }) => (
+                        <p className="text-lg ">{children}</p>
+                      ),
+                      smallprint: ({ children }) => (
+                        <p className="text-sm ">{children}</p>
+                      ),
+                    },
+                    list: {
+                      bullet: ({ children }) => (
+                        <ul className="flex list-inside list-disc flex-col gap-copy ">
+                          {children}
+                        </ul>
+                      ),
+                    },
+                    listItem: {
+                      bullet: ({ children }) => <li>{children}</li>,
+                    },
+                    types: {
+                      customUrl: () => null,
+                      newsletterButton: () => null,
+                    },
+                  }}
+                />
+              </div>
             )}
 
             {/* Separate rich text for buttons, allows them to be placed on  a new row*/}
@@ -119,13 +129,7 @@ export function CTA({ cta, isPostEmbed }: Props) {
                               size="md"
                               asChild
                               className="no-wrap md:cursor-pointer"
-                              variant={
-                                value?.variant
-                                  ? value.variant === 'primary'
-                                    ? 'primary'
-                                    : 'secondary'
-                                  : 'primary'
-                              }
+                              variant={value?.variant || 'primary'}
                             >
                               <CustomUrl
                                 className="outline-none"

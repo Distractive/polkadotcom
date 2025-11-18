@@ -3,18 +3,18 @@ import { staticMetricsStore } from '@/app/api/stats/static-metrics-store';
 
 interface MetricProps {
   metric?: keyof typeof metricFetchers;
-  fallbackMetric?: string | null;
+  fallback?: string | null;
   addDollarSign?: boolean | null;
   displayInMillions?: boolean | null;
 }
 
 const formatToMillions = (number: number): string => {
-  return `${(number / 1000000).toFixed(1)} million`;
+  return `${(number / 1000000).toFixed(1)}`;
 };
 
 export const LiveMetric = async ({
   metric,
-  fallbackMetric,
+  fallback,
   addDollarSign,
   displayInMillions,
 }: MetricProps) => {
@@ -26,12 +26,11 @@ export const LiveMetric = async ({
     let value = staticMetricsStore[metric];
 
     if (!value) {
-      return <>{fallbackMetric}</>;
+      return <>{fallback}</>;
     }
     if (displayInMillions && Number(value) > 1000000) {
       value = formatToMillions(Number(value));
     }
-
     return (
       <>
         {addDollarSign ? '$' : ''}
@@ -45,6 +44,6 @@ export const LiveMetric = async ({
     );
   } catch (error) {
     console.error(`Metric fetch failed for ${metric}:`, error);
-    return <>{fallbackMetric ?? 'Error loading metric'}</>;
+    return <>{fallback ?? 'Error loading metric'}</>;
   }
 };

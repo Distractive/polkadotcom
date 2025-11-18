@@ -11,6 +11,26 @@ export default defineType({
   ],
   fields: [
     defineField({
+      name: 'icon',
+      title: 'Icon',
+      type: 'image',
+      group: 'content',
+    }),
+    defineField({
+      name: 'darkModeIcon',
+      title: 'Dark Mode Icon',
+      description:
+        'Optional icon to display in dark mode. If not provided, the regular icon will be used.',
+      type: 'image',
+      group: 'content',
+    }),
+    defineField({
+      name: 'eyebrow',
+      title: 'Eyebrow',
+      type: 'string',
+      group: 'content',
+    }),
+    defineField({
       name: 'heading',
       title: 'Heading',
       type: 'string',
@@ -27,18 +47,6 @@ export default defineType({
       name: 'link',
       title: 'Link',
       type: 'customUrl',
-      group: 'content',
-    }),
-    defineField({
-      name: 'icon',
-      title: 'Icon',
-      type: 'image',
-      group: 'content',
-    }),
-    defineField({
-      name: 'eyebrow',
-      title: 'Eyebrow',
-      type: 'string',
       group: 'content',
     }),
   ],

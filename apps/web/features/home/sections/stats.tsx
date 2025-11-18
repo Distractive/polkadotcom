@@ -3,6 +3,7 @@ import type { TypeFromSelection } from 'groqd';
 
 import { Heading, cn } from '@shared/ui';
 
+import HomeGradient from '@/features/gradients/home-gradient';
 import CardStatBlock from '@/features/page/blocks/cards-stats/card-stat';
 
 interface Props {
@@ -13,64 +14,73 @@ export function Stats({ stats }: Props) {
   return (
     <div
       id="stats-pile"
-      className="grid-pile relative  "
+      className="grid-pile relative py-section"
       data-testid="stats-pile"
     >
-      {/* biome-ignore lint/style/useSelfClosingElements: <Not possible for div> */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(225deg,rgba(240,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(to_bottom,rgba(255,255,255,0%)_0%,#FFFFFF_100%),linear-gradient(225deg,#E4FF07_0%,#07FFFF_100%)]"></div>
+      <HomeGradient />
 
-      <article
+      <div
         id="stats.wrapper"
-        className="grid-pile grid-system relative col-span-12 h-auto items-center justify-center lg:h-full"
+        className=" relative col-span-12 h-auto items-center justify-center lg:h-full "
       >
         <div
           id="stats.content"
           className={cn(
-            'max-width grid-system col-span-full sm:w-dvw',
-            'md:col-span-full md:col-start-1 md:w-full',
-            'lg:col-span-full lg:col-start-1',
-            'xl:col-span-12 xl:col-start-1',
-            'mt-header-top',
+            'max-width grid-system px-gutter col-span-full sm:w-dvw',
           )}
         >
-          <Heading
-            variant="h2"
-            className={cn(
-              'px-gutter  leading-[1.1] lg:pl-gutter lg:pr-gutter',
-              'col-span-full md:col-span-3 md:col-start-1  md:text-[3.25rem] lg:col-start-1 xl:col-start-2 xl:text-[3.813rem]',
-              '!hyphens-none !break-normal',
+          <div className="col-span-full md:col-span-3 md:col-start-1 lg:col-span-4 lg:col-start-1">
+            {stats?.title && (
+              <Heading
+                variant="h2"
+                className={cn('!hyphens-none !break-normal')}
+                size="h2"
+                aria-label={stats?.title}
+                role="heading"
+              >
+                {stats?.title || ''}
+              </Heading>
             )}
-            size="display"
-            aria-label={stats.title}
-            role="heading"
-          >
-            {stats.title}
-          </Heading>
+            {stats?.body && (
+              <p className="pt-5 text-lg text-black dark:text-white">
+                {stats?.body}
+              </p>
+            )}
+          </div>
           <div
             className={cn(
-              'grid-system relative col-span-full mt-10 gap-card px-gutter lg:mt-0',
-              'lg:col-span-8 lg:col-start-6',
-              'xl:col-span-9 xl:col-start-7',
+              'columns-1 md:columns-2 relative col-span-full mt-10 lg:mt-0',
+              'col-span-full md:col-start-1',
+              'lg:col-span-7 lg:col-start-6',
             )}
           >
-            {stats.items.map((item, index) => {
+            {stats?.items.map((item, index) => {
               return (
                 <CardStatBlock
                   key={item._key}
                   card={item}
                   className={cn(
                     'stats-card',
-                    'col-span-full col-start-1 md:col-span-3 lg:col-span-6 p-card lg:p-8',
-                    // nudge down second column
-                    index % 2 !== 0 && 'lg:translate-y-24',
+                    'break-inside-avoid mb-4 md:mb-8 p-card lg:p-8 !h-fit',
+                    // Nudge down second column on md and above
+                    stats.columnPadding &&
+                      (index === 3 || index === 4) &&
+                      'md:translate-y-[var(--column-padding)]',
                   )}
+                  style={
+                    {
+                      '--column-padding': stats.columnPadding
+                        ? `${stats.columnPadding}rem`
+                        : '0rem',
+                    } as React.CSSProperties
+                  }
                   data-index={index}
                 />
               );
             })}
           </div>
         </div>
-      </article>
+      </div>
     </div>
   );
 }

@@ -10,7 +10,7 @@ export function Overlay({ isVisible }: Props) {
       {/* biome-ignore lint/style/useSelfClosingElements: <explanation> */}
       <div
         className={cn(
-          'transition-visibility fixed inset-0 z-20 bg-grey-200 duration-500 ease-in-out',
+          'transition-visibility fixed inset-0 z-20 bg-grey-200 dark:bg-black duration-500 ease-in-out',
           isVisible
             ? 'pointer-events-auto visible opacity-60'
             : 'pointer-events-auto invisible opacity-0',

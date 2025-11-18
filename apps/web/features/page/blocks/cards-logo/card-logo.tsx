@@ -21,7 +21,7 @@ export default function CardLogoBlock({ card, className }: Props) {
     <Card
       key={_key}
       className={cn(
-        'border-0 bg-grey-100',
+        'border-0 bg-grey-100 dark:bg-grey-900',
         link &&
           'md:cursor-pointer md:hover:shadow-card md:hover:backdrop-blur-0',
         className,
@@ -34,7 +34,7 @@ export default function CardLogoBlock({ card, className }: Props) {
               src={urlForImage(image?.asset)}
               alt={name || 'Logo'}
               loading="lazy"
-              className="w-full"
+              className="w-full dark:invert"
             />
           )}
         </div>

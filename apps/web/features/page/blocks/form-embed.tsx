@@ -24,7 +24,7 @@ export function EmbedFormBlock({ form }: Props) {
         <Heading variant="h2">{form.heading}</Heading>
         <p>{form.body}</p>
       </div>
-      <div className="rounded-2xl border border-grey-300 bg-white p-gutter md:basis-[55%]">
+      <div className="rounded-2xl border border-grey-300 dark:border-grey-700 bg-white dark:bg-black p-gutter md:basis-[55%]">
         {form.formType && form._key && (
           <HubSpotForm type={form.formType} id={form._key} />
         )}

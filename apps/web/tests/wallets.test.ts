@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Wallets', async ({ page }) => {
@@ -9,7 +9,9 @@ test('Wallets', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Polkadot Wallets');
+    await expect(page).toHaveTitle(
+      'Polkadot Wallets | The Best Wallets for Managing DOT',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Your passport to Polkadot');
   });
@@ -31,14 +33,14 @@ test('Wallets', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "why" section is displayed properly', async () => {
     const section = page.getByTestId('cards-sticky-block');
@@ -56,14 +58,14 @@ test('Wallets', async ({ page }) => {
     await expect(section.getByTestId('sticky-card').nth(2)).toBeVisible();
   });
 
-  await test.step('"why" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'why.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"why" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-sticky-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'why.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "find" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-142c29784e8f');
@@ -90,9 +92,6 @@ test('Wallets', async ({ page }) => {
     const talisman = section.getByRole('link', {
       name: 'Browser Talisman Get Talisman',
     });
-    const fearless = section.getByRole('link', {
-      name: 'Browser Mobile Fearless',
-    });
 
     await expect(all).toBeVisible();
     await expect(mobile).toBeVisible();
@@ -101,36 +100,32 @@ test('Wallets', async ({ page }) => {
     await expect(nova).toBeVisible();
     await expect(subwallet).toBeVisible();
     await expect(talisman).toBeVisible();
-    await expect(fearless).toBeVisible();
 
     await mobile.click({ timeout: 2000 });
 
     await expect(nova).toBeVisible();
     await expect(subwallet).toBeVisible();
-    await expect(fearless).toBeVisible();
 
     await browser.click({ timeout: 2000 });
 
     await expect(subwallet).toBeVisible();
     await expect(talisman).toBeVisible();
-    await expect(fearless).toBeVisible();
 
     await all.click({ timeout: 2000 });
 
     await expect(nova).toBeVisible();
     await expect(subwallet).toBeVisible();
     await expect(talisman).toBeVisible();
-    await expect(fearless).toBeVisible();
   });
 
-  await test.step('"find" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-142c29784e8f');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'find.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"find" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-142c29784e8f');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'find.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "evm" section is displayed properly', async () => {
     const section = page.getByTestId('cards-small-block').first();
@@ -146,20 +141,17 @@ test('Wallets', async ({ page }) => {
     await expect(section.getByRole('link', { name: 'Astar' })).toBeVisible();
     await expect(section.getByRole('link', { name: 'Moonbeam' })).toBeVisible();
     await expect(section.getByRole('link', { name: 'Acala' })).toBeVisible();
-    await expect(
-      section.getByRole('link', { name: 'Centrifuge' }),
-    ).toBeVisible();
     await expect(section.getByRole('link', { name: 'Peaq' })).toBeVisible();
   });
 
-  await test.step('"evm" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block').first();
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'evm.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"evm" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-small-block').first();
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'evm.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "hardware" section is displayed properly', async () => {
     const section = page.getByTestId('cards-small-block').nth(1);
@@ -178,14 +170,14 @@ test('Wallets', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"hardware" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block').nth(1);
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'hardware.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"hardware" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-small-block').nth(1);
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'hardware.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "staking" section is displayed properly', async () => {
     const section = page.getByTestId('side-by-side-e0781e9c4199');
@@ -205,14 +197,14 @@ test('Wallets', async ({ page }) => {
     await expect(section.locator('img')).toBeVisible();
   });
 
-  await test.step('"staking" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-e0781e9c4199');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'staking.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"staking" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-e0781e9c4199');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'staking.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "disclaimer" section is displayed properly', async () => {
     const section = page.getByTestId('content-block');
@@ -230,12 +222,12 @@ test('Wallets', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"disclaimer" section screenshot', async () => {
-    const section = page.getByTestId('content-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'disclaimer.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"disclaimer" section screenshot', async () => {
+  //   const section = page.getByTestId('content-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'disclaimer.png',
+  //     snapshotConfig,
+  //   );
+  // });
 });

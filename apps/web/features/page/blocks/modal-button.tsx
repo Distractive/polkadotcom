@@ -35,7 +35,11 @@ export function ModalButton({ modal, buttonClassName }: Props) {
             modal.variant === 'secondary'
               ? // Account for 1px border on secondary buttons
                 [ButtonStyles.variants.secondary, '!py-[15px]']
-              : ButtonStyles.variants.primary,
+              : modal.variant === 'tertiary'
+                ? ButtonStyles.variants.tertiary
+                : modal.variant === 'disabled'
+                  ? ButtonStyles.variants.disabled
+                  : ButtonStyles.variants.primary,
             ButtonStyles.sizes[modal.size || 'md'],
             'text-left group-focus-within:after:translate-x-0 md:group-hover:after:translate-x-0',
           )}
@@ -43,8 +47,8 @@ export function ModalButton({ modal, buttonClassName }: Props) {
           {modal.cta}
         </span>
       </DialogTrigger>
-      <DialogContent className="mx-auto max-h-[65vh] w-[90%] overflow-y-auto rounded-2xl border border-grey-300 bg-white lg:w-[70%]">
-        <div className="flex flex-col gap-card p-gutter">
+      <DialogContent className="mx-auto max-h-[65vh] w-[90%] overflow-hidden rounded-2xl border border-grey-300 dark:border-grey-700 bg-white dark:bg-black lg:w-[70%]">
+        <div className="flex flex-col gap-card p-gutter overflow-y-auto max-h-[65vh]">
           <DialogTitle
             className={cn(HeadingStyles.base, HeadingStyles.sizes.h2)}
           >

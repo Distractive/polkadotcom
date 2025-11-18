@@ -23,6 +23,24 @@ export function HubSpotForm({ type, id }: Props) {
           portalId: '7592558',
           target: `#hbspt-${id}`,
           formId: type,
+          onFormReady: () => {
+            const formContainer = document.querySelector(`#hbspt-${id}`);
+            if (formContainer) {
+              const emailInput = formContainer.querySelector(
+                'input[name="email"]',
+              );
+              if (emailInput) {
+                emailInput.setAttribute('placeholder', 'Email');
+              }
+
+              const submitButton = formContainer.querySelector(
+                'input[type="submit"]',
+              );
+              if (submitButton) {
+                submitButton.setAttribute('value', 'Subscribe');
+              }
+            }
+          },
         });
       }
     };

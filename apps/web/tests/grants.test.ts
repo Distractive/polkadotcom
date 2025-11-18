@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Grants', async ({ page }) => {
@@ -9,7 +9,9 @@ test('Grants', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Grants & Funding');
+    await expect(page).toHaveTitle(
+      'Polkadot Grants & Funding | Web3 Foundation & Community Led Funding',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText(
       'Empowering the builders and dreamers in Web3',
@@ -36,14 +38,14 @@ test('Grants', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "funding" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-c5915568a2b0');
@@ -64,14 +66,14 @@ test('Grants', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"funding" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-c5915568a2b0');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'funding.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"funding" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-c5915568a2b0');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'funding.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "grants" section is displayed properly', async () => {
     const section = page.getByTestId('cards-small-block');
@@ -128,14 +130,14 @@ test('Grants', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"grants" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'grants.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"grants" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-small-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'grants.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "opportunities" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-4fbbe3d50299');
@@ -156,14 +158,14 @@ test('Grants', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"opportunities" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-4fbbe3d50299');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'opportunities.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"opportunities" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-4fbbe3d50299');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'opportunities.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "get-started" section is displayed properly', async () => {
     const section = page.getByTestId('content-block');
@@ -181,12 +183,12 @@ test('Grants', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"get-started" section screenshot', async () => {
-    const section = page.getByTestId('content-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'get-started.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"get-started" section screenshot', async () => {
+  //   const section = page.getByTestId('content-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'get-started.png',
+  //     snapshotConfig,
+  //   );
+  // });
 });

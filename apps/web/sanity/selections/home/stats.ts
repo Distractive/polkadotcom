@@ -5,17 +5,21 @@ import { cardStatSelection } from '../blocks/card-stat';
 import { customUrlSelection } from '../custom-url';
 
 export const statsSelection = {
-  stats: q('stats').grab({
-    title: q.string(),
-    items: q('items')
-      .filter()
-      .grab({
-        ...cardStatSelection,
-        link: q('link')
-          .grab$({
-            ...customUrlSelection,
-          })
-          .nullable(),
-      }),
-  }),
+  stats: q('stats')
+    .grab({
+      title: q.string().optional().nullable(),
+      body: q.string().optional().nullable(),
+      columnPadding: q.number().optional().nullable(),
+      items: q('items')
+        .filter()
+        .grab({
+          ...cardStatSelection,
+          link: q('link')
+            .grab$({
+              ...customUrlSelection,
+            })
+            .nullable(),
+        }),
+    })
+    .nullable(),
 } satisfies Selection;

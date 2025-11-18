@@ -16,6 +16,7 @@ export const Internal: Story = {
     card: {
       //@ts-ignore
       icon: { asset: { url: '/icon-placeholder.png' } },
+      darkModeIcon: null,
       _key: 'internal',
       heading: 'Internal Link Card',
       body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -29,6 +30,7 @@ export const External: Story = {
     card: {
       //@ts-ignore
       icon: null,
+      darkModeIcon: null,
       _key: 'external',
       heading: 'External Link Card',
       body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -46,6 +48,7 @@ export const Static: Story = {
     card: {
       //@ts-ignore
       icon: null,
+      darkModeIcon: null,
       _key: 'internal',
       heading: 'Static Card',
       body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -59,6 +62,7 @@ export const ExternalWithIcon: Story = {
     card: {
       //@ts-ignore
       icon: { asset: { url: '/icon-placeholder.png' } },
+      darkModeIcon: null,
       _key: 'external',
       heading: 'External Link Card with Icon',
       body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -76,6 +80,7 @@ export const InternalWithIcon: Story = {
     card: {
       //@ts-ignore
       icon: { asset: { url: '/icon-placeholder.png' } },
+      darkModeIcon: null,
       _key: 'internal',
       heading: 'Internal Link Card with Icon',
       body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -89,6 +94,7 @@ export const InternalWithEyebrow: Story = {
     card: {
       //@ts-ignore
       icon: { asset: { url: '/icon-placeholder.png' } },
+      darkModeIcon: null,
       _key: 'internal',
       heading: 'Internal Link Card with Eyebrow',
       eyebrow: 'Date',

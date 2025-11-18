@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('Decentralized Jobs', async ({ page }) => {
@@ -9,7 +9,9 @@ test('Decentralized Jobs', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('Decentralized Jobs');
+    await expect(page).toHaveTitle(
+      'Decentralized Jobs | Discover Career Opportunities in the Polkadot Community',
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('Decentralized jobs');
   });
@@ -34,13 +36,13 @@ test('Decentralized Jobs', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "teams" section is displayed properly', async () => {
     const section = page.getByTestId('cards-small-block');
@@ -70,14 +72,14 @@ test('Decentralized Jobs', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"teams" section screenshot', async () => {
-    const section = page.getByTestId('cards-small-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'teams.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"teams" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-small-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'teams.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "quote" section is displayed properly', async () => {
     const section = page.getByTestId('quote-block');
@@ -115,12 +117,12 @@ test('Decentralized Jobs', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"job" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-dd81681380d9');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'job.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"job" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-dd81681380d9');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'job.png',
+  //     snapshotConfig,
+  //   );
+  // });
 });

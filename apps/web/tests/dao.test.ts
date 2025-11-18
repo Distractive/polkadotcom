@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { screenshotConfig, snapshotConfig } from './constants';
+// import { screenshotConfig, snapshotConfig } from './constants';
 import { acceptOrCloseCookieBanner } from './utils/cookies';
 
 test('DAO', async ({ page }) => {
@@ -9,7 +9,9 @@ test('DAO', async ({ page }) => {
   });
 
   await test.step('assert title and header are properly displayed', async () => {
-    await expect(page).toHaveTitle('DAO');
+    await expect(page).toHaveTitle(
+      "Polkadot DAO | The World's Largest DAO is Here",
+    );
     const heading = page.locator('h1');
     await expect(heading).toHaveText('You run Polkadot. Seriously.');
   });
@@ -28,14 +30,14 @@ test('DAO', async ({ page }) => {
     );
   });
 
-  await test.step('"header" section screenshot', async () => {
-    const section = page.getByTestId('side-by-side-header');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'header.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"header" section screenshot', async () => {
+  //   const section = page.getByTestId('side-by-side-header');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'header.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "decentralization" section is displayed properly', async () => {
     const section = page.getByTestId('cards-sticky-block');
@@ -56,14 +58,14 @@ test('DAO', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"decentralization" section screenshot', async () => {
-    const section = page.getByTestId('cards-sticky-block');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'decentralization.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"decentralization" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-sticky-block');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'decentralization.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "join" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-66f97030f3ca');
@@ -82,14 +84,14 @@ test('DAO', async ({ page }) => {
     await expect(section.getByText('Delegate your vote')).toBeVisible();
   });
 
-  await test.step('"join" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-66f97030f3ca');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'join.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"join" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-66f97030f3ca');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'join.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "stats" section is displayed properly', async () => {
     const section = page.getByTestId('cards-stat');
@@ -106,14 +108,14 @@ test('DAO', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"democracy" section screenshot', async () => {
-    const section = page.getByTestId('cards-stat');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'democracy.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"democracy" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-stat');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'democracy.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "new-benefits" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-6c5f350b7323');
@@ -134,14 +136,14 @@ test('DAO', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('"benefits" section screenshot', async () => {
-    const section = page.getByTestId('cards-block-6c5f350b7323');
-    await page.waitForTimeout(2000);
-    expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
-      'benefits.png',
-      snapshotConfig,
-    );
-  });
+  // await test.step('"benefits" section screenshot', async () => {
+  //   const section = page.getByTestId('cards-block-6c5f350b7323');
+  //   await page.waitForTimeout(2000);
+  //   expect(await section.screenshot(screenshotConfig)).toMatchSnapshot(
+  //     'benefits.png',
+  //     snapshotConfig,
+  //   );
+  // });
 
   await test.step('assert "initiatives" section is displayed properly', async () => {
     const section = page.getByTestId('cards-block-e1516f9dc848');

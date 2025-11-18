@@ -90,6 +90,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
               cards={{
                 _key: 'related-terms',
                 heading: 'Related Terms',
+                useRichText: false,
+                body: '',
+                richBody: null,
                 items: data.relatedTerms.map((term) => ({
                   _key: term._id,
                   heading: term.term,
@@ -103,6 +106,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                       }
                     : null,
                   icon: null,
+                  darkModeIcon: null,
                 })),
                 backgroundImage: null,
               }}
@@ -114,6 +118,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
           <div className="py-section">
             <CardsBlock
               cards={{
+                _type: 'cards',
                 _key: 'related-posts',
                 heading: 'Related Posts',
                 body: '',

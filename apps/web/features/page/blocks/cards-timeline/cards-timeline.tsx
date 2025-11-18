@@ -34,10 +34,14 @@ export function CardsTimelineBlock({ cards }: Props) {
             components={{
               block: {
                 normal: ({ children }) => (
-                  <p className="text-lg ">{children}</p>
+                  <p className="text-lg text-black dark:text-white">
+                    {children}
+                  </p>
                 ),
                 smallprint: ({ children }) => (
-                  <p className="text-sm ">{children}</p>
+                  <p className="text-sm text-black dark:text-white">
+                    {children}
+                  </p>
                 ),
               },
             }}
