@@ -78,19 +78,3 @@ jobs:
         with:
           name: dastardly-scan-result
           path: dastardly-report.xml
-
-  notify:
-    needs: dastardly-scan
-    runs-on: ubuntu-latest
-    if: ${{ needs.dastardly-scan.outputs.issues_count > 0 }}
-    steps:
-      - name: Send Slack notification
-        uses: slackapi/slack-github-action@b0fa283ad8fea605de13dc3f449259339835fc52
-        with:
-          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
-          webhook-type: webhook-trigger
-          payload: |
-            {
-              "text": "${{ needs.dastardly-scan.outputs.text }}",
-              "blocks": ${{ needs.dastardly-scan.outputs.slack_blocks }}
-            }
