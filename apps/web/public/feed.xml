@@ -4,7 +4,7 @@
         <title>Polkadot - All Content</title>
         <link>https://polkadot.com</link>
         <description>Polkadot - The Platform for Web3</description>
-        <lastBuildDate>Thu, 30 Oct 2025 20:35:55 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 18 Nov 2025 03:59:34 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -20,6 +20,62 @@
             <category>Case Study</category>
             <category>RWA</category>
             <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[Pudgy Party: The Web3 game that hides the blockchain]]></title>
+            <link>https://polkadot.com/blog/pudgy-party-web3-game-blockchain-invisible</link>
+            <guid>https://polkadot.com/blog/pudgy-party-web3-game-blockchain-invisible</guid>
+            <pubDate>Mon, 17 Nov 2025 20:48:00 GMT</pubDate>
+            <description><![CDATA[Pudgy Party hit 900,000 downloads in six weeks by hiding the blockchain entirely. Built on Mythos Chain, players get custodial wallets and zero gas fees without realizing it. The game proves Web3 gaming works when blockchain infrastructure becomes invisible.]]></description>
+            <content:encoded><![CDATA[Pudgy Party hit 900,000 downloads in six weeks by hiding the blockchain entirely. Built on Mythos Chain, players get custodial wallets and zero gas fees without realizing it. The game proves Web3 gaming works when blockchain infrastructure becomes invisible.]]></content:encoded>
+            <category>Blog</category>
+            <category>Gaming</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[Polkadot at TechCrunch Disrupt 2025: The only blockchain in the room]]></title>
+            <link>https://polkadot.com/blog/techcrunch-disrupt-2025-recap</link>
+            <guid>https://polkadot.com/blog/techcrunch-disrupt-2025-recap</guid>
+            <pubDate>Thu, 13 Nov 2025 15:32:00 GMT</pubDate>
+            <description><![CDATA[Polkadot showed up at TechCrunch Disrupt 2025 as the only blockchain sponsor. With nearly 10,000 booth visitors and strong coordination across ecosystem teams, the event proved valuable for positioning Polkadot in Web2 conversations.]]></description>
+            <content:encoded><![CDATA[Polkadot showed up at TechCrunch Disrupt 2025 as the only blockchain sponsor. With nearly 10,000 booth visitors and strong coordination across ecosystem teams, the event proved valuable for positioning Polkadot in Web2 conversations.]]></content:encoded>
+            <category>Blog</category>
+            <category>Events</category>
+            <category>Ecosystem</category>
+        </item>
+        <item>
+            <title><![CDATA[Why most blockchains can't handle AI (and what changes that)]]></title>
+            <link>https://polkadot.com/blog/why-most-blockchains-cant-handle-ai</link>
+            <guid>https://polkadot.com/blog/why-most-blockchains-cant-handle-ai</guid>
+            <pubDate>Tue, 11 Nov 2025 18:16:00 GMT</pubDate>
+            <description><![CDATA[Most blockchains can't handle AI's computational demands. High costs, limited speed, and storage constraints require purpose-built modular infrastructure instead.]]></description>
+            <content:encoded><![CDATA[Most blockchains can't handle AI's computational demands. High costs, limited speed, and storage constraints require purpose-built modular infrastructure instead.]]></content:encoded>
+            <category>Blog</category>
+            <category>AI</category>
+            <category>Modular Tech</category>
+        </item>
+        <item>
+            <title><![CDATA[Onboarding 21,000 users with Nova Shots: What we learned & how we move forward]]></title>
+            <link>https://polkadot.com/blog/novashots-blast-onboarding</link>
+            <guid>https://polkadot.com/blog/novashots-blast-onboarding</guid>
+            <pubDate>Thu, 06 Nov 2025 19:40:00 GMT</pubDate>
+            <description><![CDATA[How do you bring thousands of esports fans onchain without asking them to buy anything first? At three BLAST Counter-Strike events, Nova Wallet onboarded 21,000 new users through free interactive gameplay, processing 2.8 million transfers on Polkadot.]]></description>
+            <content:encoded><![CDATA[How do you bring thousands of esports fans onchain without asking them to buy anything first? At three BLAST Counter-Strike events, Nova Wallet onboarded 21,000 new users through free interactive gameplay, processing 2.8 million transfers on Polkadot.]]></content:encoded>
+            <category>Blog</category>
+            <category>Ecosystem</category>
+            <category>Gaming</category>
+        </item>
+        <item>
+            <title><![CDATA[Meet the first cohort: The 5 teams selected for the DeFi Builders Program]]></title>
+            <link>https://polkadot.com/blog/meet-the-first-cohort-defi-builders-program</link>
+            <guid>https://polkadot.com/blog/meet-the-first-cohort-defi-builders-program</guid>
+            <pubDate>Tue, 04 Nov 2025 17:50:00 GMT</pubDate>
+            <description><![CDATA[Velocity Labs announces 5 teams selected for the DeFi Builders Program Cohort 1, building innovative financial applications on Polkadot Hub.]]></description>
+            <content:encoded><![CDATA[Velocity Labs announces 5 teams selected for the DeFi Builders Program Cohort 1, building innovative financial applications on Polkadot Hub.]]></content:encoded>
+            <category>Blog</category>
+            <category>Ecosystem</category>
+            <category>Build</category>
+            <category>DeFi</category>
         </item>
         <item>
             <title><![CDATA[5 tech outages that prove decentralization can't wait]]></title>

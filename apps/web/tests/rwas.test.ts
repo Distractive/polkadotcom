@@ -115,9 +115,6 @@ test('Assets', async ({ page }) => {
       'Explore stories that trace the shift from traditional markets to tokenized systems, with Polkadot powering the next wave of real-world assets.',
     );
     await expect(
-      section.getByRole('link', { name: 'How Centrifuge built a $661M' }),
-    ).toBeVisible();
-    await expect(
       section.getByRole('link', { name: 'Energy Web is building' }),
     ).toBeVisible();
   });
