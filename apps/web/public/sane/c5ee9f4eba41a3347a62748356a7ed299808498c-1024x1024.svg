@@ -1,0 +1,68 @@
+<svg viewBox="0 0 1024 1024" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #2f435a;
+      }
+
+      .cls-3 {
+        fill: #e6e6e6;
+      }
+
+      .cls-4 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-7 {
+        fill: #fff;
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect ry="143.72" rx="143.72" height="1024" width="1024" class="cls-1"></rect>
+    </clipPath>
+    <radialGradient gradientUnits="userSpaceOnUse" r="1328.68" fy="43.11" fx="43.11" cy="43.11" cx="43.11" id="radial-gradient">
+      <stop stop-color="#ecb278" offset=".03"></stop>
+      <stop stop-color="#dc7da6" offset=".33"></stop>
+      <stop stop-color="#3b4f74" offset=".66"></stop>
+      <stop stop-color="#57a0c5" offset=".97"></stop>
+    </radialGradient>
+    <clipPath id="clippath-1">
+      <rect ry="143.72" rx="143.72" height="1024" width="1024" x="1044" class="cls-2"></rect>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect ry="143.72" rx="143.72" height="1024" width="1024" x="2088" class="cls-3"></rect>
+    </clipPath>
+  </defs>
+  <g class="cls-8">
+    <circle r="1328.68" cy="43.11" cx="43.11" class="cls-4"></circle>
+  </g>
+  <g>
+    <rect ry="143.72" rx="143.72" height="1024" width="1024" x="1044" class="cls-2"></rect>
+    <g class="cls-5">
+      <circle r="1328.68" cy="43.11" cx="1087.11" class="cls-2"></circle>
+    </g>
+  </g>
+  <g>
+    <rect ry="143.72" rx="143.72" height="1024" width="1024" x="2088" class="cls-3"></rect>
+    <g class="cls-6">
+      <circle r="1328.68" cy="43.11" cx="2131.11" class="cls-3"></circle>
+    </g>
+  </g>
+  <path d="M260.29,882.54l-34.83-32.92,257.25-272.25,183.14,198.59-35.23,32.49-148.33-160.85-221.99,234.94ZM857.18,871.94l-322.71-339.51,323.54-333.35,34.39,33.38-291.49,300.32,290.99,306.14-34.74,33.02ZM228.45,747.97l-35.04-32.7,170.33-182.54-166.87-176.01,34.78-32.98,197.89,208.72-201.09,215.49ZM483.28,486.75L162.37,153.18l34.54-33.23,286.13,297.42,167.78-176.83,34.76,32.99-202.3,213.22Z" class="cls-7"></path>
+</svg>

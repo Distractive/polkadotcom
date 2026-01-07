@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1528 600" height="600" width="1528">
+<g clip-path="url(#clip0_879_519)">
+<rect fill="url(#paint0_radial_879_519)" height="600" width="1528"></rect>
+<rect fill="url(#paint1_linear_879_519)" height="600" width="1528"></rect>
+<ellipse fill="#FF2670" transform="matrix(-0.0295469 -0.999563 0.991114 -0.133014 944.771 807.19)" ry="214.062" rx="192.249" cy="214.062" cx="192.249"></ellipse>
+<ellipse fill="#ED1166" transform="matrix(0.00985364 -0.999951 0.996115 -0.088059 513.736 712.523)" ry="169.512" rx="92.1981" cy="169.512" cx="92.1981"></ellipse>
+<ellipse fill="#FF2670" transform="matrix(0.995855 -0.0909574 -0.00733885 0.999973 1346.63 57.4839)" ry="181.696" rx="149.118" cy="181.696" cx="149.118"></ellipse>
+</g>
+<defs>
+<radialGradient gradientTransform="translate(651.5 -54.5) rotate(65.2157) scale(654.813 2405.93)" gradientUnits="userSpaceOnUse" r="1" cy="0" cx="0" id="paint0_radial_879_519">
+<stop stop-color="#7916F3" offset="0.451419"></stop>
+<stop stop-color="#FF2670" offset="1"></stop>
+</radialGradient>
+<linearGradient gradientUnits="userSpaceOnUse" y2="600" x2="764" y1="0" x1="764" id="paint1_linear_879_519">
+<stop></stop>
+<stop stop-opacity="0" offset="1"></stop>
+</linearGradient>
+<clipPath id="clip0_879_519">
+<rect fill="white" height="600" width="1528"></rect>
+</clipPath>
+</defs>
+</svg>

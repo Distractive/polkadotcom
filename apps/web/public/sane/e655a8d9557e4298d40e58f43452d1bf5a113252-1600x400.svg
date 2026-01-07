@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1600 400" height="400" width="1600">
+<g clip-path="url(#clip0_284_1294)">
+<ellipse fill="#FF2670" transform="rotate(24.139 486.453 66.2836)" ry="59.794" rx="66.6016" cy="66.2836" cx="486.453"></ellipse>
+<ellipse fill="#FF2670" transform="rotate(-56.4861 807.877 138.569)" ry="28.7961" rx="66.5177" cy="138.569" cx="807.877"></ellipse>
+<ellipse fill="#A80950" transform="rotate(-80.0765 653.313 14.1104)" ry="12.9716" rx="66.5177" cy="14.1104" cx="653.313"></ellipse>
+<ellipse fill="#FF2670" transform="rotate(-64.9224 926.521 114.147)" ry="14.06" rx="66.6801" cy="114.147" cx="926.521"></ellipse>
+<ellipse fill="#ED1166" transform="rotate(57.926 348.648 -15.5179)" ry="57.0113" rx="66.634" cy="-15.5179" cx="348.648"></ellipse>
+<ellipse fill="#A80950" transform="rotate(-80.5112 1423.25 30.5639)" ry="12.4437" rx="66.2494" cy="30.5639" cx="1423.25"></ellipse>
+<ellipse fill="#A80950" transform="rotate(-51.3299 1372.99 176.257)" ry="26.6387" rx="66.2494" cy="176.257" cx="1372.99"></ellipse>
+<ellipse fill="#A80950" transform="rotate(-20.869 1256.51 291.134)" ry="32.4714" rx="66.6491" cy="291.134" cx="1256.51"></ellipse>
+<ellipse fill="#C80858" ry="33.0229" rx="66.6491" cy="353.207" cx="1097.06"></ellipse>
+<ellipse fill="#C80858" transform="rotate(37.2735 926.369 349.624)" ry="23.9271" rx="66.6491" cy="349.624" cx="926.369"></ellipse>
+<ellipse fill="#ED1166" transform="rotate(57.8412 777.849 281.274)" ry="13.8992" rx="66.6584" cy="281.274" cx="777.849"></ellipse>
+<ellipse fill="#C80858" transform="rotate(-104.827 680.834 161.661)" ry="2.66149" rx="66.6516" cy="161.661" cx="680.834"></ellipse>
+<ellipse fill="#C80858" transform="rotate(-92.0418 965.903 -31.1397)" ry="39.2423" rx="66.2524" cy="-31.1397" cx="965.903"></ellipse>
+<ellipse fill="#FF2670" transform="rotate(-29.8551 650.24 120.991)" ry="53.4195" rx="67.1476" cy="120.991" cx="650.24"></ellipse>
+<ellipse fill="#A80950" transform="rotate(-75.8028 981.208 52.7824)" ry="10.5602" rx="66.6801" cy="52.7824" cx="981.208"></ellipse>
+</g>
+<defs>
+<clipPath id="clip0_284_1294">
+<rect fill="white" height="400" width="1600"></rect>
+</clipPath>
+</defs>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 400 300" height="300" width="400">
+<g clip-path="url(#clip0_265_212)">
+<rect fill="url(#paint0_linear_265_212)" height="300" width="400"></rect>
+<ellipse fill="#FF2670" transform="matrix(0.932023 0.362398 -0.363563 0.93157 66.6738 219.168)" ry="39.3617" rx="31.7284" cy="39.3617" cx="31.7284"></ellipse>
+<ellipse fill="#ED1166" transform="matrix(0.515934 -0.856629 0.85747 0.514535 0 127.516)" ry="174.086" rx="25.0784" cy="174.086" cx="25.0784"></ellipse>
+<ellipse fill="#C80858" transform="matrix(0.515934 -0.856629 0.85747 0.514535 120.898 175.26)" ry="94.685" rx="7.97356" cy="94.685" cx="7.97356"></ellipse>
+<ellipse fill="#C80858" transform="matrix(0.693496 -0.72046 0.72174 0.692164 108.15 97.4917)" ry="113.956" rx="77.7972" cy="113.956" cx="77.7972"></ellipse>
+<mask height="195" width="198" y="23" x="145" maskUnits="userSpaceOnUse" style="mask-type:alpha" id="mask0_265_212">
+<ellipse fill="#C80858" transform="matrix(0.693496 -0.72046 0.72174 0.692164 108.15 97.4917)" ry="113.956" rx="77.7972" cy="113.956" cx="77.7972"></ellipse>
+</mask>
+<g mask="url(#mask0_265_212)">
+<ellipse fill="#A80950" transform="matrix(0.910771 0.412911 -0.414178 0.910196 292.334 -31.6587)" ry="115.333" rx="54.2162" cy="115.333" cx="54.2162"></ellipse>
+</g>
+<ellipse fill="#FF2670" transform="matrix(0.886982 -0.461805 0.463149 0.886281 248.863 19.1318)" ry="60.2543" rx="53.7352" cy="60.2543" cx="53.7352"></ellipse>
+</g>
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" y2="300" x2="200" y1="0" x1="200" id="paint0_linear_265_212">
+<stop stop-color="#7916F3"></stop>
+<stop stop-color="#07FFFF" offset="1"></stop>
+</linearGradient>
+<clipPath id="clip0_265_212">
+<rect fill="white" height="300" width="400"></rect>
+</clipPath>
+</defs>
+</svg>

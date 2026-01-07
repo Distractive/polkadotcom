@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1529 1144" height="1144" width="1529">
+<rect fill="url(#paint0_linear_160_2125)" transform="translate(0.5)" height="1144" width="1528"></rect>
+<ellipse fill="#FF2670" transform="matrix(0.198546 0.980092 -0.980093 0.198539 538.274 204)" ry="157.778" rx="117.328" cy="157.778" cx="117.328"></ellipse>
+<ellipse fill="#A80950" transform="matrix(0.883144 0.469102 -0.469116 0.883137 583.358 266.829)" ry="158.818" rx="103.206" cy="158.818" cx="103.206"></ellipse>
+<ellipse fill="#ED1166" transform="matrix(0.997973 -0.063642 0.0636443 0.997973 694.516 411.245)" ry="158.17" rx="84.8343" cy="158.17" cx="84.8343"></ellipse>
+<ellipse fill="#C80858" transform="matrix(0.437692 0.899125 -0.899131 0.437679 1087.13 511.714)" ry="158.225" rx="104.094" cy="158.225" cx="104.094"></ellipse>
+<ellipse fill="#A80950" transform="matrix(0.908636 -0.417589 0.417601 0.90863 1075.06 652.145)" ry="158.401" rx="50.4274" cy="158.401" cx="50.4274"></ellipse>
+<path fill="#C80858" d="M824.756 712.352C816.898 717.769 808.354 720.968 799.311 721.544C752.554 724.526 710.142 656.272 704.582 569.094C701.214 516.272 712.147 468.622 731.689 438.606L824.756 712.352Z" clip-rule="evenodd" fill-rule="evenodd"></path>
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" y2="-322.16" x2="430.299" y1="1144" x1="1528" id="paint0_linear_160_2125">
+<stop stop-color="#E4FF07"></stop>
+<stop stop-color="#07FFFF" offset="1"></stop>
+</linearGradient>
+</defs>
+</svg>
