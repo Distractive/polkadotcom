@@ -1,3 +1,5 @@
+***As of Dec 31, 2025 Distractive has concluded its formal marketing engagement with Polkadot. We’re grateful for the collaboration and proud of what we built together. All Polkadot-specific marketing will run through OpenGov going forward. For anything else you’d like to explore with Distractive outside of that scope, our door is always open.***
+
 # Polkadot GitHub ReadMe
 
 Welcome to the Polkadot.com website repo! This website serves as a crucial gateway for users, developers, and community members to learn about and engage with Polkadot's technology and vision. The site's purpose is to provide accurate, up-to-date information about Polkadot while maintaining the highest standards of performance, accessibility, and user experience. This site is run by the [Distractive marketing team](https://www.distractive.xyz/), but we welcome open-source contributions from the community that help us achieve these goals.
