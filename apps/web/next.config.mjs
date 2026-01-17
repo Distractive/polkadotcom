@@ -54,6 +54,7 @@ const cspSources = {
     'https://stats.g.doubleclick.net',
     'https://*.doubleclick.net',
     'https://tracking-europe.ad360.media/track/events',
+    'https://api.github.com/repos/Distractive/polkadotcom/actions/',
   ],
   'default-src': ["'self'"],
   'font-src': [
