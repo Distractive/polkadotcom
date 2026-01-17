@@ -195,7 +195,7 @@ export default {
 
   transform: async (config, path) => {
     return {
-      loc: path,
+      loc: decodeURIComponent(path),
       lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
     };
   },
